@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Querying Your Data. Start Talking to Your Loyalty Platform | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Blog Article Specific Styles --- */
+    
+    /* 1. Split Hero Layout */
+    .blog-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .blog-hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+
+    /* Hero Text Adjustments */
+    .blog-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .blog-hero-tag {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Hero Graphic Container */
+    .blog-hero-graphic {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .blog-hero-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 2. Main Content Layout (Sidebar + Content) */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    @media (min-width: 992px) {
+      .blog-grid {
+        grid-template-columns: 280px 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Sticky Table of Contents */
+    .blog-sidebar {
+      display: none;
+    }
+
+    @media (min-width: 992px) {
+      .blog-sidebar {
+        display: block;
+        position: sticky;
+        top: 120px;
+      }
+    }
+
+    .toc-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9ca3af;
+      margin-bottom: 1rem;
+    }
+
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    .toc-link {
+      font-size: 0.875rem;
+      color: #4b5563;
+      padding-left: 1rem;
+      border-left: 2px solid transparent;
+      margin-left: -1px;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-link:hover {
+      color: #F37021;
+      border-left-color: #F37021;
+    }
+
+    /* Blog Content Typography */
+    .blog-content {
+      max-width: 750px;
+    }
+
+    .blog-content h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #111827;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .blog-content h2:first-of-type { margin-top: 0; }
+
+    .blog-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #111827;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .blog-content p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      color: #374151;
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    .blog-content li {
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-content strong {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .blog-content em {
+      font-style: italic;
+      color: #F37021;
+    }
+
+    .blog-content blockquote {
+      border-left: 4px solid #F37021;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #4b5563;
+      font-size: 1.25rem;
+    }
+
+    /* FAQ Section - Accordion Style */
+    .faq-section {
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .faq-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #111827;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: #F37021;
+    }
+
+    .faq-arrow {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      color: #6b7280;
+    }
+
+    .faq-item.active .faq-arrow {
+      transform: rotate(180deg);
+      color: #F37021;
+    }
+
+    .faq-answer-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer-wrapper {
+      max-height: 500px;
+    }
+
+    .faq-answer {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: #4b5563;
+      padding-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link active">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="subpage-hero subpage-hero-brand" style="padding-top: 10rem; padding-bottom: 5rem;">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      
+      <div class="blog-hero-grid">
+        
+        <div class="blog-hero-content">
+          <div class="blog-hero-meta">
+            <span class="blog-hero-tag">Analytics</span>
+            <span>•</span>
+            <span>Jan 25, 2026</span>
+          </div>
+          <h1 class="subpage-hero-title mb-6">
+            Stop Querying Your Data. <span class="highlight">Start Talking</span> to Your Loyalty Platform.
+          </h1>
+          <p class="subpage-hero-description mb-8">
+            A loyalty analytics platform built for enterprise teams who need answers, not dashboards.
+          </p>
+        </div>
+
+        <div class="blog-hero-graphic-container">
+          <div class="blog-hero-graphic">
+            <span style="color: white; font-weight: 600; letter-spacing: 0.05em; opacity: 0.5;">CONVERSATIONAL ANALYTICS [16:9]</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+    <div class="container">
+      
+      <div class="blog-grid">
+
+        <aside class="blog-sidebar">
+          <div class="toc-title">In This Article</div>
+          <nav class="toc-list">
+            <a href="#dashboard-trap" class="toc-link">The Dashboard Trap</a>
+            <a href="#pre-built-dashboards" class="toc-link">Pre-Built Dashboards Solve the Wrong Problem</a>
+            <a href="#conversational-analytics" class="toc-link">What Conversational Analytics Means</a>
+            <a href="#four-layers" class="toc-link">Four Layers of Access</a>
+            <a href="#anti-silo" class="toc-link">The Anti-Silo Philosophy</a>
+            <a href="#lessons-learned" class="toc-link">Lessons at 26 Billion Transactions</a>
+          </nav>
+        </aside>
+
+        <article class="blog-content">
+          
+          <p>
+            For enterprise loyalty teams managing multi-brand programs, the path from question to insight takes too long. Running a loyalty program across multiple brands, regions, or lines of business means answering questions that span those dimensions. Which segments drove redemption lift in Q3? How does tier progression compare across brands? What's our liability exposure heading into Q4?
+          </p>
+
+          <p>
+            These are everyday questions. And in most enterprise loyalty environments, answering them takes longer than it should. The loyalty team knows what they want to learn. The data exists somewhere in the platform. But between the question and the answer sits a queue: an IT ticket, a SQL request, a spot on the analytics backlog. By the time the report arrives, the window to adjust the campaign has closed.
+          </p>
+
+          <p id="dashboard-trap">
+            <strong>This is the dashboard trap.</strong>
+          </p>
+
+          <h2 id="pre-built-dashboards">Pre-Built Dashboards Solve the Wrong Problem</h2>
+          
+          <p>
+            Every loyalty platform ships with dashboards. They show what the vendor anticipated you'd want to see: enrollment trends, point balances, redemption rates. The charts are polished. The data refreshes on schedule.
+          </p>
+
+          <p>
+            The problem is that the questions loyalty teams actually ask rarely match the questions dashboards were designed to answer.
+          </p>
+
+          <p>
+            A program director doesn't want to know redemption rates in aggregate. She wants to know redemption rates for lapsed Gold members who received the Q3 win-back offer in the Southeast region. That query doesn't exist in a pre-built dashboard. It never will, because the vendor couldn't anticipate it.
+          </p>
+
+          <h2 id="conversational-analytics">What Conversational Analytics Actually Means</h2>
+          
+          <p>
+            Our customer analytics platform, RCX Analytics, was purpose-built for loyalty and approaches this differently. Business users ask questions in plain English and get answers in minutes.
+          </p>
+
+          <p>
+            This isn't a chatbot summarizing pre-built reports. The system generates an actual SQL query against the underlying data model. When a loyalty manager asks, "How many people moved up to the highest tier last month?" the platform generates a query, runs it against the data warehouse, and returns a table or chart. No IT ticket required.
+          </p>
+
+          <p>
+            The questions can be specific: "Show me promotion performance for campaigns launched in December." They can be forward-looking: "Show me a model-driven forecast of quarterly sales for peak season next year." They can span the dimensions that matter to multi-brand programs: "Total activities year-to-date by partner name."
+          </p>
+
+          <p>
+            Role-based permissions, query limits, and row-level security ensure users only access data they're authorized to see.
+          </p>
+
+          <p>
+            What makes this different from a business intelligence tool bolted onto a loyalty platform is that the natural language interface sits on top of a complete loyalty data model. The system understands tiers, promotions, members, transactions, and the relationships between them.
+          </p>
+
+          <h2 id="four-layers">Four Layers of Access: Analyze, Ask, Anticipate, Act</h2>
+          
+          <p>
+            Different users have different needs. RCX Analytics provides four layers of access.
+          </p>
+
+          <h3>Analyze</h3>
+          <p>
+            Pre-built dashboards covering the operational categories loyalty teams track daily: promotions, tiers, streaks, liability, accruals. These dashboards refresh in near real-time. Clients can copy them, modify them, or build their own. External data can be ingested for richer context.
+          </p>
+
+          <h3>Ask</h3>
+          <p>
+            Conversational analytics for business users who need answers to questions the dashboards don't cover. Natural language questions generate SQL queries on demand. Charts appear without technical expertise.
+          </p>
+
+          <h3>Anticipate</h3>
+          <p>
+            AI-powered insights that surface what you should be asking, not just what you did ask. The system detects trends and anomalies automatically. It generates executive summaries with a single click and sends them directly to leadership. It forecasts liability, redemption patterns, and member behavior so teams can anticipate cash flow needs rather than react to them.
+          </p>
+
+          <h3>Act</h3>
+          <p>
+            Unfettered SQL access for technical teams who want direct control. This means direct Redshift access to roughly 100 tables in the data model. Power users can write whatever queries they need. BI tools like Tableau, Looker, or Power BI can point directly at the data warehouse.
+          </p>
+
+          <p>
+            These layers aren't mutually exclusive. A loyalty team might use pre-built dashboards for daily monitoring, conversational analytics for ad-hoc questions, and direct SQL access for custom models.
+          </p>
+
+          <h2 id="anti-silo">The Anti-Silo Philosophy: Loyalty Analytics Without Lock-In</h2>
+          
+          <p>
+            Most loyalty platforms create data gravity. They make it hard to get data out because keeping data inside the platform creates vendor lock-in.
+          </p>
+
+          <p>
+            ReactorCX takes the opposite approach.
+          </p>
+
+          <p>
+            Most enterprise clients already have a CDP or BI tool. They've invested in Tableau or Looker or Power BI. They have data teams who prefer their own tools. The goal isn't to replace that infrastructure. The goal is to feed data into it.
+          </p>
+
+          <p>
+            This means syncing roughly 100 tables to the client's data lake on a regular basis. It means providing direct SQL access so any BI tool can query the data warehouse. It means treating loyalty data as an asset the client owns, not a resource the vendor controls.
+          </p>
+
+          <h2 id="lessons-learned">What We've Learned at 26 Billion Transactions</h2>
+          
+          <p>
+            Processing 26 billion transactions annually across clients in hospitality, fuel and convenience, and retail has clarified a few patterns.
+          </p>
+
+          <p>
+            <strong>Real-time visibility changes behavior.</strong> When loyalty teams can see promotion performance as it happens, they iterate faster. Campaigns get adjusted mid-flight instead of analyzed after the fact.
+          </p>
+
+          <p>
+            <strong>Executive teams don't log in to platforms.</strong> They read summaries. Automated insights that arrive in their inbox get attention. Dashboards requiring navigation don't.
+          </p>
+
+          <p>
+            <strong>Technical teams value unfettered access</strong> because they've been burned by platforms that deliver rate limits, incomplete documentation, and proprietary data formats. Direct SQL access with no restrictions builds trust.
+          </p>
+
+          <blockquote>
+            The business outcome of better analytics isn't better reports. It's faster decisions.
+          </blockquote>
+
+          <p>
+            Program iteration cycles compress. Questions get answered while they're still relevant. Data becomes a resource the whole organization can use, not a queue the business has to wait in.
+          </p>
+
+          <p>
+            Stop querying your data. Start talking to it. Your choice. Your data.
+          </p>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 class="text-3xl font-bold text-dark mb-4">Ready to transform how your team accesses loyalty data?</h2>
+        <p class="text-muted mb-8 text-lg">
+          See how RCX Analytics delivers answers in minutes, not days.
+        </p>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+    <div class="container">
+      
+      <div class="blog-grid">
+        <aside class="blog-sidebar"></aside>
+        <article class="blog-content">
+          
+          <!-- FAQ SECTION -->
+          <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What makes conversational analytics different from a chatbot?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">RCX Analytics generates actual SQL queries against your loyalty data warehouse - it's not summarizing pre-built reports or searching documentation. When you ask a question in plain English, the system translates it into SQL, executes it against the underlying data model, and returns real data. This means you can ask questions the platform vendor never anticipated.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Does this replace our existing BI tools?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">No. RCX Analytics is designed to work alongside your existing BI infrastructure. We provide direct SQL access to roughly 100 tables in the loyalty data model, which means tools like Tableau, Looker, or Power BI can query the data warehouse directly. We sync data to your data lake on a regular basis so your analytics stack has access to loyalty data alongside everything else.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How do you handle security and data access controls?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Role-based permissions, query limits, and row-level security ensure users only access data they're authorized to see. For multi-brand programs, this means a regional manager sees only their region's data, while headquarters sees the full picture. Technical teams with direct SQL access operate within the same permission framework.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What types of questions can the system answer?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">The system understands loyalty-specific concepts: tiers, promotions, members, transactions, accruals, redemptions, liability, and the relationships between them. Questions can be specific ("Show me redemption rates for lapsed Gold members in the Southeast"), forward-looking ("Forecast quarterly sales for peak season"), or span multiple dimensions ("Total activities year-to-date by partner name").</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How quickly do dashboards refresh?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Pre-built dashboards refresh in near real-time. Conversational analytics queries execute on demand against the current state of the data warehouse. This means promotion performance metrics update as transactions flow through the system, enabling teams to adjust campaigns mid-flight rather than waiting for end-of-day batch reports.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What happens if the system can't understand a question?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">The system will ask clarifying questions or suggest alternative phrasings. Because it's built on a loyalty-specific data model, it understands domain concepts and can guide users toward questions that map to available data. Technical users always have the option to write SQL directly if they need more control.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Can we customize the pre-built dashboards?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Yes. Clients can copy, modify, or build their own dashboards. External data can be ingested for richer context - for example, overlaying loyalty metrics with campaign calendar data or inventory levels. The platform provides the operational dashboards most loyalty teams need out of the box, but you're not locked into our templates.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      
+      <div class="footer-top" style="align-items: flex-start;">
+        
+        <div class="footer-brand">
+          <div class="footer-logo-placeholder" style="margin-bottom: 1.5rem;">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2" style="width: 80px; height: auto;">
+          </div>
+
+          <p class="footer-tagline" style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1rem;">
+            © 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          
+          <div class="footer-social" style="gap: 1rem;">
+            <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn" style="background: none; padding: 0; width: auto; height: auto; color: white;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">RCX Platform</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Technology</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync™</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch™</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Company</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Resources</h4>
+          <ul class="footer-links" style="gap: 0.75rem; margin-bottom: 2rem;">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Legal</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+      else { header.classList.remove('scrolled'); }
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

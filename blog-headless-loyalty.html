@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headless Loyalty Platforms: The Future of Composable Customer Engagement | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Page Specific Styles: Blog Split Hero & Layout --- */
+    
+    /* 1. Split Hero Layout */
+    .blog-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .blog-hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+
+    /* Hero Text Adjustments */
+    .blog-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .blog-hero-tag {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Hero Graphic Container */
+    .blog-hero-graphic {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .blog-hero-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 2. Main Content Layout (Sidebar + Content) */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    @media (min-width: 992px) {
+      .blog-grid {
+        grid-template-columns: 280px 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Sticky Table of Contents */
+    .blog-sidebar {
+      display: none;
+    }
+
+    @media (min-width: 992px) {
+      .blog-sidebar {
+        display: block;
+        position: sticky;
+        top: 120px;
+      }
+    }
+
+    .toc-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9ca3af;
+      margin-bottom: 1rem;
+    }
+
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    .toc-link {
+      font-size: 0.875rem;
+      color: #4b5563;
+      padding-left: 1rem;
+      border-left: 2px solid transparent;
+      margin-left: -1px;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-link:hover {
+      color: #F37021;
+      border-left-color: #F37021;
+    }
+
+    /* Blog Content Typography */
+    .blog-content {
+      max-width: 750px;
+    }
+
+    .blog-content h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #111827;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .blog-content h2:first-of-type { margin-top: 0; }
+
+    .blog-content p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      color: #374151;
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    .blog-content li {
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-content strong {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .blog-content em {
+      font-style: italic;
+      color: #F37021;
+    }
+
+    .blog-content code {
+      background: #f3f4f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      color: #1f2937;
+    }
+
+    /* FAQ Section - Accordion Style */
+    .faq-section {
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .faq-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #111827;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: #F37021;
+    }
+
+    .faq-arrow {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      color: #6b7280;
+    }
+
+    .faq-item.active .faq-arrow {
+      transform: rotate(180deg);
+      color: #F37021;
+    }
+
+    .faq-answer-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer-wrapper {
+      max-height: 500px;
+    }
+
+    .faq-answer {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: #4b5563;
+      padding-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview - 300×170]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More →</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title">Platform Architecture</div>
+                          <div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div>
+                        </div>
+                      </a>
+                      
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
+                        </div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title">Integration Capabilities</div>
+                          <div class="mega-menu-link-description">Connectors for the modern stack.</div>
+                        </div>
+                      </a>
+                      
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title">Security & Compliance</div>
+                          <div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div>
+                        </div>
+                      </a>
+                      
+                    </div>
+                  </div>
+                  
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                       <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                       </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center →</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu" style="width: max-content; min-width: 320px;"> 
+                <div class="mega-menu-inner" style="grid-template-columns: 1fr;"> 
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title" style="white-space: nowrap;">ThreadSync™ Implementation</div>
+                          <div class="mega-menu-link-description">Our agile delivery framework</div>
+                        </div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title" style="white-space: nowrap;">SafeSwitch™ Cutover</div>
+                          <div class="mega-menu-link-description">Zero-risk migration methodology</div>
+                        </div>
+                      </a>
+                      <a href="proven-success.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title" style="white-space: nowrap;">Success Stories</div>
+                          <div class="mega-menu-link-description">Client case studies and results</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link active">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 500px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1.5fr 1fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                         <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                         </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore →</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="subpage-hero subpage-hero-brand" style="padding-top: 10rem; padding-bottom: 5rem;">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      
+      <div class="blog-hero-grid">
+        
+        <div class="blog-hero-content">
+          <div class="blog-hero-meta">
+            <span class="blog-hero-tag">Architecture</span>
+            <span>•</span>
+            <span>Nov 12, 2025</span>
+          </div>
+          <h1 class="subpage-hero-title mb-6">
+            Headless Loyalty Platforms: <span class="highlight">Composable</span> Architecture for Modern Brands
+          </h1>
+          <p class="subpage-hero-description mb-8">
+            Why MACH-based, API-first loyalty platforms are replacing monolithic systems - and how headless architecture gives enterprises the flexibility to own their customer experience.
+          </p>
+        </div>
+
+        <div class="blog-hero-graphic-container">
+          <div class="blog-hero-graphic">
+            <span style="color: white; font-weight: 600; letter-spacing: 0.05em; opacity: 0.5;">ARCHITECTURE DIAGRAM [16:9]</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+    <div class="container">
+      
+      <div class="blog-grid">
+
+        <aside class="blog-sidebar">
+          <div class="toc-title">In This Article</div>
+          <nav class="toc-list">
+            <a href="#what-is-headless" class="toc-link">What Is Headless Loyalty?</a>
+            <a href="#mach-architecture" class="toc-link">MACH Architecture Explained</a>
+            <a href="#legacy-limitations" class="toc-link">Why Legacy Platforms Fall Short</a>
+            <a href="#composable-benefits" class="toc-link">Benefits of Composability</a>
+            <a href="#implementation" class="toc-link">Implementation Considerations</a>
+          </nav>
+        </aside>
+
+        <article class="blog-content">
+          
+          <h2 id="what-is-headless">What Is Headless Loyalty?</h2>
+          <p>
+            Headless loyalty means decoupling the backend loyalty engine (points, tiers, rewards logic) from the frontend presentation layer (how customers see and interact with the program). Instead of a single, monolithic platform that controls both the data and the UI, a headless system exposes all core functionality through APIs.
+          </p>
+          <p>
+            This separation gives engineering teams complete control over <em>when, where, and how</em> loyalty features appear in the customer journey. Want to show point balances in a mobile app notification? Call the API. Need to trigger a reward offer at checkout on your e-commerce site? Call the API. Want to integrate loyalty into a kiosk, smart TV app, or voice assistant? Call the API.
+          </p>
+          <p>
+            Traditional platforms force you into their UI templates and workflows. Headless platforms let you build exactly what your brand needs, using your own design system, on your own timeline.
+          </p>
+
+          <h2 id="mach-architecture">MACH Architecture: The Foundation of Headless Loyalty</h2>
+          <p>
+            The term <strong>MACH</strong> stands for Microservices, API-first, Cloud-native, and Headless. It's an architectural framework that defines how modern software should be built.
+          </p>
+          <ul>
+            <li><strong>Microservices:</strong> Each capability (earn, burn, tier management, notifications) runs as an independent service that can be deployed, scaled, and updated without affecting other components.</li>
+            <li><strong>API-first:</strong> Every function is designed from the ground up to be accessed via clean, well-documented APIs. This isn't an API layer bolted onto an existing system - it's the primary interface.</li>
+            <li><strong>Cloud-native:</strong> The platform is built to leverage cloud infrastructure (auto-scaling, distributed storage, resilience) rather than being tied to on-premise hardware.</li>
+            <li><strong>Headless:</strong> There is no mandated frontend. You control the presentation layer entirely.</li>
+          </ul>
+          <p>
+            ReactorCX is built on MACH principles from day one. That's why brands like 7-Eleven, MGM Resorts, and BP trust it to handle millions of transactions per day while maintaining complete control over how loyalty appears to their customers.
+          </p>
+
+          <h2 id="legacy-limitations">Why Legacy Platforms Can't Compete</h2>
+          <p>
+            Most loyalty platforms were designed 10-15 years ago when mobile apps didn't exist, APIs were an afterthought, and "omnichannel" meant having a website and an email list. These systems claim to be "API-enabled," but that's not the same as API-first.
+          </p>
+          <p>
+            Legacy platforms suffer from three fundamental problems:
+          </p>
+          <ul>
+            <li><strong>Monolithic Architecture:</strong> All functionality is tightly coupled. Want to update the reward catalog? You have to redeploy the entire system. Need to scale transaction processing during a promotion? Everything scales together, driving up costs.</li>
+            <li><strong>Template-Based UIs:</strong> You're locked into their design system. Customization requires expensive professional services work, and even then, you're constrained by what their templates allow.</li>
+            <li><strong>Limited Integration:</strong> The APIs they offer are limited endpoints that expose a subset of functionality. If the feature you need isn't exposed, you're stuck waiting for the vendor's roadmap - which may never prioritize your use case.</li>
+          </ul>
+          <p>
+            In a headless, API-first system, <em>everything</em> is exposed. If you can imagine the loyalty experience, you can build it.
+          </p>
+
+          <h2 id="composable-benefits">The Business Value of Composability</h2>
+          <p>
+            Composable loyalty isn't just a developer preference - it's a competitive advantage. Here's why enterprises are making the switch:
+          </p>
+          <p>
+            <strong>Speed to Market:</strong> Launch new loyalty features in days instead of months. Your engineering team builds only the UI layer - the complex rules engine, balance management, and transactional logic already exist in the API.
+          </p>
+          <p>
+            <strong>Flexibility:</strong> Change reward structures, add new earning actions, or launch campaign-specific offers without vendor involvement. Business users configure rules in the admin dashboard, and those changes are instantly available via API.
+          </p>
+          <p>
+            <strong>Scalability:</strong> Each microservice scales independently based on demand. During a Black Friday promotion, you can scale transaction processing without also scaling the admin interface or analytics engine.
+          </p>
+          <p>
+            <strong>Best-of-Breed Stack:</strong> You're not locked into a single vendor's ecosystem. Use your preferred CRM, CDP, payment gateway, and analytics tools. The loyalty engine connects to all of them via standard APIs.
+          </p>
+          <p>
+            <strong>Vendor Independence:</strong> Because the presentation layer is decoupled from the backend, migrating to a new loyalty platform in the future doesn't require rebuilding customer-facing experiences. Your frontend code stays the same - you just point it at a new API.
+          </p>
+
+          <h2 id="implementation">Implementation: From Strategy to Production</h2>
+          <p>
+            Migrating to a headless loyalty platform isn't a "rip and replace" project. It's a strategic decision about how your technology stack should evolve.
+          </p>
+          <p>
+            <strong>Step 1: Define Your Composable Strategy</strong><br>
+            What parts of your loyalty experience need to be custom? Where can you use out-of-the-box components? A mobile app might require fully custom UI, while a back-office admin portal could use the platform's standard interface.
+          </p>
+          <p>
+            <strong>Step 2: Map API Requirements</strong><br>
+            Work with your loyalty platform vendor to understand which APIs you'll need. Typical integrations include member enrollment, transaction posting, balance queries, reward redemption, and tier status updates.
+          </p>
+          <p>
+            <strong>Step 3: Build in Parallel</strong><br>
+            Use ThreadSync methodology to run workstreams simultaneously. Your backend team configures program rules while your frontend team builds UI components against sandbox APIs. Integration happens continuously, not in a big-bang cutover.
+          </p>
+          <p>
+            <strong>Step 4: Test at Scale</strong><br>
+            Load testing matters. Your platform needs to handle peak transaction volumes without degrading response times. ReactorCX processes API calls in under 200ms even at millions of requests per hour.
+          </p>
+          <p>
+            <strong>Step 5: Deploy with SafeSwitch</strong><br>
+            Run old and new systems in parallel, shadowing production traffic to the new platform. Validate that every earn, burn, and balance update matches. When cutover happens, it's invisible to members.
+          </p>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 class="text-3xl font-bold text-dark mb-4">Ready to explore headless loyalty architecture?</h2>
+        <p class="text-muted mb-8 text-lg">
+          See how ReactorCX's MACH-based platform gives you complete control over your customer experience.
+        </p>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Talk to Our Architecture Team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+    <div class="container">
+      
+      <div class="blog-grid">
+        <aside class="blog-sidebar"></aside>
+        <article class="blog-content">
+          
+          <!-- FAQ SECTION -->
+          <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What does "headless" mean in the context of loyalty platforms?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Headless loyalty means the backend loyalty engine (points, tiers, rewards logic) is completely separated from the frontend presentation layer. All functionality is exposed through APIs, giving you complete control over how loyalty appears in your customer experience - whether that's web, mobile, POS, kiosks, or any other channel.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What is MACH architecture and why does it matter?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">MACH stands for Microservices, API-first, Cloud-native, and Headless. It's an architectural framework that ensures each capability (earn, burn, tier management) runs independently, scales on demand, and can be updated without affecting other components. This approach delivers faster time-to-market, lower operational costs, and true flexibility.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How is API-first different from having APIs available?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Many legacy platforms claim to be "API-enabled" but their APIs are limited endpoints bolted onto monolithic systems. True API-first architecture means every core function was designed from the ground up to be accessed via API - not as an afterthought, but as the primary interface. This gives you complete access to all platform capabilities programmatically.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Can I migrate to a headless platform without rebuilding everything?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Yes. With SafeSwitch methodology, you can run old and new platforms in parallel, validating every transaction before cutover. Your frontend code can be migrated incrementally - some touchpoints can use the new APIs while others remain on the legacy system. This phased approach eliminates big-bang risk.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What level of technical resources do I need to implement headless loyalty?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">You need a development team that can work with REST APIs - the same skillset required to integrate any modern SaaS platform. Most implementations use React, Vue, or similar frameworks for frontend development. The loyalty vendor provides comprehensive API documentation, SDKs, and sandbox environments. With ThreadSync methodology, frontend and backend teams can work in parallel.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How does composable architecture impact time-to-market?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Dramatically faster. Because you're only building the presentation layer (what customers see), you can launch loyalty features in days instead of months. The complex rules engine, balance management, and transactional logic already exist. Business users configure program rules in the admin dashboard, and those changes are instantly available via API.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What performance should I expect from a headless loyalty API?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">Enterprise-grade headless platforms like ReactorCX deliver sub-200ms API response times even at millions of requests per hour. This is critical for real-time experiences - customers shouldn't wait for their points to update or rewards to be validated. Cloud-native architecture with proper caching and distributed databases makes this performance possible at scale.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      
+      <div class="footer-top" style="align-items: flex-start;">
+        
+        <div class="footer-brand">
+          <div class="footer-logo-placeholder" style="margin-bottom: 1.5rem;">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2" style="width: 80px; height: auto;">
+          </div>
+
+          <p class="footer-tagline" style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1rem;">
+            © 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          
+          <div class="footer-social" style="gap: 1rem;">
+            <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn" style="background: none; padding: 0; width: auto; height: auto; color: white;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">RCX Platform</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Technology</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync™</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch™</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Company</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Resources</h4>
+          <ul class="footer-links" style="gap: 0.75rem; margin-bottom: 2rem;">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+
+          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Legal</h4>
+          <ul class="footer-links" style="gap: 0.75rem;">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+      else { header.classList.remove('scrolled'); }
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culture | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Page-Specific Styles */
+    
+    /* Testimonial Slider */
+    .testimonial-section {
+      background-color: #f9fafb;
+      overflow: hidden;
+    }
+    
+    .testimonial-slider {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-slide {
+      display: none;
+      background: white;
+      border-radius: 24px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--color-gray-100);
+      overflow: hidden;
+    }
+
+    .testimonial-slide.active {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+    }
+
+    .testimonial-content {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-quote-mark {
+      font-size: 4rem;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      font-family: serif;
+    }
+
+    .testimonial-text {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--color-black);
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-author-name {
+      font-weight: 700;
+      color: var(--color-black);
+      font-size: 1.125rem;
+    }
+
+    .testimonial-author-title {
+      color: var(--color-gray-400);
+      font-size: 0.875rem;
+    }
+
+    .testimonial-image {
+      background-color: var(--color-gray-100);
+      position: relative;
+    }
+
+    .testimonial-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+    }
+
+    /* Slider Controls */
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-gray-200);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .slider-dot.active {
+      background: var(--color-primary);
+    }
+
+    /* Collage Grid */
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 280px);
+      gap: 1.5rem;
+    }
+
+    .collage-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: var(--color-gray-100);
+    }
+
+    .collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .collage-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .collage-large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .testimonial-slide.active { grid-template-columns: 1fr; }
+      .testimonial-image { height: 300px; order: -1; }
+      .testimonial-content { padding: 2rem; }
+      .collage-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .collage-item { height: 250px; }
+      .collage-large { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <div class="logo-placeholder">LOGO</div>
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">Why LM?</a></li>
+            <li class="nav-item">
+              <a href="platform.html" class="nav-link">RCX Loyalty Platform</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Enterprise Technology</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Proven Delivery</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Resource Center</a></li>
+          </ul>
+          <div class="flex items-center gap-4">
+            <a href="#" class="nav-link">About LM</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+
+  <section class="subpage-hero subpage-hero-brand">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      <div class="subpage-hero-inner">
+        
+        <div class="subpage-hero-content">
+          <div class="subpage-hero-eyebrow"><span>Life at Loyalty Methods</span></div>
+          <h1 class="subpage-hero-title">
+            Loyalty Is What We <span class="highlight">Build Together</span>
+          </h1>
+          <p class="subpage-hero-description">
+            At Loyalty Methods, people are at the center of everything we do. Whether you evolve ReactorCX in a technical role or help bring loyalty programs to life for our clients, you see your work live in the hands of millions of members every day.
+          </p>
+          <div class="subpage-hero-cta">
+            <a href="about-careers.html" class="btn btn-primary btn-lg" style="background: white; color: #F37021; border-color: white;">Join Our Team</a>
+          </div>
+        </div>
+
+        <div class="subpage-hero-media">
+          <div class="subpage-hero-image-placeholder" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);">
+            [Team Illustration / Puzzle Graphic]
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-light bg-light py-20">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Our Core Values</p>
+        <h2 class="section-title">Principles that guide us</h2>
+        <p class="section-description">These principles guide how we evolve ReactorCX, run loyalty programs for our clients, and show up for each other every day.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="icon-feature">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="icon-feature-title">Collaboration</h3>
+          <p class="icon-feature-description">
+            We solve hard problems together. No one is left alone with a critical issue. Teams share context early and review each other's ideas.
+          </p>
+        </div>
+
+        <div class="icon-feature">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2v1"></path><path d="M12 2a7 7 0 0 1 7 7c0 3.87-3.13 7-7 7s-7-3.13-7-7a7 7 0 0 1 7-7z"></path></svg>
+          </div>
+          <h3 class="icon-feature-title">Innovation</h3>
+          <p class="icon-feature-description">
+            We are builders at heart. We look for simpler, smarter ways to handle complex logic and fold what we learn back into ReactorCX.
+          </p>
+        </div>
+
+        <div class="icon-feature">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="icon-feature-title">Integrity</h3>
+          <p class="icon-feature-description">
+            Our work touches real revenue. That demands honesty. We say what is true, document what we have done, and own the outcome.
+          </p>
+        </div>
+
+        <div class="icon-feature">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          </div>
+          <h3 class="icon-feature-title">Growth</h3>
+          <p class="icon-feature-description">
+            We expect people to grow along with the platform. Feedback is frequent, and there is room to learn new technologies and own more.
+          </p>
+        </div>
+
+        <div class="icon-feature">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <h3 class="icon-feature-title">Inclusivity</h3>
+          <p class="icon-feature-description">
+            Every voice is welcomed. We work across time zones and cultures, ensuring decisions don't depend on being in the loudest room.
+          </p>
+        </div>
+
+        <div class="icon-feature">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 class="icon-feature-title">Passion</h3>
+          <p class="icon-feature-description">
+            We care about the craft and the result. Passion shows up in thoughtful design, clean data models, and celebrating wins together.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="testimonial-section section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Meet Our Team</p>
+        <h2 class="section-title">Our people make the difference</h2>
+      </div>
+
+      <div class="testimonial-slider">
+        
+        <div class="testimonial-slide active">
+          <div class="testimonial-content">
+            <div class="testimonial-quote-mark">“</div>
+            <p class="testimonial-text">
+              Working at Loyalty Methods is genuinely energizing. I'm surrounded by a bright, international team of loyalty experts, and every day brings a new opportunity to learn from true industry veterans. The work is dynamic and challenging in all the right ways.
+            </p>
+            <div>
+              <div class="testimonial-author-name">Kenneth Taylor</div>
+              <div class="testimonial-author-title">Sr. Business Development Manager</div>
+            </div>
+          </div>
+          <div class="testimonial-image">
+            <img src="https://via.placeholder.com/400x500" alt="Kenneth Taylor">
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="testimonial-quote-mark">“</div>
+            <p class="testimonial-text">
+              Working with Loyalty Methods has been a wonderful experience for me. I always feel appreciated, valued and motivated to excel in my field of work. The leadership team creates a comfortable and inspiring workplace.
+            </p>
+            <div>
+              <div class="testimonial-author-name">Bijay Laxmi Sahoo</div>
+              <div class="testimonial-author-title">Test Engineer</div>
+            </div>
+          </div>
+          <div class="testimonial-image">
+            <img src="https://via.placeholder.com/400x500" alt="Bijay Laxmi Sahoo">
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="testimonial-quote-mark">“</div>
+            <p class="testimonial-text">
+              I've been with this company for 12 years... It offers excellent growth and onsite opportunities in a friendly, supportive environment where employees are encouraged to innovate and feel valued every day.
+            </p>
+            <div>
+              <div class="testimonial-author-name">Pramod Kumar Yanmangandla</div>
+              <div class="testimonial-author-title">Senior Associate Consultant</div>
+            </div>
+          </div>
+          <div class="testimonial-image">
+            <img src="https://via.placeholder.com/400x500" alt="Pramod Kumar">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slider-controls">
+        <div class="slider-dot active" onclick="goToSlide(0)"></div>
+        <div class="slider-dot" onclick="goToSlide(1)"></div>
+        <div class="slider-dot" onclick="goToSlide(2)"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-light bg-white pb-20">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">A Workplace Designed for You</p>
+        <h2 class="section-title">Hybrid, distributed, and connected</h2>
+        <p class="section-description">We operate as a hybrid team with hubs in Dallas and Hyderabad, and teammates across the globe. Whether you are in an office or at home, you have the tools to do your best work.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+        <div class="text-center">
+          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
+          <h4 class="font-bold mb-2">Modern Workspaces</h4>
+          <p class="text-sm text-muted">Bright environments for deep focus.</p>
+        </div>
+        <div class="text-center">
+          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+          <h4 class="font-bold mb-2">Collaboration Zones</h4>
+          <p class="text-sm text-muted">Spaces designed for brainstorming.</p>
+        </div>
+        <div class="text-center">
+          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+          <h4 class="font-bold mb-2">Relax & Recharge</h4>
+          <p class="text-sm text-muted">Comfortable breakout spaces.</p>
+        </div>
+        <div class="text-center">
+          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line></svg></div>
+          <h4 class="font-bold mb-2">Remote Friendly</h4>
+          <p class="text-sm text-muted">Tools to stay connected anywhere.</p>
+        </div>
+      </div>
+
+      <div class="collage-grid">
+        <div class="collage-item collage-large"><img src="https://via.placeholder.com/600x600" alt="Office Event Large"></div>
+        <div class="collage-item"><img src="https://via.placeholder.com/300x300" alt="Team Lunch"></div>
+        <div class="collage-item"><img src="https://via.placeholder.com/300x300" alt="Office Space"></div>
+        <div class="collage-item"><img src="https://via.placeholder.com/300x300" alt="Celebration"></div>
+        <div class="collage-item"><img src="https://via.placeholder.com/300x300" alt="Meeting"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="bg-light border border-gray-200 rounded-3xl p-12 text-center max-w-4xl mx-auto">
+        <p class="text-lg text-dark font-medium mb-8 max-w-2xl mx-auto">
+          If you want meaningful problems, clear ownership and teammates who care about getting it right, you will feel at home here.
+        </p>
+        <a href="about-careers.html" class="btn btn-primary btn-lg">View Open Positions</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-placeholder"></div>
+          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+        </div>
+        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
+        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2025 Loyalty Platform.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    // Header Scroll
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+      else { header.classList.remove('scrolled'); }
+    });
+
+    // Testimonial Logic
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    
+    function goToSlide(n) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      
+      slides[n].classList.add('active');
+      dots[n].classList.add('active');
+    }
+  </script>
+</body>
+</html>

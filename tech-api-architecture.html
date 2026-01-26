@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Architecture | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Page-specific styles for metrics cards and stat bar */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .metrics-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .metric-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      text-align: center;
+      border: 1px solid var(--color-gray-100);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-navy-light);
+      box-shadow: var(--shadow-card-hover);
+    }
+    
+    .metric-value {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    
+    .metric-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      line-height: var(--line-height-relaxed);
+    }
+    
+    .metric-sublabel {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-300);
+      font-style: italic;
+      margin-top: var(--space-2);
+    }
+    
+    /* Hook section */
+    .hook-section {
+      background: var(--color-charcoal-800);
+      padding: var(--space-16) 0;
+      text-align: center;
+    }
+    
+    .hook-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-white);
+      margin-bottom: var(--space-6);
+    }
+    
+    .hook-body {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-300);
+      line-height: var(--line-height-relaxed);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Stat bar */
+    .stat-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+      padding: var(--space-12) 0;
+    }
+    
+    @media (max-width: 768px) {
+      .stat-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+    }
+    
+    .stat-bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    
+    .stat-bar-value {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: 1;
+    }
+    
+    .stat-bar-label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-white);
+    }
+    
+    .stat-bar-note {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      font-style: italic;
+    }
+    
+    /* Callout block */
+    .callout-block {
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      border-left: 4px solid var(--color-primary);
+    }
+    
+    .callout-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-black);
+      margin-bottom: var(--space-4);
+    }
+    
+    .callout-body {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-400);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-6);
+    }
+    
+    /* Results grid */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .result-card {
+      background: var(--color-charcoal-800);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      text-align: center;
+      border: 1px solid var(--color-charcoal-600);
+    }
+    
+    .result-stat {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    
+    .result-metric {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-white);
+      margin-bottom: var(--space-2);
+    }
+    
+    .result-attribution {
+      font-size: var(--font-size-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-wider);
+      color: var(--color-gray-400);
+    }
+    
+    /* Cross-links grid */
+    .crosslinks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+    
+    @media (max-width: 768px) {
+      .crosslinks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-real-time-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Real-Time Architecture</div><div class="mega-menu-link-description">API-first, event-driven, sub-second response.</div></div>
+                      </a>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="proven-success.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      <div class="subpage-hero-inner">
+        <div class="subpage-hero-content">
+          <p class="subpage-hero-eyebrow">Enterprise Platform</p>
+          <h1 class="subpage-hero-title">Real-Time Architecture</h1>
+          <p class="subpage-hero-description">
+            Real-time, synchronous for everything. This is the hardest thing to achieve in loyalty, and our design philosophy. If you can do that, everything else is easier. API-first. Event-driven. Sub-second response times at enterprise scale.
+          </p>
+          <div class="subpage-hero-cta">
+            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+          </div>
+        </div>
+        <div class="subpage-hero-media">
+          <div class="subpage-hero-image-placeholder">[Architecture Diagram]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ARCHITECTURE METRICS ========== -->
+  <section class="section section-light bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Proven at Enterprise Scale</h2>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-value">25M+</div>
+          <div class="metric-label">Daily API Requests</div>
+          <div class="metric-sublabel">Single enterprise deployment</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">56K+</div>
+          <div class="metric-label">Peak Events per Minute</div>
+          <div class="metric-sublabel">Single client</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">30K+</div>
+          <div class="metric-label">Locations Integrated</div>
+          <div class="metric-sublabel">Platform-wide</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">99.9%</div>
+          <div class="metric-label">Uptime SLA</div>
+          <div class="metric-sublabel">Production uptime</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DESIGN PHILOSOPHY (Zig-Zag, Image Right) ========== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Design Philosophy</span>
+          <h2 class="feature-row-title">The Hardest Thing to Achieve. Our Starting Point.</h2>
+          <p class="feature-row-description">
+            We prioritize the most difficult thing for a loyalty program to achieve: real-time, synchronous for everything. That is our design philosophy. Most platforms treat real-time as an add-on or an aspiration. We treat it as the foundation.
+          </p>
+          <p class="feature-row-description">
+            When the architecture handles real-time from day one, everything else becomes easier. Personalization. Event-driven engagement. Partner integrations. Scale.
+          </p>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Real-time architecture visualization]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== API-FIRST ARCHITECTURE (Zig-Zag) ========== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Integration Philosophy</span>
+          <h2 class="feature-row-title">Designed to Break the Black Box</h2>
+          <p class="feature-row-description">
+            ReactorCX is the only enterprise loyalty platform designed from day one to adapt to your environment and let data flow freely across your ecosystem. Acting as the loyalty brain, RCX senses customer behavior across channels, interprets it, and coordinates loyalty decisions back into the systems you already use. No trapped logic. No walled gardens. Full bidirectional flow.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">RESTful APIs for all platform operations</li>
+            <li class="feature-row-list-item">Synchronous responses for point-of-interaction use cases</li>
+            <li class="feature-row-list-item">Async patterns available when workflows require them</li>
+            <li class="feature-row-list-item">Full API documentation with sandbox environments</li>
+            <li class="feature-row-list-item">Versioned APIs with backward compatibility</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Architecture diagram showing RCX as loyalty brain]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EVENT-DRIVEN BACKBONE (Zig-Zag, Image Left) ========== -->
+  <section class="section section-light bg-light">
+    <div class="container">
+      <div class="feature-row feature-row-reverse">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Real-Time Events</span>
+          <h2 class="feature-row-title">Members Know the Moment Something Happens</h2>
+          <p class="feature-row-description">
+            The platform is heavily event-driven. Anything that happens generates real-time events that you can use to engage members immediately. You achieved a streak. You got a bonus. You hit a new tier. Those events come out on the event backbone and get pushed the moment conditions are met. Congratulations screens. Instant notifications. App overlays. Members get that satisfaction right away.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">27+ built-in event types</li>
+            <li class="feature-row-list-item">Sub-second event publishing</li>
+            <li class="feature-row-list-item">Streaming via Kafka, webhooks, Azure EventHub</li>
+            <li class="feature-row-list-item">Push notifications, SMS, email triggered by events</li>
+            <li class="feature-row-list-item">App overlays triggered the moment conditions are met</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Event flow diagram]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INTEGRATION PATTERNS (6-Card Grid) ========== -->
+  <section class="section section-light bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Multiple Integration Modes. Simultaneously.</h2>
+        <p class="section-description">Real-time, near real-time, or batch. The platform adapts to how your systems operate.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3 class="icon-feature-title">REST APIs (Synchronous)</h3>
+          </div>
+          <p class="icon-feature-description">Real-time operations with full RESTful API suite. Immediate response for point-of-interaction use cases.</p>
+        </div>
+        
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <h3 class="icon-feature-title">Event API (Publish)</h3>
+          </div>
+          <p class="icon-feature-description">Events published as they occur. Webhooks, Azure EventHub, AWS SNS. 27+ built-in event types.</p>
+        </div>
+        
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <h3 class="icon-feature-title">Streaming Ingestion</h3>
+          </div>
+          <p class="icon-feature-description">Near real-time processing via Kafka. High-volume activity without batch delays.</p>
+        </div>
+        
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="icon-feature-title">Batch Ingestion (FeedXChange)</h3>
+          </div>
+          <p class="icon-feature-description">Secure file drop with automated processing. Batch files processed as individual real-time transactions.</p>
+        </div>
+        
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            <h3 class="icon-feature-title">SQL Export</h3>
+          </div>
+          <p class="icon-feature-description">Analytics and enterprise reporting. Sync activity data to your data lake.</p>
+        </div>
+        
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            <h3 class="icon-feature-title">Hybrid</h3>
+          </div>
+          <p class="icon-feature-description">Multiple modes simultaneously. Real-time for some operations, batch for others. Partners operate the way they operate.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AUTO-SCALE (Zig-Zag, Image Right) ========== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Elastic Infrastructure</span>
+          <h2 class="feature-row-title">Scales Up and Down With Your Volume</h2>
+          <p class="feature-row-description">
+            On 7-Eleven Day, transaction volume spikes to multiples of normal load. The platform handles it without intervention. Auto-scale kicks in, capacity expands, and when the spike passes, it scales back down. This is not an SLA target. It is operational history. Major promotional events, peak holiday periods, flash sales. The infrastructure responds automatically.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">AWS-native auto-scaling</li>
+            <li class="feature-row-list-item">Multi-AZ redundancy</li>
+            <li class="feature-row-list-item">Containerized services with rolling upgrades</li>
+            <li class="feature-row-list-item">Peak volume handling without degradation</li>
+            <li class="feature-row-list-item">Scale events logged and reportable</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Auto-scale visualization]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLOUD INFRASTRUCTURE (4-Card Row) ========== -->
+  <section class="section section-light bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Built on AWS. Entirely.</h2>
+        <p class="section-description">We are an AWS shop. The platform runs on proven cloud infrastructure with enterprise-grade reliability.</p>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="icon-feature-icon" style="margin: 0 auto var(--space-4);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <div class="metric-value" style="font-size: var(--font-size-lg); color: var(--color-black);">Multi-AZ Deployment</div>
+          <div class="metric-label">Availability zones for redundancy. No single point of failure.</div>
+        </div>
+        <div class="metric-card">
+          <div class="icon-feature-icon" style="margin: 0 auto var(--space-4);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <div class="metric-value" style="font-size: var(--font-size-lg); color: var(--color-black);">Multi-Region Capable</div>
+          <div class="metric-label">Geographic distribution for global programs. Data residency options.</div>
+        </div>
+        <div class="metric-card">
+          <div class="icon-feature-icon" style="margin: 0 auto var(--space-4);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          </div>
+          <div class="metric-value" style="font-size: var(--font-size-lg); color: var(--color-black);">Containerized Services</div>
+          <div class="metric-label">Kubernetes orchestration. Rolling deployments. Service-level rollback.</div>
+        </div>
+        <div class="metric-card">
+          <div class="icon-feature-icon" style="margin: 0 auto var(--space-4);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <div class="metric-value" style="font-size: var(--font-size-lg); color: var(--color-black);">Managed Services</div>
+          <div class="metric-label">RDS, ElastiCache, SQS, SNS. AWS-managed components reduce operational burden.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ZERO-DOWNTIME (Zig-Zag, Image Left) ========== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row feature-row-reverse">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Operational Continuity</span>
+          <h2 class="feature-row-title">Configuration Changes Without Restarts</h2>
+          <p class="feature-row-description">
+            The platform publishes configuration changes without platform restarts. New promotions go live. Rules update. Tier thresholds adjust. All without taking the system offline. This is not just about deployment patterns. It is about operational continuity for programs that cannot afford interruption.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Hot configuration publishing</li>
+            <li class="feature-row-list-item">Rolling service upgrades</li>
+            <li class="feature-row-list-item">Feature flags for controlled rollout</li>
+            <li class="feature-row-list-item">Rollback at service level</li>
+            <li class="feature-row-list-item">Zero planned downtime windows</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Deployment flow diagram]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRANSACTION PROCESSING CALLOUT ========== -->
+  <section class="section section-light bg-white">
+    <div class="container">
+      <div class="callout-block">
+        <h3 class="callout-title">Every Transaction. Same Path. Same Speed.</h3>
+        <p class="callout-body">
+          Whether a transaction arrives via API, streaming, or batch file, it processes through the same real-time engine. FeedXChange rips batch files into individual transactions. Each one evaluates against rules, triggers events, and updates balances in real time. Consistent behavior regardless of ingestion method. Consistent outcomes. Consistent logging.
+        </p>
+        <a href="feature-partner-enablement.html" class="cta-link">See Partner Enablement <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CROSS-LINKS ========== -->
+  <section class="section section-light bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Related Platform Resources</h2>
+      </div>
+      <div class="crosslinks-grid">
+        
+        <a href="tech-security.html" class="card">
+          <div class="card-body">
+            <span class="card-category">Technology</span>
+            <h3 class="card-title">Security & Compliance</h3>
+            <p class="card-description">SOC 2 Type II certified. Annual penetration testing. Privacy-by-design architecture.</p>
+            <span class="card-link">See Security <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+          </div>
+        </a>
+        
+        <a href="feature-analytics.html" class="card">
+          <div class="card-body">
+            <span class="card-category">Platform</span>
+            <h3 class="card-title">RCX Analytics</h3>
+            <p class="card-description">Natural language Q&A against the full data model. Pre-built dashboards. Unfettered SQL access.</p>
+            <span class="card-link">See Analytics <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+          </div>
+        </a>
+        
+        <a href="feature-partner-enablement.html" class="card">
+          <div class="card-body">
+            <span class="card-category">Platform</span>
+            <h3 class="card-title">Partner Enablement</h3>
+            <p class="card-description">Native partner management. FeedXChange batch gateway. Finance-grade billing and settlement.</p>
+            <span class="card-link">See Partner Enablement <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="section-light bg-white" style="padding-bottom: 6rem;">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">See Real-Time Architecture in Action</h2>
+        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+          Experience sub-second response times, event-driven engagement, and enterprise-scale reliability. Schedule a technical deep dive with our team.
+        </p>
+        <div class="flex gap-4">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ SECTION ========== -->
+  <section class="accordion-section">
+    <div class="container">
+      <div class="accordion-header">
+        <h2 class="accordion-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="accordion">
+        
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span class="accordion-trigger-text">What does "real-time, synchronous for everything" mean in practice?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>Every interaction with the platform returns an immediate response. Point balance inquiries, promotion evaluations, redemption requests, personalization queries. No queueing. No eventual consistency. The member and the calling system know the outcome in the same moment the request is made.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span class="accordion-trigger-text">How does the platform handle traffic spikes?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>AWS-native auto-scaling expands capacity automatically when load increases. On peak promotional days, the platform has handled multiples of normal transaction volume without degradation. When load decreases, capacity scales back down. No manual intervention required.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span class="accordion-trigger-text">Can batch files process through the real-time engine?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>Yes. FeedXChange takes incoming batch files and processes each record as an individual transaction through the same real-time rules engine as API calls. Same execution path. Same logging. Same outcomes. This ensures partner billing accuracy and consistent behavior regardless of how data arrives.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span class="accordion-trigger-text">What event types are available?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>The platform publishes 27+ built-in event types covering member activity, promotional triggers, tier changes, reward issuance, and system health. Events stream via Kafka, webhooks, or Azure EventHub. You subscribe to the events relevant to your engagement strategy.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span class="accordion-trigger-text">How does the platform achieve zero downtime?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>Containerized services with rolling upgrades. Configuration changes publish without restarts. Multi-AZ redundancy eliminates single points of failure. Service-level rollback if issues arise. The architecture was designed for continuous operation from day one.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-real-time-architecture.html" class="footer-link">Real-Time Architecture</a></li>
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Accordion functionality
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all items
+        accordionItems.forEach(i => i.classList.remove('active'));
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

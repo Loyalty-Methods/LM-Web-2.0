@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2025 Forrester Loyalty Landscape Report | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Forrester Landing Page - Hero Style Full Width */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Full Width Hero Background */
+    .forrester-landing {
+      min-height: 100vh;
+      background: 
+        var(--gradient-navy-glow),
+        var(--gradient-charcoal);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: var(--space-24) 0;
+    }
+
+    .forrester-landing::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Container Layout */
+    .forrester-container {
+      position: relative;
+      z-index: 10;
+      max-width: var(--container-2xl);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+      width: 100%;
+    }
+
+    .forrester-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+      align-items: start;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .forrester-content-wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-20);
+      }
+    }
+
+    /* Left: Content & Description */
+    .forrester-main-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 1024px) {
+      .forrester-main-content {
+        margin: 0;
+      }
+    }
+
+    .forrester-logo {
+      width: 140px;
+      height: auto;
+      margin-bottom: var(--space-8);
+    }
+
+    .forrester-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    .forrester-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-navy-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-6);
+    }
+
+    .forrester-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .forrester-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-tight);
+      margin-bottom: var(--space-6);
+      color: var(--color-white);
+    }
+
+    .forrester-subtitle {
+      font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+      color: var(--color-gray-300);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-10);
+    }
+
+    /* Description Content (moved from right to left) */
+    .forrester-description-section {
+      max-width: 600px;
+      margin-top: var(--space-8);
+    }
+
+    .forrester-description-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-white);
+      margin-bottom: var(--space-4);
+    }
+
+    .forrester-description {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-300);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-6);
+    }
+
+    .forrester-benefits {
+      list-style: none;
+      margin-top: var(--space-4);
+      counter-reset: benefit-counter;
+    }
+
+    .forrester-benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-base);
+      color: var(--color-gray-300);
+      line-height: var(--line-height-relaxed);
+      counter-increment: benefit-counter;
+    }
+
+    .forrester-benefits li::before {
+      content: counter(benefit-counter) ".";
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      min-width: 1.5rem;
+    }
+
+    /* Right: Form & Angled Book */
+    .forrester-form-side {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-10);
+      position: relative;
+    }
+
+    /* Form Card */
+    .forrester-form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-2xl);
+      border: 1px solid var(--color-gray-100);
+      max-width: 480px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .forrester-form-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-black);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .forrester-form-subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-6);
+      text-align: center;
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* 3D Angled Book - Positioned Below/Next to Form */
+    .forrester-book-3d {
+      position: relative;
+      width: 320px;
+      height: 420px;
+      margin: var(--space-10) auto 0;
+      perspective: 1200px;
+    }
+
+    @media (min-width: 1024px) {
+      .forrester-book-3d {
+        position: absolute;
+        right: -80px;
+        top: 0;
+        margin: 0;
+      }
+    }
+
+    .book-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transform: rotateY(-25deg) rotateX(5deg);
+      transition: transform 0.6s ease;
+    }
+
+    .forrester-form-side:hover .book-container {
+      transform: rotateY(-20deg) rotateX(3deg);
+    }
+
+    .book-cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 
+        -10px 10px 30px rgba(0, 0, 0, 0.4),
+        -5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Book spine/depth effect */
+    .book-spine {
+      position: absolute;
+      left: -30px;
+      top: 0;
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(to right, #1a1a1a 0%, #2a2a2a 100%);
+      transform-origin: right center;
+      transform: rotateY(-90deg);
+      border-radius: 8px 0 0 8px;
+    }
+
+    /* Compact Form Placeholder */
+    .hubspot-form-placeholder {
+      background: transparent;
+      padding: 0;
+      margin-bottom: var(--space-4);
+    }
+
+    .form-field-placeholder {
+      margin-bottom: var(--space-3);
+    }
+
+    .form-field-label {
+      display: block;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-1);
+    }
+
+    .form-field-input {
+      width: 100%;
+      padding: var(--space-3);
+      border: 1px dashed var(--color-gray-200);
+      border-radius: var(--radius-md);
+      background: var(--color-light-100);
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      font-family: var(--font-family-mono);
+    }
+
+    .form-privacy-text {
+      font-size: 0.7rem;
+      color: var(--color-gray-400);
+      line-height: 1.4;
+      margin: var(--space-4) 0;
+      text-align: left;
+    }
+
+    .form-privacy-text a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .form-checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+      margin: var(--space-3) 0;
+    }
+
+    .form-checkbox-placeholder {
+      width: 16px;
+      height: 16px;
+      border: 1px dashed var(--color-gray-200);
+      border-radius: 3px;
+      background: var(--color-light-100);
+      flex-shrink: 0;
+    }
+
+    .form-checkbox-label {
+      font-size: 0.7rem;
+      color: var(--color-gray-400);
+      line-height: 1.4;
+    }
+
+    .form-recaptcha-placeholder {
+      background: var(--color-light-100);
+      border: 1px dashed var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-4) 0;
+      text-align: center;
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      font-family: var(--font-family-mono);
+    }
+
+    .form-submit-placeholder {
+      width: 100%;
+      padding: var(--space-3);
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-submit-placeholder:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 1023px) {
+      .forrester-landing {
+        padding: var(--space-16) 0;
+      }
+
+      .forrester-content-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .forrester-book-3d {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 280px;
+        height: 360px;
+      }
+
+      .forrester-form-card,
+      .forrester-description-section {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Forrester Landing Page - Hero Style -->
+  <main class="forrester-landing">
+    <div class="forrester-container">
+      <div class="forrester-content-wrapper">
+        
+        <!-- Left: Content & Description (moved from right) -->
+        <div class="forrester-main-content">
+          
+          <!-- Logo -->
+          <div class="forrester-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+
+          <!-- Featured Badge -->
+          <div class="forrester-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+            </svg>
+            Featured in Forrester Report
+          </div>
+
+          <h1 class="forrester-title">
+            Access the 2025 Forrester Loyalty Landscape Report
+          </h1>
+
+          <p class="forrester-subtitle">
+            Discover why Loyalty Methods is recognized among 28 notable loyalty platform providers in Forrester's most comprehensive industry report.
+          </p>
+
+          <!-- Description Section (moved from below form) -->
+          <div class="forrester-description-section">
+            <h3 class="forrester-description-title">What's in the Report?</h3>
+            
+            <p class="forrester-description">
+              Forrester's Loyalty Platforms Landscape report is one of the most trusted resources for executives exploring loyalty technology partners.
+            </p>
+
+            <p class="forrester-description">
+              The 2025 edition provides an overview of notable vendors providing "technology solutions that enable marketers to create, manage, and analyze consumer loyalty programs — including management of currencies, tiers, rewards, offers, experiences, and campaigns."
+            </p>
+
+            <p class="forrester-description" style="font-weight: var(--font-weight-semibold); margin-bottom: var(--space-4);">
+              By reading the report, you'll gain:
+            </p>
+
+            <ul class="forrester-benefits">
+              <li>A clear view of the loyalty technology ecosystem and emerging trends</li>
+              <li>How 28 notable vendors differ by size, offerings, and market focus</li>
+              <li>Key capabilities that define modern loyalty platforms in 2025</li>
+              <li>Independent insights to guide your technology partner selection</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Right: Form & 3D Angled Book -->
+        <div class="forrester-form-side">
+          
+          <!-- Form Card -->
+          <div class="forrester-form-card">
+            <h2 class="forrester-form-title">Get the Full Report</h2>
+            <p class="forrester-form-subtitle">
+              Fill the form and we'll send you the link to your email.
+            </p>
+
+            <!-- HubSpot Form Placeholder - Compact Style -->
+            <div class="hubspot-form-placeholder">
+              <!-- 
+                HUBSPOT FORM EMBED CODE GOES HERE 
+                Replace this entire div with your HubSpot form embed script
+              -->
+              
+              <!-- Form Field Placeholders -->
+              <div class="form-field-placeholder">
+                <label class="form-field-label">First Name</label>
+                <div class="form-field-input">...................................</div>
+              </div>
+
+              <div class="form-field-placeholder">
+                <label class="form-field-label">Last Name</label>
+                <div class="form-field-input">...................................</div>
+              </div>
+
+              <div class="form-field-placeholder">
+                <label class="form-field-label">Work Email*</label>
+                <div class="form-field-input">...................................</div>
+              </div>
+
+              <div class="form-field-placeholder">
+                <label class="form-field-label">Job Title</label>
+                <div class="form-field-input">...................................</div>
+              </div>
+
+              <div class="form-field-placeholder">
+                <label class="form-field-label">Company name</label>
+                <div class="form-field-input">...................................</div>
+              </div>
+
+              <!-- Privacy Text -->
+              <p class="form-privacy-text">
+                Loyalty Methods is committed to protecting and respecting your privacy, and we'll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you.
+              </p>
+
+              <!-- Checkbox -->
+              <div class="form-checkbox-wrapper">
+                <div class="form-checkbox-placeholder"></div>
+                <label class="form-checkbox-label">I agree to receive other communications from Loyalty Methods.</label>
+              </div>
+
+              <p class="form-privacy-text">
+                You can unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our <a href="privacy-policy.html">Privacy Policy</a>.
+              </p>
+
+              <p class="form-privacy-text">
+                By clicking Access Now below, you consent to allow Loyalty Methods to store and process the personal information submitted above to provide you the content requested.
+              </p>
+
+              <!-- reCAPTCHA Placeholder -->
+              <div class="form-recaptcha-placeholder">
+                [reCAPTCHA Widget]
+              </div>
+
+              <!-- Submit Button -->
+              <button class="form-submit-placeholder">Access Now</button>
+            </div>
+
+          </div>
+
+          <!-- 3D Angled Book -->
+          <div class="forrester-book-3d">
+            <div class="book-container">
+              <div class="book-spine"></div>
+              <div class="book-cover">
+                <img src="forrester-report-cover.png" alt="The Loyalty Platforms Landscape, Q3 2025 - Forrester Report">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

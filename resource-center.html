@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Center | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Resource Center Specific Styles */
+    
+    /* Filter Bar (Braze Style) */
+    .filter-container {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .filter-pill {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      margin: 0 0.25rem 0.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 9999px;
+      background: white;
+      color: #6b7280;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .filter-pill:hover {
+      border-color: #F37021;
+      color: #F37021;
+    }
+
+    .filter-pill.active {
+      background: #F37021;
+      border-color: #F37021;
+      color: white;
+    }
+
+    /* Featured Hero Card (Braze Style) */
+    .featured-resource {
+      display: grid;
+      grid-template-columns: 1fr;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+      margin-bottom: 4rem;
+      transition: transform 0.3s;
+    }
+
+    .featured-resource:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 992px) {
+      .featured-resource {
+        grid-template-columns: 1.2fr 0.8fr;
+        min-height: 400px;
+      }
+    }
+
+    .featured-content {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      order: 2;
+    }
+
+    @media (min-width: 992px) {
+      .featured-content { order: 1; }
+    }
+
+    .featured-image {
+      background-color: #f3f4f6;
+      position: relative;
+      min-height: 250px;
+      order: 1;
+    }
+
+    @media (min-width: 992px) {
+      .featured-image { order: 2; height: auto; }
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+    }
+
+    /* Standard Resource Card (Talon.One Style) */
+    .resource-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: 100%;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+    }
+
+    .resource-thumb {
+      height: 200px;
+      background-color: #f3f4f6;
+      position: relative;
+    }
+
+    .resource-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* The Content Badge */
+    .content-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    /* Badge Colors */
+    .badge-article { color: #2563EB; border-left: 3px solid #2563EB; }
+    .badge-case-study { color: #F37021; border-left: 3px solid #F37021; }
+    .badge-guide { color: #7C3AED; border-left: 3px solid #7C3AED; }
+
+    .resource-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .resource-meta {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .resource-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .resource-excerpt {
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      flex: 1; 
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .resource-footer {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .read-more-link {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #2563EB;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .read-more-link:hover { text-decoration: underline; }
+
+    .download-btn {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #F37021;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .download-btn:hover { color: #d45a10; }
+
+    /* Bottom CTA (Standardized) */
+    .cta-box-light {
+      background: #F9FAFB;
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: left;
+      border: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <div class="logo-placeholder">LOGO</div>
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">Why LM?</a></li>
+            <li class="nav-item">
+              <a href="platform.html" class="nav-link">RCX Loyalty Platform</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Enterprise Technology</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Proven Delivery</a></li>
+            <li class="nav-item"><a href="resource-center.html" class="nav-link active">Resource Center</a></li>
+          </ul>
+          <div class="flex items-center gap-4">
+            <a href="#" class="nav-link">About LM</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="subpage-hero subpage-hero-brand" style="padding-bottom: 4rem;">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      <div class="max-w-4xl">
+        <div class="subpage-hero-eyebrow"><span>Resource Center</span></div>
+        <h1 class="subpage-hero-title mb-6">
+          Insights for the <span class="highlight">Loyalty Architect</span>
+        </h1>
+        <p class="subpage-hero-description mb-8">
+          Explore our latest thinking on enterprise loyalty strategy, API-first architecture, and customer retention.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-light bg-white" style="padding-top: 4rem; padding-bottom: 8rem;">
+    <div class="container">
+      
+      <div class="featured-resource">
+        <div class="featured-content">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded uppercase tracking-wide">Featured Article</span>
+            <span class="text-xs text-gray-400">Oct 20, 2025</span>
+          </div>
+          <h2 class="text-3xl font-bold text-dark mb-4 hover:text-primary transition-colors cursor-pointer">
+            Real-Time Rewards: Why Speed Is the New Currency in Loyalty
+          </h2>
+          <p class="text-muted text-lg mb-8 leading-relaxed">
+            Retention is the new growth. Real time loyalty tools like ReactorCX turn customer behavior into instant action, driving higher repeat rates, lifetime value, and ROI.
+          </p>
+          <a href="#" class="btn btn-primary btn-lg self-start">Read Full Article</a>
+        </div>
+        <div class="featured-image">
+          <div style="width:100%; height:100%; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); display: flex; align-items: center; justify-content: center; color: #9ca3af;">
+            [Featured Image: Speed/Currency Concept]
+          </div>
+        </div>
+      </div>
+
+
+      <div class="filter-container">
+        <button class="filter-pill active">All Resources</button>
+        <button class="filter-pill">Strategy</button>
+        <button class="filter-pill">Technology</button>
+        <button class="filter-pill">Customer Experience</button>
+      </div>
+
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-case-study">Case Study</span>
+            <div style="width:100%; height:100%; background: #e5e7eb;"></div> </div>
+          <div class="resource-body">
+            <div class="resource-meta">Hospitality & Gaming</div>
+            <h3 class="resource-title">MGM Resorts Revolutionizes Its Loyalty Program with Loyalty Methods</h3>
+            <p class="resource-excerpt">MGM Resorts transformed its loyalty program, MGM Rewards, with the help of Loyalty Methods, delivering a seamless experience across properties.</p>
+            <div class="resource-footer">
+              <a href="#" class="download-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-case-study">Case Study</span>
+            <div style="width:100%; height:100%; background: #e5e7eb;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta">Retail & C-Store</div>
+            <h3 class="resource-title">7-Eleven: Scaling Loyalty to 50 Million Members</h3>
+            <p class="resource-excerpt">How 7-Eleven used ReactorCX to handle massive transaction volumes and real-time rewards across thousands of locations.</p>
+            <div class="resource-footer">
+              <a href="#" class="download-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-case-study">Case Study</span>
+            <div style="width:100%; height:100%; background: #e5e7eb;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta">Finance</div>
+            <h3 class="resource-title">Western Union: Global Loyalty Without Borders</h3>
+            <p class="resource-excerpt">Implementing a unified loyalty framework that operates seamlessly across multiple currencies, languages, and regulatory environments.</p>
+            <div class="resource-footer">
+              <a href="#" class="download-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Strategy</span> • <span>Feb 2026</span></div>
+            <h3 class="resource-title">[New Article Title Goes Here]</h3>
+            <p class="resource-excerpt">This is a placeholder for your newest piece of content. It should focus on a forward-looking trend for 2026.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Technology</span> • <span>Sept 29, 2025</span></div>
+            <h3 class="resource-title">AI Loyalty: Personalization That Drives Results</h3>
+            <p class="resource-excerpt">AI is back again as the biggest buzzword in loyalty. Everyone is talking about it, but the reality is turning AI into real loyalty outcomes.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Strategy</span> • <span>Sept 29, 2025</span></div>
+            <h3 class="resource-title">Loyalty Program ROI: How to Measure and Maximize It</h3>
+            <p class="resource-excerpt">How to Prove It. How to Grow It. Most loyalty programs talk a big game. Points issued. Members enrolled. But real economic buyers need more.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Strategy</span> • <span>Sept 29, 2025</span></div>
+            <h3 class="resource-title">Top Tips for Enterprise Loyalty Buyers in 2026</h3>
+            <p class="resource-excerpt">Why 2026 is a make-or-break year for loyalty platforms. The loyalty market is projected to grow from roughly fifteen billion dollars.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Technology</span> • <span>Sept 26, 2025</span></div>
+            <h3 class="resource-title">API First vs Monolithic: How Enterprises Should Build Loyalty</h3>
+            <p class="resource-excerpt">Loyalty is infrastructure now. How you architect it determines how fast you scale. Your Loyalty Stack Is Either Holding You Back or Driving You Forward.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>CX</span> • <span>Sept 19, 2025</span></div>
+            <h3 class="resource-title">How Real Time Loyalty Platforms Drive Better Retention</h3>
+            <p class="resource-excerpt">Retention is the new growth. Real time loyalty tools like ReactorCX turn customer behavior into instant action.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>News</span> • <span>Sept 15, 2025</span></div>
+            <h3 class="resource-title">Loyalty Methods Featured on Let's Talk Loyalty</h3>
+            <p class="resource-excerpt">From Best Kept Secret to Industry Movement. We're delighted to share our journey and vision for the future of loyalty.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Strategy</span> • <span>Sept 9, 2025</span></div>
+            <h3 class="resource-title">Loyalty Program KPIs: The Metrics That Matter Most</h3>
+            <p class="resource-excerpt">Loyalty Isn't a Feel-Good Metric. It's a Financial One. Punch cards are dead. Vanity dashboards? Useless.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Technology</span> • <span>Sept 2, 2025</span></div>
+            <h3 class="resource-title">Why API First Loyalty Platforms Are Winning</h3>
+            <p class="resource-excerpt">Composable loyalty is here. If your system is not built API first, you are already behind. Legacy Platforms Were Built for Yesterday.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>Technology</span> • <span>Aug 26, 2025</span></div>
+            <h3 class="resource-title">Headless Loyalty Platforms: One Engine, Every Touchpoint</h3>
+            <p class="resource-excerpt">Build loyalty that fits your stack. Not the other way around. Loyalty Is Not a Tool Anymore. It Is Infrastructure.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>CX</span> • <span>Aug 12, 2025</span></div>
+            <h3 class="resource-title">10 Methods Powering Loyalty In Fuel & Convenience</h3>
+            <p class="resource-excerpt">How high-frequency retail environments use speed and personalization to drive habit formation.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-thumb">
+            <span class="content-badge badge-article">Article</span>
+            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+          </div>
+          <div class="resource-body">
+            <div class="resource-meta"><span>CX</span> • <span>July 9, 2025</span></div>
+            <h3 class="resource-title">10 Loyalty Methods Powering Hotel & Gaming Programs</h3>
+            <p class="resource-excerpt">Deep dive into the complex world of hospitality loyalty and how to manage high-value guests.</p>
+            <div class="resource-footer">
+              <a href="#" class="read-more-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 class="text-3xl font-bold text-dark mb-4">We solve the hardest loyalty problems in production.</h2>
+        <p class="text-muted mb-8 text-lg">
+          See how enterprise teams modernize loyalty without disrupting what already works.
+        </p>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Our Approach to Modernization</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-placeholder"></div>
+          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+        </div>
+        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
+        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2025 Loyalty Platform.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+      else { header.classList.remove('scrolled'); }
+    });
+  </script>
+</body>
+</html>

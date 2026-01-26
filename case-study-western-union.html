@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Western Union Case Study | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Page Specific Styles: Case Study Layout --- */
+    
+    /* 1. The Split Layout (Sidebar + Content) */
+    .case-study-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    @media (min-width: 992px) {
+      .case-study-grid {
+        grid-template-columns: 320px 1fr; /* Fixed Sidebar | Fluid Content */
+        align-items: start;
+      }
+    }
+
+    /* 2. The Sticky Sidebar */
+    .metric-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 992px) {
+      .metric-sidebar {
+        position: sticky;
+        top: 100px; /* Sticks 100px from top (below header) */
+      }
+    }
+
+    /* 3. Metric Cards */
+    .metric-box {
+      background: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #F37021; /* Brand Primary */
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: #6b7280;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* 4. Client Logo Box */
+    .client-logo-area {
+      background: #F9FAFB;
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+    }
+
+    /* 5. Typography for the Narrative */
+    .case-study-content h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #111827;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .case-study-content h2:first-child { margin-top: 0; }
+
+    .case-study-content p {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-study-content ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      color: #4b5563;
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+
+    .case-study-content li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* 6. Pull Quote */
+    .quote-box {
+      border-left: 4px solid #F37021;
+      padding-left: 2rem;
+      margin: 3rem 0;
+    }
+
+    .quote-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #111827;
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .quote-author {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <div class="logo-placeholder">LOGO</div>
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview - 300×170]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More →</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title">Platform Architecture</div>
+                          <div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div>
+                        </div>
+                      </a>
+                      
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
+                        </div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title">Integration Capabilities</div>
+                          <div class="mega-menu-link-description">Connectors for the modern stack.</div>
+                        </div>
+                      </a>
+                      
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title">Security & Compliance</div>
+                          <div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div>
+                        </div>
+                      </a>
+                      
+                    </div>
+                  </div>
+                  
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                       <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                       </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center →</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu" style="width: max-content; min-width: 320px;"> 
+                <div class="mega-menu-inner" style="grid-template-columns: 1fr;"> 
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title" style="white-space: nowrap;">ThreadSync™ Implementation</div>
+                          <div class="mega-menu-link-description">Our agile delivery framework</div>
+                        </div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title" style="white-space: nowrap;">SafeSwitch™ Cutover</div>
+                          <div class="mega-menu-link-description">Zero-risk migration methodology</div>
+                        </div>
+                      </a>
+                      <a href="proven-success.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content">
+                          <div class="mega-menu-link-title" style="white-space: nowrap;">Success Stories</div>
+                          <div class="mega-menu-link-description">Client case studies and results</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link active">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 500px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1.5fr 1fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                         <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                         </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore →</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="subpage-hero subpage-hero-brand">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      <div class="max-w-4xl">
+        <div class="subpage-hero-eyebrow"><span>Finance</span></div>
+        <h1 class="subpage-hero-title mb-6">
+          Western Union: <span class="highlight">Global Loyalty</span> Without Borders
+        </h1>
+        <p class="subpage-hero-description text-balance-wide">
+          Implementing a unified loyalty framework that operates seamlessly across multiple currencies, languages, and regulatory environments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+    <div class="container">
+      <div class="case-study-grid">
+
+        <aside class="metric-sidebar">
+          <div class="client-logo-area">
+             <span style="font-weight: 900; color: #1A1A1A; font-size: 1.5rem; letter-spacing: -0.05em; text-transform: uppercase;">Western Union</span>
+          </div>
+          
+          <div class="metric-box">
+            <div class="metric-number">200+</div>
+            <div class="metric-label">Countries & Territories</div>
+          </div>
+          
+          <div class="metric-box">
+            <div class="metric-number">150M+</div>
+            <div class="metric-label">Customers</div>
+          </div>
+
+          <div class="metric-box">
+            <div class="metric-number">Real-Time</div>
+            <div class="metric-label">FX Currency Conversion</div>
+          </div>
+        </aside>
+
+        <article class="case-study-content">
+          
+          <h2>The Challenge: Loyalty in a Fractured Landscape</h2>
+          <p>
+            Western Union operates one of the most complex financial networks in the world, serving customers in over 200 countries and territories. Their loyalty program, "My WU," faced a critical hurdle: legacy systems were regionally siloed. A customer sending money from the US to Mexico might have two separate profiles, preventing a cohesive view of their lifetime value.
+          </p>
+          <p>
+            Furthermore, the complexity of managing rewards across dozens of currencies and differing regulatory environments made it nearly impossible to launch global campaigns or offer real-time benefits at the point of transaction.
+          </p>
+
+          <div class="quote-box">
+            <p class="quote-text">"Our customers are global citizens. They expect their loyalty program to travel with them, regardless of where they send money from or to."</p>
+            <p class="quote-author">— Head of Global Loyalty, Western Union</p>
+          </div>
+
+          <h2>The Solution: A Centralized Brain with Regional nuance</h2>
+          <p>
+            Loyalty Methods architected a solution using ReactorCX that centralized the core loyalty logic while allowing for infinite regional configurability.
+          </p>
+          <ul>
+            <li><strong>Unified Profile:</strong> Creating a single global ID for every customer, linking their transaction history across all corridors.</li>
+            <li><strong>Multi-Currency Engine:</strong> Automatically converting points and rewards values based on real-time FX rates, ensuring the program is financially viable in every market.</li>
+            <li><strong>Cross-Border Redemption:</strong> Enabling a customer to earn points on a transfer from France and redeem them for a discount on a transfer from Germany.</li>
+          </ul>
+
+          <h2>The Results</h2>
+          <p>
+            The unified My WU program has significantly increased customer retention and transaction frequency. By removing friction from the rewards process, Western Union has turned what was once a transactional utility service into an emotional relationship with its users.
+          </p>
+          <p>
+            Operational efficiency also skyrocketed, as marketing teams can now launch global campaigns from a single dashboard rather than coordinating across dozens of regional IT teams.
+          </p>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 class="text-3xl font-bold text-dark mb-4">See how we can do this for you.</h2>
+        <p class="text-muted mb-8 text-lg">
+          Our team can walk you through the exact architecture used in this case study.
+        </p>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Briefing</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-placeholder"></div>
+          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+        </div>
+        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
+        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2026 Loyalty Methods</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+      else { header.classList.remove('scrolled'); }
+    });
+  </script>
+</body>
+</html>

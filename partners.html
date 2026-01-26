@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Network | Loyalty Methods</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Custom Styles for Partner Page Cards */
+    
+    /* Wide Partner Card (Grey Space Matters / Forrester) */
+    .partner-wide-card {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .partner-wide-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .partner-wide-card {
+        flex-direction: row;
+      }
+    }
+
+    .partner-logo-section {
+      background-color: #f3f4f6;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 320px;
+      border-right: 1px solid #e5e7eb;
+      position: relative;
+    }
+
+    .partner-logo-section.dark-mode {
+      background-color: #111827;
+      color: white;
+      border-right: 1px solid #374151;
+    }
+
+    .partner-content-section {
+      padding: 2.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .partner-badge-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-top: 1rem;
+    }
+
+    /* Vertical Partner Card (Engagement Partners) */
+    .partner-vertical-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .partner-vertical-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px -5px rgba(243, 112, 33, 0.15); /* Orange shadow hint */
+      border-color: #F37021; /* Orange border on hover */
+    }
+
+    .partner-header {
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* Partner Header Colors */
+    .bg-partner-ic { background-color: #2563EB; } /* Blue */
+    .bg-partner-mobivity { background-color: #0F172A; } /* Dark Navy */
+    .bg-partner-carlton { background-color: #3B82F6; } /* Light Blue */
+
+    .partner-logo-text {
+      color: white;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    
+    .partner-logo-text.green-accent { color: #4ADE80; } /* Mobivity green */
+
+    .partner-body {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .partner-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #6B7280;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .partner-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f3f4f6;
+    }
+    
+    /* Bottom CTA Box - Light Style */
+    .cta-box-light {
+      background: #F9FAFB; /* Very light gray */
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: left; /* Left aligned as per attachment */
+      border: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <div class="logo-placeholder">LOGO</div>
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">Why LM?</a></li>
+            <li class="nav-item">
+              <a href="platform.html" class="nav-link">RCX Loyalty Platform</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Enterprise Technology</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Proven Delivery</a></li>
+            <li class="nav-item"><a href="resource-center.html" class="nav-link">Resource Center</a></li>
+          </ul>
+          <div class="flex items-center gap-4">
+            <a href="#" class="nav-link">About LM</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+
+  <section class="subpage-hero subpage-hero-brand">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      <div class="subpage-hero-inner">
+        
+        <div class="subpage-hero-content">
+          <div class="subpage-hero-eyebrow"><span>Partnerships</span></div>
+          <h1 class="subpage-hero-title">
+            A Partner Ecosystem <br><span class="highlight">Built for Loyalty</span>
+          </h1>
+          <p class="subpage-hero-description">
+            When you choose Loyalty Methods and ReactorCX, you also tap into a curated partner ecosystem that expands what your loyalty program can achieve. Our partners add strategy, engagement, and rewards capabilities that complement our platform.
+          </p>
+          <div class="subpage-hero-cta">
+            <a href="#contact-partners" class="btn btn-primary btn-lg" style="background: white; color: #F37021; border-color: white;">Talk to our Partnerships Team</a>
+          </div>
+        </div>
+
+        <div class="subpage-hero-media">
+          <div class="subpage-hero-image-placeholder" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8);">
+            [Ecosystem Illustration / Handshake Graphic]
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-light bg-light py-20">
+    <div class="container">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-4">How We Work with Partners</h2>
+        <p class="text-muted text-lg">Our goal is a single, coherent solution from your perspective, even when multiple specialists are involved.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="card p-8 h-full">
+          <div class="icon-feature-icon mb-4"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+          <h3 class="text-xl font-bold text-dark mb-3">One Cohesive Team</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            We align early with partners so strategy, technology, and engagement work as one solution. You do not have to mediate between vendors who haven't spoken.
+          </p>
+        </div>
+
+        <div class="card p-8 h-full">
+          <div class="icon-feature-icon mb-4"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+          <h3 class="text-xl font-bold text-dark mb-3">Shared Knowledge</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Partners have access to ReactorCX product knowledge and implementation methods like ThreadSync. This means fewer surprises and cleaner delivery.
+          </p>
+        </div>
+
+        <div class="card p-8 h-full">
+          <div class="icon-feature-icon mb-4"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>
+          <h3 class="text-xl font-bold text-dark mb-3">Long Term Value</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            We look for relationships where everyone has skin in the game. That can include co-selling, co-design, and shared success metrics across Loyalty Methods.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-primary mb-4">Loyalty Strategy Partners</h2>
+        <p class="text-muted max-w-3xl mx-auto">Our strategy partners help brands define or refine their loyalty vision. We bring the platform and implementation expertise.</p>
+      </div>
+
+      <div class="partner-wide-card">
+        <div class="partner-logo-section">
+          <div class="text-3xl font-bold text-gray-400">Grey Space <span class="text-dark">Matters</span></div>
+          <span class="partner-badge-overlay">10+ Years of Collaboration</span>
+        </div>
+        <div class="partner-content-section">
+          <h3 class="text-2xl font-bold text-dark mb-4">Grey Space Matters</h3>
+          <p class="text-muted mb-4 leading-relaxed">
+            Grey Space Matters is a specialized loyalty and customer strategy consultancy. Their team helps brands clarify program vision, value propositions, financial models and operating frameworks before implementation begins.
+          </p>
+          <p class="text-muted leading-relaxed">
+            We pair their strategic insights with our ReactorCX expertise to ensure what is designed can be delivered and supported long term.
+          </p>
+          <div class="flex justify-end mt-6 gap-4 text-gray-400">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section section-light bg-light py-20">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-4">Strategic Through Execution</h2>
+        <p class="text-muted max-w-4xl mx-auto">Loyalty Methods does not treat strategy as a standalone consulting exercise. Strategy is embedded directly into delivery, configuration, and ongoing operation of the loyalty program.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="card flex gap-4 p-8">
+          <div class="icon-feature-icon flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
+          <div>
+            <h4 class="font-bold text-dark text-lg mb-2">Program Design Through Configuration</h4>
+            <p class="text-sm text-muted">Partners help define program vision. We translate it into configurable logic within ReactorCX: tier structures, promotion mechanics, partner economics, and regional rules.</p>
+          </div>
+        </div>
+
+        <div class="card flex gap-4 p-8">
+          <div class="icon-feature-icon flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg></div>
+          <div>
+            <h4 class="font-bold text-dark text-lg mb-2">Test and Refine in Production</h4>
+            <p class="text-sm text-muted">ReactorCX enables clients to model, test, and refine loyalty strategies using real data and member behavior in production-safe environments. Validate assumptions before rollout.</p>
+          </div>
+        </div>
+
+        <div class="card flex gap-4 p-8">
+          <div class="icon-feature-icon flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+          <div>
+            <h4 class="font-bold text-dark text-lg mb-2">Partner Economics and Governance</h4>
+            <p class="text-sm text-muted">Partner-specific rule sets, funding attribution, earn and burn economics, and performance reporting. Design and govern strategies transparently.</p>
+          </div>
+        </div>
+
+        <div class="card flex gap-4 p-8">
+          <div class="icon-feature-icon flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+          <div>
+            <h4 class="font-bold text-dark text-lg mb-2">Proven Patterns, Client Ownership</h4>
+            <p class="text-sm text-muted">Our teams share proven patterns from comparable enterprise programs while ensuring you retain full ownership of strategic direction.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-white py-20">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-primary mb-4">Engagement & Reward Partners</h2>
+        <p class="text-muted max-w-3xl mx-auto">Partners extend how you create value. They cover messaging, rewards, and promotions so you can do more without bolting on one-off solutions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="partner-vertical-card">
+          <div class="partner-header bg-partner-ic">
+            <h3 class="partner-logo-text">ic group</h3>
+            <span class="partner-badge-overlay absolute bottom-4 left-4">2 Years of Collaboration</span>
+          </div>
+          <div class="partner-body">
+            <h4 class="text-lg font-bold text-dark mb-2">IC Group</h4>
+            <p class="partner-description">
+              IC Group is a specialist in sweepstakes, contests and promotional campaigns. Working alongside ReactorCX, IC Group helps brands run high impact engagement programs that align with loyalty rules.
+            </p>
+            <div class="partner-links text-gray-400">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="partner-vertical-card">
+          <div class="partner-header bg-partner-mobivity">
+            <h3 class="partner-logo-text green-accent">mobivity</h3>
+            <span class="partner-badge-overlay absolute bottom-4 left-4">New Partner (2025)</span>
+          </div>
+          <div class="partner-body">
+            <h4 class="text-lg font-bold text-dark mb-2">Mobivity</h4>
+            <p class="partner-description">
+              Mobivity specializes in SMS text message marketing. Integrated with ReactorCX, Mobivity extends loyalty program reach to members who prefer text-based communication.
+            </p>
+            <div class="partner-links text-gray-400">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="partner-vertical-card">
+          <div class="partner-header bg-partner-carlton">
+            <h3 class="partner-logo-text">CarltonOne</h3>
+            <span class="partner-badge-overlay absolute bottom-4 left-4">New Partner (2025)</span>
+          </div>
+          <div class="partner-body">
+            <h4 class="text-lg font-bold text-dark mb-2">CarltonOne</h4>
+            <p class="partner-description">
+              CarltonOne provides an industry leading rewards marketplace. Connected to ReactorCX, it gives loyalty programs access to global rewards and logistics without building infrastructure.
+            </p>
+            <div class="partner-links text-gray-400">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-light bg-light py-20">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-primary mb-4">Analyst & Research Relationships</h2>
+        <p class="text-muted max-w-3xl mx-auto">We maintain an active analyst relations relationship with Forrester to stay aligned with how enterprise loyalty technology is evolving.</p>
+      </div>
+
+      <div class="partner-wide-card">
+        <div class="partner-logo-section dark-mode">
+          <div class="text-3xl font-serif tracking-wider mb-2">FORRESTER</div>
+          <span class="partner-badge-overlay">Active Analyst Relationship</span>
+        </div>
+        <div class="partner-content-section">
+          <h3 class="text-2xl font-bold text-dark mb-4">Forrester Research</h3>
+          <p class="text-muted mb-4 leading-relaxed">
+            Forrester is a global leader in technology and customer experience research. Through our analyst relations engagement, we gain insights into evolving loyalty trends, competitive landscapes and enterprise expectations.
+          </p>
+          <p class="text-muted leading-relaxed">
+            This relationship helps us align ReactorCX capabilities and implementation practices with broader market direction.
+          </p>
+          <div class="flex justify-end mt-6 gap-4 text-gray-400">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section section-white py-20" id="contact-partners">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 class="text-3xl font-bold text-dark mb-4">We solve the hardest loyalty problems in production.</h2>
+        <p class="text-muted mb-8 text-lg">
+          If you are evaluating loyalty platforms and want a partner that combines deep in house expertise with a curated ecosystem around it, we would be glad to walk you through what is possible.
+        </p>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Talk to our Partnerships Team</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-placeholder"></div>
+          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+        </div>
+        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
+        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2025 Loyalty Platform.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+      else { header.classList.remove('scrolled'); }
+    });
+  </script>
+</body>
+</html>

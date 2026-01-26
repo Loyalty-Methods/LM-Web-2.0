@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Design & Rules | RCX Loyalty Platform</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========== UNIFIED ORANGE: #FF8534 - Enterprise Sleek ========== */
+    /* Single consistent orange tone across all elements */
+    :root {
+      --unified-orange: #FF8534;
+      --unified-orange-shadow: rgba(255, 133, 52, 0.25);
+      --unified-orange-shadow-hover: rgba(255, 133, 52, 0.35);
+      --unified-orange-glow: rgba(255, 133, 52, 0.15);
+    }
+
+    /* Page-specific styles for 3-stat layout - LARGER TEXT */
+    .stats-bar-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-10);
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: var(--space-12) 0;
+    }
+    
+    @media (max-width: 640px) {
+      .stats-bar-3 {
+        grid-template-columns: 1fr;
+        gap: var(--space-12);
+      }
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    
+    .stat-number {
+      font-size: clamp(4rem, 8vw, 6rem);
+      font-weight: var(--font-weight-bold);
+      color: var(--unified-orange);
+      line-height: 1;
+    }
+    
+    .stat-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-white);
+    }
+    
+    .stat-subtitle {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-300);
+      font-style: italic;
+    }
+
+    /* ========== UNIFIED ORANGE OVERRIDES ========== */
+    
+    /* Section titles in charcoal card sections */
+    .charcoal-cards-section .section-title {
+      color: var(--unified-orange);
+    }
+    
+    /* All buttons - solid color, refined shadows */
+    .btn-primary,
+    .btn-dark,
+    .header .btn-primary {
+      background: var(--unified-orange) !important;
+      box-shadow: 0 2px 8px var(--unified-orange-shadow),
+                  0 1px 3px rgba(0, 0, 0, 0.1);
+      border: none;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary:hover,
+    .btn-dark:hover,
+    .header .btn-primary:hover {
+      background: var(--unified-orange) !important;
+      box-shadow: 0 4px 16px var(--unified-orange-shadow-hover),
+                  0 2px 6px rgba(0, 0, 0, 0.12);
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+    
+    .btn-primary:active,
+    .btn-dark:active {
+      transform: translateY(0);
+      filter: brightness(0.98);
+    }
+
+    /* Card titles */
+    .four-ws-card-title,
+    .tier-logic-card-title {
+      color: var(--unified-orange);
+    }
+    
+    /* Eyebrows and labels */
+    .feature-row-eyebrow,
+    .feature-card-label,
+    .spotlight-eyebrow,
+    .accordion-eyebrow,
+    .section-eyebrow,
+    .mega-menu-featured-eyebrow {
+      color: var(--unified-orange);
+    }
+    
+    /* Links */
+    .cta-link,
+    .card-link,
+    .resource-card-link,
+    .accordion-content-link {
+      color: var(--unified-orange);
+    }
+    
+    .cta-link:hover,
+    .card-link:hover,
+    .resource-card-link:hover,
+    .accordion-content-link:hover {
+      color: var(--unified-orange);
+      filter: brightness(0.9);
+    }
+    
+    /* Nav hover states */
+    .nav-link:hover {
+      color: var(--unified-orange);
+    }
+    
+    /* Icon backgrounds */
+    .mega-menu-link-icon,
+    .icon-feature-icon,
+    .feature-grid-icon {
+      background: var(--unified-orange-glow);
+      color: var(--unified-orange);
+    }
+    
+    /* List bullets */
+    .feature-row-list-item::before {
+      background: var(--unified-orange);
+    }
+    
+    /* Footer column titles */
+    .footer-column-title {
+      color: var(--unified-orange);
+    }
+    
+    /* Badge colors */
+    .badge-primary {
+      background: var(--unified-orange-glow);
+      color: var(--unified-orange);
+    }
+    
+    /* Active sticky tabs */
+    .sticky-tab.active {
+      background: var(--unified-orange) !important;
+      box-shadow: 0 2px 8px var(--unified-orange-shadow);
+    }
+
+    /* 4-card grid for Four W's - DARK CHARCOAL STYLE */
+    .four-ws-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .four-ws-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .four-ws-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* ========== CHARCOAL CARDS WITH NAVY GRADIENT BORDER ========== */
+    .four-ws-card {
+      padding: var(--space-6);
+      background: 
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(145deg, #1A1A1A 0%, #262626 50%, #333333 100%);
+      border-radius: var(--radius-2xl);
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform var(--transition-base), 
+                  box-shadow var(--transition-base);
+    }
+    
+    /* Navy gradient border using pseudo-element */
+    .four-ws-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-2xl);
+      padding: 1px;
+      background: linear-gradient(145deg, rgba(91, 138, 184, 0.4) 0%, rgba(91, 138, 184, 0.15) 50%, rgba(91, 138, 184, 0.3) 100%);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: background var(--transition-base);
+    }
+    
+    .four-ws-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(91, 138, 184, 0.2);
+    }
+    
+    .four-ws-card:hover::before {
+      background: linear-gradient(145deg, rgba(91, 138, 184, 0.6) 0%, rgba(91, 138, 184, 0.3) 50%, rgba(91, 138, 184, 0.5) 100%);
+    }
+    
+    .four-ws-card-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--unified-orange);
+      margin-bottom: var(--space-3);
+    }
+    
+    .four-ws-card-description {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-300);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* 6-card grid for Tier Logic */
+    .tier-logic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .tier-logic-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .tier-logic-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* ========== TIER LOGIC CARDS WITH NAVY GRADIENT BORDER ========== */
+    .tier-logic-card {
+      padding: var(--space-6);
+      background: 
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(145deg, #1A1A1A 0%, #262626 50%, #333333 100%);
+      border-radius: var(--radius-2xl);
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform var(--transition-base), 
+                  box-shadow var(--transition-base);
+    }
+    
+    /* Navy gradient border using pseudo-element */
+    .tier-logic-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-2xl);
+      padding: 1px;
+      background: linear-gradient(145deg, rgba(91, 138, 184, 0.4) 0%, rgba(91, 138, 184, 0.15) 50%, rgba(91, 138, 184, 0.3) 100%);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: background var(--transition-base);
+    }
+    
+    .tier-logic-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(91, 138, 184, 0.2);
+    }
+    
+    .tier-logic-card:hover::before {
+      background: linear-gradient(145deg, rgba(91, 138, 184, 0.6) 0%, rgba(91, 138, 184, 0.3) 50%, rgba(91, 138, 184, 0.5) 100%);
+    }
+    
+    .tier-logic-card-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--unified-orange);
+      margin-bottom: var(--space-3);
+    }
+    
+    .tier-logic-card-description {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-300);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* Callout box text - full width */
+    .cta-box-light p {
+      max-width: 100% !important;
+    }
+
+    /* ========== SPLIT FAQ LAYOUT - Header Left, Accordion Right ========== */
+    .faq-split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+    
+    @media (max-width: 1024px) {
+      .faq-split-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-10);
+      }
+    }
+    
+    .faq-split-header {
+      position: sticky;
+      top: 120px;
+    }
+    
+    @media (max-width: 1024px) {
+      .faq-split-header {
+        position: static;
+      }
+    }
+    
+    .faq-split-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-black);
+      margin-bottom: var(--space-4);
+      line-height: var(--line-height-snug);
+    }
+    
+    .faq-split-description {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-400);
+      line-height: var(--line-height-relaxed);
+    }
+    
+    .faq-split-accordion {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="proven-success.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(255, 133, 52, 0.1); color: #FF8534;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========== HERO ========== -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+    <div class="container">
+      <div class="subpage-hero-inner">
+        
+        <div class="subpage-hero-content">
+          <div class="subpage-hero-eyebrow">
+            <span>Core Platform</span>
+          </div>
+          <h1 class="subpage-hero-title">Program Design & Rules</h1>
+          <p class="subpage-hero-description">
+            Define how members earn, spend, and progress through your program. Configure earn rules, burn rules, tier logic, and promotion mechanics through a structured rules engine.
+          </p>
+          <div class="subpage-hero-cta">
+            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+          </div>
+        </div>
+
+        <div class="subpage-hero-media">
+          <div class="subpage-hero-image-placeholder">
+            [Program Rules Builder Interface]
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FOUR W's FRAMEWORK ========== -->
+  <section class="section section-light bg-white charcoal-cards-section">
+    <div class="container">
+      
+      <div class="section-header">
+        <h2 class="section-title">Every Rule Starts with Four Questions</h2>
+        <p class="section-description" style="white-space: nowrap;">
+          Who qualifies. Where it applies. When it's active. What triggers it.
+        </p>
+      </div>
+
+      <div class="four-ws-grid">
+        
+        <div class="four-ws-card">
+          <h3 class="four-ws-card-title">Who</h3>
+          <p class="four-ws-card-description">Target by member attributes, tier, segment, preferences, or status.</p>
+        </div>
+
+        <div class="four-ws-card">
+          <h3 class="four-ws-card-title">Where</h3>
+          <p class="four-ws-card-description">Filter by location, brand, category, or outlet list.</p>
+        </div>
+
+        <div class="four-ws-card">
+          <h3 class="four-ws-card-title">When</h3>
+          <p class="four-ws-card-description">Control by effective dates, day of week, hour of day, or time zone.</p>
+        </div>
+
+        <div class="four-ws-card">
+          <h3 class="four-ws-card-title">What</h3>
+          <p class="four-ws-card-description">Define by product, service, activity type, or transaction attribute.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== EARNING RULES (Zig-Zag, Image Left) ========== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      
+      <div class="feature-row">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [7-Eleven Promotion Example]
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Earning Logic</span>
+          <h2 class="feature-row-title">Define How Value Enters the Program</h2>
+          <p class="feature-row-description">
+            Configure base earn rates, bonus multipliers, and conditional logic for any activity type. Every earn event creates a traceable accrual record with full lineage.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Base rates by spend, visit, stay, or custom metric</li>
+            <li class="feature-row-list-item">Multipliers by tier, segment, location, or time window</li>
+            <li class="feature-row-list-item">Partner earn rules with separate attribution</li>
+            <li class="feature-row-list-item">Real-time balance updates across all channels</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========== BURNING RULES (Zig-Zag, Image Right) ========== -->
+  <section class="feature-rows-section" style="padding-top: 0;">
+    <div class="container">
+      
+      <div class="feature-row feature-row-reverse">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Redemption Flow Example]
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Redemption Logic</span>
+          <h2 class="feature-row-title">Control How Value Gets Used</h2>
+          <p class="feature-row-description">
+            Define redemption rules, burn order, and consumption logic. Track every redemption back to the original accrual for finance-grade traceability.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Burn rules by reward type, location, or channel</li>
+            <li class="feature-row-list-item">FIFO or custom burn order by tag, category, or recency</li>
+            <li class="feature-row-list-item">Escrow and deferred redemption patterns</li>
+            <li class="feature-row-list-item">Full lineage from redemption to original earn</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========== STAT BAR (3 Stats, No Eyebrow, No Title) ========== -->
+  <section class="section section-dark bg-dark">
+    <div class="container">
+      <div class="stats-bar-3">
+        <div class="stat-item">
+          <div class="stat-number">400+</div>
+          <div class="stat-title">Active Promotions</div>
+          <div class="stat-subtitle">Refreshed every 6 weeks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">16</div>
+          <div class="stat-title">Program Variants</div>
+          <div class="stat-subtitle">Single platform</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">6</div>
+          <div class="stat-title">Lines of Business</div>
+          <div class="stat-subtitle">Unified tier logic</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== CALLOUT BLOCK (White Card Style) ========== -->
+  <section class="section-light bg-light" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Promotions at true scale</h2>
+        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+          Our c-store client runs 400+ unique promotions nationwide, with 50+ partners contributing co-funded offers. Each partner promotion carries its own funding allocation, billing parameters, and reimbursement logic. The rules engine tracks every earn and burn by source, partner, and location. Millions of dollars settle through the platform every cycle.
+        </p>
+        <div class="flex gap-4">
+          <a href="feature-partner-enablement.html" class="btn btn-primary btn-lg">Explore Partner Enablement &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== TIER RULES (6-Card Grid - SAME STYLE AS FOUR W's) ========== -->
+  <section class="section section-lg section-light bg-white charcoal-cards-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" style="white-space: nowrap;">Tier Logic That Scales With Your Program</h2>
+      </div>
+      <div class="tier-logic-grid">
+        
+        <div class="tier-logic-card">
+          <h3 class="tier-logic-card-title">Qualification Logic</h3>
+          <p class="tier-logic-card-description">Progress on spend, visits, nights, or any custom metric.</p>
+        </div>
+        
+        <div class="tier-logic-card">
+          <h3 class="tier-logic-card-title">Automatic Progression</h3>
+          <p class="tier-logic-card-description">Tier upgrades trigger when thresholds are met. No batch jobs.</p>
+        </div>
+        
+        <div class="tier-logic-card">
+          <h3 class="tier-logic-card-title">Grace Periods</h3>
+          <p class="tier-logic-card-description">Soft-landing demotion rules and requalification windows.</p>
+        </div>
+        
+        <div class="tier-logic-card">
+          <h3 class="tier-logic-card-title">Tier Benefits</h3>
+          <p class="tier-logic-card-description">Multipliers, perks, and exclusive access tied to status.</p>
+        </div>
+        
+        <div class="tier-logic-card">
+          <h3 class="tier-logic-card-title">Hidden Tiers</h3>
+          <p class="tier-logic-card-description">Invite-only or surprise-and-delight tiers tracked but not visible to members.</p>
+        </div>
+        
+        <div class="tier-logic-card">
+          <h3 class="tier-logic-card-title">Tier Accelerators</h3>
+          <p class="tier-logic-card-description">Short-term challenges that award bonus tier credit.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FINAL CTA (Light) ========== -->
+  <section class="section-light bg-light" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Advanced Tooling for Complex Programs</h2>
+        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+          Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.
+        </p>
+        <div class="flex gap-4">
+          <a href="feature-advanced-tools.html" class="btn btn-primary btn-lg">Explore Advanced Tools &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FAQ ACCORDION - SPLIT LAYOUT ========== -->
+  <section class="accordion-section">
+    <div class="container">
+      
+      <div class="faq-split-layout">
+        
+        <!-- Left: Header -->
+        <div class="faq-split-header">
+          <h2 class="faq-split-title">Frequently Asked Questions</h2>
+          <p class="faq-split-description">
+            Common questions about program configuration, rule management, and tier logic.
+          </p>
+        </div>
+
+        <!-- Right: Accordion -->
+        <div class="faq-split-accordion accordion">
+        
+        <!-- FAQ Item 1 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">Can I migrate rules from my existing loyalty platform?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>
+                Yes. Our SafeSwitch&trade; migration methodology includes a comprehensive rules audit 
+                and conversion process. We analyze your existing earn, burn, and tier logic, then 
+                recreate it in RCX with full validation testing before cutover. Most clients find 
+                they can also simplify and consolidate rules during migration.
+              </p>
+              <p>
+                For complex programs, we run parallel systems during transition so you can 
+                compare outputs and ensure accuracy. Our team has migrated programs with 
+                thousands of active rules and hundreds of millions of members without data loss.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">How do I test rule changes before they go live?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>
+                Every rule configuration includes a sandbox environment where you can test 
+                against real member data without affecting production. Run simulations, 
+                preview point calculations, and validate tier progressions before publishing.
+              </p>
+              <p>
+                For high-stakes changes, our staged rollout feature lets you deploy rules 
+                to a percentage of traffic first. Monitor results, compare against control 
+                groups, then expand to full deployment when you're confident.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">Can different business units have different rules?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>
+                Absolutely. RCX supports multi-tenant program structures where each business 
+                unit, brand, or region can have its own earn rates, tier thresholds, and 
+                promotion rulesâ€”all within a single platform instance with unified member profiles.
+              </p>
+              <p>
+                Access controls ensure each team only sees and edits their own rules, while 
+                shared components (like base tier benefits) can be inherited across programs. 
+                This is how we support clients with 16+ program variants on one platform.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">What happens when rules conflict with each other?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>
+                FlowComposer's execution engine uses explicit priority ordering to resolve 
+                conflicts deterministically. You define which rules take precedence, and the 
+                system follows that order every time. No surprises, no race conditions.
+              </p>
+              <p>
+                Built-in conflict detection warns you during configuration if new rules 
+                might overlap with existing ones. The audit log shows exactly which rules 
+                fired for any transaction, making troubleshooting straightforward.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">How granular can tier qualification criteria be?</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p>
+                As granular as your business needs. Qualify members based on any combination 
+                of metrics: total spend, visit frequency, specific product purchases, partner 
+                transactions, engagement activities, or custom-defined behaviors. Use AND/OR 
+                logic to create sophisticated qualification paths.
+              </p>
+              <p>
+                Time windows are fully configurableâ€”calendar year, rolling 12 months, membership 
+                anniversary, or custom periods. You can also create parallel qualification 
+                tracks so members can reach the same tier through different paths.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        <!-- End faq-split-accordion -->
+        
+      </div>
+      <!-- End faq-split-layout -->
+      
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER (Matching index.html) ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Accordion functionality
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all accordion items
+        accordionItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
+        
+        // If clicked item wasn't active, open it
+        if (!isActive) {
+          item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

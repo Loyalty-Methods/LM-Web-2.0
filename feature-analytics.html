@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RCX Analytics | RCX Loyalty Platform</title>
+  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* UI Carousel Specific Styles */
+    .ui-carousel {
+      position: relative;
+    }
+    
+    .ui-carousel-slides {
+      position: relative;
+    }
+    
+    .ui-carousel-slide {
+      display: none;
+    }
+    
+    .ui-carousel-slide.active {
+      display: block;
+    }
+    
+    .ui-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: var(--space-6);
+    }
+    
+    .ui-carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .ui-carousel-dot:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    
+    .ui-carousel-dot.active {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    /* Callout Block Styles */
+    .callout-block {
+      background: linear-gradient(135deg, var(--color-charcoal-800) 0%, var(--color-charcoal-700) 100%);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-10) var(--space-12);
+    }
+    
+    .callout-block-headline {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-white);
+      margin-bottom: var(--space-4);
+    }
+    
+    .callout-block-body {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-300);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+    }
+
+    /* 6-Card Budget Grid (Dark) */
+    .budget-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .budget-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .budget-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .callout-block {
+        padding: var(--space-6) var(--space-8);
+      }
+    }
+
+    .budget-card {
+      background: var(--color-charcoal-700);
+      border: 1px solid var(--color-charcoal-600);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      transition: all 0.3s ease;
+    }
+    
+    .budget-card:hover {
+      border-color: var(--color-charcoal-500);
+      transform: translateY(-2px);
+    }
+    
+    .budget-card-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+    
+    .budget-card-description {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-300);
+      line-height: 1.6;
+    }
+
+    /* Bottom CTA Card */
+    .bottom-cta-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-16);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .bottom-cta-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-800);
+      margin-bottom: var(--space-4);
+    }
+    
+    .bottom-cta-description {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-400);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+    }
+    
+    @media (max-width: 640px) {
+      .bottom-cta-card {
+        padding: var(--space-8);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <!-- Desktop Navigation with Mega Menu -->
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <!-- WHY LM? - Simple Link -->
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why LM?</a>
+            </li>
+            
+            <!-- RCX LOYALTY PLATFORM - With Mega Menu -->
+            <li class="nav-item">
+              <a href="platform.html" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <!-- ENTERPRISE TECHNOLOGY - With Mega Menu -->
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <!-- PROVEN DELIVERY - With Mega Menu -->
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="proven-success.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <!-- INDUSTRY EXPERTISE - Simple Link -->
+            <li class="nav-item">
+              <a href="#" class="nav-link">Industry Expertise</a>
+            </li>
+            
+            <!-- RESOURCE CENTER - Simple Link -->
+            <li class="nav-item">
+              <a href="#" class="nav-link">Resource Center</a>
+            </li>
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <a href="#" class="nav-link">About LM</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========================================
+       SECTION 1: HERO
+       Background: DARK (Charcoal + Navy Glow)
+       ======================================== -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+
+    <div class="container">
+      <div class="subpage-hero-inner">
+        
+        <!-- Left: Content -->
+        <div class="subpage-hero-content">
+          <div class="subpage-hero-eyebrow">
+            <span>Core Platform</span>
+          </div>
+
+          <h1 class="subpage-hero-title">
+            RCX <span class="highlight">Analytics</span>
+          </h1>
+
+          <p class="subpage-hero-description">
+            Unfettered access to your data. Natural language Q&A. Pre-built dashboards. No black box. Most clients sync the full data model into their own data lake and analyze it with their existing tools.
+          </p>
+
+          <div class="subpage-hero-cta">
+            <a href="#" class="btn btn-primary btn-lg">Schedule Demo</a>
+          </div>
+        </div>
+
+        <!-- Right: Hero Image -->
+        <div class="subpage-hero-media">
+          <div class="subpage-hero-image-placeholder">
+            [Analytics Dashboard Interface - 600×450]
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 2: AT A GLANCE - 4-CARD GRID
+       Background: LIGHT (White)
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
+    <div class="container">
+      
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <p class="section-eyebrow">At a Glance</p>
+        <h2 class="section-title">Data Access, Not Data Silos</h2>
+        <p class="section-description" style="max-width: 700px; margin: 0 auto;">
+          We take the opposite approach of vendors who trap your data inside their platform.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Card 1: Natural Language Q&A -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Natural Language Q&A</h3>
+          </div>
+          <p class="icon-feature-description">
+            Ask questions in plain English. The AI produces actual SQL queries against the underlying data model and builds charts on the fly.
+          </p>
+        </div>
+
+        <!-- Card 2: Pre-Built Dashboards -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Pre-Built Dashboards</h3>
+          </div>
+          <p class="icon-feature-description">
+            Start analyzing immediately. Promotions, tiers, streaks, liability, fraud. Copy ours, modify them, or build your own.
+          </p>
+        </div>
+
+        <!-- Card 3: ~100 Table Data Model -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">~100 Table Data Model</h3>
+          </div>
+          <p class="icon-feature-description">
+            Full access to the raw data. Unfettered SQL access to approximately 100 tables capturing every detail of what happens to members.
+          </p>
+        </div>
+
+        <!-- Card 4: Works With Your Stack -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Works With Your Stack</h3>
+          </div>
+          <p class="icon-feature-description">
+            Feed data to existing tools. Tableau. Looker. Power BI. We pass the data through. We don't compete with your CDP or BI stack.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 3: FEATURE ROWS (Zig-Zag)
+       Background: LIGHT (White)
+       ======================================== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      
+      <!-- ===== ROW 1: Natural Language Q&A (Text Left, Image Right) ===== -->
+      <div class="feature-row" id="natural-language">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Conversational Analytics</span>
+          <h2 class="feature-row-title">Have a Conversation With Your Data</h2>
+          <p class="feature-row-description">
+            You can actually have a conversation with the data. Natural language Q&A lets you ask questions in plain English and get charts built on the fly. Not summarizing pre-built reports. Producing actual SQL against the underlying data model. Ask "how many people moved up to the highest tier last month?" and you get the answer.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Plain English queries against ~100 table data model</li>
+            <li class="feature-row-list-item">AI produces SQL and builds visualizations on the fly</li>
+            <li class="feature-row-list-item">Context-aware of your program's tiers, segments, and history</li>
+            <li class="feature-row-list-item">No SQL knowledge required for business users</li>
+          </ul>
+          <div class="feature-row-cta">
+            <a href="#" class="btn btn-dark">See It in Action &rarr;</a>
+          </div>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [QuickSight Q Interface - Natural Language Query]
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ROW 2: Pre-Built Dashboards (Image Left, Text Right) ===== -->
+      <div class="feature-row feature-row-reverse" id="dashboards">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Ready to Use</span>
+          <h2 class="feature-row-title">Pre-Built Dashboards, Fully Customizable</h2>
+          <p class="feature-row-description">
+            Dashboards for promotions, tiers, streaks, liability, and fraud. All pre-built. All customizable. Refreshed near real-time. Copy ours, modify them, or build your own. You can even ingest external data into your dashboards.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Promotion performance and participation tracking</li>
+            <li class="feature-row-list-item">Tier progression and qualification monitoring</li>
+            <li class="feature-row-list-item">Streak and challenge completion rates</li>
+            <li class="feature-row-list-item">Liability and fraud anomaly detection</li>
+            <li class="feature-row-list-item">Near real-time refresh without batch delays</li>
+          </ul>
+          <div class="feature-row-cta">
+            <a href="#" class="btn btn-dark">Explore Dashboard Library &rarr;</a>
+          </div>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Dashboard - Promotion Performance Metrics]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 4: UI SHOWCASE CAROUSEL
+       Background: DARK
+       3 slides with dot navigation
+       ======================================== -->
+  <section class="product-tour section-dark">
+    <div class="container">
+      
+      <div class="ui-carousel">
+        <div class="ui-carousel-slides">
+          
+          <!-- Slide 1: Dashboard Overview -->
+          <div class="ui-carousel-slide active" data-slide="1">
+            <div class="browser-window">
+              <div class="browser-frame">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="browser-dot browser-dot-red"></span>
+                    <span class="browser-dot browser-dot-yellow"></span>
+                    <span class="browser-dot browser-dot-green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>app.reactorcx.com/analytics/dashboard</span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="browser-screenshot-placeholder">
+                    [Analytics Dashboard Overview Screen]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Natural Language Q&A -->
+          <div class="ui-carousel-slide" data-slide="2">
+            <div class="browser-window">
+              <div class="browser-frame">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="browser-dot browser-dot-red"></span>
+                    <span class="browser-dot browser-dot-yellow"></span>
+                    <span class="browser-dot browser-dot-green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>app.reactorcx.com/analytics/ask</span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="browser-screenshot-placeholder">
+                    [Natural Language Q&A Interface]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Report Builder -->
+          <div class="ui-carousel-slide" data-slide="3">
+            <div class="browser-window">
+              <div class="browser-frame">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="browser-dot browser-dot-red"></span>
+                    <span class="browser-dot browser-dot-yellow"></span>
+                    <span class="browser-dot browser-dot-green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>app.reactorcx.com/analytics/reports</span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="browser-screenshot-placeholder">
+                    [Custom Reports Interface]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="ui-carousel-dots">
+          <button class="ui-carousel-dot active" data-slide="1" aria-label="Slide 1"></button>
+          <button class="ui-carousel-dot" data-slide="2" aria-label="Slide 2"></button>
+          <button class="ui-carousel-dot" data-slide="3" aria-label="Slide 3"></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 5: MORE FEATURE ROWS
+       Background: LIGHT (White)
+       ======================================== -->
+  <section class="feature-rows-section">
+    <div class="container">
+
+      <!-- ===== ROW 3: AI-Powered Insights (Text Left, Image Right) ===== -->
+      <div class="feature-row" id="ai-insights">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Proactive Intelligence</span>
+          <h2 class="feature-row-title">Surface Trends and Anomalies You Might Have Missed</h2>
+          <p class="feature-row-description">
+            AI-powered insights surface patterns in your data without you having to ask. From one-click executive summaries to promotion optimization proposals. Executive summaries can be set up and automatically sent to leadership on a schedule. They don't have to log in.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Anomaly detection across member behavior and program performance</li>
+            <li class="feature-row-list-item">One-click executive summaries for leadership</li>
+            <li class="feature-row-list-item">Scheduled delivery of reports to stakeholders</li>
+            <li class="feature-row-list-item">Promotion optimization proposals based on historical patterns</li>
+          </ul>
+          <div class="feature-row-cta">
+            <a href="#" class="btn btn-dark">Learn About AI Insights &rarr;</a>
+          </div>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [AI Insight Notification - Anomaly Detection]
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ROW 4: Data Access & Integration (Image Left, Text Right) ===== -->
+      <div class="feature-row feature-row-reverse" id="integration">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Open Architecture</span>
+          <h2 class="feature-row-title">Your Data. Your Tools. Your Way.</h2>
+          <p class="feature-row-description">
+            If you want to go deeper, you have unfettered SQL access to the raw data. Most of our larger clients sync the full data model into their own data lake. The data model is extensive, about 100 tables. We want to feed the data over to your other systems. We take the opposite approach of vendors who silo data.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Full SQL access to the underlying data warehouse</li>
+            <li class="feature-row-list-item">Sync to client data lakes (Snowflake, Redshift, BigQuery)</li>
+            <li class="feature-row-list-item">Integration with existing BI tools (Tableau, Looker, Power BI)</li>
+            <li class="feature-row-list-item">Streaming events via Kafka, batch exports, or warehouse queries</li>
+          </ul>
+          <div class="feature-row-cta">
+            <a href="#" class="btn btn-dark">View Data Architecture &rarr;</a>
+          </div>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Data Architecture Diagram - RCX to Client BI Stack]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 6: REPORTING COVERAGE - 6-CARD GRID
+       Background: DARK
+       ======================================== -->
+  <section id="data-model" class="section section-lg section-dark bg-dark">
+    <div class="container">
+      
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <p class="section-eyebrow" style="color: var(--color-navy-light);">Full Program Visibility</p>
+        <h2 class="section-title">Every Dimension of Your Loyalty Program, Tracked and Reportable</h2>
+      </div>
+
+      <div class="budget-grid">
+        
+        <div class="budget-card">
+          <h3 class="budget-card-title">Enrollment & Growth</h3>
+          <p class="budget-card-description">
+            Track membership growth, acquisition sources, and activation rates over time.
+          </p>
+        </div>
+
+        <div class="budget-card">
+          <h3 class="budget-card-title">Activation & Engagement</h3>
+          <p class="budget-card-description">
+            Monitor how members interact with your program. Participation rates. Activity frequency. Channel preferences.
+          </p>
+        </div>
+
+        <div class="budget-card">
+          <h3 class="budget-card-title">Promotion Performance</h3>
+          <p class="budget-card-description">
+            See which promotions drive behavior. Participation rates. Redemption patterns. Cost per action.
+          </p>
+        </div>
+
+        <div class="budget-card">
+          <h3 class="budget-card-title">Reward Issuance & Redemption</h3>
+          <p class="budget-card-description">
+            Track every earn and burn. Full lineage from redemption back to original accrual. Finance-grade traceability.
+          </p>
+        </div>
+
+        <div class="budget-card">
+          <h3 class="budget-card-title">Badge & Challenge Performance</h3>
+          <p class="budget-card-description">
+            For gamification programs: badge attainment, challenge completion, streak success rates.
+          </p>
+        </div>
+
+        <div class="budget-card">
+          <h3 class="budget-card-title">Operational Health</h3>
+          <p class="budget-card-description">
+            Processing throughput. Error rates. API response times. System health metrics for your operations team.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 8: BOTTOM CTA
+       Background: Off-white with white card
+       ======================================== -->
+  <section class="section section-lg bg-light">
+    <div class="container">
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">Finance-Grade Traceability</h2>
+        <p class="bottom-cta-description">
+          Points are not the same. You can tag them by source: Partner A points, Partner B points, location points. Track sub-balances within a unified member balance. When a redemption happens, trace it back to the original accrual. Separate funding, billing, and settlement per partner. Full visibility for reconciliation, audit, and financial reporting.
+        </p>
+        <a href="feature-partner-enablement.html" class="btn btn-primary">Explore Financial Controls &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 9: FAQ ACCORDION
+       Background: LIGHT (White)
+       ======================================== -->
+  <section class="accordion-section bg-white">
+    <div class="container">
+      
+      <div class="accordion-header">
+        <p class="accordion-eyebrow">Data & Reporting</p>
+        <h2 class="accordion-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="accordion">
+        
+        <!-- FAQ 1 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">What powers the natural language Q&A?</span>
+            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <p>RCX Analytics is built on Amazon QuickSight. QuickSight Q provides the natural language interface. When you ask a question in plain English, it produces actual SQL queries against the underlying ~100 table data model. It builds charts on the fly based on the results.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">Can we use our existing BI tools?</span>
+            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <p>Yes. Most of our larger clients sync the full data model into their own data lake and use Tableau, Looker, Power BI, or whatever tools they already have. We feed data TO your existing stack. We don't compete with your CDP or BI tools.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">What data is available for reporting?</span>
+            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <p>The data model captures approximately 100 tables covering every detail of what happens to members. Enrollment, transactions, promotions, rewards, tiers, badges, partner activity, and more. Every earn and burn is traceable back to its source with full lineage.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">Can we get raw SQL access?</span>
+            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <p>Yes. You have unfettered SQL access to the raw data warehouse. No black box. If you want to write your own queries or connect your own analytics tools directly, you can.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-text">How does data sharing work with partners?</span>
+            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <p>Data can be shared via APIs, streaming events (Kafka), batch exports, or direct warehouse queries. Partner activity is processed through the same rules engine and tracked with the same lineage as first-party transactions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       FOOTER
+       Background: DARK
+       ======================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </a>
+          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Column -->
+        <div>
+          <h4 class="footer-column-title">Product</h4>
+          <ul class="footer-links">
+            <li><a href="platform.html" class="footer-link">Platform Overview</a></li>
+            <li><a href="feature-program-design.html" class="footer-link">Program Design & Rules</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions & Discounting</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">RCX Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement & Gamification</a></li>
+            <li><a href="#" class="footer-link">API Docs</a></li>
+          </ul>
+        </div>
+
+        <!-- Solutions Column -->
+        <div>
+          <h4 class="footer-column-title">Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Retail</a></li>
+            <li><a href="#" class="footer-link">Restaurants</a></li>
+            <li><a href="#" class="footer-link">E-commerce</a></li>
+            <li><a href="#" class="footer-link">Hospitality</a></li>
+            <li><a href="#" class="footer-link">Enterprise</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources Column -->
+        <div>
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Blog</a></li>
+            <li><a href="#" class="footer-link">Case Studies</a></li>
+            <li><a href="#" class="footer-link">Guides</a></li>
+            <li><a href="#" class="footer-link">Webinars</a></li>
+            <li><a href="#" class="footer-link">Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div>
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Press</a></li>
+            <li><a href="#" class="footer-link">Partners</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Loyalty Methods. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Service</a>
+          <a href="#" class="footer-legal-link">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
+  <script>
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Accordion functionality
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all accordion items
+        accordionItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
+        
+        // If clicked item wasn't active, open it
+        if (!isActive) {
+          item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // UI Carousel functionality
+    const carouselDots = document.querySelectorAll('.ui-carousel-dot');
+    const carouselSlides = document.querySelectorAll('.ui-carousel-slide');
+
+    carouselDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const slideNum = dot.getAttribute('data-slide');
+        
+        // Remove active from all dots and slides
+        carouselDots.forEach(d => d.classList.remove('active'));
+        carouselSlides.forEach(s => s.classList.remove('active'));
+        
+        // Add active to clicked dot and corresponding slide
+        dot.classList.add('active');
+        document.querySelector(`.ui-carousel-slide[data-slide="${slideNum}"]`).classList.add('active');
+      });
+    });
+
+    // Auto-rotate carousel every 5 seconds
+    let currentSlide = 1;
+    const totalSlides = 3;
+    
+    setInterval(() => {
+      currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+      
+      carouselDots.forEach(d => d.classList.remove('active'));
+      carouselSlides.forEach(s => s.classList.remove('active'));
+      
+      document.querySelector(`.ui-carousel-dot[data-slide="${currentSlide}"]`).classList.add('active');
+      document.querySelector(`.ui-carousel-slide[data-slide="${currentSlide}"]`).classList.add('active');
+    }, 5000);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
