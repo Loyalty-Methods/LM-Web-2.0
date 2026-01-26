@@ -11,23 +11,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Homepage-specific styles for 5-stat layout */
+    /* Homepage-specific styles for 4-stat layout */
     .stats-bar {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: var(--space-6);
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
       text-align: center;
     }
     
     @media (max-width: 1024px) {
       .stats-bar {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
       }
     }
     
-    @media (max-width: 640px) {
+    @media (max-width: 480px) {
       .stats-bar {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
     }
     
@@ -380,34 +381,28 @@
   <section class="section section-dark bg-dark">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Enterprise Scale</p>
         <h2 class="section-title" style="color: var(--color-white);">Proven in Production</h2>
       </div>
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-number" data-target="600" data-suffix="M+">0</div>
-          <div class="stat-title">Safely Migrated Memberships</div>
-          <div class="stat-subtitle">Zero data loss</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="350" data-suffix="M+">0</div>
-          <div class="stat-title">Total Loyalty Members</div>
-          <div class="stat-subtitle">Active in RCX</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="75" data-suffix="M+">0</div>
-          <div class="stat-title">Average Daily Transactions</div>
-          <div class="stat-subtitle">Real-time processing</div>
+          <div class="stat-number" data-target="34" data-prefix="+" data-suffix="%">0</div>
+          <div class="stat-title">Retention Rate</div>
+          <div class="stat-subtitle">Fuel & Gas</div>
         </div>
         <div class="stat-item">
           <div class="stat-number" data-target="45" data-prefix="+" data-suffix="%">0</div>
           <div class="stat-title">Membership Growth</div>
-          <div class="stat-subtitle">Single client</div>
+          <div class="stat-subtitle">Retail</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">Zero</div>
-          <div class="stat-title">Downtime</div>
-          <div class="stat-subtitle">Since February 2020</div>
+          <div class="stat-number">2×</div>
+          <div class="stat-title">Redemption Rate</div>
+          <div class="stat-subtitle">Casino & Gaming / Hospitality</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3×</div>
+          <div class="stat-title">Activation Rate</div>
+          <div class="stat-subtitle">Casino & Gaming</div>
         </div>
       </div>
     </div>
@@ -417,7 +412,7 @@
   <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" style="white-space: nowrap;">The Complete Loyalty Toolkit</h2>
+        <h2 class="section-title" style="white-space: nowrap; color: var(--color-primary);">The Complete Loyalty Toolkit</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
