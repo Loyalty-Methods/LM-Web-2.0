@@ -357,7 +357,7 @@
         
         <!-- Left: Content -->
         <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">
+          <div class="subpage-hero-eyebrow" style="color: var(--color-primary);">
             <span>Core Platform</span>
           </div>
 
@@ -377,7 +377,7 @@
         <!-- Right: Hero Image -->
         <div class="subpage-hero-media">
           <div class="subpage-hero-image-placeholder">
-            [Analytics Dashboard Interface - 600×450]
+            [Analytics Dashboard Interface - 600Ã—450]
           </div>
         </div>
         
@@ -394,7 +394,6 @@
     <div class="container">
       
       <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
-        <p class="section-eyebrow">At a Glance</p>
         <h2 class="section-title">Data Access, Not Data Silos</h2>
         <p class="section-description" style="max-width: 700px; margin: 0 auto;">
           We take the opposite approach of vendors who trap your data inside their platform.
@@ -701,50 +700,104 @@
     <div class="container">
       
       <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
-        <p class="section-eyebrow" style="color: var(--color-navy-light);">Full Program Visibility</p>
         <h2 class="section-title">Every Dimension of Your Loyalty Program, Tracked and Reportable</h2>
       </div>
 
-      <div class="budget-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <div class="budget-card">
-          <h3 class="budget-card-title">Enrollment & Growth</h3>
-          <p class="budget-card-description">
+        <!-- Card 1: Enrollment & Growth -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Enrollment & Growth</h3>
+          </div>
+          <p class="icon-feature-description">
             Track membership growth, acquisition sources, and activation rates over time.
           </p>
         </div>
 
-        <div class="budget-card">
-          <h3 class="budget-card-title">Activation & Engagement</h3>
-          <p class="budget-card-description">
+        <!-- Card 2: Activation & Engagement -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Activation & Engagement</h3>
+          </div>
+          <p class="icon-feature-description">
             Monitor how members interact with your program. Participation rates. Activity frequency. Channel preferences.
           </p>
         </div>
 
-        <div class="budget-card">
-          <h3 class="budget-card-title">Promotion Performance</h3>
-          <p class="budget-card-description">
+        <!-- Card 3: Promotion Performance -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Promotion Performance</h3>
+          </div>
+          <p class="icon-feature-description">
             See which promotions drive behavior. Participation rates. Redemption patterns. Cost per action.
           </p>
         </div>
 
-        <div class="budget-card">
-          <h3 class="budget-card-title">Reward Issuance & Redemption</h3>
-          <p class="budget-card-description">
+        <!-- Card 4: Reward Issuance & Redemption -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Reward Issuance & Redemption</h3>
+          </div>
+          <p class="icon-feature-description">
             Track every earn and burn. Full lineage from redemption back to original accrual. Finance-grade traceability.
           </p>
         </div>
 
-        <div class="budget-card">
-          <h3 class="budget-card-title">Badge & Challenge Performance</h3>
-          <p class="budget-card-description">
+        <!-- Card 5: Badge & Challenge Performance -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Badge & Challenge Performance</h3>
+          </div>
+          <p class="icon-feature-description">
             For gamification programs: badge attainment, challenge completion, streak success rates.
           </p>
         </div>
 
-        <div class="budget-card">
-          <h3 class="budget-card-title">Operational Health</h3>
-          <p class="budget-card-description">
+        <!-- Card 6: Operational Health -->
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="icon-feature-title">Operational Health</h3>
+          </div>
+          <p class="icon-feature-description">
             Processing throughput. Error rates. API response times. System health metrics for your operations team.
           </p>
         </div>
