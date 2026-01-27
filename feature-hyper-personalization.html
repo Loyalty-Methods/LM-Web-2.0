@@ -4,238 +4,437 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hyper-Personalization | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Page-specific styles for Hyper-Personalization */
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Hyper-Personalization
+       ========================================================================== */
     
-    /* Results Cards - 4 Column */
-    .results-grid {
+    /* Subpage Hero - Orange Gradient Variant */
+    .subpage-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
+    }
+    
+    .subpage-hero-brand {
+      background: linear-gradient(135deg, #F37021 0%, #FF8534 100%);
+    }
+    
+    /* Glass shine overlay for orange hero */
+    .subpage-hero-brand::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .subpage-hero-inner {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
     }
     
     @media (max-width: 1024px) {
-      .results-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
     }
     
-    @media (max-width: 640px) {
-      .results-grid {
+    .subpage-hero-content {
+      max-width: 600px;
+    }
+    
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+    
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+    }
+    
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+    
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+    
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+    
+    /* Orange hero button override - charcoal button for contrast */
+    .subpage-hero-brand .btn-primary {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .subpage-hero-brand .btn-primary:hover {
+      filter: brightness(1.15);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .subpage-hero-media {
+      position: relative;
+    }
+    
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--font-size-sm);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    @media (max-width: 1024px) {
+      .subpage-hero-media {
+        display: none;
+      }
+    }
+    
+    /* Stats Bar - 4 Column */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+    }
+    
+    @media (max-width: 1024px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-bar {
         grid-template-columns: 1fr;
       }
     }
     
-    .result-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-8);
-      text-align: center;
-      border: 1px solid var(--color-gray-100);
-      box-shadow: var(--shadow-card);
-      transition: all var(--transition-base);
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
     }
     
-    .result-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
-    }
-    
-    .result-stat {
+    .stat-number {
       font-size: var(--font-size-4xl);
       font-weight: var(--font-weight-bold);
       color: var(--color-primary);
       line-height: 1;
-      margin-bottom: var(--space-2);
     }
     
-    .result-metric {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-3);
-    }
-    
-    .result-attribution {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wider);
-      color: var(--color-navy-light);
-      background: rgba(91, 138, 184, 0.1);
-      padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-md);
-      display: inline-block;
-    }
-    
-    .results-footnote {
-      text-align: center;
-      margin-top: var(--space-8);
+    .stat-title {
       font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-white);
+    }
+    
+    .stat-subtitle {
+      font-size: var(--font-size-xs);
       color: var(--color-gray-400);
       font-style: italic;
     }
     
-    /* Philosophy Hook Section */
-    .philosophy-section {
-      padding: var(--space-24) 0;
-      background: var(--color-white);
-    }
-    
-    .philosophy-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .philosophy-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-      margin-bottom: var(--space-6);
-      line-height: var(--line-height-snug);
-    }
-    
-    .philosophy-body {
+    /* Section Description */
+    .section-description {
       font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-    
-    /* Callout Block */
-    .callout-section {
-      padding: var(--space-20) 0;
-      background: 
-        radial-gradient(circle at 100% 55%, rgba(255, 255, 255, 0.15) 0%, transparent 45%),
-        var(--gradient-charcoal);
-    }
-    
-    .callout-card {
-      max-width: 900px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 700px;
       margin: 0 auto;
-      padding: var(--space-12);
-      background: rgba(243, 112, 33, 0.08);
-      border: 1px solid rgba(243, 112, 33, 0.2);
-      border-radius: var(--radius-2xl);
-      text-align: center;
     }
     
-    .callout-headline {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-6);
-      line-height: var(--line-height-snug);
-    }
-    
-    .callout-body {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
-      margin-bottom: var(--space-8);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    /* Cross-Links Section */
-    .crosslinks-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-light-100);
-    }
-    
-    .crosslinks-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto var(--space-12);
-    }
-    
-    .crosslinks-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-      margin-bottom: var(--space-4);
-    }
-    
-    .crosslinks-description {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-    
-    .crosslinks-grid {
+    /* Framework Cards (Icon Feature Cards) */
+    .feature-box-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
     }
     
     @media (max-width: 1024px) {
-      .crosslinks-grid {
+      .feature-box-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .feature-box-grid {
         grid-template-columns: 1fr;
       }
     }
     
-    .crosslink-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-8);
-      border: 1px solid var(--color-gray-100);
+    .framework-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
       box-shadow: var(--shadow-card);
-      display: flex;
-      flex-direction: column;
-      transition: all var(--transition-base);
+      transition: transform var(--transition-base), 
+                  box-shadow var(--transition-base), 
+                  border-color var(--transition-base);
     }
     
-    .crosslink-card:hover {
+    .framework-card:hover {
       transform: translateY(-6px);
-      border-color: var(--color-navy-light);
+      border-color: var(--border-focus);
       box-shadow: var(--shadow-card-hover);
     }
     
-    .crosslink-title {
-      font-size: var(--font-size-xl);
+    .framework-card .card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    
+    .framework-card .card-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      border-radius: var(--radius-lg);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .framework-card .card-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      pointer-events: none;
+    }
+    
+    .framework-card .card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .framework-card .card-title {
+      font-size: var(--font-size-lg);
       font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+      color: var(--color-primary);
+      line-height: 1.3;
+    }
+    
+    .framework-card .card-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    /* Feature Rows Section */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background: var(--color-white);
+    }
+    
+    .feature-row-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+    
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    
+    .feature-row-list {
+      margin-top: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    
+    .feature-row-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+    }
+    
+    .feature-row-list-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      margin-top: 0.5em;
+      flex-shrink: 0;
+    }
+    
+    .feature-row-media {
+      display: flex;
+      align-items: center;
+    }
+    
+    .feature-row-image-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+    
+    .feature-row-reverse .feature-row-content {
+      order: 2;
+    }
+    
+    .feature-row-reverse .feature-row-media {
+      order: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .feature-row-reverse .feature-row-content,
+      .feature-row-reverse .feature-row-media {
+        order: 0;
+      }
+    }
+    
+    /* FAQ Section - Two Column Layout */
+    .faq-section {
+      padding: var(--space-20) 0;
+    }
+    
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+    
+    @media (max-width: 1024px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-10);
+      }
+    }
+    
+    .faq-intro {
+      position: sticky;
+      top: 120px;
+    }
+    
+    @media (max-width: 1024px) {
+      .faq-intro {
+        position: static;
+        text-align: center;
+      }
+    }
+    
+    .faq-eyebrow {
+      display: inline-block;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
       margin-bottom: var(--space-3);
     }
     
-    .crosslink-description {
+    .faq-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+    
+    .faq-description {
       font-size: var(--font-size-base);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-      flex: 1;
-      margin-bottom: var(--space-5);
+      color: var(--text-muted);
+      line-height: 1.7;
     }
     
-    .crosslink-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      transition: all var(--transition-fast);
-    }
-    
-    .crosslink-cta svg {
-      width: 16px;
-      height: 16px;
-      transition: transform var(--transition-fast);
-    }
-    
-    .crosslink-card:hover .crosslink-cta {
-      color: var(--color-primary-dark);
-    }
-    
-    .crosslink-card:hover .crosslink-cta svg {
-      transform: translateX(4px);
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
     }
   </style>
 </head>
@@ -370,13 +569,13 @@
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSyncÃ¢â€žÂ¢ Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitchÃ¢â€žÂ¢ Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
@@ -434,7 +633,6 @@
 
   <!-- ========== HERO - ORANGE GRADIENT ========== -->
   <section class="subpage-hero subpage-hero-brand">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
     <div class="container">
       <div class="subpage-hero-inner">
         <div class="subpage-hero-content">
@@ -458,52 +656,52 @@
   <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="cta-box-light" style="text-align: center;">
-        <h2 class="section-title" style="font-style: italic; color: var(--color-black); margin-bottom: 0;">One Engine.</h2>
+        <h2 class="section-title" style="font-style: italic; color: var(--color-charcoal-900); margin-bottom: 0;">One Engine.</h2>
         <h2 class="section-title" style="color: var(--color-primary); margin-top: 0;">Multiple Personalization Layers.</h2>
-        <p style="color: var(--color-gray-400); font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); max-width: 700px; margin: 0 auto;">
+        <p style="color: var(--text-muted); font-size: var(--font-size-lg); line-height: 1.7; max-width: 700px; margin: 0 auto;">
           Most platforms force you to create separate rules for each segment, tier, and condition. ReactorCX takes a different approach. Build one rule. Let the engine personalize it. The same promotion renders differently for every member based on their status, history, preferences, and behavior.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ========== RESULTS STATS ========== -->
-  <section class="section section-lg section-light bg-light" style="padding-top: 0;">
+  <!-- ========== RESULTS STATS BAR ========== -->
+  <section class="section dark bg-dark">
     <div class="container">
-      <div class="results-grid">
-        <div class="result-card">
-          <div class="result-stat">2×</div>
-          <div class="result-metric">Redemption Rate</div>
-          <span class="result-attribution">Hospitality Client</span>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number" data-target="2" data-suffix="×">0</div>
+          <div class="stat-title">Redemption Rate</div>
+          <div class="stat-subtitle">Single Client</div>
         </div>
-        <div class="result-card">
-          <div class="result-stat">3×</div>
-          <div class="result-metric">Activation Rate</div>
-          <span class="result-attribution">Casino & Gaming Client</span>
+        <div class="stat-item">
+          <div class="stat-number" data-target="80" data-prefix="+" data-suffix="%">0</div>
+          <div class="stat-title">Repeat Purchase Rate</div>
+          <div class="stat-subtitle">Single Client</div>
         </div>
-        <div class="result-card">
-          <div class="result-stat">+429%</div>
-          <div class="result-metric">Basket Value</div>
-          <span class="result-attribution">Hospitality Client</span>
+        <div class="stat-item">
+          <div class="stat-number" data-target="3" data-suffix="×">0</div>
+          <div class="stat-title">Activation Rate</div>
+          <div class="stat-subtitle">Single Client</div>
         </div>
-        <div class="result-card">
-          <div class="result-stat">+45%</div>
-          <div class="result-metric">Membership Growth</div>
-          <span class="result-attribution">Retail Client</span>
+        <div class="stat-item">
+          <div class="stat-number" data-target="45" data-prefix="+" data-suffix="%">0</div>
+          <div class="stat-title">Membership Growth</div>
+          <div class="stat-subtitle">Retail</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========== THREE DIMENSIONS OF PERSONALIZATION ========== -->
-  <section class="section section-lg section-light bg-light" style="padding-top: 0;">
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">You're Not Building Eight Promotions. You're Building One.</h2>
         <p class="section-description">What they see. What targets they're given. What rewards they unlock. All individualized. All in real time.</p>
       </div>
       
-      <div class="feature-box-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="feature-box-grid">
         <!-- Card 1: Personalized Display -->
         <div class="framework-card">
           <div class="card-header">
@@ -703,82 +901,85 @@
   <section class="section-light bg-white" style="padding-top: 4rem; padding-bottom: 8rem;">
     <div class="container">
       <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Ready to See Personalization at Scale?</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to See Personalization at Scale?</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
           See how ReactorCX delivers individualized experiences for every member—without building separate rules for each segment.
         </p>
-        <div class="flex gap-4">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          <a href="platform.html" class="btn btn-secondary-dark btn-lg">Explore the Platform</a>
-        </div>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
       </div>
     </div>
   </section>
 
-  <!-- ========== FAQ SECTION ========== -->
-  <section class="accordion-section section-light bg-white">
+  <!-- ========== FAQ SECTION - TWO COLUMN LAYOUT ========== -->
+  <section class="faq-section section-light bg-white">
     <div class="container">
-      <div class="accordion-header">
-        <h2 class="accordion-title">Frequently Asked Questions</h2>
-      </div>
-      
-      <div class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">How does hyper-parameterization differ from segmentation?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Segmentation groups members and applies the same rule to everyone in the group. Hyper-parameterization goes further: individual members within the same segment can receive different targets, thresholds, and rewards based on their specific history and behavior patterns. Two Gold tier members might see the same streak promotion with completely different spend targets.</p>
-            </div>
-          </div>
+      <div class="faq-layout">
+        <!-- Left Column: Intro -->
+        <div class="faq-intro">
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">Common questions about hyper-personalization and how ReactorCX delivers individualized experiences at scale.</p>
         </div>
         
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">What data feeds personalization decisions?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Transaction history, tier status, points balance, qualification progress, stated preferences, segment membership, location, channel, daypart, and partner activity. All inputs are available to the rules engine in real time. No batch processing. No delayed updates.</p>
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does hyper-parameterization differ from segmentation?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Segmentation groups members and applies the same rule to everyone in the group. Hyper-parameterization goes further: individual members within the same segment can receive different targets, thresholds, and rewards based on their specific history and behavior patterns. Two Gold tier members might see the same streak promotion with completely different spend targets.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">Can personalization happen at point of interaction?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Yes. The platform returns personalized responses in sub-200 milliseconds. Members see their view of the world at the moment they interact with your program, whether through app, web, POS, or partner touchpoint.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What data feeds personalization decisions?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Transaction history, tier status, points balance, qualification progress, stated preferences, segment membership, location, channel, daypart, and partner activity. All inputs are available to the rules engine in real time. No batch processing. No delayed updates.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">How do real-time events work?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>When conditions are met, the platform publishes events immediately. These events can trigger app overlays, push notifications, SMS, email, or any other engagement channel you've configured. Members know the moment something happens. No waiting for batch jobs.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Can personalization happen at point of interaction?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. The platform returns personalized responses in sub-200 milliseconds. Members see their view of the world at the moment they interact with your program, whether through app, web, POS, or partner touchpoint.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">Does personalization require IT involvement for each rule?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>No. Business users configure promotions with personalization parameters through the rules engine. Expression Builder supports custom logic when needed. IT maintains architectural control while loyalty teams operate independently.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How do real-time events work?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>When conditions are met, the platform publishes events immediately. These events can trigger app overlays, push notifications, SMS, email, or any other engagement channel you've configured. Members know the moment something happens. No waiting for batch jobs.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Does personalization require IT involvement for each rule?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>No. Business users configure promotions with personalization parameters through the rules engine. Expression Builder supports custom logic when needed. IT maintains architectural control while loyalty teams operate independently.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -831,8 +1032,8 @@
             <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
             <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
             <li><a href="tech-security.html" class="footer-link">Security</a></li>
-            <li><a href="proven-threadsync.html" class="footer-link">ThreadSyncÃ¢â€žÂ¢</a></li>
-            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitchÃ¢â€žÂ¢</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
             <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
           </ul>
         </div>
@@ -867,13 +1068,13 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script>
-    // Header scroll effect
+    // Header scroll effect - Inverted for orange hero pages
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.add('scrolled');
+        header.classList.add('scrolled-dark');
       } else {
-        header.classList.remove('scrolled');
+        header.classList.remove('scrolled-dark');
       }
     });
 
@@ -893,6 +1094,57 @@
         }
       });
     });
+
+    // Animated number counters
+    const animateCounters = () => {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      
+      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+      
+      const animateCounter = (el) => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+        
+        const update = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = easeOutQuart(progress);
+          const current = target * easedProgress;
+          
+          if (isDecimal) {
+            el.textContent = prefix + current.toFixed(1) + suffix;
+          } else {
+            el.textContent = prefix + Math.floor(current) + suffix;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+          }
+        };
+        
+        requestAnimationFrame(update);
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    };
+    
+    // Initialize counters
+    animateCounters();
   </script>
 </body>
 </html>
