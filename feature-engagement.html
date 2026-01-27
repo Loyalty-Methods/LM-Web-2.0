@@ -612,7 +612,7 @@
 <body>
 
   <!-- ========== HEADER ========== -->
-  <header class="header">
+  <header class="header" data-scroll-style="dark">
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="logo">
@@ -1542,13 +1542,16 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script>
-    // Header scroll effect
+    // Header scroll effect with support for inverted (dark) scroll style
     const header = document.querySelector('.header');
+    const scrollStyle = header.dataset.scrollStyle || 'default';
+    const scrollClass = scrollStyle === 'dark' ? 'scrolled-dark' : 'scrolled';
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.add('scrolled');
+        header.classList.add(scrollClass);
       } else {
-        header.classList.remove('scrolled');
+        header.classList.remove(scrollClass);
       }
     });
 

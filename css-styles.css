@@ -199,6 +199,30 @@ ul, ol {
   z-index: 0;
 }
 
+/* Inverted scroll state for orange hero pages */
+.header.scrolled-dark {
+  background: var(--grad-charcoal-premium);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header.scrolled-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* On dark scrolled header, nav hover stays orange (no inversion needed) */
+.header.scrolled-dark .nav-link:hover {
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .header-inner {
   display: flex;
   align-items: center;
