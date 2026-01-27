@@ -4,23 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Program Design & Rules | RCX Loyalty Platform</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
   
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ==========================================================================
-       PROGRAM DESIGN PAGE - PAGE-SPECIFIC STYLES ONLY
-       All reusable components are in loyalty-theme-structure.css
-       ========================================================================== */
 
-    /* -------------------------------------------------------------------------
-       EYEBROW OVERRIDE - Orange on dark backgrounds
-       ------------------------------------------------------------------------- */
+  <style>
+    /* =====================================================
+       PAGE-SPECIFIC STYLES: PROGRAM DESIGN
+       ===================================================== */
+    
+    /* Subpage Hero */
+    .subpage-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
+    }
+    
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+    
+    .subpage-hero-content {
+      max-width: 600px;
+    }
+    
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+    
     .subpage-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
       color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+    }
+    
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+    
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+    
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+    
+    .subpage-hero-media {
+      position: relative;
     }
 
     /* -------------------------------------------------------------------------
@@ -32,7 +127,7 @@
       border-radius: var(--radius-2xl);
       overflow: hidden;
       border: 1px solid var(--color-charcoal-600);
-      box-shadow: var(--shadow-browser);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
     }
 
     .interface-header {
@@ -40,8 +135,8 @@
       align-items: center;
       justify-content: space-between;
       padding: var(--space-4) var(--space-6);
-      background: var(--color-charcoal-700);
-      border-bottom: 1px solid var(--color-charcoal-600);
+      background: #3D3D3D;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .interface-header-left {
@@ -63,12 +158,12 @@
 
     .interface-dot-red { background: #FF5F56; }
     .interface-dot-yellow { background: #FFBD2E; }
-    .interface-dot-green { background: #27CA40; }
+    .interface-dot-green { background: #27C93F; }
 
     .interface-title {
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-medium);
-      color: var(--color-gray-300);
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .interface-body {
@@ -83,6 +178,10 @@
       .interface-body {
         grid-template-columns: 1fr;
         min-height: 250px;
+      }
+      
+      .interface-sidebar {
+        display: none;
       }
     }
 
@@ -137,8 +236,8 @@
       align-items: center;
       gap: var(--space-2);
       padding: var(--space-1) var(--space-3);
-      background: rgba(39, 202, 64, 0.15);
-      color: #27CA40;
+      background: rgba(39, 201, 63, 0.15);
+      color: #27C93F;
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-medium);
       border-radius: var(--radius-full);
@@ -197,11 +296,310 @@
       font-weight: var(--font-weight-bold);
       color: var(--color-primary);
     }
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-white);
+    }
+    
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-bottom: var(--space-20);
+    }
+    
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+    
+    .feature-row-reverse {
+      direction: rtl;
+    }
+    
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+    
+    @media (max-width: 1024px) {
+      .feature-row,
+      .feature-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+    
+    .feature-row-content {
+      max-width: 520px;
+    }
+    
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+    
+    .feature-row-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+    
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+    
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+    
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+    
+    .feature-row-list-item {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+    
+    .feature-row-list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+    
+    .feature-row-media {
+      position: relative;
+    }
+    
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    /* -------------------------------------------------------------------------
+       DARK BUTTON VARIANT
+       ------------------------------------------------------------------------- */
+    .btn-dark {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+    
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    /* -------------------------------------------------------------------------
+       4-COLUMN GRID FOR FRAMEWORK CARDS
+       ------------------------------------------------------------------------- */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+    }
+    
+    @media (max-width: 1024px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       6-COLUMN GRID FOR TIER LOGIC
+       ------------------------------------------------------------------------- */
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .grid-6 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .grid-6 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       3-STAT BAR LAYOUT
+       ------------------------------------------------------------------------- */
+    .stats-bar-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .stats-bar-3 {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       SECTION DESCRIPTION
+       ------------------------------------------------------------------------- */
+    .section-description {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: var(--space-4) auto 0;
+    }
+
+    /* -------------------------------------------------------------------------
+       CTA BOX TITLE/DESCRIPTION
+       ------------------------------------------------------------------------- */
+    .cta-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-4);
+    }
+    
+    .cta-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* -------------------------------------------------------------------------
+       FAQ SECTION (Two-Column Layout)
+       ------------------------------------------------------------------------- */
+    .faq-section {
+      padding: var(--space-20) 0;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-10);
+      }
+    }
+
+    .faq-intro {
+      position: sticky;
+      top: 120px;
+    }
+
+    @media (max-width: 1024px) {
+      .faq-intro {
+        position: static;
+        text-align: center;
+      }
+    }
+
+    .faq-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .faq-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    /* -------------------------------------------------------------------------
+       RESPONSIVE POLISH
+       ------------------------------------------------------------------------- */
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+      
+      .feature-row-title {
+        font-size: var(--font-size-2xl);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -229,107 +627,39 @@
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Core Platform</div>
                       <a href="feature-program-design.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 20h9"></path>
-                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Program Design & Rules</div>
-                          <div class="mega-menu-link-description">Flexible loyalty program architecture</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
                       </a>
                       <a href="feature-promotions.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                            <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Promotions & Discounting</div>
-                          <div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
                       </a>
                       <a href="feature-analytics.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="20" x2="18" y2="10"></line>
-                            <line x1="12" y1="20" x2="12" y2="4"></line>
-                            <line x1="6" y1="20" x2="6" y2="14"></line>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">RCX Analytics</div>
-                          <div class="mega-menu-link-description">Deep insights that drive decisions</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
                       </a>
                       <a href="feature-advanced-tools.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                            <polyline points="2 17 12 22 22 17"></polyline>
-                            <polyline points="2 12 12 17 22 12"></polyline>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Advanced Tools</div>
-                          <div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
                       </a>
                     </div>
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="feature-engagement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Engagement & Gamification</div>
-                          <div class="mega-menu-link-description">Interactive experiences that delight</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
                       </a>
                       <a href="feature-rewards.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Rewards & Benefits</div>
-                          <div class="mega-menu-link-description">Flexible redemption options</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
                       </a>
                       <a href="feature-partner-enablement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Partner Enablement</div>
-                          <div class="mega-menu-link-description">Expand your loyalty ecosystem</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
                       </a>
                       <a href="feature-hyper-personalization.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Hyper-Personalization</div>
-                          <div class="mega-menu-link-description">1:1 experiences at scale</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
                       </a>
                     </div>
                   </div>
@@ -337,13 +667,7 @@
                     <span class="mega-menu-featured-eyebrow">Featured</span>
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image" style="height: 80px; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); border-radius: 12px; margin: 16px 0;">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: #F37021;">
-                        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
-                        <path d="M9 14v2"/>
-                        <path d="M15 14v2"/>
-                      </svg>
-                    </div>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
                     <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
@@ -363,42 +687,16 @@
                     <div class="mega-menu-column" style="grid-column: span 2;">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Platform Architecture</div>
-                          <div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
                       </a>
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6" y2="6"></line>
-                            <line x1="6" y1="18" x2="6" y2="18"></line>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Integration Capabilities</div>
-                          <div class="mega-menu-link-description">Connectors for the modern stack.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
                       </a>
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Security & Compliance</div>
-                          <div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
                       </a>
                     </div>
                   </div>
@@ -408,9 +706,7 @@
                     <p class="mega-menu-featured-description">View our real-time system status.</p>
                     <div class="mega-menu-featured-image">
                       <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                       </div>
                     </div>
                     <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
@@ -431,126 +727,79 @@
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">ThreadSync&trade; Implementation</div>
-                          <div class="mega-menu-link-description">Our agile delivery framework</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div>
-                          <div class="mega-menu-link-description">Zero-risk migration methodology</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Customer Success</div>
-                          <div class="mega-menu-link-description">Dedicated partnership model</div>
-                        </div>
+                      <a href="resource-center.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-
+            
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Partners
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </a>
-              <div class="mega-menu mega-menu-compact">
-                <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <a href="partner-network.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Partner Network</div>
-                          <div class="mega-menu-link-description">SI, consulting, and tech partners</div>
-                        </div>
-                      </a>
-                      <a href="partner-become.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="8.5" cy="7" r="4"></circle>
-                            <line x1="20" y1="8" x2="20" y2="14"></line>
-                            <line x1="23" y1="11" x2="17" y2="11"></line>
-                          </svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Become a Partner</div>
-                          <div class="mega-menu-link-description">Join our ecosystem</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="mega-menu-featured" style="min-height: auto;">
-                    <span class="mega-menu-featured-eyebrow">Strategic Alliance</span>
-                    <h3 class="mega-menu-featured-title">Global Partner Network</h3>
-                    <p class="mega-menu-featured-description">Implementation and technology partners worldwide.</p>
-                    <div class="mega-menu-featured-image">
-                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                          <circle cx="9" cy="7" r="4"></circle>
-                          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
                       </div>
                     </div>
-                    <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-          <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+          </div>
         </nav>
-        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
       </div>
     </div>
   </header>
 
 
-  <!-- ========== HERO ========== -->
+  <!-- ========================================
+       SECTION 1: HERO
+       Background: DARK (Charcoal + Glass Shine)
+       ======================================== -->
   <section class="subpage-hero">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
     <div class="container">
       <div class="subpage-hero-inner">
         
+        <!-- Left: Content -->
         <div class="subpage-hero-content">
           <div class="subpage-hero-eyebrow">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
@@ -560,17 +809,22 @@
             </svg>
             <span>Core Platform</span>
           </div>
-          <h1 class="subpage-hero-title">Program Design & Rules</h1>
+
+          <h1 class="subpage-hero-title">
+            Program Design <span class="highlight">& Rules</span>
+          </h1>
+
           <p class="subpage-hero-description">
             Define how members earn, spend, and progress through your program. Configure earn rules, burn rules, tier logic, and promotion mechanics through a structured rules engine.
           </p>
+
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
 
-        <div class="subpage-hero-media">
-          <!-- Styled Interface Preview -->
+        <!-- Right: Hero Interface -->
+        <div class="subpage-hero-media hidden-mobile">
           <div class="hero-interface-mock">
             <div class="interface-header">
               <div class="interface-header-left">
@@ -675,8 +929,11 @@
   </section>
 
 
-  <!-- ========== FOUR W's FRAMEWORK ========== -->
-  <section class="section section-light bg-light">
+  <!-- ========================================
+       SECTION 2: FOUR W's FRAMEWORK
+       Background: LIGHT
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       
       <div class="section-header">
@@ -686,12 +943,13 @@
         </p>
       </div>
 
-      <div class="feature-box-grid-4">
+      <div class="grid-4">
         
-        <div class="framework-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <!-- Card 1: Who -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -700,45 +958,48 @@
             </div>
             <h3 class="card-title">Who</h3>
           </div>
-          <p class="card-description">Target by member attributes, tier, segment, preferences, or status.</p>
+          <p class="card-body">Target by member attributes, tier, segment, preferences, or status.</p>
         </div>
 
-        <div class="framework-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <!-- Card 2: Where -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </div>
             <h3 class="card-title">Where</h3>
           </div>
-          <p class="card-description">Filter by location, brand, category, or outlet list.</p>
+          <p class="card-body">Filter by location, brand, category, or outlet list.</p>
         </div>
 
-        <div class="framework-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <!-- Card 3: When -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
             </div>
             <h3 class="card-title">When</h3>
           </div>
-          <p class="card-description">Control by effective dates, day of week, hour of day, or time zone.</p>
+          <p class="card-body">Control by effective dates, day of week, hour of day, or time zone.</p>
         </div>
 
-        <div class="framework-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <!-- Card 4: What -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
             </div>
             <h3 class="card-title">What</h3>
           </div>
-          <p class="card-description">Define by product, service, activity type, or transaction attribute.</p>
+          <p class="card-body">Define by product, service, activity type, or transaction attribute.</p>
         </div>
 
       </div>
@@ -746,14 +1007,18 @@
   </section>
 
 
-  <!-- ========== EARNING RULES (Zig-Zag, Image Left) ========== -->
+  <!-- ========================================
+       SECTION 3: EARNING RULES (Zig-Zag)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
       
+      <!-- ===== ROW 1: Earning Logic (Image Left, Text Right) ===== -->
       <div class="feature-row">
         <div class="feature-row-media">
           <div class="feature-row-image-placeholder">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-navy-light); opacity: 0.5;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.5;">
               <line x1="12" y1="1" x2="12" y2="23"></line>
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
@@ -778,6 +1043,9 @@
             <li class="feature-row-list-item">Partner earn rules with separate attribution</li>
             <li class="feature-row-list-item">Real-time balance updates across all channels</li>
           </ul>
+          <div class="feature-row-cta">
+            <a href="about-contact.html" class="btn btn-dark">See It in Action &rarr;</a>
+          </div>
         </div>
       </div>
 
@@ -785,14 +1053,18 @@
   </section>
 
 
-  <!-- ========== BURNING RULES (Zig-Zag, Image Right) ========== -->
+  <!-- ========================================
+       SECTION 4: BURNING RULES (Zig-Zag Reverse)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="feature-rows-section" style="padding-top: 0;">
     <div class="container">
       
+      <!-- ===== ROW 2: Redemption Logic (Text Left, Image Right) ===== -->
       <div class="feature-row feature-row-reverse">
         <div class="feature-row-media">
           <div class="feature-row-image-placeholder">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-navy-light); opacity: 0.5;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.5;">
               <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
             </svg>
             <span style="margin-top: 16px;">Redemption Flow</span>
@@ -815,6 +1087,9 @@
             <li class="feature-row-list-item">Escrow and deferred redemption patterns</li>
             <li class="feature-row-list-item">Full lineage from redemption to original earn</li>
           </ul>
+          <div class="feature-row-cta">
+            <a href="about-contact.html" class="btn btn-dark">Explore Redemption &rarr;</a>
+          </div>
         </div>
       </div>
 
@@ -822,8 +1097,11 @@
   </section>
 
 
-  <!-- ========== STAT BAR ========== -->
-  <section class="section section-dark bg-dark">
+  <!-- ========================================
+       SECTION 5: STAT BAR
+       Background: DARK
+       ======================================== -->
+  <section class="section dark bg-dark">
     <div class="container">
       <div class="stats-bar-3">
         <div class="stat-item">
@@ -846,21 +1124,20 @@
   </section>
 
 
-  <!-- ========== CALLOUT BLOCK ========== -->
-  <section class="section-light bg-light" style="padding: 5rem 0;">
+  <!-- ========================================
+       SECTION 6: CALLOUT BLOCK
+       Background: LIGHT
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="cta-box-light">
         <h2 class="cta-title">Promotions at true scale</h2>
         <p class="cta-description">
           Our c-store client runs 400+ unique promotions nationwide, with 50+ partners contributing co-funded offers. Each partner promotion carries its own funding allocation, billing parameters, and reimbursement logic. The rules engine tracks every earn and burn by source, partner, and location. Millions of dollars settle through the platform every cycle.
         </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
           <a href="feature-partner-enablement.html" class="btn btn-primary btn-lg">
-            Explore Partner Enablement
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            Explore Partner Enablement &rarr;
           </a>
         </div>
       </div>
@@ -868,76 +1145,97 @@
   </section>
 
 
-  <!-- ========== TIER RULES GRID ========== -->
-  <section class="section section-lg section-light bg-light">
+  <!-- ========================================
+       SECTION 7: TIER LOGIC GRID
+       Background: LIGHT (White)
+       ======================================== -->
+  <section class="section section-lg section-light bg-white">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Tier Logic That Scales With Your Program</h2>
       </div>
-      <div class="feature-box-grid">
+      <div class="grid-6">
         
-        <div class="feature-box-icon-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
+        <!-- Card 1: Qualification Logic -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Qualification Logic</h3>
           </div>
-          <h3 class="card-title">Qualification Logic</h3>
-          <p class="card-description">Progress on spend, visits, nights, or any custom metric.</p>
+          <p class="card-body">Progress on spend, visits, nights, or any custom metric.</p>
         </div>
         
-        <div class="feature-box-icon-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-              <polyline points="17 6 23 6 23 12"></polyline>
-            </svg>
+        <!-- Card 2: Automatic Progression -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Automatic Progression</h3>
           </div>
-          <h3 class="card-title">Automatic Progression</h3>
-          <p class="card-description">Tier upgrades trigger when thresholds are met. No batch jobs.</p>
+          <p class="card-body">Tier upgrades trigger when thresholds are met. No batch jobs.</p>
         </div>
         
-        <div class="feature-box-icon-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
+        <!-- Card 3: Grace Periods -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Grace Periods</h3>
           </div>
-          <h3 class="card-title">Grace Periods</h3>
-          <p class="card-description">Soft-landing demotion rules and requalification windows.</p>
+          <p class="card-body">Soft-landing demotion rules and requalification windows.</p>
         </div>
         
-        <div class="feature-box-icon-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-            </svg>
+        <!-- Card 4: Tier Benefits -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Tier Benefits</h3>
           </div>
-          <h3 class="card-title">Tier Benefits</h3>
-          <p class="card-description">Multipliers, perks, and exclusive access tied to status.</p>
+          <p class="card-body">Multipliers, perks, and exclusive access tied to status.</p>
         </div>
         
-        <div class="feature-box-icon-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
+        <!-- Card 5: Hidden Tiers -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="card-title">Hidden Tiers</h3>
           </div>
-          <h3 class="card-title">Hidden Tiers</h3>
-          <p class="card-description">Invite-only or surprise-and-delight tiers tracked but not visible to members.</p>
+          <p class="card-body">Invite-only or surprise-and-delight tiers tracked but not visible to members.</p>
         </div>
         
-        <div class="feature-box-icon-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
+        <!-- Card 6: Tier Accelerators -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="card-title">Tier Accelerators</h3>
           </div>
-          <h3 class="card-title">Tier Accelerators</h3>
-          <p class="card-description">Short-term challenges that award bonus tier credit.</p>
+          <p class="card-body">Short-term challenges that award bonus tier credit.</p>
         </div>
         
       </div>
@@ -945,21 +1243,20 @@
   </section>
 
 
-  <!-- ========== FINAL CTA ========== -->
-  <section class="section-light bg-light" style="padding: 5rem 0;">
+  <!-- ========================================
+       SECTION 8: FINAL CTA
+       Background: LIGHT
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="cta-box-light">
         <h2 class="cta-title">Advanced Tooling for Complex Programs</h2>
         <p class="cta-description">
           Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.
         </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
           <a href="feature-advanced-tools.html" class="btn btn-primary btn-lg">
-            Explore Advanced Tools
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            Explore Advanced Tools &rarr;
           </a>
         </div>
       </div>
@@ -967,146 +1264,101 @@
   </section>
 
 
-  <!-- ========== FAQ ACCORDION - SPLIT LAYOUT ========== -->
-  <section class="accordion-section">
+  <!-- ========================================
+       SECTION 9: FAQ (Two-Column Layout)
+       Background: LIGHT
+       ======================================== -->
+  <section class="faq-section section-light bg-light">
     <div class="container">
-      
-      <div class="faq-split-layout">
+      <div class="faq-layout">
         
-        <!-- Left: Header -->
-        <div class="faq-split-header">
-          <h2 class="faq-split-title">Frequently Asked Questions</h2>
-          <p class="faq-split-description">
+        <!-- Left Column: Intro Text -->
+        <div class="faq-intro">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
             Common questions about program configuration, rule management, and tier logic.
           </p>
+          <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
         </div>
 
-        <!-- Right: Accordion -->
-        <div class="faq-split-accordion accordion">
-        
-        <!-- FAQ Item 1 -->
-        <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false">
-            <span class="accordion-trigger-text">Can I migrate rules from my existing loyalty platform?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>
-                Yes. Our SafeSwitch&trade; migration methodology includes a comprehensive rules audit 
-                and conversion process. We analyze your existing earn, burn, and tier logic, then 
-                recreate it in RCX with full validation testing before cutover. Most clients find 
-                they can also simplify and consolidate rules during migration.
-              </p>
-              <p>
-                For complex programs, we run parallel systems during transition so you can 
-                compare outputs and ensure accuracy. Our team has migrated programs with 
-                thousands of active rules and hundreds of millions of members without data loss.
-              </p>
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+          
+          <!-- FAQ 1 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can I migrate rules from my existing loyalty platform?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. Our SafeSwitch™ migration methodology includes a comprehensive rules audit and conversion process. We analyze your existing earn, burn, and tier logic, then recreate it in RCX with full validation testing before cutover. Most clients find they can also simplify and consolidate rules during migration.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- FAQ Item 2 -->
-        <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false">
-            <span class="accordion-trigger-text">How do I test rule changes before they go live?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>
-                Every rule configuration includes a sandbox environment where you can test 
-                against real member data without affecting production. Run simulations, 
-                preview point calculations, and validate tier progressions before publishing.
-              </p>
-              <p>
-                For high-stakes changes, our staged rollout feature lets you deploy rules 
-                to a percentage of traffic first. Monitor results, compare against control 
-                groups, then expand to full deployment when you're confident.
-              </p>
+          <!-- FAQ 2 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How do I test rule changes before they go live?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Every rule configuration includes a sandbox environment where you can test against real member data without affecting production. Run simulations, preview point calculations, and validate tier progressions before publishing. For high-stakes changes, our staged rollout feature lets you deploy rules to a percentage of traffic first.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- FAQ Item 3 -->
-        <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false">
-            <span class="accordion-trigger-text">Can different business units have different rules?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>
-                Absolutely. RCX supports multi-tenant program structures where each business 
-                unit, brand, or region can have its own earn rates, tier thresholds, and 
-                promotion rules—all within a single platform instance with unified member profiles.
-              </p>
-              <p>
-                Access controls ensure each team only sees and edits their own rules, while 
-                shared components (like base tier benefits) can be inherited across programs. 
-                This is how we support clients with 16+ program variants on one platform.
-              </p>
+          <!-- FAQ 3 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can different business units have different rules?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Absolutely. RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rules—all within a single platform instance with unified member profiles. This is how we support clients with 16+ program variants on one platform.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- FAQ Item 4 -->
-        <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false">
-            <span class="accordion-trigger-text">What happens when rules conflict with each other?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>
-                FlowComposer's execution engine uses explicit priority ordering to resolve 
-                conflicts deterministically. You define which rules take precedence, and the 
-                system follows that order every time. No surprises, no race conditions.
-              </p>
-              <p>
-                Built-in conflict detection warns you during configuration if new rules 
-                might overlap with existing ones. The audit log shows exactly which rules 
-                fired for any transaction, making troubleshooting straightforward.
-              </p>
+          <!-- FAQ 4 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">What happens when rules conflict with each other?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>FlowComposer's execution engine uses explicit priority ordering to resolve conflicts deterministically. You define which rules take precedence, and the system follows that order every time. No surprises, no race conditions. Built-in conflict detection warns you during configuration if new rules might overlap with existing ones.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- FAQ Item 5 -->
-        <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false">
-            <span class="accordion-trigger-text">How granular can tier qualification criteria be?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>
-                As granular as your business needs. Qualify members based on any combination 
-                of metrics: total spend, visit frequency, specific product purchases, partner 
-                transactions, engagement activities, or custom-defined behaviors. Use AND/OR 
-                logic to create sophisticated qualification paths.
-              </p>
-              <p>
-                Time windows are fully configurable—calendar year, rolling 12 months, membership 
-                anniversary, or custom periods. You can also create parallel qualification 
-                tracks so members can reach the same tier through different paths.
-              </p>
+          <!-- FAQ 5 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How granular can tier qualification criteria be?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>As granular as your business needs. Qualify members based on any combination of metrics: total spend, visit frequency, specific product purchases, partner transactions, engagement activities, or custom-defined behaviors. Time windows are fully configurable—calendar year, rolling 12 months, membership anniversary, or custom periods.</p>
+              </div>
             </div>
           </div>
-        </div>
 
         </div>
-        <!-- End faq-split-accordion -->
-        
       </div>
-      <!-- End faq-split-layout -->
-      
     </div>
   </section>
 
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========================================
+       FOOTER
+       Synced with index.html footer structure
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
@@ -1125,9 +1377,7 @@
             </div>
             <div class="footer-social">
               <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
             </div>
           </div>
@@ -1188,10 +1438,13 @@
   </footer>
 
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -1219,6 +1472,27 @@
         if (!isActive) {
           item.classList.add('active');
           trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     });
