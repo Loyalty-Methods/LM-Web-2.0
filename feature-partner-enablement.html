@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partner Enablement | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,45 +15,6 @@
   
   <style>
     /* Partner Enablement page-specific styles */
-    .stats-bar-compact {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-      text-align: center;
-      padding: var(--space-16) 0;
-    }
-    
-    @media (max-width: 768px) {
-      .stats-bar-compact {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-      }
-    }
-    
-    .stat-item-compact {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-    
-    .stat-number-lg {
-      font-size: var(--font-size-4xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      line-height: 1;
-    }
-    
-    .stat-label-main {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-    }
-    
-    .stat-label-sub {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      font-style: italic;
-    }
     
     /* Callout block */
     .callout-block {
@@ -634,7 +598,7 @@
   </section>
 
   <!-- ========== FEEDXCHANGE (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section" style="background-color: var(--color-light-100);">
+  <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
       <div class="feature-row feature-row-reverse">
         <div class="feature-row-content">
@@ -659,23 +623,23 @@
   </section>
 
   <!-- ========== STAT BAR ========== -->
-  <section class="section-dark bg-dark">
+  <section class="section dark bg-dark">
     <div class="container">
-      <div class="stats-bar-compact">
-        <div class="stat-item-compact">
-          <div class="stat-number-lg">100+</div>
-          <div class="stat-label-main">Partners at Single Client</div>
-          <div class="stat-label-sub">Fuel & convenience client</div>
+      <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-item">
+          <div class="stat-number" data-target="100" data-suffix="+">0</div>
+          <div class="stat-title">Partners at Single Client</div>
+          <div class="stat-subtitle">Fuel & convenience client</div>
         </div>
-        <div class="stat-item-compact">
-          <div class="stat-number-lg">4-5 hrs</div>
-          <div class="stat-label-main">Average Onboarding Time</div>
-          <div class="stat-label-sub">FeedXChange onboarding</div>
+        <div class="stat-item">
+          <div class="stat-number">4-5 hrs</div>
+          <div class="stat-title">Average Onboarding Time</div>
+          <div class="stat-subtitle">FeedXChange onboarding</div>
         </div>
-        <div class="stat-item-compact">
-          <div class="stat-number-lg">10M+</div>
-          <div class="stat-label-main">Rewards in Marketplace</div>
-          <div class="stat-label-sub">Integrated marketplace</div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="10" data-suffix="M+">0</div>
+          <div class="stat-title">Rewards in Marketplace</div>
+          <div class="stat-subtitle">Integrated marketplace</div>
         </div>
       </div>
     </div>
@@ -694,7 +658,7 @@
   </section>
 
   <!-- ========== PARTNER BILLING (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section" style="background-color: var(--color-light-100);">
+  <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
       <div class="feature-row">
         <div class="feature-row-content">
@@ -874,74 +838,84 @@
   </section>
 
   <!-- ========== FAQ SECTION ========== -->
-  <section class="accordion-section">
+  <section class="faq-section section-light bg-light">
     <div class="container">
-      <div class="accordion-header">
-        <p class="accordion-eyebrow">FAQ</p>
-        <h2 class="accordion-title">Frequently Asked Questions</h2>
-      </div>
-      <div class="accordion">
+      <div class="faq-layout">
         
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">How does FeedXChange handle different file formats from different partners?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>FeedXChange uses templates that define input file structure, field mapping, validation rules, and response file format. You create a template for each partner's specific format: CSV, XML, JSON, fixed-width, custom layouts. The template maps their fields to RCX fields and applies validation before processing. Once configured, the partner connection runs on schedule automatically with monitoring and alerting.</p>
+        <!-- Left Column: Intro Text -->
+        <div class="faq-intro">
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
+            Common questions about partner management, FeedXChange, and financial lifecycle capabilities.
+          </p>
+          <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
+        </div>
+
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does FeedXChange handle different file formats from different partners?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>FeedXChange uses templates that define input file structure, field mapping, validation rules, and response file format. You create a template for each partner's specific format: CSV, XML, JSON, fixed-width, custom layouts. The template maps their fields to RCX fields and applies validation before processing. Once configured, the partner connection runs on schedule automatically with monitoring and alerting.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">Can we track points separately by partner for billing purposes?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Yes. Points can be tagged by source and tracked at sub-balance level within a unified member balance. "These are Partner A points, these are Partner B points." When redemption occurs, you control which sub-balance it counts against. Individual sources can show deficits while the overall member balance remains positive. Members see one balance. Finance sees attribution by partner, location, channel, or promotion.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Can we track points separately by partner for billing purposes?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. Points can be tagged by source and tracked at sub-balance level within a unified member balance. "These are Partner A points, these are Partner B points." When redemption occurs, you control which sub-balance it counts against. Individual sources can show deficits while the overall member balance remains positive. Members see one balance. Finance sees attribution by partner, location, channel, or promotion.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">How does batch file processing maintain consistency with real-time transactions?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>FeedXChange rips incoming batch files into individual transactions and processes each one through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes. Partner billing accuracy depends on this consistency.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does batch file processing maintain consistency with real-time transactions?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>FeedXChange rips incoming batch files into individual transactions and processes each one through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes. Partner billing accuracy depends on this consistency.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">What financial lifecycle capabilities does the platform support for partners?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>The platform handles allocation of promotion funding across parties, billing parameters attached to rules and objects, workflow-driven billing and reimbursement calculations, and date-relative accuracy for back-dated processing when rates change. Full traceability into partner activity for reconciliation, audit, and financial reporting.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What financial lifecycle capabilities does the platform support for partners?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>The platform handles allocation of promotion funding across parties, billing parameters attached to rules and objects, workflow-driven billing and reimbursement calculations, and date-relative accuracy for back-dated processing when rates change. Full traceability into partner activity for reconciliation, audit, and financial reporting.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">Can partners have different integration methods for different operations?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Yes. Partners can use multiple integration modes simultaneously. Real-time APIs for point-of-interaction operations. Batch for end-of-day settlement files. Streaming for high-volume activity. The platform doesn't force partners into a single integration pattern.</p>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Can partners have different integration methods for different operations?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. Partners can use multiple integration modes simultaneously. Real-time APIs for point-of-interaction operations. Batch for end-of-day settlement files. Streaming for high-volume activity. The platform doesn't force partners into a single integration pattern.</p>
+              </div>
             </div>
           </div>
+          
         </div>
-        
       </div>
     </div>
   </section>
@@ -1053,6 +1027,57 @@
         }
       });
     });
+
+    // Animated number counters
+    const animateCounters = () => {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      
+      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+      
+      const animateCounter = (el) => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+        
+        const update = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = easeOutQuart(progress);
+          const current = target * easedProgress;
+          
+          if (isDecimal) {
+            el.textContent = prefix + current.toFixed(1) + suffix;
+          } else {
+            el.textContent = prefix + Math.floor(current) + suffix;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+          }
+        };
+        
+        requestAnimationFrame(update);
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    };
+    
+    // Initialize counters
+    animateCounters();
   </script>
 </body>
 </html>

@@ -13,6 +13,7 @@
   
   --color-navy: #5B8AB8;          /* LM Navy */
   --color-navy-dark: #2C4A6E;
+  --color-navy-light: #7BA3C8;
   
   --color-charcoal-900: #1A1A1A;  /* Deep Backgrounds */
   --color-charcoal-800: #262626;  /* Cards */
@@ -20,7 +21,9 @@
   
   --color-white: #FFFFFF;
   --color-black: #000000;
+  --color-gray-50: #F9F9F9;
   --color-gray-100: #E5E5E5;
+  --color-gray-300: #B0B0B0;
   --color-gray-400: #6B6B6B;
 
   /* -------------------------------------------------------------------------
@@ -58,6 +61,18 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
+  
+  /* Line Heights */
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.7;
+  
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
 
   /* -------------------------------------------------------------------------
      4. SPACING SCALE
