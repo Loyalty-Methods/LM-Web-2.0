@@ -4,14 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engagement & Gamification | RCX Loyalty Platform</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* ========== PAGE-SPECIFIC STYLES (Minimal) ========== */
+    /* ========== PAGE-SPECIFIC STYLES ========== */
+
+    /* Subpage Hero (Orange Gradient Variant) */
+    .subpage-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .subpage-hero-brand {
+      background: linear-gradient(135deg, #F37021 0%, #FF8534 50%, #FFB380 100%);
+    }
+
+    .subpage-hero-brand::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .subpage-hero-glow {
+      display: none;
+    }
+
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .subpage-hero-content {
+      max-width: 600px;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+    }
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--font-size-sm);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
     /* Stats Bar (matching index.html) */
     .stats-bar {
@@ -58,7 +171,61 @@
       color: var(--color-gray-400);
       font-style: italic;
     }
-    
+
+    /* Section Description */
+    .section-description {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Icon Feature Cards (6-card grid) */
+    .icon-feature {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-base), 
+                  box-shadow var(--transition-base), 
+                  border-color var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .icon-feature:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .icon-feature-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .icon-feature-description {
+      color: var(--text-muted);
+      font-size: var(--font-size-sm);
+      line-height: 1.6;
+    }
+
+    /* 6-column grid for icon features */
+    .grid-cols-1 { grid-template-columns: 1fr; }
+
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .gap-8 { gap: var(--space-8); }
+
     /* Approach Table */
     .approach-table {
       width: 100%;
@@ -76,25 +243,123 @@
 
     .approach-table th {
       font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      background: var(--color-light-100);
+      color: var(--color-charcoal-900);
+      background: #F5F5F5;
       font-size: var(--font-size-xs);
       text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wide);
+      letter-spacing: 0.1em;
     }
 
     .approach-table td {
       color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.6;
     }
 
     .approach-table td strong {
-      color: var(--color-black);
+      color: var(--color-charcoal-900);
       font-weight: var(--font-weight-semibold);
     }
 
     .approach-table tr:last-child td {
       border-bottom: none;
+    }
+
+    /* Feature Rows Section */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    .feature-row-reverse {
+      direction: rtl;
+    }
+
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 768px) {
+      .feature-row,
+      .feature-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    .feature-row-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .feature-row-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-4) 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .feature-row-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .feature-row-list-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.5em;
     }
 
     /* Streak Progression Visual */
@@ -121,8 +386,8 @@
       background: linear-gradient(90deg, 
         var(--color-primary) 0%, 
         var(--color-primary) 60%, 
-        var(--color-gray-200) 60%,
-        var(--color-gray-200) 100%
+        var(--color-gray-100) 60%,
+        var(--color-gray-100) 100%
       );
       transform: translateY(-50%);
       z-index: 0;
@@ -135,7 +400,7 @@
       width: 140px;
       padding: var(--space-5);
       background: var(--color-white);
-      border: 2px solid var(--color-gray-200);
+      border: 2px solid var(--color-gray-100);
       border-radius: var(--radius-xl);
       text-align: center;
       transition: all var(--transition-base);
@@ -173,7 +438,7 @@
       font-weight: var(--font-weight-semibold);
       color: var(--color-gray-400);
       text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wide);
+      letter-spacing: 0.1em;
       margin-bottom: var(--space-2);
     }
 
@@ -188,13 +453,13 @@
     }
 
     .streak-box.locked .streak-box-icon {
-      color: var(--color-gray-300);
+      color: var(--color-gray-100);
     }
 
     .streak-box-value {
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
+      color: var(--color-charcoal-900);
       margin-bottom: var(--space-1);
     }
 
@@ -212,7 +477,7 @@
 
     .streak-progress-bar {
       height: 8px;
-      background: var(--color-gray-200);
+      background: var(--color-gray-100);
       border-radius: var(--radius-full);
       overflow: hidden;
       margin-bottom: var(--space-3);
@@ -270,6 +535,18 @@
       }
     }
 
+    /* Accordion Section */
+    .accordion-section {
+      padding: var(--space-20) 0;
+      background: var(--color-white);
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
     /* FAQ Split Layout */
     .faq-split-layout {
       display: grid;
@@ -293,14 +570,14 @@
     .faq-split-title {
       font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+      color: var(--color-charcoal-900);
       margin-bottom: var(--space-4);
     }
 
     .faq-split-description {
       font-size: var(--font-size-base);
       color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.7;
     }
 
     .faq-split-accordion {
@@ -312,6 +589,23 @@
         position: static;
         text-align: center;
       }
+    }
+
+    /* Card Accent Variant for Streaks Section */
+    .card-accent {
+      text-align: center;
+    }
+
+    .card-accent .card-title {
+      color: var(--color-primary);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-2);
+    }
+
+    .card-accent .card-description {
+      color: var(--text-muted);
+      font-size: var(--font-size-sm);
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -483,7 +777,7 @@
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                         </div>
                         <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">ThreadSyncâ„¢</div>
+                          <div class="mega-menu-link-title">ThreadSync™</div>
                           <div class="mega-menu-link-description">Real-time transaction processing</div>
                         </div>
                       </a>
@@ -492,7 +786,7 @@
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
                         </div>
                         <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">SafeSwitchâ„¢</div>
+                          <div class="mega-menu-link-title">SafeSwitch™</div>
                           <div class="mega-menu-link-description">Zero-downtime platform migration</div>
                         </div>
                       </a>
@@ -644,7 +938,7 @@
         <h2 class="section-title">Reward Any Member Behavior</h2>
         <p class="section-description">Every interaction is an opportunity to learn and engage.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-3">
         
         <div class="icon-feature">
           <div class="icon-feature-header">
@@ -712,7 +1006,7 @@
 
 
   <!-- ========== STATS BAR ========== -->
-  <section class="section section-dark bg-dark">
+  <section class="section dark bg-dark">
     <div class="container">
       <div class="stats-bar">
         <div class="stat-item">
@@ -820,7 +1114,7 @@
               </tr>
               <tr>
                 <td><strong>Progressive</strong></td>
-                <td>Deferred rewards until qualification (join â†’ transact â†’ qualify)</td>
+                <td>Deferred rewards until qualification (join → transact → qualify)</td>
                 <td>High-value acquisition</td>
               </tr>
             </tbody>
@@ -892,31 +1186,31 @@
         <div class="streak-boxes">
           <div class="streak-box completed">
             <div class="streak-box-label">Visit 1</div>
-            <div class="streak-box-icon">âœ“</div>
+            <div class="streak-box-icon">✓</div>
             <div class="streak-box-value">Complete</div>
             <div class="streak-box-points">+50 pts</div>
           </div>
           <div class="streak-box completed">
             <div class="streak-box-label">Visit 2</div>
-            <div class="streak-box-icon">âœ“</div>
+            <div class="streak-box-icon">✓</div>
             <div class="streak-box-value">Complete</div>
             <div class="streak-box-points">+50 pts</div>
           </div>
           <div class="streak-box current">
             <div class="streak-box-label">Visit 3</div>
-            <div class="streak-box-icon">â—</div>
+            <div class="streak-box-icon">●</div>
             <div class="streak-box-value">Current</div>
             <div class="streak-box-points">+50 pts</div>
           </div>
           <div class="streak-box locked">
             <div class="streak-box-label">Visit 4</div>
-            <div class="streak-box-icon">â—‹</div>
+            <div class="streak-box-icon">○</div>
             <div class="streak-box-value">Locked</div>
             <div class="streak-box-points">+50 pts</div>
           </div>
           <div class="streak-box reward">
             <div class="streak-box-label">Reward</div>
-            <div class="streak-box-icon">ðŸŽ</div>
+            <div class="streak-box-icon">🎁</div>
             <div class="streak-box-value">Unlocked</div>
             <div class="streak-box-points">500 Bonus</div>
           </div>
@@ -926,33 +1220,33 @@
           <div class="streak-progress-bar">
             <div class="streak-progress-fill"></div>
           </div>
-          <p class="streak-progress-text">Progress at <strong>60%</strong> â€” 2 more visits to unlock your reward</p>
+          <p class="streak-progress-text">Progress at <strong>60%</strong> — 2 more visits to unlock your reward</p>
         </div>
       </div>
 
       <!-- Streak Capability Cards -->
       <div class="streak-capabilities">
         <div class="card card-accent">
-          <div class="card-body" style="text-align: center;">
-            <h3 class="card-title" style="color: var(--color-primary);">Sequential</h3>
+          <div class="card-body">
+            <h3 class="card-title">Sequential</h3>
             <p class="card-description">Actions in order. Visit Monday, then Tuesday, then Wednesday. Miss a day, streak resets.</p>
           </div>
         </div>
         <div class="card card-accent">
-          <div class="card-body" style="text-align: center;">
-            <h3 class="card-title" style="color: var(--color-primary);">Non-Sequential</h3>
+          <div class="card-body">
+            <h3 class="card-title">Non-Sequential</h3>
             <p class="card-description">Complete any 5 visits in 30 days. Order doesn't matter. Flexibility for real life.</p>
           </div>
         </div>
         <div class="card card-accent">
-          <div class="card-body" style="text-align: center;">
-            <h3 class="card-title" style="color: var(--color-primary);">Hyper-Personalized</h3>
+          <div class="card-body">
+            <h3 class="card-title">Hyper-Personalized</h3>
             <p class="card-description">Targets personalized per member based on history and appetite. Same streak, different thresholds.</p>
           </div>
         </div>
         <div class="card card-accent">
-          <div class="card-body" style="text-align: center;">
-            <h3 class="card-title" style="color: var(--color-primary);">Real-Time Progress</h3>
+          <div class="card-body">
+            <h3 class="card-title">Real-Time Progress</h3>
             <p class="card-description">Progress updates the moment an action completes. No batch delays. Instant feedback.</p>
           </div>
         </div>
@@ -1054,11 +1348,11 @@
   <section class="section-light bg-light" style="padding: 5rem 0;">
     <div class="container">
       <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Ready to drive engagement beyond transactions?</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to drive engagement beyond transactions?</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
           See how streaks, gamification, and non-transactional engagement work in your program. Schedule a personalized demo.
         </p>
-        <div class="flex gap-4">
+        <div class="flex gap-4 justify-center">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
       </div>
