@@ -65,11 +65,6 @@
 
     /* ========== UNIFIED ORANGE OVERRIDES ========== */
     
-    /* Section titles in charcoal card sections */
-    .charcoal-cards-section .section-title {
-      color: var(--unified-orange);
-    }
-    
     /* All buttons - solid color, refined shadows */
     .btn-primary,
     .btn-dark,
@@ -97,12 +92,6 @@
       filter: brightness(0.98);
     }
 
-    /* Card titles */
-    .four-ws-card-title,
-    .tier-logic-card-title {
-      color: var(--unified-orange);
-    }
-    
     /* Eyebrows and labels */
     .feature-row-eyebrow,
     .feature-card-label,
@@ -162,152 +151,6 @@
     .sticky-tab.active {
       background: var(--unified-orange) !important;
       box-shadow: 0 2px 8px var(--unified-orange-shadow);
-    }
-
-    /* 4-card grid for Four W's - DARK CHARCOAL STYLE */
-    .four-ws-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 1024px) {
-      .four-ws-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .four-ws-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    /* ========== CHARCOAL CARDS WITH NAVY GRADIENT BORDER ========== */
-    .four-ws-card {
-      padding: var(--space-6);
-      background: 
-        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-        linear-gradient(145deg, #1A1A1A 0%, #262626 50%, #333333 100%);
-      border-radius: var(--radius-2xl);
-      border: 1px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      transition: transform var(--transition-base), 
-                  box-shadow var(--transition-base);
-    }
-    
-    /* Navy gradient border using pseudo-element */
-    .four-ws-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-2xl);
-      padding: 1px;
-      background: linear-gradient(145deg, rgba(91, 138, 184, 0.4) 0%, rgba(91, 138, 184, 0.15) 50%, rgba(91, 138, 184, 0.3) 100%);
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      transition: background var(--transition-base);
-    }
-    
-    .four-ws-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(91, 138, 184, 0.2);
-    }
-    
-    .four-ws-card:hover::before {
-      background: linear-gradient(145deg, rgba(91, 138, 184, 0.6) 0%, rgba(91, 138, 184, 0.3) 50%, rgba(91, 138, 184, 0.5) 100%);
-    }
-    
-    .four-ws-card-title {
-      font-size: var(--font-size-xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--unified-orange);
-      margin-bottom: var(--space-3);
-    }
-    
-    .four-ws-card-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
-    }
-
-    /* 6-card grid for Tier Logic */
-    .tier-logic-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 1024px) {
-      .tier-logic-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .tier-logic-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    /* ========== TIER LOGIC CARDS WITH NAVY GRADIENT BORDER ========== */
-    .tier-logic-card {
-      padding: var(--space-6);
-      background: 
-        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-        linear-gradient(145deg, #1A1A1A 0%, #262626 50%, #333333 100%);
-      border-radius: var(--radius-2xl);
-      border: 1px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      transition: transform var(--transition-base), 
-                  box-shadow var(--transition-base);
-    }
-    
-    /* Navy gradient border using pseudo-element */
-    .tier-logic-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-2xl);
-      padding: 1px;
-      background: linear-gradient(145deg, rgba(91, 138, 184, 0.4) 0%, rgba(91, 138, 184, 0.15) 50%, rgba(91, 138, 184, 0.3) 100%);
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      transition: background var(--transition-base);
-    }
-    
-    .tier-logic-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(91, 138, 184, 0.2);
-    }
-    
-    .tier-logic-card:hover::before {
-      background: linear-gradient(145deg, rgba(91, 138, 184, 0.6) 0%, rgba(91, 138, 184, 0.3) 50%, rgba(91, 138, 184, 0.5) 100%);
-    }
-    
-    .tier-logic-card-title {
-      font-size: var(--font-size-xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--unified-orange);
-      margin-bottom: var(--space-3);
-    }
-    
-    .tier-logic-card-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
     }
 
     /* Callout box text - full width */
@@ -585,7 +428,7 @@
 
 
   <!-- ========== FOUR W's FRAMEWORK ========== -->
-  <section class="section section-light bg-white charcoal-cards-section">
+  <section class="section section-light bg-light">
     <div class="container">
       
       <div class="section-header">
@@ -595,26 +438,26 @@
         </p>
       </div>
 
-      <div class="four-ws-grid">
+      <div class="feature-box-grid-4">
         
-        <div class="four-ws-card">
-          <h3 class="four-ws-card-title">Who</h3>
-          <p class="four-ws-card-description">Target by member attributes, tier, segment, preferences, or status.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Who</h3>
+          <p class="feature-box-description">Target by member attributes, tier, segment, preferences, or status.</p>
         </div>
 
-        <div class="four-ws-card">
-          <h3 class="four-ws-card-title">Where</h3>
-          <p class="four-ws-card-description">Filter by location, brand, category, or outlet list.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Where</h3>
+          <p class="feature-box-description">Filter by location, brand, category, or outlet list.</p>
         </div>
 
-        <div class="four-ws-card">
-          <h3 class="four-ws-card-title">When</h3>
-          <p class="four-ws-card-description">Control by effective dates, day of week, hour of day, or time zone.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">When</h3>
+          <p class="feature-box-description">Control by effective dates, day of week, hour of day, or time zone.</p>
         </div>
 
-        <div class="four-ws-card">
-          <h3 class="four-ws-card-title">What</h3>
-          <p class="four-ws-card-description">Define by product, service, activity type, or transaction attribute.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">What</h3>
+          <p class="feature-box-description">Define by product, service, activity type, or transaction attribute.</p>
         </div>
 
       </div>
@@ -720,42 +563,42 @@
   </section>
 
 
-  <!-- ========== TIER RULES (6-Card Grid - SAME STYLE AS FOUR W's) ========== -->
-  <section class="section section-lg section-light bg-white charcoal-cards-section">
+  <!-- ========== TIER RULES (6-Card Grid - UNIFIED FEATURE BOX STYLE) ========== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title" style="white-space: nowrap;">Tier Logic That Scales With Your Program</h2>
       </div>
-      <div class="tier-logic-grid">
+      <div class="feature-box-grid">
         
-        <div class="tier-logic-card">
-          <h3 class="tier-logic-card-title">Qualification Logic</h3>
-          <p class="tier-logic-card-description">Progress on spend, visits, nights, or any custom metric.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Qualification Logic</h3>
+          <p class="feature-box-description">Progress on spend, visits, nights, or any custom metric.</p>
         </div>
         
-        <div class="tier-logic-card">
-          <h3 class="tier-logic-card-title">Automatic Progression</h3>
-          <p class="tier-logic-card-description">Tier upgrades trigger when thresholds are met. No batch jobs.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Automatic Progression</h3>
+          <p class="feature-box-description">Tier upgrades trigger when thresholds are met. No batch jobs.</p>
         </div>
         
-        <div class="tier-logic-card">
-          <h3 class="tier-logic-card-title">Grace Periods</h3>
-          <p class="tier-logic-card-description">Soft-landing demotion rules and requalification windows.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Grace Periods</h3>
+          <p class="feature-box-description">Soft-landing demotion rules and requalification windows.</p>
         </div>
         
-        <div class="tier-logic-card">
-          <h3 class="tier-logic-card-title">Tier Benefits</h3>
-          <p class="tier-logic-card-description">Multipliers, perks, and exclusive access tied to status.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Tier Benefits</h3>
+          <p class="feature-box-description">Multipliers, perks, and exclusive access tied to status.</p>
         </div>
         
-        <div class="tier-logic-card">
-          <h3 class="tier-logic-card-title">Hidden Tiers</h3>
-          <p class="tier-logic-card-description">Invite-only or surprise-and-delight tiers tracked but not visible to members.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Hidden Tiers</h3>
+          <p class="feature-box-description">Invite-only or surprise-and-delight tiers tracked but not visible to members.</p>
         </div>
         
-        <div class="tier-logic-card">
-          <h3 class="tier-logic-card-title">Tier Accelerators</h3>
-          <p class="tier-logic-card-description">Short-term challenges that award bonus tier credit.</p>
+        <div class="feature-box feature-box-simple">
+          <h3 class="feature-box-title">Tier Accelerators</h3>
+          <p class="feature-box-description">Short-term challenges that award bonus tier credit.</p>
         </div>
         
       </div>
@@ -852,7 +695,7 @@
               <p>
                 Absolutely. RCX supports multi-tenant program structures where each business 
                 unit, brand, or region can have its own earn rates, tier thresholds, and 
-                promotion rulesâ€”all within a single platform instance with unified member profiles.
+                promotion rulesÃ¢â‚¬â€all within a single platform instance with unified member profiles.
               </p>
               <p>
                 Access controls ensure each team only sees and edits their own rules, while 
@@ -900,7 +743,7 @@
                 logic to create sophisticated qualification paths.
               </p>
               <p>
-                Time windows are fully configurableâ€”calendar year, rolling 12 months, membership 
+                Time windows are fully configurableÃ¢â‚¬â€calendar year, rolling 12 months, membership 
                 anniversary, or custom periods. You can also create parallel qualification 
                 tracks so members can reach the same tier through different paths.
               </p>
