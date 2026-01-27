@@ -59,7 +59,9 @@
     .spotlight-eyebrow,
     .accordion-eyebrow,
     .section-eyebrow,
-    .mega-menu-featured-eyebrow {
+    .mega-menu-featured-eyebrow,
+    .subpage-hero-eyebrow,
+    .subpage-hero-eyebrow span {
       color: var(--unified-orange);
     }
     
@@ -84,11 +86,21 @@
       color: var(--unified-orange);
     }
     
-    /* Icon backgrounds */
+    /* Mega menu icon backgrounds */
     .mega-menu-link-icon,
-    .icon-feature-icon,
     .feature-grid-icon {
       background: var(--unified-orange-glow);
+      color: var(--unified-orange);
+    }
+    
+    /* Icon feature - dark background with orange stroke */
+    .icon-feature-icon {
+      background: #2A2A2A;
+      color: var(--unified-orange);
+    }
+    
+    /* Icon feature titles */
+    .icon-feature-title {
       color: var(--unified-orange);
     }
     
@@ -128,20 +140,12 @@
 
     /* ========== PROMO WIDGET SECTION ========== */
     .promo-widget-section {
-      background: linear-gradient(145deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%);
+      background: 
+        linear-gradient(180deg, rgba(42,42,42,0.97) 0%, rgba(42,42,42,0.92) 15%, rgba(38,38,38,0.88) 40%, rgba(35,35,35,0.85) 100%),
+        url('promo-types-bg.png') center center / cover no-repeat;
       position: relative;
       padding: var(--space-20) 0 var(--space-16);
       overflow: hidden;
-    }
-    
-    /* Circuit pattern overlay */
-    .promo-widget-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%235B8AB8' stroke-opacity='0.08' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60M10 10h10v10H10zM40 10h10v10H40zM10 40h10v10H10zM40 40h10v10H40z'/%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3Ccircle cx='10' cy='30' r='2'/%3E%3Ccircle cx='50' cy='30' r='2'/%3E%3Ccircle cx='30' cy='10' r='2'/%3E%3Ccircle cx='30' cy='50' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      opacity: 0.5;
-      pointer-events: none;
     }
     
     .promo-widget-section .container {
@@ -159,7 +163,7 @@
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
       letter-spacing: var(--letter-spacing-widest);
-      color: var(--color-navy-light);
+      color: var(--unified-orange);
       margin-bottom: var(--space-4);
     }
 
@@ -204,13 +208,13 @@
       }
     }
     
-    /* Copy cards */
+    /* Copy cards - glass effect on dark background */
     .promo-copy-card {
       padding: var(--space-6);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(91, 138, 184, 0.2);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-xl);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
     }
     
     .promo-copy-card-eyebrow {
@@ -254,12 +258,12 @@
     .promo-phone {
       width: 180px;
       height: 380px;
-      background: linear-gradient(145deg, #1a1a1a 0%, #262626 100%);
+      background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
       border-radius: 32px;
-      border: 3px solid #3a3a3a;
+      border: 3px solid rgba(255, 255, 255, 0.15);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
     
     /* Phone notch */
@@ -290,14 +294,14 @@
     .promo-phone-left { --phone-glow-color: #5B8AB8; }
     .promo-phone-right { --phone-glow-color: #8B5CF6; }
     
-    /* Phone screen */
+    /* Phone screen - white/light gradient like homepage browser */
     .promo-phone-screen {
       position: absolute;
       top: 12px;
       left: 8px;
       right: 8px;
       bottom: 12px;
-      background: linear-gradient(180deg, #1e1e2e 0%, #2a2a3e 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
       border-radius: 24px;
       overflow: hidden;
       display: flex;
@@ -307,20 +311,20 @@
     .promo-phone-header {
       padding: var(--space-4) var(--space-3);
       padding-top: var(--space-6);
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: #ffffff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
     
     .promo-phone-header-title {
       font-size: 11px;
       font-weight: var(--font-weight-semibold);
-      color: var(--color-white);
+      color: #1a1a1a;
       margin-bottom: 2px;
     }
     
     .promo-phone-header-subtitle {
       font-size: 9px;
-      color: var(--color-gray-400);
+      color: #666666;
     }
     
     .promo-phone-content {
@@ -329,18 +333,20 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-2);
+      background: #f5f5f7;
     }
     
     .promo-phone-card {
-      background: rgba(255,255,255,0.05);
+      background: #ffffff;
       border-radius: var(--radius-lg);
       padding: var(--space-3);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
     
     .promo-phone-card-highlight {
-      background: linear-gradient(135deg, rgba(255, 133, 52, 0.15) 0%, rgba(255, 133, 52, 0.05) 100%);
-      border-color: rgba(255, 133, 52, 0.3);
+      background: linear-gradient(135deg, rgba(255, 133, 52, 0.1) 0%, rgba(255, 133, 52, 0.02) 100%);
+      border-color: rgba(255, 133, 52, 0.25);
     }
     
     .promo-phone-label {
@@ -354,12 +360,12 @@
     .promo-phone-value {
       font-size: 14px;
       font-weight: var(--font-weight-bold);
-      color: var(--color-white);
+      color: #1a1a1a;
     }
     
     .promo-phone-text {
       font-size: 9px;
-      color: var(--color-gray-400);
+      color: #666666;
       line-height: 1.4;
     }
     
@@ -722,7 +728,7 @@
           </div>
           <h1 class="subpage-hero-title">Promotions & Discounting</h1>
           <p class="subpage-hero-description">
-            Run promotions other platforms can't. BOGO, multipliers, mix & match, partner co-funding—400+ active promotions managed through one rules engine.
+            Run promotions other platforms can't. BOGO, multipliers, mix & match, partner co-fundingÃ¢â‚¬â€400+ active promotions managed through one rules engine.
           </p>
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
@@ -744,7 +750,6 @@
   <section class="section section-lg section-light bg-white">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Lifecycle Promotions</p>
         <h2 class="section-title">Drive Behavior at Every Stage</h2>
       </div>
       <div class="lifecycle-grid">
@@ -833,7 +838,7 @@
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Buy X Get Y</p>
               <h3 class="promo-copy-card-title">BOGO</h3>
-              <p class="promo-copy-card-description">Configure qualifying products, required quantities, and reward items. Handle complex scenarios like "Buy 2 coffees, get 3rd free" or "Buy entrée, get appetizer 50% off."</p>
+              <p class="promo-copy-card-description">Configure qualifying products, required quantities, and reward items. Handle complex scenarios like "Buy 2 coffees, get 3rd free" or "Buy entrÃƒÂ©e, get appetizer 50% off."</p>
             </div>
             
             <!-- Phone Mockups -->
@@ -966,7 +971,7 @@
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Combo Deals</p>
               <h3 class="promo-copy-card-title">Mix & Match</h3>
-              <p class="promo-copy-card-description">Evaluate basket contents in real time. "Any 3 items from Category A for $10" or "Complete the meal deal for bonus points"—calculated at the line-item level.</p>
+              <p class="promo-copy-card-description">Evaluate basket contents in real time. "Any 3 items from Category A for $10" or "Complete the meal deal for bonus points"Ã¢â‚¬â€calculated at the line-item level.</p>
             </div>
             
           </div>
@@ -1016,7 +1021,7 @@
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
-                      <div class="promo-phone-label">⚡ Flash Deal</div>
+                      <div class="promo-phone-label">Ã¢Å¡Â¡ Flash Deal</div>
                       <div class="promo-phone-value">2X Points</div>
                       <div class="promo-phone-text">Next 2 hours only</div>
                     </div>
@@ -1120,43 +1125,72 @@
   </section>
 
 
-  <!-- ========== SECTION 6: BUDGET CONTROLS (6-Card Dark Grid) ========== -->
-  <section class="section section-lg section-dark bg-dark charcoal-cards-section">
+  <!-- ========== SECTION 6: BUDGET CONTROLS (6-Card Light Grid) ========== -->
+  <section class="section section-lg section-light bg-white">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow" style="color: var(--color-navy-light);">Budget Controls</p>
         <h2 class="section-title">Promotional Spend Under Control</h2>
       </div>
-      <div class="budget-grid">
+      <div class="lifecycle-grid">
         
-        <div class="budget-card">
-          <h3 class="budget-card-title">Campaign Budgets</h3>
-          <p class="budget-card-description">Set maximum liability per promotion with automatic pause when limits hit.</p>
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3 class="icon-feature-title">Campaign Budgets</h3>
+          </div>
+          <p class="icon-feature-description">Set maximum liability per promotion with automatic pause when limits hit.</p>
         </div>
-        
-        <div class="budget-card">
-          <h3 class="budget-card-title">Partner Allocations</h3>
-          <p class="budget-card-description">Separate funding pools per partner with real-time tracking.</p>
+
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="icon-feature-title">Partner Allocations</h3>
+          </div>
+          <p class="icon-feature-description">Separate funding pools per partner with real-time tracking.</p>
         </div>
-        
-        <div class="budget-card">
-          <h3 class="budget-card-title">Redemption Caps</h3>
-          <p class="budget-card-description">Limit total redemptions, per-member usage, or per-period claims.</p>
+
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="icon-feature-title">Redemption Caps</h3>
+          </div>
+          <p class="icon-feature-description">Limit total redemptions, per-member usage, or per-period claims.</p>
         </div>
-        
-        <div class="budget-card">
-          <h3 class="budget-card-title">Velocity Controls</h3>
-          <p class="budget-card-description">Detect and block suspicious redemption patterns automatically.</p>
+
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="icon-feature-title">Velocity Controls</h3>
+          </div>
+          <p class="icon-feature-description">Detect and block suspicious redemption patterns automatically.</p>
         </div>
-        
-        <div class="budget-card">
-          <h3 class="budget-card-title">Approval Workflows</h3>
-          <p class="budget-card-description">Route high-value promotions through configurable approval chains.</p>
+
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+            <h3 class="icon-feature-title">Approval Workflows</h3>
+          </div>
+          <p class="icon-feature-description">Route high-value promotions through configurable approval chains.</p>
         </div>
-        
-        <div class="budget-card">
-          <h3 class="budget-card-title">Liability Reporting</h3>
-          <p class="budget-card-description">Real-time visibility into outstanding promotional obligations.</p>
+
+        <div class="icon-feature">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <h3 class="icon-feature-title">Liability Reporting</h3>
+          </div>
+          <p class="icon-feature-description">Real-time visibility into outstanding promotional obligations.</p>
         </div>
         
       </div>
@@ -1178,7 +1212,7 @@
           <span class="feature-row-eyebrow">Measurement</span>
           <h2 class="feature-row-title">Prove Incremental Lift with Control Groups</h2>
           <p class="feature-row-description">
-            Automatically hold back a statistically valid control group for any promotion. Compare against the promoted population to measure true incrementality—not just redemption volume.
+            Automatically hold back a statistically valid control group for any promotion. Compare against the promoted population to measure true incrementalityÃ¢â‚¬â€not just redemption volume.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Automated holdout selection</li>
@@ -1196,7 +1230,24 @@
   </section>
 
 
-  <!-- ========== SECTION 9: FAQ ACCORDION ========== -->
+
+  <!-- ========== SECTION 9: FINAL CTA ========== -->
+  <section class="section-light bg-light" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="cta-box-light">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Ready to run promotions at scale?</h2>
+        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+          See how 400+ promotions, 50+ partners, and real-time discounting work together. Schedule a personalized demo.
+        </p>
+        <div class="flex gap-4">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== SECTION 10: FAQ ACCORDION ========== -->
   <section class="accordion-section">
     <div class="container">
       
@@ -1246,7 +1297,7 @@
               <div class="accordion-content-inner">
                 <p>
                   Yes. Partner enablement is a core capability. Each promotion can be tagged with funding 
-                  allocations from multiple sources—your brand, CPG partners, franchisees, or any combination. 
+                  allocations from multiple sourcesÃ¢â‚¬â€your brand, CPG partners, franchisees, or any combination. 
                   RCX tracks every earn and burn by funding source automatically.
                 </p>
                 <p>
@@ -1290,7 +1341,7 @@
               <div class="accordion-content-inner">
                 <p>
                   Budget controls can be configured for soft or hard caps. Hard caps immediately pause 
-                  the promotion when the budget is exhausted—no additional redemptions are allowed. 
+                  the promotion when the budget is exhaustedÃ¢â‚¬â€no additional redemptions are allowed. 
                   Soft caps trigger alerts to stakeholders while allowing the promotion to continue, 
                   giving you time to decide whether to extend budget.
                 </p>
@@ -1331,23 +1382,6 @@
       
     </div>
   </section>
-
-
-  <!-- ========== SECTION 10: FINAL CTA ========== -->
-  <section class="section-light bg-light" style="padding: 5rem 0;">
-    <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Ready to run promotions at scale?</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
-          See how 400+ promotions, 50+ partners, and real-time discounting work together. Schedule a personalized demo.
-        </p>
-        <div class="flex gap-4">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
