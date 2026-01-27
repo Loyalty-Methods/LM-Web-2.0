@@ -11,213 +11,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* ========== UNIFIED ORANGE: #FF8534 - Enterprise Sleek ========== */
-    :root {
-      --unified-orange: #FF8534;
-      --unified-orange-shadow: rgba(255, 133, 52, 0.25);
-      --unified-orange-shadow-hover: rgba(255, 133, 52, 0.35);
-      --unified-orange-glow: rgba(255, 133, 52, 0.15);
-    }
+    /* ========== PAGE-SPECIFIC STYLES (Minimal) ========== */
 
-    /* ========== UNIFIED ORANGE OVERRIDES ========== */
-    
-    /* Section titles in charcoal card sections */
-    .charcoal-cards-section .section-title {
-      color: var(--unified-orange);
-    }
-    
-    /* All buttons - solid color, refined shadows */
-    .btn-primary,
-    .btn-dark,
-    .header .btn-primary {
-      background: var(--unified-orange) !important;
-      box-shadow: 0 2px 8px var(--unified-orange-shadow),
-                  0 1px 3px rgba(0, 0, 0, 0.1);
-      border: none;
-      transition: all 0.2s ease;
-    }
-    
-    .btn-primary:hover,
-    .btn-dark:hover,
-    .header .btn-primary:hover {
-      background: var(--unified-orange) !important;
-      box-shadow: 0 4px 16px var(--unified-orange-shadow-hover),
-                  0 2px 6px rgba(0, 0, 0, 0.12);
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
-    
-    .btn-primary:active,
-    .btn-dark:active {
-      transform: translateY(0);
-      filter: brightness(0.98);
-    }
-
-    /* Orange hero button override - white button on orange bg */
-    .subpage-hero-brand .btn-primary {
-      background: var(--color-white) !important;
-      color: var(--unified-orange) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .subpage-hero-brand .btn-primary:hover {
-      background: var(--color-white) !important;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
-      transform: translateY(-2px);
-      filter: none;
-    }
-
-    /* Eyebrows and labels */
-    .feature-row-eyebrow,
-    .feature-card-label,
-    .spotlight-eyebrow,
-    .accordion-eyebrow,
-    .section-eyebrow,
-    .mega-menu-featured-eyebrow {
-      color: var(--unified-orange);
-    }
-    
-    /* Links */
-    .cta-link,
-    .card-link,
-    .resource-card-link,
-    .accordion-content-link {
-      color: var(--unified-orange);
-    }
-    
-    .cta-link:hover,
-    .card-link:hover,
-    .resource-card-link:hover,
-    .accordion-content-link:hover {
-      color: var(--unified-orange);
-      filter: brightness(0.9);
-    }
-    
-    /* Nav hover states */
-    .nav-link:hover {
-      color: var(--unified-orange);
-    }
-    
-    /* Icon backgrounds */
-    .mega-menu-link-icon,
-    .icon-feature-icon,
-    .feature-grid-icon {
-      background: var(--unified-orange-glow);
-      color: var(--unified-orange);
-    }
-    
-    /* List bullets */
-    .feature-row-list-item::before {
-      background: var(--unified-orange);
-    }
-    
-    /* Footer column titles */
-    .footer-column-title {
-      color: var(--unified-orange);
-    }
-
-    /* Last nav item mega-menu aligns right to prevent cutoff */
-    .nav-item:last-child .mega-menu {
-      left: auto;
-      right: 0;
-    }
-
-    /* ========== HOOK SECTION ========== */
-    .hook-section {
-      padding: var(--space-20) 0;
-      background: var(--color-white);
-    }
-
-    .hook-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hook-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-      margin-bottom: var(--space-6);
-    }
-
-    .hook-body {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-
-    /* ========== ENGAGEMENT GRID (6 cards) ========== */
-    .engagement-grid {
+    /* Stats Bar (matching index.html) */
+    .stats-bar {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
     }
     
     @media (max-width: 1024px) {
-      .engagement-grid {
+      .stats-bar {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
       }
     }
     
-    @media (max-width: 640px) {
-      .engagement-grid {
+    @media (max-width: 480px) {
+      .stats-bar {
         grid-template-columns: 1fr;
       }
     }
-
-    /* ========== CALLOUT BLOCK ========== */
-    .callout-section {
-      padding: var(--space-16) 0;
-      background: linear-gradient(145deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%);
-      position: relative;
-      overflow: hidden;
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
     }
-
-    .callout-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%235B8AB8' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .callout-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .callout-title {
-      font-size: var(--font-size-2xl);
+    
+    .stat-number {
+      font-size: var(--font-size-4xl);
       font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-6);
-      line-height: var(--line-height-snug);
+      color: var(--color-primary);
+      line-height: 1;
     }
-
-    .callout-body {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
-    }
-
-    .callout-cta {
-      margin-top: var(--space-8);
-    }
-
-    .callout-cta .cta-link {
-      color: var(--color-navy-light);
-    }
-
-    .callout-cta .cta-link:hover {
+    
+    .stat-title {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
       color: var(--color-white);
     }
-
-    /* ========== APPROACH TABLE ========== */
+    
+    .stat-subtitle {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      font-style: italic;
+    }
+    
+    /* Approach Table */
     .approach-table {
       width: 100%;
       margin: var(--space-6) 0;
@@ -255,41 +97,7 @@
       border-bottom: none;
     }
 
-    /* ========== STREAK PROGRESSION SECTION ========== */
-    .streak-section {
-      padding: var(--space-20) 0;
-      background: var(--color-light-100);
-    }
-
-    .streak-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto var(--space-12);
-    }
-
-    .streak-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
-      color: var(--unified-orange);
-      margin-bottom: var(--space-4);
-    }
-
-    .streak-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-      margin-bottom: var(--space-4);
-    }
-
-    .streak-description {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-
-    /* Progression Boxes Container */
+    /* Streak Progression Visual */
     .streak-progression {
       max-width: 900px;
       margin: 0 auto var(--space-8);
@@ -303,7 +111,6 @@
       position: relative;
     }
 
-    /* Connector line behind boxes */
     .streak-boxes::before {
       content: '';
       position: absolute;
@@ -312,8 +119,8 @@
       right: 10%;
       height: 4px;
       background: linear-gradient(90deg, 
-        var(--unified-orange) 0%, 
-        var(--unified-orange) 60%, 
+        var(--color-primary) 0%, 
+        var(--color-primary) 60%, 
         var(--color-gray-200) 60%,
         var(--color-gray-200) 100%
       );
@@ -336,13 +143,13 @@
     }
 
     .streak-box.completed {
-      border-color: var(--unified-orange);
-      background: linear-gradient(135deg, rgba(255, 133, 52, 0.05) 0%, var(--color-white) 100%);
+      border-color: var(--color-primary);
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.05) 0%, var(--color-white) 100%);
     }
 
     .streak-box.current {
-      border-color: var(--unified-orange);
-      box-shadow: 0 0 0 3px rgba(255, 133, 52, 0.2), 0 8px 24px rgba(255, 133, 52, 0.15);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.2), 0 8px 24px rgba(243, 112, 33, 0.15);
       transform: scale(1.05);
     }
 
@@ -351,8 +158,8 @@
     }
 
     .streak-box.reward {
-      border-color: var(--unified-orange);
-      background: linear-gradient(135deg, var(--unified-orange) 0%, #FF9F5A 100%);
+      border-color: var(--color-primary);
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
     }
 
     .streak-box.reward .streak-box-label,
@@ -375,12 +182,9 @@
       margin-bottom: var(--space-2);
     }
 
-    .streak-box.completed .streak-box-icon {
-      color: var(--unified-orange);
-    }
-
+    .streak-box.completed .streak-box-icon,
     .streak-box.current .streak-box-icon {
-      color: var(--unified-orange);
+      color: var(--color-primary);
     }
 
     .streak-box.locked .streak-box-icon {
@@ -399,7 +203,7 @@
       color: var(--color-gray-400);
     }
 
-    /* Progress bar below boxes */
+    /* Streak Progress Bar */
     .streak-progress-container {
       max-width: 700px;
       margin: var(--space-6) auto 0;
@@ -417,7 +221,7 @@
     .streak-progress-fill {
       height: 100%;
       width: 60%;
-      background: linear-gradient(90deg, var(--unified-orange) 0%, #FF9F5A 100%);
+      background: linear-gradient(90deg, var(--color-primary) 0%, #FF9F5A 100%);
       border-radius: var(--radius-full);
       transition: width 0.5s ease;
     }
@@ -428,11 +232,11 @@
     }
 
     .streak-progress-text strong {
-      color: var(--unified-orange);
+      color: var(--color-primary);
       font-weight: var(--font-weight-semibold);
     }
 
-    /* Streak Capability Cards */
+    /* Streak Capabilities Grid */
     .streak-capabilities {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -466,132 +270,7 @@
       }
     }
 
-    .streak-capability-card {
-      padding: var(--space-6);
-      background: var(--color-white);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--color-gray-100);
-      box-shadow: var(--shadow-card);
-      text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .streak-capability-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--color-navy-light);
-      box-shadow: 0 12px 40px rgba(91, 138, 184, 0.15);
-    }
-
-    .streak-capability-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--unified-orange);
-      margin-bottom: var(--space-3);
-    }
-
-    .streak-capability-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-
-    /* ========== STATS GRID (4 cards) ========== */
-    .stats-grid-section {
-      padding: var(--space-20) 0;
-      background: linear-gradient(145deg, #1A1A1A 0%, #262626 50%, #333333 100%);
-    }
-
-    .stats-grid-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto var(--space-12);
-    }
-
-    .stats-grid-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
-      color: var(--color-navy-light);
-      margin-bottom: var(--space-4);
-    }
-
-    .stats-grid-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-4);
-    }
-
-    .stats-grid-subtitle {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-300);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-
-    @media (max-width: 1024px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .stat-card-dark {
-      padding: var(--space-8);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-xl);
-      text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .stat-card-dark:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--color-navy-light);
-      transform: translateY(-4px);
-    }
-
-    .stat-card-value {
-      font-size: var(--font-size-4xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--unified-orange);
-      line-height: 1;
-      margin-bottom: var(--space-2);
-    }
-
-    .stat-card-label {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-      margin-bottom: var(--space-2);
-    }
-
-    .stat-card-attribution {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wide);
-    }
-
-    .stats-footnote {
-      text-align: center;
-      margin-top: var(--space-8);
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      font-style: italic;
-    }
-
-    /* ========== FAQ SPLIT LAYOUT ========== */
+    /* FAQ Split Layout */
     .faq-split-layout {
       display: grid;
       grid-template-columns: 1fr;
@@ -958,28 +637,14 @@
   </section>
 
 
-  <!-- ========== SECTION 2: HOOK - Activities Not Just Transactions ========== -->
-  <section class="hook-section">
-    <div class="container">
-      <div class="hook-content">
-        <h2 class="hook-title">Activities, Not Just Transactions</h2>
-        <p class="hook-body">
-          We use "activities" instead of "transactions" because it can be any type of engagement you want to reward. Visits. App logins. Survey answers. Profile completions. Review submissions. The platform treats every signal the same way: ingest it, evaluate it against your rules, and respond in real time. These non-transactional features are valuable for a reason. Members are telling you directly what they want, who they are, what they're interested in. We're essentially using points to buy that information.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 3: NON-TRANSACTIONAL ENGAGEMENT (6-Card Grid) ========== -->
+  <!-- ========== SECTION 2: NON-TRANSACTIONAL ENGAGEMENT (6-Card Grid) ========== -->
   <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Non-Transactional Engagement</p>
         <h2 class="section-title">Reward Any Member Behavior</h2>
         <p class="section-description">Every interaction is an opportunity to learn and engage.</p>
       </div>
-      <div class="engagement-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
         <div class="icon-feature">
           <div class="icon-feature-header">
@@ -1046,14 +711,72 @@
   </section>
 
 
-  <!-- ========== SECTION 4: ZERO-PARTY DATA CALLOUT ========== -->
-  <section class="callout-section">
+  <!-- ========== STATS BAR ========== -->
+  <section class="section section-dark bg-dark">
     <div class="container">
-      <div class="callout-inner">
-        <h2 class="callout-title">The Most Valuable Data Comes Directly From Members</h2>
-        <p class="callout-body">
-          Zero-party data is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with explicit consent and clear meaning. The platform captures it through engagement mechanics and feeds it immediately into your rules engine. Better segments. Better personalization. Better offers. All from information members volunteered.
-        </p>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">3.2×</div>
+          <div class="stat-title">Visit Frequency</div>
+          <div class="stat-subtitle">Streak participants vs. non-participants</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+47%</div>
+          <div class="stat-title">Profile Completion</div>
+          <div class="stat-subtitle">With progressive profiling</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">68%</div>
+          <div class="stat-title">Survey Response</div>
+          <div class="stat-subtitle">When rewarded with points</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2.1×</div>
+          <div class="stat-title">Referral Conversion</div>
+          <div class="stat-subtitle">Progressive vs. instant referrals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== SECTION 3: ZERO-PARTY DATA CALLOUT ========== -->
+  <section class="spotlight-section">
+    <div class="container">
+      <div class="spotlight-card">
+        <div class="spotlight-inner" style="grid-template-columns: 1fr; text-align: center; max-width: 900px; margin: 0 auto;">
+          <div class="spotlight-content" style="padding: var(--space-12);">
+            <span class="spotlight-eyebrow">Zero-Party Data</span>
+            <h2 class="spotlight-title">The Most Valuable Data Comes Directly From Members</h2>
+            <p class="spotlight-description" style="max-width: 800px; margin: 0 auto;">
+              Zero-party data is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with explicit consent and clear meaning. The platform captures it through engagement mechanics and feeds it immediately into your rules engine. Better segments. Better personalization. Better offers. All from information members volunteered.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== SECTION 4: ACTIVITIES ZIG-ZAG ========== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Activity Types Visualization]
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Beyond Transactions</span>
+          <h2 class="feature-row-title">Activities, Not Just Transactions</h2>
+          <p class="feature-row-description">
+            We use "activities" instead of "transactions" because it can be any type of engagement you want to reward. Visits. App logins. Survey answers. Profile completions. Review submissions. The platform treats every signal the same way: ingest it, evaluate it against your rules, and respond in real time.
+          </p>
+          <p class="feature-row-description">
+            These non-transactional features are valuable for a reason. Members are telling you directly what they want, who they are, what they're interested in. We're essentially using points to buy that information.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -1114,7 +837,7 @@
 
 
   <!-- ========== SECTION 6: GAMIFICATION MECHANICS (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section" style="background: var(--color-light-100);">
+  <section class="feature-rows-section bg-light">
     <div class="container">
       
       <div class="feature-row">
@@ -1145,15 +868,23 @@
 
 
   <!-- ========== SECTION 7: STREAKS ========== -->
-  <section class="streak-section">
+  <section class="section section-lg section-light bg-white">
     <div class="container">
       
-      <div class="streak-header">
-        <p class="streak-eyebrow">Key Differentiator</p>
-        <h2 class="streak-title">Streaks Transform Isolated Transactions Into Connected Journeys</h2>
-        <p class="streak-description">
-          Streaks are something we're excited about, and we've seen clients use them with success. Members commit to actions over a period of time and get rewarded for completion. Trackable progress they can see as they work toward a goal.
-        </p>
+      <!-- Zig-Zag Header -->
+      <div class="feature-row" style="margin-bottom: var(--space-12);">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Streaks Dashboard Interface]
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Key Differentiator</span>
+          <h2 class="feature-row-title">Streaks Transform Isolated Transactions Into Connected Journeys</h2>
+          <p class="feature-row-description">
+            Streaks are something we're excited about, and we've seen clients use them with success. Members commit to actions over a period of time and get rewarded for completion. Trackable progress they can see as they work toward a goal.
+          </p>
+        </div>
       </div>
 
       <!-- Streak Progression Visual -->
@@ -1201,21 +932,29 @@
 
       <!-- Streak Capability Cards -->
       <div class="streak-capabilities">
-        <div class="streak-capability-card">
-          <h3 class="streak-capability-title">Sequential</h3>
-          <p class="streak-capability-description">Actions in order. Visit Monday, then Tuesday, then Wednesday. Miss a day, streak resets.</p>
+        <div class="card card-accent">
+          <div class="card-body" style="text-align: center;">
+            <h3 class="card-title" style="color: var(--color-primary);">Sequential</h3>
+            <p class="card-description">Actions in order. Visit Monday, then Tuesday, then Wednesday. Miss a day, streak resets.</p>
+          </div>
         </div>
-        <div class="streak-capability-card">
-          <h3 class="streak-capability-title">Non-Sequential</h3>
-          <p class="streak-capability-description">Complete any 5 visits in 30 days. Order doesn't matter. Flexibility for real life.</p>
+        <div class="card card-accent">
+          <div class="card-body" style="text-align: center;">
+            <h3 class="card-title" style="color: var(--color-primary);">Non-Sequential</h3>
+            <p class="card-description">Complete any 5 visits in 30 days. Order doesn't matter. Flexibility for real life.</p>
+          </div>
         </div>
-        <div class="streak-capability-card">
-          <h3 class="streak-capability-title">Hyper-Personalized</h3>
-          <p class="streak-capability-description">Targets personalized per member based on history and appetite. Same streak, different thresholds.</p>
+        <div class="card card-accent">
+          <div class="card-body" style="text-align: center;">
+            <h3 class="card-title" style="color: var(--color-primary);">Hyper-Personalized</h3>
+            <p class="card-description">Targets personalized per member based on history and appetite. Same streak, different thresholds.</p>
+          </div>
         </div>
-        <div class="streak-capability-card">
-          <h3 class="streak-capability-title">Real-Time Progress</h3>
-          <p class="streak-capability-description">Progress updates the moment an action completes. No batch delays. Instant feedback.</p>
+        <div class="card card-accent">
+          <div class="card-body" style="text-align: center;">
+            <h3 class="card-title" style="color: var(--color-primary);">Real-Time Progress</h3>
+            <p class="card-description">Progress updates the moment an action completes. No batch delays. Instant feedback.</p>
+          </div>
         </div>
       </div>
 
@@ -1223,15 +962,24 @@
   </section>
 
 
-  <!-- ========== SECTION 8: HYPER-PERSONALIZED STREAKS CALLOUT ========== -->
-  <section class="callout-section">
+  <!-- ========== SECTION 8: HYPER-PERSONALIZED STREAKS ZIG-ZAG ========== -->
+  <section class="feature-rows-section">
     <div class="container">
-      <div class="callout-inner">
-        <h2 class="callout-title">Personalize the Targets, Not Just the Offer</h2>
-        <p class="callout-body">
-          A hospitality brand uses hyper-personalized streaks where both the spend targets AND the rewards are personalized based on what members have actually done. Through data analysis, the platform gauges who has appetite to spend what amounts. Two members might see the same streak with completely different thresholds. Some people see a generic target and think "I'm never going to spend that much." Personalized targets meet members where they are.
-        </p>
-        <div class="callout-cta">
+      <div class="feature-row feature-row-reverse">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Personalized Streak Targets UI]
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Personalization</span>
+          <h2 class="feature-row-title">Personalize the Targets, Not Just the Offer</h2>
+          <p class="feature-row-description">
+            A hospitality brand uses hyper-personalized streaks where both the spend targets AND the rewards are personalized based on what members have actually done. Through data analysis, the platform gauges who has appetite to spend what amounts. Two members might see the same streak with completely different thresholds.
+          </p>
+          <p class="feature-row-description">
+            Some people see a generic target and think "I'm never going to spend that much." Personalized targets meet members where they are.
+          </p>
           <a href="feature-analytics.html" class="cta-link">
             See How Personalization Works
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1273,7 +1021,7 @@
 
 
   <!-- ========== SECTION 10: PROGRESSIVE PROFILING (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section" style="background: var(--color-light-100);">
+  <section class="feature-rows-section bg-light">
     <div class="container">
       
       <div class="feature-row feature-row-reverse">
@@ -1300,7 +1048,6 @@
 
     </div>
   </section>
-
 
 
   <!-- ========== FINAL CTA ========== -->
