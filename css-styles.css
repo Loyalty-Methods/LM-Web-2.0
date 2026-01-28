@@ -284,6 +284,31 @@ ul, ol {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* When header is scrolled (orange), CTA button gets sleek charcoal + glass shine */
+.header.scrolled .btn-primary {
+  background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.header.scrolled .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  pointer-events: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.header.scrolled .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
 .nav-link-chevron {
   width: 16px;
   height: 16px;
@@ -811,7 +836,7 @@ a.card {
 
 .logo-cloud-track {
   display: flex;
-  animation: scroll-logos 30s linear infinite;
+  animation: scroll-logos 40s linear infinite;
 }
 
 @keyframes scroll-logos {
@@ -819,23 +844,34 @@ a.card {
   100% { transform: translateX(-50%); }
 }
 
+/* Client Logo Images - Natural gray on white, no filters */
+.client-logo {
+  height: 32px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
+}
+
+.logo-cloud-item:hover .client-logo {
+  opacity: 1;
+}
+
+/* Ensure consistent spacing between logos */
 .logo-cloud {
   display: flex;
-  gap: var(--space-12);
+  gap: var(--space-16);
   flex-shrink: 0;
-  padding: 0 var(--space-6);
+  padding: 0 var(--space-8);
+  align-items: center;
 }
 
 .logo-cloud-item {
   flex-shrink: 0;
-}
-
-.logo-placeholder {
-  width: 120px;
-  height: 40px;
-  background: #D0D0D0;
-  border-radius: var(--radius-md);
-  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ==========================================================================
