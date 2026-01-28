@@ -4,18 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Culture | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Page-Specific Styles */
-    
-    /* Testimonial Slider */
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Culture Page
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Orange Brand Theme - Inverted from Dark)
+       ------------------------------------------------------------------------- */
+    .subpage-hero-brand {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-orange-accent);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
+    }
+
+    /* Glass shine overlay for orange hero */
+    .subpage-hero-brand::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .subpage-hero-content {
+      max-width: 600px;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-white);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+      opacity: 0.9;
+    }
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+
+    .subpage-hero-title .highlight {
+      color: var(--color-charcoal-900);
+    }
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .subpage-hero-brand {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Button variant for orange hero */
+    .btn-white {
+      background: var(--color-white);
+      color: var(--color-primary);
+      border: none;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* -------------------------------------------------------------------------
+       TESTIMONIAL SLIDER
+       ------------------------------------------------------------------------- */
     .testimonial-section {
-      background-color: #f9fafb;
+      background-color: var(--color-gray-50);
       overflow: hidden;
     }
     
@@ -27,20 +169,23 @@
 
     .testimonial-slide {
       display: none;
-      background: white;
-      border-radius: 24px;
-      box-shadow: var(--shadow-xl);
-      border: 1px solid var(--color-gray-100);
-      overflow: hidden;
+      opacity: 0;
+      transition: opacity var(--transition-base);
     }
 
     .testimonial-slide.active {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
+      opacity: 1;
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-gray-100);
+      overflow: hidden;
     }
 
     .testimonial-content {
-      padding: 4rem;
+      padding: var(--space-12);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -50,31 +195,32 @@
       font-size: 4rem;
       color: var(--color-primary);
       line-height: 1;
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-6);
       font-family: serif;
     }
 
     .testimonial-text {
-      font-size: 1.125rem;
-      line-height: 1.6;
-      color: var(--color-black);
-      margin-bottom: 2rem;
+      font-size: var(--font-size-lg);
+      line-height: var(--line-height-relaxed);
+      color: var(--text-main);
+      margin-bottom: var(--space-8);
     }
 
     .testimonial-author-name {
-      font-weight: 700;
-      color: var(--color-black);
-      font-size: 1.125rem;
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      font-size: var(--font-size-lg);
     }
 
     .testimonial-author-title {
-      color: var(--color-gray-400);
-      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-size: var(--font-size-sm);
     }
 
     .testimonial-image {
       background-color: var(--color-gray-100);
       position: relative;
+      min-height: 300px;
     }
 
     .testimonial-image img {
@@ -88,33 +234,54 @@
     .slider-controls {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
     }
 
     .slider-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: var(--color-gray-200);
+      background: var(--color-gray-300);
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all var(--transition-fast);
+      border: none;
+    }
+
+    .slider-dot:hover {
+      background: var(--color-gray-400);
     }
 
     .slider-dot.active {
       background: var(--color-primary);
+      box-shadow: var(--glow-orange);
     }
 
-    /* Collage Grid */
+    @media (max-width: 768px) {
+      .testimonial-slide.active { 
+        grid-template-columns: 1fr; 
+      }
+      .testimonial-image { 
+        height: 300px; 
+        order: -1; 
+      }
+      .testimonial-content { 
+        padding: var(--space-8); 
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       COLLAGE GRID
+       ------------------------------------------------------------------------- */
     .collage-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 280px);
-      gap: 1.5rem;
+      gap: var(--space-6);
     }
 
     .collage-item {
-      border-radius: 16px;
+      border-radius: var(--radius-xl);
       overflow: hidden;
       position: relative;
       background: var(--color-gray-100);
@@ -124,7 +291,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s;
+      transition: transform var(--transition-slow);
     }
 
     .collage-item:hover img {
@@ -136,39 +303,294 @@
       grid-row: span 2;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .testimonial-slide.active { grid-template-columns: 1fr; }
-      .testimonial-image { height: 300px; order: -1; }
-      .testimonial-content { padding: 2rem; }
-      .collage-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .collage-item { height: 250px; }
-      .collage-large { grid-column: span 1; grid-row: span 1; }
+      .collage-grid { 
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto; 
+      }
+      .collage-item { 
+        height: 250px; 
+      }
+      .collage-large { 
+        grid-column: span 1; 
+        grid-row: span 1; 
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       WORKSPACE FEATURES GRID
+       ------------------------------------------------------------------------- */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-16);
+    }
+
+    @media (max-width: 1024px) {
+      .workspace-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .workspace-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .workspace-item {
+      text-align: center;
+    }
+
+    .workspace-item .icon-feature-icon {
+      margin: 0 auto var(--space-4);
+    }
+
+    .workspace-item h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-2);
+    }
+
+    .workspace-item p {
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------------------
+       BOTTOM CTA CARD
+       ------------------------------------------------------------------------- */
+    .bottom-cta-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-card);
+    }
+
+    .bottom-cta-text {
+      font-size: var(--font-size-lg);
+      color: var(--text-main);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: var(--line-height-relaxed);
+    }
+
+    @media (max-width: 640px) {
+      .bottom-cta-card {
+        padding: var(--space-8);
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       SECTION DESCRIPTION
+       ------------------------------------------------------------------------- */
+    .section-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: var(--line-height-relaxed);
+      max-width: 700px;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
 
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="logo">
-          <div class="logo-placeholder">LOGO</div>
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
         </a>
 
         <nav class="nav-desktop">
           <ul class="nav-list">
-            <li class="nav-item"><a href="#" class="nav-link">Why LM?</a></li>
+            
             <li class="nav-item">
-              <a href="platform.html" class="nav-link">RCX Loyalty Platform</a>
+              <a href="#" class="nav-link">Why LM?</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">Enterprise Technology</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Proven Delivery</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Resource Center</a></li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="resource-center.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
           </ul>
+          
           <div class="flex items-center gap-4">
-            <a href="#" class="nav-link">About LM</a>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
         <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -177,13 +599,15 @@
   </header>
 
 
-  <section class="subpage-hero subpage-hero-brand">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <!-- ========================================
+       SECTION 1: HERO (Orange Brand Theme)
+       ======================================== -->
+  <section class="subpage-hero-brand">
     <div class="container">
       <div class="subpage-hero-inner">
         
         <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow"><span>Life at Loyalty Methods</span></div>
+          <div class="subpage-hero-eyebrow">Life at Loyalty Methods</div>
           <h1 class="subpage-hero-title">
             Loyalty Is What We <span class="highlight">Build Together</span>
           </h1>
@@ -191,12 +615,12 @@
             At Loyalty Methods, people are at the center of everything we do. Whether you evolve ReactorCX in a technical role or help bring loyalty programs to life for our clients, you see your work live in the hands of millions of members every day.
           </p>
           <div class="subpage-hero-cta">
-            <a href="about-careers.html" class="btn btn-primary btn-lg" style="background: white; color: #F37021; border-color: white;">Join Our Team</a>
+            <a href="about-careers.html" class="btn btn-white btn-lg">Join Our Team</a>
           </div>
         </div>
 
-        <div class="subpage-hero-media">
-          <div class="subpage-hero-image-placeholder" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);">
+        <div class="subpage-hero-media hidden-mobile">
+          <div class="subpage-hero-image-placeholder">
             [Team Illustration / Puzzle Graphic]
           </div>
         </div>
@@ -206,72 +630,88 @@
   </section>
 
 
-  <section class="section section-light bg-light py-20">
+  <!-- ========================================
+       SECTION 2: CORE VALUES
+       Background: LIGHT (Gray)
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Our Core Values</p>
+        <p class="hero-eyebrow" style="color: var(--color-primary);">Our Core Values</p>
         <h2 class="section-title">Principles that guide us</h2>
         <p class="section-description">These principles guide how we evolve ReactorCX, run loyalty programs for our clients, and show up for each other every day.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-3">
         
-        <div class="icon-feature">
-          <div class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="card-title">Collaboration</h3>
           </div>
-          <h3 class="icon-feature-title">Collaboration</h3>
-          <p class="icon-feature-description">
+          <p class="card-body">
             We solve hard problems together. No one is left alone with a critical issue. Teams share context early and review each other's ideas.
           </p>
         </div>
 
-        <div class="icon-feature">
-          <div class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2v1"></path><path d="M12 2a7 7 0 0 1 7 7c0 3.87-3.13 7-7 7s-7-3.13-7-7a7 7 0 0 1 7-7z"></path></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2v1"></path><path d="M12 2a7 7 0 0 1 7 7c0 3.87-3.13 7-7 7s-7-3.13-7-7a7 7 0 0 1 7-7z"></path></svg>
+            </div>
+            <h3 class="card-title">Innovation</h3>
           </div>
-          <h3 class="icon-feature-title">Innovation</h3>
-          <p class="icon-feature-description">
+          <p class="card-body">
             We are builders at heart. We look for simpler, smarter ways to handle complex logic and fold what we learn back into ReactorCX.
           </p>
         </div>
 
-        <div class="icon-feature">
-          <div class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="card-title">Integrity</h3>
           </div>
-          <h3 class="icon-feature-title">Integrity</h3>
-          <p class="icon-feature-description">
+          <p class="card-body">
             Our work touches real revenue. That demands honesty. We say what is true, document what we have done, and own the outcome.
           </p>
         </div>
 
-        <div class="icon-feature">
-          <div class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </div>
+            <h3 class="card-title">Growth</h3>
           </div>
-          <h3 class="icon-feature-title">Growth</h3>
-          <p class="icon-feature-description">
+          <p class="card-body">
             We expect people to grow along with the platform. Feedback is frequent, and there is room to learn new technologies and own more.
           </p>
         </div>
 
-        <div class="icon-feature">
-          <div class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <h3 class="card-title">Inclusivity</h3>
           </div>
-          <h3 class="icon-feature-title">Inclusivity</h3>
-          <p class="icon-feature-description">
+          <p class="card-body">
             Every voice is welcomed. We work across time zones and cultures, ensuring decisions don't depend on being in the loudest room.
           </p>
         </div>
 
-        <div class="icon-feature">
-          <div class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <h3 class="card-title">Passion</h3>
           </div>
-          <h3 class="icon-feature-title">Passion</h3>
-          <p class="icon-feature-description">
+          <p class="card-body">
             We care about the craft and the result. Passion shows up in thoughtful design, clean data models, and celebrating wins together.
           </p>
         </div>
@@ -281,10 +721,14 @@
   </section>
 
 
-  <section class="testimonial-section section">
+  <!-- ========================================
+       SECTION 3: TESTIMONIALS SLIDER
+       Background: Light Gray
+       ======================================== -->
+  <section class="testimonial-section section section-lg">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Meet Our Team</p>
+        <p class="hero-eyebrow" style="color: var(--color-primary);">Meet Our Team</p>
         <h2 class="section-title">Our people make the difference</h2>
       </div>
 
@@ -292,7 +736,7 @@
         
         <div class="testimonial-slide active">
           <div class="testimonial-content">
-            <div class="testimonial-quote-mark">“</div>
+            <div class="testimonial-quote-mark">"</div>
             <p class="testimonial-text">
               Working at Loyalty Methods is genuinely energizing. I'm surrounded by a bright, international team of loyalty experts, and every day brings a new opportunity to learn from true industry veterans. The work is dynamic and challenging in all the right ways.
             </p>
@@ -308,7 +752,7 @@
 
         <div class="testimonial-slide">
           <div class="testimonial-content">
-            <div class="testimonial-quote-mark">“</div>
+            <div class="testimonial-quote-mark">"</div>
             <p class="testimonial-text">
               Working with Loyalty Methods has been a wonderful experience for me. I always feel appreciated, valued and motivated to excel in my field of work. The leadership team creates a comfortable and inspiring workplace.
             </p>
@@ -324,7 +768,7 @@
 
         <div class="testimonial-slide">
           <div class="testimonial-content">
-            <div class="testimonial-quote-mark">“</div>
+            <div class="testimonial-quote-mark">"</div>
             <p class="testimonial-text">
               I've been with this company for 12 years... It offers excellent growth and onsite opportunities in a friendly, supportive environment where employees are encouraged to innovate and feel valued every day.
             </p>
@@ -341,42 +785,54 @@
       </div>
 
       <div class="slider-controls">
-        <div class="slider-dot active" onclick="goToSlide(0)"></div>
-        <div class="slider-dot" onclick="goToSlide(1)"></div>
-        <div class="slider-dot" onclick="goToSlide(2)"></div>
+        <button class="slider-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+        <button class="slider-dot" data-slide="1" aria-label="Go to slide 2"></button>
+        <button class="slider-dot" data-slide="2" aria-label="Go to slide 3"></button>
       </div>
     </div>
   </section>
 
 
-  <section class="section section-light bg-white pb-20">
+  <!-- ========================================
+       SECTION 4: WORKPLACE FEATURES & COLLAGE
+       Background: WHITE
+       ======================================== -->
+  <section class="section section-lg section-light bg-white">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">A Workplace Designed for You</p>
+        <p class="hero-eyebrow" style="color: var(--color-primary);">A Workplace Designed for You</p>
         <h2 class="section-title">Hybrid, distributed, and connected</h2>
         <p class="section-description">We operate as a hybrid team with hubs in Dallas and Hyderabad, and teammates across the globe. Whether you are in an office or at home, you have the tools to do your best work.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-        <div class="text-center">
-          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
-          <h4 class="font-bold mb-2">Modern Workspaces</h4>
-          <p class="text-sm text-muted">Bright environments for deep focus.</p>
+      <div class="workspace-grid">
+        <div class="workspace-item">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <h4>Modern Workspaces</h4>
+          <p>Bright environments for deep focus.</p>
         </div>
-        <div class="text-center">
-          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
-          <h4 class="font-bold mb-2">Collaboration Zones</h4>
-          <p class="text-sm text-muted">Spaces designed for brainstorming.</p>
+        <div class="workspace-item">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <h4>Collaboration Zones</h4>
+          <p>Spaces designed for brainstorming.</p>
         </div>
-        <div class="text-center">
-          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
-          <h4 class="font-bold mb-2">Relax & Recharge</h4>
-          <p class="text-sm text-muted">Comfortable breakout spaces.</p>
+        <div class="workspace-item">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h4>Relax & Recharge</h4>
+          <p>Comfortable breakout spaces.</p>
         </div>
-        <div class="text-center">
-          <div class="icon-feature-icon mx-auto mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line></svg></div>
-          <h4 class="font-bold mb-2">Remote Friendly</h4>
-          <p class="text-sm text-muted">Tools to stay connected anywhere.</p>
+        <div class="workspace-item">
+          <div class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line></svg>
+          </div>
+          <h4>Remote Friendly</h4>
+          <p>Tools to stay connected anywhere.</p>
         </div>
       </div>
 
@@ -392,10 +848,14 @@
   </section>
 
 
-  <section class="section section-white py-20">
+  <!-- ========================================
+       SECTION 5: BOTTOM CTA
+       Background: LIGHT (Gray)
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
-      <div class="bg-light border border-gray-200 rounded-3xl p-12 text-center max-w-4xl mx-auto">
-        <p class="text-lg text-dark font-medium mb-8 max-w-2xl mx-auto">
+      <div class="bottom-cta-card">
+        <p class="bottom-cta-text">
           If you want meaningful problems, clear ownership and teammates who care about getting it right, you will feel at home here.
         </p>
         <a href="about-careers.html" class="btn btn-primary btn-lg">View Open Positions</a>
@@ -404,39 +864,141 @@
   </section>
 
 
+  <!-- ========================================
+       FOOTER
+       Synced with index.html footer structure
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
+        
+        <!-- Brand Column -->
         <div class="footer-brand">
-          <div class="footer-logo-placeholder"></div>
-          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
-        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="footer-bottom"><p class="footer-copyright">© 2025 Loyalty Platform.</p></div>
     </div>
   </footer>
 
+
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
-    // Header Scroll
+    // Header scroll effect - inverted for orange hero
     const header = document.querySelector('.header');
+    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
-      else { header.classList.remove('scrolled'); }
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled-dark');
+      } else {
+        header.classList.remove('scrolled-dark');
+      }
     });
 
-    // Testimonial Logic
+    // Testimonial Slider Logic
     const slides = document.querySelectorAll('.testimonial-slide');
     const dots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+    let autoSlideInterval;
     
     function goToSlide(n) {
       slides.forEach(s => s.classList.remove('active'));
       dots.forEach(d => d.classList.remove('active'));
       
+      currentSlide = n;
       slides[n].classList.add('active');
       dots[n].classList.add('active');
     }
+
+    // Click handlers for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+        resetAutoSlide();
+      });
+    });
+
+    // Auto-advance slides
+    function autoSlide() {
+      const nextSlide = (currentSlide + 1) % slides.length;
+      goToSlide(nextSlide);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(autoSlide, 5000);
+    }
+
+    // Start auto-slide
+    autoSlideInterval = setInterval(autoSlide, 5000);
   </script>
+
 </body>
 </html>
