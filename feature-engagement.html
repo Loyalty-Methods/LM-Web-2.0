@@ -14,24 +14,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* ========== PAGE-SPECIFIC STYLES ========== */
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Engagement & Gamification
+       ========================================================================== */
 
-    /* Subpage Hero (Orange Gradient Variant) */
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Dark Charcoal Theme - Matches Promotions)
+       ------------------------------------------------------------------------- */
     .subpage-hero {
-      min-height: 70vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
+      background: var(--grad-charcoal-premium);
       position: relative;
       overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
     }
 
-    .subpage-hero-brand {
-      background: linear-gradient(135deg, #F37021 0%, #FF8534 50%, #FFB380 100%);
-    }
-
-    .subpage-hero-brand::before {
+    /* Glass shine overlay */
+    .subpage-hero::before {
       content: '';
       position: absolute;
       top: 0;
@@ -40,10 +42,6 @@
       height: 60%;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
       pointer-events: none;
-    }
-
-    .subpage-hero-glow {
-      display: none;
     }
 
     .subpage-hero-inner {
@@ -76,7 +74,7 @@
     .subpage-hero-eyebrow {
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-semibold);
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--color-primary);
       text-transform: uppercase;
       letter-spacing: 0.15em;
       margin-bottom: var(--space-4);
@@ -91,9 +89,16 @@
       margin-bottom: var(--space-6);
     }
 
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     .subpage-hero-description {
       font-size: var(--font-size-lg);
-      color: rgba(255, 255, 255, 0.9);
+      color: #9A9A9A;
       line-height: 1.7;
       margin-bottom: var(--space-8);
     }
@@ -115,118 +120,790 @@
 
     .subpage-hero-image-placeholder {
       aspect-ratio: 4/3;
-      background: rgba(255, 255, 255, 0.15);
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
       border-radius: var(--radius-xl);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.4);
       font-size: var(--font-size-sm);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
     }
 
-    /* Stats Bar (matching index.html) */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-8);
-      text-align: center;
-    }
-    
-    @media (max-width: 1024px) {
-      .stats-bar {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-6);
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
       }
     }
-    
-    @media (max-width: 480px) {
-      .stats-bar {
+
+    /* -------------------------------------------------------------------------
+       LIFECYCLE GRID (6 cards)
+       ------------------------------------------------------------------------- */
+    .lifecycle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 1024px) {
+      .lifecycle-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .lifecycle-grid {
         grid-template-columns: 1fr;
       }
     }
-    
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-    
-    .stat-number {
-      font-size: var(--font-size-4xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      line-height: 1;
-    }
-    
-    .stat-title {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-    }
-    
-    .stat-subtitle {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      font-style: italic;
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-white);
     }
 
-    /* Section Description */
-    .section-description {
-      font-size: var(--font-size-lg);
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-bottom: var(--space-20);
+    }
+
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-row-reverse {
+      direction: rtl;
+    }
+
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row,
+      .feature-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+
+    .feature-row-content {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
       color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list-item {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
+    .feature-row-list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    /* btn-dark for light backgrounds */
+    .btn-dark {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    /* -------------------------------------------------------------------------
+       STREAKS SHOWCASE SECTION (Dark Theme with Phone + Copy Cards)
+       ------------------------------------------------------------------------- */
+    .streaks-showcase {
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      padding: var(--space-20) 0;
+      overflow: hidden;
+    }
+
+    .streaks-showcase::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .streaks-showcase .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .streaks-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .streaks-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .streaks-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-white);
+      margin-bottom: var(--space-4);
+    }
+
+    .streaks-subtitle {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
       max-width: 600px;
       margin: 0 auto;
     }
 
-    /* Icon Feature Cards (6-card grid) */
-    .icon-feature {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-xl);
+    /* Phone + Copy Cards Layout */
+    .streaks-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px 1fr;
+      gap: var(--space-8);
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .streaks-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+        max-width: 400px;
+      }
+    }
+
+    /* Glass Copy Cards */
+    .streaks-copy-card {
       padding: var(--space-6);
-      box-shadow: var(--shadow-card);
-      transition: transform var(--transition-base), 
-                  box-shadow var(--transition-base), 
-                  border-color var(--transition-base);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(10px);
+    }
+
+    .streaks-copy-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .streaks-copy-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-white);
+      margin-bottom: var(--space-3);
+    }
+
+    .streaks-copy-description {
+      font-size: var(--font-size-sm);
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .streaks-copy-card:first-child { order: 2; }
+      .streaks-phone-container { order: 1; }
+      .streaks-copy-card:last-child { order: 3; }
+    }
+
+    /* Phone Container */
+    .streaks-phone-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Premium Phone Device */
+    .streaks-phone {
+      width: 280px;
+      height: 580px;
+      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+      border-radius: 44px;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 50px 100px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* Dynamic Island */
+    .streaks-phone::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 26px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 30;
+    }
+
+    /* Phone ambient glow */
+    .streaks-phone::after {
+      content: '';
+      position: absolute;
+      inset: -80px;
+      background: radial-gradient(ellipse at center bottom, rgba(243, 112, 33, 0.25) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Phone Screen */
+    .streaks-phone-screen {
+      position: absolute;
+      top: 10px;
+      left: 8px;
+      right: 8px;
+      bottom: 10px;
+      background: #ffffff;
+      border-radius: 36px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: var(--space-4);
     }
 
-    .icon-feature:hover {
-      transform: translateY(-6px);
-      border-color: var(--border-focus);
-      box-shadow: var(--shadow-card-hover);
+    /* App Status Bar */
+    .app-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px 8px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
     }
 
-    .icon-feature-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
+    .app-status-time {
+      font-weight: 700;
+    }
+
+    .app-status-icons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .app-status-icons svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* App Header */
+    .app-nav-header {
+      padding: 12px 16px 16px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
+      position: relative;
+    }
+
+    .app-nav-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
+      border-radius: 0 0 24px 24px;
+    }
+
+    .app-nav-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .app-nav-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .app-nav-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-nav-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: white;
+    }
+
+    .app-points-display {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .app-points-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .app-points-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* App Content Area */
+    .app-main-content {
+      flex: 1;
+      padding: 28px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      background: #f5f5f7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Streak Progress Card */
+    .app-streak-card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .app-streak-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .app-streak-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+
+    .app-streak-info span {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .app-streak-fire {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #FF6B35 0%, #FF9F5A 100%);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* Progress Steps */
+    .app-progress-track {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      position: relative;
+      padding: 0 4px;
+    }
+
+    .app-progress-track::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 22px;
+      right: 22px;
+      height: 4px;
+      background: #e8e8e8;
+      transform: translateY(-50%);
+      border-radius: 2px;
+    }
+
+    .app-progress-track::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 22px;
+      width: calc(50% - 10px);
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary) 0%, #FF9F5A 100%);
+      transform: translateY(-50%);
+      border-radius: 2px;
+    }
+
+    .app-step-node {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+    }
+
+    .app-step-node.done {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(243, 112, 33, 0.35);
+    }
+
+    .app-step-node.done svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .app-step-node.active {
+      background: white;
+      border: 3px solid var(--color-primary);
+      color: var(--color-primary);
+      box-shadow: 0 0 0 5px rgba(243, 112, 33, 0.15);
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(243, 112, 33, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0); }
+    }
+
+    .app-step-node.pending {
+      background: #e8e8e8;
+      color: #aaa;
+    }
+
+    .app-step-node.reward-node {
+      background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+      color: #1a1a1a;
+      font-size: 16px;
+    }
+
+    /* Progress Footer */
+    .app-progress-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .app-progress-footer span {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .app-progress-footer strong {
       color: var(--color-primary);
     }
 
-    .icon-feature-description {
-      color: var(--text-muted);
+    .app-time-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: #888;
+      background: #f5f5f5;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .app-time-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Reward Preview */
+    .app-reward-preview {
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(255, 159, 90, 0.04) 100%);
+      border: 1px solid rgba(243, 112, 33, 0.2);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-reward-icon-box {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(243, 112, 33, 0.3);
+    }
+
+    .app-reward-details {
+      flex: 1;
+    }
+
+    .app-reward-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .app-reward-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .app-reward-arrow {
+      color: var(--color-primary);
+    }
+
+    .app-reward-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Activity List */
+    .app-activity-list {
+      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .app-activity-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .app-activity-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .app-activity-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .app-activity-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .app-activity-dot.success {
+      background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+      color: white;
+    }
+
+    .app-activity-dot.waiting {
+      background: #f0f0f0;
+      color: #bbb;
+    }
+
+    .app-activity-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-activity-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .app-activity-date {
+      font-size: 10px;
+      color: #999;
+    }
+
+    .app-activity-pts {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Capabilities Grid */
+    .streaks-capabilities {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-16);
+    }
+
+    @media (max-width: 1024px) {
+      .streaks-capabilities {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .streaks-capabilities {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .capability-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+
+    .capability-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(243, 112, 33, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .capability-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .capability-description {
       font-size: var(--font-size-sm);
+      color: rgba(255, 255, 255, 0.6);
       line-height: 1.6;
     }
 
-    /* 6-column grid for icon features */
-    .grid-cols-1 { grid-template-columns: 1fr; }
-
-    @media (min-width: 768px) {
-      .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (min-width: 1024px) {
-      .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .gap-8 { gap: var(--space-8); }
-
-    /* Approach Table */
+    /* -------------------------------------------------------------------------
+       APPROACH TABLE
+       ------------------------------------------------------------------------- */
     .approach-table {
       width: 100%;
       margin: var(--space-6) 0;
@@ -264,634 +941,386 @@
       border-bottom: none;
     }
 
-    /* Feature Rows Section */
-    .feature-rows-section {
-      padding: var(--space-20) 0;
+    /* -------------------------------------------------------------------------
+       BOTTOM CTA CARD
+       ------------------------------------------------------------------------- */
+    .bottom-cta-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-16);
+      box-shadow: var(--shadow-card);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-    }
-
-    .feature-row-reverse {
-      direction: rtl;
-    }
-
-    .feature-row-reverse > * {
-      direction: ltr;
-    }
-
-    @media (max-width: 768px) {
-      .feature-row,
-      .feature-row-reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-      }
-    }
-
-    .feature-row-media {
-      position: relative;
-    }
-
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-    }
-
-    .feature-row-content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .feature-row-title {
+    .bottom-cta-title {
       font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
       color: var(--text-main);
-      line-height: 1.2;
+      margin-bottom: var(--space-4);
     }
 
-    .feature-row-description {
+    .bottom-cta-description {
       font-size: var(--font-size-base);
       color: var(--text-muted);
       line-height: 1.7;
-    }
-
-    .feature-row-list {
-      list-style: none;
-      padding: 0;
-      margin: var(--space-4) 0 0 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .feature-row-list-item {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-3);
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .feature-row-list-item::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--color-primary);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 0.5em;
-    }
-
-    /* Streak Progression Visual */
-    .streak-progression {
-      max-width: 900px;
-      margin: 0 auto var(--space-8);
-    }
-
-    .streak-boxes {
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      gap: 0;
-      position: relative;
-    }
-
-    .streak-boxes::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 10%;
-      right: 10%;
-      height: 4px;
-      background: linear-gradient(90deg, 
-        var(--color-primary) 0%, 
-        var(--color-primary) 60%, 
-        var(--color-gray-100) 60%,
-        var(--color-gray-100) 100%
-      );
-      transform: translateY(-50%);
-      z-index: 0;
-      border-radius: 2px;
-    }
-
-    .streak-box {
-      position: relative;
-      z-index: 1;
-      width: 140px;
-      padding: var(--space-5);
-      background: var(--color-white);
-      border: 2px solid var(--color-gray-100);
-      border-radius: var(--radius-xl);
-      text-align: center;
-      transition: all var(--transition-base);
-      margin: 0 var(--space-2);
-    }
-
-    .streak-box.completed {
-      border-color: var(--color-primary);
-      background: linear-gradient(135deg, rgba(243, 112, 33, 0.05) 0%, var(--color-white) 100%);
-    }
-
-    .streak-box.current {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.2), 0 8px 24px rgba(243, 112, 33, 0.15);
-      transform: scale(1.05);
-    }
-
-    .streak-box.locked {
-      opacity: 0.6;
-    }
-
-    .streak-box.reward {
-      border-color: var(--color-primary);
-      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
-    }
-
-    .streak-box.reward .streak-box-label,
-    .streak-box.reward .streak-box-value,
-    .streak-box.reward .streak-box-points {
-      color: var(--color-white);
-    }
-
-    .streak-box-label {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-gray-400);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-2);
-    }
-
-    .streak-box-icon {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-2);
-    }
-
-    .streak-box.completed .streak-box-icon,
-    .streak-box.current .streak-box-icon {
-      color: var(--color-primary);
-    }
-
-    .streak-box.locked .streak-box-icon {
-      color: var(--color-gray-100);
-    }
-
-    .streak-box-value {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-1);
-    }
-
-    .streak-box-points {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-    }
-
-    /* Streak Progress Bar */
-    .streak-progress-container {
-      max-width: 700px;
-      margin: var(--space-6) auto 0;
-      text-align: center;
-    }
-
-    .streak-progress-bar {
-      height: 8px;
-      background: var(--color-gray-100);
-      border-radius: var(--radius-full);
-      overflow: hidden;
-      margin-bottom: var(--space-3);
-    }
-
-    .streak-progress-fill {
-      height: 100%;
-      width: 60%;
-      background: linear-gradient(90deg, var(--color-primary) 0%, #FF9F5A 100%);
-      border-radius: var(--radius-full);
-      transition: width 0.5s ease;
-    }
-
-    .streak-progress-text {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-    }
-
-    .streak-progress-text strong {
-      color: var(--color-primary);
-      font-weight: var(--font-weight-semibold);
-    }
-
-    /* Streak Capabilities Grid */
-    .streak-capabilities {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-      margin-top: var(--space-12);
-    }
-
-    @media (max-width: 1024px) {
-      .streak-capabilities {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media (max-width: 640px) {
-      .streak-capabilities {
-        grid-template-columns: 1fr;
-      }
-      
-      .streak-boxes {
-        flex-wrap: wrap;
-        gap: var(--space-4);
-      }
-      
-      .streak-boxes::before {
-        display: none;
-      }
-      
-      .streak-box {
-        width: calc(50% - var(--space-2));
-        margin: 0;
+      .bottom-cta-card {
+        padding: var(--space-8);
       }
     }
 
-    /* Accordion Section */
-    .accordion-section {
+    /* -------------------------------------------------------------------------
+       FAQ SECTION (Two-Column Layout)
+       ------------------------------------------------------------------------- */
+    .faq-section {
       padding: var(--space-20) 0;
-      background: var(--color-white);
     }
 
-    .accordion {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    /* FAQ Split Layout */
-    .faq-split-layout {
+    .faq-layout {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-12);
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-16);
       align-items: start;
     }
 
-    @media (min-width: 1024px) {
-      .faq-split-layout {
-        grid-template-columns: 1fr 2fr;
-        gap: var(--space-16);
+    @media (max-width: 1024px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-10);
       }
     }
 
-    .faq-split-header {
+    .faq-intro {
       position: sticky;
       top: 120px;
     }
 
-    .faq-split-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-4);
-    }
-
-    .faq-split-description {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-400);
-      line-height: 1.7;
-    }
-
-    .faq-split-accordion {
-      max-width: none;
-    }
-
     @media (max-width: 1024px) {
-      .faq-split-header {
+      .faq-intro {
         position: static;
         text-align: center;
       }
     }
 
-    /* Card Accent Variant for Streaks Section */
-    .card-accent {
-      text-align: center;
+    .faq-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
     }
 
-    .card-accent .card-title {
-      color: var(--color-primary);
-      font-size: var(--font-size-lg);
-      margin-bottom: var(--space-2);
-    }
-
-    .card-accent .card-description {
+    .faq-description {
+      font-size: var(--font-size-base);
       color: var(--text-muted);
-      font-size: var(--font-size-sm);
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .accordion-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .accordion-item:hover {
+      border-color: var(--color-navy);
+    }
+
+    .accordion-item.active {
+      border-color: var(--color-primary);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .accordion-trigger-text {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-main);
+      padding-right: var(--space-4);
+    }
+
+    .accordion-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .accordion-icon::before,
+    .accordion-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--color-primary);
+      transition: transform var(--transition-fast);
+    }
+
+    .accordion-icon::before {
+      width: 12px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-icon::after {
+      width: 2px;
+      height: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-item.active .accordion-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow);
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+
+    .accordion-content-inner {
+      padding: 0 var(--space-6) var(--space-6);
+    }
+
+    .accordion-content-inner p {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+
+    .accordion-content-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .feature-row-title {
+        font-size: var(--font-size-2xl);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
-  <header class="header" data-scroll-style="dark">
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
+  <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="logo">
           <img src="lm-full-white.svg" alt="Loyalty Methods">
         </a>
+
         <nav class="nav-desktop">
           <ul class="nav-list">
             
-            <!-- Why LM? -->
             <li class="nav-item">
-              <a href="why-lm.html" class="nav-link">Why LM?</a>
+              <a href="#" class="nav-link">Why LM?</a>
             </li>
-
-            <!-- RCX Loyalty Platform - With Mega Menu -->
+            
             <li class="nav-item">
-              <a href="platform.html" class="nav-link">
+              <a href="#" class="nav-link">
                 RCX Loyalty Platform
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </a>
               <div class="mega-menu">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <!-- Column 1: Capabilities -->
                     <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Capabilities</div>
+                      <div class="mega-menu-column-title">Core Platform</div>
                       <a href="feature-program-design.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Program Design</div>
-                          <div class="mega-menu-link-description">Tiers, currencies, and flexible program structures</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
                       </a>
                       <a href="feature-promotions.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Promotions</div>
-                          <div class="mega-menu-link-description">BOGO, multipliers, partner offers & more</div>
-                        </div>
-                      </a>
-                      <a href="feature-engagement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Engagement</div>
-                          <div class="mega-menu-link-description">Streaks, challenges, badges & gamification</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
                       </a>
                       <a href="feature-analytics.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Analytics</div>
-                          <div class="mega-menu-link-description">Real-time insights and member intelligence</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
                       </a>
                       <a href="feature-rewards.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Rewards</div>
-                          <div class="mega-menu-link-description">Redemption options and reward catalogs</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
                       </a>
-                      <a href="feature-ai-agents.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"></path><circle cx="7.5" cy="14.5" r="1.5" fill="currentColor"></circle><circle cx="16.5" cy="14.5" r="1.5" fill="currentColor"></circle></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">AI Agents</div>
-                          <div class="mega-menu-link-description">Intelligent automation and optimization</div>
-                        </div>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
                       </a>
                     </div>
                   </div>
-                  <!-- Featured Section -->
                   <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Platform Overview</span>
-                    <h3 class="mega-menu-featured-title">The Complete Loyalty Engine</h3>
-                    <p class="mega-menu-featured-description">ReactorCX powers enterprise loyalty programs processing millions of transactions daily with sub-200ms response times.</p>
-                    <div class="mega-menu-featured-image">
-                      [Platform Dashboard Preview]
-                    </div>
-                    <a href="platform.html" class="btn btn-primary btn-sm">Explore Platform</a>
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
             </li>
-
-            <!-- Enterprise Technology - With Dropdown -->
+            
             <li class="nav-item">
-              <a href="technology.html" class="nav-link">
+              <a href="#" class="nav-link">
                 Enterprise Technology
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </a>
               <div class="mega-menu">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Technology</div>
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">API Architecture</div>
-                          <div class="mega-menu-link-description">RESTful APIs and real-time event streams</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
                       </a>
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Integration</div>
-                          <div class="mega-menu-link-description">POS, CDP, and enterprise connectors</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
                       </a>
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Security</div>
-                          <div class="mega-menu-link-description">SOC 2, encryption, and compliance</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Enterprise Ready</span>
-                    <h3 class="mega-menu-featured-title">Built for Scale</h3>
-                    <p class="mega-menu-featured-description">Cloud-native architecture designed for enterprise performance, security, and reliability.</p>
-                    <div class="mega-menu-featured-image">
-                      [Architecture Diagram Preview]
-                    </div>
-                    <a href="technology.html" class="btn btn-primary btn-sm">Learn More</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- Proven Delivery - With Dropdown -->
-            <li class="nav-item">
-              <a href="proven-delivery.html" class="nav-link">
-                Proven Delivery
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </a>
-              <div class="mega-menu">
-                <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Proven Technology</div>
-                      <a href="proven-threadsync.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">ThreadSync™</div>
-                          <div class="mega-menu-link-description">Real-time transaction processing</div>
-                        </div>
-                      </a>
-                      <a href="proven-safeswitch.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">SafeSwitch™</div>
-                          <div class="mega-menu-link-description">Zero-downtime platform migration</div>
-                        </div>
-                      </a>
-                      <a href="case-studies.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Case Studies</div>
-                          <div class="mega-menu-link-description">Real results from enterprise clients</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Results</span>
-                    <h3 class="mega-menu-featured-title">Proven at Scale</h3>
-                    <p class="mega-menu-featured-description">See how enterprise brands achieve measurable loyalty outcomes.</p>
-                    <div class="mega-menu-featured-image">
-                      [Results Dashboard Preview]
-                    </div>
-                    <a href="proven-delivery.html" class="btn btn-primary btn-sm">View Results</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- Resource Center -->
-            <li class="nav-item">
-              <a href="resource-center.html" class="nav-link">Resource Center</a>
-            </li>
-
-            <!-- About LM - With Dropdown -->
-            <li class="nav-item">
-              <a href="about-company.html" class="nav-link">
-                About LM
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </a>
-              <div class="mega-menu">
-                <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Company</div>
-                      <a href="about-story.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Our Story</div>
-                          <div class="mega-menu-link-description">The Loyalty Methods journey</div>
-                        </div>
-                      </a>
-                      <a href="about-leadership.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Leadership</div>
-                          <div class="mega-menu-link-description">Meet our executive team</div>
-                        </div>
-                      </a>
-                      <a href="about-careers.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Careers</div>
-                          <div class="mega-menu-link-description">Join our growing team</div>
-                        </div>
-                      </a>
-                      <a href="partner-network.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Partner Network</div>
-                          <div class="mega-menu-link-description">Strategic partnerships and alliances</div>
-                        </div>
-                      </a>
-                      <a href="about-contact.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Contact Us</div>
-                          <div class="mega-menu-link-description">Get in touch with our team</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
                       </a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Trust Center</span>
-                    <h3 class="mega-menu-featured-title">Security & Compliance</h3>
-                    <p class="mega-menu-featured-description">SOC 2 certified. Enterprise-grade security and data protection.</p>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
                     <div class="mega-menu-featured-image">
-                      [Trust Center Preview]
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
                     </div>
-                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center</a>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
                 </div>
               </div>
             </li>
-
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="resource-center.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
           </ul>
+          
           <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
             <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
@@ -901,28 +1330,29 @@
   </header>
 
 
-  <!-- ========== SECTION 1: HERO (Orange Gradient) ========== -->
-  <section class="subpage-hero subpage-hero-brand">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <!-- ========================================
+       SECTION 1: HERO (Dark Charcoal Theme)
+       ======================================== -->
+  <section class="subpage-hero">
     <div class="container">
       <div class="subpage-hero-inner">
         
         <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">
-            <span>Capabilities</span>
-          </div>
-          <h1 class="subpage-hero-title">Engagement & Gamification</h1>
+          <div class="subpage-hero-eyebrow">Capabilities</div>
+          <h1 class="subpage-hero-title">
+            Engagement & <span class="highlight">Gamification</span>
+          </h1>
           <p class="subpage-hero-description">
-            Go beyond transactions. The platform handles any activity type: purchases, visits, app logins, survey completions, referrals. Build repeat habits that increase frequency and purchase volume while collecting zero-party data.
+            Turn every interaction into an opportunity. Streaks, challenges, badges, surveys, referrals—mechanics that drive repeat behavior and capture zero-party data.
           </p>
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
 
-        <div class="subpage-hero-media">
+        <div class="subpage-hero-media hidden-mobile">
           <div class="subpage-hero-image-placeholder">
-            [Engagement Dashboard Interface]
+            [Engagement Dashboard Interface — 600×450]
           </div>
         </div>
         
@@ -931,81 +1361,88 @@
   </section>
 
 
-  <!-- ========== SECTION 2: NON-TRANSACTIONAL ENGAGEMENT (6-Card Grid) ========== -->
-  <section class="section section-lg section-light bg-light">
+  <!-- ========================================
+       SECTION 2: ACTIVITY TYPES GRID (6 Cards)
+       Background: LIGHT (White)
+       ======================================== -->
+  <section class="section section-lg section-light bg-white">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Reward Any Member Behavior</h2>
-        <p class="section-description">Every interaction is an opportunity to learn and engage.</p>
+      
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <h2 class="section-title">Reward Any Activity</h2>
       </div>
-      <div class="grid grid-3">
+
+      <div class="lifecycle-grid">
         
-        <div class="icon-feature">
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
             </div>
-            <h3 class="icon-feature-title">Surveys & Polls</h3>
+            <h3 class="card-title">Surveys & Polls</h3>
           </div>
-          <p class="icon-feature-description">Reward members for sharing opinions, preferences, and feedback. Structure questions to capture exactly what you need for segmentation and personalization.</p>
+          <p class="card-body">Collect preferences, opinions, and feedback. Every response builds a richer member profile and informs personalization.</p>
         </div>
 
-        <div class="icon-feature">
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
-            <h3 class="icon-feature-title">Profile Completion</h3>
+            <h3 class="card-title">Profile Completion</h3>
           </div>
-          <p class="icon-feature-description">Start with minimal enrollment friction. Earn more as you tell us more. Each attribute collected flows directly into the rules engine for immediate use in targeting and offers.</p>
+          <p class="card-body">Progressive profiling rewards members for adding information over time. Start simple, build depth without friction.</p>
         </div>
 
-        <div class="icon-feature">
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
             </div>
-            <h3 class="icon-feature-title">App Activity</h3>
+            <h3 class="card-title">App Activity</h3>
           </div>
-          <p class="icon-feature-description">App opens, feature usage, content views, check-ins. Track and reward the behaviors that signal interest and intent.</p>
+          <p class="card-body">App opens, feature usage, content views, check-ins. Track and reward the behaviors that signal interest and intent.</p>
         </div>
 
-        <div class="icon-feature">
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             </div>
-            <h3 class="icon-feature-title">Reviews & Ratings</h3>
+            <h3 class="card-title">Reviews & Ratings</h3>
           </div>
-          <p class="icon-feature-description">Reward members for leaving reviews on purchases, stays, or experiences. Feed sentiment data into your analytics and segmentation.</p>
+          <p class="card-body">Reward members for leaving reviews on purchases, stays, or experiences. Feed sentiment data into your analytics.</p>
         </div>
 
-        <div class="icon-feature">
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
             </div>
-            <h3 class="icon-feature-title">Social Sharing</h3>
+            <h3 class="card-title">Social Sharing</h3>
           </div>
-          <p class="icon-feature-description">Reward members for sharing content, promotions, or achievements. Track attribution and measure social engagement ROI.</p>
+          <p class="card-body">Reward members for sharing content, promotions, or achievements. Track attribution and measure social engagement ROI.</p>
         </div>
 
-        <div class="icon-feature">
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
-            <h3 class="icon-feature-title">Check-Ins</h3>
+            <h3 class="card-title">Check-Ins</h3>
           </div>
-          <p class="icon-feature-description">Digital or physical check-ins at locations, events, or properties. Combine with geo-location APIs for context-aware rewards.</p>
+          <p class="card-body">Digital or physical check-ins at locations, events, or properties. Combine with geo-location APIs for context-aware rewards.</p>
         </div>
-        
+
       </div>
     </div>
   </section>
 
 
-  <!-- ========== STATS BAR ========== -->
+  <!-- ========================================
+       SECTION 3: STATS BAR
+       Background: DARK
+       ======================================== -->
   <section class="section dark bg-dark">
     <div class="container">
       <div class="stats-bar">
@@ -1034,7 +1471,9 @@
   </section>
 
 
-  <!-- ========== SECTION 3: ZERO-PARTY DATA CALLOUT ========== -->
+  <!-- ========================================
+       SECTION 4: ZERO-PARTY DATA CALLOUT
+       ======================================== -->
   <section class="spotlight-section">
     <div class="container">
       <div class="spotlight-card">
@@ -1043,7 +1482,7 @@
             <span class="spotlight-eyebrow">Zero-Party Data</span>
             <h2 class="spotlight-title">The Most Valuable Data Comes Directly From Members</h2>
             <p class="spotlight-description" style="max-width: 800px; margin: 0 auto;">
-              Zero-party data is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with explicit consent and clear meaning. The platform captures it through engagement mechanics and feeds it immediately into your rules engine. Better segments. Better personalization. Better offers. All from information members volunteered.
+              Zero-party data is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with explicit consent and clear meaning. The platform captures it through engagement mechanics and feeds it immediately into your rules engine.
             </p>
           </div>
         </div>
@@ -1052,7 +1491,9 @@
   </section>
 
 
-  <!-- ========== SECTION 4: ACTIVITIES ZIG-ZAG ========== -->
+  <!-- ========================================
+       SECTION 5: ACTIVITIES ZIG-ZAG
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
       <div class="feature-row">
@@ -1067,19 +1508,20 @@
           <p class="feature-row-description">
             We use "activities" instead of "transactions" because it can be any type of engagement you want to reward. Visits. App logins. Survey answers. Profile completions. Review submissions. The platform treats every signal the same way: ingest it, evaluate it against your rules, and respond in real time.
           </p>
-          <p class="feature-row-description">
-            These non-transactional features are valuable for a reason. Members are telling you directly what they want, who they are, what they're interested in. We're essentially using points to buy that information.
-          </p>
+          <div class="feature-row-cta">
+            <a href="about-contact.html" class="btn btn-dark">See Activity Tracking &rarr;</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== SECTION 5: REFERRALS (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section">
+  <!-- ========================================
+       SECTION 6: REFERRALS ZIG-ZAG
+       ======================================== -->
+  <section class="feature-rows-section" style="padding-top: 0;">
     <div class="container">
-      
       <div class="feature-row feature-row-reverse">
         <div class="feature-row-media">
           <div class="feature-row-image-placeholder">
@@ -1092,163 +1534,191 @@
           <p class="feature-row-description">
             Referrals are a built-in acquisition engine with measurable ROI. When members hear about your program from someone they trust, they're more likely to act. The platform supports three referral approaches, each optimized for different objectives.
           </p>
-          
           <table class="approach-table">
             <thead>
               <tr>
                 <th>Approach</th>
                 <th>How It Works</th>
-                <th>Best For</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Viral</strong></td>
-                <td>Shareable codes or links. Broad reach, low friction.</td>
-                <td>Scale and awareness</td>
-              </tr>
-              <tr>
-                <td><strong>Personalized</strong></td>
-                <td>Unique member-specific links with full attribution</td>
-                <td>Quality and tracking</td>
+                <td><strong>Instant</strong></td>
+                <td>Referrer earns immediately when referee enrolls.</td>
               </tr>
               <tr>
                 <td><strong>Progressive</strong></td>
-                <td>Deferred rewards until qualification (join → transact → qualify)</td>
-                <td>High-value acquisition</td>
+                <td>Rewards unlock as the referee hits activity milestones.</td>
+              </tr>
+              <tr>
+                <td><strong>Dual-Sided</strong></td>
+                <td>Both referrer and referee earn at each stage.</td>
               </tr>
             </tbody>
           </table>
-          
-          <p class="feature-row-description" style="margin-top: var(--space-4);">
-            Progressive referrals are particularly effective. You're not paying for names in a database. You're paying for outcomes: a friend joins, they transact, conditions are met, then rewards unlock. Two-sided rewards with deferred qualification mean higher-quality acquisition.
-          </p>
         </div>
       </div>
-
     </div>
   </section>
 
 
-  <!-- ========== SECTION 6: GAMIFICATION MECHANICS (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section bg-light">
+  <!-- ========================================
+       SECTION 7: STREAKS (Dark Phone Showcase)
+       ======================================== -->
+  <section class="streaks-showcase">
     <div class="container">
       
-      <div class="feature-row">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Badge Gallery / Challenge Progress UI]
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Engagement Mechanics</span>
-          <h2 class="feature-row-title">Mechanics That Build Repeat Habits</h2>
-          <p class="feature-row-description">
-            Gamification is designed to deepen engagement and build the repeat habits that increase frequency and purchase volume. Getting members to do something over a period of time and get rewarded for it. The platform supports the full range of mechanics.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Badges for visual recognition of achievements</li>
-            <li class="feature-row-list-item">Time-based challenges with progress tracking</li>
-            <li class="feature-row-list-item">Earn previews showing members what they'll earn before checkout</li>
-            <li class="feature-row-list-item">Sweepstakes entries earned through activity</li>
-            <li class="feature-row-list-item">Status match challenges for tier qualification</li>
-            <li class="feature-row-list-item">Unlock chains and level progression</li>
-          </ul>
-        </div>
+      <div class="streaks-header">
+        <p class="streaks-eyebrow">Engagement Engine</p>
+        <h2 class="streaks-title">Streaks: The Frequency Engine</h2>
+        <p class="streaks-subtitle">Turn isolated transactions into connected journeys. Members commit to actions over time and get rewarded for completion.</p>
       </div>
 
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 7: STREAKS ========== -->
-  <section class="section section-lg section-light bg-white">
-    <div class="container">
-      
-      <!-- Zig-Zag Header -->
-      <div class="feature-row" style="margin-bottom: var(--space-12);">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Streaks Dashboard Interface]
-          </div>
+      <div class="streaks-layout">
+        
+        <!-- Left Copy Card -->
+        <div class="streaks-copy-card">
+          <p class="streaks-copy-eyebrow">Personalized Targets</p>
+          <h3 class="streaks-copy-title">Hyper-Personalized Goals</h3>
+          <p class="streaks-copy-description">Targets adjust per member based on historical behavior and predicted appetite. A casual buyer sees "Visit 3x this month" while a power user sees "Visit 8x."</p>
         </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Key Differentiator</span>
-          <h2 class="feature-row-title">Streaks Transform Isolated Transactions Into Connected Journeys</h2>
-          <p class="feature-row-description">
-            Streaks are something we're excited about, and we've seen clients use them with success. Members commit to actions over a period of time and get rewarded for completion. Trackable progress they can see as they work toward a goal.
-          </p>
-        </div>
-      </div>
-
-      <!-- Streak Progression Visual -->
-      <div class="streak-progression">
-        <div class="streak-boxes">
-          <div class="streak-box completed">
-            <div class="streak-box-label">Visit 1</div>
-            <div class="streak-box-icon">✓</div>
-            <div class="streak-box-value">Complete</div>
-            <div class="streak-box-points">+50 pts</div>
-          </div>
-          <div class="streak-box completed">
-            <div class="streak-box-label">Visit 2</div>
-            <div class="streak-box-icon">✓</div>
-            <div class="streak-box-value">Complete</div>
-            <div class="streak-box-points">+50 pts</div>
-          </div>
-          <div class="streak-box current">
-            <div class="streak-box-label">Visit 3</div>
-            <div class="streak-box-icon">●</div>
-            <div class="streak-box-value">Current</div>
-            <div class="streak-box-points">+50 pts</div>
-          </div>
-          <div class="streak-box locked">
-            <div class="streak-box-label">Visit 4</div>
-            <div class="streak-box-icon">○</div>
-            <div class="streak-box-value">Locked</div>
-            <div class="streak-box-points">+50 pts</div>
-          </div>
-          <div class="streak-box reward">
-            <div class="streak-box-label">Reward</div>
-            <div class="streak-box-icon">🎁</div>
-            <div class="streak-box-value">Unlocked</div>
-            <div class="streak-box-points">500 Bonus</div>
+        
+        <!-- Center Phone Mockup -->
+        <div class="streaks-phone-container">
+          <div class="streaks-phone">
+            <div class="streaks-phone-screen">
+              
+              <!-- Status Bar -->
+              <div class="app-status-bar">
+                <span class="app-status-time">9:41</span>
+                <div class="app-status-icons">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                </div>
+              </div>
+              
+              <!-- App Header -->
+              <div class="app-nav-header">
+                <div class="app-nav-top">
+                  <span class="app-nav-title">My Rewards</span>
+                  <div class="app-nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </div>
+                </div>
+                <div class="app-points-display">
+                  <span class="app-points-value">2,847</span>
+                  <span class="app-points-label">points available</span>
+                </div>
+              </div>
+              
+              <!-- App Content -->
+              <div class="app-main-content">
+                
+                <!-- Streak Card -->
+                <div class="app-streak-card">
+                  <div class="app-streak-top">
+                    <div class="app-streak-info">
+                      <h3>Weekly Visit Streak</h3>
+                      <span>Complete 4 visits to unlock reward</span>
+                    </div>
+                    <div class="app-streak-fire">🔥 3</div>
+                  </div>
+                  
+                  <div class="app-progress-track">
+                    <div class="app-step-node done">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="app-step-node done">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="app-step-node active">3</div>
+                    <div class="app-step-node pending">4</div>
+                    <div class="app-step-node reward-node">★</div>
+                  </div>
+                  
+                  <div class="app-progress-footer">
+                    <span><strong>2 of 4</strong> visits completed</span>
+                    <div class="app-time-badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      5 days left
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Reward Preview -->
+                <div class="app-reward-preview">
+                  <div class="app-reward-icon-box">🎁</div>
+                  <div class="app-reward-details">
+                    <div class="app-reward-label">Streak Reward</div>
+                    <div class="app-reward-amount">500 Bonus Points</div>
+                  </div>
+                  <div class="app-reward-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                </div>
+                
+                <!-- Activity List -->
+                <div class="app-activity-list">
+                  <div class="app-activity-title">Recent Activity</div>
+                  
+                  <div class="app-activity-row">
+                    <div class="app-activity-dot success">✓</div>
+                    <div class="app-activity-info">
+                      <div class="app-activity-name">Visit #2 Complete</div>
+                      <div class="app-activity-date">Today, 2:34 PM</div>
+                    </div>
+                    <div class="app-activity-pts">+75 pts</div>
+                  </div>
+                  
+                  <div class="app-activity-row">
+                    <div class="app-activity-dot success">✓</div>
+                    <div class="app-activity-info">
+                      <div class="app-activity-name">Visit #1 Complete</div>
+                      <div class="app-activity-date">Jan 25, 11:15 AM</div>
+                    </div>
+                    <div class="app-activity-pts">+50 pts</div>
+                  </div>
+                  
+                  <div class="app-activity-row">
+                    <div class="app-activity-dot waiting">○</div>
+                    <div class="app-activity-info">
+                      <div class="app-activity-name">Streak Enrolled</div>
+                      <div class="app-activity-date">Jan 24, 9:00 AM</div>
+                    </div>
+                    <div class="app-activity-pts">Started</div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
           </div>
         </div>
         
-        <div class="streak-progress-container">
-          <div class="streak-progress-bar">
-            <div class="streak-progress-fill"></div>
-          </div>
-          <p class="streak-progress-text">Progress at <strong>60%</strong> — 2 more visits to unlock your reward</p>
+        <!-- Right Copy Card -->
+        <div class="streaks-copy-card">
+          <p class="streaks-copy-eyebrow">Progressive Rewards</p>
+          <h3 class="streaks-copy-title">Escalating Value</h3>
+          <p class="streaks-copy-description">Later steps pay more to maintain momentum. The first visit earns 50 points. The fourth earns 125. Complete all four and unlock a 500-point bonus.</p>
         </div>
+        
       </div>
 
-      <!-- Streak Capability Cards -->
-      <div class="streak-capabilities">
-        <div class="card card-accent">
-          <div class="card-body">
-            <h3 class="card-title">Sequential</h3>
-            <p class="card-description">Actions in order. Visit Monday, then Tuesday, then Wednesday. Miss a day, streak resets.</p>
-          </div>
+      <div class="streaks-capabilities">
+        <div class="capability-card">
+          <h4 class="capability-title">Hyper-Personalized</h4>
+          <p class="capability-description">Targets adjust per member based on historical behavior and predicted appetite.</p>
         </div>
-        <div class="card card-accent">
-          <div class="card-body">
-            <h3 class="card-title">Non-Sequential</h3>
-            <p class="card-description">Complete any 5 visits in 30 days. Order doesn't matter. Flexibility for real life.</p>
-          </div>
+        <div class="capability-card">
+          <h4 class="capability-title">Time-Bound</h4>
+          <p class="capability-description">Urgency drives action. Configurable windows from hours to months.</p>
         </div>
-        <div class="card card-accent">
-          <div class="card-body">
-            <h3 class="card-title">Hyper-Personalized</h3>
-            <p class="card-description">Targets personalized per member based on history and appetite. Same streak, different thresholds.</p>
-          </div>
+        <div class="capability-card">
+          <h4 class="capability-title">Progressive Rewards</h4>
+          <p class="capability-description">Escalating rewards create momentum. Later steps pay more.</p>
         </div>
-        <div class="card card-accent">
-          <div class="card-body">
-            <h3 class="card-title">Real-Time Progress</h3>
-            <p class="card-description">Progress updates the moment an action completes. No batch delays. Instant feedback.</p>
-          </div>
+        <div class="capability-card">
+          <h4 class="capability-title">Real-Time Feedback</h4>
+          <p class="capability-description">Push notifications, app overlays, and SMS keep members engaged.</p>
         </div>
       </div>
 
@@ -1256,103 +1726,17 @@
   </section>
 
 
-  <!-- ========== SECTION 8: HYPER-PERSONALIZED STREAKS ZIG-ZAG ========== -->
-  <section class="feature-rows-section">
+  <!-- ========================================
+       SECTION 8: BOTTOM CTA
+       ======================================== -->
+  <section class="section section-lg bg-light">
     <div class="container">
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Personalized Streak Targets UI]
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Personalization</span>
-          <h2 class="feature-row-title">Personalize the Targets, Not Just the Offer</h2>
-          <p class="feature-row-description">
-            A hospitality brand uses hyper-personalized streaks where both the spend targets AND the rewards are personalized based on what members have actually done. Through data analysis, the platform gauges who has appetite to spend what amounts. Two members might see the same streak with completely different thresholds.
-          </p>
-          <p class="feature-row-description">
-            Some people see a generic target and think "I'm never going to spend that much." Personalized targets meet members where they are.
-          </p>
-          <a href="feature-analytics.html" class="cta-link">
-            See How Personalization Works
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 9: REAL-TIME FEEDBACK (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section">
-    <div class="container">
-      
-      <div class="feature-row">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [App Overlay - Streak Completion Notification]
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Event-Driven Architecture</span>
-          <h2 class="feature-row-title">Members Know the Moment Something Happens</h2>
-          <p class="feature-row-description">
-            The platform is heavily event-driven. Anything that happens generates real-time events that you can use to notify members immediately. You achieved a streak. You got a bonus. You hit a new tier. Those events come out on our event backbone and get pushed immediately. Congratulations screens. Instant notifications. Members get that satisfaction right away.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">27+ built-in event types</li>
-            <li class="feature-row-list-item">Real-time streaming via Kafka, webhooks, Azure EventHub</li>
-            <li class="feature-row-list-item">App overlays triggered the moment conditions are met</li>
-            <li class="feature-row-list-item">Push notifications, SMS, email triggered by events</li>
-            <li class="feature-row-list-item">Sub-second event publishing</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 10: PROGRESSIVE PROFILING (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section bg-light">
-    <div class="container">
-      
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Profile Completion UI / Preference Collection Flow]
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Data Enrichment</span>
-          <h2 class="feature-row-title">Start Simple. Learn Over Time.</h2>
-          <p class="feature-row-description">
-            Progressive profiling reduces enrollment friction while building richer member profiles over time. Start with minimal required fields. Then earn more data through engagement. Profile completion challenges. Preference surveys. Birthday collection. Dietary restrictions. Communication preferences. Each attribute captured flows immediately into the rules engine. Segments update. Offers personalize. The member experience improves with every interaction.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Minimal enrollment fields reduce abandonment</li>
-            <li class="feature-row-list-item">Engagement-based data collection over time</li>
-            <li class="feature-row-list-item">Attributes available immediately in rules engine</li>
-            <li class="feature-row-list-item">Dynamic segments refresh as profiles enrich</li>
-            <li class="feature-row-list-item">Full lineage tracking for data governance</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========== FINAL CTA ========== -->
-  <section class="section-light bg-light" style="padding: 5rem 0;">
-    <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to drive engagement beyond transactions?</h2>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
-          See how streaks, gamification, and non-transactional engagement work in your program. Schedule a personalized demo.
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">Ready to Drive Deeper Engagement?</h2>
+        <p class="bottom-cta-description">
+          See how RCX turns every interaction into an opportunity for connection and growth.
         </p>
-        <div class="flex gap-4 justify-center">
+        <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
       </div>
@@ -1360,24 +1744,23 @@
   </section>
 
 
-  <!-- ========== FAQ ACCORDION ========== -->
-  <section class="accordion-section">
+  <!-- ========================================
+       SECTION 9: FAQ (Two-Column Layout)
+       ======================================== -->
+  <section class="faq-section section-light bg-light">
     <div class="container">
-      
-      <div class="faq-split-layout">
+      <div class="faq-layout">
         
-        <!-- Left: Header -->
-        <div class="faq-split-header">
-          <h2 class="faq-split-title">Frequently Asked Questions</h2>
-          <p class="faq-split-description">
+        <div class="faq-intro">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
             Common questions about engagement, gamification, and member activity tracking.
           </p>
+          <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
 
-        <!-- Right: Accordion -->
-        <div class="faq-split-accordion accordion">
-        
-          <!-- FAQ Item 1 -->
+        <div class="faq-accordion">
+          
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">What types of non-transactional activities can the platform track?</span>
@@ -1386,13 +1769,12 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Any activity you can send through the API. Surveys, polls, quizzes, profile completions, app opens, feature usage, content views, check-ins, social shares, review submissions, referrals, and custom activity types you define. The platform treats all activities the same way: ingest, evaluate against rules, respond in real time.
+                  Any activity you can send through the API. Surveys, polls, quizzes, profile completions, app opens, feature usage, content views, check-ins, social shares, review submissions, referrals, and custom activity types you define.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ Item 2 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How do streaks differ from standard promotions?</span>
@@ -1401,13 +1783,12 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Standard promotions reward a single action. Streaks reward completion of multiple actions over time. Members commit to a journey with visible progress. The mechanic creates anticipation and drives repeat behavior. Streak targets and rewards can be hyper-personalized based on member history and appetite.
+                  Standard promotions reward a single action. Streaks reward completion of multiple actions over time. Members commit to a journey with visible progress. The mechanic creates anticipation and drives repeat behavior.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ Item 3 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How quickly do members see feedback when they complete an activity?</span>
@@ -1416,13 +1797,12 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Real-time. The event-driven architecture publishes events the moment conditions are met. App overlays, push notifications, SMS, and email can all be triggered immediately. Response times are sub-200ms. Members get satisfaction right away.
+                  Real-time. The event-driven architecture publishes events the moment conditions are met. App overlays, push notifications, SMS, and email can all be triggered immediately. Response times are sub-200ms.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ Item 4 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">Can we personalize streak targets for individual members?</span>
@@ -1431,13 +1811,12 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Yes. The hyper-parameterization capability lets you personalize promotion parameters down to the individual level. This includes spend targets, visit counts, and rewards. Two members can see the same streak with different thresholds based on their history and behavior patterns.
+                  Yes. The hyper-parameterization capability lets you personalize promotion parameters down to the individual level. This includes spend targets, visit counts, and rewards.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ Item 5 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How does progressive profiling work with enrollment?</span>
@@ -1446,7 +1825,7 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Start with minimal required fields at enrollment to reduce abandonment. Then collect additional attributes through engagement over time. Profile completion challenges reward members for adding information. Each attribute captured flows immediately into the rules engine for use in segmentation and personalization.
+                  Start with minimal required fields at enrollment to reduce abandonment. Then collect additional attributes through engagement over time. Profile completion challenges reward members for adding information.
                 </p>
               </div>
             </div>
@@ -1455,17 +1834,17 @@
         </div>
         
       </div>
-      
     </div>
   </section>
 
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
         
-        <!-- Brand Column -->
         <div class="footer-brand">
           <div class="footer-logo">
             <img src="lm-full-white.svg" alt="Loyalty Methods">
@@ -1485,7 +1864,6 @@
           </div>
         </div>
 
-        <!-- Platform Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">RCX Platform</h4>
           <ul class="footer-links">
@@ -1498,7 +1876,6 @@
           </ul>
         </div>
 
-        <!-- Technology Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Technology</h4>
           <ul class="footer-links">
@@ -1511,7 +1888,6 @@
           </ul>
         </div>
 
-        <!-- Company Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
@@ -1523,7 +1899,6 @@
           </ul>
         </div>
 
-        <!-- Resources & Legal Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Resources</h4>
           <ul class="footer-links" style="margin-bottom: var(--space-8);">
@@ -1540,18 +1915,18 @@
   </footer>
 
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
-    // Header scroll effect with support for inverted (dark) scroll style
+    // Header scroll effect
     const header = document.querySelector('.header');
-    const scrollStyle = header.dataset.scrollStyle || 'default';
-    const scrollClass = scrollStyle === 'dark' ? 'scrolled-dark' : 'scrolled';
     
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.add(scrollClass);
+        header.classList.add('scrolled');
       } else {
-        header.classList.remove(scrollClass);
+        header.classList.remove('scrolled');
       }
     });
 
