@@ -1755,3 +1755,30 @@ a.card {
     animation: none;
   }
 }
+
+/* ==========================================================================
+   22. FEATURE CARD IMAGE
+   ========================================================================== */
+.feature-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+}
+
+/* Card image (for cards with images instead of placeholders) */
+.card > .card-image {
+  width: calc(100% + var(--space-6) * 2);
+  max-width: none;
+  margin-left: calc(var(--space-6) * -1);
+  margin-right: calc(var(--space-6) * -1);
+  margin-top: calc(var(--space-6) * -1);
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  display: block;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  background: #2D2D2D;
+  aspect-ratio: 16/10;
+}
