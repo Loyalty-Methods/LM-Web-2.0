@@ -4,141 +4,303 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promotions & Discounting | RCX Loyalty Platform</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
   
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <style>
-    /* ========== UNIFIED ORANGE: #FF8534 - Enterprise Sleek ========== */
-    :root {
-      --unified-orange: #FF8534;
-      --unified-orange-shadow: rgba(255, 133, 52, 0.25);
-      --unified-orange-shadow-hover: rgba(255, 133, 52, 0.35);
-      --unified-orange-glow: rgba(255, 133, 52, 0.15);
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Promotions & Discounting
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Dark Charcoal Theme)
+       ------------------------------------------------------------------------- */
+    .subpage-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
     }
 
-    /* ========== UNIFIED ORANGE OVERRIDES ========== */
-    
-    /* Section titles in charcoal card sections */
-    .charcoal-cards-section .section-title {
-      color: var(--unified-orange);
-    }
-    
-    /* All buttons - solid color, refined shadows */
-    .btn-primary,
-    .btn-dark,
-    .header .btn-primary {
-      background: var(--unified-orange) !important;
-      box-shadow: 0 2px 8px var(--unified-orange-shadow),
-                  0 1px 3px rgba(0, 0, 0, 0.1);
-      border: none;
-      transition: all 0.2s ease;
-    }
-    
-    .btn-primary:hover,
-    .btn-dark:hover,
-    .header .btn-primary:hover {
-      background: var(--unified-orange) !important;
-      box-shadow: 0 4px 16px var(--unified-orange-shadow-hover),
-                  0 2px 6px rgba(0, 0, 0, 0.12);
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
-    
-    .btn-primary:active,
-    .btn-dark:active {
-      transform: translateY(0);
-      filter: brightness(0.98);
+    /* Glass shine overlay */
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
     }
 
-    /* Eyebrows and labels */
-    .feature-row-eyebrow,
-    .feature-card-label,
-    .spotlight-eyebrow,
-    .accordion-eyebrow,
-    .section-eyebrow,
-    .mega-menu-featured-eyebrow,
-    .subpage-hero-eyebrow,
-    .subpage-hero-eyebrow span {
-      color: var(--unified-orange);
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
     }
-    
-    /* Links */
-    .cta-link,
-    .card-link,
-    .resource-card-link,
-    .accordion-content-link {
-      color: var(--unified-orange);
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
     }
-    
-    .cta-link:hover,
-    .card-link:hover,
-    .resource-card-link:hover,
-    .accordion-content-link:hover {
-      color: var(--unified-orange);
-      filter: brightness(0.9);
+
+    .subpage-hero-content {
+      max-width: 600px;
     }
-    
-    /* Nav hover states */
-    .nav-link:hover {
-      color: var(--unified-orange);
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
     }
-    
-    /* Mega menu icon backgrounds */
-    .mega-menu-link-icon,
-    .feature-grid-icon {
-      background: var(--unified-orange-glow);
-      color: var(--unified-orange);
+
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
     }
-    
-    /* Icon feature - dark background with orange stroke */
-    .icon-feature-icon {
-      background: #2A2A2A;
-      color: var(--unified-orange);
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
     }
-    
-    /* Icon feature titles */
-    .icon-feature-title {
-      color: var(--unified-orange);
+
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    
-    /* List bullets */
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-white);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-bottom: var(--space-20);
+    }
+
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-row-reverse {
+      direction: rtl;
+    }
+
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row,
+      .feature-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+
+    .feature-row-content {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list-item {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
     .feature-row-list-item::before {
-      background: var(--unified-orange);
-    }
-    
-    /* Footer column titles */
-    .footer-column-title {
-      color: var(--unified-orange);
-    }
-    
-    /* Card titles */
-    .budget-card-title {
-      color: var(--unified-orange);
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
     }
 
-    /* ========== LIFECYCLE GRID (6 cards) ========== */
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    /* btn-dark for light backgrounds */
+    .btn-dark {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    /* -------------------------------------------------------------------------
+       LIFECYCLE GRID (6 cards)
+       ------------------------------------------------------------------------- */
     .lifecycle-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
     }
-    
+
     @media (max-width: 1024px) {
       .lifecycle-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     @media (max-width: 640px) {
       .lifecycle-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    /* ========== PROMO WIDGET SECTION ========== */
+    /* -------------------------------------------------------------------------
+       PROMO WIDGET SECTION
+       ------------------------------------------------------------------------- */
     .promo-widget-section {
       background: 
         linear-gradient(180deg, rgba(42,42,42,0.97) 0%, rgba(42,42,42,0.92) 15%, rgba(38,38,38,0.88) 40%, rgba(35,35,35,0.85) 100%),
@@ -147,7 +309,7 @@
       padding: var(--space-20) 0 var(--space-16);
       overflow: hidden;
     }
-    
+
     .promo-widget-section .container {
       position: relative;
       z-index: 1;
@@ -162,8 +324,8 @@
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
-      color: var(--unified-orange);
+      letter-spacing: 0.15em;
+      color: var(--color-primary);
       margin-bottom: var(--space-4);
     }
 
@@ -172,7 +334,7 @@
       font-weight: var(--font-weight-bold);
       color: var(--color-white);
     }
-    
+
     /* Widget container */
     .promo-widget {
       position: relative;
@@ -180,19 +342,19 @@
       margin: 0 auto;
       min-height: 580px;
     }
-    
+
     /* Slide container */
     .promo-slide {
       display: none;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
-    
+
     .promo-slide.active {
       display: block;
       opacity: 1;
     }
-    
+
     /* Slide layout */
     .promo-slide-inner {
       display: grid;
@@ -200,14 +362,14 @@
       gap: var(--space-6);
       align-items: start;
     }
-    
+
     @media (max-width: 1024px) {
       .promo-slide-inner {
         grid-template-columns: 1fr;
         gap: var(--space-8);
       }
     }
-    
+
     /* Copy cards - glass effect on dark background */
     .promo-copy-card {
       padding: var(--space-6);
@@ -216,29 +378,29 @@
       border-radius: var(--radius-xl);
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
     }
-    
+
     .promo-copy-card-eyebrow {
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wider);
-      color: var(--unified-orange);
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
       margin-bottom: var(--space-2);
     }
-    
+
     .promo-copy-card-title {
       font-size: var(--font-size-xl);
       font-weight: var(--font-weight-bold);
       color: var(--color-white);
       margin-bottom: var(--space-3);
     }
-    
+
     .promo-copy-card-description {
       font-size: var(--font-size-sm);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
+      color: var(--color-gray-100);
+      line-height: 1.7;
     }
-    
+
     /* Phone mockups container */
     .promo-phones {
       display: flex;
@@ -247,13 +409,13 @@
       gap: var(--space-6);
       padding-top: var(--space-4);
     }
-    
+
     @media (max-width: 1024px) {
       .promo-phones {
         order: -1;
       }
     }
-    
+
     /* Phone mockup */
     .promo-phone {
       width: 180px;
@@ -265,7 +427,7 @@
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
-    
+
     /* Phone notch */
     .promo-phone::before {
       content: '';
@@ -279,7 +441,7 @@
       border-radius: 10px;
       z-index: 10;
     }
-    
+
     /* Phone glow effect */
     .promo-phone::after {
       content: '';
@@ -290,10 +452,10 @@
       z-index: -1;
       pointer-events: none;
     }
-    
+
     .promo-phone-left { --phone-glow-color: #5B8AB8; }
     .promo-phone-right { --phone-glow-color: #8B5CF6; }
-    
+
     /* Phone screen - white/light gradient like homepage browser */
     .promo-phone-screen {
       position: absolute;
@@ -307,26 +469,26 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .promo-phone-header {
       padding: var(--space-4) var(--space-3);
       padding-top: var(--space-6);
       background: #ffffff;
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
-    
+
     .promo-phone-header-title {
       font-size: 11px;
       font-weight: var(--font-weight-semibold);
       color: #1a1a1a;
       margin-bottom: 2px;
     }
-    
+
     .promo-phone-header-subtitle {
       font-size: 9px;
       color: #666666;
     }
-    
+
     .promo-phone-content {
       flex: 1;
       padding: var(--space-3);
@@ -335,7 +497,7 @@
       gap: var(--space-2);
       background: #f5f5f7;
     }
-    
+
     .promo-phone-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
@@ -343,188 +505,270 @@
       border: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
-    
+
     .promo-phone-card-highlight {
-      background: linear-gradient(135deg, rgba(255, 133, 52, 0.1) 0%, rgba(255, 133, 52, 0.02) 100%);
-      border-color: rgba(255, 133, 52, 0.25);
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.1) 0%, rgba(243, 112, 33, 0.02) 100%);
+      border: 1px solid rgba(243, 112, 33, 0.2);
     }
-    
+
     .promo-phone-label {
       font-size: 8px;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--unified-orange);
-      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
     }
-    
+
     .promo-phone-value {
       font-size: 14px;
       font-weight: var(--font-weight-bold);
       color: #1a1a1a;
+      margin-bottom: 2px;
     }
-    
+
     .promo-phone-text {
       font-size: 9px;
       color: #666666;
-      line-height: 1.4;
     }
-    
-    /* Navigation buttons */
+
+    /* Promo Navigation */
     .promo-nav {
       display: flex;
       justify-content: center;
       gap: var(--space-3);
-      margin-top: var(--space-10);
+      margin-top: var(--space-8);
     }
-    
+
     .promo-nav-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-lg);
-      background: transparent;
-      border: 2px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.6);
-      font-size: var(--font-size-base);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--color-white);
       font-weight: var(--font-weight-semibold);
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all var(--transition-base);
     }
-    
+
     .promo-nav-btn:hover {
-      border-color: rgba(255,255,255,0.4);
-      color: var(--color-white);
+      background: rgba(255, 255, 255, 0.2);
     }
-    
+
     .promo-nav-btn.active {
-      background: var(--unified-orange);
-      border-color: var(--unified-orange);
-      color: var(--color-white);
-      box-shadow: 0 4px 20px rgba(255, 133, 52, 0.4);
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      box-shadow: var(--glow-orange);
     }
 
-    /* ========== BUDGET CONTROLS CARDS (Dark Grid) ========== */
-    .budget-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
+    /* Section description */
+    .section-description {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
     }
-    
-    @media (max-width: 1024px) {
-      .budget-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .budget-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .budget-card {
-      padding: var(--space-6);
-      background: 
-        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-        linear-gradient(145deg, #1A1A1A 0%, #262626 50%, #333333 100%);
+
+    /* -------------------------------------------------------------------------
+       BOTTOM CTA CARD
+       ------------------------------------------------------------------------- */
+    .bottom-cta-card {
+      background: var(--color-white);
       border-radius: var(--radius-2xl);
-      border: 1px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      transition: transform var(--transition-base), 
-                  box-shadow var(--transition-base);
+      padding: var(--space-12) var(--space-16);
+      box-shadow: var(--shadow-card);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
-    
-    .budget-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-2xl);
-      padding: 1px;
-      background: linear-gradient(145deg, rgba(91, 138, 184, 0.4) 0%, rgba(91, 138, 184, 0.15) 50%, rgba(91, 138, 184, 0.3) 100%);
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      transition: background var(--transition-base);
-    }
-    
-    .budget-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(91, 138, 184, 0.2);
-    }
-    
-    .budget-card:hover::before {
-      background: linear-gradient(145deg, rgba(91, 138, 184, 0.6) 0%, rgba(91, 138, 184, 0.3) 50%, rgba(91, 138, 184, 0.5) 100%);
-    }
-    
-    .budget-card-title {
-      font-size: var(--font-size-xl);
+
+    .bottom-cta-title {
+      font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
-      color: var(--unified-orange);
-      margin-bottom: var(--space-3);
-    }
-    
-    .budget-card-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
+      color: var(--text-main);
+      margin-bottom: var(--space-4);
     }
 
-    .faq-split-layout {
+    .bottom-cta-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 640px) {
+      .bottom-cta-card {
+        padding: var(--space-8);
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       FAQ SECTION (Two-Column Layout)
+       ------------------------------------------------------------------------- */
+    .faq-section {
+      padding: var(--space-20) 0;
+    }
+
+    .faq-layout {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
       gap: var(--space-16);
       align-items: start;
     }
-    
+
     @media (max-width: 1024px) {
-      .faq-split-layout {
+      .faq-layout {
         grid-template-columns: 1fr;
         gap: var(--space-10);
       }
     }
-    
-    .faq-split-header {
+
+    /* Left Column: Intro */
+    .faq-intro {
       position: sticky;
       top: 120px;
     }
-    
+
     @media (max-width: 1024px) {
-      .faq-split-header {
+      .faq-intro {
         position: static;
+        text-align: center;
       }
     }
-    
-    .faq-split-title {
+
+    .faq-title {
       font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+      color: var(--text-main);
+      line-height: 1.2;
       margin-bottom: var(--space-4);
-      line-height: var(--line-height-snug);
-    }
-    
-    .faq-split-description {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-    
-    .faq-split-accordion {
-      max-width: 100%;
     }
 
-    /* CTA Box text full width */
-    .cta-box-light p {
-      max-width: 100% !important;
+    .faq-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    /* Right Column: Accordion */
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .accordion-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .accordion-item:hover {
+      border-color: var(--color-navy);
+    }
+
+    .accordion-item.active {
+      border-color: var(--color-primary);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .accordion-trigger-text {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-main);
+      padding-right: var(--space-4);
+    }
+
+    .accordion-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .accordion-icon::before,
+    .accordion-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--color-primary);
+      transition: transform var(--transition-fast);
+    }
+
+    .accordion-icon::before {
+      width: 12px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-icon::after {
+      width: 2px;
+      height: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-item.active .accordion-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow);
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+
+    .accordion-content-inner {
+      padding: 0 var(--space-6) var(--space-6);
+    }
+
+    .accordion-content-inner p {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+
+    .accordion-content-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .feature-row-title {
+        font-size: var(--font-size-2xl);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -659,7 +903,7 @@
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
@@ -697,7 +941,7 @@
                       <h3 class="mega-menu-featured-title">Partner Network</h3>
                       <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
                       <div class="mega-menu-featured-image">
-                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(255, 133, 52, 0.1); color: #FF8534;">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
                           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </div>
                       </div>
@@ -716,28 +960,37 @@
   </header>
 
 
-  <!-- ========== SECTION 1: HERO ========== -->
+  <!-- ========================================
+       SECTION 1: HERO
+       Background: DARK (Charcoal + Glass Shine)
+       ======================================== -->
   <section class="subpage-hero">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
     <div class="container">
       <div class="subpage-hero-inner">
         
+        <!-- Left: Content -->
         <div class="subpage-hero-content">
           <div class="subpage-hero-eyebrow">
             <span>Core Platform</span>
           </div>
-          <h1 class="subpage-hero-title">Promotions & Discounting</h1>
+
+          <h1 class="subpage-hero-title">
+            Promotions & <span class="highlight">Discounting</span>
+          </h1>
+
           <p class="subpage-hero-description">
-            Run promotions other platforms can't. BOGO, multipliers, mix & match, partner co-fundingÃ¢â‚¬â€400+ active promotions managed through one rules engine.
+            Run promotions other platforms can't. BOGO, multipliers, mix & match, partner co-funding—400+ active promotions managed through one rules engine.
           </p>
+
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
 
-        <div class="subpage-hero-media">
+        <!-- Right: Hero Image -->
+        <div class="subpage-hero-media hidden-mobile">
           <div class="subpage-hero-image-placeholder">
-            [Promotions Campaign Builder Interface]
+            [Promotions Campaign Builder Interface — 600×450]
           </div>
         </div>
         
@@ -746,80 +999,128 @@
   </section>
 
 
-  <!-- ========== SECTION 2: LIFECYCLE PROMOTIONS (6-Card Grid) ========== -->
+  <!-- ========================================
+       SECTION 2: LIFECYCLE PROMOTIONS (6-Card Grid)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="section section-lg section-light bg-white">
     <div class="container">
-      <div class="section-header">
+      
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
         <h2 class="section-title">Drive Behavior at Every Stage</h2>
       </div>
+
       <div class="lifecycle-grid">
         
-        <div class="icon-feature">
+        <!-- Card 1: Acquisition -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Acquisition</h3>
+            <h3 class="card-title">Acquisition</h3>
           </div>
-          <p class="icon-feature-description">Sign-up bonuses, welcome offers, first-purchase rewards that convert prospects into members.</p>
+          <p class="card-body">
+            Sign-up bonuses, welcome offers, first-purchase rewards that convert prospects into members.
+          </p>
         </div>
 
-        <div class="icon-feature">
+        <!-- Card 2: Activation -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Activation</h3>
+            <h3 class="card-title">Activation</h3>
           </div>
-          <p class="icon-feature-description">First-visit multipliers, onboarding challenges, quick-win badges that drive early engagement.</p>
+          <p class="card-body">
+            First-visit multipliers, onboarding challenges, quick-win badges that drive early engagement.
+          </p>
         </div>
 
-        <div class="icon-feature">
+        <!-- Card 3: Engagement -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Engagement</h3>
+            <h3 class="card-title">Engagement</h3>
           </div>
-          <p class="icon-feature-description">Program participation, gamification triggers, category exploration rewards.</p>
+          <p class="card-body">
+            Program participation, gamification triggers, category exploration rewards.
+          </p>
         </div>
 
-        <div class="icon-feature">
+        <!-- Card 4: Retention -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Retention</h3>
+            <h3 class="card-title">Retention</h3>
           </div>
-          <p class="icon-feature-description">Win-back campaigns, lapsed-member reactivation, churn prediction interventions.</p>
+          <p class="card-body">
+            Win-back campaigns, lapsed-member reactivation, churn prediction interventions.
+          </p>
         </div>
 
-        <div class="icon-feature">
+        <!-- Card 5: Growth -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Growth</h3>
+            <h3 class="card-title">Growth</h3>
           </div>
-          <p class="icon-feature-description">Tier acceleration, cross-sell promotions, basket builders that increase share of wallet.</p>
+          <p class="card-body">
+            Tier acceleration, cross-sell promotions, basket builders that increase share of wallet.
+          </p>
         </div>
 
-        <div class="icon-feature">
+        <!-- Card 6: Advocacy -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Advocacy</h3>
+            <h3 class="card-title">Advocacy</h3>
           </div>
-          <p class="icon-feature-description">Referral programs, social sharing incentives, review rewards that turn members into advocates.</p>
+          <p class="card-body">
+            Referral programs, social sharing incentives, review rewards that turn members into advocates.
+          </p>
         </div>
-        
+
       </div>
     </div>
   </section>
 
 
-  <!-- ========== SECTION 3: PROMO TYPES INTERACTIVE WIDGET ========== -->
+  <!-- ========================================
+       SECTION 3: PROMO TYPES INTERACTIVE WIDGET
+       Background: DARK
+       ======================================== -->
   <section class="promo-widget-section">
     <div class="container">
       
@@ -838,7 +1139,7 @@
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Buy X Get Y</p>
               <h3 class="promo-copy-card-title">BOGO</h3>
-              <p class="promo-copy-card-description">Configure qualifying products, required quantities, and reward items. Handle complex scenarios like "Buy 2 coffees, get 3rd free" or "Buy entrÃƒÂ©e, get appetizer 50% off."</p>
+              <p class="promo-copy-card-description">Configure qualifying products, required quantities, and reward items. Handle complex scenarios like "Buy 2 coffees, get 3rd free" or "Buy entrée, get appetizer 50% off."</p>
             </div>
             
             <!-- Phone Mockups -->
@@ -944,23 +1245,23 @@
               <div class="promo-phone promo-phone-right" style="--phone-glow-color: #F59E0B;">
                 <div class="promo-phone-screen">
                   <div class="promo-phone-header">
-                    <div class="promo-phone-header-title">Combo Builder</div>
-                    <div class="promo-phone-header-subtitle">Mix & Match deals</div>
+                    <div class="promo-phone-header-title">Mix & Match</div>
+                    <div class="promo-phone-header-subtitle">Build your bundle</div>
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
-                      <div class="promo-phone-label">Combo Deal</div>
-                      <div class="promo-phone-value">Any 3 for $10</div>
+                      <div class="promo-phone-label">Bundle Deal</div>
+                      <div class="promo-phone-value">Pick Any 3 for $5</div>
                       <div class="promo-phone-text">Snacks category</div>
                     </div>
                     <div class="promo-phone-card">
-                      <div class="promo-phone-label">Selected</div>
+                      <div class="promo-phone-label">Your Picks</div>
                       <div class="promo-phone-value">2 of 3</div>
                       <div class="promo-phone-text">Add 1 more item</div>
                     </div>
                     <div class="promo-phone-card">
-                      <div class="promo-phone-label">You Save</div>
-                      <div class="promo-phone-value">$3.47</div>
+                      <div class="promo-phone-label">Savings</div>
+                      <div class="promo-phone-value">$2.47</div>
                       <div class="promo-phone-text">vs. individual prices</div>
                     </div>
                   </div>
@@ -969,34 +1270,34 @@
             </div>
             
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Combo Deals</p>
+              <p class="promo-copy-card-eyebrow">Flexible Bundles</p>
               <h3 class="promo-copy-card-title">Mix & Match</h3>
-              <p class="promo-copy-card-description">Evaluate basket contents in real time. "Any 3 items from Category A for $10" or "Complete the meal deal for bonus points"Ã¢â‚¬â€calculated at the line-item level.</p>
+              <p class="promo-copy-card-description">Let customers build their own bundles from qualifying product sets. "Pick any 3 snacks for $5" or "Buy from categories A, B, and C to unlock discount."</p>
             </div>
             
           </div>
         </div>
 
-        <!-- SLIDE 3: Thresholds + Flash Offers -->
+        <!-- SLIDE 3: Threshold Spend + Flash Offers -->
         <div class="promo-slide" data-slide="3">
           <div class="promo-slide-inner">
             
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Spend & Visit Bonuses</p>
-              <h3 class="promo-copy-card-title">Thresholds</h3>
-              <p class="promo-copy-card-description">Award bonuses when members hit spending or visit milestones. Track progress in real time and trigger rewards the moment thresholds are crossed.</p>
+              <p class="promo-copy-card-eyebrow">Spending Targets</p>
+              <h3 class="promo-copy-card-title">Threshold Spend</h3>
+              <p class="promo-copy-card-description">Set spend-to-unlock promotions that reward members for hitting purchase thresholds. "Spend $50, get 1,000 bonus points" with real-time progress tracking.</p>
             </div>
             
             <div class="promo-phones">
-              <div class="promo-phone promo-phone-left" style="--phone-glow-color: #EC4899;">
+              <div class="promo-phone promo-phone-left" style="--phone-glow-color: #6366F1;">
                 <div class="promo-phone-screen">
                   <div class="promo-phone-header">
-                    <div class="promo-phone-header-title">Milestone Tracker</div>
-                    <div class="promo-phone-header-subtitle">This month's progress</div>
+                    <div class="promo-phone-header-title">Spend Goal</div>
+                    <div class="promo-phone-header-subtitle">This week's target</div>
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
-                      <div class="promo-phone-label">Spend Goal</div>
+                      <div class="promo-phone-label">Threshold</div>
                       <div class="promo-phone-value">$42 / $50</div>
                       <div class="promo-phone-text">$8 away from bonus</div>
                     </div>
@@ -1021,7 +1322,7 @@
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
-                      <div class="promo-phone-label">Ã¢Å¡Â¡ Flash Deal</div>
+                      <div class="promo-phone-label">⚡ Flash Deal</div>
                       <div class="promo-phone-value">2X Points</div>
                       <div class="promo-phone-text">Next 2 hours only</div>
                     </div>
@@ -1061,7 +1362,10 @@
   </section>
 
 
-  <!-- ========== SECTION 4: DISCOUNTING ENGINE (Zig-Zag, Image Left) ========== -->
+  <!-- ========================================
+       SECTION 4: DISCOUNTING ENGINE (Feature Row)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
       
@@ -1084,7 +1388,7 @@
             <li class="feature-row-list-item">Instant balance updates across channels</li>
           </ul>
           <div class="feature-row-cta">
-            <a href="#" class="btn btn-dark">See Discounting in Action &rarr;</a>
+            <a href="about-contact.html" class="btn btn-dark">See Discounting in Action &rarr;</a>
           </div>
         </div>
       </div>
@@ -1093,7 +1397,10 @@
   </section>
 
 
-  <!-- ========== SECTION 5: BEST-OFFER ARBITRATION (Zig-Zag, Image Right) ========== -->
+  <!-- ========================================
+       SECTION 5: BEST-OFFER ARBITRATION (Feature Row Reverse)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="feature-rows-section" style="padding-top: 0;">
     <div class="container">
       
@@ -1116,7 +1423,7 @@
             <li class="feature-row-list-item">Audit trail for every decision</li>
           </ul>
           <div class="feature-row-cta">
-            <a href="#" class="btn btn-dark">Explore Arbitration Logic &rarr;</a>
+            <a href="about-contact.html" class="btn btn-dark">Explore Arbitration Logic &rarr;</a>
           </div>
         </div>
       </div>
@@ -1125,121 +1432,135 @@
   </section>
 
 
-  <!-- ========== SECTION 6: BUDGET CONTROLS (6-Card Light Grid) ========== -->
+  <!-- ========================================
+       SECTION 6: BUDGET CONTROLS (6-Card Grid)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="section section-lg section-light bg-white">
     <div class="container">
-      <div class="section-header">
+      
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
         <h2 class="section-title">Promotional Spend Under Control</h2>
       </div>
+
       <div class="lifecycle-grid">
         
-        <div class="icon-feature">
+        <!-- Card 1: Campaign Budgets -->
+        <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
             </div>
-            <h3 class="icon-feature-title">Campaign Budgets</h3>
+            <h3 class="card-title">Campaign Budgets</h3>
           </div>
-          <p class="icon-feature-description">Set maximum liability per promotion with automatic pause when limits hit.</p>
-        </div>
-
-        <div class="icon-feature">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3 class="icon-feature-title">Partner Allocations</h3>
-          </div>
-          <p class="icon-feature-description">Separate funding pools per partner with real-time tracking.</p>
-        </div>
-
-        <div class="icon-feature">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <h3 class="icon-feature-title">Redemption Caps</h3>
-          </div>
-          <p class="icon-feature-description">Limit total redemptions, per-member usage, or per-period claims.</p>
-        </div>
-
-        <div class="icon-feature">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-            <h3 class="icon-feature-title">Velocity Controls</h3>
-          </div>
-          <p class="icon-feature-description">Detect and block suspicious redemption patterns automatically.</p>
-        </div>
-
-        <div class="icon-feature">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-            </div>
-            <h3 class="icon-feature-title">Approval Workflows</h3>
-          </div>
-          <p class="icon-feature-description">Route high-value promotions through configurable approval chains.</p>
-        </div>
-
-        <div class="icon-feature">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-            </div>
-            <h3 class="icon-feature-title">Liability Reporting</h3>
-          </div>
-          <p class="icon-feature-description">Real-time visibility into outstanding promotional obligations.</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 7: CONTROL GROUPS (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section">
-    <div class="container">
-      
-      <div class="feature-row">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Control Group Analysis Dashboard]
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Measurement</span>
-          <h2 class="feature-row-title">Prove Incremental Lift with Control Groups</h2>
-          <p class="feature-row-description">
-            Automatically hold back a statistically valid control group for any promotion. Compare against the promoted population to measure true incrementalityÃ¢â‚¬â€not just redemption volume.
+          <p class="card-body">
+            Set maximum liability per promotion with automatic pause when limits hit.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Automated holdout selection</li>
-            <li class="feature-row-list-item">Statistical significance tracking</li>
-            <li class="feature-row-list-item">Incrementality vs. baseline metrics</li>
-            <li class="feature-row-list-item">Export-ready measurement reports</li>
-          </ul>
-          <div class="feature-row-cta">
-            <a href="#" class="btn btn-dark">See Measurement Framework &rarr;</a>
-          </div>
         </div>
-      </div>
 
+        <!-- Card 2: Partner Allocations -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Partner Allocations</h3>
+          </div>
+          <p class="card-body">
+            Track partner-funded promotions separately with accurate reimbursement.
+          </p>
+        </div>
+
+        <!-- Card 3: Burn Rate Monitoring -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Burn Rate Monitoring</h3>
+          </div>
+          <p class="card-body">
+            Real-time visibility into redemption velocity and projected exhaustion.
+          </p>
+        </div>
+
+        <!-- Card 4: Margin Guardrails -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Margin Guardrails</h3>
+          </div>
+          <p class="card-body">
+            Protect profit margins with configurable discount caps and exclusions.
+          </p>
+        </div>
+
+        <!-- Card 5: Automated Alerts -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Automated Alerts</h3>
+          </div>
+          <p class="card-body">
+            Proactive notifications at configurable budget thresholds.
+          </p>
+        </div>
+
+        <!-- Card 6: ROI Attribution -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">ROI Attribution</h3>
+          </div>
+          <p class="card-body">
+            Measure incremental lift with built-in control groups and A/B testing.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
 
 
-
-  <!-- ========== SECTION 9: FINAL CTA ========== -->
-  <section class="section-light bg-light" style="padding: 5rem 0;">
+  <!-- ========================================
+       SECTION 7: BOTTOM CTA
+       Background: Off-white with white card
+       ======================================== -->
+  <section class="section section-lg bg-light">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Ready to run promotions at scale?</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
-          See how 400+ promotions, 50+ partners, and real-time discounting work together. Schedule a personalized demo.
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">Ready to Run Promotions That Drive Results?</h2>
+        <p class="bottom-cta-description">
+          See how RCX delivers real-time promotional mechanics that other platforms can't match.
         </p>
-        <div class="flex gap-4">
+        <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
       </div>
@@ -1247,72 +1568,76 @@
   </section>
 
 
-  <!-- ========== SECTION 10: FAQ ACCORDION ========== -->
-  <section class="accordion-section">
+  <!-- ========================================
+       SECTION 8: FAQ SECTION (Two-Column Layout)
+       Background: LIGHT (Gray)
+       ======================================== -->
+  <section class="faq-section section-light bg-light">
     <div class="container">
-      
-      <div class="faq-split-layout">
+      <div class="faq-layout">
         
-        <!-- Left: Header -->
-        <div class="faq-split-header">
-          <h2 class="faq-split-title">Frequently Asked Questions</h2>
-          <p class="faq-split-description">
-            Common questions about promotions, discounting, and budget management.
+        <!-- Left Column: Intro Text -->
+        <div class="faq-intro">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
+            Common questions about promotions, discounting, and campaign management in RCX.
           </p>
+          <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
 
-        <!-- Right: Accordion -->
-        <div class="faq-split-accordion accordion">
-        
-          <!-- FAQ Item 1 -->
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+          
+          <!-- FAQ 1 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do I prevent promotions from stacking in ways that hurt margin?</span>
+              <span class="accordion-trigger-text">How many promotions can run simultaneously?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  RCX provides multiple layers of margin protection. Define stacking rules that specify which 
-                  promotions can combine and which are mutually exclusive. Set up exclusion groups to prevent 
-                  specific offers from running together. Configure margin floors that automatically cap discounts 
-                  when they exceed thresholds.
+                  There is no hard limit. Enterprise clients routinely run 400+ active promotions 
+                  simultaneously across different segments, locations, and product categories. 
+                  The rules engine evaluates all applicable promotions in real time without 
+                  performance degradation.
                 </p>
                 <p>
-                  The best-offer arbitration engine can be configured to prioritize margin protection, member 
-                  value, or a weighted balance of both. Every discount decision is logged with full audit trail 
-                  so you can analyze patterns and adjust rules over time.
+                  Each promotion can have its own targeting criteria, budget limits, and stacking 
+                  rules. The system handles promotion conflicts, best-offer selection, and 
+                  margin protection automatically.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ Item 2 -->
+          <!-- FAQ 2 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can different promotions have different funding sources?</span>
+              <span class="accordion-trigger-text">Can promotions stack with tier benefits?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Yes. Partner enablement is a core capability. Each promotion can be tagged with funding 
-                  allocations from multiple sourcesÃ¢â‚¬â€your brand, CPG partners, franchisees, or any combination. 
-                  RCX tracks every earn and burn by funding source automatically.
+                  Yes. Stacking behavior is fully configurable per promotion. You can allow 
+                  promotions to stack with tier multipliers, other promotions, or partner offers—or 
+                  exclude specific combinations. The rules engine respects all stacking constraints 
+                  when calculating the final reward.
                 </p>
                 <p>
-                  Settlement reporting breaks down liability by partner with configurable billing cycles. 
-                  Partners can have their own budget caps, redemption limits, and approval workflows 
-                  independent of your primary program controls.
+                  For example, a Gold member might receive their 1.5x tier multiplier stacked with 
+                  a Double-Point Tuesday promotion and a partner-funded bonus, all calculated and 
+                  applied in real time at checkout.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ Item 3 -->
+          <!-- FAQ 3 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do I measure whether a promotion actually drove incremental behavior?</span>
+              <span class="accordion-trigger-text">How do you measure promotional ROI?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
@@ -1331,7 +1656,7 @@
             </div>
           </div>
 
-          <!-- FAQ Item 4 -->
+          <!-- FAQ 4 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">What happens if a promotion budget runs out mid-campaign?</span>
@@ -1341,7 +1666,7 @@
               <div class="accordion-content-inner">
                 <p>
                   Budget controls can be configured for soft or hard caps. Hard caps immediately pause 
-                  the promotion when the budget is exhaustedÃ¢â‚¬â€no additional redemptions are allowed. 
+                  the promotion when the budget is exhausted—no additional redemptions are allowed. 
                   Soft caps trigger alerts to stakeholders while allowing the promotion to continue, 
                   giving you time to decide whether to extend budget.
                 </p>
@@ -1354,7 +1679,7 @@
             </div>
           </div>
 
-          <!-- FAQ Item 5 -->
+          <!-- FAQ 5 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">Can I run location-specific or time-limited flash promotions?</span>
@@ -1383,7 +1708,11 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+
+  <!-- ========================================
+       FOOTER
+       Synced with index.html footer structure
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
@@ -1463,10 +1792,13 @@
   </footer>
 
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -1512,6 +1844,27 @@
         if (!isActive) {
           item.classList.add('active');
           trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     });
