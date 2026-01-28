@@ -3,296 +3,552 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partner Enablement | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  <title>Rewards & Benefits | RCX Loyalty Platform</title>
   
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <style>
-    /* Partner Enablement page-specific styles */
-    .stats-bar-compact {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-      text-align: center;
-      padding: var(--space-16) 0;
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Rewards & Benefits
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Dark Charcoal Theme)
+       ------------------------------------------------------------------------- */
+    .subpage-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
     }
-    
-    @media (max-width: 768px) {
-      .stats-bar-compact {
+
+    /* Glass shine overlay */
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
         grid-template-columns: 1fr;
-        gap: var(--space-6);
+        text-align: center;
       }
     }
-    
-    .stat-item-compact {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
+
+    .subpage-hero-content {
+      max-width: 600px;
     }
-    
-    .stat-number-lg {
-      font-size: var(--font-size-4xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      line-height: 1;
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
     }
-    
-    .stat-label-main {
+
+    .subpage-hero-eyebrow {
       font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-    }
-    
-    .stat-label-sub {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      font-style: italic;
-    }
-    
-    /* Callout block */
-    .callout-block {
-      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
-      border: 1px solid rgba(243, 112, 33, 0.2);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-10);
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .callout-block-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
       margin-bottom: var(--space-4);
     }
-    
-    .callout-block-text {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-    
-    /* Dark callout variant */
-    .callout-block-dark {
-      background: var(--color-charcoal-800);
-      border: 1px solid var(--color-charcoal-600);
-    }
-    
-    .callout-block-dark .callout-block-title {
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
       color: var(--color-white);
-    }
-    
-    .callout-block-dark .callout-block-text {
-      color: var(--color-gray-300);
-    }
-    
-    /* Proof story callout */
-    .proof-callout {
-      background: var(--color-charcoal-800);
-      border: 1px solid var(--color-charcoal-600);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-12);
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .proof-callout-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-4);
-    }
-    
-    .proof-callout-text {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       margin-bottom: var(--space-6);
     }
-    
-    /* Hook section zigzag styling */
-    .hook-section {
+
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
       padding: var(--space-20) 0;
       background-color: var(--color-white);
     }
-    
-    .hook-grid {
+
+    .feature-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-16);
       align-items: center;
+      margin-bottom: var(--space-20);
     }
-    
+
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-row-reverse {
+      direction: rtl;
+    }
+
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+
     @media (max-width: 1024px) {
-      .hook-grid {
+      .feature-row,
+      .feature-row-reverse {
         grid-template-columns: 1fr;
-        gap: var(--space-8);
+        direction: ltr;
       }
     }
-    
-    .hook-image-placeholder {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: linear-gradient(135deg, rgba(243, 112, 33, 0.1) 0%, rgba(91, 138, 184, 0.08) 100%);
+
+    .feature-row-content {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list-item {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
+    .feature-row-list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
       border-radius: var(--radius-xl);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-gray-400);
+      color: rgba(255, 255, 255, 0.4);
       font-size: var(--font-size-sm);
-      border: 1px solid var(--color-gray-100);
     }
-    
-    .hook-content-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-      margin-bottom: var(--space-6);
-      line-height: var(--line-height-snug);
+
+    /* btn-dark for light backgrounds */
+    .btn-dark {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
     }
-    
-    .hook-content-text {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
-    
-    /* Results grid */
-    .results-grid {
-      display: grid;
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    /* -------------------------------------------------------------------------
+       4-COLUMN GRID for At a Glance
+       ------------------------------------------------------------------------- */
+    .grid-4 {
       grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
     }
-    
+
     @media (max-width: 1024px) {
-      .results-grid {
+      .grid-4 {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     @media (max-width: 640px) {
-      .results-grid {
+      .grid-4 {
         grid-template-columns: 1fr;
       }
     }
-    
-    .result-card {
-      background: var(--color-charcoal-800);
-      border: 1px solid var(--color-charcoal-600);
-      border-radius: var(--radius-xl);
-      padding: var(--space-8);
-      text-align: center;
+
+    /* Section description */
+    .section-description {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
     }
-    
-    .result-stat {
-      font-size: var(--font-size-4xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
+
+    /* -------------------------------------------------------------------------
+       UI CAROUSEL (Product Tour) Specific Styles
+       ------------------------------------------------------------------------- */
+    .ui-carousel {
+      position: relative;
     }
-    
-    .result-metric {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-      margin-bottom: var(--space-2);
+
+    .ui-carousel-slides {
+      position: relative;
     }
-    
-    .result-attribution {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wider);
+
+    .ui-carousel-slide {
+      display: none;
     }
-    
-    /* Card grid for partner types */
-    .partner-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
+
+    .ui-carousel-slide.active {
+      display: block;
+    }
+
+    .ui-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: var(--space-6);
+    }
+
+    .ui-carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      cursor: pointer;
       transition: all var(--transition-base);
     }
-    
-    .partner-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
+
+    .ui-carousel-dot:hover {
+      background: rgba(255, 255, 255, 0.5);
     }
-    
-    .partner-card-icon {
-      width: 48px;
-      height: 48px;
+
+    .ui-carousel-dot.active {
+      background: var(--color-primary);
+      transform: scale(1.2);
+      box-shadow: var(--glow-orange);
+    }
+
+    .browser-screenshot-placeholder {
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-charcoal-800);
-      border-radius: var(--radius-lg);
-      color: var(--color-primary);
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+      background: #3D3D3D;
+    }
+
+    /* -------------------------------------------------------------------------
+       FAQ SECTION (Two-Column Layout)
+       ------------------------------------------------------------------------- */
+    .faq-section {
+      padding: var(--space-20) 0;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-10);
+      }
+    }
+
+    /* Left Column: Intro */
+    .faq-intro {
+      position: sticky;
+      top: 120px;
+    }
+
+    @media (max-width: 1024px) {
+      .faq-intro {
+        position: static;
+        text-align: center;
+      }
+    }
+
+    .faq-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
       margin-bottom: var(--space-4);
     }
-    
-    .partner-card-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-2);
+
+    .faq-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
     }
-    
-    .partner-card-text {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+
+    /* Right Column: Accordion */
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
     }
-    
-    /* Integration mode cards */
-    .integration-card {
+
+    .accordion-item {
       background: var(--color-white);
       border: 1px solid var(--color-gray-100);
       border-radius: var(--radius-lg);
-      padding: var(--space-5);
+      overflow: hidden;
       transition: all var(--transition-base);
     }
-    
-    .integration-card:hover {
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
+
+    .accordion-item:hover {
+      border-color: var(--color-navy);
     }
-    
-    .integration-card-title {
+
+    .accordion-item.active {
+      border-color: var(--color-primary);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .accordion-trigger-text {
       font-size: var(--font-size-base);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-2);
+      color: var(--text-main);
+      padding-right: var(--space-4);
     }
-    
-    .integration-card-text {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+
+    .accordion-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      flex-shrink: 0;
     }
-    
-    /* Footnote */
-    .section-footnote {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      font-style: italic;
+
+    .accordion-icon::before,
+    .accordion-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--color-primary);
+      transition: transform var(--transition-fast);
+    }
+
+    .accordion-icon::before {
+      width: 12px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-icon::after {
+      width: 2px;
+      height: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion-item.active .accordion-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow);
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+
+    .accordion-content-inner {
+      padding: 0 var(--space-6) var(--space-6);
+    }
+
+    .accordion-content-inner p {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* -------------------------------------------------------------------------
+       BOTTOM CTA CARD
+       ------------------------------------------------------------------------- */
+    .bottom-cta-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-16);
+      box-shadow: var(--shadow-card);
+      max-width: 900px;
+      margin: 0 auto;
       text-align: center;
-      margin-top: var(--space-8);
     }
-    
-    .section-footnote-dark {
-      color: var(--color-gray-300);
+
+    .bottom-cta-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-4);
+    }
+
+    .bottom-cta-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 640px) {
+      .bottom-cta-card {
+        padding: var(--space-8);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -427,7 +683,7 @@
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
@@ -483,444 +739,574 @@
     </div>
   </header>
 
-  <!-- ========== HERO (Orange Gradient) ========== -->
-  <section class="subpage-hero subpage-hero-brand">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+
+  <!-- ========================================
+       SECTION 1: HERO
+       Background: DARK (Charcoal + Glass Shine)
+       ======================================== -->
+  <section class="subpage-hero">
     <div class="container">
       <div class="subpage-hero-inner">
+        
+        <!-- Left: Content -->
         <div class="subpage-hero-content">
-          <p class="subpage-hero-eyebrow">Core Platform</p>
-          <h1 class="subpage-hero-title">Partner Enablement</h1>
+          <div class="subpage-hero-eyebrow">
+            <span>Capabilities</span>
+          </div>
+
+          <h1 class="subpage-hero-title">
+            Rewards & <span class="highlight">Benefits</span>
+          </h1>
+
           <p class="subpage-hero-description">
-            Native partner management capabilities to onboard, govern, and scale coalition programs, earn/burn partnerships, and data integrations. Each partner operates as its own micro-program with segregated rules, funding limits, and finance-grade traceability.
+            Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences—reward customers how they want, when they want.
           </p>
+
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
-        <div class="subpage-hero-media">
-          <div class="subpage-hero-image-placeholder">[Partner Ecosystem Dashboard]</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========== THE PARTNER PROBLEM (Hook - Zigzag) ========== -->
-  <section class="hook-section">
-    <div class="container">
-      <div class="hook-grid">
-        <div class="hook-image-placeholder">[Partner Integration Complexity Diagram]</div>
-        <div class="hook-content">
-          <h2 class="hook-content-title">100 Partners. 100 Different Agreements.</h2>
-          <p class="hook-content-text">
-            Partnerships are where loyalty programs get complicated. 100 partners means 100 different agreements, 100 different operations, 100 different data formats. Credit card companies, banks, airlines don't do real time. They stick to batch files. Every partner sends something slightly different: CSV, XML, JSON, fixed-width, custom layouts. Point-to-point integrations don't scale. You need a systematic way to handle all of that.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== PARTNER TYPES (6-Card Grid) ========== -->
-  <section class="section section-light bg-light">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">Partnership Models</p>
-        <h2 class="section-title">Native Support for Every Partnership Model</h2>
-        <p class="section-description">Configure and manage any partnership arrangement through the same rules engine.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <!-- Right: Hero Image -->
+        <div class="subpage-hero-media hidden-mobile">
+          <div class="subpage-hero-image-placeholder">
+            [Rewards Catalog Interface - 600×450]
           </div>
-          <h3 class="partner-card-title">Coalition Partners</h3>
-          <p class="partner-card-text">Shared currency, shared ecosystem. Multiple brands contributing to and drawing from a unified loyalty currency. Each partner maintains its own rules while members see a single program.</p>
-        </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-          </div>
-          <h3 class="partner-card-title">Earn Partners</h3>
-          <p class="partner-card-text">External activity, your points. Members earn your currency through partner transactions. Credit cards, affiliates, co-brands. Attribution tracks back to source for billing.</p>
-        </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
-          </div>
-          <h3 class="partner-card-title">Burn Partners</h3>
-          <p class="partner-card-text">Redemption beyond your catalog. Members spend points at partner locations or for partner rewards. Reimbursement calculations track automatically.</p>
-        </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-          </div>
-          <h3 class="partner-card-title">Data Partners</h3>
-          <p class="partner-card-text">Enrich your member profile. Receive data feeds from partners to enhance segmentation and personalization. Activity flows through the same rules engine as first-party data.</p>
-        </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          </div>
-          <h3 class="partner-card-title">Experience Partners</h3>
-          <p class="partner-card-text">Value beyond transactions. Exclusive access, priority treatment, partner perks. Benefits tied to tier or segment that extend into partner ecosystems.</p>
-        </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          </div>
-          <h3 class="partner-card-title">Co-Funded Promotions</h3>
-          <p class="partner-card-text">Shared investment, unified experience. Partners contribute funding to joint promotions. Allocation, billing, and settlement tracked per party. Members see a single offer.</p>
         </div>
         
       </div>
     </div>
   </section>
 
-  <!-- ========== PARTNER RULES ENGINE (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section">
-    <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Micro-Programs</span>
-          <h2 class="feature-row-title">Each Partner as a Program Within the Program</h2>
-          <p class="feature-row-description">
-            Every partner operates as its own micro-program within RCX. Segregated rules, access control, and agreements per partner. Partner activity is evaluated, governed, and measured using the same enterprise execution model as your own first-party transactions. The platform handles eligibility, earning outcomes, conversions, and redemptions per partner, with reimbursement calculations that include date-relative accuracy for back-dated processing when rates change.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Unique partner rules per location, brand, or agreement</li>
-            <li class="feature-row-list-item">Partner transactions processed real-time through rules engine</li>
-            <li class="feature-row-list-item">Role-based access control isolates partner visibility</li>
-            <li class="feature-row-list-item">Billing parameters attached to rules, partners, locations, and objects</li>
-            <li class="feature-row-list-item">Reimbursement calculations with date-relative accuracy</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Partner Rules Folder Structure]</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========== FEEDXCHANGE (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section" style="background-color: var(--color-light-100);">
+  <!-- ========================================
+       SECTION 2: AT A GLANCE - 4-CARD GRID
+       Background: LIGHT
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Batch Gateway</span>
-          <h2 class="feature-row-title">FeedXChange Standardizes the Chaos</h2>
-          <p class="feature-row-description">
-            FeedXChange was designed out of frustration with building individual point-to-point integrations. Everyone has a slightly different format. CSV, XML, JSON, fixed-width, custom layouts. Point-to-point integrations don't scale. FeedXChange is a batch gateway that handles the complexity so your team doesn't have to rebuild every partner connection from scratch.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Create templates defining input files, field mapping, validation, response files</li>
-            <li class="feature-row-list-item">Define partners and connections (SFTP, S3, Azure Blob)</li>
-            <li class="feature-row-list-item">Set up recurring or one-time integration jobs with monitoring and alerts</li>
-            <li class="feature-row-list-item">Full run history with downloadable files directly from UI</li>
-            <li class="feature-row-list-item">Partners onboarded in 4-5 hours on average</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[FeedXChange UI]</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== STAT BAR ========== -->
-  <section class="section-dark bg-dark">
-    <div class="container">
-      <div class="stats-bar-compact">
-        <div class="stat-item-compact">
-          <div class="stat-number-lg">100+</div>
-          <div class="stat-label-main">Partners at Single Client</div>
-          <div class="stat-label-sub">Fuel & convenience client</div>
-        </div>
-        <div class="stat-item-compact">
-          <div class="stat-number-lg">4-5 hrs</div>
-          <div class="stat-label-main">Average Onboarding Time</div>
-          <div class="stat-label-sub">FeedXChange onboarding</div>
-        </div>
-        <div class="stat-item-compact">
-          <div class="stat-number-lg">10M+</div>
-          <div class="stat-label-main">Rewards in Marketplace</div>
-          <div class="stat-label-sub">Integrated marketplace</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== BATCH AS REAL-TIME (Callout) ========== -->
-  <section class="section section-light bg-white">
-    <div class="container">
-      <div class="callout-block">
-        <h3 class="callout-block-title">Even Batch Processing Executes as Real-Time Transactions</h3>
-        <p class="callout-block-text">
-          Batch files don't get special treatment. FeedXChange rips incoming files into individual transactions and processes each one through the same real-time engine as API calls. Consistent behavior regardless of ingestion method. Consistent outcomes. Consistent logging. Partner billing accuracy depends on this.
+      
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <h2 class="section-title">Flexible Redemption Options</h2>
+        <p class="section-description" style="max-width: 700px; margin: var(--space-4) auto 0;">
+          Give customers the freedom to redeem their loyalty currency across every channel and touchpoint.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- ========== PARTNER BILLING (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section" style="background-color: var(--color-light-100);">
-    <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Financial Lifecycle</span>
-          <h2 class="feature-row-title">Finance-Grade Partner Management</h2>
-          <p class="feature-row-description">
-            The platform handles the complete financial lifecycle for partner programs. Allocation of promotion funding across parties. Workflow-driven billing and reimbursement calculations. Separate funding limits and liability enforced per partner automatically by the rule engine. Full traceability for reconciliation, audit, and financial reporting. We are differentiating in this area. A lot of loyalty programs oversimplify and not give the time of day for things that are actually quite important in accounting.
+      <div class="grid grid-4">
+        
+        <!-- Card 1: Points & Currency -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Points & Currency</h3>
+          </div>
+          <p class="card-body">
+            Multi-currency wallets with real-time conversion, vesting schedules, and automated expiration management.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Allocation of promotion funding across parties</li>
-            <li class="feature-row-list-item">Billing parameters attached to rules, partners, locations, objects</li>
-            <li class="feature-row-list-item">Workflow-driven billing and reimbursement calculations</li>
-            <li class="feature-row-list-item">Date-relative accuracy for back-dated processing when rates change</li>
-            <li class="feature-row-list-item">Full traceability into partner activity for finance</li>
-          </ul>
         </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Partner Billing Dashboard]</div>
+
+        <!-- Card 2: Tiered Benefits -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Tiered Benefits</h3>
+          </div>
+          <p class="card-body">
+            Exclusive perks, priority access, and status rewards that scale with member engagement.
+          </p>
         </div>
+
+        <!-- Card 3: Split & Linked Pay -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Split & Linked Pay</h3>
+          </div>
+          <p class="card-body">
+            Let members combine points with cash, credit cards, or gift cards for seamless checkout experiences.
+          </p>
+        </div>
+
+        <!-- Card 4: Experiences & Events -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Experiences & Events</h3>
+          </div>
+          <p class="card-body">
+            Offer VIP access, early releases, exclusive merchandise, and money-can't-buy moments.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ========== POINTS ATTRIBUTION (Zig-Zag, Image Left) ========== -->
+
+  <!-- ========================================
+       SECTION 3: FEATURE ROWS (Zig-Zag)
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
-      <div class="feature-row feature-row-reverse">
+      
+      <!-- ===== ROW 1: Real-Time Redemption (Text Left, Image Right) ===== -->
+      <div class="feature-row" id="real-time">
         <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Sub-Balance Tracking</span>
-          <h2 class="feature-row-title">Points Are Not the Same</h2>
+          <span class="feature-row-eyebrow">Real-Time Redemption</span>
+          <h2 class="feature-row-title">Instant Gratification</h2>
           <p class="feature-row-description">
-            Points can be tagged by source and tracked at sub-balance level. "These are Partner A points, these are Partner B points" in the same balance. The member sees one balance. Finance sees attribution by source. When a redemption happens, you control which bucket it counts against. Individual sources can show deficits while the overall balance remains positive. The customer doesn't see that. But you can see it at a sub level for billing, P&L, and partner settlement.
+            Customers expect rewards in the moment. RCX processes earn and burn transactions in real-time, so members can redeem points immediately—at checkout, at the pump, or in the app.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Source tagging by partner, location, channel, promotion</li>
-            <li class="feature-row-list-item">Sub-balance tracking invisible to member, visible to finance</li>
-            <li class="feature-row-list-item">Redemption attribution controls which bucket is consumed</li>
-            <li class="feature-row-list-item">Negative sub-balances supported for granular accounting</li>
-            <li class="feature-row-list-item">Full lineage from accrual to redemption for audit</li>
+            <li class="feature-row-list-item">Variable burn rates for dynamic pricing strategies</li>
+            <li class="feature-row-list-item">Instant reward fulfillment with zero lag</li>
+            <li class="feature-row-list-item">Real-time notifications on points earned and available rewards</li>
+            <li class="feature-row-list-item">Fraud detection and reversal capabilities</li>
           </ul>
+          <div class="feature-row-cta">
+            <a href="about-contact.html" class="btn btn-dark">See Real-Time Processing &rarr;</a>
+          </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Sub-Balance Visualization]</div>
+          <div class="feature-row-image-placeholder">
+            [Real-Time Transaction Dashboard]
+          </div>
         </div>
       </div>
+
+      <!-- ===== ROW 2: Omnichannel Wallet (Image Left, Text Right) ===== -->
+      <div class="feature-row feature-row-reverse" id="omnichannel">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Omnichannel Wallet</span>
+          <h2 class="feature-row-title">Earn Anywhere. Redeem Everywhere.</h2>
+          <p class="feature-row-description">
+            Your members engage across mobile, web, in-store, and partner locations. RCX ensures a consistent earn and burn experience across every customer touchpoint.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Unified member wallet across all channels</li>
+            <li class="feature-row-list-item">Mobile app, kiosk, and web property support</li>
+            <li class="feature-row-list-item">Partner location earn and redemption</li>
+            <li class="feature-row-list-item">Offline transaction sync for zero downtime</li>
+          </ul>
+          <div class="feature-row-cta">
+            <a href="tech-integration.html" class="btn btn-dark">View Integration Options &rarr;</a>
+          </div>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Omnichannel Wallet Interface]
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ========== PARTNER ACCOUNT LINKAGE (4-Card Grid) ========== -->
-  <section class="section section-light bg-light">
+
+  <!-- ========================================
+       SECTION 4: UI SHOWCASE CAROUSEL
+       Background: DARK
+       ======================================== -->
+  <section class="product-tour section dark">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Connect Members to Partner Ecosystems</h2>
-        <p class="section-description">Bi-directional account linkage for cross-program recognition.</p>
+      
+      <div class="ui-carousel">
+        <div class="ui-carousel-slides">
+          
+          <!-- Slide 1: Rewards Catalog -->
+          <div class="ui-carousel-slide active" data-slide="1">
+            <div class="browser-window">
+              <div class="browser-frame">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="browser-dot browser-dot-red"></span>
+                    <span class="browser-dot browser-dot-yellow"></span>
+                    <span class="browser-dot browser-dot-green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span class="browser-url-text">app.reactorcx.com/rewards/catalog</span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="browser-screenshot-placeholder">
+                    [Rewards Catalog Management Screen]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Member Wallet -->
+          <div class="ui-carousel-slide" data-slide="2">
+            <div class="browser-window">
+              <div class="browser-frame">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="browser-dot browser-dot-red"></span>
+                    <span class="browser-dot browser-dot-yellow"></span>
+                    <span class="browser-dot browser-dot-green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span class="browser-url-text">app.reactorcx.com/members/wallet</span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="browser-screenshot-placeholder">
+                    [Member Wallet Interface]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Redemption Flow -->
+          <div class="ui-carousel-slide" data-slide="3">
+            <div class="browser-window">
+              <div class="browser-frame">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="browser-dot browser-dot-red"></span>
+                    <span class="browser-dot browser-dot-yellow"></span>
+                    <span class="browser-dot browser-dot-green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span class="browser-url-text">app.reactorcx.com/rewards/redeem</span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="browser-screenshot-placeholder">
+                    [Redemption Flow Interface]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="ui-carousel-dots">
+          <button class="ui-carousel-dot active" data-slide="1" aria-label="Slide 1"></button>
+          <button class="ui-carousel-dot" data-slide="2" aria-label="Slide 2"></button>
+          <button class="ui-carousel-dot" data-slide="3" aria-label="Slide 3"></button>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Linkage Sources</h4>
-          <p class="integration-card-text">Members link external partner IDs from your loyalty portal or directly from partner websites.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Stored Relationships</h4>
-          <p class="integration-card-text">Card ID plus partner membership number stored and cataloged for ongoing recognition.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Transaction Attribution</h4>
-          <p class="integration-card-text">Recognize partner transactions for earning based on linked accounts. Attribution tracks automatically.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Co-Brand Support</h4>
-          <p class="integration-card-text">Credit card co-branding relationships, affiliate programs, and partner affiliations all supported through the same linkage model.</p>
-        </div>
-        
-      </div>
+
     </div>
   </section>
 
-  <!-- ========== INTEGRATED MARKETPLACE (Zig-Zag, Image Right) ========== -->
+
+  <!-- ========================================
+       SECTION 5: MORE FEATURE ROWS
+       Background: LIGHT (White)
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
-      <div class="feature-row">
+
+      <!-- ===== ROW 3: Dynamic Catalog (Text Left, Image Right) ===== -->
+      <div class="feature-row" id="catalog">
         <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Marketplace Partnership</span>
-          <h2 class="feature-row-title">10 Million Rewards. 195 Countries.</h2>
+          <span class="feature-row-eyebrow">Dynamic Catalog</span>
+          <h2 class="feature-row-title">Build Your Reward Marketplace</h2>
           <p class="feature-row-description">
-            Through an integrated rewards marketplace partnership, members access physical and digital rewards, experiences, gift cards, merchandise, travel, and charitable donations. Fulfillment is handled end-to-end: logistics, shipping, tracking, drop shipments, international delivery. 98% of rewards ship locally within 3 days. Apple products fulfilled in 50+ countries. Currency and language support across 195 countries.
+            From merchandise and discounts to charitable donations and experiential rewards—RCX gives you the flexibility to design a reward catalog that resonates with your audience.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Physical and digital rewards, experiences, gift cards</li>
-            <li class="feature-row-list-item">End-to-end fulfillment with tracking</li>
-            <li class="feature-row-list-item">98% local shipping within 3 days</li>
-            <li class="feature-row-list-item">50+ countries with Apple product fulfillment</li>
-            <li class="feature-row-list-item">195 countries with currency and language support</li>
+            <li class="feature-row-list-item">Curated reward collections by segment or tier</li>
+            <li class="feature-row-list-item">Third-party reward catalog integrations</li>
+            <li class="feature-row-list-item">Limited-time and seasonal reward offerings</li>
+            <li class="feature-row-list-item">Self-service reward management portal</li>
           </ul>
+          <div class="feature-row-cta">
+            <a href="about-contact.html" class="btn btn-dark">Explore Catalog Features &rarr;</a>
+          </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Rewards Marketplace UI]</div>
+          <div class="feature-row-image-placeholder">
+            [Reward Catalog Builder]
+          </div>
         </div>
       </div>
+
+      <!-- ===== ROW 4: Tier Management (Image Left, Text Right) ===== -->
+      <div class="feature-row feature-row-reverse" id="tiers">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Tier Management</span>
+          <h2 class="feature-row-title">Status That Drives Behavior</h2>
+          <p class="feature-row-description">
+            Multi-tier programs with tier-specific benefits, exclusive rewards, accelerated earning rates, and priority access. Design differentiated value propositions for each tier to drive member progression.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Flexible tier qualification and requalification rules</li>
+            <li class="feature-row-list-item">Tier-exclusive benefits and rewards</li>
+            <li class="feature-row-list-item">Accelerated earning rates by tier</li>
+            <li class="feature-row-list-item">Grace periods and soft landings for tier downgrades</li>
+          </ul>
+          <div class="feature-row-cta">
+            <a href="feature-program-design.html" class="btn btn-dark">Learn About Tier Programs &rarr;</a>
+          </div>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">
+            [Tier Management Dashboard]
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ========== INTEGRATION MODES (6-Card Grid) ========== -->
-  <section class="section section-light bg-light">
+
+  <!-- ========================================
+       SECTION 6: REWARD TYPES - 6-CARD GRID
+       Background: LIGHT (Gray)
+       ======================================== -->
+  <section id="reward-types" class="section section-lg section-light bg-light">
     <div class="container">
+      
       <div class="section-header">
-        <h2 class="section-title">Multiple Integration Modes. Simultaneously.</h2>
-        <p class="section-description">Real-time, near real-time, or batch. Partners operate the way they operate.</p>
+        <h2 class="section-title">Every Reward Type, One Platform</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="grid grid-3">
         
-        <div class="integration-card">
-          <h4 class="integration-card-title">REST APIs (Synchronous)</h4>
-          <p class="integration-card-text">Real-time partner operations with full RESTful API suite. Immediate response for point-of-interaction use cases.</p>
+        <!-- Card 1: Discounts & Coupons -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Discounts & Coupons</h3>
+          </div>
+          <p class="card-body">
+            Percentage off, dollars off, BOGO, and category-specific discounts applied at checkout.
+          </p>
         </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Event API (Publish)</h4>
-          <p class="integration-card-text">Partner events published as they occur. Webhooks, Azure EventHub, AWS. 27+ built-in event types.</p>
+
+        <!-- Card 2: Free Products -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Free Products</h3>
+          </div>
+          <p class="card-body">
+            Reward members with complimentary items from your product catalog or partner offerings.
+          </p>
         </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Streaming Ingestion</h4>
-          <p class="integration-card-text">Near real-time processing via Kafka. High-volume partner activity without batch delays.</p>
+
+        <!-- Card 3: Gift Cards -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Gift Cards</h3>
+          </div>
+          <p class="card-body">
+            Digital and physical gift cards from your brand or an extensive network of third-party retailers.
+          </p>
         </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Batch Ingestion (FeedXChange)</h4>
-          <p class="integration-card-text">Secure file drop with automated processing. The reality of how most partners operate.</p>
+
+        <!-- Card 4: Experiences -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Experiences</h3>
+          </div>
+          <p class="card-body">
+            VIP access, backstage passes, early releases, and money-can't-buy moments for top members.
+          </p>
         </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">SQL Export</h4>
-          <p class="integration-card-text">Analytics and enterprise reporting. Sync partner activity data to your data lake.</p>
+
+        <!-- Card 5: Charitable Donations -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Charitable Donations</h3>
+          </div>
+          <p class="card-body">
+            Let members donate points to causes they care about, strengthening emotional brand connection.
+          </p>
         </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Hybrid</h4>
-          <p class="integration-card-text">Partners can use multiple modes simultaneously. Real-time for some operations, batch for others.</p>
+
+        <!-- Card 6: Sweepstakes -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Sweepstakes & Contests</h3>
+          </div>
+          <p class="card-body">
+            Entry-based rewards that create excitement and drive engagement with high-value prizes.
+          </p>
         </div>
-        
+
       </div>
     </div>
   </section>
 
-  <!-- ========== PROOF STORY (Callout) ========== -->
-  <section class="section section-dark bg-dark">
-    <div class="container">
-      <div class="proof-callout">
-        <h3 class="proof-callout-title">100+ Partners. Complex Settlement. Real-Time Discounting.</h3>
-        <p class="proof-callout-text">
-          A major fuel and convenience retailer manages 100+ partners through ReactorCX with complex billing and settlement arrangements. Co-funded promotions. Partner billing. Reimbursement calculations. The whole financial lifecycle. When they launched a partnership with a major e-commerce platform, the system handled a flood of registrations and per-gallon discounts without disruption. The partner required proof of scalability before signing. RCX proved it almost instantly.
-        </p>
-        <a href="proven-success.html" class="cta-link">See More Client Stories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-      </div>
-    </div>
-  </section>
 
-
-  <!-- ========== FINAL CTA SECTION ========== -->
-  <section class="section-light bg-light" style="padding-bottom: 8rem; margin-bottom: 0;">
+  <!-- ========================================
+       SECTION 7: BOTTOM CTA
+       Background: Off-white with white card
+       ======================================== -->
+  <section class="section section-lg bg-light">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Scale Your Partner Ecosystem</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
-          Whether you have 10 partners or 100, ReactorCX provides the infrastructure to onboard, govern, and scale partner relationships with finance-grade traceability.
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">Ready to Reward Your Best Customers?</h2>
+        <p class="bottom-cta-description">
+          See how RCX delivers flexible, real-time rewards that drive engagement and loyalty across every touchpoint.
         </p>
-        <div class="flex gap-4">
+        <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== FAQ SECTION ========== -->
-  <section class="accordion-section">
+
+  <!-- ========================================
+       SECTION 8: FAQ SECTION (Two-Column Layout)
+       Background: LIGHT (Gray)
+       ======================================== -->
+  <section class="faq-section section-light bg-light">
     <div class="container">
-      <div class="accordion-header">
-        <p class="accordion-eyebrow">FAQ</p>
-        <h2 class="accordion-title">Frequently Asked Questions</h2>
-      </div>
-      <div class="accordion">
+      <div class="faq-layout">
         
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">How does FeedXChange handle different file formats from different partners?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>FeedXChange uses templates that define input file structure, field mapping, validation rules, and response file format. You create a template for each partner's specific format: CSV, XML, JSON, fixed-width, custom layouts. The template maps their fields to RCX fields and applies validation before processing. Once configured, the partner connection runs on schedule automatically with monitoring and alerting.</p>
+        <!-- Left Column: Intro Text -->
+        <div class="faq-intro">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
+            Common questions about rewards, redemption, and member benefits in RCX.
+          </p>
+          <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
+        </div>
+
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+          
+          <!-- FAQ 1 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can members combine points with cash at checkout?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. RCX supports split-pay and linked-pay scenarios where members can use a combination of points, cash, credit cards, or gift cards. This flexibility increases redemption rates by removing friction at checkout.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">Can we track points separately by partner for billing purposes?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Yes. Points can be tagged by source and tracked at sub-balance level within a unified member balance. "These are Partner A points, these are Partner B points." When redemption occurs, you control which sub-balance it counts against. Individual sources can show deficits while the overall member balance remains positive. Members see one balance. Finance sees attribution by partner, location, channel, or promotion.</p>
+
+          <!-- FAQ 2 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How do you handle point expiration?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Our platform automates point and tier expiration based on your business rules. You can define rolling expiration windows, grace periods, and automated member notifications to drive timely redemption and maintain engagement.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">How does batch file processing maintain consistency with real-time transactions?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>FeedXChange rips incoming batch files into individual transactions and processes each one through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes. Partner billing accuracy depends on this consistency.</p>
+
+          <!-- FAQ 3 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">What types of rewards can we offer?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>RCX is reward-agnostic. You can offer discounts, free products, experiences, charitable donations, partner rewards, gift cards, sweepstakes entries, and more. Our API-first design allows seamless integration with third-party reward fulfillment providers.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">What financial lifecycle capabilities does the platform support for partners?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>The platform handles allocation of promotion funding across parties, billing parameters attached to rules and objects, workflow-driven billing and reimbursement calculations, and date-relative accuracy for back-dated processing when rates change. Full traceability into partner activity for reconciliation, audit, and financial reporting.</p>
+
+          <!-- FAQ 4 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can we offer tier-specific rewards?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Absolutely. RCX supports multi-tier programs with tier-specific benefits, exclusive rewards, accelerated earning rates, and priority access. You can design differentiated value propositions for each tier to drive member progression.</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="accordion-item">
-          <button class="accordion-trigger">
-            <span class="accordion-trigger-text">Can partners have different integration methods for different operations?</span>
-            <span class="accordion-icon"></span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              <p>Yes. Partners can use multiple integration modes simultaneously. Real-time APIs for point-of-interaction operations. Batch for end-of-day settlement files. Streaming for high-volume activity. The platform doesn't force partners into a single integration pattern.</p>
+
+          <!-- FAQ 5 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How do you integrate with third-party reward catalogs?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>RCX connects to third-party reward fulfillment providers via API. This allows you to offer gift cards, merchandise, experiences, and travel rewards without managing inventory or fulfillment yourself. The catalog can be dynamically updated based on availability and member preferences.</p>
+              </div>
             </div>
           </div>
+
         </div>
-        
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+
+  <!-- ========================================
+       FOOTER
+       Synced with index.html footer structure
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
@@ -999,10 +1385,14 @@
     </div>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
+
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -1013,20 +1403,80 @@
 
     // Accordion functionality
     const accordionItems = document.querySelectorAll('.accordion-item');
+    
     accordionItems.forEach(item => {
       const trigger = item.querySelector('.accordion-trigger');
+      
       trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
-        // Close all items
-        accordionItems.forEach(i => i.classList.remove('active'));
+        // Close all accordion items
+        accordionItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
         
-        // Open clicked item if it wasn't active
+        // If clicked item wasn't active, open it
         if (!isActive) {
           item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // UI Carousel functionality
+    const carouselDots = document.querySelectorAll('.ui-carousel-dot');
+    const carouselSlides = document.querySelectorAll('.ui-carousel-slide');
+
+    carouselDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const slideNum = dot.getAttribute('data-slide');
+        
+        // Remove active from all dots and slides
+        carouselDots.forEach(d => d.classList.remove('active'));
+        carouselSlides.forEach(s => s.classList.remove('active'));
+        
+        // Add active to clicked dot and corresponding slide
+        dot.classList.add('active');
+        document.querySelector(`.ui-carousel-slide[data-slide="${slideNum}"]`).classList.add('active');
+      });
+    });
+
+    // Auto-rotate carousel every 5 seconds
+    let currentSlide = 1;
+    const totalSlides = 3;
+    
+    setInterval(() => {
+      currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+      
+      carouselDots.forEach(d => d.classList.remove('active'));
+      carouselSlides.forEach(s => s.classList.remove('active'));
+      
+      document.querySelector(`.ui-carousel-dot[data-slide="${currentSlide}"]`).classList.add('active');
+      document.querySelector(`.ui-carousel-slide[data-slide="${currentSlide}"]`).classList.add('active');
+    }, 5000);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     });
   </script>
+
 </body>
 </html>
