@@ -4,160 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SafeSwitch Migration Methodology | Loyalty Methods</title>
-  <meta name="description" content="Zero-downtime, zero-risk migration. Run legacy and new systems in parallel. Compare outputs. Validate accuracy. Switch when you are certain. 500M+ members migrated. 100% success rate.">
+  <meta name="description" content="Zero-downtime, zero-risk migration. Run legacy and new systems in parallel. Compare outputs. Validate accuracy. Switch when you are certain. 600M+ members migrated. 100% success rate.">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
-  
   <style>
-    /* =========================================================================
-       SAFESWITCH PAGE - ADDITIONAL STYLES
-       ========================================================================= */
-    
-    /* Stat Bar Section */
-    .stat-bar-section {
-      padding: var(--space-12) 0;
-      background: var(--gradient-charcoal);
-      border-top: 1px solid var(--color-charcoal-600);
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: SafeSwitch Migration
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Dark Charcoal Theme)
+       ------------------------------------------------------------------------- */
+    .subpage-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
     }
-    
-    .stat-bar-grid {
+
+    /* Glass shine overlay */
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .subpage-hero-inner {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: var(--space-6);
-      text-align: center;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
     }
-    
-    .stat-bar-item {
-      padding: var(--space-4);
-      border-right: 1px solid var(--color-charcoal-600);
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
     }
-    
-    .stat-bar-item:last-child {
-      border-right: none;
+
+    .subpage-hero-content {
+      max-width: 600px;
     }
-    
-    .stat-bar-value {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      line-height: 1;
-      margin-bottom: var(--space-2);
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
     }
-    
-    .stat-bar-label {
+
+    .subpage-hero-eyebrow {
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-white);
-      margin-bottom: var(--space-1);
-    }
-    
-    .stat-bar-sublabel {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      font-style: italic;
-    }
-    
-    @media (max-width: 1024px) {
-      .stat-bar-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .stat-bar-item:nth-child(3) {
-        border-right: none;
-      }
-      
-      .stat-bar-item:nth-child(4),
-      .stat-bar-item:nth-child(5),
-      .stat-bar-item:nth-child(6) {
-        border-top: 1px solid var(--color-charcoal-600);
-        padding-top: var(--space-6);
-        margin-top: var(--space-2);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .stat-bar-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .stat-bar-item {
-        border-right: none;
-        border-bottom: 1px solid var(--color-charcoal-600);
-        padding-bottom: var(--space-4);
-      }
-      
-      .stat-bar-item:nth-child(odd) {
-        border-right: 1px solid var(--color-charcoal-600);
-      }
-      
-      .stat-bar-item:nth-child(5),
-      .stat-bar-item:nth-child(6) {
-        border-bottom: none;
-      }
-    }
-    
-    /* Split FAQ Layout */
-    .faq-split-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-white);
-    }
-    
-    .faq-split-inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-12);
-      align-items: start;
-    }
-    
-    @media (min-width: 1024px) {
-      .faq-split-inner {
-        grid-template-columns: 1fr 1.5fr;
-        gap: var(--space-16);
-      }
-    }
-    
-    .faq-split-content {
-      position: sticky;
-      top: 120px;
-    }
-    
-    .faq-split-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
       color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
       margin-bottom: var(--space-4);
     }
-    
-    .faq-split-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-      margin-bottom: var(--space-4);
-      line-height: var(--line-height-snug);
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
     }
-    
-    .faq-split-description {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    
-    .faq-accordion-wrapper {
-      width: 100%;
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
     }
-    
-    /* Problem Hook Section */
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       PROBLEM HOOK SECTION
+       ------------------------------------------------------------------------- */
     .problem-hook-section {
       padding: var(--space-20) 0;
-      background-color: var(--color-light-100);
+      background-color: #F5F5F5;
     }
     
     .problem-hook-inner {
@@ -168,9 +160,9 @@
     
     .problem-hook-eyebrow {
       font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-semibold);
       text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
+      letter-spacing: 0.15em;
       color: var(--color-primary);
       margin-bottom: var(--space-4);
     }
@@ -178,240 +170,283 @@
     .problem-hook-title {
       font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+      color: var(--text-main);
       margin-bottom: var(--space-6);
-      line-height: var(--line-height-snug);
+      line-height: 1.2;
     }
     
     .problem-hook-body {
       font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+      color: var(--text-muted);
+      line-height: 1.7;
     }
     
     .problem-hook-body p + p {
       margin-top: var(--space-4);
     }
-    
-    /* Callout Block */
-    .callout-block {
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-white);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-bottom: var(--space-20);
+    }
+
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-row-reverse {
+      direction: rtl;
+    }
+
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row,
+      .feature-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+
+    .feature-row-content {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list-item {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
+    .feature-row-list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    .feature-row-cta {
+      margin-top: var(--space-6);
+    }
+
+    /* -------------------------------------------------------------------------
+       MODES SECTION (4-Card Grid)
+       ------------------------------------------------------------------------- */
+    .modes-section {
+      padding: var(--space-20) 0;
+      background-color: #F5F5F5;
+    }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 1024px) {
+      .modes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .modes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mode-card {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      border: 1px solid var(--color-gray-100);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+
+    .mode-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-navy);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .mode-card-number {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      border-radius: var(--radius-lg);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mode-card-number::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .mode-card-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .mode-card-headline {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-main);
+      margin-bottom: var(--space-3);
+    }
+
+    .mode-card-body {
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------------------
+       CALLOUT BLOCK
+       ------------------------------------------------------------------------- */
+    .callout-section {
       padding: var(--space-16) 0;
-      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
       border-top: 1px solid var(--color-gray-100);
       border-bottom: 1px solid var(--color-gray-100);
     }
     
-    .callout-block-inner {
+    .callout-inner {
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
     }
     
-    .callout-block-title {
+    .callout-title {
       font-size: var(--font-size-2xl);
       font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+      color: var(--text-main);
       margin-bottom: var(--space-4);
     }
     
-    .callout-block-body {
+    .callout-body {
       font-size: var(--font-size-base);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+      color: var(--text-muted);
+      line-height: 1.7;
     }
-    
-    /* Cross-links Grid */
-    .cross-links-section {
-      padding: var(--space-16) 0;
-      background-color: var(--color-light-100);
-    }
-    
-    .cross-links-header {
-      text-align: center;
-      margin-bottom: var(--space-10);
-    }
-    
-    .cross-links-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
-    }
-    
-    .cross-links-grid {
+
+    /* -------------------------------------------------------------------------
+       CROSS-LINKS GRID
+       ------------------------------------------------------------------------- */
+    .crosslinks-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
     }
     
-    @media (min-width: 768px) {
-      .cross-links-grid {
-        grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 768px) {
+      .crosslinks-grid {
+        grid-template-columns: 1fr;
       }
     }
-    
-    .cross-link-card {
-      background: var(--color-white);
-      padding: var(--space-6);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--color-gray-100);
-      transition: all var(--transition-base);
-    }
-    
-    .cross-link-card:hover {
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-4px);
-    }
-    
-    .cross-link-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-2);
-    }
-    
-    .cross-link-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-      margin-bottom: var(--space-4);
-    }
-    
-    .cross-link-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      transition: all var(--transition-fast);
-    }
-    
-    .cross-link-cta svg {
-      width: 16px;
-      height: 16px;
-      transition: transform var(--transition-fast);
-    }
-    
-    .cross-link-card:hover .cross-link-cta {
-      color: var(--color-primary-dark);
-    }
-    
-    .cross-link-card:hover .cross-link-cta svg {
-      transform: translateX(4px);
-    }
-    
-    /* Proof Points Grid */
-    .proof-points-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-white);
-    }
-    
-    .proof-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-gray-100);
-      box-shadow: var(--shadow-card);
-      transition: all var(--transition-base);
-    }
-    
-    .proof-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
-    }
-    
-    .proof-card-stat {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-      line-height: 1;
-    }
-    
-    .proof-card-client {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-3);
-    }
-    
-    .proof-card-detail {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-    
-    /* Four Modes Cards */
-    .modes-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-light-100);
-    }
-    
-    .mode-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-gray-100);
-      box-shadow: var(--shadow-card);
-      transition: all var(--transition-base);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .mode-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
-    }
-    
-    .mode-card-number {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-charcoal-800);
-      border-radius: var(--radius-lg);
-      color: var(--color-primary);
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-bold);
-      margin-bottom: var(--space-4);
-    }
-    
-    .mode-card-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-2);
-    }
-    
-    .mode-card-headline {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-3);
-    }
-    
-    .mode-card-body {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
+
+    @media (max-width: 768px) {
+      .feature-row-title {
+        font-size: var(--font-size-2xl);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========================================================================
+  <!-- ========================================
        HEADER / NAVIGATION
-       ======================================================================== -->
-  <header class="header" id="header">
+       ======================================== -->
+  <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="logo">
-          <img src="lm-full-white.svg" alt="Loyalty Methods" style="height: 40px; width: auto;">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
         </a>
 
         <nav class="nav-desktop">
@@ -535,13 +570,13 @@
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
@@ -597,100 +632,102 @@
     </div>
   </header>
 
-  <!-- ========================================================================
-       HERO SECTION
-       ======================================================================== -->
+
+  <!-- ========================================
+       SECTION 1: HERO
+       ======================================== -->
   <section class="subpage-hero">
     <div class="container">
       <div class="subpage-hero-inner">
         <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">MIGRATION METHODOLOGY</div>
+          <div class="subpage-hero-eyebrow">Migration Methodology</div>
           <h1 class="subpage-hero-title">
-            SafeSwitch Migration <span class="highlight">Methodology</span>
+            SafeSwitch&trade; <span class="highlight">Migration</span>
           </h1>
           <p class="subpage-hero-description">
-            Zero-downtime, zero-risk migration. Run legacy and new systems in parallel. Compare outputs. Validate accuracy. Switch when you are certain. 500M+ members migrated. 100% success rate.
+            Zero-downtime, zero-risk migration. Run legacy and new systems in parallel. Compare outputs. Validate accuracy. Switch when you are certain. 600M+ members migrated. 100% success rate.
           </p>
           <div class="subpage-hero-cta">
-            <a href="#demo" class="btn btn-primary btn-lg">Schedule Demo</a>
-            <a href="#methodology" class="btn btn-secondary btn-lg">Explore Methodology</a>
+            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
-        <div class="subpage-hero-media">
+        <div class="subpage-hero-media hidden-mobile">
           <div class="subpage-hero-image-placeholder">[SafeSwitch Parallel Systems Diagram - 600×450]</div>
         </div>
       </div>
     </div>
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
   </section>
 
-  <!-- ========================================================================
-       PROBLEM HOOK SECTION
-       ======================================================================== -->
+
+  <!-- ========================================
+       SECTION 2: PROBLEM HOOK
+       ======================================== -->
   <section class="problem-hook-section">
     <div class="container">
       <div class="problem-hook-inner">
-        <div class="problem-hook-eyebrow">THE PROBLEM</div>
+        <div class="problem-hook-eyebrow">The Problem</div>
         <h2 class="problem-hook-title">Migration Is Where Loyalty Projects Fail</h2>
         <div class="problem-hook-body">
-          <p>Traditional migrations are big-bang cutovers. Pick a date. Flip the switch. Hope nothing breaks. If something goes wrong, you scramble to fix it while members are watching. Revenue is at risk. Brand reputation is at risk. The team that approved the project is at risk.</p>
+          <p>Traditional migrations are big-bang cutovers. Pick a date. Flip the switch. Hope nothing breaks. If something goes wrong, you scramble to fix it while members are watching. Revenue is at risk. Brand reputation is at risk.</p>
           <p>Enterprise loyalty programs cannot afford that gamble. You have millions of members with point balances, tier status, transaction history, and active promotions. A failed migration means lost points, broken experiences, and support queues that never end.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================
-       STAT BAR SECTION
-       ======================================================================== -->
-  <section class="stat-bar-section">
+
+  <!-- ========================================
+       SECTION 3: STATS BAR
+       ======================================== -->
+  <section class="section dark bg-dark">
     <div class="container">
-      <div class="stat-bar-grid">
-        <div class="stat-bar-item">
-          <div class="stat-bar-value">600M+</div>
-          <div class="stat-bar-label">Members Migrated</div>
-          <div class="stat-bar-sublabel">All clients combined</div>
+      <div class="stats-bar" style="grid-template-columns: repeat(6, 1fr);">
+        <div class="stat-item">
+          <div class="stat-number" data-target="600" data-suffix="M+">0</div>
+          <div class="stat-title">Members Migrated</div>
+          <div class="stat-subtitle">All clients combined</div>
         </div>
-        <div class="stat-bar-item">
-          <div class="stat-bar-value">220M+</div>
-          <div class="stat-bar-label">Largest Single Migration</div>
-          <div class="stat-bar-sublabel">Global financial services client</div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="220" data-suffix="M+">0</div>
+          <div class="stat-title">Largest Migration</div>
+          <div class="stat-subtitle">Global financial services</div>
         </div>
-        <div class="stat-bar-item">
-          <div class="stat-bar-value">1.4B+</div>
-          <div class="stat-bar-label">Historical Transactions</div>
-          <div class="stat-bar-sublabel">Single hospitality client</div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="1.4" data-suffix="B+">0</div>
+          <div class="stat-title">Historical Txns</div>
+          <div class="stat-subtitle">Single hospitality client</div>
         </div>
-        <div class="stat-bar-item">
-          <div class="stat-bar-value">3→1</div>
-          <div class="stat-bar-label">Legacy Systems Consolidated</div>
-          <div class="stat-bar-sublabel">Single hospitality client</div>
+        <div class="stat-item">
+          <div class="stat-number">3→1</div>
+          <div class="stat-title">Systems Consolidated</div>
+          <div class="stat-subtitle">Single hospitality client</div>
         </div>
-        <div class="stat-bar-item">
-          <div class="stat-bar-value">Zero</div>
-          <div class="stat-bar-label">Downtime</div>
-          <div class="stat-bar-sublabel">Every cutover</div>
+        <div class="stat-item">
+          <div class="stat-number">Zero</div>
+          <div class="stat-title">Downtime</div>
+          <div class="stat-subtitle">Every cutover</div>
         </div>
-        <div class="stat-bar-item">
-          <div class="stat-bar-value">100%</div>
-          <div class="stat-bar-label">Success Rate</div>
-          <div class="stat-bar-sublabel">No failed migrations</div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="100" data-suffix="%">0</div>
+          <div class="stat-title">Success Rate</div>
+          <div class="stat-subtitle">No failed migrations</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================
-       THE APPROACH - ZIG-ZAG (Image Right)
-       ======================================================================== -->
+
+  <!-- ========================================
+       SECTION 4: THE APPROACH (Zig-Zag)
+       ======================================== -->
   <section class="feature-rows-section" id="methodology">
     <div class="container">
       <div class="feature-row">
         <div class="feature-row-content">
-          <div class="feature-row-eyebrow">PARALLEL VALIDATION</div>
+          <div class="feature-row-eyebrow">Parallel Validation</div>
           <h2 class="feature-row-title">Run Both Systems. Compare Everything. Switch When Certain.</h2>
           <p class="feature-row-description">
-            SafeSwitch runs your legacy system and ReactorCX in parallel. Live traffic flows to both. Outputs are compared transaction by transaction. Discrepancies surface before they become problems. You validate accuracy with production data, not test scenarios. When the systems match, you switch. Go-live becomes a non-event.
+            SafeSwitch runs your legacy system and ReactorCX in parallel. Live traffic flows to both. Outputs are compared transaction by transaction. Discrepancies surface before they become problems. You validate accuracy with production data, not test scenarios.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Legacy and RCX process the same live traffic simultaneously</li>
@@ -707,18 +744,19 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       FOUR MODES - 4-Card Grid
-       ======================================================================== -->
+
+  <!-- ========================================
+       SECTION 5: FOUR MODES (4-Card Grid)
+       ======================================== -->
   <section class="modes-section">
     <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">FOUR MODES</div>
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <p class="hero-eyebrow" style="margin-bottom: var(--space-3);">Four Modes</p>
         <h2 class="section-title">Systematic Progression to Go-Live</h2>
-        <p class="section-description">SafeSwitch moves through four modes. Each mode serves a specific purpose. You control the pace.</p>
+        <p style="color: var(--text-muted); margin-top: var(--space-4); max-width: 600px; margin-left: auto; margin-right: auto;">SafeSwitch moves through four modes. Each mode serves a specific purpose. You control the pace.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="modes-grid">
         <!-- Mode 1 -->
         <div class="mode-card">
           <div class="mode-card-number">1</div>
@@ -746,123 +784,26 @@
         <!-- Mode 4 -->
         <div class="mode-card">
           <div class="mode-card-number">4</div>
-          <h3 class="mode-card-title">Go Live</h3>
-          <div class="mode-card-headline">Switch when certain</div>
-          <p class="mode-card-body">All traffic routes to RCX. Legacy stops receiving transactions. Decommission happens on your timeline. The switch itself is anticlimactic. That is the point.</p>
+          <h3 class="mode-card-title">Active Switch</h3>
+          <div class="mode-card-headline">RCX becomes authoritative</div>
+          <p class="mode-card-body">When outputs match consistently, flip the switch. RCX handles all production traffic. Legacy remains available for rollback until you decommission. Go-live becomes a non-event.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================
-       REPLAY CAPABILITY - ZIG-ZAG (Image Left)
-       ======================================================================== -->
+
+  <!-- ========================================
+       SECTION 6: KPI COMPARISON (Zig-Zag Reverse)
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
       <div class="feature-row feature-row-reverse">
         <div class="feature-row-content">
-          <div class="feature-row-eyebrow">UNIQUE CAPABILITY</div>
-          <h2 class="feature-row-title">Rewind. Adjust. Replay. Repeat.</h2>
+          <div class="feature-row-eyebrow">Validation Framework</div>
+          <h2 class="feature-row-title">KPI Comparison Proves Accuracy Before You Switch</h2>
           <p class="feature-row-description">
-            During write buffering and parallel run, RCX captures every transaction. If outputs diverge, you rewind the buffer, adjust rules in RCX, and replay the same traffic. Run it again. Compare again. Keep iterating until the systems produce identical results. This is not theoretical. This is how every SafeSwitch migration works.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Buffer captures all write transactions during parallel modes</li>
-            <li class="feature-row-list-item">Replay processes the same traffic through adjusted rules</li>
-            <li class="feature-row-list-item">Compare outputs until they match exactly</li>
-            <li class="feature-row-list-item">No guessing about whether rules are configured correctly</li>
-            <li class="feature-row-list-item">Production traffic validates production behavior</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Replay Flow Diagram - 600×450]</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       WHAT SAFESWITCH DISCOVERS - Callout Block
-       ======================================================================== -->
-  <section class="callout-block">
-    <div class="container">
-      <div class="callout-block-inner">
-        <h2 class="callout-block-title">Programs Never Behave the Way People Think They Behave</h2>
-        <p class="callout-block-body">
-          SafeSwitch consistently uncovers rules, exceptions, and edge cases that nobody documented. One casino had "gone rogue" with custom logic that headquarters did not know existed. SafeSwitch found it during parallel validation. That discovery happens in every migration. Better to find it during parallel run than after go-live.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       MIGRATION PROOF POINTS - 6-Card Grid
-       ======================================================================== -->
-  <section class="proof-points-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">PROVEN TRACK RECORD</div>
-        <h2 class="section-title">Proven Across Enterprise Programs</h2>
-        <p class="section-description">Every migration completed with zero downtime and zero data loss.</p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Proof Card 1 -->
-        <div class="proof-card">
-          <div class="proof-card-stat">220M+</div>
-          <div class="proof-card-client">Western Union</div>
-          <p class="proof-card-detail">35+ countries. Largest single migration. "Germany and the US were asking us, 'Did we actually switch? Because we didn't see a single thing happen.'"</p>
-        </div>
-        
-        <!-- Proof Card 2 -->
-        <div class="proof-card">
-          <div class="proof-card-stat">75M</div>
-          <div class="proof-card-client">MGM Resorts</div>
-          <p class="proof-card-detail">3 legacy systems consolidated into 1. 1.4B+ historical transactions migrated. January 30, 2023 cutover.</p>
-        </div>
-        
-        <!-- Proof Card 3 -->
-        <div class="proof-card">
-          <div class="proof-card-stat">70M+</div>
-          <div class="proof-card-client">7-Eleven</div>
-          <p class="proof-card-detail">Running since October 2018. Zero downtime since deployment. Legacy vendor unaware for a month after cutover.</p>
-        </div>
-        
-        <!-- Proof Card 4 -->
-        <div class="proof-card">
-          <div class="proof-card-stat">40M+</div>
-          <div class="proof-card-client">Speedway</div>
-          <p class="proof-card-detail">NCR AMS replaced. August 2023 cutover. Integrated with 7-Eleven post-acquisition.</p>
-        </div>
-        
-        <!-- Proof Card 5 -->
-        <div class="proof-card">
-          <div class="proof-card-stat">3.5M</div>
-          <div class="proof-card-client">BP</div>
-          <p class="proof-card-detail">FIS legacy system replaced. Multi-POS integration maintained. Partner ecosystem preserved.</p>
-        </div>
-        
-        <!-- Proof Card 6 -->
-        <div class="proof-card">
-          <div class="proof-card-stat">617K</div>
-          <div class="proof-card-client">TravelCenters of America</div>
-          <p class="proof-card-detail">140M transaction history. 137 database tables. UltraOne replaced. October 2025 cutover.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       DATA MIGRATION KPIS - ZIG-ZAG (Image Right)
-       ======================================================================== -->
-  <section class="feature-rows-section bg-light">
-    <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-content">
-          <div class="feature-row-eyebrow">VALIDATION FRAMEWORK</div>
-          <h2 class="feature-row-title">30-50 Metrics. Calculated Daily. Compared Automatically.</h2>
-          <p class="feature-row-description">
-            SafeSwitch does not rely on eyeballing reports. The data migration track defines 30-50 specific KPIs calculated daily by both systems. Point balances. Tier distributions. Transaction counts. Reward issuance. These metrics compare automatically. Drift surfaces immediately. You know exactly where the systems diverge and can trace back to the root cause.
+            For every migration, we establish Key Performance Indicators that measure program health: point liability, tier distribution, earn rates, redemption patterns. Both systems calculate these KPIs daily. Differences surface immediately. When the numbers match, you know the migration is accurate.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Custom KPIs designed for each migration</li>
@@ -879,17 +820,18 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SAFESWITCH + THREADSYNC - ZIG-ZAG (Image Left)
-       ======================================================================== -->
-  <section class="feature-rows-section">
+
+  <!-- ========================================
+       SECTION 7: SAFESWITCH + THREADSYNC (Zig-Zag)
+       ======================================== -->
+  <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
-      <div class="feature-row feature-row-reverse">
+      <div class="feature-row">
         <div class="feature-row-content">
-          <div class="feature-row-eyebrow">COMPLEMENTARY METHODOLOGIES</div>
+          <div class="feature-row-eyebrow">Complementary Methodologies</div>
           <h2 class="feature-row-title">Implementation and Migration. Two Problems. Two Solutions.</h2>
           <p class="feature-row-description">
-            ThreadSync handles how the project runs: parallel tracks, focused teams, defined sync points. SafeSwitch handles how the migration executes: parallel systems, buffered traffic, validated cutover. They work together. ThreadSync structures the work. SafeSwitch de-risks the switch.
+            ThreadSync handles how the project runs: parallel tracks, focused teams, defined sync points. SafeSwitch handles how the migration executes: parallel systems, buffered traffic, validated cutover. They work together.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">ThreadSync: Project methodology (how teams work)</li>
@@ -901,7 +843,7 @@
           <div class="feature-row-cta">
             <a href="proven-threadsync.html" class="cta-link">
               See ThreadSync Implementation Framework
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
@@ -914,256 +856,238 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       CLIENT STORY - Callout Block
-       ======================================================================== -->
-  <section class="callout-block">
+
+  <!-- ========================================
+       SECTION 8: CLIENT STORY CALLOUT
+       ======================================== -->
+  <section class="callout-section">
     <div class="container">
-      <div class="callout-block-inner">
-        <h2 class="callout-block-title">"Did We Actually Switch?"</h2>
-        <p class="callout-block-body">
-          Western Union represents the largest SafeSwitch migration: 220M+ members across 35+ countries with regional program variants. After cutover, teams in Germany and the US asked the same question: "Did we actually switch? Because we didn't see a single thing happen." That is the goal. Migration should be invisible to members and unremarkable to operations. SafeSwitch makes it so.
+      <div class="callout-inner">
+        <h2 class="callout-title">"Did We Actually Switch?"</h2>
+        <p class="callout-body">
+          Western Union represents the largest SafeSwitch migration: 220M+ members across 35+ countries with regional program variants. After cutover, teams in Germany and the US asked the same question: "Did we actually switch? Because we didn't see a single thing happen." That is the goal. Migration should be invisible to members and unremarkable to operations.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================
-       CROSS-LINKS SECTION
-       ======================================================================== -->
-  <section class="cross-links-section">
+
+  <!-- ========================================
+       SECTION 9: CROSS-LINKS
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
-      <div class="cross-links-header">
-        <h2 class="cross-links-title">Related Implementation Resources</h2>
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <h2 class="section-title">Related Implementation Resources</h2>
       </div>
-      
-      <div class="cross-links-grid">
-        <div class="cross-link-card">
-          <h3 class="cross-link-title">ThreadSync Implementation Framework</h3>
-          <p class="cross-link-description">Parallel specialized tracks where each team focuses only on their domain.</p>
-          <a href="proven-threadsync.html" class="cross-link-cta">
-            Learn About ThreadSync
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
+      <div class="crosslinks-grid">
         
-        <div class="cross-link-card">
-          <h3 class="cross-link-title">Partner Enablement</h3>
-          <p class="cross-link-description">Native partner management for coalition programs and data integrations.</p>
-          <a href="feature-partner-enablement.html" class="cross-link-cta">
-            Explore Partner Enablement
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
+        <a href="proven-threadsync.html" class="card">
+          <span class="card-category">Methodology</span>
+          <h3 class="card-title">ThreadSync&trade; Implementation</h3>
+          <p class="card-description">Parallel specialized tracks where each team focuses only on their domain.</p>
+          <span class="card-link">Learn About ThreadSync <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </a>
         
-        <div class="cross-link-card">
-          <h3 class="cross-link-title">Case Studies</h3>
-          <p class="cross-link-description">See SafeSwitch in action across enterprise deployments.</p>
-          <a href="proven-success.html" class="cross-link-cta">
-            View Case Studies
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
+        <a href="feature-partner-enablement.html" class="card">
+          <span class="card-category">Platform</span>
+          <h3 class="card-title">Partner Enablement</h3>
+          <p class="card-description">Native partner management for coalition programs and data integrations.</p>
+          <span class="card-link">Explore Partner Enablement <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </a>
+        
+        <a href="resource-center.html" class="card">
+          <span class="card-category">Resources</span>
+          <h3 class="card-title">Case Studies</h3>
+          <p class="card-description">See SafeSwitch in action across enterprise deployments.</p>
+          <span class="card-link">View Case Studies <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </a>
+        
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================
-       BOTTOM CTA SECTION
-       ======================================================================== -->
-  <section class="section-light" style="padding: 5rem 0;">
-    <div class="container">
-      <div class="cta-box-light">
-        <span class="section-eyebrow" style="color: var(--color-primary); margin-bottom: 1rem; display: block;">GET STARTED</span>
-        <h2 style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--color-black); margin-bottom: 1rem;">Zero-risk migration. Guaranteed.</h2>
-        <p style="font-size: var(--font-size-lg); color: var(--color-gray-400); max-width: 500px; margin-bottom: 2rem; line-height: var(--line-height-relaxed);">
-          See why global brands trust SafeSwitch to migrate their most critical programs.
-        </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="#demo" class="btn btn-primary btn-lg">Schedule a Demo</a>
-          <a href="proven-success.html" class="btn btn-secondary-dark btn-lg">Read Success Stories</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========================================================================
-       FAQ SECTION - SPLIT LAYOUT
-       ======================================================================== -->
-  <section class="faq-split-section">
+  <!-- ========================================
+       SECTION 10: FAQ
+       ======================================== -->
+  <section class="faq-section section-light bg-light">
     <div class="container">
-      <div class="faq-split-inner">
-        <div class="faq-split-content">
-          <div class="faq-split-eyebrow">FREQUENTLY ASKED</div>
-          <h2 class="faq-split-title">Questions About SafeSwitch</h2>
-          <p class="faq-split-description">Get answers to common questions about our migration methodology and how it works for enterprise programs.</p>
+      <div class="faq-layout">
+        
+        <div class="faq-intro">
+          <h2 class="faq-title">Questions About SafeSwitch</h2>
+          <p class="faq-description">
+            Get answers to common questions about our migration methodology and how it works for enterprise programs.
+          </p>
+          <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
-        <div class="faq-accordion-wrapper">
-          <div class="accordion">
-            <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
-                <span class="accordion-trigger-text">How long does the parallel run phase last?</span>
-                <span class="accordion-icon"></span>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-content-inner">
-                  <p>Parallel run duration depends on program complexity and organizational comfort. Some clients run parallel for weeks. Others run for months. You control the timeline. The switch happens when you are confident in the outputs, not when a project plan says so.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
-                <span class="accordion-trigger-text">What happens if we find discrepancies during parallel run?</span>
-                <span class="accordion-icon"></span>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-content-inner">
-                  <p>You rewind the transaction buffer, adjust rules in RCX, and replay the same traffic. Compare again. Iterate until outputs match. This is the normal process, not an exception. Every migration finds discrepancies. SafeSwitch gives you the mechanism to resolve them before go-live.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
-                <span class="accordion-trigger-text">Can we roll back after switching to RCX?</span>
-                <span class="accordion-icon"></span>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-content-inner">
-                  <p>Yes. Legacy remains available until you explicitly decommission it. If something unexpected surfaces after go-live, traffic can route back to legacy. In practice, this never happens because parallel validation catches issues before the switch.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
-                <span class="accordion-trigger-text">How does SafeSwitch handle active promotions during migration?</span>
-                <span class="accordion-icon"></span>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-content-inner">
-                  <p>Promotions continue running on legacy during parallel modes. RCX processes the same promotional logic and compares outputs. When you switch, members see no change in their active offers, progress, or rewards. Continuity is validated before cutover.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
-                <span class="accordion-trigger-text">What if our legacy system has undocumented rules or exceptions?</span>
-                <span class="accordion-icon"></span>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-content-inner">
-                  <p>SafeSwitch will find them. Parallel validation surfaces every discrepancy between legacy behavior and RCX configuration. Undocumented rules show up as output differences. You discover them during parallel run, not after go-live. This happens in every migration.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
-                <span class="accordion-trigger-text">Is SafeSwitch proprietary to Loyalty Methods?</span>
-                <span class="accordion-icon"></span>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-content-inner">
-                  <p>Yes. SafeSwitch is our methodology, tooling, and systematic approach to zero-downtime migration. We are working on the patent. We discovered it by accident and it turned out to be quite powerful.</p>
-                </div>
+
+        <div class="faq-accordion">
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How long does the parallel run phase last?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Parallel run duration depends on program complexity and organizational comfort. Some clients run parallel for weeks. Others run for months. You control the timeline. The switch happens when you are confident in the outputs, not when a project plan says so.</p>
               </div>
             </div>
           </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">What happens if we find discrepancies during parallel run?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>You rewind the transaction buffer, adjust rules in RCX, and replay the same traffic. Compare again. Iterate until outputs match. This is the normal process, not an exception. Every migration finds discrepancies. SafeSwitch gives you the mechanism to resolve them before go-live.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can we roll back after switching to RCX?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. Legacy remains available until you explicitly decommission it. If something unexpected surfaces after go-live, traffic can route back to legacy. In practice, this never happens because parallel validation catches issues before the switch.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How does SafeSwitch handle active promotions during migration?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Promotions continue running on legacy during parallel modes. RCX processes the same promotional logic and compares outputs. When you switch, members see no change in their active offers, progress, or rewards. Continuity is validated before cutover.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">What if our legacy system has undocumented rules or exceptions?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>SafeSwitch will find them. Parallel validation surfaces every discrepancy between legacy behavior and RCX configuration. Undocumented rules show up as output differences. You discover them during parallel run, not after go-live.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Is SafeSwitch proprietary to Loyalty Methods?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. SafeSwitch is our methodology, tooling, and systematic approach to zero-downtime migration. We are working on the patent. We discovered it by accident and it turned out to be quite powerful.</p>
+              </div>
+            </div>
+          </div>
+          
         </div>
+        
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================
+
+  <!-- ========================================
        FOOTER
-       ======================================================================== -->
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
-        <!-- Brand Column -->
+        
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="lm-full-white.svg" alt="Loyalty Methods" style="height: 40px; width: auto;">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
           </div>
-          <p class="footer-copyright-text">Build loyalty.<br>Drive growth.</p>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
           <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
             <div class="footer-social">
-              <a href="#" class="footer-social-link" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="#" class="footer-social-link" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
             </div>
           </div>
         </div>
-        
-        <!-- Product Column -->
+
         <div class="footer-column">
-          <h4 class="footer-column-title">Product</h4>
+          <h4 class="footer-column-title">RCX Platform</h4>
           <ul class="footer-links">
-            <li><a href="platform.html" class="footer-link">Platform Overview</a></li>
-            <li><a href="feature-program-design.html" class="footer-link">Program Design & Rules</a></li>
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
             <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
             <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
-            <li><a href="#" class="footer-link">Advanced Tools</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
           </ul>
         </div>
-        
-        <!-- Solutions Column -->
+
         <div class="footer-column">
-          <h4 class="footer-column-title">Solutions</h4>
+          <h4 class="footer-column-title">Technology</h4>
           <ul class="footer-links">
-            <li><a href="#" class="footer-link">Retail</a></li>
-            <li><a href="#" class="footer-link">Restaurants</a></li>
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
           </ul>
         </div>
-        
-        <!-- Resources Column -->
-        <div class="footer-column">
-          <h4 class="footer-column-title">Resources</h4>
-          <ul class="footer-links">
-            <li><a href="#" class="footer-link">Blog</a></li>
-            <li><a href="proven-success.html" class="footer-link">Case Studies</a></li>
-          </ul>
-        </div>
-        
-        <!-- Company Column -->
+
         <div class="footer-column">
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
-            <li><a href="#" class="footer-link">About Us</a></li>
-            <li><a href="#" class="footer-link">Contact</a></li>
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
           </ul>
         </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-400);">
-          © 2026 Loyalty Methods. All rights reserved.
-        </p>
-        <div class="footer-legal">
-          <a href="#" class="footer-legal-link">Privacy Policy</a>
-          <a href="#" class="footer-legal-link">Terms of Service</a>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
         </div>
+
       </div>
     </div>
   </footer>
 
-  <!-- ========================================================================
-       JAVASCRIPT
-       ======================================================================== -->
+
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
     // Header scroll effect
-    const header = document.getElementById('header');
+    const header = document.querySelector('.header');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -1173,21 +1097,24 @@
     });
 
     // Accordion functionality
-    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-      trigger.addEventListener('click', function() {
-        const item = this.parentElement;
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      
+      trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
-        // Close all items
-        document.querySelectorAll('.accordion-item').forEach(i => {
-          i.classList.remove('active');
-          i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        // Close all accordion items
+        accordionItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
         });
         
-        // Open clicked item if it wasn't active
+        // If clicked item wasn't active, open it
         if (!isActive) {
           item.classList.add('active');
-          this.setAttribute('aria-expanded', 'true');
+          trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
@@ -1195,16 +1122,74 @@
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     });
+
+    // Animated number counters
+    const animateCounters = () => {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      
+      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+      
+      const animateCounter = (el) => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+        
+        const update = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = easeOutQuart(progress);
+          const current = target * easedProgress;
+          
+          if (isDecimal) {
+            el.textContent = prefix + current.toFixed(1) + suffix;
+          } else {
+            el.textContent = prefix + Math.floor(current) + suffix;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+          }
+        };
+        
+        requestAnimationFrame(update);
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    };
+    
+    // Initialize counters
+    animateCounters();
   </script>
 
 </body>
