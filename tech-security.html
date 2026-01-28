@@ -4,23 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Security & Compliance | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    /* Page-specific styles */
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Security & Compliance
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Dark Charcoal Theme)
+       ------------------------------------------------------------------------- */
+    .subpage-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
+    }
+
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .subpage-hero-content {
+      max-width: 600px;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+    }
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       CERTIFICATION GRID
+       ------------------------------------------------------------------------- */
     .cert-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: var(--space-6);
     }
+    
     @media (max-width: 1024px) {
       .cert-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    
     @media (max-width: 640px) {
       .cert-grid { grid-template-columns: 1fr; }
     }
+    
     .cert-card {
       background: var(--color-white);
       border-radius: var(--radius-xl);
@@ -28,43 +165,90 @@
       text-align: center;
       border: 1px solid var(--color-gray-100);
       box-shadow: var(--shadow-card);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     }
+    
+    .cert-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-navy-light);
+      box-shadow: var(--shadow-card-hover);
+    }
+    
     .cert-card-icon {
       width: 56px;
       height: 56px;
       margin: 0 auto var(--space-4);
-      background: var(--color-charcoal-800);
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-primary);
+      position: relative;
+      overflow: hidden;
     }
+    
+    .cert-card-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      pointer-events: none;
+    }
+    
+    .cert-card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 1;
+    }
+    
     .cert-card-title {
       font-size: var(--font-size-lg);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
+      color: var(--text-main);
       margin-bottom: var(--space-2);
     }
+    
     .cert-card-detail {
       font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
+      color: var(--text-muted);
     }
+
+    /* -------------------------------------------------------------------------
+       SOC EXPANDABLE CARDS
+       ------------------------------------------------------------------------- */
     .soc-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-8);
     }
+    
     @media (max-width: 1024px) {
       .soc-grid { grid-template-columns: 1fr; }
     }
+    
     .soc-card {
       background: var(--color-white);
       border-radius: var(--radius-2xl);
       border: 1px solid var(--color-gray-100);
       box-shadow: var(--shadow-card);
       overflow: hidden;
+      transition: border-color var(--transition-base);
     }
+    
+    .soc-card:hover {
+      border-color: var(--color-navy-light);
+    }
+    
+    .soc-card.active {
+      border-color: var(--color-primary);
+    }
+    
     .soc-card-header {
       padding: var(--space-6);
       cursor: pointer;
@@ -73,44 +257,72 @@
       justify-content: space-between;
       transition: background var(--transition-fast);
     }
+    
     .soc-card-header:hover {
-      background: var(--color-light-100);
+      background: var(--color-gray-50);
     }
+    
     .soc-card-icon {
       width: 48px;
       height: 48px;
-      background: var(--color-charcoal-800);
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-primary);
       flex-shrink: 0;
       margin-right: var(--space-4);
+      position: relative;
+      overflow: hidden;
     }
+    
+    .soc-card-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      pointer-events: none;
+    }
+    
+    .soc-card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 1;
+    }
+    
     .soc-card-title {
       font-size: var(--font-size-lg);
       font-weight: var(--font-weight-bold);
       color: var(--color-primary);
       margin-bottom: var(--space-1);
     }
+    
     .soc-card-subtitle {
       font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
+      color: var(--text-muted);
     }
+    
     .soc-card-toggle {
       width: 24px;
       height: 24px;
       flex-shrink: 0;
       position: relative;
     }
+    
     .soc-card-toggle::before,
     .soc-card-toggle::after {
       content: '';
       position: absolute;
-      background: var(--color-gray-400);
+      background: var(--color-primary);
       transition: all var(--transition-base);
     }
+    
     .soc-card-toggle::before {
       top: 50%;
       left: 4px;
@@ -118,6 +330,7 @@
       height: 2px;
       transform: translateY(-50%);
     }
+    
     .soc-card-toggle::after {
       left: 50%;
       top: 4px;
@@ -125,34 +338,42 @@
       width: 2px;
       transform: translateX(-50%);
     }
+    
     .soc-card.active .soc-card-toggle::after {
       transform: translateX(-50%) rotate(90deg);
       opacity: 0;
     }
+    
     .soc-card-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height var(--transition-slow);
     }
+    
     .soc-card.active .soc-card-content {
       max-height: 500px;
     }
+    
     .soc-card-content-inner {
       padding: 0 var(--space-6) var(--space-6);
       border-top: 1px solid var(--color-gray-100);
     }
+    
     .soc-card-content-inner ul {
       padding-top: var(--space-4);
+      list-style: none;
     }
+    
     .soc-card-content-inner li {
       display: flex;
       align-items: flex-start;
       gap: var(--space-3);
       font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
+      color: var(--text-muted);
       line-height: var(--line-height-relaxed);
       margin-bottom: var(--space-2);
     }
+    
     .soc-card-content-inner li::before {
       content: '';
       width: 6px;
@@ -162,44 +383,182 @@
       margin-top: 0.5em;
       flex-shrink: 0;
     }
+
+    /* -------------------------------------------------------------------------
+       SECURITY CONTROLS GRID
+       ------------------------------------------------------------------------- */
     .controls-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
     }
+    
     @media (max-width: 1024px) {
       .controls-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    
     @media (max-width: 640px) {
       .controls-grid { grid-template-columns: 1fr; }
     }
+    
     .control-card {
-      background: var(--color-charcoal-800);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-xl);
       padding: var(--space-6);
-      border: 1px solid var(--color-charcoal-600);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
     }
+    
+    .control-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(243, 112, 33, 0.5);
+      transform: translateY(-4px);
+    }
+    
     .control-card-icon {
       width: 44px;
       height: 44px;
-      background: var(--color-charcoal-700);
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-primary);
       margin-bottom: var(--space-4);
+      position: relative;
+      overflow: hidden;
     }
+    
+    .control-card-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      pointer-events: none;
+    }
+    
+    .control-card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 1;
+    }
+    
     .control-card-title {
-      font-size: var(--font-size-lg);
+      font-size: var(--font-size-base);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-white);
-      margin-bottom: var(--space-3);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
     }
+    
     .control-card-desc {
       font-size: var(--font-size-sm);
-      color: var(--color-gray-300);
+      color: #9A9A9A;
       line-height: var(--line-height-relaxed);
+    }
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-white);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-row-content {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list li {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
+    .feature-row-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    @media (max-width: 768px) {
+      .feature-row-title {
+        font-size: var(--font-size-2xl);
+      }
     }
   </style>
 </head>
@@ -340,7 +699,7 @@
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
@@ -398,152 +757,124 @@
 
   <!-- ========== HERO ========== -->
   <section class="subpage-hero">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
     <div class="container">
       <div class="subpage-hero-inner">
         <div class="subpage-hero-content">
-          <p class="subpage-hero-eyebrow">Enterprise Platform</p>
-          <h1 class="subpage-hero-title">Security & Compliance</h1>
-          <p class="subpage-hero-description">Enterprise-grade security, privacy controls, and compliance certifications. SOC 2 Type II certified with independent audit verification. Annual penetration testing. Privacy-by-design architecture supporting GDPR, CCPA, and PIPEDA requirements.</p>
+          <div class="subpage-hero-eyebrow">Enterprise Technology</div>
+          <h1 class="subpage-hero-title">Security & <span class="highlight">Compliance</span></h1>
+          <p class="subpage-hero-description">
+            SOC 2 Type II certified. Privacy by design. Enterprise-grade security controls built into every layer of the platform.
+          </p>
           <div class="subpage-hero-cta">
             <a href="https://trustcenter.loyaltymethods.com" target="_blank" class="btn btn-primary btn-lg">Visit Trust Center</a>
+            <a href="about-contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
           </div>
         </div>
-        <div class="subpage-hero-media">
-          <div class="subpage-hero-image-placeholder">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-navy-light); opacity: 0.5;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
+        <div class="subpage-hero-media hidden-mobile">
+          <div class="subpage-hero-image-placeholder">[Security Shield Illustration]</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CERTIFICATIONS ROW ========== -->
-  <section class="section section-light bg-white">
+  <!-- ========== CERTIFICATIONS GRID ========== -->
+  <section class="section section-lg section-light bg-white">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Validated Security Posture</h2>
+        <h2 class="section-title">Compliance & Certifications</h2>
       </div>
       <div class="cert-grid">
+        
         <div class="cert-card">
           <div class="cert-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           </div>
           <h3 class="cert-card-title">SOC 2 Type II</h3>
-          <p class="cert-card-detail">Annual certification with independent audit</p>
+          <p class="cert-card-detail">Annual audit. Current report available.</p>
         </div>
+        
         <div class="cert-card">
           <div class="cert-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
           </div>
-          <h3 class="cert-card-title">Penetration Testing</h3>
-          <p class="cert-card-detail">Annual third-party security testing</p>
+          <h3 class="cert-card-title">GDPR Ready</h3>
+          <p class="cert-card-detail">Privacy rights support built in.</p>
         </div>
+        
         <div class="cert-card">
           <div class="cert-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
           </div>
-          <h3 class="cert-card-title">Privacy Regulations</h3>
-          <p class="cert-card-detail">GDPR, CCPA, PIPEDA ready</p>
+          <h3 class="cert-card-title">PCI Scope Reduction</h3>
+          <p class="cert-card-detail">Tokenization patterns available.</p>
         </div>
+        
         <div class="cert-card">
           <div class="cert-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
           </div>
-          <h3 class="cert-card-title">Cloud Infrastructure</h3>
-          <p class="cert-card-detail">Multi-AZ, Multi-Region AWS</p>
+          <h3 class="cert-card-title">Pen Testing</h3>
+          <p class="cert-card-detail">Annual third-party assessments.</p>
         </div>
+        
       </div>
     </div>
   </section>
 
-  <!-- ========== SOC 2 TRUST CRITERIA ========== -->
-  <section class="section section-light bg-light">
+  <!-- ========== SOC 2 TRUST PRINCIPLES ========== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Trust Service Criteria</p>
-        <h2 class="section-title">SOC 2 Type II Compliance</h2>
-        <p class="section-description">Our platform meets rigorous standards across three trust service criteria, verified by independent auditors.</p>
+        <h2 class="section-title">SOC 2 Trust Principles</h2>
+        <p style="color: var(--text-muted); margin-top: var(--space-4); text-align: center;">Click each principle to see specific controls and practices.</p>
       </div>
       <div class="soc-grid">
         
-        <!-- Security -->
         <div class="soc-card">
-          <div class="soc-card-header" onclick="this.parentElement.classList.toggle('active')">
-            <div class="flex items-center">
+          <div class="soc-card-header">
+            <div style="display: flex; align-items: center;">
               <div class="soc-card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
               </div>
               <div>
                 <h3 class="soc-card-title">Security</h3>
-                <p class="soc-card-subtitle">Protection Against Unauthorized Access</p>
+                <p class="soc-card-subtitle">Protection against unauthorized access</p>
               </div>
             </div>
-            <div class="soc-card-toggle"></div>
+            <span class="soc-card-toggle"></span>
           </div>
           <div class="soc-card-content">
             <div class="soc-card-content-inner">
               <ul>
-                <li>Encryption of data in transit and at rest</li>
-                <li>Multi-factor authentication (MFA)</li>
-                <li>Role-based access control (RBAC)</li>
-                <li>Continuous security monitoring</li>
-                <li>Secure cloud infrastructure with VPC isolation</li>
-                <li>Incident response procedures</li>
-                <li>Regular penetration testing</li>
-                <li>Vulnerability assessments</li>
+                <li>Encryption at rest (AES-256) and in transit (TLS 1.2+)</li>
+                <li>Multi-factor authentication for all admin access</li>
+                <li>Role-based access controls (RBAC)</li>
+                <li>Network segmentation and firewall rules</li>
+                <li>Intrusion detection and monitoring</li>
               </ul>
             </div>
           </div>
         </div>
         
-        <!-- Confidentiality -->
         <div class="soc-card">
-          <div class="soc-card-header" onclick="this.parentElement.classList.toggle('active')">
-            <div class="flex items-center">
+          <div class="soc-card-header">
+            <div style="display: flex; align-items: center;">
               <div class="soc-card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              </div>
-              <div>
-                <h3 class="soc-card-title">Confidentiality</h3>
-                <p class="soc-card-subtitle">Protection of Sensitive Information</p>
-              </div>
-            </div>
-            <div class="soc-card-toggle"></div>
-          </div>
-          <div class="soc-card-content">
-            <div class="soc-card-content-inner">
-              <ul>
-                <li>Encrypted storage and transmission</li>
-                <li>Least privilege access principles</li>
-                <li>Confidentiality agreements with personnel</li>
-                <li>Data classification and retention policies</li>
-                <li>Third-party security reviews</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Availability -->
-        <div class="soc-card">
-          <div class="soc-card-header" onclick="this.parentElement.classList.toggle('active')">
-            <div class="flex items-center">
-              <div class="soc-card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               </div>
               <div>
                 <h3 class="soc-card-title">Availability</h3>
-                <p class="soc-card-subtitle">System Uptime and Reliability</p>
+                <p class="soc-card-subtitle">System uptime and reliability</p>
               </div>
             </div>
-            <div class="soc-card-toggle"></div>
+            <span class="soc-card-toggle"></span>
           </div>
           <div class="soc-card-content">
             <div class="soc-card-content-inner">
               <ul>
-                <li>High-availability infrastructure with redundancy</li>
-                <li>Disaster recovery and business continuity plans</li>
-                <li>Automated daily backups</li>
+                <li>99.9% uptime SLA</li>
+                <li>Multi-AZ deployment on AWS</li>
+                <li>Automated failover and disaster recovery</li>
                 <li>Performance monitoring and proactive scaling</li>
                 <li>24/7 support availability</li>
               </ul>
@@ -551,11 +882,37 @@
           </div>
         </div>
         
+        <div class="soc-card">
+          <div class="soc-card-header">
+            <div style="display: flex; align-items: center;">
+              <div class="soc-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              </div>
+              <div>
+                <h3 class="soc-card-title">Confidentiality</h3>
+                <p class="soc-card-subtitle">Data protection and privacy</p>
+              </div>
+            </div>
+            <span class="soc-card-toggle"></span>
+          </div>
+          <div class="soc-card-content">
+            <div class="soc-card-content-inner">
+              <ul>
+                <li>Data classification and handling procedures</li>
+                <li>Encryption for all sensitive data</li>
+                <li>Access logging and audit trails</li>
+                <li>Secure data disposal practices</li>
+                <li>NDA requirements for all personnel</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
 
-  <!-- ========== PRIVACY ARCHITECTURE (Zig-Zag) ========== -->
+  <!-- ========== PRIVACY ARCHITECTURE ========== -->
   <section class="feature-rows-section">
     <div class="container">
       <div class="feature-row">
@@ -578,7 +935,7 @@
   </section>
 
   <!-- ========== SECURITY CONTROLS GRID ========== -->
-  <section class="section section-dark bg-dark">
+  <section class="section dark bg-dark">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title" style="color: var(--color-white);">Enterprise Security Controls</h2>
@@ -587,7 +944,7 @@
         
         <div class="control-card">
           <div class="control-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           </div>
           <h3 class="control-card-title">Identity & Access</h3>
           <p class="control-card-desc">RBAC and ABAC patterns. SSO integration via standard federation protocols. Controlled provisioning and de-provisioning.</p>
@@ -595,7 +952,7 @@
         
         <div class="control-card">
           <div class="control-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
           </div>
           <h3 class="control-card-title">Encryption</h3>
           <p class="control-card-desc">TLS in transit. AES-256 at rest. Cloud-native key management through AWS KMS.</p>
@@ -603,7 +960,7 @@
         
         <div class="control-card">
           <div class="control-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
           </div>
           <h3 class="control-card-title">Audit Trails</h3>
           <p class="control-card-desc">Access logs. System activity logs. Configuration change logs. Member and transaction activity logs.</p>
@@ -611,7 +968,7 @@
         
         <div class="control-card">
           <div class="control-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
           </div>
           <h3 class="control-card-title">Zero-Downtime Operations</h3>
           <p class="control-card-desc">Containerized services. Rolling upgrades. Service-level rollback. Configuration publishing without platform restarts.</p>
@@ -619,7 +976,7 @@
         
         <div class="control-card">
           <div class="control-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
           </div>
           <h3 class="control-card-title">Disaster Recovery</h3>
           <p class="control-card-desc">Backups. Replication. Tested recovery patterns. Multi-AZ redundancy.</p>
@@ -627,7 +984,7 @@
         
         <div class="control-card">
           <div class="control-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
           </div>
           <h3 class="control-card-title">Monitoring & Alerting</h3>
           <p class="control-card-desc">Proactive monitoring. Anomaly detection. Health dashboards. Incident notification protocols.</p>
@@ -638,11 +995,11 @@
   </section>
 
   <!-- ========== TRUST CENTER CTA ========== -->
-  <section class="section-light bg-light" style="padding: 6rem 0;">
+  <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="cta-box-light" style="text-align: center;">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Full Documentation in Our Trust Center</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Full Documentation in Our Trust Center</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
           Access SOC 2 reports, security policies, data processing agreements, and compliance documentation through our Trust Center portal.
         </p>
         <a href="https://trustcenter.loyaltymethods.com" target="_blank" class="btn btn-primary btn-lg">Access Trust Center</a>
@@ -654,11 +1011,14 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
+        
         <div class="footer-brand">
           <div class="footer-logo">
             <img src="lm-full-white.svg" alt="Loyalty Methods">
           </div>
-          <p class="footer-copyright-text">&copy; 2026 Loyalty Methods.<br>All rights reserved.</p>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
           <div class="footer-badges-social">
             <div class="footer-soc-badge">
               <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
@@ -670,6 +1030,7 @@
             </div>
           </div>
         </div>
+
         <div class="footer-column">
           <h4 class="footer-column-title">RCX Platform</h4>
           <ul class="footer-links">
@@ -681,17 +1042,19 @@
             <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
           </ul>
         </div>
+
         <div class="footer-column">
           <h4 class="footer-column-title">Technology</h4>
           <ul class="footer-links">
             <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
             <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
             <li><a href="tech-security.html" class="footer-link">Security</a></li>
-            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync</a></li>
-            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
             <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
           </ul>
         </div>
+
         <div class="footer-column">
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
@@ -702,6 +1065,7 @@
             <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
           </ul>
         </div>
+
         <div class="footer-column">
           <h4 class="footer-column-title">Resources</h4>
           <ul class="footer-links" style="margin-bottom: var(--space-8);">
@@ -712,10 +1076,12 @@
             <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
           </ul>
         </div>
+
       </div>
     </div>
   </footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
@@ -725,6 +1091,22 @@
       } else {
         header.classList.remove('scrolled');
       }
+    });
+
+    // SOC Card toggle functionality
+    const socCards = document.querySelectorAll('.soc-card');
+    socCards.forEach(card => {
+      const header = card.querySelector('.soc-card-header');
+      header.addEventListener('click', () => {
+        // Close other cards
+        socCards.forEach(otherCard => {
+          if (otherCard !== card) {
+            otherCard.classList.remove('active');
+          }
+        });
+        // Toggle current card
+        card.classList.toggle('active');
+      });
     });
   </script>
 </body>
