@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partner Enablement | Loyalty Methods</title>
   
-  <!-- CSS SYSTEM -->
+  <!-- NEW MODULAR CSS SYSTEM -->
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="css-styles.css">
   
@@ -14,71 +14,137 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Partner Enablement page-specific styles */
-    
-    /* Callout block */
-    .callout-block {
-      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
-      border: 1px solid rgba(243, 112, 33, 0.2);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-10);
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Partner Enablement
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       SUBPAGE HERO (Dark Charcoal Theme - Matches Engagement)
+       ------------------------------------------------------------------------- */
+    .subpage-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
     }
-    
-    .callout-block-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-black);
+
+    /* Glass shine overlay */
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .subpage-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .subpage-hero-content {
+      max-width: 600px;
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
       margin-bottom: var(--space-4);
     }
-    
-    .callout-block-text {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-400);
-      line-height: var(--line-height-relaxed);
-    }
-    
-    /* Dark callout variant */
-    .callout-block-dark {
-      background: var(--color-charcoal-800);
-      border: 1px solid var(--color-charcoal-600);
-    }
-    
-    .callout-block-dark .callout-block-title {
+
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
       color: var(--color-white);
-    }
-    
-    .callout-block-dark .callout-block-text {
-      color: var(--color-gray-300);
-    }
-    
-    /* Proof story callout */
-    .proof-callout {
-      background: var(--color-charcoal-800);
-      border: 1px solid var(--color-charcoal-600);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-12);
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .proof-callout-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-4);
-    }
-    
-    .proof-callout-text {
-      font-size: var(--font-size-base);
-      color: var(--color-gray-300);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       margin-bottom: var(--space-6);
     }
-    
-    /* Problem at Scale Hook Section - Card Widget Style */
+
+    .subpage-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    .subpage-hero-cta {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .subpage-hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .subpage-hero-media {
+      position: relative;
+    }
+
+    .subpage-hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .subpage-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .subpage-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       PROBLEM HOOK SECTION
+       ------------------------------------------------------------------------- */
     .problem-section {
       padding: var(--space-16) 0;
       background: var(--color-gray-50);
@@ -92,7 +158,6 @@
       border-radius: var(--radius-2xl);
       padding: var(--space-12) var(--space-16);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-      transform: translateY(-4px);
       border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
@@ -108,167 +173,228 @@
       color: var(--color-gray-400);
       line-height: var(--line-height-relaxed);
     }
-    
-    /* Results grid */
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 1024px) {
-      .results-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .results-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .result-card {
-      background: var(--color-charcoal-800);
-      border: 1px solid var(--color-charcoal-600);
-      border-radius: var(--radius-xl);
-      padding: var(--space-8);
-      text-align: center;
-    }
-    
-    .result-stat {
-      font-size: var(--font-size-4xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-    }
-    
-    .result-metric {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-      margin-bottom: var(--space-2);
-    }
-    
-    .result-attribution {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-wider);
-    }
-    
-    /* Partner Types Grid - Governance Card Style */
+
+    /* -------------------------------------------------------------------------
+       PARTNER TYPES GRID (6 Cards)
+       ------------------------------------------------------------------------- */
     .partner-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
     }
-    
+
     @media (max-width: 1024px) {
       .partner-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     @media (max-width: 640px) {
       .partner-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .partner-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
+       ------------------------------------------------------------------------- */
+    .feature-rows-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-white);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-bottom: var(--space-20);
+    }
+
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-row-reverse {
+      direction: rtl;
+    }
+
+    .feature-row-reverse > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row,
+      .feature-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+
+    .feature-row-content {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-row-content {
+        max-width: 100%;
+      }
+    }
+
+    .feature-row-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-row-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-row-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-row-list-item {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+
+    .feature-row-list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .feature-row-media {
+      position: relative;
+    }
+
+    .feature-row-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
       border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-card);
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-4);
-    }
-    
-    .partner-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-navy-light);
-      box-shadow: 0 12px 40px rgba(91, 138, 184, 0.2), 0 4px 12px rgba(91, 138, 184, 0.15);
-    }
-    
-    .partner-card-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(145deg, #6b7280 0%, #4b5563 50%, #374151 100%);
-      border-radius: var(--radius-lg);
-      color: var(--color-primary);
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-    
-    .partner-card:hover .partner-card-icon {
-      background: linear-gradient(145deg, #7c8490 0%, #5b6574 50%, #475161 100%);
-      transform: scale(1.05);
-    }
-    
-    .partner-card-content {
-      flex: 1;
-    }
-    
-    .partner-card-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-      line-height: var(--line-height-snug);
-    }
-    
-    .partner-card-text {
+      color: rgba(255, 255, 255, 0.4);
       font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: 1.6;
     }
-    
-    /* Integration mode cards */
-    .integration-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      transition: all var(--transition-base);
+
+    /* btn-dark for light backgrounds */
+    .btn-dark {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
     }
-    
-    .integration-card:hover {
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
+
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
-    
-    .integration-card-title {
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    /* -------------------------------------------------------------------------
+       CALLOUT BLOCKS
+       ------------------------------------------------------------------------- */
+    .callout-block {
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
+      border: 1px solid rgba(243, 112, 33, 0.2);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .callout-block-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-4);
+    }
+
+    .callout-block-text {
       font-size: var(--font-size-base);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-black);
-      margin-bottom: var(--space-2);
-    }
-    
-    .integration-card-text {
-      font-size: var(--font-size-sm);
       color: var(--color-gray-400);
       line-height: var(--line-height-relaxed);
     }
-    
-    /* Footnote */
-    .section-footnote {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-      font-style: italic;
+
+    /* -------------------------------------------------------------------------
+       BOTTOM CTA CARD
+       ------------------------------------------------------------------------- */
+    .bottom-cta-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-16);
+      box-shadow: var(--shadow-card);
+      max-width: 900px;
+      margin: 0 auto;
       text-align: center;
-      margin-top: var(--space-8);
     }
-    
-    .section-footnote-dark {
-      color: var(--color-gray-300);
+
+    .bottom-cta-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-4);
+    }
+
+    .bottom-cta-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 640px) {
+      .bottom-cta-card {
+        padding: var(--space-8);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .feature-row-title {
+        font-size: var(--font-size-2xl);
+      }
     }
   </style>
 </head>
@@ -409,7 +535,7 @@
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
@@ -465,14 +591,19 @@
     </div>
   </header>
 
-  <!-- ========== HERO (Orange Gradient) ========== -->
-  <section class="subpage-hero subpage-hero-brand">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+
+  <!-- ========================================
+       SECTION 1: HERO (Dark Charcoal Theme)
+       ======================================== -->
+  <section class="subpage-hero">
     <div class="container">
       <div class="subpage-hero-inner">
+        
         <div class="subpage-hero-content">
-          <p class="subpage-hero-eyebrow">Core Platform</p>
-          <h1 class="subpage-hero-title">Partner Enablement</h1>
+          <div class="subpage-hero-eyebrow">Capabilities</div>
+          <h1 class="subpage-hero-title">
+            Partner <span class="highlight">Enablement</span>
+          </h1>
           <p class="subpage-hero-description">
             Native partner management capabilities to onboard, govern, and scale coalition programs, earn/burn partnerships, and data integrations. Each partner operates as its own micro-program with segregated rules, funding limits, and finance-grade traceability.
           </p>
@@ -480,14 +611,21 @@
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
-        <div class="subpage-hero-media">
-          <div class="subpage-hero-image-placeholder">[Partner Ecosystem Dashboard]</div>
+
+        <div class="subpage-hero-media hidden-mobile">
+          <div class="subpage-hero-image-placeholder">
+            [Partner Ecosystem Dashboard — 600×450]
+          </div>
         </div>
+        
       </div>
     </div>
   </section>
 
-  <!-- ========== THE PARTNER PROBLEM (Hook - Card Widget) ========== -->
+
+  <!-- ========================================
+       SECTION 2: PROBLEM HOOK
+       ======================================== -->
   <section class="problem-section">
     <div class="container">
       <div class="problem-content">
@@ -499,130 +637,86 @@
     </div>
   </section>
 
-  <!-- ========== PARTNER TYPES (6-Card Grid) ========== -->
-  <section class="section section-light bg-light">
+
+  <!-- ========================================
+       SECTION 3: PARTNER TYPES (6-Card Grid)
+       ======================================== -->
+  <section class="section section-lg section-light bg-light">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
         <h2 class="section-title">Native Support for Every Partnership Model</h2>
-        <p class="section-description">Configure and manage any partnership arrangement through the same rules engine.</p>
       </div>
+
       <div class="partner-grid">
         
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <h3 class="card-title">Coalition Partners</h3>
           </div>
-          <div class="partner-card-content">
-            <h3 class="partner-card-title">Coalition Partners</h3>
-            <p class="partner-card-text">Shared currency, shared ecosystem. Multiple brands contributing to and drawing from a unified loyalty currency. Each partner maintains its own rules while members see a single program.</p>
-          </div>
+          <p class="card-body">Shared currency, shared ecosystem. Multiple brands contributing to and drawing from a unified loyalty currency. Each partner maintains its own rules while members see a single program.</p>
         </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </div>
+            <h3 class="card-title">Earn Partners</h3>
           </div>
-          <div class="partner-card-content">
-            <h3 class="partner-card-title">Earn Partners</h3>
-            <p class="partner-card-text">External activity, your points. Members earn your currency through partner transactions. Credit cards, affiliates, co-brands. Attribution tracks back to source for billing.</p>
-          </div>
+          <p class="card-body">External activity, your points. Members earn your currency through partner transactions. Credit cards, affiliates, co-brands. Attribution tracks back to source for billing.</p>
         </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
+
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
+            </div>
+            <h3 class="card-title">Burn Partners</h3>
           </div>
-          <div class="partner-card-content">
-            <h3 class="partner-card-title">Burn Partners</h3>
-            <p class="partner-card-text">Redemption beyond your catalog. Members spend points at partner locations or for partner rewards. Reimbursement calculations track automatically.</p>
-          </div>
+          <p class="card-body">Redemption beyond your catalog. Members spend points at partner locations or for partner rewards. Reimbursement calculations track automatically.</p>
         </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <h3 class="card-title">Data Partners</h3>
           </div>
-          <div class="partner-card-content">
-            <h3 class="partner-card-title">Data Partners</h3>
-            <p class="partner-card-text">Enrich your member profile. Receive data feeds from partners to enhance segmentation and personalization. Activity flows through the same rules engine as first-party data.</p>
-          </div>
+          <p class="card-body">Enrich your member profile. Receive data feeds from partners to enhance segmentation and personalization. Activity flows through the same rules engine as first-party data.</p>
         </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <h3 class="card-title">Experience Partners</h3>
           </div>
-          <div class="partner-card-content">
-            <h3 class="partner-card-title">Experience Partners</h3>
-            <p class="partner-card-text">Value beyond transactions. Exclusive access, priority treatment, partner perks. Benefits tied to tier or segment that extend into partner ecosystems.</p>
-          </div>
+          <p class="card-body">Value beyond transactions. Exclusive access, priority treatment, partner perks. Benefits tied to tier or segment that extend into partner ecosystems.</p>
         </div>
-        
-        <div class="partner-card">
-          <div class="partner-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 class="card-title">Co-Funded Promotions</h3>
           </div>
-          <div class="partner-card-content">
-            <h3 class="partner-card-title">Co-Funded Promotions</h3>
-            <p class="partner-card-text">Shared investment, unified experience. Partners contribute funding to joint promotions. Allocation, billing, and settlement tracked per party. Members see a single offer.</p>
-          </div>
+          <p class="card-body">Shared investment, unified experience. Partners contribute funding to joint promotions. Allocation, billing, and settlement tracked per party. Members see a single offer.</p>
         </div>
-        
+
       </div>
     </div>
   </section>
 
-  <!-- ========== PARTNER RULES ENGINE (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section">
-    <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Micro-Programs</span>
-          <h2 class="feature-row-title">Each Partner as a Program Within the Program</h2>
-          <p class="feature-row-description">
-            Every partner operates as its own micro-program within RCX. Segregated rules, access control, and agreements per partner. Partner activity is evaluated, governed, and measured using the same enterprise execution model as your own first-party transactions. The platform handles eligibility, earning outcomes, conversions, and redemptions per partner, with reimbursement calculations that include date-relative accuracy for back-dated processing when rates change.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Unique partner rules per location, brand, or agreement</li>
-            <li class="feature-row-list-item">Partner transactions processed real-time through rules engine</li>
-            <li class="feature-row-list-item">Role-based access control isolates partner visibility</li>
-            <li class="feature-row-list-item">Billing parameters attached to rules, partners, locations, and objects</li>
-            <li class="feature-row-list-item">Reimbursement calculations with date-relative accuracy</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Partner Rules Folder Structure]</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========== FEEDXCHANGE (Zig-Zag, Image Left) ========== -->
-  <section class="feature-rows-section" style="background-color: #F5F5F5;">
-    <div class="container">
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Batch Gateway</span>
-          <h2 class="feature-row-title">FeedXChange Standardizes the Chaos</h2>
-          <p class="feature-row-description">
-            FeedXChange was designed out of frustration with building individual point-to-point integrations. Everyone has a slightly different format. CSV, XML, JSON, fixed-width, custom layouts. Point-to-point integrations don't scale. FeedXChange is a batch gateway that handles the complexity so your team doesn't have to rebuild every partner connection from scratch.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Create templates defining input files, field mapping, validation, response files</li>
-            <li class="feature-row-list-item">Define partners and connections (SFTP, S3, Azure Blob)</li>
-            <li class="feature-row-list-item">Set up recurring or one-time integration jobs with monitoring and alerts</li>
-            <li class="feature-row-list-item">Full run history with downloadable files directly from UI</li>
-            <li class="feature-row-list-item">Partners onboarded in 4-5 hours on average</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[FeedXChange UI]</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== STAT BAR ========== -->
+  <!-- ========================================
+       SECTION 4: STATS BAR
+       ======================================== -->
   <section class="section dark bg-dark">
     <div class="container">
       <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
@@ -645,7 +739,66 @@
     </div>
   </section>
 
-  <!-- ========== BATCH AS REAL-TIME (Callout) ========== -->
+
+  <!-- ========================================
+       SECTION 5: PARTNER GOVERNANCE (Zig-Zag)
+       ======================================== -->
+  <section class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Partner Governance</span>
+          <h2 class="feature-row-title">Each Partner Is a Micro-Program</h2>
+          <p class="feature-row-description">
+            Every partner operates as its own micro-program within RCX. Segregated rules, access control, and agreements per partner. Partner activity is evaluated, governed, and measured using the same enterprise execution model as your own first-party transactions.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Unique partner rules per location, brand, or agreement</li>
+            <li class="feature-row-list-item">Partner transactions processed real-time through rules engine</li>
+            <li class="feature-row-list-item">Role-based access control isolates partner visibility</li>
+            <li class="feature-row-list-item">Billing parameters attached to rules, partners, locations, and objects</li>
+            <li class="feature-row-list-item">Reimbursement calculations with date-relative accuracy</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Partner Rules Folder Structure]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 6: FEEDXCHANGE (Zig-Zag Reverse)
+       ======================================== -->
+  <section class="feature-rows-section" style="background-color: #F5F5F5;">
+    <div class="container">
+      <div class="feature-row feature-row-reverse">
+        <div class="feature-row-content">
+          <span class="feature-row-eyebrow">Batch Gateway</span>
+          <h2 class="feature-row-title">FeedXChange Standardizes the Chaos</h2>
+          <p class="feature-row-description">
+            FeedXChange was designed out of frustration with building individual point-to-point integrations. Everyone has a slightly different format. CSV, XML, JSON, fixed-width, custom layouts. FeedXChange is a batch gateway that handles the complexity so your team doesn't have to rebuild every partner connection from scratch.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item">Create templates defining input files, field mapping, validation, response files</li>
+            <li class="feature-row-list-item">Define partners and connections (SFTP, S3, Azure Blob)</li>
+            <li class="feature-row-list-item">Set up recurring or one-time integration jobs with monitoring and alerts</li>
+            <li class="feature-row-list-item">Full run history with downloadable files directly from UI</li>
+            <li class="feature-row-list-item">Partners onboarded in 4-5 hours on average</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[FeedXChange UI]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 7: CALLOUT - BATCH AS REAL-TIME
+       ======================================== -->
   <section class="section section-light bg-white">
     <div class="container">
       <div class="callout-block">
@@ -657,7 +810,10 @@
     </div>
   </section>
 
-  <!-- ========== PARTNER BILLING (Zig-Zag, Image Right) ========== -->
+
+  <!-- ========================================
+       SECTION 8: FINANCE-GRADE (Zig-Zag)
+       ======================================== -->
   <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
       <div class="feature-row">
@@ -665,7 +821,7 @@
           <span class="feature-row-eyebrow">Financial Lifecycle</span>
           <h2 class="feature-row-title">Finance-Grade Partner Management</h2>
           <p class="feature-row-description">
-            The platform handles the complete financial lifecycle for partner programs. Allocation of promotion funding across parties. Workflow-driven billing and reimbursement calculations. Separate funding limits and liability enforced per partner automatically by the rule engine. Full traceability for reconciliation, audit, and financial reporting. We are differentiating in this area. A lot of loyalty programs oversimplify and not give the time of day for things that are actually quite important in accounting.
+            The platform handles the complete financial lifecycle for partner programs. Allocation of promotion funding across parties. Workflow-driven billing and reimbursement calculations. Separate funding limits and liability enforced per partner automatically by the rule engine.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Allocation of promotion funding across parties</li>
@@ -682,7 +838,10 @@
     </div>
   </section>
 
-  <!-- ========== POINTS ATTRIBUTION (Zig-Zag, Image Left) ========== -->
+
+  <!-- ========================================
+       SECTION 9: SUB-BALANCE TRACKING (Zig-Zag Reverse)
+       ======================================== -->
   <section class="feature-rows-section">
     <div class="container">
       <div class="feature-row feature-row-reverse">
@@ -690,7 +849,7 @@
           <span class="feature-row-eyebrow">Sub-Balance Tracking</span>
           <h2 class="feature-row-title">Points Are Not the Same</h2>
           <p class="feature-row-description">
-            Points can be tagged by source and tracked at sub-balance level. "These are Partner A points, these are Partner B points" in the same balance. The member sees one balance. Finance sees attribution by source. When a redemption happens, you control which bucket it counts against. Individual sources can show deficits while the overall balance remains positive. The customer doesn't see that. But you can see it at a sub level for billing, P&L, and partner settlement.
+            Points can be tagged by source and tracked at sub-balance level. "These are Partner A points, these are Partner B points" in the same balance. The member sees one balance. Finance sees attribution by source. When a redemption happens, you control which bucket it counts against.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Source tagging by partner, location, channel, promotion</li>
@@ -701,210 +860,98 @@
           </ul>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Sub-Balance Visualization]</div>
+          <div class="feature-row-image-placeholder">[Sub-Balance Attribution View]</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== PARTNER ACCOUNT LINKAGE (4-Card Grid) ========== -->
-  <section class="section section-light bg-light">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Connect Members to Partner Ecosystems</h2>
-        <p class="section-description">Bi-directional account linkage for cross-program recognition.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Linkage Sources</h4>
-          <p class="integration-card-text">Members link external partner IDs from your loyalty portal or directly from partner websites.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Stored Relationships</h4>
-          <p class="integration-card-text">Card ID plus partner membership number stored and cataloged for ongoing recognition.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Transaction Attribution</h4>
-          <p class="integration-card-text">Recognize partner transactions for earning based on linked accounts. Attribution tracks automatically.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Co-Brand Support</h4>
-          <p class="integration-card-text">Credit card co-branding relationships, affiliate programs, and partner affiliations all supported through the same linkage model.</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
 
-  <!-- ========== INTEGRATED MARKETPLACE (Zig-Zag, Image Right) ========== -->
-  <section class="feature-rows-section">
+  <!-- ========================================
+       SECTION 10: BOTTOM CTA
+       ======================================== -->
+  <section class="section section-lg bg-light">
     <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Marketplace Partnership</span>
-          <h2 class="feature-row-title">10 Million Rewards. 195 Countries.</h2>
-          <p class="feature-row-description">
-            Through an integrated rewards marketplace partnership, members access physical and digital rewards, experiences, gift cards, merchandise, travel, and charitable donations. Fulfillment is handled end-to-end: logistics, shipping, tracking, drop shipments, international delivery. 98% of rewards ship locally within 3 days. Apple products fulfilled in 50+ countries. Currency and language support across 195 countries.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Physical and digital rewards, experiences, gift cards</li>
-            <li class="feature-row-list-item">End-to-end fulfillment with tracking</li>
-            <li class="feature-row-list-item">98% local shipping within 3 days</li>
-            <li class="feature-row-list-item">50+ countries with Apple product fulfillment</li>
-            <li class="feature-row-list-item">195 countries with currency and language support</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Rewards Marketplace UI]</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== INTEGRATION MODES (6-Card Grid) ========== -->
-  <section class="section section-light bg-light">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Multiple Integration Modes. Simultaneously.</h2>
-        <p class="section-description">Real-time, near real-time, or batch. Partners operate the way they operate.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">REST APIs (Synchronous)</h4>
-          <p class="integration-card-text">Real-time partner operations with full RESTful API suite. Immediate response for point-of-interaction use cases.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Event API (Publish)</h4>
-          <p class="integration-card-text">Partner events published as they occur. Webhooks, Azure EventHub, AWS. 27+ built-in event types.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Streaming Ingestion</h4>
-          <p class="integration-card-text">Near real-time processing via Kafka. High-volume partner activity without batch delays.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Batch Ingestion (FeedXChange)</h4>
-          <p class="integration-card-text">Secure file drop with automated processing. The reality of how most partners operate.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">SQL Export</h4>
-          <p class="integration-card-text">Analytics and enterprise reporting. Sync partner activity data to your data lake.</p>
-        </div>
-        
-        <div class="integration-card">
-          <h4 class="integration-card-title">Hybrid</h4>
-          <p class="integration-card-text">Partners can use multiple modes simultaneously. Real-time for some operations, batch for others.</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== PROOF STORY (Callout) ========== -->
-  <section class="section section-dark bg-dark">
-    <div class="container">
-      <div class="proof-callout">
-        <h3 class="proof-callout-title">100+ Partners. Complex Settlement. Real-Time Discounting.</h3>
-        <p class="proof-callout-text">
-          A major fuel and convenience retailer manages 100+ partners through ReactorCX with complex billing and settlement arrangements. Co-funded promotions. Partner billing. Reimbursement calculations. The whole financial lifecycle. When they launched a partnership with a major e-commerce platform, the system handled a flood of registrations and per-gallon discounts without disruption. The partner required proof of scalability before signing. RCX proved it almost instantly.
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">Ready to Scale Your Partner Ecosystem?</h2>
+        <p class="bottom-cta-description">
+          See how RCX handles 100+ partners with finance-grade traceability and real-time execution.
         </p>
-        <a href="proven-success.html" class="cta-link">See More Client Stories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== FINAL CTA SECTION ========== -->
-  <section class="section-light bg-light" style="padding-bottom: 8rem; margin-bottom: 0;">
-    <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--color-black); margin-bottom: var(--space-4);">Scale Your Partner Ecosystem</h2>
-        <p style="color: var(--color-gray-400); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
-          Whether you have 10 partners or 100, ReactorCX provides the infrastructure to onboard, govern, and scale partner relationships with finance-grade traceability.
-        </p>
-        <div class="flex gap-4">
+        <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== FAQ SECTION ========== -->
+
+  <!-- ========================================
+       SECTION 11: FAQ
+       ======================================== -->
   <section class="faq-section section-light bg-light">
     <div class="container">
       <div class="faq-layout">
         
-        <!-- Left Column: Intro Text -->
         <div class="faq-intro">
-          <span class="faq-eyebrow">FAQ</span>
           <h2 class="faq-title">Frequently Asked Questions</h2>
           <p class="faq-description">
-            Common questions about partner management, FeedXChange, and financial lifecycle capabilities.
+            Common questions about partner enablement, FeedXChange, and financial management.
           </p>
-          <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
+          <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
 
-        <!-- Right Column: Accordion -->
         <div class="faq-accordion">
           
           <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span class="accordion-trigger-text">How does FeedXChange handle different file formats from different partners?</span>
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How does the platform handle different partner agreement terms?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>FeedXChange uses templates that define input file structure, field mapping, validation rules, and response file format. You create a template for each partner's specific format: CSV, XML, JSON, fixed-width, custom layouts. The template maps their fields to RCX fields and applies validation before processing. Once configured, the partner connection runs on schedule automatically with monitoring and alerting.</p>
+                <p>Each partner is modeled as a separate entity with its own rules, parameters, and billing configurations. The platform supports different earn rates, redemption values, and co-funding splits per partner. When rates change, the system applies date-relative accuracy for back-dated processing.</p>
               </div>
             </div>
           </div>
-          
+
           <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span class="accordion-trigger-text">Can we track points separately by partner for billing purposes?</span>
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can we track points attribution by source while showing a unified balance?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Yes. Points can be tagged by source and tracked at sub-balance level within a unified member balance. "These are Partner A points, these are Partner B points." When redemption occurs, you control which sub-balance it counts against. Individual sources can show deficits while the overall member balance remains positive. Members see one balance. Finance sees attribution by partner, location, channel, or promotion.</p>
+                <p>Yes. Points can be tagged by source and tracked at sub-balance level within a unified member balance. "These are Partner A points, these are Partner B points." When redemption occurs, you control which sub-balance it counts against. Members see one balance. Finance sees attribution by partner.</p>
               </div>
             </div>
           </div>
-          
+
           <div class="accordion-item">
-            <button class="accordion-trigger">
+            <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How does batch file processing maintain consistency with real-time transactions?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>FeedXChange rips incoming batch files into individual transactions and processes each one through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes. Partner billing accuracy depends on this consistency.</p>
+                <p>FeedXChange rips incoming batch files into individual transactions and processes each one through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes.</p>
               </div>
             </div>
           </div>
-          
+
           <div class="accordion-item">
-            <button class="accordion-trigger">
+            <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">What financial lifecycle capabilities does the platform support for partners?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>The platform handles allocation of promotion funding across parties, billing parameters attached to rules and objects, workflow-driven billing and reimbursement calculations, and date-relative accuracy for back-dated processing when rates change. Full traceability into partner activity for reconciliation, audit, and financial reporting.</p>
+                <p>The platform handles allocation of promotion funding across parties, billing parameters attached to rules and objects, workflow-driven billing and reimbursement calculations, and date-relative accuracy for back-dated processing when rates change.</p>
               </div>
             </div>
           </div>
-          
+
           <div class="accordion-item">
-            <button class="accordion-trigger">
+            <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">Can partners have different integration methods for different operations?</span>
               <span class="accordion-icon"></span>
             </button>
@@ -914,18 +961,19 @@
               </div>
             </div>
           </div>
-          
+
         </div>
+        
       </div>
     </div>
   </section>
+
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
         
-        <!-- Brand Column -->
         <div class="footer-brand">
           <div class="footer-logo">
             <img src="lm-full-white.svg" alt="Loyalty Methods">
@@ -945,7 +993,6 @@
           </div>
         </div>
 
-        <!-- Platform Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">RCX Platform</h4>
           <ul class="footer-links">
@@ -958,7 +1005,6 @@
           </ul>
         </div>
 
-        <!-- Technology Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Technology</h4>
           <ul class="footer-links">
@@ -971,7 +1017,6 @@
           </ul>
         </div>
 
-        <!-- Company Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
@@ -983,7 +1028,6 @@
           </ul>
         </div>
 
-        <!-- Resources & Legal Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Resources</h4>
           <ul class="footer-links" style="margin-bottom: var(--space-8);">
@@ -999,10 +1043,12 @@
     </div>
   </footer>
 
+
   <!-- ========== SCRIPTS ========== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -1013,17 +1059,23 @@
 
     // Accordion functionality
     const accordionItems = document.querySelectorAll('.accordion-item');
+    
     accordionItems.forEach(item => {
       const trigger = item.querySelector('.accordion-trigger');
+      
       trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
-        // Close all items
-        accordionItems.forEach(i => i.classList.remove('active'));
+        // Close all accordion items
+        accordionItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
         
-        // Open clicked item if it wasn't active
+        // If clicked item wasn't active, open it
         if (!isActive) {
           item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
@@ -1079,5 +1131,6 @@
     // Initialize counters
     animateCounters();
   </script>
+
 </body>
 </html>
