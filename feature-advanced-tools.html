@@ -152,46 +152,6 @@
     }
 
     /* -------------------------------------------------------------------------
-       AI CALLOUT BLOCK
-       ------------------------------------------------------------------------- */
-    .ai-callout-block {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-      border-left: 4px solid var(--color-primary);
-      border-radius: var(--radius-lg);
-      padding: var(--space-10) var(--space-12);
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .ai-callout-headline {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-4);
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-    }
-    
-    .ai-callout-headline svg {
-      color: var(--color-primary);
-      stroke: var(--color-primary);
-    }
-    
-    .ai-callout-body {
-      font-size: var(--font-size-base);
-      color: #9A9A9A;
-      line-height: 1.7;
-      max-width: 800px;
-    }
-
-    @media (max-width: 640px) {
-      .ai-callout-block {
-        padding: var(--space-6) var(--space-8);
-      }
-    }
-
-    /* -------------------------------------------------------------------------
        GOVERNANCE GRID - 4 Cards
        ------------------------------------------------------------------------- */
     .governance-grid {
@@ -282,6 +242,7 @@
       font-size: var(--font-size-sm);
       color: var(--color-gray-400);
       line-height: 1.6;
+      text-align: left;
     }
 
     /* -------------------------------------------------------------------------
@@ -423,159 +384,19 @@
     }
 
     /* -------------------------------------------------------------------------
-       FAQ SECTION (Two-Column Layout)
+       ENTERPRISE TECHNOLOGY MEGA MENU - Tighter Layout
        ------------------------------------------------------------------------- */
-    .faq-section {
-      padding: var(--space-20) 0;
+    .mega-menu-tech {
+      width: 680px;
     }
 
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-16);
-      align-items: start;
+    .mega-menu-tech .mega-menu-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
     }
 
-    @media (max-width: 1024px) {
-      .faq-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-10);
-      }
-    }
-
-    /* Left Column: Intro */
-    .faq-intro {
-      position: sticky;
-      top: 120px;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-intro {
-        position: static;
-        text-align: center;
-      }
-    }
-
-    .faq-eyebrow {
-      display: inline-block;
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-3);
-    }
-
-    .faq-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .faq-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    /* Right Column: Accordion */
-    .faq-accordion {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .accordion-item {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition-base);
-    }
-
-    .accordion-item:hover {
-      border-color: var(--color-navy);
-    }
-
-    .accordion-item.active {
-      border-color: var(--color-primary);
-    }
-
-    .accordion-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-5) var(--space-6);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .accordion-trigger-text {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-semibold);
-      color: var(--text-main);
-      padding-right: var(--space-4);
-    }
-
-    .accordion-icon {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .accordion-icon::before,
-    .accordion-icon::after {
-      content: '';
-      position: absolute;
-      background: var(--color-primary);
-      transition: transform var(--transition-fast);
-    }
-
-    .accordion-icon::before {
-      width: 12px;
-      height: 2px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-icon::after {
-      width: 2px;
-      height: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-item.active .accordion-icon::after {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition-slow);
-    }
-
-    .accordion-item.active .accordion-content {
-      max-height: 500px;
-    }
-
-    .accordion-content-inner {
-      padding: 0 var(--space-6) var(--space-6);
-    }
-
-    .accordion-content-inner p {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
+    .mega-menu-tech .mega-menu-links {
+      grid-template-columns: 1fr;
     }
   </style>
 </head>
@@ -599,12 +420,12 @@
             
             <!-- WHY LM? - Simple Link -->
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <!-- RCX LOYALTY PLATFORM - With Mega Menu -->
             <li class="nav-item">
-              <a href="platform.html" class="nav-link">
+              <a href="#" class="nav-link">
                 RCX Loyalty Platform
                 <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="6 9 12 15 18 9"></polyline>
@@ -657,7 +478,7 @@
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
                     <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -671,10 +492,10 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
@@ -804,18 +625,18 @@
           </h1>
 
           <p class="subpage-hero-description">
-            Expression Builder and FlowComposer for teams managing complex programs at scale. Build custom logic. Organize rules into predictable execution paths. Maintain governance as your program grows.
+            Manage complex loyalty programs without losing control. Configure custom logic. Organize rules into predictable execution paths. Maintain governance as your program scales.
           </p>
 
           <div class="subpage-hero-cta">
-            <a href="#" class="btn btn-primary btn-lg">Schedule Demo</a>
+            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
 
         <!-- Right: Hero Image -->
         <div class="subpage-hero-media">
           <div class="subpage-hero-image-placeholder">
-            [FlowComposer + Expression Builder Interface - 600×450]
+            [Advanced Tools Interface - 600×450]
           </div>
         </div>
         
@@ -833,7 +654,7 @@
       <div class="problem-content">
         <h2 class="problem-title">Programs Grow. Rules Multiply.</h2>
         <p class="problem-body">
-          What starts as a handful of promotions becomes hundreds of rules. Base earn. Partner earn. Tier multipliers. Promotional bonuses. Each rule interacts with the others. Without structure, you get unknown outcomes. Which rules fired? In what order? Why did the member get 150 points instead of 250? That's a liability problem. An audit problem. A finance problem.
+          What starts as a handful of promotions becomes hundreds of rules. Base earn. Partner earn. Tier multipliers. Promotional bonuses. Each rule interacts with the others. Without structure, you get unknown outcomes. Which rules fired? In what order? Why did the member get 150 points instead of 250? That's a <strong>liability problem</strong>. An <strong>audit problem</strong>. A <strong>finance problem</strong>.
         </p>
       </div>
     </div>
@@ -847,48 +668,48 @@
   <section class="feature-rows-section section-light bg-light">
     <div class="container">
       
-      <!-- ===== ROW 1: FlowComposer (Text Left, Image Right) ===== -->
-      <div class="feature-row" id="flowcomposer">
+      <!-- ===== ROW 1: Rule Organization (Text Left, Image Right) ===== -->
+      <div class="feature-row" id="rule-organization">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Rule Organization</span>
           <h2 class="feature-row-title">Predictable Execution. Auditable Outcomes.</h2>
           <p class="feature-row-description">
-            FlowComposer organizes your rules into a hierarchy that matches how your organization actually works. Base earn in one folder. Partner rules isolated per partner. Tier logic separate from promotions. Different teams own different folders with role-based access. When a transaction comes through, the execution path is explicit: Load Data, Base Rules, Promotions, Partner Rules, Tier Rules, Exit. Every decision is logged. Finance can trace outcomes to rules. Partner billing calculates accurately because execution order is defined, not discovered.
+            Keep programs organized as they grow. Rules are grouped by business function—base earn separate from promotions, partner rules isolated per partner, tier logic in its own area. Different teams can own different sections. When a transaction comes through, execution follows a <strong>defined path</strong>. Every decision is logged. Finance can <strong>trace outcomes back to specific rules</strong>. Partner billing calculates accurately because the system knows which rules fired and in what order.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Hierarchical folder structure for rule organization</li>
-            <li class="feature-row-list-item">Role-based access control at folder level</li>
-            <li class="feature-row-list-item">Folder gate rules that control activation of entire sections</li>
-            <li class="feature-row-list-item">Explicit execution order eliminates unknown outputs</li>
-            <li class="feature-row-list-item">Finance-grade logging for audit and reconciliation</li>
+            <li class="feature-row-list-item">Organize rules into <strong>logical groupings</strong> by business function</li>
+            <li class="feature-row-list-item">Different teams manage different areas of the program</li>
+            <li class="feature-row-list-item">Gate rules control whether entire sections activate</li>
+            <li class="feature-row-list-item"><strong>Defined execution order</strong> eliminates unknown outputs</li>
+            <li class="feature-row-list-item">Logging supports <strong>audit and reconciliation</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
           <div class="feature-row-image-placeholder">
-            [FlowComposer UI - Folder Hierarchy and Execution Path]
+            [Rule Organization UI - Folder Hierarchy and Execution Path]
           </div>
         </div>
       </div>
 
-      <!-- ===== ROW 2: Expression Builder (Image Left, Text Right) ===== -->
-      <div class="feature-row feature-row-reverse" id="expression-builder">
+      <!-- ===== ROW 2: Custom Logic (Image Left, Text Right) ===== -->
+      <div class="feature-row feature-row-reverse" id="custom-logic">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Custom Logic</span>
-          <h2 class="feature-row-title">Build What Doesn't Exist Out of the Box</h2>
+          <h2 class="feature-row-title">Handle Edge Cases Without Custom Development</h2>
           <p class="feature-row-description">
-            When standard configuration reaches its limits, Expression Builder provides full programmability. This is a fully programmable engine in JavaScript. You can create any logic you need. Reference any attribute in the system: activity data, member profile, preferences, transaction history. Create calculated fields that can be reused across rules. Validate expressions against real test data before they go live. Other platforms say "we don't do that." We say "here's how."
+            When standard configuration reaches its limits, RCX provides programmable logic. Create <strong>custom qualifications</strong> that reference any attribute in the system: activity data, member profile, preferences, transaction history. Define calculated fields that can be <strong>reused across rules</strong>. Validate logic against test data before it goes live. Custom logic becomes <strong>immediately available</strong> across APIs, UIs, and the data warehouse.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Full JavaScript programmability for custom logic</li>
+            <li class="feature-row-list-item">Create custom logic for <strong>complex qualifications</strong></li>
             <li class="feature-row-list-item">Reference any attribute: activity, member, preferences, history</li>
-            <li class="feature-row-list-item">Create reusable calculated fields (aliases) for complex qualifications</li>
-            <li class="feature-row-list-item">Validate expressions against test data before deployment</li>
-            <li class="feature-row-list-item">Immediate availability across APIs, UIs, and data warehouse</li>
+            <li class="feature-row-list-item">Define <strong>reusable calculated fields</strong> across rules</li>
+            <li class="feature-row-list-item">Validate against test data <strong>before deployment</strong></li>
+            <li class="feature-row-list-item">Immediately available across <strong>APIs and UIs</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
           <div class="feature-row-image-placeholder">
-            [Expression Builder UI - Code Editor with Validation]
+            [Custom Logic UI - Configuration with Validation]
           </div>
         </div>
       </div>
@@ -898,30 +719,7 @@
 
 
   <!-- ========================================
-       SECTION 4: AI CALLOUT BOX
-       Background: DARK
-       ======================================== -->
-  <section class="section section-lg dark bg-dark">
-    <div class="container">
-      <div class="ai-callout-block">
-        <h3 class="ai-callout-headline">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"></path>
-            <circle cx="7.5" cy="14.5" r="1.5"></circle>
-            <circle cx="16.5" cy="14.5" r="1.5"></circle>
-          </svg>
-          Enhance the Experience with AI
-        </h3>
-        <p class="ai-callout-body">
-          AI Assist works directly inside Expression Builder. Describe what you want in plain English and get working code. Highlight a section and ask for improvements. The AI understands your program's existing expressions and available functions, so suggestions fit your context.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 5: GOVERNANCE AT SCALE - 4-CARD GRID
+       SECTION 4: GOVERNANCE AT SCALE - 4-CARD GRID
        Background: WHITE
        ======================================== -->
   <section class="section section-lg section-light bg-white" id="governance">
@@ -947,9 +745,9 @@
             </svg>
           </div>
           <div class="governance-card-content">
-            <h3 class="governance-card-title">Different teams. Different folders.</h3>
+            <h3 class="governance-card-title">Different teams. Different areas.</h3>
             <p class="governance-card-description">
-              Partner teams manage partner folders. Tier teams manage tier logic. Each team sees only what they need. Changes stay isolated. Collisions stay rare.
+              Partner teams manage partner rules. Tier teams manage tier logic. Each team sees what they need. <strong>Changes stay isolated</strong>. Collisions stay rare.
             </p>
           </div>
         </div>
@@ -968,7 +766,7 @@
           <div class="governance-card-content">
             <h3 class="governance-card-title">Every decision. Fully traced.</h3>
             <p class="governance-card-description">
-              Transaction logs show which rules triggered, which actions executed, and what data informed the decision. Disputes resolve in minutes, not hours.
+              Transaction logs show which rules triggered, which actions executed, and what data informed the decision. <strong>Disputes resolve faster</strong> because every decision is logged.
             </p>
           </div>
         </div>
@@ -986,7 +784,7 @@
           <div class="governance-card-content">
             <h3 class="governance-card-title">Each partner as a mini-program.</h3>
             <p class="governance-card-description">
-              Separate funding, billing, and reimbursement logic per partner. Agreements stay isolated. Finance sees clean settlement with full traceability.
+              Separate funding, billing, and reimbursement logic per partner. Agreements stay isolated. Finance sees <strong>clean settlement with full traceability</strong>.
             </p>
           </div>
         </div>
@@ -1002,7 +800,7 @@
           <div class="governance-card-content">
             <h3 class="governance-card-title">Structure that lasts.</h3>
             <p class="governance-card-description">
-              Programs that run for years stay organized. New promotions drop into the right folder. Rules don't degrade into spaghetti. The system scales with the business.
+              Programs that run for years stay organized. New promotions drop into the right folder. Rules don't fall into the void. <strong>The system scales with the business</strong>.
             </p>
           </div>
         </div>
@@ -1021,7 +819,7 @@
       <div class="cta-box-light">
         <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to Scale Your Program?</h2>
         <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
-          See how Expression Builder and FlowComposer can bring structure to your most complex loyalty rules.
+          See how RCX Advanced Tools can bring structure to your most complex loyalty rules.
         </p>
         <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Get Started</a>
@@ -1044,7 +842,7 @@
           <span class="faq-eyebrow">Support</span>
           <h2 class="faq-title">Frequently Asked Questions</h2>
           <p class="faq-description">
-            Everything you need to know about Expression Builder and FlowComposer. Can't find the answer you're looking for? Reach out to our team.
+            Everything you need to know about RCX Advanced Tools. Can't find the answer you're looking for? Reach out to our team.
           </p>
           <a href="about-contact.html" class="btn btn-primary mt-6">Contact Support</a>
         </div>
@@ -1055,12 +853,12 @@
           <!-- FAQ 1 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Who uses these tools?</span>
+              <span class="accordion-trigger-text">What are RCX Advanced Tools?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Both technical and business users. Expression Builder is used by teams creating custom logic for complex qualifications, calculated fields, and edge cases. FlowComposer is used by anyone responsible for rule organization, governance, or understanding execution flow. Most implementations have a mix of marketing operators, loyalty analysts, and engineering leads using these tools.</p>
+                <p>Configuration capabilities within RCX that help loyalty teams manage complex programs. They provide ways to organize rules, create custom logic, and maintain governance as programs grow.</p>
               </div>
             </div>
           </div>
@@ -1068,12 +866,12 @@
           <!-- FAQ 2 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Do we need developers to use Expression Builder?</span>
+              <span class="accordion-trigger-text">Who uses Advanced Tools?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Not necessarily. Expression Builder supports JavaScript, but many teams use it for relatively simple calculated fields without deep programming expertise. AI Assist can generate code from plain English descriptions. For more complex logic, technical resources are helpful, but the tool is designed for loyalty operators, not just engineers.</p>
+                <p>Both business and technical teams. Loyalty program managers use them to organize campaigns. IT teams use them to maintain architectural control. Most implementations involve a mix of marketing operators, loyalty analysts, and engineering leads.</p>
               </div>
             </div>
           </div>
@@ -1081,12 +879,12 @@
           <!-- FAQ 3 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How does FlowComposer determine execution order?</span>
+              <span class="accordion-trigger-text">Can business users configure rules without developers?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Rules are organized into folders, and folders are arranged in a defined sequence. When a transaction comes in, the system processes folders in order. Folder gate rules can bypass entire sections when conditions aren't met. For example, a partner transaction might skip directly to partner rules without evaluating base earn or promotional logic. The execution path is visible and auditable.</p>
+                <p>Yes. RCX provides visual configuration tools that allow business users to set up and modify rules. For more complex logic, technical resources can extend capabilities while business teams handle day-to-day operations.</p>
               </div>
             </div>
           </div>
@@ -1094,12 +892,12 @@
           <!-- FAQ 4 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can different teams have different access levels?</span>
+              <span class="accordion-trigger-text">How do Advanced Tools support program governance?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Yes. FlowComposer supports role-based access control at the folder level. A partner team might only see and edit their partner folder. A tier team might manage tier rules without access to promotional logic. This enables specialization without collision.</p>
+                <p>Rules are organized into logical groupings. Different teams can manage different areas of the program. Changes stay isolated. Execution is logged for audit and reconciliation.</p>
               </div>
             </div>
           </div>
@@ -1107,12 +905,51 @@
           <!-- FAQ 5 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do Expression Builder and FlowComposer work together?</span>
+              <span class="accordion-trigger-text">Can multiple teams work on the same program?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Expression Builder creates the logic. FlowComposer organizes and executes it. A calculated field created in Expression Builder becomes available in any rule. That rule lives in a folder managed by FlowComposer. When a transaction triggers the rule, FlowComposer determines when it fires relative to other rules. The two tools address different problems: what the logic does versus when and how it executes.</p>
+                <p>Yes. Access can be configured so different teams manage different parts of the program. A partner team might manage partner rules. A tier team might manage tier logic. Teams work independently without collisions.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How does RCX handle programs with hundreds of rules?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Rules are organized hierarchically by business function. Execution follows a defined path. Every decision is logged. Finance can trace outcomes back to specific rules.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How does RCX ensure rule changes don't break the program?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Logic can be validated against test data before deployment. Execution paths are explicit. Changes can be tested before going live.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Do custom configurations integrate with the rest of RCX?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. Custom logic is available across APIs, UIs, and the data warehouse. There's no separate sync or export required.</p>
               </div>
             </div>
           </div>

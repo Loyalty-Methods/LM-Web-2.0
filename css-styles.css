@@ -373,6 +373,20 @@ ul, ol {
   grid-template-columns: 1fr;
 }
 
+/* Enterprise Technology Mega Menu - Tighter Layout */
+.mega-menu-tech {
+  width: 680px;
+}
+
+.mega-menu-tech .mega-menu-inner {
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.mega-menu-tech .mega-menu-links {
+  grid-template-columns: 1fr;
+}
+
 .mega-menu-column-title {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
