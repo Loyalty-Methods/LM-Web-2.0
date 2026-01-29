@@ -19,6 +19,23 @@
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
+       KEY OUTCOME HIGHLIGHTING
+       ------------------------------------------------------------------------- */
+    .key-outcome {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+    
+    .key-metric {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-bold);
+    }
+    
+    .key-feature {
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* -------------------------------------------------------------------------
        HERO SECTION
        ------------------------------------------------------------------------- */
     .why-hero {
@@ -80,8 +97,13 @@
       font-size: var(--font-size-xl);
       color: #B0B0B0;
       line-height: 1.7;
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto;
+    }
+    
+    .why-hero-description strong {
+      color: var(--color-white);
+      font-weight: var(--font-weight-semibold);
     }
 
     @media (max-width: 768px) {
@@ -235,6 +257,11 @@
       line-height: 1.7;
       margin-bottom: var(--space-6);
     }
+    
+    .feature-description strong {
+      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
+    }
 
     .feature-list {
       list-style: none;
@@ -260,6 +287,11 @@
       height: 8px;
       background: var(--color-primary);
       border-radius: 50%;
+    }
+    
+    .feature-list li strong {
+      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
     }
 
     .feature-image-placeholder {
@@ -563,6 +595,11 @@
       line-height: 1.7;
       margin-bottom: var(--space-6);
     }
+    
+    .security-description strong {
+      color: var(--color-charcoal-900);
+      font-weight: var(--font-weight-semibold);
+    }
 
     .security-cta {
       margin-top: auto;
@@ -607,6 +644,14 @@
       .bottom-cta-card {
         padding: var(--space-8);
       }
+    }
+    
+    /* -------------------------------------------------------------------------
+       CARD BODY ENHANCEMENTS
+       ------------------------------------------------------------------------- */
+    .card .card-body strong {
+      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
     }
   </style>
 </head>
@@ -805,15 +850,16 @@
 
 
   <!-- ========== HERO SECTION ========== -->
+  <!-- UPDATED: New H1 and subhead per copy edits -->
   <section class="why-hero">
     <div class="container">
       <div class="why-hero-content">
-        <p class="why-hero-eyebrow">Why Loyalty Methods?</p>
+        <p class="why-hero-eyebrow">Enterprise Loyalty Platform</p>
         <h1 class="why-hero-title">
-          Our Track Record <span class="highlight">Speaks for Itself</span>
+          Why <span class="highlight">Loyalty Methods</span>
         </h1>
         <p class="why-hero-description">
-          Hundreds of millions of members migrated with zero downtime—powering measurable growth, stronger retention, and loyalty programs that actually perform.
+          ReactorCX is an <strong>enterprise loyalty engine</strong> built for complex, multi-brand programs. <strong>Real-time processing</strong>. <strong>Zero downtime</strong>. <strong>Proven at scale</strong>.
         </p>
       </div>
     </div>
@@ -824,6 +870,7 @@
   <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header-centered">
+        <p class="section-eyebrow">Why Choose ReactorCX</p>
         <h2>Loyalty Is Enterprise Infrastructure</h2>
         <p class="section-subtitle">We architected ReactorCX for that reality.</p>
       </div>
@@ -841,7 +888,7 @@
             </div>
             <h3 class="card-title">Real-Time, Always</h3>
           </div>
-          <p class="card-body">Real time is always a better member experience. We signal you the moment something happens so your brand can respond while the moment still matters. Points land. Offers appear. Members feel recognized. That's how you move beyond discounts and dormant point balances to emotional resonance that drives retention.</p>
+          <p class="card-body">We signal you <strong>the moment something happens</strong> so your brand can respond while it still matters. Points land. Offers appear. Members feel recognized. That's <strong>measurable engagement that drives retention</strong>.</p>
         </div>
         
         <!-- Card 2: Zero Downtime -->
@@ -854,7 +901,7 @@
             </div>
             <h3 class="card-title">Zero Downtime</h3>
           </div>
-          <p class="card-body">Trust is built in moments. Zero downtime since October 2018 across 30,000+ locations means you never miss one. Peak holiday traffic, major promotions, member surges. Zero degradation. Every engagement captured. Every interaction reinforced. Reliability your members feel, even when they don't notice.</p>
+          <p class="card-body"><strong>Zero downtime since October 2018</strong> across <strong>30,000+ locations</strong>. Peak holiday traffic, major promotions, member surges. <strong>Zero degradation</strong>. Every engagement captured, every interaction reinforced.</p>
         </div>
         
         <!-- Card 3: The Team -->
@@ -870,7 +917,7 @@
             </div>
             <h3 class="card-title">The Team</h3>
           </div>
-          <p class="card-body">We don't just throw an API at you and hope your program succeeds. Our priority is understanding the full picture. We understand your full stack, work with you hand in hand, and make sure the whole system works together—not just our platform.</p>
+          <p class="card-body">We don't just hand you an API and hope it works. We understand your full stack, work alongside your team, and make sure <strong>the whole system works together</strong>.</p>
         </div>
         
       </div>
@@ -958,16 +1005,17 @@
     <div class="container">
       
       <!-- Row 1: Built for Complexity -->
+      <!-- Note: Eyebrow is styled text, not H-tag. H2 carries semantic weight -->
       <div class="feature-row">
         <div class="feature-content">
           <span class="feature-label">Built for Complexity</span>
           <h2 class="feature-title">One Engine. Any Structure.</h2>
-          <p class="feature-description">Multi-brand. Multi-region. Multi-LOB. Multi-operator. The more complex your program, the better we perform.</p>
+          <p class="feature-description"><strong>Multi-brand. Multi-region. Multi-LOB. Multi-operator.</strong> The more complex your program, the better we perform.</p>
           <ul class="feature-list">
-            <li>Track liability by business unit so finance knows exactly who earned and who burned</li>
-            <li>Attribute points by source for clean partner settlement and accurate P&L</li>
-            <li>Run different earning rules by location, channel, or brand without duplicate systems</li>
-            <li>Give franchisees autonomy to run local promotions while corporate retains control</li>
+            <li><strong>Track liability by business unit</strong> so finance knows exactly who earned and who burned</li>
+            <li><strong>Attribute points by source</strong> for clean partner settlement and accurate P&L</li>
+            <li>Run <strong>different earning rules</strong> by location, channel, or brand without duplicate systems</li>
+            <li>Give franchisees <strong>autonomy to run local promotions</strong> while corporate retains control</li>
           </ul>
         </div>
         <div class="feature-media">
@@ -976,16 +1024,17 @@
       </div>
       
       <!-- Row 2: Personalization (Reversed) -->
+      <!-- UPDATED: Changed intro per copy edits -->
       <div class="feature-row reverse">
         <div class="feature-content">
           <span class="feature-label">Personalization</span>
           <h2 class="feature-title">Beyond Segments. Down to the Individual.</h2>
-          <p class="feature-description">Segments group people who aren't the same. We personalize promotion parameters, not just eligibility. That's how a program becomes one to one.</p>
+          <p class="feature-description">ReactorCX <strong>personalizes promotion parameters</strong>, not just eligibility. Two members in the same tier can receive <strong>different offers, thresholds, and rewards</strong>. That's how a program becomes one to one.</p>
           <ul class="feature-list">
-            <li>Tailor spend targets to individual appetite so every member sees a goal they can hit</li>
-            <li>Filter offers by real-time location so members only see what's relevant right now</li>
-            <li>Show the full rewards catalog including locked items with unlock messaging that drives progression</li>
-            <li>Personalize promotion parameters per member so two people in the same tier get different experiences</li>
+            <li><strong>Tailor spend targets</strong> to individual appetite so every member sees a goal they can hit</li>
+            <li>Filter offers by <strong>real-time location</strong> so members only see what's relevant right now</li>
+            <li>Show the full rewards catalog including locked items with <strong>unlock messaging that drives progression</strong></li>
+            <li><strong>Personalize promotion parameters per member</strong> so two people in the same tier get different experiences</li>
           </ul>
         </div>
         <div class="feature-media">
@@ -997,13 +1046,14 @@
   </section>
 
 
-  <!-- ========== ONE ENGINE. ANY INDUSTRY. ========== -->
+  <!-- ========== PROVEN ACROSS INDUSTRIES ========== -->
+  <!-- UPDATED: H2 changed from "One Engine. Any Industry." → "Proven Across Industries" -->
   <section class="industry-section" style="background: #F5F5F5;">
     <div class="container">
       <div class="industry-header">
         <span class="industry-header-eyebrow">Cross-Industry Platform</span>
-        <h2 class="industry-header-title">One Engine. Any Industry.</h2>
-        <p class="industry-header-description">RCX powers programs across fuel, hospitality, gaming, retail, financial services, and more. The same platform handles fleet programs at the pump and VIP tiers on the casino floor.</p>
+        <h2 class="industry-header-title">Proven Across Industries</h2>
+        <p class="industry-header-description">RCX powers programs across fuel, hospitality, gaming, retail, financial services, and more. The same platform handles <strong>fleet programs at the pump</strong> and <strong>VIP tiers on the casino floor</strong>.</p>
       </div>
       
       <div class="industry-grid">
@@ -1074,10 +1124,11 @@
         </div>
         
         <!-- Airlines -->
+        <!-- UPDATED: "Two decades of airline loyalty experience." → "Two decades of airline loyalty program delivery." -->
         <div class="industry-card">
           <span class="industry-card-category">Airlines</span>
           <h3 class="industry-card-title">Airlines</h3>
-          <p class="industry-card-intro">Two decades of airline loyalty experience.</p>
+          <p class="industry-card-intro">Two decades of airline loyalty program delivery.</p>
           <ul class="industry-card-list">
             <li>Rewards for in-flight purchases, baggage, upgrades, and partner spend</li>
             <li>Family and group travel tiers with cumulative benefits</li>
@@ -1128,7 +1179,7 @@
           <div class="security-content">
             <span class="security-eyebrow">Enterprise Security</span>
             <h2 class="security-title">The Highest Standard. No Exceptions.</h2>
-            <p class="security-description">Your security team will ask. We're ready. SOC 2 Type II certified with annual audits and third-party penetration testing. We've been through enterprise procurement before.</p>
+            <p class="security-description">Your security team will ask. We're ready. <strong>SOC 2 Type II certified</strong> with annual audits and <strong>third-party penetration testing</strong>. We've been through enterprise procurement before.</p>
             <div class="security-cta">
               <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="cta-link">View Security & Compliance <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
@@ -1140,12 +1191,13 @@
 
 
   <!-- ========== BOTTOM CTA ========== -->
+  <!-- UPDATED: H2 changed from "Ready to See It in Action?" → "See How ReactorCX Fits Your Stack" -->
   <section class="bottom-cta-section">
     <div class="container">
       <div class="bottom-cta-card">
-        <h2 class="bottom-cta-title">Ready to See It in Action?</h2>
+        <h2 class="bottom-cta-title">See How ReactorCX Fits Your Stack</h2>
         <p class="bottom-cta-description">
-          Whether you're launching a new program or migrating an existing one, our team understands complex enterprise environments. See how ReactorCX fits your stack.
+          Whether you're launching a new program or migrating an existing one, our team understands complex enterprise environments.
         </p>
         <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Demo</a>
