@@ -3,56 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API First vs Monolithic: How Enterprises Should Build Loyalty | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  <title>API-First vs Monolithic: How Enterprises Should Build Loyalty | Loyalty Methods</title>
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* --- Page Specific Styles: Blog Split Hero & Layout --- */
+    /* ==========================================================================
+       BLOG ARTICLE SPECIFIC STYLES
+       ========================================================================== */
     
-    /* 1. Split Hero Layout */
+    /* Blog Hero Section */
+    .blog-hero {
+      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .blog-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Split Hero Layout */
     .blog-hero-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: var(--space-10);
       align-items: center;
     }
 
     @media (min-width: 992px) {
       .blog-hero-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 5rem;
+        gap: var(--space-16);
       }
     }
 
-    /* Hero Text Adjustments */
+    /* Hero Meta */
     .blog-hero-meta {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
       color: rgba(255, 255, 255, 0.9);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .blog-hero-tag {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(243, 112, 33, 0.2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      color: var(--color-primary);
+      border: 1px solid rgba(243, 112, 33, 0.3);
+    }
+    
+    .blog-hero-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    
+    .blog-hero-title .highlight {
+      color: var(--color-primary);
+    }
+    
+    .blog-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
     }
 
     /* Hero Graphic Container */
     .blog-hero-graphic {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -66,17 +117,27 @@
       height: 100%;
       object-fit: cover;
     }
+    
+    .blog-hero-graphic-placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.05em;
+      font-size: var(--font-size-sm);
+    }
 
-    /* 2. Main Content Layout (Sidebar + Content) */
+    /* ==========================================================================
+       BLOG CONTENT LAYOUT
+       ========================================================================== */
+    
     .blog-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 4rem;
+      gap: var(--space-12);
     }
 
     @media (min-width: 992px) {
       .blog-grid {
-        grid-template-columns: 280px 1fr; /* Fixed TOC | Fluid Content */
+        grid-template-columns: 280px 1fr;
         align-items: start;
       }
     }
@@ -95,94 +156,186 @@
     }
 
     .toc-title {
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #9ca3af;
-      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-4);
     }
 
     .toc-list {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      border-left: 1px solid #e5e7eb;
+      gap: var(--space-3);
+      border-left: 1px solid var(--color-gray-100);
     }
 
     .toc-link {
-      font-size: 0.875rem;
-      color: #4b5563;
-      padding-left: 1rem;
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      padding-left: var(--space-4);
       border-left: 2px solid transparent;
       margin-left: -1px;
-      transition: all 0.2s;
+      transition: all var(--transition-fast);
       line-height: 1.4;
     }
 
-    .toc-link:hover {
-      color: #F37021;
-      border-left-color: #F37021;
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
     }
 
-    /* Blog Content Typography */
+    /* ==========================================================================
+       BLOG CONTENT TYPOGRAPHY
+       ========================================================================== */
+    
     .blog-content {
       max-width: 750px;
     }
 
     .blog-content h2 {
-      font-size: 1.875rem;
-      font-weight: 700;
-      color: #111827;
-      margin-top: 3rem;
-      margin-bottom: 1.25rem;
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-top: var(--space-12);
+      margin-bottom: var(--space-5);
       line-height: 1.3;
     }
 
-    .blog-content h2:first-of-type { margin-top: 0; }
+    .blog-content h2:first-of-type { 
+      margin-top: 0; 
+    }
+
+    .blog-content h3 {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      line-height: 1.3;
+    }
 
     .blog-content p {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
       color: #374151;
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-6);
     }
 
     .blog-content ul {
       list-style: disc;
-      padding-left: 1.5rem;
-      margin-bottom: 2rem;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-8);
       color: #374151;
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
     }
 
     .blog-content li {
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--space-3);
     }
 
     .blog-content strong {
-      font-weight: 600;
-      color: #111827;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
     }
 
     .blog-content em {
       font-style: italic;
-      color: #F37021;
+      color: var(--color-primary);
     }
 
-    .blog-content code {
-      background: #f3f4f6;
-      padding: 0.125rem 0.375rem;
-      border-radius: 0.25rem;
-      font-family: 'JetBrains Mono', 'Fira Code', monospace;
-      font-size: 0.9em;
-      color: #1f2937;
+    .blog-content blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding-left: var(--space-6);
+      margin: var(--space-8) 0;
+      font-style: italic;
+      color: #4b5563;
+      font-size: var(--font-size-xl);
+    }
+    
+    /* Blog Content Links */
+    .blog-content a {
+      color: var(--color-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition-fast);
+    }
+    
+    .blog-content a:hover {
+      border-bottom-color: var(--color-primary);
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-8) 0;
+      font-size: var(--font-size-base);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--space-4);
+      text-align: left;
+      border-bottom: 1px solid var(--color-gray-100);
+    }
+
+    .comparison-table th {
+      background: #F9F9F9;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
+    }
+
+    .comparison-table td {
+      color: #374151;
+    }
+
+    .comparison-table tr:hover td {
+      background: #FAFAFA;
+    }
+
+    /* ==========================================================================
+       RELATED ARTICLES
+       ========================================================================== */
+    
+    .related-section {
+      padding: var(--space-20) 0;
+      background: #F5F5F5;
+    }
+    
+    .related-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-8);
+      text-align: center;
+    }
+    
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+    
+    @media (max-width: 1024px) {
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- ========== HEADER ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -194,7 +347,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -250,8 +403,8 @@
                     <span class="mega-menu-featured-eyebrow">Featured</span>
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview - 300×170]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More →</a>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -264,55 +417,35 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
-                      
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Platform Architecture</div>
-                          <div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
                       </a>
-                      
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Integration Capabilities</div>
-                          <div class="mega-menu-link-description">Connectors for the modern stack.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
                       </a>
-                      
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Security & Compliance</div>
-                          <div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
                       </a>
-                      
                     </div>
                   </div>
-                  
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Trust Center</span>
                     <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
                     <p class="mega-menu-featured-description">View our real-time system status.</p>
                     <div class="mega-menu-featured-image">
-                       <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                       </div>
+                      </div>
                     </div>
-                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center →</a>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -325,30 +458,21 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu" style="width: max-content; min-width: 320px;"> 
-                <div class="mega-menu-inner" style="grid-template-columns: 1fr;"> 
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">ThreadSync™ Implementation</div>
-                          <div class="mega-menu-link-description">Our agile delivery framework</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">SafeSwitch™ Cutover</div>
-                          <div class="mega-menu-link-description">Zero-risk migration methodology</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">Success Stories</div>
-                          <div class="mega-menu-link-description">Client case studies and results</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
                     </div>
                   </div>
@@ -357,7 +481,7 @@
             </li>
             
             <li class="nav-item">
-              <a href="resource-center.html" class="nav-link active">Resource Center</a>
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
             </li>
             
           </ul>
@@ -366,8 +490,8 @@
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
                 <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 500px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1.5fr 1fr;"> 
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
                     <div class="mega-menu-links">
                       <div class="mega-menu-column">
                         <div class="mega-menu-column-title">Company</div>
@@ -379,22 +503,22 @@
                         <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
                       </div>
                     </div>
-                    <div class="mega-menu-featured">
+                    <div class="mega-menu-featured" style="min-width: 280px;">
                       <span class="mega-menu-featured-eyebrow">Featured</span>
                       <h3 class="mega-menu-featured-title">Partner Network</h3>
                       <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
                       <div class="mega-menu-featured-image">
-                         <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                         </div>
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
                       </div>
-                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore →</a>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
         <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -402,30 +526,28 @@
     </div>
   </header>
 
-  <section class="subpage-hero subpage-hero-brand" style="padding-top: 10rem; padding-bottom: 5rem;">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <!-- ========== BLOG HERO ========== -->
+  <section class="blog-hero">
     <div class="container">
       
       <div class="blog-hero-grid">
         
         <div class="blog-hero-content">
           <div class="blog-hero-meta">
-            <span class="blog-hero-tag">Architecture</span>
+            <span class="blog-hero-tag">Technology</span>
             <span>•</span>
-            <span>Jan 5, 2026</span>
+            <span>Jan 28, 2026</span>
           </div>
-          <h1 class="subpage-hero-title mb-6">
-            API First vs Monolithic: How Enterprises Should <span class="highlight">Build Loyalty</span>
+          <h1 class="blog-hero-title">
+            API-First vs Monolithic: <span class="highlight">How Enterprises</span> Should Build Loyalty
           </h1>
-          <p class="subpage-hero-description mb-8">
-            Your loyalty platform architecture determines how fast you ship, how cleanly you scale, and whether engineering teams become bottlenecks or force multipliers. Here's why API-first wins.
+          <p class="blog-hero-description">
+            The difference between launching campaigns in days versus quarters comes down to architecture. API-first platforms give enterprise teams speed, integration flexibility, and independence from vendor roadmaps.
           </p>
         </div>
 
-        <div class="blog-hero-graphic-container">
-          <div class="blog-hero-graphic">
-            <span style="color: white; font-weight: 600; letter-spacing: 0.05em; opacity: 0.5;">MASTER GRAPHIC [16:9]</span>
-          </div>
+        <div class="blog-hero-graphic">
+          <span class="blog-hero-graphic-placeholder">API-FIRST ARCHITECTURE [16:9]</span>
         </div>
 
       </div>
@@ -433,7 +555,8 @@
     </div>
   </section>
 
-  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+  <!-- ========== BLOG CONTENT ========== -->
+  <section class="section section-light bg-white" style="padding-top: var(--space-16); padding-bottom: var(--space-24);">
     <div class="container">
       
       <div class="blog-grid">
@@ -441,122 +564,271 @@
         <aside class="blog-sidebar">
           <div class="toc-title">In This Article</div>
           <nav class="toc-list">
-            <a href="#definitions" class="toc-link">What API-First Actually Means</a>
+            <a href="#api-first-meaning" class="toc-link">What API-First Actually Means</a>
             <a href="#monolithic-problem" class="toc-link">The Monolithic Problem</a>
+            <a href="#architecture-comparison" class="toc-link">Architecture Comparison</a>
             <a href="#technical-advantages" class="toc-link">Technical Advantages</a>
+            <a href="#real-time" class="toc-link">Real-Time by Architecture</a>
             <a href="#business-impact" class="toc-link">Business Impact</a>
+            <a href="#integration" class="toc-link">Integration is the Work</a>
+            <a href="#financial-precision" class="toc-link">Financial Precision</a>
             <a href="#mach-principles" class="toc-link">MACH Principles</a>
           </nav>
         </aside>
 
         <article class="blog-content">
           
-          <h2 id="definitions">What API-First Actually Means (vs. "API-Enabled")</h2>
+          <h2 id="api-first-meaning">What API-First Actually Means (vs. "API-Enabled")</h2>
+
           <p>
-            Many vendors claim to be "API-first," but the reality is often just a thin API layer bolted onto a monolithic application. This is marketing, not architecture.
-          </p>
-          <p>
-            <strong>True API-first design</strong> means the platform was <em>architected from the ground up</em> to expose every core function as an API. Earn, burn, enroll, tier progression, reward fulfillment, campaign triggers - all accessible via programmatic interfaces. The internal UI that the vendor provides uses the exact same APIs that customers get access to. There's no privileged "admin layer" with special access to features or data.
-          </p>
-          <p>
-            In contrast, <strong>API-enabled systems</strong> are monolithic applications with a limited set of APIs added as an afterthought. You can query data, but you can't trigger complex workflows. You can read member information, but you can't orchestrate real-time decisioning. The vendor's internal tools still use direct database access or proprietary interfaces that aren't exposed to customers.
-          </p>
-          <p>
-            The difference matters because API-enabled systems <em>look</em> flexible in demos but become bottlenecks in production. When your team needs to build a custom user experience, trigger real-time point accrual from a mobile app, or integrate loyalty into your checkout flow, you'll discover that the APIs don't actually support those use cases. You're back to waiting on the vendor's product roadmap.
-          </p>
-          <p>
-            ReactorCX is API-first at the architectural level. Every interaction - whether it's the admin console, a mobile app, or a third-party integration - uses the same REST APIs. This means if we can do it, so can you.
+            Many vendors claim to be "<strong>API-first</strong>," but the reality is often a thin API layer bolted onto a <strong>monolithic application</strong>. The APIs exist. They just don't let you do anything meaningful with them. That distinction determines whether your team ships in days or waits on <strong>vendor release cycles</strong>.
           </p>
 
-          <h2 id="monolithic-problem">The Monolithic Problem: Why Legacy Systems Don't Scale</h2>
           <p>
-            Monolithic loyalty platforms were built in an era when "loyalty" meant batch-processing point balances overnight and emailing members quarterly statements. The entire system - member management, campaign logic, reward catalog, reporting - lives in a single, tightly coupled codebase.
+            True <strong>API-first design</strong> means the platform exposes every core function as an API. Earn, burn, enroll, <a href="feature-program-design.html">tier progression</a>, <a href="feature-rewards.html">reward fulfillment</a>, <a href="feature-promotions.html">campaign triggers</a>. All accessible programmatically. The internal UI uses the exact same APIs that customers get access to. There's no privileged admin layer with hidden capabilities. <strong>If the vendor can do it, your team can do it.</strong> That's the test of true API-first design.
           </p>
+
           <p>
-            This architecture creates several critical problems for modern enterprises:
+            In contrast, <strong>API-enabled systems</strong> are monolithic applications with a limited set of APIs added as an afterthought. You can query data, but you can't trigger complex workflows. You can read member information, but you can't orchestrate <strong>real-time decisioning</strong>. The vendor hands you an API and says "good luck connecting it to your stack." That's not partnership. That's a handoff.
           </p>
+
+          <p>
+            The difference matters because API-enabled systems look flexible in demos but become <strong>bottlenecks in production</strong>. When your team needs to build a custom experience, trigger real-time <a href="feature-program-design.html">point accrual</a> from a mobile app, or integrate loyalty into your checkout flow, you discover the APIs don't support those use cases. You're back to waiting on the vendor's product roadmap.
+          </p>
+
+          <p>
+            <a href="tech-api-architecture.html">ReactorCX</a> is <strong>API-first at the architectural level</strong>. Every interaction, whether it's the admin console, a mobile app, or a third-party <a href="tech-integration.html">integration</a>, uses the same REST APIs. If we can do it, so can you. Your team builds what your business needs without waiting for the vendor to prioritize it.
+          </p>
+
+          <h2 id="monolithic-problem">The Monolithic Problem: Why Legacy Systems Break at Scale</h2>
+
+          <p>
+            <strong>Monolithic loyalty platforms</strong> were built in an era when "loyalty" meant batch-processing point balances overnight and emailing members quarterly statements. The entire system—member management, campaign logic, reward catalog, reporting—lives in a single, tightly coupled codebase.
+          </p>
+
+          <p>
+            This architecture creates critical problems for modern enterprises:
+          </p>
+
           <ul>
-            <li><strong>Deployment Risk:</strong> Every change requires deploying the entire application. A small bug fix to the reward catalog can break campaign execution. Testing cycles balloon because you can't isolate changes.</li>
-            <li><strong>Scaling Constraints:</strong> You can't scale individual components independently. If your campaign engine needs 10x capacity during Black Friday but your reporting module doesn't, too bad - you're scaling everything or nothing.</li>
-            <li><strong>Technology Lock-In:</strong> The entire system is written in a single technology stack. Want to add a machine learning model for churn prediction? You're constrained by whatever language and framework the platform was originally built in.</li>
-            <li><strong>Integration Complexity:</strong> Connecting to external systems requires custom middleware, point-to-point integrations, and often batch file transfers. Real-time data exchange is an afterthought.</li>
-            <li><strong>Vendor Dependency:</strong> Every feature request goes into the vendor's backlog. Your roadmap is their roadmap. If they don't prioritize your use case, you wait - or build workarounds that break on every platform upgrade.</li>
+            <li><strong>Deployment Risk:</strong> Every change requires deploying the entire application. A bug fix to the reward catalog can break campaign execution. Testing cycles that should take hours stretch into weeks. Campaigns miss market windows. Revenue slips.</li>
+            <li><strong>Scaling Constraints:</strong> You can't scale individual components independently. If your campaign engine needs 10x capacity during Black Friday but your reporting module doesn't, you're scaling everything or nothing.</li>
+            <li><strong>Technology Lock-In:</strong> The entire system runs on a single technology stack. Want to add a machine learning model for churn prediction? You're constrained by whatever language and framework the platform was originally built in.</li>
+            <li><strong>Integration Complexity:</strong> Connecting to external systems requires custom middleware, point-to-point integrations, and often batch file transfers. <strong>Real-time data exchange</strong> is an afterthought.</li>
+            <li><strong>Vendor Dependency:</strong> Every feature request goes into the vendor's backlog. Your roadmap is their roadmap. If they don't prioritize your use case, you wait or build workarounds that break on every platform upgrade.</li>
           </ul>
+
           <p>
-            The result is slow iteration cycles, fragile systems, and engineering teams spending more time managing vendor relationships than building customer experiences.
+            The result is <strong>slow iteration cycles</strong>, fragile systems, and engineering teams spending more time managing vendor relationships than building customer experiences.
           </p>
+
+          <h2 id="architecture-comparison">Architecture Comparison</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Business Concern</th>
+                <th>Monolithic Platform</th>
+                <th>API-First Platform</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Campaign launch speed</td>
+                <td>Weeks to quarters</td>
+                <td>Days to weeks</td>
+              </tr>
+              <tr>
+                <td>Integration flexibility</td>
+                <td>Point-to-point, often batch</td>
+                <td>Real-time, API-driven</td>
+              </tr>
+              <tr>
+                <td>Scaling during peak</td>
+                <td>Scale entire system or nothing</td>
+                <td>Scale components independently</td>
+              </tr>
+              <tr>
+                <td>Frontend control</td>
+                <td>Vendor templates</td>
+                <td>Headless, any framework</td>
+              </tr>
+              <tr>
+                <td>Vendor dependency</td>
+                <td>Roadmap locked to vendor</td>
+                <td>Build or extend independently</td>
+              </tr>
+            </tbody>
+          </table>
 
           <h2 id="technical-advantages">Technical Advantages of API-First Architecture</h2>
+
           <p>
-            API-first platforms fundamentally change how loyalty infrastructure operates. Here's what engineering teams gain:
+            <strong>API-first platforms</strong> fundamentally change how loyalty infrastructure operates. Here's what engineering teams gain:
           </p>
+
+          <h3>1. Composability</h3>
           <p>
-            <strong>1. Composability</strong><br>
-            Every capability is a discrete service with well-defined APIs. Need to build a custom mobile experience? Call the member enrollment API, point accrual API, and reward redemption API directly. No need to embed the vendor's UI or work around their limitations.
+            Build the experiences your customers expect without waiting on vendor roadmaps. Every capability is a <strong>discrete service</strong> with well-defined APIs. Your mobile team calls enrollment, accrual, and <a href="feature-rewards.html">redemption</a> endpoints directly. No vendor UI required. No workarounds. <strong>Full control over the member experience.</strong>
           </p>
+
+          <h3>2. Independent Scaling</h3>
           <p>
-            <strong>2. Independent Scaling</strong><br>
-            Different components scale independently based on load. If redemption traffic spikes during a flash sale, scale just the redemption service. Point balance queries don't need the same compute resources as campaign orchestration.
+            Different components scale independently based on load. If redemption traffic spikes during a flash sale, scale just the redemption service. Point balance queries don't need the same compute resources as <a href="feature-promotions.html">campaign orchestration</a>.
           </p>
+
+          <h3>3. Technology Flexibility</h3>
           <p>
-            <strong>3. Technology Flexibility</strong><br>
-            Build your frontend in React, Vue, or native mobile. Use serverless functions for event processing. Deploy machine learning models in Python. The loyalty platform doesn't dictate your tech stack - it integrates with it via standard REST APIs.
+            Build your frontend in React, Vue, or native mobile. Use serverless functions for event processing. Deploy machine learning models in Python. The <strong>loyalty platform doesn't dictate your tech stack</strong>—it integrates with it via standard REST APIs.
           </p>
+
+          <h3>4. Real-Time Event Streaming</h3>
           <p>
-            <strong>4. Real-Time Event Streaming</strong><br>
-            API-first platforms support event-driven architectures. When a customer makes a purchase, an event fires. That event can trigger point accrual, tier evaluation, and campaign eligibility checks - all in real-time, in parallel. No batch processing. No overnight delays.
+            API-first platforms support <strong>event-driven architectures</strong>. When a customer makes a purchase, an event fires. That event can trigger <a href="feature-program-design.html">point accrual</a>, tier evaluation, and campaign eligibility checks in parallel, in real time. Your mobile app can light up the moment a member earns something. Push notifications, SMS, email, and in-app overlays all respond to the same event stream. That's how modern loyalty programs create <strong>emotional connection at the moment of transaction</strong>.
           </p>
+
+          <h3>5. Version Control and Testing</h3>
           <p>
-            <strong>5. Version Control and Testing</strong><br>
-            APIs are versioned. You can test new features against v2 endpoints while production traffic runs on v1. Breaking changes don't cascade through the entire system. Rollbacks are targeted, not all-or-nothing.
+            APIs are versioned. You can test new features against v2 endpoints while production traffic runs on v1. Breaking changes don't cascade through the entire system. <strong>Rollbacks are targeted</strong>, not all-or-nothing.
           </p>
+
+          <h3>6. Developer Velocity</h3>
           <p>
-            <strong>6. Developer Velocity</strong><br>
-            Engineers work in their preferred tools - Postman, Swagger, OpenAPI specs. They write tests, mock responses, and iterate locally without needing access to the vendor's environment. Development cycles that took weeks in monolithic systems now take days.
+            Engineers work in their preferred tools. Postman, Swagger, OpenAPI specs. They write tests, mock responses, and iterate locally without needing access to the vendor's environment. <strong>Development cycles that took weeks in monolithic systems now take days.</strong>
+          </p>
+
+          <h2 id="real-time">Real-Time by Architecture, Not by Bolt-On</h2>
+
+          <p>
+            Many platforms claim <strong>real-time capabilities</strong> but process transactions in batch overnight. <a href="tech-api-architecture.html">ReactorCX</a> processes every event in real time, including batch file ingestion. When a file arrives, it's broken into individual transactions and processed immediately. The system looks like it's handling batch, but every transaction fires through the <strong>real-time engine</strong>.
+          </p>
+
+          <p>
+            That means member balances update instantly, <a href="feature-promotions.html">campaign triggers</a> fire without delay, and your app can respond the moment something happens. <strong>No overnight reconciliation. No "check back tomorrow" for point balances.</strong>
           </p>
 
           <h2 id="business-impact">Business Impact: Speed, Flexibility, and Vendor Independence</h2>
+
           <p>
-            The technical advantages translate into measurable business outcomes:
-          </p>
-          <p>
-            <strong>Time to Market:</strong> New loyalty features deploy in days or weeks, not quarters. When a competitor launches a new campaign mechanic, you can respond immediately. You're not waiting for the vendor to build, test, and release a feature update.
-          </p>
-          <p>
-            <strong>Cost Efficiency:</strong> You only pay for what you use. Cloud-native API platforms scale elastically - spinning up capacity during peak periods and scaling down during low traffic. Monolithic systems require perpetual over-provisioning because they can't scale granularly.
-          </p>
-          <p>
-            <strong>Reduced Vendor Lock-In:</strong> Because integrations are API-based rather than deeply embedded, switching providers becomes feasible. Your customer experience layer (web, mobile, POS) talks to loyalty via standardized APIs. Swapping out the backend doesn't require rebuilding your entire frontend.
-          </p>
-          <p>
-            <strong>Innovation Enablement:</strong> Want to add gamification? Build a leaderboard microservice that calls the point accrual API. Want to integrate with a partner network? Expose your APIs to third parties via API gateways. Monolithic platforms make these scenarios nearly impossible without vendor involvement.
-          </p>
-          <p>
-            <strong>Operational Resilience:</strong> When one component fails, the rest of the system continues operating. If the reporting module goes down, members can still earn and redeem points. In monolithic systems, a single failure often cascades into total platform downtime.
+            The technical advantages translate into <strong>measurable business outcomes</strong>:
           </p>
 
-          <h2 id="mach-principles">MACH Principles: The Gold Standard for Modern Loyalty</h2>
           <p>
-            The MACH Alliance (Microservices, API-first, Cloud-native, Headless) has codified the architectural principles that define modern enterprise software. Here's how each applies to loyalty:
+            <strong>Time to Market:</strong> New loyalty features deploy in days, not quarters. ReactorCX customers typically launch campaign updates in under two weeks. When a competitor moves, you respond immediately. No waiting for vendor release cycles. That speed compounds into measurable <strong>program performance gains</strong>.
           </p>
+
           <p>
-            <strong>Microservices:</strong> Break loyalty into discrete, independently deployable services - member management, campaign engine, reward catalog, analytics, etc. Each service owns its data and exposes functionality via APIs. This enables parallel development, fault isolation, and component-level scaling.
+            <strong>Cost Efficiency:</strong> You only pay for what you use. <strong>Cloud-native API platforms scale elastically</strong>, spinning up capacity during peak periods and scaling down during low traffic. Monolithic systems require perpetual over-provisioning because they can't scale granularly.
           </p>
+
           <p>
-            <strong>API-First:</strong> Every feature is accessible via REST APIs with comprehensive documentation, versioning, and authentication. Internal tools use the same APIs as customers. This ensures API completeness and prevents vendor lock-in.
+            <strong>Reduced Vendor Lock-In:</strong> Because integrations are API-based rather than deeply embedded, switching providers becomes feasible. Your customer experience layer (web, mobile, POS) talks to loyalty via standardized APIs. <strong>Swapping out the backend doesn't require rebuilding your entire frontend.</strong>
           </p>
+
           <p>
-            <strong>Cloud-Native:</strong> Built for elastic cloud infrastructure from day one. Leverage serverless computing, managed databases, auto-scaling, and global distribution. No legacy data center dependencies. No virtualized monoliths pretending to be cloud-native.
+            <strong>Innovation Enablement:</strong> Want to add <a href="feature-engagement.html">gamification</a>? Build a leaderboard microservice that calls the point accrual API. Want to integrate with a <a href="feature-partner-enablement.html">partner network</a>? Expose your APIs to third parties via API gateways. <strong>Monolithic platforms make these scenarios nearly impossible</strong> without vendor involvement.
           </p>
+
           <p>
-            <strong>Headless:</strong> The backend has no opinion about the frontend. Whether you're building for web, mobile, voice assistants, IoT devices, or in-store kiosks, the same loyalty APIs power every channel. Your UX team controls the experience - not the vendor's pre-built templates.
+            <strong>Operational Resilience:</strong> When one component fails, the rest of the system continues operating. If the reporting module goes down, members can still earn and redeem points. In monolithic systems, a single failure often cascades into <strong>total platform downtime</strong>.
           </p>
+
+          <h2 id="integration">Integration is the Work, Not the Afterthought</h2>
+
           <p>
-            ReactorCX embodies all four MACH principles. It's not a legacy system retrofitted with APIs. It's purpose-built for enterprises that treat loyalty as <em>infrastructure</em> - not as a vendor-managed black box.
+            Most platform evaluations focus on features. But features don't create value until they're <strong>connected to your POS, your CRM, your CDP, your partner systems, and your data warehouse</strong>. The real question is: does the vendor understand your stack, or do they expect you to figure it out yourself?
           </p>
+
           <p>
-            The companies winning in 2026 are those that can iterate faster, integrate deeper, and adapt to change without vendor dependencies. That requires API-first architecture. Everything else is technical debt waiting to happen.
+            <strong>API-first platforms are built for <a href="tech-integration.html">integration</a> from day one.</strong> But architecture alone isn't enough. The implementation team needs to understand enterprise complexity, not just hand over documentation. That's the difference between a platform that works in a demo and a platform that works in production.
           </p>
+
+          <h2 id="financial-precision">Financial Precision Most Platforms Ignore</h2>
+
+          <p>
+            Points are liabilities. <a href="feature-rewards.html">Redemptions</a> are costs. <a href="feature-partner-enablement.html">Partner accruals</a> require reimbursement. Multi-brand programs need to track which entity issued points and which entity absorbed the redemption.
+          </p>
+
+          <p>
+            Most platforms oversimplify this. They treat points as a single commoditized balance.
+          </p>
+
+          <p>
+            <strong>API-first platforms with enterprise-grade financial tracking</strong> let you tag points by source, track deficits and surpluses by partner, and reconcile liability at the entity level. That's not a feature for accountants. That's how you make the <strong>business of loyalty actually work</strong>.
+          </p>
+
+          <blockquote>
+            Loyalty is a conversation, not a campaign. The real value of API-first architecture isn't just speed. It's <strong>learning</strong>.
+          </blockquote>
+
+          <p>
+            When every transaction, every event, and every member interaction flows through a unified system in real time, you can read the signal and adjust. What's working? What's not? Where should you amplify? Where should you pivot?
+          </p>
+
+          <p>
+            That feedback loop only works if the whole system works. If your loyalty platform is isolated from your <a href="feature-analytics.html">analytics</a>, your marketing automation, and your data warehouse, you're flying blind.
+          </p>
+
+          <p>
+            <strong>API-first architecture connects the loop.</strong> Real-time events feed insights. Insights feed offers. Offers feed back into the system. That's how programs improve quarter over quarter.
+          </p>
+
+          <h2 id="mach-principles">MACH Principles: The Standard for Modern Loyalty</h2>
+
+          <p>
+            The <strong>MACH Alliance</strong> (Microservices, API-first, Cloud-native, Headless) has codified the architectural principles that define modern enterprise software. Here's how each applies to loyalty:
+          </p>
+
+          <p>
+            <strong>Microservices:</strong> Break loyalty into discrete, independently deployable services. Member management, campaign engine, reward catalog, <a href="feature-analytics.html">analytics</a>. Each service owns its data and exposes functionality via APIs. This enables parallel development, fault isolation, and <strong>component-level scaling</strong>.
+          </p>
+
+          <p>
+            <strong>API-First:</strong> Every feature is accessible via REST APIs with comprehensive documentation, versioning, and authentication. Internal tools use the same APIs as customers. This ensures <strong>API completeness</strong> and prevents vendor lock-in.
+          </p>
+
+          <p>
+            <strong>Cloud-Native:</strong> Built for elastic cloud infrastructure from day one. Leverage serverless computing, managed databases, auto-scaling, and global distribution. <strong>No legacy data center dependencies.</strong> No virtualized monoliths pretending to be cloud-native.
+          </p>
+
+          <p>
+            <strong>Headless:</strong> The backend has no opinion about the frontend. Whether you're building for web, mobile, voice assistants, IoT devices, or in-store kiosks, the same loyalty APIs power every channel. <strong>Your UX team controls the experience</strong>, not the vendor's pre-built templates.
+          </p>
+
+          <p>
+            <a href="tech-api-architecture.html">ReactorCX</a> embodies all four MACH principles. It's not a legacy system retrofitted with APIs. It's <strong>purpose-built for enterprises</strong> that treat loyalty as <em>infrastructure</em>, not as a vendor-managed black box.
+          </p>
+
+          <h3>When Monolithic Might Be Enough</h3>
+
+          <p>
+            Not every organization needs API-first architecture. Small programs with limited <a href="tech-integration.html">integration</a> requirements and no plans to customize the member experience may find monolithic platforms adequate.
+          </p>
+
+          <p>
+            But for enterprises operating across channels, brands, or <a href="feature-partner-enablement.html">partner networks</a>, <strong>architecture determines how fast you can move</strong> and how much you depend on vendors to move with you.
+          </p>
+
+          <h3>The Bottom Line</h3>
+
+          <p>
+            The companies winning today are those that <strong>iterate faster, integrate deeper, and adapt to change</strong> without vendor dependencies. That requires API-first architecture.
+          </p>
+
+          <p>
+            The alternative is <strong>technical debt</strong> that slows every campaign, complicates every integration, and ties your roadmap to someone else's priorities.
+          </p>
+
+          <!-- Related Reading -->
+          <div class="related-reading" style="margin-top: var(--space-12); padding: var(--space-8); background: #F9F9F9; border-radius: var(--radius-xl);">
+            <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-charcoal-900); margin-bottom: var(--space-4);">Related Reading</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+              <li><a href="tech-api-architecture.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Platform Architecture</a> — Cloud-native, API-first, and real-time</li>
+              <li><a href="tech-integration.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Integration Capabilities</a> — Connectors for the modern stack</li>
+              <li><a href="feature-analytics.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">RCX Analytics</a> — Deep insights that drive decisions</li>
+              <li><a href="blog-rcx-analytics.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Stop Querying Your Data</a> — Start talking to your loyalty platform</li>
+            </ul>
+          </div>
 
         </article>
 
@@ -564,46 +836,156 @@
     </div>
   </section>
 
-  <section class="section section-white py-20">
+  <!-- ========== CTA ========== -->
+  <section class="section-light bg-light" style="padding: var(--space-16) 0;">
     <div class="container">
       <div class="cta-box-light">
-        <h2 class="text-3xl font-bold text-dark mb-4">Stop fighting your platform. Start owning your stack.</h2>
-        <p class="text-muted mb-8 text-lg">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Launch faster. Integrate cleaner. Stop waiting on vendor roadmaps.</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
           See how ReactorCX's API-first architecture gives your engineering team total control.
         </p>
-        <a href="about-contact.html" class="btn btn-primary btn-lg">View API Documentation</a>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Talk to Our Team</a>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
+  <!-- ========== FAQ ========== -->
+  <section class="faq-section section-light bg-white">
     <div class="container">
       
-      <div class="footer-top" style="align-items: flex-start;">
+      <div class="faq-layout">
         
-        <div class="footer-brand">
-          <div class="footer-logo-placeholder" style="margin-bottom: 1.5rem;">
-            <img src="lm-full-white.svg" alt="Loyalty Methods">
-          </div>
-          
-          <div style="margin-bottom: 1.5rem;">
-            <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2" style="width: 80px; height: auto;">
+        <!-- Left Column: Intro -->
+        <div class="faq-intro">
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
+            Common questions about API-first architecture, MACH principles, and how ReactorCX integrates with enterprise systems.
+          </p>
+          <a href="about-contact.html" class="btn btn-primary">Talk to an Expert</a>
+        </div>
+
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What's the difference between API-first and API-enabled?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>API-first means the platform was designed from the ground up with APIs as the primary interface. Every function available in the UI is also available via API. API-enabled means APIs were added to an existing monolithic application, typically with limited coverage and capabilities. The key test: if the vendor can do it internally, can your team do it via API?</p>
+              </div>
+            </div>
           </div>
 
-          <p class="footer-tagline" style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1rem;">
-            © 2026 Loyalty Methods.<br>All rights reserved.
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does API-first architecture improve campaign speed?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>With API-first platforms, your team can build and deploy custom campaign logic without waiting for the vendor. You call the promotion API, the accrual API, and the communication API directly. Changes deploy in days instead of waiting weeks or months for vendor release cycles. ReactorCX customers typically launch campaign updates in under two weeks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What are MACH principles and why do they matter?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>MACH stands for Microservices, API-first, Cloud-native, and Headless. These principles define modern enterprise software architecture. They enable independent scaling, technology flexibility, reduced vendor lock-in, and the ability to build custom frontends. ReactorCX embodies all four MACH principles.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Can we integrate ReactorCX with our existing tech stack?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. ReactorCX is designed to integrate with your existing POS, CRM, CDP, data warehouse, and marketing automation tools via standard REST APIs. The platform doesn't dictate your tech stack—it works with what you already have. We sync data to your data lake and provide direct access for BI tools like Tableau, Looker, or Power BI.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does real-time processing work with batch file ingestion?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>ReactorCX processes every event in real time, including batch files. When a batch file arrives, it's broken into individual transactions and each one fires through the real-time engine. Member balances update instantly, campaign triggers fire without delay. There's no overnight reconciliation or waiting until morning for point balances.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What happens if one component fails?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>With API-first microservices architecture, components are isolated. If the reporting module goes down, members can still earn and redeem points. If the analytics service has issues, campaigns continue running. This is fundamentally different from monolithic systems where a single failure can cascade into total platform downtime.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Is API-first architecture right for every loyalty program?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Not necessarily. Small programs with limited integration requirements and no plans to customize the member experience may find monolithic platforms adequate. But for enterprises operating across channels, brands, or partner networks, API-first architecture determines how fast you can move and how much you depend on vendors to move with you.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
           </p>
-          
-          <div class="footer-social" style="gap: 1rem;">
-            <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn" style="background: none; padding: 0; width: auto; height: auto; color: white;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">RCX Platform</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
             <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
             <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
             <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
@@ -613,21 +995,23 @@
           </ul>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Technology</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
             <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
             <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
             <li><a href="tech-security.html" class="footer-link">Security</a></li>
-            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync™</a></li>
-            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch™</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
             <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
           </ul>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Company</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
             <li><a href="about-story.html" class="footer-link">Our Story</a></li>
             <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
             <li><a href="about-careers.html" class="footer-link">Careers</a></li>
@@ -636,14 +1020,14 @@
           </ul>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Resources</h4>
-          <ul class="footer-links" style="gap: 0.75rem; margin-bottom: 2rem;">
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
             <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
           </ul>
-
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Legal</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
             <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
           </ul>
         </div>
@@ -652,11 +1036,60 @@
     </div>
   </footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script>
+    // Header scroll effect
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
-      else { header.classList.remove('scrolled'); }
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ Accordion
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        accordionItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Active TOC link on scroll
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = document.querySelectorAll('.blog-content h2[id]');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
