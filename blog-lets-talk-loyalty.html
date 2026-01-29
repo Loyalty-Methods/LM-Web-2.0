@@ -4,55 +4,106 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loyalty Methods Featured on Let's Talk Loyalty Podcast | Watch Now</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* --- Page Specific Styles: Blog Split Hero & Layout --- */
+    /* ==========================================================================
+       BLOG ARTICLE SPECIFIC STYLES
+       ========================================================================== */
     
-    /* 1. Split Hero Layout */
+    /* Blog Hero Section */
+    .blog-hero {
+      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .blog-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Split Hero Layout */
     .blog-hero-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: var(--space-10);
       align-items: center;
     }
 
     @media (min-width: 992px) {
       .blog-hero-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 5rem;
+        gap: var(--space-16);
       }
     }
 
-    /* Hero Text Adjustments */
+    /* Hero Meta */
     .blog-hero-meta {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
       color: rgba(255, 255, 255, 0.9);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .blog-hero-tag {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(243, 112, 33, 0.2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      color: var(--color-primary);
+      border: 1px solid rgba(243, 112, 33, 0.3);
+    }
+    
+    .blog-hero-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    
+    .blog-hero-title .highlight {
+      color: var(--color-primary);
+    }
+    
+    .blog-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
     }
 
     /* Hero Graphic Container */
     .blog-hero-graphic {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -66,12 +117,22 @@
       height: 100%;
       object-fit: cover;
     }
+    
+    .blog-hero-graphic-placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.05em;
+      font-size: var(--font-size-sm);
+    }
 
-    /* 2. Main Content Layout (Sidebar + Content) */
+    /* ==========================================================================
+       BLOG CONTENT LAYOUT
+       ========================================================================== */
+    
     .blog-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 4rem;
+      gap: var(--space-12);
     }
 
     @media (min-width: 992px) {
@@ -95,89 +156,125 @@
     }
 
     .toc-title {
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #9ca3af;
-      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-4);
     }
 
     .toc-list {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      border-left: 1px solid #e5e7eb;
+      gap: var(--space-3);
+      border-left: 1px solid var(--color-gray-100);
     }
 
     .toc-link {
-      font-size: 0.875rem;
-      color: #4b5563;
-      padding-left: 1rem;
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      padding-left: var(--space-4);
       border-left: 2px solid transparent;
       margin-left: -1px;
-      transition: all 0.2s;
+      transition: all var(--transition-fast);
       line-height: 1.4;
     }
 
-    .toc-link:hover {
-      color: #F37021;
-      border-left-color: #F37021;
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
     }
 
-    /* Blog Content Typography */
+    /* ==========================================================================
+       BLOG CONTENT TYPOGRAPHY
+       ========================================================================== */
+    
     .blog-content {
       max-width: 750px;
     }
 
     .blog-content h2 {
-      font-size: 1.875rem;
-      font-weight: 700;
-      color: #111827;
-      margin-top: 3rem;
-      margin-bottom: 1.25rem;
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-top: var(--space-12);
+      margin-bottom: var(--space-5);
       line-height: 1.3;
     }
 
-    .blog-content h2:first-of-type { margin-top: 0; }
+    .blog-content h2:first-of-type { 
+      margin-top: 0; 
+    }
+
+    .blog-content h3 {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      line-height: 1.3;
+    }
 
     .blog-content p {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
       color: #374151;
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-6);
     }
 
     .blog-content ul {
       list-style: disc;
-      padding-left: 1.5rem;
-      margin-bottom: 2rem;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-8);
       color: #374151;
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
     }
 
     .blog-content li {
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--space-3);
     }
 
     .blog-content strong {
-      font-weight: 600;
-      color: #111827;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
     }
 
     .blog-content em {
       font-style: italic;
-      color: #F37021;
+      color: var(--color-primary);
+    }
+
+    .blog-content blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding-left: var(--space-6);
+      margin: var(--space-8) 0;
+      font-style: italic;
+      color: #4b5563;
+      font-size: var(--font-size-xl);
+    }
+    
+    /* Blog Content Links */
+    .blog-content a {
+      color: var(--color-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition-fast);
+    }
+    
+    .blog-content a:hover {
+      border-bottom-color: var(--color-primary);
     }
 
     /* Video CTA Box */
     .video-cta-box {
       background: linear-gradient(135deg, #F37021 0%, #FF8534 100%);
-      border-radius: 24px;
-      padding: 3rem;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
       text-align: center;
-      margin: 4rem 0;
+      margin: var(--space-10) 0;
       box-shadow: 0 20px 50px -10px rgba(243, 112, 33, 0.4);
       position: relative;
       overflow: hidden;
@@ -186,133 +283,82 @@
     .video-cta-box::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-      opacity: 0.5;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
       pointer-events: none;
     }
 
     .video-cta-box h3 {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
       color: white;
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-4);
       position: relative;
       z-index: 1;
     }
 
     .video-cta-box p {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-6);
       position: relative;
       z-index: 1;
     }
 
     .video-cta-box .btn {
-      background: white;
-      color: #F37021;
-      font-size: 1.125rem;
-      padding: 1rem 3rem;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       position: relative;
       z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .video-cta-box .btn:hover {
-      background: #f8f9fa;
       transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .video-cta-box .btn svg {
-      width: 24px;
-      height: 24px;
+    /* ==========================================================================
+       RELATED ARTICLES
+       ========================================================================== */
+    
+    .related-section {
+      padding: var(--space-20) 0;
+      background: #F5F5F5;
     }
-
-    /* FAQ Section - Accordion Style */
-    .faq-section {
-      margin-top: 5rem;
-      padding-top: 3rem;
-      border-top: 2px solid #e5e7eb;
-    }
-
-    .faq-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 2rem;
+    
+    .related-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-8);
       text-align: center;
     }
-
-    .faq-item {
-      border-bottom: 1px solid #e5e7eb;
+    
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
     }
-
-    .faq-item:last-child {
-      border-bottom: none;
+    
+    @media (max-width: 1024px) {
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-
-    .faq-question {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 0;
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #111827;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      transition: color 0.2s;
-    }
-
-    .faq-question:hover {
-      color: #F37021;
-    }
-
-    .faq-arrow {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-      color: #6b7280;
-    }
-
-    .faq-item.active .faq-arrow {
-      transform: rotate(180deg);
-      color: #F37021;
-    }
-
-    .faq-answer-wrapper {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .faq-item.active .faq-answer-wrapper {
-      max-height: 500px;
-    }
-
-    .faq-answer {
-      font-size: 1.0625rem;
-      line-height: 1.7;
-      color: #4b5563;
-      padding-bottom: 1.5rem;
+    
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- ========== HEADER ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -324,7 +370,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -380,8 +426,8 @@
                     <span class="mega-menu-featured-eyebrow">Featured</span>
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview - 300×170]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More →</a>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -394,55 +440,35 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
-                      
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Platform Architecture</div>
-                          <div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
                       </a>
-                      
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Integration Capabilities</div>
-                          <div class="mega-menu-link-description">Connectors for the modern stack.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
                       </a>
-                      
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Security & Compliance</div>
-                          <div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
                       </a>
-                      
                     </div>
                   </div>
-                  
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Trust Center</span>
                     <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
                     <p class="mega-menu-featured-description">View our real-time system status.</p>
                     <div class="mega-menu-featured-image">
-                       <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                       </div>
+                      </div>
                     </div>
-                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center →</a>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -455,30 +481,21 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu" style="width: max-content; min-width: 320px;"> 
-                <div class="mega-menu-inner" style="grid-template-columns: 1fr;"> 
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">ThreadSync™ Implementation</div>
-                          <div class="mega-menu-link-description">Our agile delivery framework</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">SafeSwitch™ Cutover</div>
-                          <div class="mega-menu-link-description">Zero-risk migration methodology</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">Success Stories</div>
-                          <div class="mega-menu-link-description">Client case studies and results</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
                     </div>
                   </div>
@@ -487,7 +504,7 @@
             </li>
             
             <li class="nav-item">
-              <a href="resource-center.html" class="nav-link active">Resource Center</a>
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
             </li>
             
           </ul>
@@ -496,8 +513,8 @@
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
                 <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 500px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1.5fr 1fr;"> 
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
                     <div class="mega-menu-links">
                       <div class="mega-menu-column">
                         <div class="mega-menu-column-title">Company</div>
@@ -509,22 +526,22 @@
                         <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
                       </div>
                     </div>
-                    <div class="mega-menu-featured">
+                    <div class="mega-menu-featured" style="min-width: 280px;">
                       <span class="mega-menu-featured-eyebrow">Featured</span>
                       <h3 class="mega-menu-featured-title">Partner Network</h3>
                       <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
                       <div class="mega-menu-featured-image">
-                         <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                         </div>
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
                       </div>
-                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore →</a>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
         <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -532,8 +549,8 @@
     </div>
   </header>
 
-  <section class="subpage-hero subpage-hero-brand" style="padding-top: 10rem; padding-bottom: 5rem;">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <!-- ========== BLOG HERO ========== -->
+  <section class="blog-hero">
     <div class="container">
       
       <div class="blog-hero-grid">
@@ -542,20 +559,18 @@
           <div class="blog-hero-meta">
             <span class="blog-hero-tag">Podcast</span>
             <span>•</span>
-            <span>Sep 25, 2025</span>
+            <span>Sep 16, 2025</span>
           </div>
-          <h1 class="subpage-hero-title mb-6">
+          <h1 class="blog-hero-title">
             Loyalty Methods Featured on <span class="highlight">Let's Talk Loyalty</span>
           </h1>
-          <p class="subpage-hero-description mb-8">
-            CEO Emil Sarkissian and VP of Sales Chris Sandstrom join Paula Thomas to discuss how we power some of the industry's most engaged loyalty programs - from 7-Eleven to MGM Resorts.
+          <p class="blog-hero-description">
+            CEO Emil Sarkissian and VP of Sales Chris Sandstrom join Paula Thomas to discuss how we power some of the industry's most engaged loyalty programs, from 7-Eleven to MGM Resorts.
           </p>
         </div>
 
-        <div class="blog-hero-graphic-container">
-          <div class="blog-hero-graphic">
-            <span style="color: white; font-weight: 600; letter-spacing: 0.05em; opacity: 0.5;">VIDEO THUMBNAIL [16:9]</span>
-          </div>
+        <div class="blog-hero-graphic">
+          <span class="blog-hero-graphic-placeholder">PODCAST EPISODE [16:9]</span>
         </div>
 
       </div>
@@ -563,75 +578,102 @@
     </div>
   </section>
 
-  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+  <!-- ========== BLOG CONTENT ========== -->
+  <section class="section section-light bg-white" style="padding-top: var(--space-16); padding-bottom: var(--space-24);">
     <div class="container">
       
       <div class="blog-grid">
 
         <aside class="blog-sidebar">
-          <div class="toc-title">In This Episode</div>
+          <div class="toc-title">In This Article</div>
           <nav class="toc-list">
-            <a href="#best-kept-secret" class="toc-link">From Best Kept Secret to Industry Leader</a>
-            <a href="#client-success" class="toc-link">Client Success Stories</a>
-            <a href="#delivery-methodology" class="toc-link">Delivery Methodology</a>
-            <a href="#ai-future" class="toc-link">AI & The Future</a>
+            <a href="#watch-episode" class="toc-link">Watch the Full Episode</a>
+            <a href="#proven-at-scale" class="toc-link">From "Best Kept Secret" to Proven at Scale</a>
+            <a href="#client-relationships" class="toc-link">What Makes Our Client Relationships Different</a>
+            <a href="#threadsync-safeswitch" class="toc-link">ThreadSync and SafeSwitch</a>
+            <a href="#ai-personalization" class="toc-link">AI, Personalization, and What's Next</a>
           </nav>
         </aside>
 
         <article class="blog-content">
           
-          <div class="video-cta-box">
+          <!-- Video CTA Box -->
+          <div class="video-cta-box" id="watch-episode">
             <h3>Watch the Full Episode</h3>
             <p>Hear directly from our leadership team about what makes Loyalty Methods different.</p>
-            <a href="https://letstalkloyalty.com/videos/loyalty-methods-a-unique-approach-powering-iconic-brands/" target="_blank" class="btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              Watch Video Now
-            </a>
+            <a href="https://www.youtube.com/watch?v=YnDsSRvyzdY" target="_blank" class="btn btn-lg">Watch on YouTube &rarr;</a>
           </div>
 
-          <h2 id="best-kept-secret">From "Best Kept Secret" to Industry Leader</h2>
+          <h2 id="proven-at-scale">From "Best Kept Secret" to Proven at Scale</h2>
+          
           <p>
-            When Loyalty Methods first appeared on Let's Talk Loyalty in 2023, we described ourselves as "Loyalty's Best Kept Secret." That positioning was intentional. While other vendors were focused on marketing and market share, we were heads-down building the most sophisticated loyalty infrastructure in the industry.
-          </p>
-          <p>
-            Fast forward to 2025, and the secret is out. We now power some of the most recognizable and engaged loyalty programs in North America - 7-Eleven's 7Rewards with over 70 million active members, MGM Resorts' industry-leading casino loyalty ecosystem, Western Union's global rewards network, and BP's fuel and convenience loyalty program across thousands of locations.
-          </p>
-          <p>
-            What changed? The market caught up to our architecture. Enterprises finally realized that loyalty isn't a marketing tool - it's mission-critical infrastructure that requires the same rigor, scalability, and real-time performance as payments or inventory systems.
+            When Loyalty Methods first appeared on <strong>Let's Talk Loyalty</strong> in 2023, we described ourselves as "Loyalty's Best Kept Secret." That positioning was intentional. While other vendors focused on marketing and market share, we were building <strong>loyalty infrastructure</strong> for enterprises that couldn't afford downtime.
           </p>
 
-          <h2 id="client-success">What Makes Our Client Relationships Different</h2>
           <p>
-            In the interview, Emil and Chris shared what sets Loyalty Methods apart: we've never had a client failure. Not a single platform migration has resulted in downtime, member data loss, or program disruption. That's not luck - it's methodology.
-          </p>
-          <p>
-            Our clients stay with us because we treat their programs like our own. When 7-Eleven needed to scale to handle Black Friday-level traffic every single day, we didn't just add servers. We rebuilt the architecture to process millions of transactions per hour at sub-second latency. When MGM wanted to unify loyalty across 30+ properties with different POS systems, legacy databases, and disparate member tiers, we delivered a seamless cutover with zero member-facing disruption.
-          </p>
-          <p>
-            The brands that choose Loyalty Methods aren't looking for a vendor - they're looking for a partner who can handle complexity at scale without breaking their existing customer experience.
+            Today, we power some of the most recognized loyalty programs in North America: <strong>7-Eleven's 7Rewards program</strong>, <strong>MGM Resorts' multi-property loyalty ecosystem</strong>, <strong>Western Union's global rewards network</strong>, and <strong>BP's fuel and convenience program</strong> across thousands of locations.
           </p>
 
-          <h2 id="delivery-methodology">ThreadSync & SafeSwitch: De-Risking Enterprise Delivery</h2>
           <p>
-            One of the most discussed topics in the episode was our proprietary delivery methodology. Most loyalty platforms treat implementation as a waterfall project - gather requirements, build, test, deploy, pray. We take the opposite approach.
-          </p>
-          <p>
-            <strong>ThreadSync</strong> is our parallel delivery framework. Instead of linear dependencies where a delay in one area blocks everything else, we run multiple workstreams simultaneously with clear integration contracts. Frontend teams can build experiences while backend teams configure rules engines, and data teams migrate member records - all in parallel, all coordinated through API contracts that don't change mid-flight.
-          </p>
-          <p>
-            <strong>SafeSwitch</strong> is our zero-downtime cutover methodology. Platform migrations are the highest-risk moment in a loyalty program's lifecycle. We eliminate that risk through shadow mode operation - running old and new systems in parallel with real production traffic, validating that every transaction, balance update, and reward fulfillment matches perfectly before flipping the switch. When cutover happens, it's invisible to members.
+            What changed? The market caught up to our architecture. Enterprises realized that loyalty isn't a marketing tool. It's <strong>infrastructure</strong> that requires the same rigor, scalability, and <a href="feature-hyper-personalization.html">real-time performance</a> as payments or inventory systems.
           </p>
 
-          <h2 id="ai-future">AI, Personalization, and What's Next</h2>
+          <h2 id="client-relationships">What Makes Our Client Relationships Different</h2>
+          
           <p>
-            The conversation shifted to AI and where loyalty is heading. Emil's perspective: most "AI-powered loyalty" is just basic segmentation with a new label. Real AI in loyalty means real-time decisioning at the individual interaction level.
+            In the interview, Emil and Chris shared what sets Loyalty Methods apart: our <strong>track record on platform migrations</strong>. No client has experienced unplanned downtime, member data loss, or program disruption during a migration to <a href="tech-api-architecture.html">ReactorCX</a>.
           </p>
+
           <p>
-            We're deploying machine learning models that predict churn risk in real-time, optimize reward offers based on individual propensity to convert, and dynamically adjust campaign eligibility based on live behavioral signals. This isn't batch processing that runs overnight - it's inference happening in under 200 milliseconds at the point of transaction.
+            Our clients stay with us because we treat their programs like our own. When <strong>7-Eleven</strong> needed to scale to handle peak traffic every day, not just Black Friday, we rebuilt the architecture to process <strong>millions of transactions per hour</strong> at sub-second latency. 7-Eleven has operated on ReactorCX for six years without a single second of unplanned downtime.
           </p>
+
           <p>
-            The future of loyalty is <em>invisible</em>. Members shouldn't have to think about points, tiers, or redemption mechanics. The program should anticipate what they want and deliver value automatically at the moment it matters most. That requires infrastructure that most platforms simply weren't built to support.
+            When <strong>MGM</strong> wanted to unify loyalty across more than 30 properties with different POS systems, legacy databases, and disparate member tiers, we delivered a <strong>zero-downtime cutover</strong> with no member-facing disruption.
           </p>
+
+          <blockquote>
+            The brands that choose Loyalty Methods aren't looking for a vendor. They're looking for a partner who can handle complexity at scale without breaking their existing customer experience.
+          </blockquote>
+
+          <h2 id="threadsync-safeswitch">ThreadSync and SafeSwitch: De-Risking Enterprise Delivery</h2>
+          
+          <p>
+            One of the most discussed topics in the episode was our <strong>delivery methodology</strong>. Most loyalty platforms treat implementation as a waterfall project: gather requirements, build, test, deploy, hope nothing breaks. We take the opposite approach.
+          </p>
+
+          <p>
+            <strong><a href="proven-threadsync.html">ThreadSync</a></strong> is our parallel delivery framework. Instead of linear dependencies where a delay in one area blocks everything else, we run <strong>multiple workstreams simultaneously</strong> with clear integration contracts. Frontend teams build experiences while backend teams configure <a href="feature-program-design.html">rules engines</a> and data teams migrate member records. All in parallel, all coordinated through API contracts that don't change mid-flight.
+          </p>
+
+          <p>
+            <strong><a href="proven-safeswitch.html">SafeSwitch</a></strong> is our zero-downtime cutover methodology. Platform migrations are the highest-risk moment in a loyalty program's lifecycle. We eliminate that risk through <strong>shadow mode operation</strong>, running old and new systems in parallel with real production traffic and validating that every transaction, balance update, and <a href="feature-rewards.html">reward fulfillment</a> matches before switching over. When cutover happens, it's invisible to members.
+          </p>
+
+          <h2 id="ai-personalization">AI, Personalization, and What's Next</h2>
+          
+          <p>
+            The conversation shifted to AI and where loyalty is heading. Emil's perspective: most "AI-powered loyalty" is <strong>basic segmentation with a new label</strong>. Real AI in loyalty means <strong>real-time decisioning</strong> at the individual interaction level.
+          </p>
+
+          <p>
+            We deploy <strong>machine learning models</strong> that predict churn risk in real time, optimize <a href="feature-promotions.html">reward offers</a> based on individual propensity to convert, and dynamically adjust campaign eligibility based on live behavioral signals. This isn't batch processing that runs overnight. It's <strong>inference happening at sub-second latency</strong> at the point of transaction.
+          </p>
+
+          <p>
+            The future of loyalty is invisible. Members shouldn't have to think about points, <a href="feature-program-design.html">tiers</a>, or redemption mechanics. The program should <strong>anticipate what they want</strong> and deliver value automatically at the moment it matters most. That requires infrastructure most platforms weren't built to support.
+          </p>
+
+          <!-- Related Reading -->
+          <div class="related-reading" style="margin-top: var(--space-12); padding: var(--space-8); background: #F9F9F9; border-radius: var(--radius-xl);">
+            <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-charcoal-900); margin-bottom: var(--space-4);">Related Reading</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+              <li><a href="proven-threadsync.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">ThreadSync&trade; Implementation</a> — Our parallel delivery framework</li>
+              <li><a href="proven-safeswitch.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">SafeSwitch&trade; Cutover</a> — Zero-risk migration methodology</li>
+              <li><a href="tech-api-architecture.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Platform Architecture</a> — How ReactorCX integrates with your existing stack</li>
+              <li><a href="feature-hyper-personalization.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Hyper-Personalization</a> — 1:1 experiences at scale</li>
+            </ul>
+          </div>
 
         </article>
 
@@ -639,11 +681,12 @@
     </div>
   </section>
 
-  <section class="section section-white py-20">
+  <!-- ========== CTA ========== -->
+  <section class="section-light bg-light" style="padding: var(--space-16) 0;">
     <div class="container">
       <div class="cta-box-light">
-        <h2 class="text-3xl font-bold text-dark mb-4">Ready to power your loyalty program with proven enterprise infrastructure?</h2>
-        <p class="text-muted mb-8 text-lg">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to power your loyalty program with proven enterprise infrastructure?</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
           See how ReactorCX delivers the scalability, reliability, and real-time performance that industry leaders demand.
         </p>
         <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Demo</a>
@@ -651,135 +694,143 @@
     </div>
   </section>
 
-  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+  <!-- ========== FAQ ========== -->
+  <section class="faq-section section-light bg-white">
     <div class="container">
-      <div class="blog-grid">
-        <aside class="blog-sidebar"></aside>
-        <article class="blog-content">
-          <!-- FAQ SECTION -->
-          <div class="faq-section">
-            <h2 class="faq-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-layout">
+        
+        <!-- Left Column: Intro -->
+        <div class="faq-intro">
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
+            Common questions about the Let's Talk Loyalty episode, our methodology, and how Loyalty Methods powers enterprise programs.
+          </p>
+          <a href="about-contact.html" class="btn btn-primary">Talk to an Expert</a>
+        </div>
 
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>What is Let's Talk Loyalty?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">Let's Talk Loyalty is the leading podcast for loyalty marketing professionals, hosted by Paula Thomas. The show features interviews with executives from top loyalty programs worldwide and is available in both audio and video formats.</div>
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What is Let's Talk Loyalty?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Let's Talk Loyalty is the leading podcast for loyalty marketing professionals, hosted by Paula Thomas. The show features interviews with executives from top loyalty programs worldwide and is available in both audio and video formats.</p>
               </div>
             </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>Which Loyalty Methods executives were featured on the show?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">Emil Sarkissian, CEO and CTO of Loyalty Methods, and Chris Sandstrom, Vice President of Sales and Marketing, joined Paula Thomas for an in-depth discussion about our platform, methodology, and client success stories.</div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>What major brands does Loyalty Methods power?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">Loyalty Methods powers loyalty programs for some of the most recognized brands in North America, including 7-Eleven (7Rewards with 70M+ members), MGM Resorts & Casinos, Western Union, BP USA, and Speedway, among others. These programs process millions of transactions daily at enterprise scale.</div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>What is ThreadSync methodology?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">ThreadSync is Loyalty Methods' proprietary parallel delivery framework that allows multiple workstreams to progress simultaneously during implementation. Unlike traditional waterfall approaches, ThreadSync uses API contracts to coordinate frontend, backend, and data migration teams independently, dramatically reducing time-to-market while minimizing risk.</div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>How does SafeSwitch ensure zero-downtime migrations?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">SafeSwitch is our zero-risk cutover methodology that runs old and new platforms in parallel with production traffic, validating that every transaction, balance update, and reward matches perfectly before switching over. This shadow mode operation makes platform migrations invisible to members and eliminates the traditional risks of "big bang" cutovers.</div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>Where can I watch or listen to the full episode?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">The full episode is available in video format on Loyalty.TV and YouTube, and in audio format on all major podcast platforms including Apple Podcasts, Spotify, and Amazon Music. Visit letstalkloyalty.com to access all formats.</div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>How is Loyalty Methods approaching AI in loyalty programs?</span>
-                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="faq-answer-wrapper">
-                <div class="faq-answer">We deploy real AI - machine learning models for real-time churn prediction, dynamic offer optimization, and behavioral inference at the point of transaction (under 200ms). This goes far beyond basic segmentation to deliver truly personalized, predictive loyalty experiences at enterprise scale.</div>
-              </div>
-            </div>
-
           </div>
 
-        </article>
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Which Loyalty Methods executives were featured on the show?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Emil Sarkissian, CEO and CTO of Loyalty Methods, and Chris Sandstrom, Vice President of Sales and Marketing, joined Paula Thomas for an in-depth discussion about our platform, methodology, and client success stories.</p>
+              </div>
+            </div>
+          </div>
 
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What major brands does Loyalty Methods power?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Loyalty Methods powers loyalty programs for recognized brands in North America, including 7-Eleven (7Rewards), MGM Resorts and Casinos, Western Union, BP USA, and Speedway, among others. These programs process millions of transactions daily at enterprise scale.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What is ThreadSync methodology?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p><a href="proven-threadsync.html">ThreadSync</a> is Loyalty Methods' parallel delivery framework that allows multiple workstreams to progress simultaneously during implementation. Unlike traditional waterfall approaches, ThreadSync uses API contracts to coordinate frontend, backend, and data migration teams independently, reducing time-to-market while minimizing risk.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does SafeSwitch ensure zero-downtime migrations?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p><a href="proven-safeswitch.html">SafeSwitch</a> is our zero-risk cutover methodology that runs old and new platforms in parallel with production traffic, validating that every transaction, balance update, and reward matches before switching over. This shadow mode operation makes platform migrations invisible to members and eliminates the traditional risks of big-bang cutovers.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Where can I watch or listen to the full episode?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>The full episode is available on <a href="https://www.youtube.com/watch?v=YnDsSRvyzdY" target="_blank">YouTube</a> and in audio format on major podcast platforms including Apple Podcasts, Spotify, and Amazon Music.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How is Loyalty Methods approaching AI in loyalty programs?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>We deploy machine learning models for real-time churn prediction, dynamic offer optimization, and behavioral inference at the point of transaction. This goes beyond basic segmentation to deliver personalized, predictive loyalty experiences at enterprise scale.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
-      
-      <div class="footer-top" style="align-items: flex-start;">
+      <div class="footer-top">
         
+        <!-- Brand Column -->
         <div class="footer-brand">
-          <div class="footer-logo-placeholder" style="margin-bottom: 1.5rem;">
+          <div class="footer-logo">
             <img src="lm-full-white.svg" alt="Loyalty Methods">
           </div>
-          
-          <div style="margin-bottom: 1.5rem;">
-            <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2" style="width: 80px; height: auto;">
-          </div>
-
-          <p class="footer-tagline" style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1rem;">
-            © 2026 Loyalty Methods.<br>All rights reserved.
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
           </p>
-          
-          <div class="footer-social" style="gap: 1rem;">
-            <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn" style="background: none; padding: 0; width: auto; height: auto; color: white;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">RCX Platform</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
             <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
             <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
             <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
@@ -789,21 +840,23 @@
           </ul>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Technology</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
             <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
             <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
             <li><a href="tech-security.html" class="footer-link">Security</a></li>
-            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync™</a></li>
-            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch™</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
             <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
           </ul>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Company</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
             <li><a href="about-story.html" class="footer-link">Our Story</a></li>
             <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
             <li><a href="about-careers.html" class="footer-link">Careers</a></li>
@@ -812,14 +865,14 @@
           </ul>
         </div>
 
-        <div>
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Resources</h4>
-          <ul class="footer-links" style="gap: 0.75rem; margin-bottom: 2rem;">
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
             <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
           </ul>
-
-          <h4 class="footer-column-title" style="color: #F37021; margin-bottom: 1.25rem;">Legal</h4>
-          <ul class="footer-links" style="gap: 0.75rem;">
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
             <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
           </ul>
         </div>
@@ -828,22 +881,27 @@
     </div>
   </footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script>
+    // Header scroll effect
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
-      else { header.classList.remove('scrolled'); }
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
 
     // FAQ Accordion
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
         // Close all other items
-        faqItems.forEach(otherItem => {
+        accordionItems.forEach(otherItem => {
           if (otherItem !== item) {
             otherItem.classList.remove('active');
           }
@@ -854,6 +912,27 @@
           item.classList.remove('active');
         } else {
           item.classList.add('active');
+        }
+      });
+    });
+
+    // Active TOC link on scroll
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = document.querySelectorAll('.blog-content h2[id]');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
         }
       });
     });
