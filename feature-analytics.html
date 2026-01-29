@@ -116,6 +116,13 @@
       position: relative;
     }
     
+    .subpage-hero-image {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    }
+    
     .subpage-hero-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
@@ -223,6 +230,13 @@
       position: relative;
     }
     
+    .feature-row-image {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+    
     .feature-row-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
@@ -234,9 +248,11 @@
       font-size: var(--font-size-sm);
     }
     
+    /* btn-dark style */
     .btn-dark {
       background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
       color: var(--color-white);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       position: relative;
       overflow: hidden;
     }
@@ -248,71 +264,16 @@
       left: 0;
       right: 0;
       height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
       pointer-events: none;
       border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
     
     .btn-dark:hover {
       transform: translateY(-2px);
-      filter: brightness(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
     
-    /* UI Carousel Specific Styles */
-    .ui-carousel {
-      position: relative;
-    }
-    
-    .ui-carousel-slides {
-      position: relative;
-    }
-    
-    .ui-carousel-slide {
-      display: none;
-    }
-    
-    .ui-carousel-slide.active {
-      display: block;
-    }
-    
-    .ui-carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: var(--space-6);
-    }
-    
-    .ui-carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition-base);
-    }
-    
-    .ui-carousel-dot:hover {
-      background: rgba(255, 255, 255, 0.5);
-    }
-    
-    .ui-carousel-dot.active {
-      background: var(--color-primary);
-      transform: scale(1.2);
-      box-shadow: var(--glow-orange);
-    }
-    
-    .browser-screenshot-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      background: #3D3D3D;
-    }
-
     /* Bottom CTA Card */
     .bottom-cta-card {
       background: var(--color-white);
@@ -345,152 +306,6 @@
       .bottom-cta-card {
         padding: var(--space-8);
       }
-    }
-
-    /* -------------------------------------------------------------------------
-       FAQ SECTION (Two-Column Layout)
-       ------------------------------------------------------------------------- */
-    .faq-section {
-      padding: var(--space-20) 0;
-    }
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-16);
-      align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-10);
-      }
-    }
-
-    /* Left Column: Intro */
-    .faq-intro {
-      position: sticky;
-      top: 120px;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-intro {
-        position: static;
-        text-align: center;
-      }
-    }
-
-    .faq-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .faq-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    /* Right Column: Accordion */
-    .faq-accordion {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .accordion-item {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition-base);
-    }
-
-    .accordion-item:hover {
-      border-color: var(--color-navy);
-    }
-
-    .accordion-item.active {
-      border-color: var(--color-primary);
-    }
-
-    .accordion-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-5) var(--space-6);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .accordion-trigger-text {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-semibold);
-      color: var(--text-main);
-      padding-right: var(--space-4);
-    }
-
-    .accordion-icon {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .accordion-icon::before,
-    .accordion-icon::after {
-      content: '';
-      position: absolute;
-      background: var(--color-primary);
-      transition: transform var(--transition-fast);
-    }
-
-    .accordion-icon::before {
-      width: 12px;
-      height: 2px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-icon::after {
-      width: 2px;
-      height: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-item.active .accordion-icon::after {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition-slow);
-    }
-
-    .accordion-item.active .accordion-content {
-      max-height: 500px;
-    }
-
-    .accordion-content-inner {
-      padding: 0 var(--space-6) var(--space-6);
-    }
-
-    .accordion-content-inner p {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
     }
 
     /* 4-Column Grid for At a Glance */
@@ -551,7 +366,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -608,7 +423,7 @@
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
                     <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -621,10 +436,10 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
@@ -761,7 +576,7 @@
         <!-- Right: Hero Image -->
         <div class="subpage-hero-media hidden-mobile">
           <div class="subpage-hero-image-placeholder">
-            [Analytics Dashboard Interface - 600×450]
+            [Analytics Dashboard Interface]
           </div>
         </div>
         
@@ -797,7 +612,7 @@
             <h3 class="card-title">Natural Language Q&A</h3>
           </div>
           <p class="card-body">
-            Ask questions in plain English. The AI produces actual SQL queries against the underlying data model and builds charts on the fly.
+            Business users ask questions in <strong>plain English</strong>. The system produces <strong>SQL against the underlying data model</strong> and returns results with charts.
           </p>
         </div>
 
@@ -814,11 +629,11 @@
             <h3 class="card-title">Pre-Built Dashboards</h3>
           </div>
           <p class="card-body">
-            Start analyzing immediately. Promotions, tiers, streaks, liability, fraud. Copy ours, modify them, or build your own.
+            Dashboards for <strong>promotions, tiers, streaks, rewards</strong>, and <strong>operational health</strong>. All customizable. Copy them, modify them, or build your own.
           </p>
         </div>
 
-        <!-- Card 3: ~100 Table Data Model -->
+        <!-- Card 3: Full Data Access -->
         <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
@@ -828,10 +643,10 @@
                 <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
               </svg>
             </div>
-            <h3 class="card-title">~100 Table Data Model</h3>
+            <h3 class="card-title">Full Data Access</h3>
           </div>
           <p class="card-body">
-            Full access to the raw data. Unfettered SQL access to approximately 100 tables capturing every detail of what happens to members.
+            <strong>SQL access</strong> to the underlying data warehouse. Every detail of what happens to members is <strong>captured and queryable</strong>.
           </p>
         </div>
 
@@ -847,7 +662,7 @@
             <h3 class="card-title">Works With Your Stack</h3>
           </div>
           <p class="card-body">
-            Feed data to existing tools. Tableau. Looker. Power BI. We pass the data through. We don't compete with your CDP or BI stack.
+            Sync to your <strong>data lake</strong>. Connect <strong>Tableau, Looker, Power BI</strong>. RCX feeds data to your existing tools.
           </p>
         </div>
 
@@ -867,24 +682,22 @@
       <div class="feature-row" id="natural-language">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Conversational Analytics</span>
-          <h2 class="feature-row-title">Have a Conversation With Your Data</h2>
+          <h2 class="feature-row-title">Natural Language Q&A</h2>
           <p class="feature-row-description">
-            You can actually have a conversation with the data. Natural language Q&A lets you ask questions in plain English and get charts built on the fly. Not summarizing pre-built reports. Producing actual SQL against the underlying data model. Ask "how many people moved up to the highest tier last month?" and you get the answer.
+            Business users can query program data in <strong>plain English</strong>. The system produces <strong>actual SQL</strong> against the underlying data model and returns results with charts. <strong>No SQL knowledge required</strong>. Context-aware of your program's tiers, segments, and history.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Plain English queries against ~100 table data model</li>
-            <li class="feature-row-list-item">AI produces SQL and builds visualizations on the fly</li>
-            <li class="feature-row-list-item">Context-aware of your program's tiers, segments, and history</li>
-            <li class="feature-row-list-item">No SQL knowledge required for business users</li>
+            <li class="feature-row-list-item">Plain English queries against program data</li>
+            <li class="feature-row-list-item">SQL generated and executed automatically</li>
+            <li class="feature-row-list-item">Charts built from query results</li>
+            <li class="feature-row-list-item">Context-aware of program configuration</li>
           </ul>
           <div class="feature-row-cta">
             <a href="about-contact.html" class="btn btn-dark">See It in Action &rarr;</a>
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [QuickSight Q Interface - Natural Language Query]
-          </div>
+          <img src="rcx-analytics-nlq.png" alt="Natural Language Q&A Interface showing conversational queries" class="feature-row-image">
         </div>
       </div>
 
@@ -892,183 +705,45 @@
       <div class="feature-row feature-row-reverse" id="dashboards">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Ready to Use</span>
-          <h2 class="feature-row-title">Pre-Built Dashboards, Fully Customizable</h2>
+          <h2 class="feature-row-title">Pre-Built Dashboards</h2>
           <p class="feature-row-description">
-            Dashboards for promotions, tiers, streaks, liability, and fraud. All pre-built. All customizable. Refreshed near real-time. Copy ours, modify them, or build your own. You can even ingest external data into your dashboards.
+            Dashboards for <strong>promotions, tiers, streaks, rewards</strong>, and <strong>operational health</strong>. All pre-built. <strong>All customizable</strong>. Copy them, modify them, or build your own.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Promotion performance and participation tracking</li>
-            <li class="feature-row-list-item">Tier progression and qualification monitoring</li>
-            <li class="feature-row-list-item">Streak and challenge completion rates</li>
-            <li class="feature-row-list-item">Liability and fraud anomaly detection</li>
-            <li class="feature-row-list-item">Near real-time refresh without batch delays</li>
+            <li class="feature-row-list-item">Promotion performance and participation</li>
+            <li class="feature-row-list-item">Tier qualification and progression</li>
+            <li class="feature-row-list-item">Reward issuance and redemption</li>
+            <li class="feature-row-list-item">Operational health metrics</li>
           </ul>
           <div class="feature-row-cta">
             <a href="about-contact.html" class="btn btn-dark">Explore Dashboard Library &rarr;</a>
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Dashboard - Promotion Performance Metrics]
-          </div>
+          <img src="rcx-analytics-dashboard.png" alt="Pre-built analytics dashboard with metrics and AI assistant" class="feature-row-image">
         </div>
       </div>
 
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 4: UI SHOWCASE CAROUSEL
-       Background: DARK
-       3 slides with dot navigation
-       ======================================== -->
-  <section class="product-tour section dark">
-    <div class="container">
-      
-      <div class="ui-carousel">
-        <div class="ui-carousel-slides">
-          
-          <!-- Slide 1: Dashboard Overview -->
-          <div class="ui-carousel-slide active" data-slide="1">
-            <div class="browser-window">
-              <div class="browser-frame">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="browser-dot browser-dot-red"></span>
-                    <span class="browser-dot browser-dot-yellow"></span>
-                    <span class="browser-dot browser-dot-green"></span>
-                  </div>
-                  <div class="browser-url">
-                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    <span class="browser-url-text">app.reactorcx.com/analytics/dashboard</span>
-                  </div>
-                </div>
-                <div class="browser-content">
-                  <div class="browser-screenshot-placeholder">
-                    [Analytics Dashboard Overview Screen]
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2: Natural Language Q&A -->
-          <div class="ui-carousel-slide" data-slide="2">
-            <div class="browser-window">
-              <div class="browser-frame">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="browser-dot browser-dot-red"></span>
-                    <span class="browser-dot browser-dot-yellow"></span>
-                    <span class="browser-dot browser-dot-green"></span>
-                  </div>
-                  <div class="browser-url">
-                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    <span class="browser-url-text">app.reactorcx.com/analytics/ask</span>
-                  </div>
-                </div>
-                <div class="browser-content">
-                  <div class="browser-screenshot-placeholder">
-                    [Natural Language Q&A Interface]
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3: Report Builder -->
-          <div class="ui-carousel-slide" data-slide="3">
-            <div class="browser-window">
-              <div class="browser-frame">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="browser-dot browser-dot-red"></span>
-                    <span class="browser-dot browser-dot-yellow"></span>
-                    <span class="browser-dot browser-dot-green"></span>
-                  </div>
-                  <div class="browser-url">
-                    <svg class="browser-url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    <span class="browser-url-text">app.reactorcx.com/analytics/reports</span>
-                  </div>
-                </div>
-                <div class="browser-content">
-                  <div class="browser-screenshot-placeholder">
-                    [Custom Reports Interface]
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Carousel Dots -->
-        <div class="ui-carousel-dots">
-          <button class="ui-carousel-dot active" data-slide="1" aria-label="Slide 1"></button>
-          <button class="ui-carousel-dot" data-slide="2" aria-label="Slide 2"></button>
-          <button class="ui-carousel-dot" data-slide="3" aria-label="Slide 3"></button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 5: MORE FEATURE ROWS
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="feature-rows-section">
-    <div class="container">
-
-      <!-- ===== ROW 3: AI-Powered Insights (Text Left, Image Right) ===== -->
-      <div class="feature-row" id="ai-insights">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Proactive Intelligence</span>
-          <h2 class="feature-row-title">Surface Trends and Anomalies You Might Have Missed</h2>
-          <p class="feature-row-description">
-            AI-powered insights surface patterns in your data without you having to ask. From one-click executive summaries to promotion optimization proposals. Executive summaries can be set up and automatically sent to leadership on a schedule. They don't have to log in.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Anomaly detection across member behavior and program performance</li>
-            <li class="feature-row-list-item">One-click executive summaries for leadership</li>
-            <li class="feature-row-list-item">Scheduled delivery of reports to stakeholders</li>
-            <li class="feature-row-list-item">Promotion optimization proposals based on historical patterns</li>
-          </ul>
-          <div class="feature-row-cta">
-            <a href="feature-ai-agents.html" class="btn btn-dark">Learn About AI Insights &rarr;</a>
-          </div>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [AI Insight Notification - Anomaly Detection]
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== ROW 4: Data Access & Integration (Image Left, Text Right) ===== -->
-      <div class="feature-row feature-row-reverse" id="integration">
+      <!-- ===== ROW 3: Full Data Access (Text Left, Image Right) ===== -->
+      <div class="feature-row" id="data-access">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Open Architecture</span>
-          <h2 class="feature-row-title">Your Data. Your Tools. Your Way.</h2>
+          <h2 class="feature-row-title">Full Data Access</h2>
           <p class="feature-row-description">
-            If you want to go deeper, you have unfettered SQL access to the raw data. Most of our larger clients sync the full data model into their own data lake. The data model is extensive, about 100 tables. We want to feed the data over to your other systems. We take the opposite approach of vendors who silo data.
+            Most clients sync the <strong>full data model</strong> into their own data lake. The model is extensive: <strong>enrollment, transactions, promotions, rewards, partner activity</strong>. SQL access to the underlying data warehouse. <strong>Connect your own BI tools</strong>.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Full SQL access to the underlying data warehouse</li>
-            <li class="feature-row-list-item">Sync to client data lakes (Snowflake, Redshift, BigQuery)</li>
-            <li class="feature-row-list-item">Integration with existing BI tools (Tableau, Looker, Power BI)</li>
-            <li class="feature-row-list-item">Streaming events via Kafka, batch exports, or warehouse queries</li>
+            <li class="feature-row-list-item">SQL access to the data warehouse</li>
+            <li class="feature-row-list-item">Sync to Snowflake, Redshift, BigQuery</li>
+            <li class="feature-row-list-item">Connect Tableau, Looker, Power BI</li>
+            <li class="feature-row-list-item">Export via APIs, streaming events, or batch</li>
           </ul>
           <div class="feature-row-cta">
             <a href="tech-api-architecture.html" class="btn btn-dark">View Data Architecture &rarr;</a>
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Data Architecture Diagram - RCX to Client BI Stack]
-          </div>
+          <img src="rcx-analytics-stories.png" alt="Story Builder for creating data-driven presentations and reports" class="feature-row-image">
         </div>
       </div>
 
@@ -1077,7 +752,7 @@
 
 
   <!-- ========================================
-       SECTION 6: REPORTING COVERAGE - 6-CARD GRID
+       SECTION 4: REPORTING COVERAGE - 6-CARD GRID
        Background: LIGHT
        ======================================== -->
   <section id="data-model" class="section section-lg section-light bg-light">
@@ -1103,11 +778,11 @@
             <h3 class="card-title">Enrollment & Growth</h3>
           </div>
           <p class="card-body">
-            Track membership growth, acquisition sources, and activation rates over time.
+            <strong>Membership growth</strong>, acquisition sources, <strong>activation rates</strong>.
           </p>
         </div>
 
-        <!-- Card 2: Activation & Engagement -->
+        <!-- Card 2: Engagement -->
         <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
@@ -1115,10 +790,10 @@
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
             </div>
-            <h3 class="card-title">Activation & Engagement</h3>
+            <h3 class="card-title">Engagement</h3>
           </div>
           <p class="card-body">
-            Monitor how members interact with your program. Participation rates. Activity frequency. Channel preferences.
+            <strong>Participation rates</strong>, activity frequency, <strong>channel preferences</strong>.
           </p>
         </div>
 
@@ -1134,11 +809,11 @@
             <h3 class="card-title">Promotion Performance</h3>
           </div>
           <p class="card-body">
-            See which promotions drive behavior. Participation rates. Redemption patterns. Cost per action.
+            Participation, <strong>redemption patterns</strong>, <strong>cost per action</strong>.
           </p>
         </div>
 
-        <!-- Card 4: Reward Issuance & Redemption -->
+        <!-- Card 4: Reward Economics -->
         <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
@@ -1147,14 +822,14 @@
                 <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
               </svg>
             </div>
-            <h3 class="card-title">Reward Issuance & Redemption</h3>
+            <h3 class="card-title">Reward Economics</h3>
           </div>
           <p class="card-body">
-            Track every earn and burn. Full lineage from redemption back to original accrual. Finance-grade traceability.
+            Every <strong>earn and burn</strong>. <strong>Full lineage</strong> from redemption to original accrual.
           </p>
         </div>
 
-        <!-- Card 5: Badge & Challenge Performance -->
+        <!-- Card 5: Challenges & Streaks -->
         <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
@@ -1162,10 +837,10 @@
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
             </div>
-            <h3 class="card-title">Badge & Challenge Performance</h3>
+            <h3 class="card-title">Challenges & Streaks</h3>
           </div>
           <p class="card-body">
-            For gamification programs: badge attainment, challenge completion, streak success rates.
+            <strong>Badge attainment</strong>, challenge completion, <strong>streak success rates</strong>.
           </p>
         </div>
 
@@ -1182,7 +857,7 @@
             <h3 class="card-title">Operational Health</h3>
           </div>
           <p class="card-body">
-            Processing throughput. Error rates. API response times. System health metrics for your operations team.
+            <strong>Processing throughput</strong>, error rates, <strong>API response times</strong>.
           </p>
         </div>
 
@@ -1192,7 +867,7 @@
 
 
   <!-- ========================================
-       SECTION 8: BOTTOM CTA
+       SECTION 6: BOTTOM CTA
        Background: Off-white with white card
        ======================================== -->
   <section class="section section-lg bg-light">
@@ -1200,100 +875,9 @@
       <div class="bottom-cta-card">
         <h2 class="bottom-cta-title">Finance-Grade Traceability</h2>
         <p class="bottom-cta-description">
-          Points are not the same. You can tag them by source: Partner A points, Partner B points, location points. Track sub-balances within a unified member balance. When a redemption happens, trace it back to the original accrual. Separate funding, billing, and settlement per partner. Full visibility for reconciliation, audit, and financial reporting.
+          Points can be tagged by source: Partner A, Partner B, location-specific. Track sub-balances within a unified member balance. Trace redemptions back to original accruals. Separate funding, billing, and settlement per partner.
         </p>
         <a href="feature-partner-enablement.html" class="btn btn-primary">Explore Financial Controls &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 9: FAQ SECTION (Two-Column Layout)
-       Background: LIGHT (Gray)
-       ======================================== -->
-  <section class="faq-section section-light bg-light">
-    <div class="container">
-      <div class="faq-layout">
-        
-        <!-- Left Column: Intro Text -->
-        <div class="faq-intro">
-          <h2 class="faq-title">Frequently Asked Questions</h2>
-          <p class="faq-description">
-            Common questions about data access, reporting, and integration with your existing tools.
-          </p>
-          <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
-        </div>
-
-        <!-- Right Column: Accordion -->
-        <div class="faq-accordion">
-          
-          <!-- FAQ 1 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What powers the natural language Q&A?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>RCX Analytics is built on Amazon QuickSight. QuickSight Q provides the natural language interface. When you ask a question in plain English, it produces actual SQL queries against the underlying ~100 table data model. It builds charts on the fly based on the results.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 2 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can we use our existing BI tools?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Yes. Most of our larger clients sync the full data model into their own data lake and use Tableau, Looker, Power BI, or whatever tools they already have. We feed data TO your existing stack. We don't compete with your CDP or BI tools.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 3 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What data is available for reporting?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>The data model captures approximately 100 tables covering every detail of what happens to members. Enrollment, transactions, promotions, rewards, tiers, badges, partner activity, and more. Every earn and burn is traceable back to its source with full lineage.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 4 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can we get raw SQL access?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Yes. You have unfettered SQL access to the raw data warehouse. No black box. If you want to write your own queries or connect your own analytics tools directly, you can.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 5 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How does data sharing work with partners?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Data can be shared via APIs, streaming events (Kafka), batch exports, or direct warehouse queries. Partner activity is processed through the same rules engine and tracked with the same lineage as first-party transactions.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -1396,61 +980,6 @@
         header.classList.remove('scrolled');
       }
     });
-
-    // Accordion functionality
-    const accordionItems = document.querySelectorAll('.accordion-item');
-    
-    accordionItems.forEach(item => {
-      const trigger = item.querySelector('.accordion-trigger');
-      
-      trigger.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Close all accordion items
-        accordionItems.forEach(otherItem => {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
-        });
-        
-        // If clicked item wasn't active, open it
-        if (!isActive) {
-          item.classList.add('active');
-          trigger.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-
-    // UI Carousel functionality
-    const carouselDots = document.querySelectorAll('.ui-carousel-dot');
-    const carouselSlides = document.querySelectorAll('.ui-carousel-slide');
-
-    carouselDots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const slideNum = dot.getAttribute('data-slide');
-        
-        // Remove active from all dots and slides
-        carouselDots.forEach(d => d.classList.remove('active'));
-        carouselSlides.forEach(s => s.classList.remove('active'));
-        
-        // Add active to clicked dot and corresponding slide
-        dot.classList.add('active');
-        document.querySelector(`.ui-carousel-slide[data-slide="${slideNum}"]`).classList.add('active');
-      });
-    });
-
-    // Auto-rotate carousel every 5 seconds
-    let currentSlide = 1;
-    const totalSlides = 3;
-    
-    setInterval(() => {
-      currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
-      
-      carouselDots.forEach(d => d.classList.remove('active'));
-      carouselSlides.forEach(s => s.classList.remove('active'));
-      
-      document.querySelector(`.ui-carousel-dot[data-slide="${currentSlide}"]`).classList.add('active');
-      document.querySelector(`.ui-carousel-slide[data-slide="${currentSlide}"]`).classList.add('active');
-    }, 5000);
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
