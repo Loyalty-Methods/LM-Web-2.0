@@ -1661,9 +1661,14 @@ a.card {
 
 .stat-title {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: 700;
   color: #FFFFFF;
 }
+
+.stat-title strong {
+  font-weight: 700;
+}
+
 
 .stat-subtitle {
   font-size: var(--font-size-xs);
