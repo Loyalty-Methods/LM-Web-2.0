@@ -274,11 +274,11 @@
     }
 
     /* -------------------------------------------------------------------------
-       TESTIMONIALS - 4 Column Grid (Light Background, No Title)
+       TESTIMONIALS - Light Background Section
        ------------------------------------------------------------------------- */
     .testimonials-section {
-      padding: var(--space-12) 0;
-      background: transparent;
+      padding: var(--space-16) 0;
+      background: #F5F5F5;
     }
 
     .testimonials-grid {
@@ -299,34 +299,36 @@
       }
     }
 
+    /* Light background testimonial cards */
     .testimonial-card {
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--color-white);
       border-radius: var(--radius-xl);
       padding: var(--space-6);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid var(--color-gray-100);
       display: flex;
       flex-direction: column;
       height: 100%;
-      transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     }
 
     .testimonial-card:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(243, 112, 33, 0.5);
       transform: translateY(-4px);
+      border-color: var(--color-navy);
+      box-shadow: var(--shadow-card-hover);
     }
 
     .testimonial-logo {
       height: 28px;
       width: auto;
       margin-bottom: var(--space-4);
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .testimonial-logo-placeholder {
       width: 100px;
       height: 28px;
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--color-gray-100);
       border-radius: var(--radius-sm);
       margin-bottom: var(--space-4);
     }
@@ -334,7 +336,7 @@
     .testimonial-quote {
       font-size: var(--font-size-base);
       font-style: italic;
-      color: var(--color-white);
+      color: var(--color-charcoal-900);
       line-height: 1.6;
       margin-bottom: var(--space-6);
       flex-grow: 1;
@@ -349,7 +351,7 @@
     .testimonial-author-name {
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-white);
+      color: var(--color-charcoal-900);
     }
 
     .testimonial-author-title {
@@ -358,7 +360,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       INDUSTRY CARDS SECTION
+       INDUSTRY CARDS SECTION - Improved Readability
        ------------------------------------------------------------------------- */
     .industry-section {
       padding: var(--space-20) 0;
@@ -420,6 +422,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      box-shadow: var(--shadow-card);
       transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     }
 
@@ -439,18 +442,20 @@
     }
 
     .industry-card-title {
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-lg);
       font-weight: var(--font-weight-bold);
-      color: var(--text-main);
+      color: var(--color-charcoal-900);
       line-height: 1.3;
       margin-bottom: var(--space-3);
     }
 
     .industry-card-intro {
       font-size: var(--font-size-sm);
-      color: var(--color-primary);
-      font-style: italic;
+      color: var(--color-navy);
+      font-weight: var(--font-weight-medium);
       margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-gray-100);
     }
 
     .industry-card-list {
@@ -464,7 +469,7 @@
       padding-left: var(--space-5);
       margin-bottom: var(--space-2);
       font-size: var(--font-size-sm);
-      color: var(--text-muted);
+      color: var(--color-charcoal-900);
       line-height: 1.5;
     }
 
@@ -480,7 +485,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       SECURITY SPOTLIGHT (Forrester-style card)
+       SECURITY SPOTLIGHT (with SOC2 Logo)
        ------------------------------------------------------------------------- */
     .security-spotlight {
       padding: var(--space-20) 0;
@@ -511,6 +516,14 @@
       align-items: center;
       justify-content: center;
       padding: var(--space-12);
+      min-height: 280px;
+    }
+
+    .security-visual img {
+      max-width: 180px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
     }
 
     .security-visual-icon {
@@ -865,74 +878,76 @@
   </section>
 
 
-  <!-- ========== STATS BAR + TESTIMONIALS ========== -->
+  <!-- ========== STATS BAR (Dark Section with Rolling Numbers) ========== -->
   <section class="section dark bg-dark">
     <div class="container">
-      <!-- Stats Bar -->
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-number">25M+</div>
+          <div class="stat-number" data-target="25" data-suffix="M+">0</div>
           <div class="stat-title">Daily Real-Time Requests</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">5×</div>
+          <div class="stat-number" data-target="5" data-suffix="×">0</div>
           <div class="stat-title">Average Basket Value</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">75M</div>
+          <div class="stat-number" data-target="75" data-suffix="M">0</div>
           <div class="stat-title">Average Daily Transactions</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">+80%</div>
+          <div class="stat-number" data-target="80" data-prefix="+" data-suffix="%">0</div>
           <div class="stat-title">Repeat Purchase Rate</div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Testimonials Grid (No Title, No Avatars) -->
-      <div class="testimonials-section">
-        <div class="testimonials-grid">
-          
-          <!-- Testimonial 1: Western Union -->
-          <div class="testimonial-card">
-            <div class="testimonial-logo-placeholder"></div>
-            <p class="testimonial-quote">"LM's focus on innovation, agility, and successful, seamless delivery has made a massive difference in our efforts."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-name">Lucy Donaldson</div>
-              <div class="testimonial-author-title">Head Loyalty, Martech & Consumer Ecosystems, Western Union</div>
-            </div>
+
+  <!-- ========== TESTIMONIALS (Light Background, Below Stats) ========== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-grid">
+        
+        <!-- Testimonial 1: Western Union -->
+        <div class="testimonial-card">
+          <div class="testimonial-logo-placeholder"></div>
+          <p class="testimonial-quote">"LM's focus on innovation, agility, and successful, seamless delivery has made a massive difference in our efforts."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-name">Lucy Donaldson</div>
+            <div class="testimonial-author-title">Head Loyalty, Martech & Consumer Ecosystems, Western Union</div>
           </div>
-          
-          <!-- Testimonial 2: 7-Eleven -->
-          <div class="testimonial-card">
-            <div class="testimonial-logo-placeholder"></div>
-            <p class="testimonial-quote">"They are experts in their space and provide excellent solutions, creativity and out of the box thinking."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-name">Steve Kinch</div>
-              <div class="testimonial-author-title">Innovation Leader, 7-Eleven</div>
-            </div>
-          </div>
-          
-          <!-- Testimonial 3: MGM -->
-          <div class="testimonial-card">
-            <div class="testimonial-logo-placeholder"></div>
-            <p class="testimonial-quote">"Thank you LM & ReactorCX for your contributions. You are essential members of our team, and we are glad to have you."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-name">Gregor Purdy</div>
-              <div class="testimonial-author-title">Executive Director, Loyalty Systems, MGM</div>
-            </div>
-          </div>
-          
-          <!-- Testimonial 4: Placeholder -->
-          <div class="testimonial-card">
-            <div class="testimonial-logo-placeholder"></div>
-            <p class="testimonial-quote">"ReactorCX has transformed how we think about loyalty. The platform's flexibility lets us innovate faster than our competitors."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-name">Client Name</div>
-              <div class="testimonial-author-title">Title, Company</div>
-            </div>
-          </div>
-          
         </div>
+        
+        <!-- Testimonial 2: 7-Eleven -->
+        <div class="testimonial-card">
+          <div class="testimonial-logo-placeholder"></div>
+          <p class="testimonial-quote">"They are experts in their space and provide excellent solutions, creativity and out of the box thinking."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-name">Steve Kinch</div>
+            <div class="testimonial-author-title">Innovation Leader, 7-Eleven</div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3: MGM -->
+        <div class="testimonial-card">
+          <div class="testimonial-logo-placeholder"></div>
+          <p class="testimonial-quote">"Thank you LM & ReactorCX for your contributions. You are essential members of our team, and we are glad to have you."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-name">Gregor Purdy</div>
+            <div class="testimonial-author-title">Executive Director, Loyalty Systems, MGM</div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 4: Placeholder -->
+        <div class="testimonial-card">
+          <div class="testimonial-logo-placeholder"></div>
+          <p class="testimonial-quote">"ReactorCX has transformed how we think about loyalty. The platform's flexibility lets us innovate faster than our competitors."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-name">Client Name</div>
+            <div class="testimonial-author-title">Title, Company</div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -983,7 +998,7 @@
 
 
   <!-- ========== ONE ENGINE. ANY INDUSTRY. ========== -->
-  <section class="industry-section">
+  <section class="industry-section" style="background: #F5F5F5;">
     <div class="container">
       <div class="industry-header">
         <span class="industry-header-eyebrow">Cross-Industry Platform</span>
@@ -1102,15 +1117,13 @@
   </section>
 
 
-  <!-- ========== ENTERPRISE SECURITY (Forrester-style) ========== -->
+  <!-- ========== ENTERPRISE SECURITY (with SOC2 Logo) ========== -->
   <section class="security-spotlight">
     <div class="container">
       <div class="security-card">
         <div class="security-inner">
           <div class="security-visual">
-            <svg class="security-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
+            <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2 Type II Certified">
           </div>
           <div class="security-content">
             <span class="security-eyebrow">Enterprise Security</span>
@@ -1229,6 +1242,57 @@
         header.classList.remove('scrolled');
       }
     });
+
+    // Animated number counters (Rolling Numbers)
+    const animateCounters = () => {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      
+      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+      
+      const animateCounter = (el) => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+        
+        const update = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = easeOutQuart(progress);
+          const current = target * easedProgress;
+          
+          if (isDecimal) {
+            el.textContent = prefix + current.toFixed(1) + suffix;
+          } else {
+            el.textContent = prefix + Math.floor(current) + suffix;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+          }
+        };
+        
+        requestAnimationFrame(update);
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    };
+    
+    // Initialize counters
+    animateCounters();
   </script>
 </body>
 </html>
