@@ -102,6 +102,11 @@
       margin-bottom: var(--space-8);
     }
 
+    .subpage-hero-description strong {
+      color: var(--color-white);
+      font-weight: var(--font-weight-semibold);
+    }
+
     .subpage-hero-cta {
       display: flex;
       gap: var(--space-4);
@@ -211,6 +216,11 @@
       margin-bottom: var(--space-6);
     }
 
+    .feature-row-description strong {
+      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
+    }
+
     .feature-row-list {
       list-style: none;
       margin-bottom: var(--space-6);
@@ -235,6 +245,11 @@
       border-radius: 50%;
     }
 
+    .feature-row-list-item strong {
+      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
+    }
+
     .feature-row-media {
       position: relative;
     }
@@ -248,6 +263,27 @@
       justify-content: center;
       color: rgba(255, 255, 255, 0.4);
       font-size: var(--font-size-sm);
+    }
+
+    /* Proof callout */
+    .proof-callout {
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      margin-top: var(--space-6);
+    }
+
+    .proof-callout p {
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .proof-callout strong {
+      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
     }
 
     /* -------------------------------------------------------------------------
@@ -307,7 +343,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -377,10 +413,10 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
@@ -498,7 +534,7 @@
             Integration <span class="highlight">Capabilities</span>
           </h1>
           <p class="subpage-hero-description">
-            RCX connects to the systems you already run. POS, CRM, CDP, marketing automation. Real-time APIs, streaming ingestion, and batch file processing. Your data flows freely.
+            We integrate where other platforms break. Your <strong>existing systems stay in place</strong>. <strong>No rip-and-replace required</strong>. The more complex your tech stack, the better we fit.
           </p>
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
@@ -507,7 +543,7 @@
 
         <div class="subpage-hero-media hidden-mobile">
           <div class="subpage-hero-image-placeholder">
-            [Integration Diagram – 600×450]
+            [Integration Diagram — 600×450]
           </div>
         </div>
         
@@ -527,14 +563,15 @@
           <span class="feature-row-eyebrow">Integration Philosophy</span>
           <h2 class="feature-row-title">Built to Connect, Not to Replace</h2>
           <p class="feature-row-description">
-            ReactorCX acts as the loyalty brain in your ecosystem. It doesn't demand you rip out existing systems. It connects to them, senses customer behavior across channels, and coordinates loyalty decisions back into the tools you already use.
+            ReactorCX acts as the <strong>loyalty brain</strong> in your ecosystem. It does not demand you rip out existing systems. It connects to them, <strong>senses customer behavior across channels</strong>, and coordinates loyalty decisions back into the tools you already use.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">RESTful APIs for all platform operations</li>
-            <li class="feature-row-list-item">Streaming ingestion via Kafka</li>
-            <li class="feature-row-list-item">Batch file processing through FeedXChange</li>
-            <li class="feature-row-list-item">Pre-built connectors for common touchpoints</li>
+            <li class="feature-row-list-item"><strong>RESTful APIs</strong> for all platform operations</li>
+            <li class="feature-row-list-item"><strong>Streaming ingestion</strong> via Kafka</li>
+            <li class="feature-row-list-item"><strong>Batch file processing</strong> through FeedXChange</li>
+            <li class="feature-row-list-item"><strong>Pre-built connectors</strong> for common touchpoints</li>
           </ul>
+
         </div>
       </div>
     </div>
@@ -547,23 +584,23 @@
       <div class="stats-bar">
         <div class="stat-item">
           <div class="stat-number">50+</div>
-          <div class="stat-title">Pre-Built Connectors</div>
-          <div class="stat-subtitle">POS, CRM, CDP, Marketing</div>
+          <div class="stat-title"><strong>Partners Integrated</strong></div>
+          <div class="stat-subtitle">Single retail client (bp)</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">3</div>
-          <div class="stat-title">Integration Modes</div>
+          <div class="stat-title"><strong>Integration Modes</strong></div>
           <div class="stat-subtitle">Real-time, Streaming, Batch</div>
         </div>
         <div class="stat-item">
           <div class="stat-number" data-target="30" data-suffix="K+">0</div>
-          <div class="stat-title">Locations Connected</div>
+          <div class="stat-title"><strong>Locations Connected</strong></div>
           <div class="stat-subtitle">Platform-wide</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">&lt;50ms</div>
-          <div class="stat-title">API Response Time</div>
-          <div class="stat-subtitle">p95 latency</div>
+          <div class="stat-number" data-target="56" data-suffix="K+">0</div>
+          <div class="stat-title"><strong>Peak Events per Minute</strong></div>
+          <div class="stat-subtitle">Single client</div>
         </div>
       </div>
     </div>
@@ -575,7 +612,7 @@
     <div class="container">
       <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
         <h2 class="section-title">Connectors for the Modern Stack</h2>
-        <p style="color: var(--text-muted); margin-top: var(--space-4);">Pre-built integrations that accelerate time-to-value. Custom connectors when you need them.</p>
+        <p style="color: var(--text-muted); margin-top: var(--space-4);"><strong>Pre-built integrations</strong> that accelerate time-to-value. <strong>Custom connectors</strong> when you need them.</p>
       </div>
       <div class="grid grid-3">
         
@@ -586,7 +623,7 @@
             </div>
             <h3 class="card-title">Point of Sale</h3>
           </div>
-          <p class="card-body">Oracle MICROS, NCR, Toshiba, Toast, Square, Shopify POS. Real-time transaction capture and discount application at checkout.</p>
+          <p class="card-body">Oracle MICROS, NCR, Toshiba, Toast, Square, Shopify POS. <strong>Real-time transaction capture</strong> and <strong>discount application at checkout</strong>.</p>
         </div>
         
         <div class="card">
@@ -596,7 +633,7 @@
             </div>
             <h3 class="card-title">CRM Systems</h3>
           </div>
-          <p class="card-body">Salesforce, HubSpot, Microsoft Dynamics. Bi-directional sync of member profiles, activity, and loyalty status.</p>
+          <p class="card-body">Salesforce, HubSpot, Microsoft Dynamics. <strong>Bi-directional sync</strong> of member profiles, activity, and loyalty status.</p>
         </div>
         
         <div class="card">
@@ -606,7 +643,7 @@
             </div>
             <h3 class="card-title">Customer Data Platforms</h3>
           </div>
-          <p class="card-body">Segment, mParticle, Tealium, Adobe Experience Platform. Enrich loyalty data with behavioral signals from across the customer journey.</p>
+          <p class="card-body">Segment, mParticle, Tealium, Adobe Experience Platform. <strong>Enrich loyalty data</strong> with behavioral signals from across the customer journey.</p>
         </div>
         
         <div class="card">
@@ -616,7 +653,7 @@
             </div>
             <h3 class="card-title">Marketing Automation</h3>
           </div>
-          <p class="card-body">Salesforce Marketing Cloud, Braze, Klaviyo, Iterable. Trigger journeys and inject dynamic loyalty content into campaigns.</p>
+          <p class="card-body">Salesforce Marketing Cloud, Braze, Klaviyo, Iterable. <strong>Trigger journeys</strong> and <strong>inject dynamic loyalty content</strong> into campaigns.</p>
         </div>
         
         <div class="card">
@@ -626,7 +663,7 @@
             </div>
             <h3 class="card-title">eCommerce Platforms</h3>
           </div>
-          <p class="card-body">Shopify, Magento, BigCommerce, Salesforce Commerce Cloud. Loyalty at checkout, account pages, and order confirmation.</p>
+          <p class="card-body">Shopify, Magento, BigCommerce, Salesforce Commerce Cloud. <strong>Loyalty at checkout</strong>, account pages, and order confirmation.</p>
         </div>
         
         <div class="card">
@@ -636,7 +673,7 @@
             </div>
             <h3 class="card-title">Mobile Apps</h3>
           </div>
-          <p class="card-body">iOS and Android SDKs. Push notifications, in-app messaging, and real-time balance updates. Native and React Native support.</p>
+          <p class="card-body">iOS and Android SDKs. <strong>Push notifications</strong>, <strong>in-app messaging</strong>, and <strong>real-time balance updates</strong>. Native and React Native support.</p>
         </div>
         
       </div>
@@ -652,13 +689,13 @@
           <span class="feature-row-eyebrow">Batch Processing</span>
           <h2 class="feature-row-title">FeedXChange: Batch Files, Real-Time Processing</h2>
           <p class="feature-row-description">
-            Not every partner sends data in real time. FeedXChange accepts batch files—CSV, XML, EDI—and processes each record through the same real-time rules engine. Every transaction evaluated. Every event triggered. Same outcomes regardless of how data arrives.
+            Not every partner sends data in real time. FeedXChange accepts batch files—CSV, XML, JSON, EDI—and processes each record through the <strong>same real-time rules engine</strong>. Every transaction evaluated. Every event triggered. <strong>Same outcomes regardless of how data arrives</strong>. Partners onboard in <strong>4-5 hours on average</strong>.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Multiple file formats supported</li>
-            <li class="feature-row-list-item">Configurable field mapping</li>
-            <li class="feature-row-list-item">Error handling and reconciliation</li>
-            <li class="feature-row-list-item">Finance-grade audit trails</li>
+            <li class="feature-row-list-item"><strong>Multiple file formats</strong> supported</li>
+            <li class="feature-row-list-item"><strong>Configurable field mapping</strong></li>
+            <li class="feature-row-list-item"><strong>Error handling and reconciliation</strong></li>
+            <li class="feature-row-list-item"><strong>Finance-grade audit trails</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
@@ -680,13 +717,13 @@
           <span class="feature-row-eyebrow">Event Streaming</span>
           <h2 class="feature-row-title">Publish Events the Moment They Happen</h2>
           <p class="feature-row-description">
-            Every loyalty event publishes in real time. Tier upgrades, reward issuance, streak completions, promotional triggers. Subscribe to the events you care about and push them to your engagement systems instantly.
+            Every loyalty event publishes <strong>in real time</strong>. <strong>Tier upgrades</strong>, <strong>reward issuance</strong>, <strong>streak completions</strong>, <strong>promotional triggers</strong>. Subscribe to the events you care about and push them to your engagement systems instantly.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Webhooks for simple integrations</li>
-            <li class="feature-row-list-item">Kafka for high-volume streaming</li>
-            <li class="feature-row-list-item">Azure EventHub and AWS SNS support</li>
-            <li class="feature-row-list-item">27+ built-in event types</li>
+            <li class="feature-row-list-item"><strong>Webhooks</strong> for simple integrations</li>
+            <li class="feature-row-list-item"><strong>Kafka</strong> for high-volume streaming</li>
+            <li class="feature-row-list-item"><strong>Azure EventHub and AWS SNS</strong> support</li>
+            <li class="feature-row-list-item"><strong>27+ built-in event types</strong></li>
           </ul>
         </div>
       </div>
@@ -705,21 +742,21 @@
         <a href="tech-api-architecture.html" class="card">
           <span class="card-category">Technology</span>
           <h3 class="card-title">Platform Architecture</h3>
-          <p class="card-description">Real-time, synchronous for everything. API-first, event-driven infrastructure.</p>
+          <p class="card-description"><strong>Real-time, synchronous for everything</strong>. API-first, event-driven infrastructure.</p>
           <span class="card-link">See Architecture <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
         <a href="tech-security.html" class="card">
           <span class="card-category">Technology</span>
           <h3 class="card-title">Security & Compliance</h3>
-          <p class="card-description">SOC 2 Type II certified. Annual penetration testing. Privacy-by-design architecture.</p>
+          <p class="card-description"><strong>SOC 2 Type II certified</strong>. Annual penetration testing. <strong>Privacy-by-design</strong> architecture.</p>
           <span class="card-link">See Security <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
         <a href="feature-partner-enablement.html" class="card">
           <span class="card-category">Platform</span>
           <h3 class="card-title">Partner Enablement</h3>
-          <p class="card-description">Native partner management. FeedXChange batch gateway. Finance-grade billing and settlement.</p>
+          <p class="card-description"><strong>Native partner management</strong>. FeedXChange batch gateway. <strong>Finance-grade billing and settlement</strong>.</p>
           <span class="card-link">See Partner Enablement <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
@@ -750,7 +787,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Yes. We have a deep integration with SFMC. We can trigger Journey Builder journeys based on loyalty events, sync segments to Data Extensions, and inject dynamic reward content into emails.</p>
+                <p>Yes. We have a <strong>deep integration with SFMC</strong>. We can trigger Journey Builder journeys based on loyalty events, sync segments to Data Extensions, and inject <strong>dynamic reward content</strong> into emails.</p>
               </div>
             </div>
           </div>
@@ -762,7 +799,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>It depends on the POS. For modern cloud POS systems (like Shopify or Toast), it can be done in days. For legacy on-premise systems (like Toshiba 4690), it typically takes 4-8 weeks to deploy our agent software to the store controllers.</p>
+                <p>It depends on the POS. For <strong>modern cloud POS systems</strong> (like Shopify or Toast), it can be done in days. For legacy on-premise systems (like Toshiba 4690), it typically takes <strong>4-8 weeks</strong> to deploy our agent software to the store controllers.</p>
               </div>
             </div>
           </div>
@@ -774,7 +811,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Absolutely. Our API is fully documented (OpenAPI/Swagger). Your team can build custom middleware to connect any proprietary internal system to RCX.</p>
+                <p>Absolutely. Our API is <strong>fully documented</strong> (OpenAPI/Swagger). Your team can build custom middleware to connect any proprietary internal system to RCX.</p>
               </div>
             </div>
           </div>
@@ -786,7 +823,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>FeedXChange supports CSV, XML, JSON, and EDI formats. Field mapping is configurable per partner, and we handle delimiter variations, encoding differences, and schema validation automatically.</p>
+                <p>FeedXChange supports <strong>CSV, XML, JSON, and EDI formats</strong>. Field mapping is configurable per partner, and we handle delimiter variations, encoding differences, and schema validation automatically.</p>
               </div>
             </div>
           </div>
@@ -798,7 +835,19 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>All integrations include retry logic, dead letter queues, and alerting. Failed transactions are logged with full context for troubleshooting. Our operations team monitors integration health 24/7.</p>
+                <p>All integrations include <strong>retry logic</strong>, <strong>dead letter queues</strong>, and <strong>alerting</strong>. Failed transactions are logged with full context for troubleshooting. Our operations team monitors integration health <strong>24/7</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Does RCX replace my CDP?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p><strong>No.</strong> We integrate with it. We enrich it. We do not replace it. Enterprises coming to us are mature. They already have a dozen systems in place. Loyalty is typically your <strong>last stop, not your first</strong>. We slide in without disrupting your tech stack.</p>
               </div>
             </div>
           </div>
@@ -816,7 +865,7 @@
       <div class="bottom-cta-card">
         <h2 class="bottom-cta-title">See Our Connectors in Action</h2>
         <p class="bottom-cta-description">
-          Schedule a technical demo to see how we handle data flow in complex environments. Bring your architecture diagram—we'll show you how RCX fits.
+          Schedule a technical demo to see how we handle data flow in complex environments. Bring your architecture diagram. We will show you how RCX fits.
         </p>
         <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Tech Demo</a>
