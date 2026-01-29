@@ -19,7 +19,7 @@
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme - Matches Promotions)
+       SUBPAGE HERO (Dark Charcoal Theme)
        ------------------------------------------------------------------------- */
     .subpage-hero {
       min-height: 80vh;
@@ -32,7 +32,6 @@
       padding-top: calc(var(--space-24) + 80px);
     }
 
-    /* Glass shine overlay */
     .subpage-hero::before {
       content: '';
       position: absolute;
@@ -171,34 +170,6 @@
       background-color: var(--color-white);
     }
 
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-      margin-bottom: var(--space-20);
-    }
-
-    .feature-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-row-reverse {
-      direction: rtl;
-    }
-
-    .feature-row-reverse > * {
-      direction: ltr;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row,
-      .feature-row-reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-      }
-    }
-
     .feature-row-content {
       max-width: 520px;
     }
@@ -231,30 +202,6 @@
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list {
-      list-style: none;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list-item {
-      position: relative;
-      padding-left: var(--space-6);
-      margin-bottom: var(--space-3);
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-    }
-
-    .feature-row-list-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      border-radius: 50%;
     }
 
     .feature-row-media {
@@ -298,7 +245,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       STREAKS SHOWCASE SECTION (Dark Theme with Phone + Copy Cards)
+       STREAKS SHOWCASE SECTION (Dark Theme)
        ------------------------------------------------------------------------- */
     .streaks-showcase {
       background: var(--grad-charcoal-premium);
@@ -351,27 +298,23 @@
       margin: 0 auto;
     }
 
-    /* Phone + Copy Cards Layout */
-    .streaks-layout {
+    /* Streaks Two-Column Layout */
+    .streaks-two-col {
       display: grid;
-      grid-template-columns: 1fr 300px 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: var(--space-8);
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
+      margin-bottom: var(--space-12);
     }
 
-    @media (max-width: 1024px) {
-      .streaks-layout {
+    @media (max-width: 768px) {
+      .streaks-two-col {
         grid-template-columns: 1fr;
-        gap: var(--space-8);
-        max-width: 400px;
       }
     }
 
     /* Glass Copy Cards */
     .streaks-copy-card {
-      padding: var(--space-6);
+      padding: var(--space-8);
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-xl);
@@ -400,465 +343,11 @@
       line-height: 1.7;
     }
 
-    @media (max-width: 1024px) {
-      .streaks-copy-card:first-child { order: 2; }
-      .streaks-phone-container { order: 1; }
-      .streaks-copy-card:last-child { order: 3; }
-    }
-
-    /* Phone Container */
-    .streaks-phone-container {
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Premium Phone Device */
-    .streaks-phone {
-      width: 280px;
-      height: 580px;
-      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
-      border-radius: 44px;
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 
-        0 50px 100px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-
-    /* Dynamic Island */
-    .streaks-phone::before {
-      content: '';
-      position: absolute;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90px;
-      height: 26px;
-      background: #000;
-      border-radius: 20px;
-      z-index: 30;
-    }
-
-    /* Phone ambient glow */
-    .streaks-phone::after {
-      content: '';
-      position: absolute;
-      inset: -80px;
-      background: radial-gradient(ellipse at center bottom, rgba(243, 112, 33, 0.25) 0%, transparent 55%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* Phone Screen */
-    .streaks-phone-screen {
-      position: absolute;
-      top: 10px;
-      left: 8px;
-      right: 8px;
-      bottom: 10px;
-      background: #ffffff;
-      border-radius: 36px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* App Status Bar */
-    .app-status-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 24px 8px;
-      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
-      font-size: 11px;
-      font-weight: 600;
-      color: white;
-    }
-
-    .app-status-time {
-      font-weight: 700;
-    }
-
-    .app-status-icons {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .app-status-icons svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* App Header */
-    .app-nav-header {
-      padding: 12px 16px 16px;
-      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
-      position: relative;
-    }
-
-    .app-nav-header::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 0;
-      right: 0;
-      height: 40px;
-      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
-      border-radius: 0 0 24px 24px;
-    }
-
-    .app-nav-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .app-nav-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: white;
-    }
-
-    .app-nav-icon {
-      width: 32px;
-      height: 32px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .app-nav-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: white;
-    }
-
-    .app-points-display {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .app-points-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: white;
-    }
-
-    .app-points-label {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    /* App Content Area */
-    .app-main-content {
-      flex: 1;
-      padding: 28px 14px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      overflow-y: auto;
-      background: #f5f5f7;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Streak Progress Card */
-    .app-streak-card {
-      background: white;
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    }
-
-    .app-streak-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 14px;
-    }
-
-    .app-streak-info h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2px;
-    }
-
-    .app-streak-info span {
-      font-size: 11px;
-      color: #888;
-    }
-
-    .app-streak-fire {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background: linear-gradient(135deg, #FF6B35 0%, #FF9F5A 100%);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      color: white;
-    }
-
-    /* Progress Steps */
-    .app-progress-track {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-      position: relative;
-      padding: 0 4px;
-    }
-
-    .app-progress-track::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 22px;
-      right: 22px;
-      height: 4px;
-      background: #e8e8e8;
-      transform: translateY(-50%);
-      border-radius: 2px;
-    }
-
-    .app-progress-track::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 22px;
-      width: calc(50% - 10px);
-      height: 4px;
-      background: linear-gradient(90deg, var(--color-primary) 0%, #FF9F5A 100%);
-      transform: translateY(-50%);
-      border-radius: 2px;
-    }
-
-    .app-step-node {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      position: relative;
-      z-index: 2;
-    }
-
-    .app-step-node.done {
-      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
-      color: white;
-      box-shadow: 0 4px 12px rgba(243, 112, 33, 0.35);
-    }
-
-    .app-step-node.done svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .app-step-node.active {
-      background: white;
-      border: 3px solid var(--color-primary);
-      color: var(--color-primary);
-      box-shadow: 0 0 0 5px rgba(243, 112, 33, 0.15);
-      animation: pulse-ring 2s ease-out infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(243, 112, 33, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0); }
-    }
-
-    .app-step-node.pending {
-      background: #e8e8e8;
-      color: #aaa;
-    }
-
-    .app-step-node.reward-node {
-      background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
-      color: #1a1a1a;
-      font-size: 16px;
-    }
-
-    /* Progress Footer */
-    .app-progress-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 12px;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .app-progress-footer span {
-      font-size: 12px;
-      color: #666;
-    }
-
-    .app-progress-footer strong {
-      color: var(--color-primary);
-    }
-
-    .app-time-badge {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      color: #888;
-      background: #f5f5f5;
-      padding: 4px 8px;
-      border-radius: 8px;
-    }
-
-    .app-time-badge svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    /* Reward Preview */
-    .app-reward-preview {
-      background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(255, 159, 90, 0.04) 100%);
-      border: 1px solid rgba(243, 112, 33, 0.2);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .app-reward-icon-box {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--color-primary) 0%, #FF9F5A 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 4px 12px rgba(243, 112, 33, 0.3);
-    }
-
-    .app-reward-details {
-      flex: 1;
-    }
-
-    .app-reward-label {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-    }
-
-    .app-reward-amount {
-      font-size: 17px;
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-
-    .app-reward-arrow {
-      color: var(--color-primary);
-    }
-
-    .app-reward-arrow svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Activity List */
-    .app-activity-list {
-      background: white;
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
-    }
-
-    .app-activity-title {
-      font-size: 10px;
-      font-weight: 700;
-      color: #aaa;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-    }
-
-    .app-activity-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f5f5f5;
-    }
-
-    .app-activity-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .app-activity-dot {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      flex-shrink: 0;
-    }
-
-    .app-activity-dot.success {
-      background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
-      color: white;
-    }
-
-    .app-activity-dot.waiting {
-      background: #f0f0f0;
-      color: #bbb;
-    }
-
-    .app-activity-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .app-activity-name {
-      font-size: 12px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .app-activity-date {
-      font-size: 10px;
-      color: #999;
-    }
-
-    .app-activity-pts {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--color-primary);
-    }
-
     /* Capabilities Grid */
     .streaks-capabilities {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: var(--space-6);
-      margin-top: var(--space-16);
     }
 
     @media (max-width: 1024px) {
@@ -977,155 +466,6 @@
       }
     }
 
-    /* -------------------------------------------------------------------------
-       FAQ SECTION (Two-Column Layout)
-       ------------------------------------------------------------------------- */
-    .faq-section {
-      padding: var(--space-20) 0;
-    }
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-16);
-      align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-10);
-      }
-    }
-
-    .faq-intro {
-      position: sticky;
-      top: 120px;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-intro {
-        position: static;
-        text-align: center;
-      }
-    }
-
-    .faq-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .faq-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    .faq-accordion {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .accordion-item {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition-base);
-    }
-
-    .accordion-item:hover {
-      border-color: var(--color-navy);
-    }
-
-    .accordion-item.active {
-      border-color: var(--color-primary);
-    }
-
-    .accordion-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-5) var(--space-6);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .accordion-trigger-text {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-semibold);
-      color: var(--text-main);
-      padding-right: var(--space-4);
-    }
-
-    .accordion-icon {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .accordion-icon::before,
-    .accordion-icon::after {
-      content: '';
-      position: absolute;
-      background: var(--color-primary);
-      transition: transform var(--transition-fast);
-    }
-
-    .accordion-icon::before {
-      width: 12px;
-      height: 2px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-icon::after {
-      width: 2px;
-      height: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-item.active .accordion-icon::after {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition-slow);
-    }
-
-    .accordion-item.active .accordion-content {
-      max-height: 500px;
-    }
-
-    .accordion-content-inner {
-      padding: 0 var(--space-6) var(--space-6);
-    }
-
-    .accordion-content-inner p {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-4);
-    }
-
-    .accordion-content-inner p:last-child {
-      margin-bottom: 0;
-    }
-
     @media (max-width: 768px) {
       .feature-row-title {
         font-size: var(--font-size-2xl);
@@ -1135,10 +475,7 @@
 </head>
 <body>
 
-  <!-- ========================================
-       HEADER / NAVIGATION
-       Synced with index.html mega menu structure
-       ======================================== -->
+  <!-- ========== HEADER ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -1150,7 +487,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -1207,7 +544,7 @@
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
                     <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -1220,10 +557,10 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
@@ -1330,9 +667,7 @@
   </header>
 
 
-  <!-- ========================================
-       SECTION 1: HERO (Dark Charcoal Theme)
-       ======================================== -->
+  <!-- ========== SECTION 1: HERO ========== -->
   <section class="subpage-hero">
     <div class="container">
       <div class="subpage-hero-inner">
@@ -1343,7 +678,7 @@
             Engagement & <span class="highlight">Gamification</span>
           </h1>
           <p class="subpage-hero-description">
-            Turn every interaction into an opportunity. Streaks, challenges, badges, surveys, referrals—mechanics that drive repeat behavior and capture zero-party data.
+            Reward any member behavior, <strong>not just transactions</strong>. Surveys, quizzes, profile completions, check-ins, content views. The platform evaluates every activity against your rules and responds <strong>in real time</strong>.
           </p>
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
@@ -1352,7 +687,7 @@
 
         <div class="subpage-hero-media hidden-mobile">
           <div class="subpage-hero-image-placeholder">
-            [Engagement Dashboard Interface — 600×450]
+            [Engagement Dashboard Interface – 600×450]
           </div>
         </div>
         
@@ -1361,10 +696,7 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 2: ACTIVITY TYPES GRID (6 Cards)
-       Background: LIGHT (White)
-       ======================================== -->
+  <!-- ========== SECTION 2: REWARD ANY ACTIVITY (6 Cards) ========== -->
   <section class="section section-lg section-light bg-white">
     <div class="container">
       
@@ -1381,7 +713,7 @@
             </div>
             <h3 class="card-title">Surveys & Polls</h3>
           </div>
-          <p class="card-body">Collect preferences, opinions, and feedback. Every response builds a richer member profile and informs personalization.</p>
+          <p class="card-body">Collect preferences, opinions, and feedback. Every response builds a <strong>richer member profile</strong> and informs personalization.</p>
         </div>
 
         <div class="card">
@@ -1391,7 +723,7 @@
             </div>
             <h3 class="card-title">Profile Completion</h3>
           </div>
-          <p class="card-body">Progressive profiling rewards members for adding information over time. Start simple, build depth without friction.</p>
+          <p class="card-body"><strong>Progressive profiling</strong> rewards members for adding information over time. Start simple, build depth without friction.</p>
         </div>
 
         <div class="card">
@@ -1401,7 +733,7 @@
             </div>
             <h3 class="card-title">App Activity</h3>
           </div>
-          <p class="card-body">App opens, feature usage, content views, check-ins. Track and reward the behaviors that signal interest and intent.</p>
+          <p class="card-body">App opens, feature usage, content views, check-ins. Track and reward the behaviors that signal <strong>interest and intent</strong>.</p>
         </div>
 
         <div class="card">
@@ -1411,17 +743,17 @@
             </div>
             <h3 class="card-title">Reviews & Ratings</h3>
           </div>
-          <p class="card-body">Reward members for leaving reviews on purchases, stays, or experiences. Feed sentiment data into your analytics.</p>
+          <p class="card-body">Reward members for leaving reviews on purchases, stays, or experiences. Feed <strong>sentiment data</strong> into your analytics.</p>
         </div>
 
         <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
             </div>
-            <h3 class="card-title">Social Sharing</h3>
+            <h3 class="card-title">Content & Media Engagement</h3>
           </div>
-          <p class="card-body">Reward members for sharing content, promotions, or achievements. Track attribution and measure social engagement ROI.</p>
+          <p class="card-body">Reward members for <strong>watching videos</strong>, completing quizzes, or updating communication preferences.</p>
         </div>
 
         <div class="card">
@@ -1431,7 +763,7 @@
             </div>
             <h3 class="card-title">Check-Ins</h3>
           </div>
-          <p class="card-body">Digital or physical check-ins at locations, events, or properties. Combine with geo-location APIs for context-aware rewards.</p>
+          <p class="card-body">Digital or physical check-ins at locations, events, or properties. Combine with <strong>geo-location APIs</strong> for context-aware rewards.</p>
         </div>
 
       </div>
@@ -1439,41 +771,33 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 3: STATS BAR
-       Background: DARK
-       ======================================== -->
+  <!-- ========== SECTION 3: STATS BAR ========== -->
   <section class="section dark bg-dark">
     <div class="container">
+      <p class="text-center body-sm mb-6" style="color: #9A9A9A;">Measured outcomes across individual enterprise programs:</p>
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-number">3.2×</div>
-          <div class="stat-title">Visit Frequency</div>
-          <div class="stat-subtitle">Streak participants vs. non-participants</div>
+          <div class="stat-number">+57 pts</div>
+          <div class="stat-title"><strong>Activation Rate</strong></div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">+47%</div>
-          <div class="stat-title">Profile Completion</div>
-          <div class="stat-subtitle">With progressive profiling</div>
+          <div class="stat-number">2×</div>
+          <div class="stat-title"><strong>Redemption Rate</strong></div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">68%</div>
-          <div class="stat-title">Survey Response</div>
-          <div class="stat-subtitle">When rewarded with points</div>
+          <div class="stat-number">+80%</div>
+          <div class="stat-title"><strong>Repeat Purchase</strong></div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">2.1×</div>
-          <div class="stat-title">Referral Conversion</div>
-          <div class="stat-subtitle">Progressive vs. instant referrals</div>
+          <div class="stat-number">12×</div>
+          <div class="stat-title"><strong>Transaction Frequency</strong></div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 4: ZERO-PARTY DATA CALLOUT
-       ======================================== -->
+  <!-- ========== SECTION 4: ZERO-PARTY DATA CALLOUT ========== -->
   <section class="spotlight-section">
     <div class="container">
       <div class="spotlight-card">
@@ -1482,7 +806,7 @@
             <span class="spotlight-eyebrow">Zero-Party Data</span>
             <h2 class="spotlight-title">The Most Valuable Data Comes Directly From Members</h2>
             <p class="spotlight-description" style="max-width: 800px; margin: 0 auto;">
-              Zero-party data is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with explicit consent and clear meaning. The platform captures it through engagement mechanics and feeds it immediately into your rules engine.
+              <strong>Zero-party data</strong> is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with <strong>explicit consent</strong> and clear meaning. The platform captures it through engagement mechanics and feeds it <strong>immediately into your rules engine</strong>.
             </p>
           </div>
         </div>
@@ -1491,13 +815,11 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 5: ACTIVITIES ZIG-ZAG
-       ======================================== -->
+  <!-- ========== SECTION 5: ACTIVITIES ZIG-ZAG ========== -->
   <section class="feature-rows-section">
     <div class="container">
       <div class="feature-row">
-        <div class="feature-row-media">
+        <div class="media">
           <div class="feature-row-image-placeholder">
             [Activity Types Visualization]
           </div>
@@ -1506,7 +828,7 @@
           <span class="feature-row-eyebrow">Beyond Transactions</span>
           <h2 class="feature-row-title">Activities, Not Just Transactions</h2>
           <p class="feature-row-description">
-            We use "activities" instead of "transactions" because it can be any type of engagement you want to reward. Visits. App logins. Survey answers. Profile completions. Review submissions. The platform treats every signal the same way: ingest it, evaluate it against your rules, and respond in real time.
+            We use "activities" instead of "transactions" because it can be <strong>any type of engagement</strong> you want to reward. Visits. App logins. Survey answers. Profile completions. Review submissions. The platform treats every signal the same way: <strong>ingest it, evaluate it against your rules, and respond in real time</strong>.
           </p>
           <div class="feature-row-cta">
             <a href="about-contact.html" class="btn btn-dark">See Activity Tracking &rarr;</a>
@@ -1517,13 +839,11 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 6: REFERRALS ZIG-ZAG
-       ======================================== -->
+  <!-- ========== SECTION 6: REFERRALS ZIG-ZAG ========== -->
   <section class="feature-rows-section" style="padding-top: 0;">
     <div class="container">
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-media">
+      <div class="feature-row reverse">
+        <div class="media">
           <div class="feature-row-image-placeholder">
             [Referral Flow Visualization]
           </div>
@@ -1532,7 +852,7 @@
           <span class="feature-row-eyebrow">Acquisition Engine</span>
           <h2 class="feature-row-title">Program-Powered Word of Mouth</h2>
           <p class="feature-row-description">
-            Referrals are a built-in acquisition engine with measurable ROI. When members hear about your program from someone they trust, they're more likely to act. The platform supports three referral approaches, each optimized for different objectives.
+            Referrals are a <strong>built-in acquisition engine</strong> with measurable ROI. When members hear about your program from someone they trust, they are more likely to act. The platform supports three referral approaches, each optimized for different objectives.
           </p>
           <table class="approach-table">
             <thead>
@@ -1562,9 +882,7 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 7: STREAKS (Dark Phone Showcase)
-       ======================================== -->
+  <!-- ========== SECTION 7: STREAKS SHOWCASE ========== -->
   <section class="streaks-showcase">
     <div class="container">
       
@@ -1574,151 +892,40 @@
         <p class="streaks-subtitle">Turn isolated transactions into connected journeys. Members commit to actions over time and get rewarded for completion.</p>
       </div>
 
-      <div class="streaks-layout">
+      <div class="streaks-two-col">
         
         <!-- Left Copy Card -->
         <div class="streaks-copy-card">
-          <p class="streaks-copy-eyebrow">Personalized Targets</p>
-          <h3 class="streaks-copy-title">Hyper-Personalized Goals</h3>
-          <p class="streaks-copy-description">Targets adjust per member based on historical behavior and predicted appetite. A casual buyer sees "Visit 3x this month" while a power user sees "Visit 8x."</p>
-        </div>
-        
-        <!-- Center Phone Mockup -->
-        <div class="streaks-phone-container">
-          <div class="streaks-phone">
-            <div class="streaks-phone-screen">
-              
-              <!-- Status Bar -->
-              <div class="app-status-bar">
-                <span class="app-status-time">9:41</span>
-                <div class="app-status-icons">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/></svg>
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                </div>
-              </div>
-              
-              <!-- App Header -->
-              <div class="app-nav-header">
-                <div class="app-nav-top">
-                  <span class="app-nav-title">My Rewards</span>
-                  <div class="app-nav-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                  </div>
-                </div>
-                <div class="app-points-display">
-                  <span class="app-points-value">2,847</span>
-                  <span class="app-points-label">points available</span>
-                </div>
-              </div>
-              
-              <!-- App Content -->
-              <div class="app-main-content">
-                
-                <!-- Streak Card -->
-                <div class="app-streak-card">
-                  <div class="app-streak-top">
-                    <div class="app-streak-info">
-                      <h3>Weekly Visit Streak</h3>
-                      <span>Complete 4 visits to unlock reward</span>
-                    </div>
-                    <div class="app-streak-fire">🔥 3</div>
-                  </div>
-                  
-                  <div class="app-progress-track">
-                    <div class="app-step-node done">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <div class="app-step-node done">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <div class="app-step-node active">3</div>
-                    <div class="app-step-node pending">4</div>
-                    <div class="app-step-node reward-node">★</div>
-                  </div>
-                  
-                  <div class="app-progress-footer">
-                    <span><strong>2 of 4</strong> visits completed</span>
-                    <div class="app-time-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                      5 days left
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Reward Preview -->
-                <div class="app-reward-preview">
-                  <div class="app-reward-icon-box">🎁</div>
-                  <div class="app-reward-details">
-                    <div class="app-reward-label">Streak Reward</div>
-                    <div class="app-reward-amount">500 Bonus Points</div>
-                  </div>
-                  <div class="app-reward-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                  </div>
-                </div>
-                
-                <!-- Activity List -->
-                <div class="app-activity-list">
-                  <div class="app-activity-title">Recent Activity</div>
-                  
-                  <div class="app-activity-row">
-                    <div class="app-activity-dot success">✓</div>
-                    <div class="app-activity-info">
-                      <div class="app-activity-name">Visit #2 Complete</div>
-                      <div class="app-activity-date">Today, 2:34 PM</div>
-                    </div>
-                    <div class="app-activity-pts">+75 pts</div>
-                  </div>
-                  
-                  <div class="app-activity-row">
-                    <div class="app-activity-dot success">✓</div>
-                    <div class="app-activity-info">
-                      <div class="app-activity-name">Visit #1 Complete</div>
-                      <div class="app-activity-date">Jan 25, 11:15 AM</div>
-                    </div>
-                    <div class="app-activity-pts">+50 pts</div>
-                  </div>
-                  
-                  <div class="app-activity-row">
-                    <div class="app-activity-dot waiting">○</div>
-                    <div class="app-activity-info">
-                      <div class="app-activity-name">Streak Enrolled</div>
-                      <div class="app-activity-date">Jan 24, 9:00 AM</div>
-                    </div>
-                    <div class="app-activity-pts">Started</div>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
+          <p class="streaks-copy-eyebrow">Progressive Spend</p>
+          <h3 class="streaks-copy-title">Escalating Rewards</h3>
+          <p class="streaks-copy-description">Rewards increase as members hit <strong>higher thresholds</strong>. Get 100 points for first $100 spent. Get 200 points for next $200. Get 300 for next $300.</p>
         </div>
         
         <!-- Right Copy Card -->
         <div class="streaks-copy-card">
-          <p class="streaks-copy-eyebrow">Progressive Rewards</p>
-          <h3 class="streaks-copy-title">Escalating Value</h3>
-          <p class="streaks-copy-description">Later steps pay more to maintain momentum. The first visit earns 50 points. The fourth earns 125. Complete all four and unlock a 500-point bonus.</p>
+          <p class="streaks-copy-eyebrow">Multi-Goal Checklist</p>
+          <h3 class="streaks-copy-title">Complete the Set</h3>
+          <p class="streaks-copy-description">Members complete <strong>multiple independent goals</strong> within a time window. Shop all four brands. Buy across three categories. Visit a physical store. Complete your profile.</p>
         </div>
         
       </div>
 
       <div class="streaks-capabilities">
         <div class="capability-card">
-          <h4 class="capability-title">Hyper-Personalized</h4>
-          <p class="capability-description">Targets adjust per member based on historical behavior and predicted appetite.</p>
-        </div>
-        <div class="capability-card">
           <h4 class="capability-title">Time-Bound</h4>
-          <p class="capability-description">Urgency drives action. Configurable windows from hours to months.</p>
+          <p class="capability-description">Configurable windows from hours to months.</p>
         </div>
         <div class="capability-card">
-          <h4 class="capability-title">Progressive Rewards</h4>
-          <p class="capability-description">Escalating rewards create momentum. Later steps pay more.</p>
+          <h4 class="capability-title">Progress Tracking</h4>
+          <p class="capability-description">Members see where they are in the journey.</p>
+        </div>
+        <div class="capability-card">
+          <h4 class="capability-title">Completion Bonuses</h4>
+          <p class="capability-description">Additional rewards for finishing the full streak.</p>
         </div>
         <div class="capability-card">
           <h4 class="capability-title">Real-Time Feedback</h4>
-          <p class="capability-description">Push notifications, app overlays, and SMS keep members engaged.</p>
+          <p class="capability-description">Members know the moment something happens.</p>
         </div>
       </div>
 
@@ -1726,9 +933,7 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 8: BOTTOM CTA
-       ======================================== -->
+  <!-- ========== SECTION 8: BOTTOM CTA ========== -->
   <section class="section section-lg bg-light">
     <div class="container">
       <div class="bottom-cta-card">
@@ -1744,9 +949,7 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 9: FAQ (Two-Column Layout)
-       ======================================== -->
+  <!-- ========== SECTION 9: FAQ (3 Questions) ========== -->
   <section class="faq-section section-light bg-light">
     <div class="container">
       <div class="faq-layout">
@@ -1763,13 +966,13 @@
           
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What types of non-transactional activities can the platform track?</span>
+              <span class="accordion-trigger-text">What activities can the platform track?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Any activity you can send through the API. Surveys, polls, quizzes, profile completions, app opens, feature usage, content views, check-ins, social shares, review submissions, referrals, and custom activity types you define.
+                  Surveys, polls, quizzes, profile completions, app activity, content views, check-ins, reviews, referrals, and <strong>custom activity types you define</strong>.
                 </p>
               </div>
             </div>
@@ -1777,13 +980,13 @@
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do streaks differ from standard promotions?</span>
+              <span class="accordion-trigger-text">What are streaks?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Standard promotions reward a single action. Streaks reward completion of multiple actions over time. Members commit to a journey with visible progress. The mechanic creates anticipation and drives repeat behavior.
+                  <strong>Multi-step challenges</strong> that reward members for completing actions over time. Configurable time windows. Progress tracking. Completion bonuses.
                 </p>
               </div>
             </div>
@@ -1791,41 +994,13 @@
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How quickly do members see feedback when they complete an activity?</span>
+              <span class="accordion-trigger-text">Can members see their progress?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Real-time. The event-driven architecture publishes events the moment conditions are met. App overlays, push notifications, SMS, and email can all be triggered immediately. Response times are sub-200ms.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can we personalize streak targets for individual members?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>
-                  Yes. The hyper-parameterization capability lets you personalize promotion parameters down to the individual level. This includes spend targets, visit counts, and rewards.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How does progressive profiling work with enrollment?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>
-                  Start with minimal required fields at enrollment to reduce abandonment. Then collect additional attributes through engagement over time. Profile completion challenges reward members for adding information.
+                  Yes. Progress is visible <strong>in real time</strong> through app overlays, push notifications, or any channel you integrate.
                 </p>
               </div>
             </div>
@@ -1838,9 +1013,7 @@
   </section>
 
 
-  <!-- ========================================
-       FOOTER
-       ======================================== -->
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
@@ -1915,9 +1088,7 @@
   </footer>
 
 
-  <!-- ========================================
-       SCRIPTS
-       ======================================== -->
+  <!-- ========== SCRIPTS ========== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
