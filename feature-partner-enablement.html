@@ -19,7 +19,7 @@
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme - Matches Engagement)
+       SUBPAGE HERO (Dark Charcoal Theme)
        ------------------------------------------------------------------------- */
     .subpage-hero {
       min-height: 80vh;
@@ -175,21 +175,15 @@
     }
 
     /* -------------------------------------------------------------------------
-       PARTNER TYPES GRID (6 Cards)
+       PARTNER TYPES GRID (4 Cards - 2x2 layout)
        ------------------------------------------------------------------------- */
     .partner-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: var(--space-6);
     }
 
-    @media (max-width: 1024px) {
-      .partner-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .partner-grid {
         grid-template-columns: 1fr;
       }
@@ -412,7 +406,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -469,7 +463,7 @@
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
                     <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -482,10 +476,10 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
@@ -605,17 +599,15 @@
             Partner <span class="highlight">Enablement</span>
           </h1>
           <p class="subpage-hero-description">
-            Native partner management capabilities to onboard, govern, and scale coalition programs, earn/burn partnerships, and data integrations. Each partner operates as its own micro-program with segregated rules, funding limits, and finance-grade traceability.
+            <strong>Scale partner programs without scaling partner operations.</strong> Onboard new partners faster, settle accurately, and maintain control across coalition, earn, and burn relationships. <strong>One platform for the entire partner lifecycle.</strong>
           </p>
           <div class="subpage-hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
-
+        
         <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">
-            [Partner Ecosystem Dashboard — 600×450]
-          </div>
+          <div class="subpage-hero-image-placeholder">[Partner Ecosystem Diagram]</div>
         </div>
         
       </div>
@@ -631,7 +623,7 @@
       <div class="problem-content">
         <h2 class="problem-title">100 Partners. 100 Different Agreements.</h2>
         <p class="problem-body">
-          Partnerships are where loyalty programs get complicated. 100 partners means 100 different agreements, 100 different operations, 100 different data formats. Credit card companies, banks, airlines don't do real time. They stick to batch files. Every partner sends something slightly different: CSV, XML, JSON, fixed-width, custom layouts. Point-to-point integrations don't scale. You need a systematic way to handle all of that.
+          Partnerships are where loyalty programs get complicated. Every partner brings a different agreement, a different operating cadence, and a different data format. Point-to-point integrations create <strong>technical debt</strong>. Manual reconciliation creates <strong>billing disputes</strong>. The cost compounds with every partner you add.
         </p>
       </div>
     </div>
@@ -639,7 +631,7 @@
 
 
   <!-- ========================================
-       SECTION 3: PARTNER TYPES (6-Card Grid)
+       SECTION 3: PARTNER TYPES (4-Card Grid)
        ======================================== -->
   <section class="section section-lg section-light bg-light">
     <div class="container">
@@ -656,7 +648,7 @@
             </div>
             <h3 class="card-title">Coalition Partners</h3>
           </div>
-          <p class="card-body">Shared currency, shared ecosystem. Multiple brands contributing to and drawing from a unified loyalty currency. Each partner maintains its own rules while members see a single program.</p>
+          <p class="card-body">Multiple brands. <strong>One currency.</strong> Members earn and redeem across the coalition while each partner maintains <strong>separate rules and funding</strong>.</p>
         </div>
 
         <div class="card">
@@ -666,7 +658,7 @@
             </div>
             <h3 class="card-title">Earn Partners</h3>
           </div>
-          <p class="card-body">External activity, your points. Members earn your currency through partner transactions. Credit cards, affiliates, co-brands. Attribution tracks back to source for billing.</p>
+          <p class="card-body">Members earn your currency through partner activity. Attribution tracks to source for <strong>accurate settlement</strong>.</p>
         </div>
 
         <div class="card">
@@ -676,27 +668,7 @@
             </div>
             <h3 class="card-title">Burn Partners</h3>
           </div>
-          <p class="card-body">Redemption beyond your catalog. Members spend points at partner locations or for partner rewards. Reimbursement calculations track automatically.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            </div>
-            <h3 class="card-title">Data Partners</h3>
-          </div>
-          <p class="card-body">Enrich your member profile. Receive data feeds from partners to enhance segmentation and personalization. Activity flows through the same rules engine as first-party data.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            </div>
-            <h3 class="card-title">Experience Partners</h3>
-          </div>
-          <p class="card-body">Value beyond transactions. Exclusive access, priority treatment, partner perks. Benefits tied to tier or segment that extend into partner ecosystems.</p>
+          <p class="card-body">Members redeem at partner locations. <strong>Reimbursement calculated automatically</strong> per agreement terms.</p>
         </div>
 
         <div class="card">
@@ -706,7 +678,7 @@
             </div>
             <h3 class="card-title">Co-Funded Promotions</h3>
           </div>
-          <p class="card-body">Shared investment, unified experience. Partners contribute funding to joint promotions. Allocation, billing, and settlement tracked per party. Members see a single offer.</p>
+          <p class="card-body">Partners co-fund promotions. <strong>Allocation and settlement tracked per party.</strong> Members see one offer.</p>
         </div>
 
       </div>
@@ -722,17 +694,17 @@
       <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
         <div class="stat-item">
           <div class="stat-number" data-target="100" data-suffix="+">0</div>
-          <div class="stat-title">Partners at Single Client</div>
+          <div class="stat-title"><strong>Partners at Single Client</strong></div>
           <div class="stat-subtitle">Fuel & convenience client</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">4-5 hrs</div>
-          <div class="stat-title">Average Onboarding Time</div>
+          <div class="stat-title"><strong>Average Onboarding Time</strong></div>
           <div class="stat-subtitle">FeedXChange onboarding</div>
         </div>
         <div class="stat-item">
           <div class="stat-number" data-target="10" data-suffix="M+">0</div>
-          <div class="stat-title">Rewards in Marketplace</div>
+          <div class="stat-title"><strong>Rewards in Marketplace</strong></div>
           <div class="stat-subtitle">Integrated marketplace</div>
         </div>
       </div>
@@ -753,11 +725,9 @@
             Every partner operates as its own micro-program within RCX. Segregated rules, access control, and agreements per partner. Partner activity is evaluated, governed, and measured using the same enterprise execution model as your own first-party transactions.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Unique partner rules per location, brand, or agreement</li>
-            <li class="feature-row-list-item">Partner transactions processed real-time through rules engine</li>
-            <li class="feature-row-list-item">Role-based access control isolates partner visibility</li>
-            <li class="feature-row-list-item">Billing parameters attached to rules, partners, locations, and objects</li>
-            <li class="feature-row-list-item">Reimbursement calculations with date-relative accuracy</li>
+            <li class="feature-row-list-item"><strong>Separate rules per partner</strong> without separate systems</li>
+            <li class="feature-row-list-item">Partner activity isolated for <strong>compliance and billing accuracy</strong></li>
+            <li class="feature-row-list-item">Reimbursement calculated per agreement, <strong>even when rates change mid-period</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
@@ -776,16 +746,14 @@
       <div class="feature-row feature-row-reverse">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Batch Gateway</span>
-          <h2 class="feature-row-title">FeedXChange Standardizes the Chaos</h2>
+          <h2 class="feature-row-title">Onboard Partners in Hours, Not Weeks</h2>
           <p class="feature-row-description">
-            FeedXChange was designed out of frustration with building individual point-to-point integrations. Everyone has a slightly different format. CSV, XML, JSON, fixed-width, custom layouts. FeedXChange is a batch gateway that handles the complexity so your team doesn't have to rebuild every partner connection from scratch.
+            Every partner sends data differently. FeedXChange handles format translation, validation, and response generation through <strong>reusable templates</strong>. Your team configures once. <strong>New partners onboard in hours.</strong>
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Create templates defining input files, field mapping, validation, response files</li>
-            <li class="feature-row-list-item">Define partners and connections (SFTP, S3, Azure Blob)</li>
-            <li class="feature-row-list-item">Set up recurring or one-time integration jobs with monitoring and alerts</li>
-            <li class="feature-row-list-item">Full run history with downloadable files directly from UI</li>
-            <li class="feature-row-list-item">Partners onboarded in 4-5 hours on average</li>
+            <li class="feature-row-list-item"><strong>Reusable templates</strong> for faster partner onboarding</li>
+            <li class="feature-row-list-item"><strong>Automated monitoring and alerting</strong> on every job</li>
+            <li class="feature-row-list-item">Full history with downloadable files for <strong>audit</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
@@ -802,9 +770,9 @@
   <section class="section section-light bg-white">
     <div class="container">
       <div class="callout-block">
-        <h3 class="callout-block-title">Even Batch Processing Executes as Real-Time Transactions</h3>
+        <h3 class="callout-block-title">Batch and Real-Time. Same Rules. Same Outcomes.</h3>
         <p class="callout-block-text">
-          Batch files don't get special treatment. FeedXChange rips incoming files into individual transactions and processes each one through the same real-time engine as API calls. Consistent behavior regardless of ingestion method. Consistent outcomes. Consistent logging. Partner billing accuracy depends on this.
+          Partner files process through the same rules engine as real-time transactions. <strong>Consistent behavior. Consistent logging. Accurate billing</strong> regardless of how data arrives.
         </p>
       </div>
     </div>
@@ -812,51 +780,21 @@
 
 
   <!-- ========================================
-       SECTION 8: FINANCE-GRADE (Zig-Zag)
+       SECTION 8: SUB-BALANCE TRACKING (Zig-Zag)
        ======================================== -->
   <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
       <div class="feature-row">
         <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Financial Lifecycle</span>
-          <h2 class="feature-row-title">Finance-Grade Partner Management</h2>
-          <p class="feature-row-description">
-            The platform handles the complete financial lifecycle for partner programs. Allocation of promotion funding across parties. Workflow-driven billing and reimbursement calculations. Separate funding limits and liability enforced per partner automatically by the rule engine.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Allocation of promotion funding across parties</li>
-            <li class="feature-row-list-item">Billing parameters attached to rules, partners, locations, objects</li>
-            <li class="feature-row-list-item">Workflow-driven billing and reimbursement calculations</li>
-            <li class="feature-row-list-item">Date-relative accuracy for back-dated processing when rates change</li>
-            <li class="feature-row-list-item">Full traceability into partner activity for finance</li>
-          </ul>
-        </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Partner Billing Dashboard]</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 9: SUB-BALANCE TRACKING (Zig-Zag Reverse)
-       ======================================== -->
-  <section class="feature-rows-section">
-    <div class="container">
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-content">
           <span class="feature-row-eyebrow">Sub-Balance Tracking</span>
-          <h2 class="feature-row-title">Points Are Not the Same</h2>
+          <h2 class="feature-row-title">Track Partner Value Separately. Settle Accurately.</h2>
           <p class="feature-row-description">
-            Points can be tagged by source and tracked at sub-balance level. "These are Partner A points, these are Partner B points" in the same balance. The member sees one balance. Finance sees attribution by source. When a redemption happens, you control which bucket it counts against.
+            Members see one balance. Finance sees attribution by partner. When members redeem, the platform <strong>debits the correct funding source automatically</strong>.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Source tagging by partner, location, channel, promotion</li>
-            <li class="feature-row-list-item">Sub-balance tracking invisible to member, visible to finance</li>
-            <li class="feature-row-list-item">Redemption attribution controls which bucket is consumed</li>
-            <li class="feature-row-list-item">Negative sub-balances supported for granular accounting</li>
-            <li class="feature-row-list-item">Full lineage from accrual to redemption for audit</li>
+            <li class="feature-row-list-item">Members see a <strong>unified balance</strong>; finance sees partner attribution</li>
+            <li class="feature-row-list-item">Redemptions debit the <strong>correct funding source</strong> per business rules</li>
+            <li class="feature-row-list-item"><strong>Full audit trail</strong> from earn to redeem</li>
           </ul>
         </div>
         <div class="feature-row-media">
@@ -868,14 +806,14 @@
 
 
   <!-- ========================================
-       SECTION 10: BOTTOM CTA
+       SECTION 9: BOTTOM CTA
        ======================================== -->
   <section class="section section-lg bg-light">
     <div class="container">
       <div class="bottom-cta-card">
         <h2 class="bottom-cta-title">Ready to Scale Your Partner Ecosystem?</h2>
         <p class="bottom-cta-description">
-          See how RCX handles 100+ partners with finance-grade traceability and real-time execution.
+          See how <strong>enterprise loyalty teams</strong> manage <strong>100+ partners</strong> through a single platform.
         </p>
         <div class="flex gap-4" style="justify-content: center;">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
@@ -886,7 +824,7 @@
 
 
   <!-- ========================================
-       SECTION 11: FAQ
+       SECTION 10: FAQ
        ======================================== -->
   <section class="faq-section section-light bg-light">
     <div class="container">
@@ -895,7 +833,7 @@
         <div class="faq-intro">
           <h2 class="faq-title">Frequently Asked Questions</h2>
           <p class="faq-description">
-            Common questions about partner enablement, FeedXChange, and financial management.
+            Common questions about partner enablement and FeedXChange.
           </p>
           <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
@@ -928,36 +866,12 @@
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How does batch file processing maintain consistency with real-time transactions?</span>
+              <span class="accordion-trigger-text">How does batch processing maintain consistency with real-time transactions?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>FeedXChange rips incoming batch files into individual transactions and processes each one through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What financial lifecycle capabilities does the platform support for partners?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>The platform handles allocation of promotion funding across parties, billing parameters attached to rules and objects, workflow-driven billing and reimbursement calculations, and date-relative accuracy for back-dated processing when rates change.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can partners have different integration methods for different operations?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Yes. Partners can use multiple integration modes simultaneously. Real-time APIs for point-of-interaction operations. Batch for end-of-day settlement files. Streaming for high-volume activity. The platform doesn't force partners into a single integration pattern.</p>
+                <p>FeedXChange processes incoming batch files through the same real-time rules engine as API calls. No special batch processing path. Same rule execution. Same logging. Same outcomes.</p>
               </div>
             </div>
           </div>
