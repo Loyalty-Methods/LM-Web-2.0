@@ -3,56 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Rewards: Why Speed Is the New Currency | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  <title>Loyalty Program Rewards & Benefits | RCX Platform | Loyalty Methods</title>
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* --- Page Specific Styles: Blog Split Hero & Layout --- */
+    /* ==========================================================================
+       BLOG ARTICLE SPECIFIC STYLES
+       ========================================================================== */
     
-    /* 1. Split Hero Layout */
+    /* Blog Hero Section */
+    .blog-hero {
+      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .blog-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Split Hero Layout */
     .blog-hero-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: var(--space-10);
       align-items: center;
     }
 
     @media (min-width: 992px) {
       .blog-hero-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 5rem;
+        gap: var(--space-16);
       }
     }
 
-    /* Hero Text Adjustments */
+    /* Hero Meta */
     .blog-hero-meta {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
       color: rgba(255, 255, 255, 0.9);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .blog-hero-tag {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(243, 112, 33, 0.2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      color: var(--color-primary);
+      border: 1px solid rgba(243, 112, 33, 0.3);
+    }
+    
+    .blog-hero-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    
+    .blog-hero-title .highlight {
+      color: var(--color-primary);
+    }
+    
+    .blog-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
     }
 
     /* Hero Graphic Container */
     .blog-hero-graphic {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -66,17 +117,27 @@
       height: 100%;
       object-fit: cover;
     }
+    
+    .blog-hero-graphic-placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.05em;
+      font-size: var(--font-size-sm);
+    }
 
-    /* 2. Main Content Layout (Sidebar + Content) */
+    /* ==========================================================================
+       BLOG CONTENT LAYOUT
+       ========================================================================== */
+    
     .blog-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 4rem;
+      gap: var(--space-12);
     }
 
     @media (min-width: 992px) {
       .blog-grid {
-        grid-template-columns: 280px 1fr; /* Fixed TOC | Fluid Content */
+        grid-template-columns: 280px 1fr;
         align-items: start;
       }
     }
@@ -95,87 +156,252 @@
     }
 
     .toc-title {
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #9ca3af;
-      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-4);
     }
 
     .toc-list {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      border-left: 1px solid #e5e7eb;
+      gap: var(--space-3);
+      border-left: 1px solid var(--color-gray-100);
     }
 
     .toc-link {
-      font-size: 0.875rem;
-      color: #4b5563;
-      padding-left: 1rem;
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      padding-left: var(--space-4);
       border-left: 2px solid transparent;
       margin-left: -1px;
-      transition: all 0.2s;
+      transition: all var(--transition-fast);
       line-height: 1.4;
     }
 
-    .toc-link:hover {
-      color: #F37021;
-      border-left-color: #F37021;
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
     }
 
-    /* Blog Content Typography */
+    /* ==========================================================================
+       BLOG CONTENT TYPOGRAPHY
+       ========================================================================== */
+    
     .blog-content {
       max-width: 750px;
     }
 
     .blog-content h2 {
-      font-size: 1.875rem;
-      font-weight: 700;
-      color: #111827;
-      margin-top: 3rem;
-      margin-bottom: 1.25rem;
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-top: var(--space-12);
+      margin-bottom: var(--space-5);
       line-height: 1.3;
     }
 
-    .blog-content h2:first-of-type { margin-top: 0; }
+    .blog-content h2:first-of-type { 
+      margin-top: 0; 
+    }
+
+    .blog-content h3 {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      line-height: 1.3;
+    }
 
     .blog-content p {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
       color: #374151;
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-6);
     }
 
     .blog-content ul {
       list-style: disc;
-      padding-left: 1.5rem;
-      margin-bottom: 2rem;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-8);
       color: #374151;
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
     }
 
     .blog-content li {
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .blog-content strong {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-charcoal-900);
+    }
+
+    .blog-content em {
+      font-style: italic;
+      color: var(--color-primary);
+    }
+
+    .blog-content blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding-left: var(--space-6);
+      margin: var(--space-8) 0;
+      font-style: italic;
+      color: #4b5563;
+      font-size: var(--font-size-xl);
+    }
+    
+    /* Blog Content Links */
+    .blog-content a {
+      color: var(--color-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition-fast);
+    }
+    
+    .blog-content a:hover {
+      border-bottom-color: var(--color-primary);
+    }
+
+    /* ==========================================================================
+       FEATURE CARDS GRID
+       ========================================================================== */
+    .feature-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin: var(--space-8) 0;
+    }
+
+    @media (max-width: 768px) {
+      .feature-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-mini-card {
+      background: #F9F9F9;
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .feature-mini-card h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .feature-mini-card p {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* Reward Types Grid */
+    .reward-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin: var(--space-8) 0;
+    }
+
+    @media (max-width: 1024px) {
+      .reward-types-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .reward-types-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .reward-type-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      transition: all var(--transition-fast);
+    }
+
+    .reward-type-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-card);
+    }
+
+    .reward-type-card h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .reward-type-card p {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       RELATED ARTICLES
+       ========================================================================== */
+    
+    .related-section {
+      padding: var(--space-20) 0;
+      background: #F5F5F5;
+    }
+    
+    .related-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-8);
+      text-align: center;
+    }
+    
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+    
+    @media (max-width: 1024px) {
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- ========== HEADER ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="logo">
-          <div class="logo-placeholder">LOGO</div>
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
         </a>
 
         <nav class="nav-desktop">
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -231,8 +457,8 @@
                     <span class="mega-menu-featured-eyebrow">Featured</span>
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview - 300×170]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More →</a>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -245,55 +471,35 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
-                      
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Platform Architecture</div>
-                          <div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
                       </a>
-                      
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Integration Capabilities</div>
-                          <div class="mega-menu-link-description">Connectors for the modern stack.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
                       </a>
-                      
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        </div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title">Security & Compliance</div>
-                          <div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div>
-                        </div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
                       </a>
-                      
                     </div>
                   </div>
-                  
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Trust Center</span>
                     <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
                     <p class="mega-menu-featured-description">View our real-time system status.</p>
                     <div class="mega-menu-featured-image">
-                       <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                       </div>
+                      </div>
                     </div>
-                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center →</a>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -306,30 +512,21 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu" style="width: max-content; min-width: 320px;"> 
-                <div class="mega-menu-inner" style="grid-template-columns: 1fr;"> 
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">ThreadSync™ Implementation</div>
-                          <div class="mega-menu-link-description">Our agile delivery framework</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">SafeSwitch™ Cutover</div>
-                          <div class="mega-menu-link-description">Zero-risk migration methodology</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
-                      <a href="proven-success.html" class="mega-menu-link">
+                      <a href="resource-center.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-                        <div class="mega-menu-link-content">
-                          <div class="mega-menu-link-title" style="white-space: nowrap;">Success Stories</div>
-                          <div class="mega-menu-link-description">Client case studies and results</div>
-                        </div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
                     </div>
                   </div>
@@ -338,7 +535,7 @@
             </li>
             
             <li class="nav-item">
-              <a href="resource-center.html" class="nav-link active">Resource Center</a>
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
             </li>
             
           </ul>
@@ -347,8 +544,8 @@
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
                 <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 500px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1.5fr 1fr;"> 
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
                     <div class="mega-menu-links">
                       <div class="mega-menu-column">
                         <div class="mega-menu-column-title">Company</div>
@@ -360,22 +557,22 @@
                         <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
                       </div>
                     </div>
-                    <div class="mega-menu-featured">
+                    <div class="mega-menu-featured" style="min-width: 280px;">
                       <span class="mega-menu-featured-eyebrow">Featured</span>
                       <h3 class="mega-menu-featured-title">Partner Network</h3>
                       <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
                       <div class="mega-menu-featured-image">
-                         <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                         </div>
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
                       </div>
-                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore →</a>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
         <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -383,30 +580,28 @@
     </div>
   </header>
 
-  <section class="subpage-hero subpage-hero-brand" style="padding-top: 10rem; padding-bottom: 5rem;">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <!-- ========== BLOG HERO ========== -->
+  <section class="blog-hero">
     <div class="container">
       
       <div class="blog-hero-grid">
         
         <div class="blog-hero-content">
           <div class="blog-hero-meta">
-            <span class="blog-hero-tag">Strategy</span>
+            <span class="blog-hero-tag">Capabilities</span>
             <span>•</span>
-            <span>Oct 20, 2025</span>
+            <span>Jan 29, 2026</span>
           </div>
-          <h1 class="subpage-hero-title mb-6">
-            Real-Time Rewards: Why Speed Is the <span class="highlight">New Currency</span> in Loyalty
+          <h1 class="blog-hero-title">
+            <span class="highlight">Rewards & Benefits</span>
           </h1>
-          <p class="subpage-hero-description mb-8">
-            Retention is the new growth. Real-time loyalty tools like ReactorCX turn customer behavior into instant action, driving higher repeat rates, lifetime value, and ROI.
+          <p class="blog-hero-description">
+            Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences, reward customers how they want, when they want.
           </p>
         </div>
 
-        <div class="blog-hero-graphic-container">
-          <div class="blog-hero-graphic">
-            <span style="color: white; font-weight: 600; letter-spacing: 0.05em; opacity: 0.5;">MASTER GRAPHIC [16:9]</span>
-          </div>
+        <div class="blog-hero-graphic">
+          <span class="blog-hero-graphic-placeholder">REWARDS & BENEFITS [16:9]</span>
         </div>
 
       </div>
@@ -414,7 +609,8 @@
     </div>
   </section>
 
-  <section class="section section-light bg-white" style="padding-top: 5rem; padding-bottom: 8rem;">
+  <!-- ========== BLOG CONTENT ========== -->
+  <section class="section section-light bg-white" style="padding-top: var(--space-16); padding-bottom: var(--space-24);">
     <div class="container">
       
       <div class="blog-grid">
@@ -422,50 +618,148 @@
         <aside class="blog-sidebar">
           <div class="toc-title">In This Article</div>
           <nav class="toc-list">
-            <a href="#speed-matters" class="toc-link">Why Speed Matters</a>
-            <a href="#micro-moments" class="toc-link">Capturing Micro-Moments</a>
-            <a href="#infrastructure" class="toc-link">The Infrastructure Gap</a>
-            <a href="#future" class="toc-link">The Future of Earn & Burn</a>
+            <a href="#flexible-redemption" class="toc-link">Flexible Redemption Options</a>
+            <a href="#real-time-redemption" class="toc-link">Real-Time Redemption</a>
+            <a href="#omnichannel-wallet" class="toc-link">Omnichannel Wallet</a>
+            <a href="#dynamic-catalog" class="toc-link">Dynamic Catalog</a>
+            <a href="#tier-management" class="toc-link">Tier Management</a>
+            <a href="#reward-types" class="toc-link">Every Reward Type</a>
           </nav>
         </aside>
 
         <article class="blog-content">
           
-          <h2 id="speed-matters">The Death of "Please Allow 24-48 Hours"</h2>
+          <h2 id="flexible-redemption">Flexible Redemption Options</h2>
           <p>
-            For decades, loyalty programs operated on a delay. You bought a flight, and the miles appeared a week later. You swiped your card at the grocery store, and the points tallied up overnight. In a slower world, this was acceptable. In the era of Uber, Doordash, and instant payments, it is an engagement killer.
-          </p>
-          <p>
-            Today's consumer operates in real-time. If they make a purchase, they expect the reward to be available instantly for their next decision. This isn't just about gratification; it's about utility. A reward that arrives 24 hours later misses the window of influence where it could drive an incremental purchase *right now*.
+            Give customers the freedom to redeem their <strong>loyalty currency</strong> across every channel and touchpoint.
           </p>
 
-          <h2 id="micro-moments">Capturing the Micro-Moment</h2>
+          <div class="feature-cards-grid">
+            <div class="feature-mini-card">
+              <h4>Points & Currency</h4>
+              <p><strong>Multi-currency wallets</strong> with real-time conversion, vesting schedules, and automated expiration management. Members see exactly what they have and what they can do with it.</p>
+            </div>
+            <div class="feature-mini-card">
+              <h4>Tiered Benefits</h4>
+              <p>Exclusive perks, priority access, and <strong>status rewards</strong> that scale with member engagement. Higher tiers unlock differentiated value that drives continued participation.</p>
+            </div>
+            <div class="feature-mini-card">
+              <h4>Split & Linked Pay</h4>
+              <p>Let members combine points with cash, credit cards, or gift cards for <strong>frictionless checkout</strong> experiences. Removing payment friction increases redemption rates.</p>
+            </div>
+            <div class="feature-mini-card">
+              <h4>Experiences & Events</h4>
+              <p>Offer VIP access, early releases, exclusive merchandise, and <strong>money-can't-buy moments</strong>. Experiential rewards create emotional connection without eroding margin.</p>
+            </div>
+          </div>
+
+          <h2 id="real-time-redemption">Real-Time Redemption</h2>
+          <h3>Instant Gratification</h3>
           <p>
-            Google defines "micro-moments" as intent-driven moments of decision-making and preference-shaping that occur throughout the entire consumer journey. In loyalty, these are the split seconds where a customer decides to add a dessert to their order, upgrade their room, or choose your gas station over the one across the street.
+            Customers expect rewards <em>in the moment</em>. RCX processes <a href="feature-hyper-personalization.html">earn and burn transactions</a> in real time, so members can redeem points immediately: at checkout, at the pump, or in the app.
           </p>
           <p>
-            Real-time loyalty platforms like ReactorCX allow brands to inject value into these moments. Imagine a customer pumping gas. As the transaction processes, the system identifies they are 50 points away from a free coffee. It triggers a push notification to the pump screen or their phone: <em>"Add a coffee inside to earn your free reward instantly."</em>
-          </p>
-          <p>
-            That is not just points; that is revenue generation.
+            <strong>Batch processing creates lag. Lag creates friction. Friction kills engagement.</strong> Real-time processing eliminates that chain.
           </p>
 
-          <h2 id="infrastructure">The Infrastructure Gap</h2>
-          <p>
-            Why aren't all programs doing this? Because legacy infrastructure wasn't built for it. Most enterprise loyalty systems are built on batch-processing architectures designed in the 90s or early 2000s. They process data in nightly "jobs."
-          </p>
+          <p><strong>Capabilities:</strong></p>
           <ul>
-            <li><strong>Batch Processing:</strong> Collects data all day, processes it at night. Good for accounting, bad for customer experience.</li>
-            <li><strong>Event-Driven Architecture:</strong> Processes every action (swipe, click, location entry) as it happens.</li>
+            <li>Variable burn rates for <strong>dynamic pricing strategies</strong></li>
+            <li>Instant reward fulfillment with <strong>zero lag</strong></li>
+            <li>Real-time notifications on points earned and available rewards</li>
+            <li>Fraud detection and reversal capabilities</li>
           </ul>
+
+          <h2 id="omnichannel-wallet">Omnichannel Wallet</h2>
+          <h3>Earn Anywhere. Redeem Everywhere.</h3>
           <p>
-            To compete in 2026, brands must migrate to event-driven architectures that can handle the "velocity" of modern customer data.
+            Your members engage across mobile, web, in-store, and <a href="feature-partner-enablement.html">partner locations</a>. RCX ensures a <strong>consistent earn and burn experience</strong> across every customer touchpoint.
+          </p>
+          <p>
+            When wallets are fragmented by channel, members lose track of balances and benefits. <strong>Unified wallets</strong> consolidate everything into a single view, regardless of where the transaction occurred.
           </p>
 
-          <h2 id="future">The Future is Now</h2>
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Unified member wallet across <strong>all channels</strong></li>
+            <li>Mobile app, kiosk, and web property support</li>
+            <li>Partner location earn and redemption</li>
+            <li>Offline transaction sync for <strong>zero downtime</strong></li>
+          </ul>
+
+          <h2 id="dynamic-catalog">Dynamic Catalog</h2>
+          <h3>Build Your Reward Marketplace</h3>
           <p>
-            The brands winning today—like 7-Eleven with their 200ms response times—are those that have invested in speed. They treat loyalty not as a marketing layer, but as critical, real-time infrastructure.
+            From merchandise and discounts to charitable donations and experiential rewards, RCX gives you the flexibility to design a <strong>reward catalog</strong> that resonates with your audience.
           </p>
+          <p>
+            <em>Static catalogs go stale.</em> Dynamic catalogs let you rotate offerings by season, segment, or <a href="feature-program-design.html">tier</a> without engineering involvement.
+          </p>
+
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Curated reward collections by <strong>segment or tier</strong></li>
+            <li>Third-party reward catalog integrations</li>
+            <li>Limited-time and <strong>seasonal reward offerings</strong></li>
+            <li>Self-service reward management portal</li>
+          </ul>
+
+          <h2 id="tier-management">Tier Management</h2>
+          <h3>Status That Drives Behavior</h3>
+          <p>
+            <strong>Multi-tier programs</strong> with tier-specific benefits, exclusive rewards, accelerated earning rates, and priority access. Design differentiated value propositions for each tier to drive member progression.
+          </p>
+          <p>
+            Tiers work when the gap between levels is <em>meaningful but achievable</em>. RCX lets you define qualification rules, manage requalification windows, and handle downgrades gracefully.
+          </p>
+
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Flexible <strong>tier qualification</strong> and requalification rules</li>
+            <li>Tier-exclusive benefits and rewards</li>
+            <li>Accelerated earning rates by tier</li>
+            <li>Grace periods and <strong>soft landings</strong> for tier downgrades</li>
+          </ul>
+
+          <h2 id="reward-types">Every Reward Type, One Platform</h2>
+
+          <div class="reward-types-grid">
+            <div class="reward-type-card">
+              <h4>Discounts & Coupons</h4>
+              <p>Percentage off, dollars off, BOGO, and category-specific discounts applied at checkout. Rules engine handles stacking logic and exclusions.</p>
+            </div>
+            <div class="reward-type-card">
+              <h4>Free Products</h4>
+              <p>Reward members with complimentary items from your product catalog or partner offerings. Inventory integration ensures availability before issuance.</p>
+            </div>
+            <div class="reward-type-card">
+              <h4>Gift Cards</h4>
+              <p>Digital and physical gift cards from your brand or an extensive network of third-party retailers. Members choose what matters to them.</p>
+            </div>
+            <div class="reward-type-card">
+              <h4>Experiences</h4>
+              <p>VIP access, backstage passes, early releases, and money-can't-buy moments for top members. Experiential rewards differentiate your program.</p>
+            </div>
+            <div class="reward-type-card">
+              <h4>Charitable Donations</h4>
+              <p>Let members donate points to causes they care about. Donation options strengthen emotional brand connection without direct cost to margin.</p>
+            </div>
+            <div class="reward-type-card">
+              <h4>Sweepstakes & Contests</h4>
+              <p>Entry-based rewards that create excitement and drive engagement with high-value prizes. Sweepstakes extend perceived value beyond your reward budget.</p>
+            </div>
+          </div>
+          
+          <!-- Related Reading -->
+          <div class="related-reading" style="margin-top: var(--space-12); padding: var(--space-8); background: #F9F9F9; border-radius: var(--radius-xl);">
+            <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-charcoal-900); margin-bottom: var(--space-4);">Related Reading</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+              <li><a href="feature-program-design.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Program Design & Rules</a> — Flexible loyalty program architecture</li>
+              <li><a href="feature-promotions.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Promotions & Discounting</a> — Dynamic offers and targeted campaigns</li>
+              <li><a href="feature-engagement.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Engagement & Gamification</a> — Interactive experiences that delight</li>
+              <li><a href="tech-integration.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Integration Capabilities</a> — Connectors for the modern stack</li>
+            </ul>
+          </div>
 
         </article>
 
@@ -473,37 +767,260 @@
     </div>
   </section>
 
-  <section class="section section-white py-20">
+  <!-- ========== CTA ========== -->
+  <section class="section-light bg-light" style="padding: var(--space-16) 0;">
     <div class="container">
       <div class="cta-box-light">
-        <h2 class="text-3xl font-bold text-dark mb-4">Is your loyalty platform fast enough?</h2>
-        <p class="text-muted mb-8 text-lg">
-          See how ReactorCX delivers sub-second response times at enterprise scale.
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to Reward Your Best Customers?</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+          See how RCX delivers flexible, real-time rewards that drive engagement and loyalty across every touchpoint.
         </p>
-        <a href="about-contact.html" class="btn btn-primary btn-lg">Get a Technical Demo</a>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
       </div>
     </div>
   </section>
 
+  <!-- ========== FAQ ========== -->
+  <section class="faq-section section-light bg-white">
+    <div class="container">
+      
+      <div class="faq-layout">
+        
+        <!-- Left Column: Intro -->
+        <div class="faq-intro">
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-description">
+            Common questions about RCX rewards, redemption options, and how the platform handles tier management and fulfillment.
+          </p>
+          <a href="about-contact.html" class="btn btn-primary">Talk to an Expert</a>
+        </div>
+
+        <!-- Right Column: Accordion -->
+        <div class="faq-accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Can members combine points with cash at checkout?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. RCX supports split-pay and linked-pay scenarios where members can use a combination of points, cash, credit cards, or gift cards. This flexibility increases redemption rates by removing friction at checkout.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How do you handle point and tier expiration?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>The platform automates point and tier expiration based on your business rules. You can define rolling expiration windows, grace periods, and automated member notifications to drive timely redemption and maintain engagement.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What types of rewards can we offer?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>RCX is reward-agnostic. You can offer discounts, free products, experiences, charitable donations, partner rewards, gift cards, sweepstakes entries, and more. The API-first design allows direct integration with third-party reward fulfillment providers.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">Can we offer tier-specific rewards?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. RCX supports multi-tier programs with tier-specific benefits, exclusive rewards, accelerated earning rates, and priority access. You can design differentiated value propositions for each tier to drive member progression.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How do you integrate with third-party reward catalogs?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>RCX connects to third-party reward fulfillment providers via API. This allows you to offer gift cards, merchandise, experiences, and travel rewards without managing inventory or fulfillment yourself. The catalog can be dynamically updated based on availability and member preferences.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">What is a loyalty rewards platform?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>A loyalty rewards platform is enterprise software that manages point accrual, redemption, tier progression, and benefit delivery for customer loyalty programs. It connects to your existing systems (POS, CRM, e-commerce) and processes member transactions in real time. The platform tracks liability, handles fulfillment, and provides the rules engine that governs how members earn and burn.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger">
+              <span class="accordion-trigger-text">How does real-time redemption work?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Real-time redemption means point balances update instantly when a transaction occurs. When a member makes a purchase, the platform calculates earned points, evaluates tier status, checks promotion eligibility, and updates the wallet before the receipt prints. This eliminates the overnight batch processing that creates balance discrepancies and member confusion.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
+        
+        <!-- Brand Column -->
         <div class="footer-brand">
-          <div class="footer-logo-placeholder"></div>
-          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
-        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="footer-bottom"><p class="footer-copyright">© 2026 Loyalty Methods</p></div>
     </div>
   </footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script>
+    // Header scroll effect
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
-      else { header.classList.remove('scrolled'); }
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ Accordion
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        accordionItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Active TOC link on scroll
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = document.querySelectorAll('.blog-content h2[id]');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
