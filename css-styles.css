@@ -741,6 +741,12 @@ a.card {
   line-height: 1.6;
 }
 
+.card-body strong,
+.card-description strong {
+  color: var(--text-main);
+  font-weight: var(--font-weight-semibold);
+}
+
 .card-category,
 .resource-card-category {
   font-size: var(--font-size-xs);
@@ -1003,6 +1009,11 @@ a.card {
   font-size: var(--font-size-base);
   color: var(--text-muted);
   line-height: 1.7;
+}
+
+.feature-card-description strong {
+  color: var(--text-main);
+  font-weight: var(--font-weight-semibold);
 }
 
 .feature-card-image-placeholder {
@@ -1651,7 +1662,7 @@ a.card {
 .stat-title {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
 .stat-subtitle {
