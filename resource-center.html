@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resource Center | Loyalty Methods</title>
-  <link rel="stylesheet" href="loyalty-theme-structure.css">
+  
+  <!-- NEW MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,53 +16,120 @@
   <style>
     /* Resource Center Specific Styles */
     
-    /* Filter Bar (Braze Style) */
+    /* Subpage Hero */
+    .subpage-hero {
+      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .subpage-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .subpage-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+    }
+    
+    .subpage-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    
+    .subpage-hero-title .highlight {
+      color: var(--color-primary);
+    }
+    
+    .subpage-hero-description {
+      font-size: var(--font-size-lg);
+      color: #9A9A9A;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    /* Filter Bar */
     .filter-container {
-      margin-bottom: 3rem;
+      margin-bottom: var(--space-10);
       text-align: center;
     }
 
     .filter-pill {
       display: inline-block;
-      padding: 0.6rem 1.5rem;
-      margin: 0 0.25rem 0.5rem;
-      border: 1px solid #e5e7eb;
-      border-radius: 9999px;
-      background: white;
-      color: #6b7280;
-      font-weight: 500;
+      padding: var(--space-3) var(--space-5);
+      margin: 0 var(--space-1) var(--space-2);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-full);
+      background: var(--color-white);
+      color: var(--color-gray-400);
+      font-weight: var(--font-weight-medium);
       cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.95rem;
+      transition: all var(--transition-fast);
+      font-size: var(--font-size-sm);
     }
 
     .filter-pill:hover {
-      border-color: #F37021;
-      color: #F37021;
+      border-color: var(--color-primary);
+      color: var(--color-primary);
     }
 
     .filter-pill.active {
-      background: #F37021;
-      border-color: #F37021;
-      color: white;
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      border-color: transparent;
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filter-pill.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-full) var(--radius-full) 0 0;
     }
 
-    /* Featured Hero Card (Braze Style) */
+    /* Featured Hero Card */
     .featured-resource {
       display: grid;
       grid-template-columns: 1fr;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-2xl);
       overflow: hidden;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-      margin-bottom: 4rem;
-      transition: transform 0.3s;
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--space-12);
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
     }
 
     .featured-resource:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-card-hover);
     }
 
     @media (min-width: 992px) {
@@ -70,7 +140,7 @@
     }
 
     .featured-content {
-      padding: 4rem;
+      padding: var(--space-10);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -79,6 +149,49 @@
 
     @media (min-width: 992px) {
       .featured-content { order: 1; }
+    }
+    
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    
+    .featured-badge {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      background: rgba(243, 112, 33, 0.1);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .featured-date {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+    }
+    
+    .featured-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-4);
+      line-height: 1.2;
+      transition: color var(--transition-fast);
+    }
+    
+    .featured-title:hover {
+      color: var(--color-primary);
+    }
+    
+    .featured-excerpt {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-400);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
     }
 
     .featured-image {
@@ -98,22 +211,53 @@
       object-fit: cover;
       position: absolute;
     }
+    
+    .featured-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
 
-    /* Standard Resource Card (Talon.One Style) */
+    /* Resource Card Grid */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+    
+    @media (max-width: 1024px) {
+      .resource-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Resource Card */
     .resource-card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-xl);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
       height: 100%;
     }
 
     .resource-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-6px);
+      border-color: var(--color-navy);
+      box-shadow: var(--shadow-card-hover);
     }
 
     .resource-thumb {
@@ -127,128 +271,297 @@
       height: 100%;
       object-fit: cover;
     }
+    
+    .resource-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+    }
 
-    /* The Content Badge */
+    /* Content Badge */
     .content-badge {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      padding: 0.35rem 0.85rem;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 700;
+      top: var(--space-4);
+      left: var(--space-4);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background: var(--color-white);
+      box-shadow: var(--shadow-sm);
       z-index: 10;
     }
 
     /* Badge Colors */
     .badge-article { color: #2563EB; border-left: 3px solid #2563EB; }
-    .badge-case-study { color: #F37021; border-left: 3px solid #F37021; }
+    .badge-case-study { color: var(--color-primary); border-left: 3px solid var(--color-primary); }
     .badge-guide { color: #7C3AED; border-left: 3px solid #7C3AED; }
+    .badge-report { color: var(--color-navy); border-left: 3px solid var(--color-navy); }
 
     .resource-body {
-      padding: 1.5rem;
+      padding: var(--space-6);
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
     .resource-meta {
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 0.75rem;
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-3);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--space-2);
     }
 
     .resource-title {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 0.75rem;
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-3);
       line-height: 1.4;
     }
 
     .resource-excerpt {
-      font-size: 0.95rem;
-      color: #6b7280;
-      margin-bottom: 1.5rem;
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-4);
       flex: 1; 
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      line-height: 1.6;
     }
 
     .resource-footer {
       margin-top: auto;
-      padding-top: 1rem;
-      border-top: 1px solid #f3f4f6;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-gray-100);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .read-more-link {
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: #2563EB;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: var(--space-2);
+      transition: gap var(--transition-fast);
     }
     
-    .read-more-link:hover { text-decoration: underline; }
+    .read-more-link:hover { 
+      gap: var(--space-3);
+    }
 
     .download-btn {
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: #F37021;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: var(--space-2);
+      transition: color var(--transition-fast);
     }
     
-    .download-btn:hover { color: #d45a10; }
-
-    /* Bottom CTA (Standardized) */
-    .cta-box-light {
-      background: #F9FAFB;
-      border-radius: 24px;
-      padding: 4rem;
-      text-align: left;
-      border: 1px solid #e5e7eb;
+    .download-btn:hover { 
+      color: var(--color-primary-dark); 
     }
   </style>
 </head>
 <body>
 
+  <!-- ========== HEADER ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="logo">
-          <div class="logo-placeholder">LOGO</div>
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
         </a>
 
         <nav class="nav-desktop">
           <ul class="nav-list">
-            <li class="nav-item"><a href="#" class="nav-link">Why LM?</a></li>
+            
             <li class="nav-item">
-              <a href="platform.html" class="nav-link">RCX Loyalty Platform</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">Enterprise Technology</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Proven Delivery</a></li>
-            <li class="nav-item"><a href="resource-center.html" class="nav-link active">Resource Center</a></li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-tech">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="resource-center.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
           </ul>
+          
           <div class="flex items-center gap-4">
-            <a href="#" class="nav-link">About LM</a>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
         <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -256,61 +569,68 @@
     </div>
   </header>
 
-  <section class="subpage-hero subpage-hero-brand" style="padding-bottom: 4rem;">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <!-- ========== HERO ========== -->
+  <section class="subpage-hero">
     <div class="container">
-      <div class="max-w-4xl">
-        <div class="subpage-hero-eyebrow"><span>Resource Center</span></div>
-        <h1 class="subpage-hero-title mb-6">
-          Insights for the <span class="highlight">Loyalty Architect</span>
+      <div style="max-width: 800px;">
+        <div class="subpage-hero-eyebrow">Resource Center</div>
+        <h1 class="subpage-hero-title">
+          Insights for <span class="highlight">Enterprise Loyalty</span>
         </h1>
-        <p class="subpage-hero-description mb-8">
-          Explore our latest thinking on enterprise loyalty strategy, API-first architecture, and customer retention.
+        <p class="subpage-hero-description">
+          Explore our latest thinking on loyalty strategy, platform architecture, and customer retention. Case studies, guides, and thought leadership for teams building world-class programs.
         </p>
       </div>
     </div>
   </section>
 
 
-  <section class="section section-light bg-white" style="padding-top: 4rem; padding-bottom: 8rem;">
+  <!-- ========== RESOURCES ========== -->
+  <section class="section section-light bg-white" style="padding-top: var(--space-12); padding-bottom: var(--space-24);">
     <div class="container">
       
+      <!-- Featured Resource -->
       <div class="featured-resource">
         <div class="featured-content">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded uppercase tracking-wide">Featured Article</span>
-            <span class="text-xs text-gray-400">Oct 20, 2025</span>
+          <div class="featured-meta">
+            <span class="featured-badge">Featured Article</span>
+            <span class="featured-date">Oct 20, 2025</span>
           </div>
-          <h2 class="text-3xl font-bold text-dark mb-4 hover:text-primary transition-colors cursor-pointer">
+          <h2 class="featured-title">
             Real-Time Rewards: Why Speed Is the New Currency in Loyalty
           </h2>
-          <p class="text-muted text-lg mb-8 leading-relaxed">
+          <p class="featured-excerpt">
             Retention is the new growth. Real time loyalty tools like ReactorCX turn customer behavior into instant action, driving higher repeat rates, lifetime value, and ROI.
           </p>
-          <a href="#" class="btn btn-primary btn-lg self-start">Read Full Article</a>
+          <a href="#" class="btn btn-primary btn-lg" style="align-self: flex-start;">Read Full Article</a>
         </div>
         <div class="featured-image">
-          <div style="width:100%; height:100%; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); display: flex; align-items: center; justify-content: center; color: #9ca3af;">
+          <div class="featured-image-placeholder">
             [Featured Image: Speed/Currency Concept]
           </div>
         </div>
       </div>
 
 
+      <!-- Filter Pills -->
       <div class="filter-container">
-        <button class="filter-pill active">All Resources</button>
-        <button class="filter-pill">Strategy</button>
-        <button class="filter-pill">Technology</button>
-        <button class="filter-pill">Customer Experience</button>
+        <button class="filter-pill active" data-filter="all">All Resources</button>
+        <button class="filter-pill" data-filter="case-study">Case Studies</button>
+        <button class="filter-pill" data-filter="strategy">Strategy</button>
+        <button class="filter-pill" data-filter="technology">Technology</button>
+        <button class="filter-pill" data-filter="cx">Customer Experience</button>
       </div>
 
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Resource Grid -->
+      <div class="resource-grid">
 
-        <div class="resource-card">
+        <!-- Case Study: MGM -->
+        <div class="resource-card" data-category="case-study">
           <div class="resource-thumb">
             <span class="content-badge badge-case-study">Case Study</span>
-            <div style="width:100%; height:100%; background: #e5e7eb;"></div> </div>
+            <div class="resource-thumb-placeholder"></div>
+          </div>
           <div class="resource-body">
             <div class="resource-meta">Hospitality & Gaming</div>
             <h3 class="resource-title">MGM Resorts Revolutionizes Its Loyalty Program with Loyalty Methods</h3>
@@ -321,10 +641,11 @@
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Case Study: 7-Eleven -->
+        <div class="resource-card" data-category="case-study">
           <div class="resource-thumb">
             <span class="content-badge badge-case-study">Case Study</span>
-            <div style="width:100%; height:100%; background: #e5e7eb;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta">Retail & C-Store</div>
@@ -336,10 +657,11 @@
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Case Study: Western Union -->
+        <div class="resource-card" data-category="case-study">
           <div class="resource-thumb">
             <span class="content-badge badge-case-study">Case Study</span>
-            <div style="width:100%; height:100%; background: #e5e7eb;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta">Finance</div>
@@ -351,183 +673,194 @@
           </div>
         </div>
 
-
-        <div class="resource-card">
+        <!-- Article: New for 2026 -->
+        <div class="resource-card" data-category="strategy">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Strategy</span> • <span>Feb 2026</span></div>
-            <h3 class="resource-title">[New Article Title Goes Here]</h3>
+            <h3 class="resource-title">Top Trends Shaping Enterprise Loyalty in 2026</h3>
             <p class="resource-excerpt">This is a placeholder for your newest piece of content. It should focus on a forward-looking trend for 2026.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: AI Loyalty -->
+        <div class="resource-card" data-category="technology">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Technology</span> • <span>Sept 29, 2025</span></div>
             <h3 class="resource-title">AI Loyalty: Personalization That Drives Results</h3>
             <p class="resource-excerpt">AI is back again as the biggest buzzword in loyalty. Everyone is talking about it, but the reality is turning AI into real loyalty outcomes.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Loyalty ROI -->
+        <div class="resource-card" data-category="strategy">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Strategy</span> • <span>Sept 29, 2025</span></div>
             <h3 class="resource-title">Loyalty Program ROI: How to Measure and Maximize It</h3>
             <p class="resource-excerpt">How to Prove It. How to Grow It. Most loyalty programs talk a big game. Points issued. Members enrolled. But real economic buyers need more.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Enterprise Buyers -->
+        <div class="resource-card" data-category="strategy">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Strategy</span> • <span>Sept 29, 2025</span></div>
             <h3 class="resource-title">Top Tips for Enterprise Loyalty Buyers in 2026</h3>
             <p class="resource-excerpt">Why 2026 is a make-or-break year for loyalty platforms. The loyalty market is projected to grow from roughly fifteen billion dollars.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: API vs Monolithic -->
+        <div class="resource-card" data-category="technology">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Technology</span> • <span>Sept 26, 2025</span></div>
             <h3 class="resource-title">API First vs Monolithic: How Enterprises Should Build Loyalty</h3>
-            <p class="resource-excerpt">Loyalty is infrastructure now. How you architect it determines how fast you scale. Your Loyalty Stack Is Either Holding You Back or Driving You Forward.</p>
+            <p class="resource-excerpt">Loyalty is infrastructure now. How you build it determines how fast you scale. Your Loyalty Stack Is Either Holding You Back or Driving You Forward.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Real-Time Retention -->
+        <div class="resource-card" data-category="cx">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>CX</span> • <span>Sept 19, 2025</span></div>
             <h3 class="resource-title">How Real Time Loyalty Platforms Drive Better Retention</h3>
             <p class="resource-excerpt">Retention is the new growth. Real time loyalty tools like ReactorCX turn customer behavior into instant action.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Let's Talk Loyalty -->
+        <div class="resource-card" data-category="strategy">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>News</span> • <span>Sept 15, 2025</span></div>
             <h3 class="resource-title">Loyalty Methods Featured on Let's Talk Loyalty</h3>
             <p class="resource-excerpt">From Best Kept Secret to Industry Movement. We're delighted to share our journey and vision for the future of loyalty.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: KPIs -->
+        <div class="resource-card" data-category="strategy">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Strategy</span> • <span>Sept 9, 2025</span></div>
             <h3 class="resource-title">Loyalty Program KPIs: The Metrics That Matter Most</h3>
             <p class="resource-excerpt">Loyalty Isn't a Feel-Good Metric. It's a Financial One. Punch cards are dead. Vanity dashboards? Useless.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: API First Winning -->
+        <div class="resource-card" data-category="technology">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Technology</span> • <span>Sept 2, 2025</span></div>
             <h3 class="resource-title">Why API First Loyalty Platforms Are Winning</h3>
             <p class="resource-excerpt">Composable loyalty is here. If your system is not built API first, you are already behind. Legacy Platforms Were Built for Yesterday.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Headless -->
+        <div class="resource-card" data-category="technology">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>Technology</span> • <span>Aug 26, 2025</span></div>
             <h3 class="resource-title">Headless Loyalty Platforms: One Engine, Every Touchpoint</h3>
             <p class="resource-excerpt">Build loyalty that fits your stack. Not the other way around. Loyalty Is Not a Tool Anymore. It Is Infrastructure.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Fuel & C-Store -->
+        <div class="resource-card" data-category="cx">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>CX</span> • <span>Aug 12, 2025</span></div>
             <h3 class="resource-title">10 Methods Powering Loyalty In Fuel & Convenience</h3>
             <p class="resource-excerpt">How high-frequency retail environments use speed and personalization to drive habit formation.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="resource-card">
+        <!-- Article: Hotel & Gaming -->
+        <div class="resource-card" data-category="cx">
           <div class="resource-thumb">
             <span class="content-badge badge-article">Article</span>
-            <div style="width:100%; height:100%; background: #f3f4f6;"></div>
+            <div class="resource-thumb-placeholder"></div>
           </div>
           <div class="resource-body">
             <div class="resource-meta"><span>CX</span> • <span>July 9, 2025</span></div>
             <h3 class="resource-title">10 Loyalty Methods Powering Hotel & Gaming Programs</h3>
             <p class="resource-excerpt">Deep dive into the complex world of hospitality loyalty and how to manage high-value guests.</p>
             <div class="resource-footer">
-              <a href="#" class="read-more-link">Read Article →</a>
+              <a href="#" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </div>
         </div>
@@ -537,38 +870,134 @@
   </section>
 
 
-  <section class="section section-white py-20">
+  <!-- ========== FINAL CTA ========== -->
+  <section class="section-light bg-light" style="padding-bottom: var(--space-24); margin-bottom: 0;">
     <div class="container">
       <div class="cta-box-light">
-        <h2 class="text-3xl font-bold text-dark mb-4">We solve the hardest loyalty problems in production.</h2>
-        <p class="text-muted mb-8 text-lg">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">We solve the hardest loyalty problems in production.</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
           See how enterprise teams modernize loyalty without disrupting what already works.
         </p>
-        <a href="about-contact.html" class="btn btn-primary btn-lg">Our Approach to Modernization</a>
+        <div class="flex gap-4">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Our Approach to Modernization</a>
+        </div>
       </div>
     </div>
   </section>
 
 
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
+        
+        <!-- Brand Column -->
         <div class="footer-brand">
-          <div class="footer-logo-placeholder"></div>
-          <p class="footer-tagline">Build loyalty.<br>Drive growth.</p>
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <div><h4 class="footer-column-title">Product</h4><ul class="footer-links"><li><a href="#" class="footer-link">Platform</a></li></ul></div>
-        <div><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="footer-bottom"><p class="footer-copyright">© 2025 Loyalty Platform.</p></div>
     </div>
   </footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script>
+    // Header scroll effect
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) { header.classList.add('scrolled'); } 
-      else { header.classList.remove('scrolled'); }
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Filter functionality
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const resourceCards = document.querySelectorAll('.resource-card');
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        // Update active pill
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const filter = pill.dataset.filter;
+
+        // Filter cards
+        resourceCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
   </script>
 </body>
