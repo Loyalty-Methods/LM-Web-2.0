@@ -495,6 +495,31 @@
       }
     }
 
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .stat-number {
+      font-size: var(--font-size-4xl, 2.5rem);
+      font-weight: var(--font-weight-bold, 700);
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .stat-title {
+      font-size: var(--font-size-sm, 0.875rem);
+      font-weight: var(--font-weight-bold, 700);
+      color: #FFFFFF;
+    }
+
+    .stat-subtitle {
+      font-size: var(--font-size-xs, 0.75rem);
+      color: var(--color-gray-400);
+      font-style: italic;
+    }
+
     /* -------------------------------------------------------------------------
        SECTION DESCRIPTION
        ------------------------------------------------------------------------- */
@@ -611,7 +636,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -815,7 +840,7 @@
           </h1>
 
           <p class="subpage-hero-description">
-            Define how members earn, spend, and progress through your program. Configure earn rules, burn rules, tier logic, and promotion mechanics through a structured rules engine.
+            Control how members earn, spend, and progress without rebuilding your program every quarter. Configure earn rules, burn rules, tier logic, and promotion mechanics in a structured rules engine your team can operate directly.
           </p>
 
           <div class="subpage-hero-cta">
@@ -887,7 +912,7 @@
                     </div>
                     <div class="interface-rule-info">
                       <div class="interface-rule-name">Base Earn Rate</div>
-                      <div class="interface-rule-meta">All purchases • All members</div>
+                      <div class="interface-rule-meta">All purchases â€¢ All members</div>
                     </div>
                     <div class="interface-rule-value">1x</div>
                   </div>
@@ -901,7 +926,7 @@
                     </div>
                     <div class="interface-rule-info">
                       <div class="interface-rule-name">Gold Tier Multiplier</div>
-                      <div class="interface-rule-meta">Gold members • All channels</div>
+                      <div class="interface-rule-meta">Gold members â€¢ All channels</div>
                     </div>
                     <div class="interface-rule-value">2x</div>
                   </div>
@@ -914,7 +939,7 @@
                     </div>
                     <div class="interface-rule-info">
                       <div class="interface-rule-name">Weekend Bonus</div>
-                      <div class="interface-rule-meta">Sat-Sun • Select locations</div>
+                      <div class="interface-rule-meta">Sat-Sun â€¢ Select locations</div>
                     </div>
                     <div class="interface-rule-value">3x</div>
                   </div>
@@ -958,7 +983,7 @@
             </div>
             <h3 class="card-title">Who</h3>
           </div>
-          <p class="card-body">Target by member attributes, tier, segment, preferences, or status.</p>
+          <p class="card-body"><strong>Target the right members.</strong> Filter by attributes, tier, segment, preferences, or status.</p>
         </div>
 
         <!-- Card 2: Where -->
@@ -972,7 +997,7 @@
             </div>
             <h3 class="card-title">Where</h3>
           </div>
-          <p class="card-body">Filter by location, brand, category, or outlet list.</p>
+          <p class="card-body"><strong>Apply rules where they matter.</strong> Filter by location, brand, category, or outlet list.</p>
         </div>
 
         <!-- Card 3: When -->
@@ -986,7 +1011,7 @@
             </div>
             <h3 class="card-title">When</h3>
           </div>
-          <p class="card-body">Control by effective dates, day of week, hour of day, or time zone.</p>
+          <p class="card-body"><strong>Control timing precisely.</strong> Set effective dates, day of week, hour of day, or time zone.</p>
         </div>
 
         <!-- Card 4: What -->
@@ -999,7 +1024,7 @@
             </div>
             <h3 class="card-title">What</h3>
           </div>
-          <p class="card-body">Define by product, service, activity type, or transaction attribute.</p>
+          <p class="card-body"><strong>Define what triggers the rule.</strong> Product, service, activity type, or transaction attribute.</p>
         </div>
 
       </div>
@@ -1033,15 +1058,15 @@
             </svg>
             Earning Logic
           </span>
-          <h2 class="feature-row-title">Define How Value Enters the Program</h2>
+          <h2 class="feature-row-title">Reward the Right Behavior in Real Time</h2>
           <p class="feature-row-description">
-            Configure base earn rates, bonus multipliers, and conditional logic for any activity type. Every earn event creates a traceable accrual record with full lineage.
+            Configure base earn rates, bonus multipliers, and conditional logic for any activity type. <strong>Balances update in real time</strong> across all channels. Every earn event creates a <strong>traceable accrual record</strong> with full lineage.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Base rates by spend, visit, stay, or custom metric</li>
-            <li class="feature-row-list-item">Multipliers by tier, segment, location, or time window</li>
-            <li class="feature-row-list-item">Partner earn rules with separate attribution</li>
-            <li class="feature-row-list-item">Real-time balance updates across all channels</li>
+            <li class="feature-row-list-item"><strong>Base rates</strong> by spend, visit, stay, or custom metric</li>
+            <li class="feature-row-list-item"><strong>Multipliers</strong> by tier, segment, location, or time window</li>
+            <li class="feature-row-list-item"><strong>Partner earn rules</strong> with separate attribution</li>
+            <li class="feature-row-list-item"><strong>Real-time balance updates</strong> across all channels</li>
           </ul>
           <div class="feature-row-cta">
             <a href="about-contact.html" class="btn btn-dark">See It in Action &rarr;</a>
@@ -1077,15 +1102,15 @@
             </svg>
             Redemption Logic
           </span>
-          <h2 class="feature-row-title">Control How Value Gets Used</h2>
+          <h2 class="feature-row-title">Protect Value While Making Redemption Easy</h2>
           <p class="feature-row-description">
-            Define redemption rules, burn order, and consumption logic. Track every redemption back to the original accrual for finance-grade traceability.
+            Define redemption rules, burn order, and consumption logic. <strong>Track every redemption back to the original accrual.</strong> Finance teams get <strong>full traceability</strong>. Members get a <strong>clean experience</strong>.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item">Burn rules by reward type, location, or channel</li>
-            <li class="feature-row-list-item">FIFO or custom burn order by tag, category, or recency</li>
-            <li class="feature-row-list-item">Escrow and deferred redemption patterns</li>
-            <li class="feature-row-list-item">Full lineage from redemption to original earn</li>
+            <li class="feature-row-list-item"><strong>Burn rules</strong> by reward type, location, or channel</li>
+            <li class="feature-row-list-item"><strong>FIFO or custom burn order</strong> by tag, category, or recency</li>
+            <li class="feature-row-list-item"><strong>Escrow and deferred redemption</strong> patterns</li>
+            <li class="feature-row-list-item"><strong>Full lineage</strong> from redemption to original earn</li>
           </ul>
           <div class="feature-row-cta">
             <a href="about-contact.html" class="btn btn-dark">Explore Redemption &rarr;</a>
@@ -1103,20 +1128,21 @@
        ======================================== -->
   <section class="section dark bg-dark">
     <div class="container">
+      <p class="text-center body-sm mb-6" style="color: #9A9A9A;">Program complexity at enterprise scale:</p>
       <div class="stats-bar-3">
         <div class="stat-item">
           <div class="stat-number">400+</div>
-          <div class="stat-title">Active Promotions</div>
+          <div class="stat-title"><strong>Active Promotions</strong></div>
           <div class="stat-subtitle">Refreshed every 6 weeks</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">16</div>
-          <div class="stat-title">Program Variants</div>
+          <div class="stat-title"><strong>Program Variants</strong></div>
           <div class="stat-subtitle">Single platform</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">6</div>
-          <div class="stat-title">Lines of Business</div>
+          <div class="stat-title"><strong>Lines of Business</strong></div>
           <div class="stat-subtitle">Unified tier logic</div>
         </div>
       </div>
@@ -1167,21 +1193,22 @@
             </div>
             <h3 class="card-title">Qualification Logic</h3>
           </div>
-          <p class="card-body">Progress on spend, visits, nights, or any custom metric.</p>
+          <p class="card-body"><strong>Qualify members</strong> on spend, visits, nights, or any custom metric you define.</p>
         </div>
         
-        <!-- Card 2: Automatic Progression -->
+        <!-- Card 2: Status Matching -->
         <div class="card">
           <div class="icon-feature-header">
             <div class="icon-feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <polyline points="17 11 19 13 23 9"></polyline>
               </svg>
             </div>
-            <h3 class="card-title">Automatic Progression</h3>
+            <h3 class="card-title">Status Matching</h3>
           </div>
-          <p class="card-body">Tier upgrades trigger when thresholds are met. No batch jobs.</p>
+          <p class="card-body"><strong>Grant elite status</strong> to new members in the program to match the status they already hold with a competitor.</p>
         </div>
         
         <!-- Card 3: Grace Periods -->
@@ -1195,7 +1222,7 @@
             </div>
             <h3 class="card-title">Grace Periods</h3>
           </div>
-          <p class="card-body">Soft-landing demotion rules and requalification windows.</p>
+          <p class="card-body"><strong>Reduce churn</strong> with soft-landing demotion rules and requalification windows.</p>
         </div>
         
         <!-- Card 4: Tier Benefits -->
@@ -1208,7 +1235,7 @@
             </div>
             <h3 class="card-title">Tier Benefits</h3>
           </div>
-          <p class="card-body">Multipliers, perks, and exclusive access tied to status.</p>
+          <p class="card-body"><strong>Multipliers, perks, and exclusive access</strong> tied to status.</p>
         </div>
         
         <!-- Card 5: Hidden Tiers -->
@@ -1222,7 +1249,7 @@
             </div>
             <h3 class="card-title">Hidden Tiers</h3>
           </div>
-          <p class="card-body">Invite-only or surprise-and-delight tiers tracked but not visible to members.</p>
+          <p class="card-body"><strong>Invite-only or surprise-and-delight tiers</strong> tracked but not visible to members.</p>
         </div>
         
         <!-- Card 6: Tier Accelerators -->
@@ -1235,7 +1262,7 @@
             </div>
             <h3 class="card-title">Tier Accelerators</h3>
           </div>
-          <p class="card-body">Short-term challenges that award bonus tier credit.</p>
+          <p class="card-body"><strong>Accelerate progression</strong> with short-term challenges that award bonus tier credit.</p>
         </div>
         
       </div>
@@ -1252,7 +1279,7 @@
       <div class="cta-box-light">
         <h2 class="cta-title">Advanced Tooling for Complex Programs</h2>
         <p class="cta-description">
-          Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.
+          Launch new rules faster. Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.
         </p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
           <a href="feature-advanced-tools.html" class="btn btn-primary btn-lg">
@@ -1292,7 +1319,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Yes. Our SafeSwitch™ migration methodology includes a comprehensive rules audit and conversion process. We analyze your existing earn, burn, and tier logic, then recreate it in RCX with full validation testing before cutover. Most clients find they can also simplify and consolidate rules during migration.</p>
+                <p>Yes. Our SafeSwitchâ„¢ migration methodology includes a comprehensive rules audit and conversion process. We analyze your existing earn, burn, and tier logic, then recreate it in RCX with full validation testing before cutover. Most clients find they can also simplify and consolidate rules during migration.</p>
               </div>
             </div>
           </div>
@@ -1318,7 +1345,8 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Absolutely. RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rules—all within a single platform instance with unified member profiles. This is how we support clients with 16+ program variants on one platform.</p>
+                <p>RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rulesâ€”all within a single platform instance with unified member profiles. </p>
+                <p style="margin-top: 1rem;">Access controls ensure each team only sees and edits their own rules, while shared components (like base tier benefits) can be inherited across programs. This is how we support clients with 16+ program variants on one platform.</p>
               </div>
             </div>
           </div>
@@ -1331,7 +1359,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>FlowComposer's execution engine uses explicit priority ordering to resolve conflicts deterministically. You define which rules take precedence, and the system follows that order every time. No surprises, no race conditions. Built-in conflict detection warns you during configuration if new rules might overlap with existing ones.</p>
+                <p>RCX's rule engine uses explicit priority ordering to resolve conflicts deterministically. You define which rules take precedence, and the system follows that order every time. No surprises, no race conditions. Flow Composer determines the correct order of operations for different engagement paths customers can take. The audit log shows exactly which rules fired for any transaction, making troubleshooting straightforward.</p>
               </div>
             </div>
           </div>
@@ -1344,7 +1372,7 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>As granular as your business needs. Qualify members based on any combination of metrics: total spend, visit frequency, specific product purchases, partner transactions, engagement activities, or custom-defined behaviors. Time windows are fully configurable—calendar year, rolling 12 months, membership anniversary, or custom periods.</p>
+                <p>As granular as your business needs. Qualify members based on any combination of metrics: total spend, visit frequency, specific product purchases, partner transactions, engagement activities, or custom-defined behaviors. Time windows are fully configurableâ€”calendar year, rolling 12 months, membership anniversary, or custom periods.</p>
               </div>
             </div>
           </div>
