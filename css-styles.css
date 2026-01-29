@@ -1272,16 +1272,6 @@ a.card {
   margin-bottom: var(--space-4);
 }
 
-.testimonial-card-logo {
-  height: 28px;
-  width: auto;
-  max-width: 80px;
-  object-fit: contain;
-  margin-bottom: var(--space-4);
-  border-radius: var(--radius-sm);
-  align-self: flex-start;
-}
-
 .testimonial-card-quote {
   font-size: var(--font-size-lg);
   font-style: italic;

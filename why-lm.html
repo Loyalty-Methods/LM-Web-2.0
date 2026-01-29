@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Loyalty Methods? | Enterprise Loyalty Platform</title>
+  
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css-styles.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES: Why LM
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       HERO SECTION
+       ------------------------------------------------------------------------- */
+    .why-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: var(--grad-charcoal-premium);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-24) 0;
+      padding-top: calc(var(--space-24) + 80px);
+    }
+
+    .why-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .why-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .why-hero-eyebrow {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-4);
+    }
+
+    .why-hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: var(--font-weight-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+
+    .why-hero-title .highlight {
+      background: var(--grad-orange-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .why-hero-description {
+      font-size: var(--font-size-xl);
+      color: #B0B0B0;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .why-hero {
+        min-height: auto;
+        padding: var(--space-16) 0;
+        padding-top: calc(var(--space-16) + 80px);
+      }
+      
+      .why-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       SECTION HEADERS
+       ------------------------------------------------------------------------- */
+    .section-header-centered {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .section-header-centered .section-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-3);
+    }
+
+    .section-header-centered h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-3);
+    }
+
+    .section-header-centered .section-subtitle {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Dark section header */
+    .section.dark .section-header-centered h2 {
+      color: var(--color-white);
+    }
+
+    .section.dark .section-header-centered .section-subtitle {
+      color: #9A9A9A;
+    }
+
+    /* -------------------------------------------------------------------------
+       STATS BAR
+       ------------------------------------------------------------------------- */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+    }
+    
+    @media (max-width: 1024px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-bar {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .stat-number {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: 1;
+    }
+    
+    .stat-title {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-white);
+    }
+    
+    .stat-subtitle {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      font-style: italic;
+    }
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS (Zig-Zag Layout)
+       ------------------------------------------------------------------------- */
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-16);
+      padding: var(--space-16) 0;
+    }
+
+    .feature-row + .feature-row {
+      border-top: 1px solid var(--color-gray-100);
+    }
+
+    .feature-row.reverse .feature-content { order: 2; }
+    .feature-row.reverse .feature-media { order: 1; }
+
+    @media (max-width: 768px) {
+      .feature-row,
+      .feature-row.reverse {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      .feature-row.reverse .feature-content { order: 1; }
+      .feature-row.reverse .feature-media { order: 2; }
+    }
+
+    .feature-label {
+      display: inline-block;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .feature-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+
+    /* -------------------------------------------------------------------------
+       TESTIMONIALS - 4 Column Grid (Light Background, No Title)
+       ------------------------------------------------------------------------- */
+    .testimonials-section {
+      padding: var(--space-12) 0;
+      background: transparent;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 1200px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+    }
+
+    .testimonial-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(243, 112, 33, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-logo {
+      height: 28px;
+      width: auto;
+      margin-bottom: var(--space-4);
+      opacity: 0.7;
+    }
+
+    .testimonial-logo-placeholder {
+      width: 100px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-4);
+    }
+
+    .testimonial-quote {
+      font-size: var(--font-size-base);
+      font-style: italic;
+      color: var(--color-white);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+      flex-grow: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+    }
+
+    .testimonial-author-name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-white);
+    }
+
+    .testimonial-author-title {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+    }
+
+    /* -------------------------------------------------------------------------
+       INDUSTRY CARDS SECTION
+       ------------------------------------------------------------------------- */
+    .industry-section {
+      padding: var(--space-20) 0;
+      background: var(--color-white);
+    }
+
+    .industry-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .industry-header-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-3);
+    }
+
+    .industry-header-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-4);
+    }
+
+    .industry-header-description {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 1200px) {
+      .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .industry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .industry-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+
+    .industry-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-navy);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .industry-card-category {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
+    }
+
+    .industry-card-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: var(--space-3);
+    }
+
+    .industry-card-intro {
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
+      font-style: italic;
+      margin-bottom: var(--space-4);
+    }
+
+    .industry-card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .industry-card-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      margin-bottom: var(--space-2);
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .industry-card-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    /* -------------------------------------------------------------------------
+       SECURITY SPOTLIGHT (Forrester-style card)
+       ------------------------------------------------------------------------- */
+    .security-spotlight {
+      padding: var(--space-20) 0;
+      background: linear-gradient(180deg, #F5F5F5 0%, var(--color-white) 100%);
+    }
+
+    .security-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .security-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    @media (max-width: 768px) {
+      .security-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .security-visual {
+      background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-12);
+    }
+
+    .security-visual-icon {
+      width: 120px;
+      height: 120px;
+      stroke: rgba(255, 255, 255, 0.8);
+      stroke-width: 1.5;
+    }
+
+    .security-content {
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .security-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .security-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .security-description {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-400);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .security-cta {
+      margin-top: auto;
+    }
+
+    /* -------------------------------------------------------------------------
+       BOTTOM CTA
+       ------------------------------------------------------------------------- */
+    .bottom-cta-section {
+      padding: var(--space-20) 0;
+      background: #F5F5F5;
+    }
+
+    .bottom-cta-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      box-shadow: var(--shadow-lg);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .bottom-cta-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-main);
+      margin-bottom: var(--space-4);
+    }
+
+    .bottom-cta-description {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 640px) {
+      .bottom-cta-card {
+        padding: var(--space-8);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column" style="grid-column: span 2;">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="resource-center.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="why-hero">
+    <div class="container">
+      <div class="why-hero-content">
+        <p class="why-hero-eyebrow">Why Loyalty Methods?</p>
+        <h1 class="why-hero-title">
+          Our Track Record <span class="highlight">Speaks for Itself</span>
+        </h1>
+        <p class="why-hero-description">
+          Hundreds of millions of members migrated with zero downtime—powering measurable growth, stronger retention, and loyalty programs that actually perform.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== LOYALTY IS ENTERPRISE INFRASTRUCTURE ========== -->
+  <section class="section section-lg section-light bg-light">
+    <div class="container">
+      <div class="section-header-centered">
+        <h2>Loyalty Is Enterprise Infrastructure</h2>
+        <p class="section-subtitle">We architected ReactorCX for that reality.</p>
+      </div>
+      
+      <div class="grid grid-3">
+        
+        <!-- Card 1: Real-Time, Always -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Real-Time, Always</h3>
+          </div>
+          <p class="card-body">Real time is always a better member experience. We signal you the moment something happens so your brand can respond while the moment still matters. Points land. Offers appear. Members feel recognized. That's how you move beyond discounts and dormant point balances to emotional resonance that drives retention.</p>
+        </div>
+        
+        <!-- Card 2: Zero Downtime -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Zero Downtime</h3>
+          </div>
+          <p class="card-body">Trust is built in moments. Zero downtime since October 2018 across 30,000+ locations means you never miss one. Peak holiday traffic, major promotions, member surges. Zero degradation. Every engagement captured. Every interaction reinforced. Reliability your members feel, even when they don't notice.</p>
+        </div>
+        
+        <!-- Card 3: The Team -->
+        <div class="card">
+          <div class="icon-feature-header">
+            <div class="icon-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">The Team</h3>
+          </div>
+          <p class="card-body">We don't just throw an API at you and hope your program succeeds. Our priority is understanding the full picture. We understand your full stack, work with you hand in hand, and make sure the whole system works together—not just our platform.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== STATS BAR + TESTIMONIALS ========== -->
+  <section class="section dark bg-dark">
+    <div class="container">
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">25M+</div>
+          <div class="stat-title">Daily Real-Time Requests</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5×</div>
+          <div class="stat-title">Average Basket Value</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">75M</div>
+          <div class="stat-title">Average Daily Transactions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+80%</div>
+          <div class="stat-title">Repeat Purchase Rate</div>
+        </div>
+      </div>
+
+      <!-- Testimonials Grid (No Title, No Avatars) -->
+      <div class="testimonials-section">
+        <div class="testimonials-grid">
+          
+          <!-- Testimonial 1: Western Union -->
+          <div class="testimonial-card">
+            <div class="testimonial-logo-placeholder"></div>
+            <p class="testimonial-quote">"LM's focus on innovation, agility, and successful, seamless delivery has made a massive difference in our efforts."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-name">Lucy Donaldson</div>
+              <div class="testimonial-author-title">Head Loyalty, Martech & Consumer Ecosystems, Western Union</div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2: 7-Eleven -->
+          <div class="testimonial-card">
+            <div class="testimonial-logo-placeholder"></div>
+            <p class="testimonial-quote">"They are experts in their space and provide excellent solutions, creativity and out of the box thinking."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-name">Steve Kinch</div>
+              <div class="testimonial-author-title">Innovation Leader, 7-Eleven</div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3: MGM -->
+          <div class="testimonial-card">
+            <div class="testimonial-logo-placeholder"></div>
+            <p class="testimonial-quote">"Thank you LM & ReactorCX for your contributions. You are essential members of our team, and we are glad to have you."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-name">Gregor Purdy</div>
+              <div class="testimonial-author-title">Executive Director, Loyalty Systems, MGM</div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 4: Placeholder -->
+          <div class="testimonial-card">
+            <div class="testimonial-logo-placeholder"></div>
+            <p class="testimonial-quote">"ReactorCX has transformed how we think about loyalty. The platform's flexibility lets us innovate faster than our competitors."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-name">Client Name</div>
+              <div class="testimonial-author-title">Title, Company</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== BUILT FOR COMPLEXITY (Zig-Zag) ========== -->
+  <section class="section section-light bg-white">
+    <div class="container">
+      
+      <!-- Row 1: Built for Complexity -->
+      <div class="feature-row">
+        <div class="feature-content">
+          <span class="feature-label">Built for Complexity</span>
+          <h2 class="feature-title">One Engine. Any Structure.</h2>
+          <p class="feature-description">Multi-brand. Multi-region. Multi-LOB. Multi-operator. The more complex your program, the better we perform.</p>
+          <ul class="feature-list">
+            <li>Track liability by business unit so finance knows exactly who earned and who burned</li>
+            <li>Attribute points by source for clean partner settlement and accurate P&L</li>
+            <li>Run different earning rules by location, channel, or brand without duplicate systems</li>
+            <li>Give franchisees autonomy to run local promotions while corporate retains control</li>
+          </ul>
+        </div>
+        <div class="feature-media">
+          <div class="feature-image-placeholder">[Multi-brand program architecture visual]</div>
+        </div>
+      </div>
+      
+      <!-- Row 2: Personalization (Reversed) -->
+      <div class="feature-row reverse">
+        <div class="feature-content">
+          <span class="feature-label">Personalization</span>
+          <h2 class="feature-title">Beyond Segments. Down to the Individual.</h2>
+          <p class="feature-description">Segments group people who aren't the same. We personalize promotion parameters, not just eligibility. That's how a program becomes one to one.</p>
+          <ul class="feature-list">
+            <li>Tailor spend targets to individual appetite so every member sees a goal they can hit</li>
+            <li>Filter offers by real-time location so members only see what's relevant right now</li>
+            <li>Show the full rewards catalog including locked items with unlock messaging that drives progression</li>
+            <li>Personalize promotion parameters per member so two people in the same tier get different experiences</li>
+          </ul>
+        </div>
+        <div class="feature-media">
+          <div class="feature-image-placeholder">[Individual member profile visual]</div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <!-- ========== ONE ENGINE. ANY INDUSTRY. ========== -->
+  <section class="industry-section">
+    <div class="container">
+      <div class="industry-header">
+        <span class="industry-header-eyebrow">Cross-Industry Platform</span>
+        <h2 class="industry-header-title">One Engine. Any Industry.</h2>
+        <p class="industry-header-description">RCX powers programs across fuel, hospitality, gaming, retail, financial services, and more. The same platform handles fleet programs at the pump and VIP tiers on the casino floor.</p>
+      </div>
+      
+      <div class="industry-grid">
+        
+        <!-- Fuel & C-Store -->
+        <div class="industry-card">
+          <span class="industry-card-category">Fuel & C-Store</span>
+          <h3 class="industry-card-title">Fuel & C-Store</h3>
+          <p class="industry-card-intro">Print loyalty earns on receipts and CFD displays in real time.</p>
+          <ul class="industry-card-list">
+            <li>Cross-sell logic drives fuel customers into the store</li>
+            <li>Fleet and consumer programs run side by side with separate rules</li>
+            <li>Frequency clubs, trip-builders, and streaks drive repeat visits</li>
+            <li>Dedicated fleet portals for account management</li>
+          </ul>
+        </div>
+        
+        <!-- Hospitality & Gaming -->
+        <div class="industry-card">
+          <span class="industry-card-category">Hospitality & Gaming</span>
+          <h3 class="industry-card-title">Hospitality & Gaming</h3>
+          <p class="industry-card-intro">Integrates with IGT Patron, Konami Synkros, and BetMGM.</p>
+          <ul class="industry-card-list">
+            <li>Real-time earn across slots, tables, sportsbook, F&B, spa, retail</li>
+            <li>Unified player wallet consolidates points, tiers, and promotions</li>
+            <li>Status match challenges for competitive acquisition</li>
+            <li>Foldering separates property-level control from enterprise rules</li>
+          </ul>
+        </div>
+        
+        <!-- Retail -->
+        <div class="industry-card">
+          <span class="industry-card-category">Retail</span>
+          <h3 class="industry-card-title">Retail</h3>
+          <p class="industry-card-intro">Rewards trigger instantly at register or online.</p>
+          <ul class="industry-card-list">
+            <li>Deferred earn handles returns before points post</li>
+            <li>Multi-region structures with no rip-and-replace required</li>
+            <li>Business users manage offers and segments without IT</li>
+            <li>SafeSwitch migrates programs without disrupting current systems</li>
+          </ul>
+        </div>
+        
+        <!-- Fashion & Apparel -->
+        <div class="industry-card">
+          <span class="industry-card-category">Fashion & Apparel</span>
+          <h3 class="industry-card-title">Fashion & Apparel</h3>
+          <p class="industry-card-intro">Rewards behavior beyond the cart.</p>
+          <ul class="industry-card-list">
+            <li>Track and reward browsing, wishlisting, try-ons, and social sharing</li>
+            <li>Multi-brand programs with separate rules per banner</li>
+            <li>ThreadSync mirrors production before launch</li>
+            <li>Adapts to seasonal launches and promotional calendars</li>
+          </ul>
+        </div>
+        
+        <!-- Cruise Lines -->
+        <div class="industry-card">
+          <span class="industry-card-category">Cruise Lines</span>
+          <h3 class="industry-card-title">Cruise Lines</h3>
+          <p class="industry-card-intro">Unified wallets follow guests from ship to ship.</p>
+          <ul class="industry-card-list">
+            <li>Real-time earn across dining, spa, entertainment, excursions, retail</li>
+            <li>Multi-currency and multi-language support across departure ports</li>
+            <li>SafeSwitch deploys without disrupting daily operations</li>
+            <li>Streaks, milestones, and tier races drive onboard engagement</li>
+          </ul>
+        </div>
+        
+        <!-- Airlines -->
+        <div class="industry-card">
+          <span class="industry-card-category">Airlines</span>
+          <h3 class="industry-card-title">Airlines</h3>
+          <p class="industry-card-intro">Two decades of airline loyalty experience.</p>
+          <ul class="industry-card-list">
+            <li>Rewards for in-flight purchases, baggage, upgrades, and partner spend</li>
+            <li>Family and group travel tiers with cumulative benefits</li>
+            <li>Coalition partner integrations with real-time accrual</li>
+            <li>Ancillary revenue programs run alongside core FFP</li>
+          </ul>
+        </div>
+        
+        <!-- Financial Services -->
+        <div class="industry-card">
+          <span class="industry-card-category">Financial Services</span>
+          <h3 class="industry-card-title">Financial Services</h3>
+          <p class="industry-card-intro">Rewards savings, investments, and everyday banking.</p>
+          <ul class="industry-card-list">
+            <li>Tiered benefits escalate at spending thresholds</li>
+            <li>Gamified savings challenges drive long-term engagement</li>
+            <li>Co-brand card integrations track partner spend in real time</li>
+            <li>Milestone rewards for financial planning behaviors</li>
+          </ul>
+        </div>
+        
+        <!-- Telecommunications -->
+        <div class="industry-card">
+          <span class="industry-card-category">Telecommunications</span>
+          <h3 class="industry-card-title">Telecommunications</h3>
+          <p class="industry-card-intro">Engage subscribers between billing cycles.</p>
+          <ul class="industry-card-list">
+            <li>Tenure-based tiers reward longevity, not just spend</li>
+            <li>Gamification drives app usage, referrals, and profile completion</li>
+            <li>API-first integration with BSS, CRM, and billing systems</li>
+            <li>Real-time notifications for points, rewards, and tier progress</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== ENTERPRISE SECURITY (Forrester-style) ========== -->
+  <section class="security-spotlight">
+    <div class="container">
+      <div class="security-card">
+        <div class="security-inner">
+          <div class="security-visual">
+            <svg class="security-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="security-content">
+            <span class="security-eyebrow">Enterprise Security</span>
+            <h2 class="security-title">The Highest Standard. No Exceptions.</h2>
+            <p class="security-description">Your security team will ask. We're ready. SOC 2 Type II certified with annual audits and third-party penetration testing. We've been through enterprise procurement before.</p>
+            <div class="security-cta">
+              <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="cta-link">View Security & Compliance <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== BOTTOM CTA ========== -->
+  <section class="bottom-cta-section">
+    <div class="container">
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">Ready to See It in Action?</h2>
+        <p class="bottom-cta-description">
+          Whether you're launching a new program or migrating an existing one, our team understands complex enterprise environments. See how ReactorCX fits your stack.
+        </p>
+        <div class="flex gap-4" style="justify-content: center;">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Demo</a>
+          <a href="resource-center.html" class="btn btn-secondary btn-lg" style="border-color: var(--color-gray-100); color: var(--text-main);">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
