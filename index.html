@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loyalty Methods | Enterprise Loyalty Platform</title>
   
-  <!-- OLD CSS (Commented Out) -->
-  <!-- <link rel="stylesheet" href="loyalty-theme-structure.css"> -->
-  
   <!-- NEW MODULAR CSS SYSTEM -->
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="css-styles.css">
@@ -17,7 +14,236 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Homepage-specific styles for 4-stat layout */
+    /* ============================================
+       CINEMATIC HERO - Full Bleed with Motion
+       ============================================ */
+    .hero-cinematic {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #1A1A1A;
+    }
+    
+    /* Background Image with Ken Burns Effect */
+    .hero-cinematic-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    
+    .hero-cinematic-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: kenBurns 30s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+    
+    @keyframes kenBurns {
+      0% {
+        transform: scale(1) translateX(0);
+      }
+      100% {
+        transform: scale(1.08) translateX(-2%);
+      }
+    }
+    
+    /* Gradient Overlays for Text Legibility */
+    .hero-cinematic-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      /* Left-side gradient for text area */
+      background: linear-gradient(
+        90deg,
+        rgba(26, 26, 26, 0.95) 0%,
+        rgba(26, 26, 26, 0.85) 25%,
+        rgba(26, 26, 26, 0.4) 50%,
+        transparent 70%
+      );
+    }
+    
+    /* Bottom fade to white for seamless transition */
+    .hero-cinematic-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      z-index: 3;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        #FFFFFF 100%
+      );
+      pointer-events: none;
+    }
+    
+    /* Glass shine overlay */
+    .hero-cinematic::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 4;
+    }
+    
+    /* Content positioning */
+    .hero-cinematic .container {
+      position: relative;
+      z-index: 10;
+      padding-top: 120px;
+      padding-bottom: 160px;
+    }
+    
+    .hero-cinematic-content {
+      max-width: 600px;
+    }
+    
+    .hero-cinematic-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(243, 112, 33, 0.1);
+      border-radius: 100px;
+      border: 1px solid rgba(243, 112, 33, 0.2);
+    }
+    
+    .hero-cinematic-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-cinematic-title .highlight {
+      color: var(--color-primary);
+    }
+    
+    .hero-cinematic-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    
+    .hero-cinematic-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.6;
+      animation: fadeInUp 1s ease 1.5s both;
+    }
+    
+    .scroll-indicator span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .scroll-indicator .mouse {
+      width: 24px;
+      height: 38px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+    
+    .scroll-indicator .mouse::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 0.3; transform: translateX(-50%) translateY(6px); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      to {
+        opacity: 0.6;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .hero-cinematic {
+        min-height: 90vh;
+      }
+      
+      .hero-cinematic-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(26, 26, 26, 0.9) 0%,
+          rgba(26, 26, 26, 0.7) 50%,
+          rgba(26, 26, 26, 0.5) 100%
+        );
+      }
+      
+      .hero-cinematic .container {
+        padding-top: 100px;
+        padding-bottom: 120px;
+      }
+      
+      .hero-cinematic-content {
+        text-align: center;
+        max-width: 100%;
+      }
+      
+      .hero-cinematic-cta {
+        justify-content: center;
+      }
+      
+      .scroll-indicator {
+        bottom: 140px;
+      }
+    }
+    
+    /* ============================================
+       Stats Bar
+       ============================================ */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -57,22 +283,10 @@
       color: #FFFFFF;
     }
     
-    
     .stat-subtitle {
       font-size: var(--font-size-xs, 0.75rem);
       color: var(--color-gray-400);
       font-style: italic;
-    }
-    
-    /* Hero Video */
-    .hero-video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .hero-media {
-      background: transparent;
     }
   </style>
 </head>
@@ -269,28 +483,40 @@
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
+  <!-- ========== CINEMATIC HERO ========== -->
+  <section class="hero-cinematic">
+    <!-- Background Image -->
+    <div class="hero-cinematic-bg">
+      <img src="rcx-hero-connected-systems.png" alt="RCX connecting every customer touchpoint">
+    </div>
+    
+    <!-- Gradient Overlay -->
+    <div class="hero-cinematic-overlay"></div>
+    
+    <!-- Bottom Fade to White -->
+    <div class="hero-cinematic-fade"></div>
+    
+    <!-- Content -->
     <div class="container">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Enterprise Loyalty Platform</p>
-        <h1 class="hero-title">
-          The real-time loyalty engine for enterprise programs.
+      <div class="hero-cinematic-content">
+        <span class="hero-cinematic-eyebrow">Enterprise Loyalty Platform</span>
+        <h1 class="hero-cinematic-title">
+          The real-time loyalty engine for <span class="highlight">enterprise programs.</span>
         </h1>
-        <p class="hero-description">
+        <p class="hero-cinematic-description">
           Engineered to run inside complex systems, connect every customer touchpoint, and accelerate measurable business growth.
         </p>
-        <div class="hero-cta">
+        <div class="hero-cinematic-cta">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Contact Us</a>
+          <a href="tech-api-architecture.html" class="btn btn-secondary btn-lg">Explore Platform</a>
         </div>
       </div>
-      <div class="hero-media hidden-mobile">
-        <video class="hero-video" autoplay muted loop playsinline>
-          <source src="hero-demo.mp4" type="video/mp4">
-        </video>
-      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
@@ -398,7 +624,6 @@
   </section>
 
   <!-- ========== PROVEN IN PRODUCTION ========== -->
-  <!-- CHANGED: section-dark bg-dark -> section dark bg-dark -->
   <section class="section dark bg-dark">
     <div class="container">
       <p class="text-center body-sm mb-6" style="color: #9A9A9A;">Measured outcomes across individual enterprise programs:</p>
@@ -406,22 +631,18 @@
         <div class="stat-item">
           <div class="stat-number">+34%</div>
           <div class="stat-title"><strong>Retention Rate</strong></div>
-          
         </div>
         <div class="stat-item">
           <div class="stat-number">2&#215;</div>
           <div class="stat-title"><strong>Redemption Rate</strong></div>
-          
         </div>
         <div class="stat-item">
           <div class="stat-number">+45%</div>
           <div class="stat-title"><strong>Membership Growth</strong></div>
-          
         </div>
         <div class="stat-item">
           <div class="stat-number">3&#215;</div>
           <div class="stat-title"><strong>Activation Rate</strong></div>
-          
         </div>
       </div>
     </div>
@@ -518,7 +739,6 @@
   </section>
 
   <!-- ========== NEW RCX EXPERIENCE ========== -->
-  <!-- CHANGED: product-tour section-dark -> product-tour section dark -->
   <section class="product-tour section dark">
     <div class="container">
       <div class="product-tour-header">
@@ -581,7 +801,6 @@
       </div>
       <div class="grid grid-3">
         
-        <!-- CHANGED: card card-accent -> card (unified card component) -->
         <a href="proven-threadsync.html" class="card">
           <img src="threadsync-diagram.png" alt="ThreadSync Implementation Methodology - Application Configuration, Batch/NRT Integration, Real-Time Integration, Initial Data Migration" class="card-image">
           <div class="card-body">
@@ -621,7 +840,6 @@
     <div class="container">
       <div class="grid grid-3">
         
-        <!-- CHANGED: resource-card -> card -->
         <article class="card">
           <div class="resource-card-image-placeholder">[Blog Image]</div>
           <div class="card-body">
@@ -810,57 +1028,6 @@
         }
       });
     });
-
-    // Animated number counters
-    const animateCounters = () => {
-      const counters = document.querySelectorAll('.stat-number[data-target]');
-      
-      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
-      
-      const animateCounter = (el) => {
-        const target = parseFloat(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        const prefix = el.dataset.prefix || '';
-        const duration = 2000;
-        const startTime = performance.now();
-        const isDecimal = target % 1 !== 0;
-        
-        const update = (currentTime) => {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easedProgress = easeOutQuart(progress);
-          const current = target * easedProgress;
-          
-          if (isDecimal) {
-            el.textContent = prefix + current.toFixed(1) + suffix;
-          } else {
-            el.textContent = prefix + Math.floor(current) + suffix;
-          }
-          
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
-          }
-        };
-        
-        requestAnimationFrame(update);
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      counters.forEach(counter => observer.observe(counter));
-    };
-    
-    // Initialize counters
-    animateCounters();
   </script>
 </body>
 </html>
