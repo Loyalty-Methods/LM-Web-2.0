@@ -14,95 +14,243 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Resource Center Specific Styles */
-    
-    /* Subpage Hero */
-    .subpage-hero {
-      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
-      background: var(--grad-charcoal-premium);
+    /* ==========================================================================
+       RESOURCE CENTER V2 - PHAEDON-INSPIRED DESIGN
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------
+       1. CINEMATIC HERO
+       ------------------------------------------------------------------------- */
+    .rc-hero {
       position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
       overflow: hidden;
+      padding-top: 80px; /* Header offset */
     }
-    
-    .subpage-hero::before {
+
+    .rc-hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .rc-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    /* Gradient overlay - bottom fade to white */
+    .rc-hero-image::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0.3) 0%,
+        rgba(26, 26, 26, 0.5) 50%,
+        rgba(245, 245, 245, 1) 100%
+      );
     }
-    
-    .subpage-hero .container {
+
+    .rc-hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      width: 100%;
+      padding-bottom: var(--space-16);
     }
-    
-    .subpage-hero-eyebrow {
+
+    .rc-hero-eyebrow {
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-semibold);
       color: var(--color-primary);
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
+      margin-bottom: var(--space-3);
     }
-    
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
+
+    .rc-hero-title {
+      font-size: clamp(3rem, 7vw, 5rem);
       font-weight: var(--font-weight-extrabold);
       color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
     }
-    
-    .subpage-hero-title .highlight {
+
+    .rc-hero-subtitle {
+      font-size: var(--font-size-xl);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .rc-hero {
+        min-height: 50vh;
+      }
+      .rc-hero-content {
+        padding-bottom: var(--space-10);
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       2. FEATURED SPOTLIGHT (Clean, like index.html)
+       ------------------------------------------------------------------------- */
+    .rc-featured {
+      padding: var(--space-16) 0;
+      background: #F5F5F5;
+      margin-top: -1px; /* Seamless connection to hero */
+    }
+
+    .rc-spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .rc-spotlight:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 1024px) {
+      .rc-spotlight {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rc-spotlight-image {
+      position: relative;
+      min-height: 320px;
+      background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+      overflow: hidden;
+    }
+
+    .rc-spotlight-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .rc-spotlight-badge {
+      position: absolute;
+      top: var(--space-5);
+      left: var(--space-5);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-white);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
       color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
+
+    .rc-spotlight-content {
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .rc-spotlight-meta {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .rc-spotlight-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-charcoal-900);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .rc-spotlight-excerpt {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-400);
       line-height: 1.7;
-      max-width: 700px;
+      margin-bottom: var(--space-8);
     }
 
-    /* Filter Bar */
-    .filter-container {
-      margin-bottom: var(--space-10);
-      text-align: center;
+    .rc-spotlight-cta {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
     }
 
-    .filter-pill {
-      display: inline-block;
+    @media (max-width: 768px) {
+      .rc-spotlight-content {
+        padding: var(--space-6);
+      }
+      .rc-spotlight-title {
+        font-size: var(--font-size-2xl);
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       3. FILTER TAB BAR (Like homepage sticky tabs)
+       ------------------------------------------------------------------------- */
+    .rc-filter-section {
+      background: #F5F5F5;
+      padding: var(--space-8) 0;
+      position: sticky;
+      top: 70px;
+      z-index: 100;
+      border-bottom: 1px solid var(--color-gray-100);
+    }
+
+    .rc-filter-bar {
+      display: flex;
+      gap: var(--space-2);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .rc-filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
       padding: var(--space-3) var(--space-5);
-      margin: 0 var(--space-1) var(--space-2);
+      background: var(--color-white);
       border: 1px solid var(--color-gray-100);
       border-radius: var(--radius-full);
-      background: var(--color-white);
-      color: var(--color-gray-400);
+      font-size: var(--font-size-sm);
       font-weight: var(--font-weight-medium);
+      color: var(--color-gray-400);
       cursor: pointer;
       transition: all var(--transition-fast);
-      font-size: var(--font-size-sm);
+      white-space: nowrap;
     }
 
-    .filter-pill:hover {
+    .rc-filter-tab:hover {
       border-color: var(--color-primary);
       color: var(--color-primary);
     }
 
-    .filter-pill.active {
+    .rc-filter-tab.active {
       background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
       border-color: transparent;
       color: var(--color-white);
       position: relative;
       overflow: hidden;
     }
-    
-    .filter-pill.active::before {
+
+    .rc-filter-tab.active::before {
       content: '';
       position: absolute;
       top: 0;
@@ -114,230 +262,160 @@
       border-radius: var(--radius-full) var(--radius-full) 0 0;
     }
 
-    /* Featured Hero Card */
-    .featured-resource {
-      display: grid;
-      grid-template-columns: 1fr;
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-2xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      margin-bottom: var(--space-12);
-      transition: transform var(--transition-base), box-shadow var(--transition-base);
-    }
-
-    .featured-resource:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    @media (min-width: 992px) {
-      .featured-resource {
-        grid-template-columns: 1.2fr 0.8fr;
-        min-height: 400px;
-      }
-    }
-
-    .featured-content {
-      padding: var(--space-10);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      order: 2;
-    }
-
-    @media (min-width: 992px) {
-      .featured-content { order: 1; }
-    }
-    
-    .featured-meta {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      margin-bottom: var(--space-4);
-    }
-    
-    .featured-badge {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      background: rgba(243, 112, 33, 0.1);
-      padding: var(--space-1) var(--space-2);
-      border-radius: var(--radius-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .featured-date {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-    }
-    
-    .featured-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-4);
-      line-height: 1.2;
-      transition: color var(--transition-fast);
-    }
-    
-    .featured-title:hover {
-      color: var(--color-primary);
-    }
-    
-    .featured-excerpt {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .featured-image {
-      background-color: #f3f4f6;
+    .rc-filter-tab-icon {
+      width: 16px;
+      height: 16px;
       position: relative;
-      min-height: 250px;
-      order: 1;
+      z-index: 1;
     }
 
-    @media (min-width: 992px) {
-      .featured-image { order: 2; height: auto; }
+    .rc-filter-tab.active .rc-filter-tab-icon {
+      stroke: var(--color-primary);
     }
 
-    .featured-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-    }
-    
-    .featured-image-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
+    /* -------------------------------------------------------------------------
+       4. CONTENT GRID
+       ------------------------------------------------------------------------- */
+    .rc-content-section {
+      background: #F5F5F5;
+      padding: var(--space-12) 0 var(--space-24);
     }
 
-    /* Resource Card Grid */
-    .resource-grid {
+    .rc-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-8);
     }
-    
+
     @media (max-width: 1024px) {
-      .resource-grid {
+      .rc-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     @media (max-width: 768px) {
-      .resource-grid {
+      .rc-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    /* Resource Card */
-    .resource-card {
+    /* -------------------------------------------------------------------------
+       5. CONTENT CARDS (Clean, minimal Phaedon-inspired)
+       ------------------------------------------------------------------------- */
+    .rc-card {
       background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
       border-radius: var(--radius-xl);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-      height: 100%;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      text-decoration: none;
+      border: 1px solid transparent;
     }
 
-    .resource-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-navy);
-      box-shadow: var(--shadow-card-hover);
+    .rc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(91, 138, 184, 0.15);
+      border-color: var(--color-navy-light);
     }
 
-    .resource-thumb {
-      height: 200px;
-      background-color: #f3f4f6;
+    .rc-card-image {
       position: relative;
-    }
-
-    .resource-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .resource-thumb-placeholder {
-      width: 100%;
-      height: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
     }
 
-    /* Content Badge */
-    .content-badge {
+    .rc-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .rc-card:hover .rc-card-image img {
+      transform: scale(1.05);
+    }
+
+    .rc-card-badge {
       position: absolute;
       top: var(--space-4);
       left: var(--space-4);
       padding: var(--space-1) var(--space-3);
+      background: var(--color-white);
       border-radius: var(--radius-sm);
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: var(--color-white);
-      box-shadow: var(--shadow-sm);
-      z-index: 10;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* Badge Colors */
-    .badge-article { color: #2563EB; border-left: 3px solid #2563EB; }
-    .badge-case-study { color: var(--color-primary); border-left: 3px solid var(--color-primary); }
-    .badge-guide { color: #7C3AED; border-left: 3px solid #7C3AED; }
-    .badge-report { color: var(--color-navy); border-left: 3px solid var(--color-navy); }
+    .rc-card-badge--article { 
+      color: #2563EB; 
+      border-left: 3px solid #2563EB; 
+    }
+    .rc-card-badge--case-study { 
+      color: var(--color-primary); 
+      border-left: 3px solid var(--color-primary); 
+    }
+    .rc-card-badge--report { 
+      color: var(--color-navy); 
+      border-left: 3px solid var(--color-navy); 
+    }
+    .rc-card-badge--podcast { 
+      color: #7C3AED; 
+      border-left: 3px solid #7C3AED; 
+    }
 
-    .resource-body {
+    .rc-card-body {
       padding: var(--space-6);
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    .resource-meta {
+    .rc-card-meta {
       font-size: var(--font-size-xs);
       color: var(--color-gray-400);
-      margin-bottom: var(--space-3);
+      margin-bottom: var(--space-2);
       display: flex;
       align-items: center;
       gap: var(--space-2);
     }
 
-    .resource-title {
+    .rc-card-meta span + span::before {
+      content: '•';
+      margin-right: var(--space-2);
+      opacity: 0.5;
+    }
+
+    .rc-card-title {
       font-size: var(--font-size-lg);
       font-weight: var(--font-weight-bold);
       color: var(--color-charcoal-900);
-      margin-bottom: var(--space-3);
       line-height: 1.4;
+      margin-bottom: var(--space-3);
+      transition: color var(--transition-fast);
     }
 
-    .resource-excerpt {
+    .rc-card:hover .rc-card-title {
+      color: var(--color-primary);
+    }
+
+    .rc-card-excerpt {
       font-size: var(--font-size-sm);
       color: var(--color-gray-400);
-      margin-bottom: var(--space-4);
-      flex: 1; 
+      line-height: 1.6;
+      flex: 1;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      line-height: 1.6;
     }
 
-    .resource-footer {
-      margin-top: auto;
+    .rc-card-footer {
+      margin-top: var(--space-4);
       padding-top: var(--space-4);
       border-top: 1px solid var(--color-gray-100);
       display: flex;
@@ -345,35 +423,84 @@
       justify-content: space-between;
     }
 
-    .read-more-link {
-      font-weight: var(--font-weight-semibold);
+    .rc-card-link {
       font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
       color: var(--color-primary);
-      text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: var(--space-2);
       transition: gap var(--transition-fast);
     }
-    
-    .read-more-link:hover { 
+
+    .rc-card:hover .rc-card-link {
       gap: var(--space-3);
     }
 
-    .download-btn {
+    .rc-card-link svg {
+      transition: transform var(--transition-fast);
+    }
+
+    .rc-card:hover .rc-card-link svg {
+      transform: translateX(4px);
+    }
+
+    /* -------------------------------------------------------------------------
+       6. EMPTY STATE (when no results)
+       ------------------------------------------------------------------------- */
+    .rc-empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: var(--space-16) var(--space-8);
+    }
+
+    .rc-empty-state-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-6);
+      color: var(--color-gray-300);
+    }
+
+    .rc-empty-state-title {
+      font-size: var(--font-size-xl);
       font-weight: var(--font-weight-semibold);
-      font-size: var(--font-size-sm);
-      color: var(--color-primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      transition: color var(--transition-fast);
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-2);
     }
-    
-    .download-btn:hover { 
-      color: var(--color-primary-dark); 
+
+    .rc-empty-state-text {
+      color: var(--color-gray-400);
     }
+
+    /* -------------------------------------------------------------------------
+       7. ANIMATION FOR FILTERED CARDS
+       ------------------------------------------------------------------------- */
+    .rc-card {
+      animation: fadeInUp 0.4s ease forwards;
+    }
+
+    .rc-card[style*="display: none"] {
+      animation: none;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Staggered animation */
+    .rc-card:nth-child(1) { animation-delay: 0ms; }
+    .rc-card:nth-child(2) { animation-delay: 50ms; }
+    .rc-card:nth-child(3) { animation-delay: 100ms; }
+    .rc-card:nth-child(4) { animation-delay: 150ms; }
+    .rc-card:nth-child(5) { animation-delay: 200ms; }
+    .rc-card:nth-child(6) { animation-delay: 250ms; }
   </style>
 </head>
 <body>
@@ -569,334 +696,561 @@
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="subpage-hero">
+
+  <!-- ========== CINEMATIC HERO ========== -->
+  <section class="rc-hero">
+    <div class="rc-hero-image">
+      <!-- Connected systems, architecture, business growth -->
+      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&q=80" alt="Enterprise loyalty architecture">
+    </div>
     <div class="container">
-      <div style="max-width: 800px;">
-        <div class="subpage-hero-eyebrow">Resource Center</div>
-        <h1 class="subpage-hero-title">
-          Insights for <span class="highlight">Enterprise Loyalty</span>
-        </h1>
-        <p class="subpage-hero-description">
-          Explore our latest thinking on loyalty strategy, platform architecture, and customer retention. Case studies, guides, and thought leadership for teams building world-class programs.
+      <div class="rc-hero-content">
+        <p class="rc-hero-eyebrow">Resource Center</p>
+        <h1 class="rc-hero-title">Expert Insights</h1>
+        <p class="rc-hero-subtitle">
+          Strategic thinking on loyalty architecture, customer experience, and enterprise program operations.
         </p>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== RESOURCES ========== -->
-  <section class="section section-light bg-white" style="padding-top: var(--space-12); padding-bottom: var(--space-24);">
+  <!-- ========== FEATURED SPOTLIGHT ========== -->
+  <section class="rc-featured">
     <div class="container">
-      
-      <!-- Featured Resource -->
-      <div class="featured-resource">
-        <div class="featured-content">
-          <div class="featured-meta">
-            <span class="featured-badge">Featured Article</span>
-            <span class="featured-date">Jan 25, 2026</span>
-          </div>
-          <h2 class="featured-title">
-            Stop Querying Your Data. Start Talking to Your Loyalty Platform.
-          </h2>
-          <p class="featured-excerpt">
-            Enterprise loyalty teams wait too long for answers. RCX Analytics lets business users ask questions in plain English and get charts built on the fly. No IT ticket. No SQL required.
+      <a href="case-study-mgm.html" class="rc-spotlight">
+        <div class="rc-spotlight-image">
+          <span class="rc-spotlight-badge">Featured Case Study</span>
+          <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=1200&q=80" alt="MGM Resorts Las Vegas">
+        </div>
+        <div class="rc-spotlight-content">
+          <p class="rc-spotlight-meta">Hospitality & Gaming • Enterprise Loyalty</p>
+          <h2 class="rc-spotlight-title">MGM Resorts: Revolutionizing the Guest Experience Across 30+ Properties</h2>
+          <p class="rc-spotlight-excerpt">
+            MGM Resorts transformed its loyalty program with ReactorCX, delivering seamless cross-property recognition in real-time. See how event-driven architecture unified loyalty across gaming, dining, entertainment, and hospitality touchpoints.
           </p>
-          <a href="blog-rcx-analytics.html" class="btn btn-primary btn-lg" style="align-self: flex-start;">Read Full Article</a>
-        </div>
-        <div class="featured-image">
-          <div class="featured-image-placeholder">
-            [Featured Image: Conversational Analytics]
+          <div class="rc-spotlight-cta">
+            <span class="btn btn-primary">Read the Case Study</span>
           </div>
         </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ========== FILTER TAB BAR ========== -->
+  <section class="rc-filter-section">
+    <div class="container">
+      <div class="rc-filter-bar">
+        <button class="rc-filter-tab active" data-filter="cx">
+          <svg class="rc-filter-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+          Customer Experience
+        </button>
+        <button class="rc-filter-tab" data-filter="business">
+          <svg class="rc-filter-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Loyalty as a Business
+        </button>
+        <button class="rc-filter-tab" data-filter="architecture">
+          <svg class="rc-filter-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Architecture & Security
+        </button>
+        <button class="rc-filter-tab" data-filter="operations">
+          <svg class="rc-filter-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Program Operations
+        </button>
+        <button class="rc-filter-tab" data-filter="case-study">
+          <svg class="rc-filter-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          Case Studies
+        </button>
       </div>
+    </div>
+  </section>
 
 
-      <!-- Filter Pills -->
-      <div class="filter-container">
-        <button class="filter-pill active" data-filter="all">All Resources</button>
-        <button class="filter-pill" data-filter="case-study">Case Studies</button>
-        <button class="filter-pill" data-filter="strategy">Strategy</button>
-        <button class="filter-pill" data-filter="technology">Technology</button>
-        <button class="filter-pill" data-filter="cx">Customer Experience</button>
-      </div>
+  <!-- ========== CONTENT GRID ========== -->
+  <section class="rc-content-section">
+    <div class="container">
+      <div class="rc-grid" id="resource-grid">
 
-
-      <!-- Resource Grid -->
-      <div class="resource-grid">
-
-        <!-- Case Study: MGM -->
-        <div class="resource-card" data-category="case-study">
-          <div class="resource-thumb">
-            <span class="content-badge badge-case-study">Case Study</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 1: RCX Analytics (CX) -->
+        <a href="blog-rcx-analytics.html" class="rc-card" data-category="cx">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Analytics dashboard">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta">Hospitality & Gaming</div>
-            <h3 class="resource-title">MGM Resorts Revolutionizes Its Loyalty Program with Loyalty Methods</h3>
-            <p class="resource-excerpt">MGM Resorts transformed its loyalty program, MGM Rewards, with the help of Loyalty Methods, delivering a seamless experience across properties.</p>
-            <div class="resource-footer">
-              <a href="#" class="download-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Analytics</span><span>Jan 25, 2026</span></p>
+            <h3 class="rc-card-title">Stop Querying Your Data. Start Talking to Your Loyalty Platform.</h3>
+            <p class="rc-card-excerpt">Enterprise loyalty teams wait too long for answers. RCX Analytics lets business users ask questions in plain English and get charts built on the fly.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Case Study: 7-Eleven -->
-        <div class="resource-card" data-category="case-study">
-          <div class="resource-thumb">
-            <span class="content-badge badge-case-study">Case Study</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 2: API-First (Architecture) -->
+        <a href="blog-api-first-vs-monolithic.html" class="rc-card" data-category="architecture">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Server architecture">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta">Retail & C-Store</div>
-            <h3 class="resource-title">7-Eleven: Scaling Loyalty to 50 Million Members</h3>
-            <p class="resource-excerpt">How 7-Eleven used ReactorCX to handle massive transaction volumes and real-time rewards across thousands of locations.</p>
-            <div class="resource-footer">
-              <a href="#" class="download-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Technology</span><span>Jan 28, 2026</span></p>
+            <h3 class="rc-card-title">API-First vs Monolithic: How Enterprises Should Build Loyalty</h3>
+            <p class="rc-card-excerpt">The difference between launching campaigns in days versus quarters comes down to architecture. API-first platforms give enterprise teams speed and flexibility.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Case Study: Western Union -->
-        <div class="resource-card" data-category="case-study">
-          <div class="resource-thumb">
-            <span class="content-badge badge-case-study">Case Study</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 3: Loyalty ROI (Business) -->
+        <a href="blog-roi-measurement.html" class="rc-card" data-category="business">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="Financial charts">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta">Finance</div>
-            <h3 class="resource-title">Western Union: Global Loyalty Without Borders</h3>
-            <p class="resource-excerpt">Implementing a unified loyalty framework that operates seamlessly across multiple currencies, languages, and regulatory environments.</p>
-            <div class="resource-footer">
-              <a href="#" class="download-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Finance & Strategy</span><span>Dec 8, 2025</span></p>
+            <h3 class="rc-card-title">Loyalty Program ROI: How to Measure and Maximize It</h3>
+            <p class="rc-card-excerpt">CFOs don't fund vanity metrics. Learn how to calculate real incremental value, separate signal from noise, and prove your program delivers measurable profit.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: RCX Analytics -->
-        <div class="resource-card" data-category="technology">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 4: MGM Case Study -->
+        <a href="case-study-mgm.html" class="rc-card" data-category="case-study">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--case-study">Case Study</span>
+            <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800&q=80" alt="Las Vegas casino">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Analytics</span> Ã¢â‚¬Â¢ <span>Jan 25, 2026</span></div>
-            <h3 class="resource-title">Stop Querying Your Data. Start Talking to Your Loyalty Platform.</h3>
-            <p class="resource-excerpt">Enterprise loyalty teams wait too long for answers. RCX Analytics lets business users ask questions in plain English and get charts built on the fly.</p>
-            <div class="resource-footer">
-              <a href="blog-rcx-analytics.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Hospitality & Gaming</span></p>
+            <h3 class="rc-card-title">MGM Resorts: Revolutionizing the Guest Experience</h3>
+            <p class="rc-card-excerpt">MGM unified loyalty across 30+ destinations with event-driven architecture. Cross-property recognition in real time.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Rewards & Benefits -->
-        <div class="resource-card" data-category="cx">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 5: Headless Loyalty (Architecture) -->
+        <a href="blog-headless-loyalty.html" class="rc-card" data-category="architecture">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Technology circuit board">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Capabilities</span> • <span>Jan 29, 2026</span></div>
-            <h3 class="resource-title">Rewards & Benefits: Flexible Redemption Options That Drive Engagement</h3>
-            <p class="resource-excerpt">From points and perks to exclusive experiences, deliver redemption options that keep members engaged. Real-time rewards, omnichannel wallets, and dynamic catalogs.</p>
-            <div class="resource-footer">
-              <a href="blog-real-time-rewards.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Technology</span><span>Jan 14, 2026</span></p>
+            <h3 class="rc-card-title">Headless Loyalty Platforms: Composable Architecture for Modern Brands</h3>
+            <p class="rc-card-excerpt">Headless loyalty separates the backend engine from frontend presentation, giving enterprise teams complete control over member experiences.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: API-First vs Monolithic -->
-        <div class="resource-card" data-category="technology">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 6: 7-Eleven Case Study -->
+        <a href="case-study-7eleven.html" class="rc-card" data-category="case-study">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--case-study">Case Study</span>
+            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&q=80" alt="Convenience store">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Technology</span> Ã¢â‚¬Â¢ <span>Jan 28, 2026</span></div>
-            <h3 class="resource-title">API-First vs Monolithic: How Enterprises Should Build Loyalty</h3>
-            <p class="resource-excerpt">The difference between launching campaigns in days versus quarters comes down to architecture. API-first platforms give enterprise teams speed and integration flexibility.</p>
-            <div class="resource-footer">
-              <a href="blog-api-first-vs-monolithic.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Retail & C-Store</span></p>
+            <h3 class="rc-card-title">7-Eleven: Scaling Loyalty to 50 Million Members</h3>
+            <p class="rc-card-excerpt">How 7-Eleven powers 7Rewards across 10,000+ stores with zero downtime and feature-rich member experiences.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Headless Loyalty -->
-        <div class="resource-card" data-category="technology">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 7: Rewards & Benefits (CX) - Hidden by default -->
+        <a href="blog-real-time-rewards.html" class="rc-card" data-category="cx" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Rewards and gifts">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Technology</span> ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ <span>Jan 14, 2026</span></div>
-            <h3 class="resource-title">Headless Loyalty Platforms: Composable Architecture for Modern Brands</h3>
-            <p class="resource-excerpt">Headless loyalty separates the backend engine from frontend presentation, giving enterprise teams complete control over member experiences across every touchpoint.</p>
-            <div class="resource-footer">
-              <a href="blog-headless-loyalty.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Capabilities</span><span>Jan 29, 2026</span></p>
+            <h3 class="rc-card-title">Rewards & Benefits: Flexible Redemption Options That Drive Engagement</h3>
+            <p class="rc-card-excerpt">From points and perks to exclusive experiences, deliver redemption options that keep members engaged.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: AI Loyalty -->
-        <div class="resource-card" data-category="technology">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 8: Let's Talk Loyalty (Business) - Hidden by default -->
+        <a href="blog-lets-talk-loyalty.html" class="rc-card" data-category="business" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--podcast">Podcast</span>
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80" alt="Podcast microphone">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Technology</span> Ã¢â‚¬Â¢ <span>Sept 29, 2025</span></div>
-            <h3 class="resource-title">AI Loyalty: Personalization That Drives Results</h3>
-            <p class="resource-excerpt">AI is back again as the biggest buzzword in loyalty. Everyone is talking about it, but the reality is turning AI into real loyalty outcomes.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Podcast</span><span>Sep 16, 2025</span></p>
+            <h3 class="rc-card-title">Loyalty Methods Featured on Let's Talk Loyalty</h3>
+            <p class="rc-card-excerpt">CEO Emil Sarkissian and VP of Sales Chris Sandstrom join Paula Thomas to discuss how we power industry-leading loyalty programs.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Listen Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Loyalty ROI -->
-        <div class="resource-card" data-category="strategy">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 9: Security (Architecture) - Hidden by default -->
+        <a href="tech-security.html" class="rc-card" data-category="architecture" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80" alt="Security and compliance">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Finance &amp; Strategy</span> â€¢ <span>Dec 8, 2025</span></div>
-            <h3 class="resource-title">Loyalty Program ROI: How to Measure and Maximize It</h3>
-            <p class="resource-excerpt">CFOs don't fund vanity metrics. Learn how to calculate real incremental value, separate signal from noise, and prove your loyalty program delivers measurable profit.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Security</span></p>
+            <h3 class="rc-card-title">Enterprise Security & Compliance: SOC2, GDPR, and Beyond</h3>
+            <p class="rc-card-excerpt">How ReactorCX meets the most demanding enterprise security requirements with SOC2 Type II certification and comprehensive data governance.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Enterprise Buyers -->
-        <div class="resource-card" data-category="strategy">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 10: KPIs (Business) - Hidden by default -->
+        <a href="blog-kpis.html" class="rc-card" data-category="business" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Analytics KPIs">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Finance &amp; Strategy</span> â€¢ <span>Dec 8, 2025</span></div>
-            <h3 class="resource-title">Top Tips for Enterprise Loyalty Buyers in 2026</h3>
-            <p class="resource-excerpt">Why 2026 is a make-or-break year for loyalty platforms. The loyalty market is projected to grow from roughly fifteen billion dollars.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Strategy</span><span>Sept 9, 2025</span></p>
+            <h3 class="rc-card-title">Loyalty Program KPIs: The Metrics That Matter Most</h3>
+            <p class="rc-card-excerpt">Loyalty isn't a feel-good metric. It's a financial one. Punch cards are dead. Vanity dashboards? Useless.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-
-        <!-- Article: Real-Time Retention -->
-        <div class="resource-card" data-category="cx">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 11: ThreadSync (Operations) - Hidden by default -->
+        <a href="proven-threadsync.html" class="rc-card" data-category="operations" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Methodology</span>
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Team collaboration">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>CX</span> Ã¢â‚¬Â¢ <span>Sept 19, 2025</span></div>
-            <h3 class="resource-title">How Real Time Loyalty Platforms Drive Better Retention</h3>
-            <p class="resource-excerpt">Retention is the new growth. Real time loyalty tools like ReactorCX turn customer behavior into instant action.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Delivery</span></p>
+            <h3 class="rc-card-title">ThreadSync™: Parallel Implementation for Faster Go-Live</h3>
+            <p class="rc-card-excerpt">Our agile delivery framework divides your project into focused streams so teams can work independently without burning everyone's time.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Let's Talk Loyalty -->
-        <div class="resource-card" data-category="strategy">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Podcast</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 12: SafeSwitch (Operations) - Hidden by default -->
+        <a href="proven-safeswitch.html" class="rc-card" data-category="operations" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Methodology</span>
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Migration planning">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Podcast</span> Ã¢â‚¬Â¢ <span>Sep 16, 2025</span></div>
-            <h3 class="resource-title">Loyalty Methods Featured on Let's Talk Loyalty</h3>
-            <p class="resource-excerpt">CEO Emil Sarkissian and VP of Sales Chris Sandstrom join Paula Thomas to discuss how we power some of the industry's most engaged loyalty programs.</p>
-            <div class="resource-footer">
-              <a href="blog-lets-talk-loyalty.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Migration</span></p>
+            <h3 class="rc-card-title">SafeSwitch™: Zero-Risk Platform Migration</h3>
+            <p class="rc-card-excerpt">Switch platforms without risking your program. SafeSwitch runs legacy and new systems in parallel, validates every data point, and confirms accuracy before cutover.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: KPIs -->
-        <div class="resource-card" data-category="strategy">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 13: Fuel & C-Store (CX) - Hidden by default -->
+        <a href="blog-fuel-cstore.html" class="rc-card" data-category="cx" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80" alt="Gas station">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Strategy</span> Ã¢â‚¬Â¢ <span>Sept 9, 2025</span></div>
-            <h3 class="resource-title">Loyalty Program KPIs: The Metrics That Matter Most</h3>
-            <p class="resource-excerpt">Loyalty Isn't a Feel-Good Metric. It's a Financial One. Punch cards are dead. Vanity dashboards? Useless.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Industry</span><span>Aug 12, 2025</span></p>
+            <h3 class="rc-card-title">10 Methods Powering Loyalty in Fuel & Convenience</h3>
+            <p class="rc-card-excerpt">How high-frequency retail environments use speed and personalization to drive habit formation.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: API First Winning -->
-        <div class="resource-card" data-category="technology">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 14: Western Union Case Study -->
+        <a href="case-study-western-union.html" class="rc-card" data-category="case-study" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--case-study">Case Study</span>
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&q=80" alt="Global finance">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Technology</span> Ã¢â‚¬Â¢ <span>Sept 2, 2025</span></div>
-            <h3 class="resource-title">Why API First Loyalty Platforms Are Winning</h3>
-            <p class="resource-excerpt">Composable loyalty is here. If your system is not built API first, you are already behind. Legacy Platforms Were Built for Yesterday.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Finance</span></p>
+            <h3 class="rc-card-title">Western Union: Global Loyalty Without Borders</h3>
+            <p class="rc-card-excerpt">Implementing a unified loyalty framework that operates seamlessly across multiple currencies, languages, and regulatory environments.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Headless -->
-        <div class="resource-card" data-category="technology">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 15: Real-Time Retention (CX) -->
+        <a href="blog-realtime-retention.html" class="rc-card" data-category="cx" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?w=800&q=80" alt="Customer engagement">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>Technology</span> Ã¢â‚¬Â¢ <span>Aug 26, 2025</span></div>
-            <h3 class="resource-title">Headless Loyalty Platforms: One Engine, Every Touchpoint</h3>
-            <p class="resource-excerpt">Build loyalty that fits your stack. Not the other way around. Loyalty Is Not a Tool Anymore. It Is Infrastructure.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Retention</span><span>Sept 19, 2025</span></p>
+            <h3 class="rc-card-title">How Real-Time Loyalty Platforms Drive Better Retention</h3>
+            <p class="rc-card-excerpt">Retention is the new growth. Real-time loyalty tools turn customer behavior into instant action that keeps members coming back.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Fuel & C-Store -->
-        <div class="resource-card" data-category="cx">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 16: Hotel & Gaming (CX) -->
+        <a href="blog-hotel-gaming.html" class="rc-card" data-category="cx" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80" alt="Hotel lobby">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>CX</span> Ã¢â‚¬Â¢ <span>Aug 12, 2025</span></div>
-            <h3 class="resource-title">10 Methods Powering Loyalty In Fuel & Convenience</h3>
-            <p class="resource-excerpt">How high-frequency retail environments use speed and personalization to drive habit formation.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Industry</span><span>July 9, 2025</span></p>
+            <h3 class="rc-card-title">10 Loyalty Methods Powering Hotel & Gaming Programs</h3>
+            <p class="rc-card-excerpt">Deep dive into the complex world of hospitality loyalty and how to manage high-value guests across properties.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Article: Hotel & Gaming -->
-        <div class="resource-card" data-category="cx">
-          <div class="resource-thumb">
-            <span class="content-badge badge-article">Article</span>
-            <div class="resource-thumb-placeholder"></div>
+        <!-- CARD 17: Personalization at Scale (CX) -->
+        <a href="feature-hyper-personalization.html" class="rc-card" data-category="cx" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="Personalization">
           </div>
-          <div class="resource-body">
-            <div class="resource-meta"><span>CX</span> Ã¢â‚¬Â¢ <span>July 9, 2025</span></div>
-            <h3 class="resource-title">10 Loyalty Methods Powering Hotel & Gaming Programs</h3>
-            <p class="resource-excerpt">Deep dive into the complex world of hospitality loyalty and how to manage high-value guests.</p>
-            <div class="resource-footer">
-              <a href="blog-roi-measurement.html" class="read-more-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Personalization</span></p>
+            <h3 class="rc-card-title">Hyper-Personalization: 1:1 Experiences at Enterprise Scale</h3>
+            <p class="rc-card-excerpt">Deliver individualized offers, content, and experiences to millions of members without manual intervention.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
             </div>
           </div>
-        </div>
+        </a>
+
+        <!-- CARD 18: Enterprise Buyers Guide (Business) -->
+        <a href="blog-enterprise-buyers.html" class="rc-card" data-category="business" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--report">Guide</span>
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80" alt="Enterprise buying">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Strategy</span><span>Dec 8, 2025</span></p>
+            <h3 class="rc-card-title">Top Tips for Enterprise Loyalty Buyers in 2026</h3>
+            <p class="rc-card-excerpt">Why 2026 is a make-or-break year for loyalty platforms. The loyalty market is projected to grow from roughly fifteen billion dollars.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 19: AI in Loyalty (Business) -->
+        <a href="blog-ai-loyalty.html" class="rc-card" data-category="business" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=80" alt="AI technology">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Technology</span><span>Sept 29, 2025</span></p>
+            <h3 class="rc-card-title">AI Loyalty: Personalization That Drives Results</h3>
+            <p class="rc-card-excerpt">AI is back as the biggest buzzword in loyalty. Everyone is talking about it, but turning AI into real loyalty outcomes requires the right approach.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 20: Partner Economics (Business) -->
+        <a href="blog-partner-economics.html" class="rc-card" data-category="business" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="Business partnership">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Partners</span></p>
+            <h3 class="rc-card-title">Partner Economics: Building a Profitable Loyalty Ecosystem</h3>
+            <p class="rc-card-excerpt">How to structure co-funding, settlement, and billing for partner programs that scale without adding operational complexity.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 21: Integration Patterns (Architecture) -->
+        <a href="tech-integration.html" class="rc-card" data-category="architecture" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" alt="Integration patterns">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Integration</span></p>
+            <h3 class="rc-card-title">Integration Capabilities: Connectors for the Modern Stack</h3>
+            <p class="rc-card-excerpt">Pre-built connectors for POS, CRM, CDP, and communication platforms. Event-driven architecture that fits your existing systems.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 22: API-First Winning (Architecture) -->
+        <a href="blog-api-first-winning.html" class="rc-card" data-category="architecture" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="API technology">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Technology</span><span>Sept 2, 2025</span></p>
+            <h3 class="rc-card-title">Why API-First Loyalty Platforms Are Winning</h3>
+            <p class="rc-card-excerpt">Composable loyalty is here. If your system is not built API-first, you are already behind. Legacy platforms were built for yesterday.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 23: Headless Deep Dive (Architecture) -->
+        <a href="blog-headless-deep-dive.html" class="rc-card" data-category="architecture" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Headless architecture">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Technology</span><span>Aug 26, 2025</span></p>
+            <h3 class="rc-card-title">Headless Loyalty: One Engine, Every Touchpoint</h3>
+            <p class="rc-card-excerpt">Build loyalty that fits your stack. Not the other way around. Loyalty is not a tool anymore. It's infrastructure.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 24: Program Launch Playbook (Operations) -->
+        <a href="blog-program-launch.html" class="rc-card" data-category="operations" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--report">Playbook</span>
+            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80" alt="Product launch">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Operations</span></p>
+            <h3 class="rc-card-title">The Enterprise Loyalty Launch Playbook</h3>
+            <p class="rc-card-excerpt">From kickoff to go-live: the critical milestones, stakeholder alignment, and operational readiness steps for successful program launches.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Playbook <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 25: Data Migration (Operations) -->
+        <a href="blog-data-migration.html" class="rc-card" data-category="operations" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Data migration">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Migration</span></p>
+            <h3 class="rc-card-title">600M+ Members Migrated: What We've Learned</h3>
+            <p class="rc-card-excerpt">Lessons from migrating hundreds of millions of loyalty members without a single minute of downtime. The patterns that work at scale.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 26: Testing Best Practices (Operations) -->
+        <a href="blog-testing-practices.html" class="rc-card" data-category="operations" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--article">Article</span>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="QA testing">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>QA</span></p>
+            <h3 class="rc-card-title">Testing Enterprise Loyalty Programs: Best Practices</h3>
+            <p class="rc-card-excerpt">How to validate complex promotion logic, tier calculations, and partner settlements before they hit production.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 27: Go-Live Checklist (Operations) -->
+        <a href="blog-golive-checklist.html" class="rc-card" data-category="operations" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--report">Checklist</span>
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80" alt="Checklist">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Launch</span></p>
+            <h3 class="rc-card-title">The Enterprise Go-Live Checklist</h3>
+            <p class="rc-card-excerpt">The 50-point checklist our implementation team uses before every enterprise loyalty program launch. No surprises on day one.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Download Checklist <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 28: BP Case Study -->
+        <a href="case-study-bp.html" class="rc-card" data-category="case-study" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--case-study">Case Study</span>
+            <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=800&q=80" alt="Fuel station">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Fuel & C-Store</span></p>
+            <h3 class="rc-card-title">BP: Fueling Customer Loyalty Across Markets</h3>
+            <p class="rc-card-excerpt">How BP built a unified loyalty experience across fuel, convenience, and partner networks with real-time rewards at the pump.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 29: Speedway Case Study -->
+        <a href="case-study-speedway.html" class="rc-card" data-category="case-study" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--case-study">Case Study</span>
+            <img src="https://images.unsplash.com/photo-1527018601619-a508a2be00cd?w=800&q=80" alt="Convenience store">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Fuel & C-Store</span></p>
+            <h3 class="rc-card-title">Speedway: Speedy Rewards at Scale</h3>
+            <p class="rc-card-excerpt">Building one of America's largest convenience store loyalty programs with instant rewards and seamless mobile experiences.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 30: Fontainebleau Case Study -->
+        <a href="case-study-fontainebleau.html" class="rc-card" data-category="case-study" style="display: none;">
+          <div class="rc-card-image">
+            <span class="rc-card-badge rc-card-badge--case-study">Case Study</span>
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Luxury hotel">
+          </div>
+          <div class="rc-card-body">
+            <p class="rc-card-meta"><span>Hospitality</span></p>
+            <h3 class="rc-card-title">Fontainebleau Las Vegas: Luxury Loyalty Reimagined</h3>
+            <p class="rc-card-excerpt">Launching a world-class hospitality loyalty program from the ground up for one of Las Vegas's newest iconic properties.</p>
+            <div class="rc-card-footer">
+              <span class="rc-card-link">Read Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -904,15 +1258,15 @@
 
 
   <!-- ========== FINAL CTA ========== -->
-  <section class="section-light bg-light" style="padding-bottom: var(--space-24); margin-bottom: 0;">
+  <section class="section-light bg-white" style="padding-bottom: var(--space-24); margin-bottom: 0;">
     <div class="container">
       <div class="cta-box-light">
         <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">We solve the hardest loyalty problems in production.</h2>
         <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
           See how enterprise teams modernize loyalty without disrupting what already works.
         </p>
-        <div class="flex gap-4">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Our Approach to Modernization</a>
+        <div class="flex gap-4" style="justify-content: center;">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Talk to Our Team</a>
         </div>
       </div>
     </div>
@@ -998,6 +1352,7 @@
     </div>
   </footer>
 
+
   <!-- ========== SCRIPTS ========== -->
   <script>
     // Header scroll effect
@@ -1010,28 +1365,45 @@
       }
     });
 
-    // Filter functionality
-    const filterPills = document.querySelectorAll('.filter-pill');
-    const resourceCards = document.querySelectorAll('.resource-card');
+    // Filter functionality with 6-card limit
+    const filterTabs = document.querySelectorAll('.rc-filter-tab');
+    const resourceCards = document.querySelectorAll('.rc-card');
+    const MAX_VISIBLE = 6;
 
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        // Update active pill
-        filterPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
+    function filterCards(category) {
+      let visibleCount = 0;
+      
+      resourceCards.forEach((card, index) => {
+        const cardCategory = card.dataset.category;
+        const shouldShow = (cardCategory === category);
+        
+        if (shouldShow && visibleCount < MAX_VISIBLE) {
+          card.style.display = 'flex';
+          // Reset animation
+          card.style.animation = 'none';
+          card.offsetHeight; // Trigger reflow
+          card.style.animation = `fadeInUp 0.4s ease forwards`;
+          card.style.animationDelay = `${visibleCount * 50}ms`;
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
 
-        const filter = pill.dataset.filter;
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
 
-        // Filter cards
-        resourceCards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        const filter = tab.dataset.filter;
+        filterCards(filter);
       });
     });
+
+    // Initialize with Customer Experience category
+    filterCards('cx');
   </script>
 </body>
 </html>
