@@ -4,305 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promotions & Discounting | RCX Loyalty Platform</title>
-  
-  <!-- NEW MODULAR CSS SYSTEM -->
+
+  <!-- MODULAR CSS SYSTEM -->
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="css-styles.css">
-  
+
   <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
        PAGE-SPECIFIC STYLES: Promotions & Discounting
+       Only styles NOT covered by the design system (tokens.css + css-styles.css)
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme)
+       SUBPAGE HERO OVERRIDE
        ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
+    .hero-subpage {
+      min-height: 75vh;
+    }
+
+    .hero-subpage .container {
       padding-top: calc(var(--space-24) + 80px);
+      padding-bottom: var(--space-20);
     }
 
-    /* Glass shine overlay */
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
+    .hero-subpage .hero-description {
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
+    .hero-subpage .hero-fade {
+      height: 200px;
     }
 
     @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-
-    .subpage-hero-title .highlight {
-      background: var(--grad-orange-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .subpage-hero {
+      .hero-subpage {
         min-height: auto;
-        padding: var(--space-16) 0;
+      }
+      .hero-subpage .container {
         padding-top: calc(var(--space-16) + 80px);
-      }
-      
-      .subpage-hero-title {
-        font-size: 2rem;
+        padding-bottom: var(--space-12);
       }
     }
 
     /* -------------------------------------------------------------------------
-       FEATURE ROWS SECTION
-       ------------------------------------------------------------------------- */
-    .feature-rows-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-white);
-    }
-
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-      margin-bottom: var(--space-20);
-    }
-
-    .feature-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-row-reverse {
-      direction: rtl;
-    }
-
-    .feature-row-reverse > * {
-      direction: ltr;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row,
-      .feature-row-reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-      }
-    }
-
-    .feature-row-content {
-      max-width: 520px;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row-content {
-        max-width: 100%;
-      }
-    }
-
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-3);
-    }
-
-    .feature-row-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .feature-row-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list {
-      list-style: none;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list-item {
-      position: relative;
-      padding-left: var(--space-6);
-      margin-bottom: var(--space-3);
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-    }
-
-    .feature-row-list-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      border-radius: 50%;
-    }
-
-    .feature-row-media {
-      position: relative;
-    }
-
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-    }
-
-    /* btn-dark for light backgrounds */
-    .btn-dark {
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      color: var(--color-white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
-    }
-
-    .btn-dark:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    }
-
-    /* -------------------------------------------------------------------------
-       LIFECYCLE GRID (6 cards)
-       ------------------------------------------------------------------------- */
-    .lifecycle-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-
-    @media (max-width: 1024px) {
-      .lifecycle-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .lifecycle-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* -------------------------------------------------------------------------
-       PROMO WIDGET SECTION
+       PROMO WIDGET SECTION (Carousel + Phone Mockups)
+       Unique to this page ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â not in design system
        ------------------------------------------------------------------------- */
     .promo-widget-section {
-      background: 
+      background:
         linear-gradient(180deg, rgba(42,42,42,0.97) 0%, rgba(42,42,42,0.92) 15%, rgba(38,38,38,0.88) 40%, rgba(35,35,35,0.85) 100%),
         url('promo-types-bg.png') center center / cover no-repeat;
       position: relative;
@@ -322,17 +76,18 @@
 
     .promo-widget-eyebrow {
       font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: var(--letter-spacing-widest);
       color: var(--color-primary);
       margin-bottom: var(--space-4);
     }
 
     .promo-widget-title {
       font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-light);
       color: var(--color-white);
+      letter-spacing: var(--letter-spacing-tight);
     }
 
     /* Widget container */
@@ -343,11 +98,10 @@
       min-height: 580px;
     }
 
-    /* Slide container */
+    /* Slides */
     .promo-slide {
       display: none;
       opacity: 0;
-      transition: opacity 0.4s ease;
     }
 
     .promo-slide.active {
@@ -355,7 +109,6 @@
       opacity: 1;
     }
 
-    /* Slide layout */
     .promo-slide-inner {
       display: grid;
       grid-template-columns: 280px 1fr 280px;
@@ -370,7 +123,7 @@
       }
     }
 
-    /* Copy cards - glass effect on dark background */
+    /* Copy cards ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â glass effect */
     .promo-copy-card {
       padding: var(--space-6);
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
@@ -381,16 +134,16 @@
 
     .promo-copy-card-eyebrow {
       font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: var(--letter-spacing-widest);
       color: var(--color-primary);
       margin-bottom: var(--space-2);
     }
 
     .promo-copy-card-title {
       font-size: var(--font-size-xl);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
       color: var(--color-white);
       margin-bottom: var(--space-3);
     }
@@ -398,10 +151,10 @@
     .promo-copy-card-description {
       font-size: var(--font-size-sm);
       color: var(--color-gray-100);
-      line-height: 1.7;
+      line-height: var(--line-height-relaxed);
     }
 
-    /* Phone mockups container */
+    /* Phone mockups */
     .promo-phones {
       display: flex;
       justify-content: center;
@@ -416,7 +169,6 @@
       }
     }
 
-    /* Phone mockup */
     .promo-phone {
       width: 180px;
       height: 380px;
@@ -428,7 +180,6 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
-    /* Phone notch */
     .promo-phone::before {
       content: '';
       position: absolute;
@@ -442,7 +193,6 @@
       z-index: 10;
     }
 
-    /* Phone glow effect */
     .promo-phone::after {
       content: '';
       position: absolute;
@@ -456,7 +206,6 @@
     .promo-phone-left { --phone-glow-color: #5B8AB8; }
     .promo-phone-right { --phone-glow-color: #8B5CF6; }
 
-    /* Phone screen - white/light gradient like homepage browser */
     .promo-phone-screen {
       position: absolute;
       top: 12px;
@@ -479,7 +228,7 @@
 
     .promo-phone-header-title {
       font-size: 11px;
-      font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-medium);
       color: #1a1a1a;
       margin-bottom: 2px;
     }
@@ -513,7 +262,7 @@
 
     .promo-phone-label {
       font-size: 8px;
-      font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-medium);
       color: var(--color-primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -522,7 +271,7 @@
 
     .promo-phone-value {
       font-size: 14px;
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
       color: #1a1a1a;
       margin-bottom: 2px;
     }
@@ -532,7 +281,7 @@
       color: #666666;
     }
 
-    /* Promo Navigation */
+    /* Promo navigation dots */
     .promo-nav {
       display: flex;
       justify-content: center;
@@ -547,9 +296,8 @@
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--color-white);
-      font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-medium);
       cursor: pointer;
-      transition: all var(--transition-base);
     }
 
     .promo-nav-btn:hover {
@@ -562,213 +310,250 @@
       box-shadow: var(--glow-orange);
     }
 
-    /* Section description */
-    .section-description {
-      font-size: var(--font-size-lg);
-      color: var(--text-muted);
-      line-height: 1.7;
+    /* Feature row image (non-placeholder) */
+    .feature-row-image {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-xl);
     }
 
     /* -------------------------------------------------------------------------
-       BOTTOM CTA CARD
+       DISCOUNT ENGINE WIDGET — LIGHT BACKGROUND VERSION
+       Visual showing real-time discount evaluation flow
        ------------------------------------------------------------------------- */
-    .bottom-cta-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-12) var(--space-16);
-      box-shadow: var(--shadow-card);
-      max-width: 900px;
+    .discount-engine-visual {
+      background: var(--color-gray-50) !important;
+      box-shadow: none !important;
+      padding: var(--space-6) !important;
+      border-radius: var(--radius-3xl) !important;
+      border: 1px solid var(--color-gray-200);
+    }
+
+    .discount-engine {
+      width: 100%;
+      max-width: 420px;
       margin: 0 auto;
-      text-align: center;
-    }
-
-    .bottom-cta-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      margin-bottom: var(--space-4);
-    }
-
-    .bottom-cta-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 640px) {
-      .bottom-cta-card {
-        padding: var(--space-8);
-      }
-    }
-
-    /* -------------------------------------------------------------------------
-       FAQ SECTION (Two-Column Layout)
-       ------------------------------------------------------------------------- */
-    .faq-section {
-      padding: var(--space-20) 0;
-    }
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-16);
-      align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-10);
-      }
-    }
-
-    /* Left Column: Intro */
-    .faq-intro {
-      position: sticky;
-      top: 120px;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-intro {
-        position: static;
-        text-align: center;
-      }
-    }
-
-    .faq-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .faq-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    /* Right Column: Accordion */
-    .faq-accordion {
       display: flex;
       flex-direction: column;
       gap: var(--space-4);
     }
 
-    .accordion-item {
+    .discount-engine-block {
       background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition-base);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-6);
+      border: 1px solid var(--color-gray-200);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
     }
 
-    .accordion-item:hover {
-      border-color: var(--color-navy);
+    .discount-engine-label {
+      font-size: 0.5625rem;
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-2);
     }
 
-    .accordion-item.active {
-      border-color: var(--color-primary);
+    .discount-engine-transaction {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
     }
 
-    .accordion-trigger {
-      width: 100%;
+    .discount-engine-amount {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-light);
+      color: var(--color-charcoal-900);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .discount-engine-meta {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+    }
+
+    /* Offers being evaluated */
+    .discount-offers {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .discount-offers-label {
+      font-size: 0.5625rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-1);
+      padding-left: var(--space-1);
+    }
+
+    .discount-offer-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid var(--color-gray-200);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .discount-offer-row.best {
+      border-color: var(--color-primary);
+      background: linear-gradient(135deg, rgba(243, 112, 33, 0.04) 0%, rgba(243, 112, 33, 0.01) 100%);
+      box-shadow: 0 2px 12px rgba(243, 112, 33, 0.1), 0 0 0 1px rgba(243, 112, 33, 0.08);
+    }
+
+    .discount-offer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .discount-offer-name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-charcoal-900);
+    }
+
+    .discount-offer-source {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+    }
+
+    .discount-offer-value {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-gray-500);
+      white-space: nowrap;
+    }
+
+    .discount-offer-row.best .discount-offer-value {
+      color: var(--color-primary);
+    }
+
+    .discount-offer-badge {
+      display: inline-block;
+      font-size: 0.5625rem;
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-white);
+      background: var(--color-primary);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      margin-left: var(--space-2);
+    }
+
+    /* Result block — dark accent card at bottom */
+    .discount-result {
+      background: linear-gradient(165deg, #555 0%, #444 50%, #3a3a3a 100%);
+      border-radius: var(--radius-xl);
       padding: var(--space-5) var(--space-6);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .accordion-trigger-text {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-semibold);
-      color: var(--text-main);
-      padding-right: var(--space-4);
-    }
-
-    .accordion-icon {
-      width: 24px;
-      height: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       position: relative;
-      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 16px 48px rgba(0,0,0,0.1);
     }
 
-    .accordion-icon::before,
-    .accordion-icon::after {
+    .discount-result::before {
       content: '';
       position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    }
+
+    .discount-result::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    .discount-result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .discount-result-row + .discount-result-row {
+      margin-top: var(--space-2);
+      padding-top: var(--space-2);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .discount-result-label {
+      font-size: var(--font-size-sm);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .discount-result-value {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-white);
+    }
+
+    .discount-result-value.highlight {
+      color: var(--color-primary);
+      font-size: var(--font-size-lg);
+    }
+
+    .discount-result-value.savings {
+      color: #34D399;
+    }
+
+    /* Connector line between blocks */
+    .discount-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .discount-connector::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--color-gray-200);
+    }
+
+    .discount-connector-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-gray-300);
+      position: relative;
+      z-index: 1;
+    }
+
+    .discount-connector-dot.active {
       background: var(--color-primary);
-      transition: transform var(--transition-fast);
-    }
-
-    .accordion-icon::before {
-      width: 12px;
-      height: 2px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-icon::after {
-      width: 2px;
-      height: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .accordion-item.active .accordion-icon::after {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition-slow);
-    }
-
-    .accordion-item.active .accordion-content {
-      max-height: 500px;
-    }
-
-    .accordion-content-inner {
-      padding: 0 var(--space-6) var(--space-6);
-    }
-
-    .accordion-content-inner p {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-4);
-    }
-
-    .accordion-content-inner p:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 768px) {
-      .feature-row-title {
-        font-size: var(--font-size-2xl);
-      }
+      box-shadow: 0 0 8px rgba(243, 112, 33, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <!-- ========================================
-       HEADER / NAVIGATION
-       Synced with index.html mega menu structure
-       ======================================== -->
+  <!-- ========== HEADER (synced with index.html) ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -778,15 +563,14 @@
 
         <nav class="nav-desktop">
           <ul class="nav-list">
-            
             <li class="nav-item">
               <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
-            
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 RCX Loyalty Platform
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
@@ -796,98 +580,95 @@
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Core Platform</div>
                       <a href="feature-program-design.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
                       </a>
                       <a href="feature-promotions.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
                       </a>
                       <a href="feature-analytics.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
                       </a>
                       <a href="feature-advanced-tools.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
                       </a>
                     </div>
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="feature-engagement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
                       </a>
                       <a href="feature-rewards.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
                       </a>
                       <a href="feature-partner-enablement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
                       </a>
                       <a href="feature-hyper-personalization.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
                       </a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Featured</span>
-                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
-                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <h3 class="mega-menu-featured-title">Agentic AI for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an assistant. A team.</p>
+                    <div class="mega-menu-featured-image"></div>
                   </div>
                 </div>
               </div>
             </li>
-            
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 Enterprise Technology
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, real-time</div></div>
                       </a>
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack</div></div>
                       </a>
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, data governance</div></div>
                       </a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Trust Center</span>
-                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
-                    <p class="mega-menu-featured-description">View our real-time system status.</p>
-                    <div class="mega-menu-featured-image">
-                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                      </div>
+                    <h3 class="mega-menu-featured-title">Security. Compliance.</h3>
+                    <p class="mega-menu-featured-description">Real-time system status</p>
+                    <div class="mega-menu-featured-image" style="background: rgba(91, 138, 184, 0.1); display: flex; align-items: center; justify-content: center;">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5B8AB8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
                     <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
                 </div>
               </div>
             </li>
-            
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 Proven Delivery
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
@@ -896,15 +677,15 @@
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
                       <a href="proven-threadsync.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
                       </a>
                       <a href="proven-safeswitch.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
                       </a>
                       <a href="resource-center.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
                       </a>
                     </div>
@@ -912,38 +693,34 @@
                 </div>
               </div>
             </li>
-            
+
             <li class="nav-item">
               <a href="resource-center.html" class="nav-link">Resource Center</a>
             </li>
-            
           </ul>
-          
-          <div class="flex items-center gap-4">
+
+          <div class="flex items-center" style="gap: var(--space-6);">
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
-                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 580px; right: 0; left: auto;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.1fr;">
                     <div class="mega-menu-links">
                       <div class="mega-menu-column">
                         <div class="mega-menu-column-title">Company</div>
-                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
-                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
-                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
-                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
-                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
-                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
                       </div>
                     </div>
-                    <div class="mega-menu-featured" style="min-width: 280px;">
+                    <div class="mega-menu-featured">
                       <span class="mega-menu-featured-eyebrow">Featured</span>
                       <h3 class="mega-menu-featured-title">Partner Network</h3>
-                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
-                      <div class="mega-menu-featured-image">
-                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
-                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
+                      <p class="mega-menu-featured-description">Integrations. Alliances. Ecosystem.</p>
+                      <div class="mega-menu-featured-image" style="background: rgba(243, 112, 33, 0.08); display: flex; align-items: center; justify-content: center;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F37021" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                       </div>
                       <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
                     </div>
@@ -954,160 +731,134 @@
             <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
-        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+
+        <button class="mobile-menu-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
 
 
-  <!-- ========================================
-       SECTION 1: HERO
-       Background: DARK (Charcoal + Glass Shine)
-       ======================================== -->
-  <section class="subpage-hero">
+  <!-- ========== HERO (Premium Subpage) ========== -->
+  <section class="hero hero-premium hero-subpage">
+    <!-- Premium Abstract Background -->
+    <div class="hero-premium-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-grid"></div>
+      <svg class="hero-flow-lines" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="transparent"/>
+            <stop offset="30%" stop-color="rgba(243,112,33,0.4)"/>
+            <stop offset="70%" stop-color="rgba(243,112,33,0.4)"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </linearGradient>
+        </defs>
+        <path class="flow-line flow-line-1" d="M-100,400 Q400,350 600,450 T1000,400 T1400,500 T2020,350" stroke="url(#line-grad)" fill="none" stroke-width="2"/>
+        <path class="flow-line flow-line-2" d="M-100,500 Q300,450 550,550 T950,480 T1350,580 T2020,450" stroke="url(#line-grad)" fill="none" stroke-width="1.5"/>
+        <path class="flow-line flow-line-3" d="M-100,600 Q350,550 600,650 T1050,580 T1450,680 T2020,550" stroke="url(#line-grad)" fill="none" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="hero-fade"></div>
+
     <div class="container">
-      <div class="subpage-hero-inner">
-        
-        <!-- Left: Content -->
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">
-            <span>Core Platform</span>
-          </div>
-
-          <h1 class="subpage-hero-title">
-            Promotions & <span class="highlight">Discounting</span>
-          </h1>
-
-          <p class="subpage-hero-description">
-            Most loyalty teams wait on IT to launch a new promotion. RCX puts campaign control in the hands of business users while IT maintains architectural oversight. Configure and launch without custom development.
-          </p>
-
-          <div class="subpage-hero-cta">
-            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          </div>
+      <div class="hero-content hero-content-wide" style="text-align: center; margin: 0 auto;">
+        <p class="hero-eyebrow">Core Platform</p>
+        <h1 class="hero-title hero-title-wide">
+          Promotions & <span class="highlight">Discounting</span>
+        </h1>
+        <p class="hero-description" style="max-width: 640px; margin-left: auto; margin-right: auto;">
+          Most loyalty teams wait on IT to launch a new promotion. RCX puts campaign control in the hands of business users while IT maintains architectural oversight. Configure and launch without custom development.
+        </p>
+        <div class="hero-cta" style="justify-content: center;">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
-
-        <!-- Right: Hero Image -->
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">
-            [Promotions Campaign Builder Interface â€” 600Ã—450]
-          </div>
-        </div>
-        
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 2: LIFECYCLE PROMOTIONS (6-Card Grid)
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="section section-lg section-light bg-white">
+  <!-- ========== ANCHOR BAR ========== -->
+  <nav class="section-anchor-bar">
     <div class="container">
-      
-      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+      <div class="anchor-bar-inner">
+        <a href="#lifecycle" class="anchor-link active">Lifecycle</a>
+        <a href="#promo-types" class="anchor-link">Promotion Types</a>
+        <a href="#discounting" class="anchor-link">Discounting</a>
+        <a href="#arbitration" class="anchor-link">Arbitration</a>
+        <a href="#controls" class="anchor-link">Controls</a>
+        <a href="#faq" class="anchor-link">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ========== LIFECYCLE PROMOTIONS (6-Card Grid) ========== -->
+  <section id="lifecycle" class="section section-lg bg-white">
+    <div class="container">
+      <div class="section-header">
         <h2 class="section-title">Faster Time-to-Revenue at Every Stage</h2>
       </div>
 
-      <div class="lifecycle-grid">
-        
+      <div class="grid grid-3">
+
         <!-- Card 1: Acquisition -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="8.5" cy="7" r="4"></circle>
-                <line x1="20" y1="8" x2="20" y2="14"></line>
-                <line x1="23" y1="11" x2="17" y2="11"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Acquisition</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Acquisition</span>
+          <h3 class="card-title">Acquisition</h3>
+          <p class="card-description">
             Launch sign-up bonuses and welcome offers when marketing is ready, not when IT has capacity. Reduce time-to-first-purchase.
           </p>
         </div>
 
         <!-- Card 2: Activation -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
-            </div>
-            <h3 class="card-title">Activation</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Activation</span>
+          <h3 class="card-title">Activation</h3>
+          <p class="card-description">
             First-visit multipliers and onboarding challenges go live immediately. Members see progress in real time.
           </p>
         </div>
 
         <!-- Card 3: Engagement -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Engagement</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Engagement</span>
+          <h3 class="card-title">Engagement</h3>
+          <p class="card-description">
             Configure category bonuses and behavior-based rewards without IT queues. Changes publish without deployment windows.
           </p>
         </div>
 
         <!-- Card 4: Retention -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Retention</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Retention</span>
+          <h3 class="card-title">Retention</h3>
+          <p class="card-description">
             Respond to churn signals before members lapse. Launch win-back campaigns when you need them.
           </p>
         </div>
 
         <!-- Card 5: Growth -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Growth</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Growth</span>
+          <h3 class="card-title">Growth</h3>
+          <p class="card-description">
             Tier acceleration, cross-sell promotions, and basket builders combine without custom development. Grow share of wallet.
           </p>
         </div>
 
         <!-- Card 6: Advocacy -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Advocacy</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Advocacy</span>
+          <h3 class="card-title">Advocacy</h3>
+          <p class="card-description">
             Referral programs and social sharing incentives track accurately. Reward attribution follows the referral chain.
           </p>
         </div>
@@ -1117,31 +868,28 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 3: PROMO TYPES INTERACTIVE WIDGET
-       Background: DARK
-       ======================================== -->
-  <section class="promo-widget-section">
+  <!-- ========== PROMO TYPES INTERACTIVE WIDGET ========== -->
+  <section id="promo-types" class="promo-widget-section">
     <div class="container">
-      
+
       <div class="promo-widget-header">
         <p class="promo-widget-eyebrow">Promotion Types</p>
         <h2 class="promo-widget-title">Complex Promotions Without Custom Development</h2>
       </div>
 
       <div class="promo-widget">
-        
+
         <!-- SLIDE 1: BOGO + Multipliers -->
         <div class="promo-slide active" data-slide="1">
           <div class="promo-slide-inner">
-            
+
             <!-- Left Copy Card -->
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Buy X Get Y</p>
               <h3 class="promo-copy-card-title">BOGO</h3>
-              <p class="promo-copy-card-description">Configure "Buy 2, get 1 free" or "Buy from category A, get discount on category B" through the rules engine. No dev queue.</p>
+              <p class="promo-copy-card-description">Configure &ldquo;Buy 2, get 1 free&rdquo; or &ldquo;Buy from category A, get discount on category B&rdquo; through the rules engine. No dev queue.</p>
             </div>
-            
+
             <!-- Phone Mockups -->
             <div class="promo-phones">
               <div class="promo-phone promo-phone-left">
@@ -1173,7 +921,7 @@
                 <div class="promo-phone-screen">
                   <div class="promo-phone-header">
                     <div class="promo-phone-header-title">Points Summary</div>
-                    <div class="promo-phone-header-subtitle">Today's earning</div>
+                    <div class="promo-phone-header-subtitle">Today&rsquo;s earning</div>
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
@@ -1195,27 +943,27 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Right Copy Card -->
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Stacked Earning</p>
               <h3 class="promo-copy-card-title">Multipliers</h3>
               <p class="promo-copy-card-description">Layer multipliers by tier, day of week, location, or product category. A Gold member on Double-Point Tuesday sees all multipliers applied correctly in a single transaction.</p>
             </div>
-            
+
           </div>
         </div>
 
         <!-- SLIDE 2: Partner Offers + Mix & Match -->
         <div class="promo-slide" data-slide="2">
           <div class="promo-slide-inner">
-            
+
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Co-Funded Promotions</p>
               <h3 class="promo-copy-card-title">Partner Offers</h3>
               <p class="promo-copy-card-description">Run partner-funded promotions with separate tracking for accurate settlement and reimbursement. No manual reconciliation.</p>
             </div>
-            
+
             <div class="promo-phones">
               <div class="promo-phone promo-phone-left" style="--phone-glow-color: #10B981;">
                 <div class="promo-phone-screen">
@@ -1245,7 +993,7 @@
               <div class="promo-phone promo-phone-right" style="--phone-glow-color: #F59E0B;">
                 <div class="promo-phone-screen">
                   <div class="promo-phone-header">
-                    <div class="promo-phone-header-title">Mix & Match</div>
+                    <div class="promo-phone-header-title">Mix &amp; Match</div>
                     <div class="promo-phone-header-subtitle">Build your bundle</div>
                   </div>
                   <div class="promo-phone-content">
@@ -1268,32 +1016,32 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Flexible Bundles</p>
-              <h3 class="promo-copy-card-title">Mix & Match</h3>
-              <p class="promo-copy-card-description">"Pick any 3 for $5" evaluated in real time at checkout. Members see qualified items. The engine calculates optimal combinations.</p>
+              <h3 class="promo-copy-card-title">Mix &amp; Match</h3>
+              <p class="promo-copy-card-description">&ldquo;Pick any 3 for $5&rdquo; evaluated in real time at checkout. Members see qualified items. The engine calculates optimal combinations.</p>
             </div>
-            
+
           </div>
         </div>
 
         <!-- SLIDE 3: Threshold Spend + Time-Limited Offers -->
         <div class="promo-slide" data-slide="3">
           <div class="promo-slide-inner">
-            
+
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Spending Targets</p>
               <h3 class="promo-copy-card-title">Threshold Spend</h3>
               <p class="promo-copy-card-description">Spend-to-unlock promotions with real-time progress visibility across all channels. Members know exactly how close they are.</p>
             </div>
-            
+
             <div class="promo-phones">
               <div class="promo-phone promo-phone-left" style="--phone-glow-color: #6366F1;">
                 <div class="promo-phone-screen">
                   <div class="promo-phone-header">
                     <div class="promo-phone-header-title">Spend Goal</div>
-                    <div class="promo-phone-header-subtitle">This week's target</div>
+                    <div class="promo-phone-header-subtitle">This week&rsquo;s target</div>
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
@@ -1322,7 +1070,7 @@
                   </div>
                   <div class="promo-phone-content">
                     <div class="promo-phone-card promo-phone-card-highlight">
-                      <div class="promo-phone-label">âš¡ Flash Deal</div>
+                      <div class="promo-phone-label">&#9889; Flash Deal</div>
                       <div class="promo-phone-value">2X Points</div>
                       <div class="promo-phone-text">Next 2 hours only</div>
                     </div>
@@ -1340,13 +1088,13 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="promo-copy-card">
               <p class="promo-copy-card-eyebrow">Scheduled Activation</p>
               <h3 class="promo-copy-card-title">Time-Limited Offers</h3>
               <p class="promo-copy-card-description">Flash promotions with scheduled activation down to hour-of-day. No deployment window required.</p>
             </div>
-            
+
           </div>
         </div>
 
@@ -1362,186 +1110,187 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 4: DISCOUNTING ENGINE (Feature Row)
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="feature-rows-section">
+  <!-- ========== DISCOUNTING ENGINE ========== -->
+  <section id="discounting" class="section section-lg bg-white">
     <div class="container">
-      
-      <div class="feature-row">
-        <div class="feature-row-media">
-          <img src="realtime-discounting-engine.png" alt="Real-Time Engine diagram showing inputs (POS/WEB, Member, Basket) flowing into the Real-Time Engine, with outputs to Member Outcome (Reward Applied, Balance Updated) and Business Outcome (Margin Protected, Rules Enforced, Decision Logged)" class="feature-row-image" style="width: 100%; height: auto; border-radius: var(--radius-xl);">
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Real-Time Discounting</span>
-          <h2 class="feature-row-title">Protect Margins While Rewarding Members</h2>
-          <p class="feature-row-description">
-            RCX evaluates discounts in real time at checkout. Sub-second response times at enterprise volume. Every transaction runs through the same engine. No batch processing. No cached logic.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Real-time evaluation at point of sale</li>
-            <li class="feature-row-list-item">Sub-second response times at scale</li>
-            <li class="feature-row-list-item">Instant balance updates across all channels</li>
-            <li class="feature-row-list-item">Decisions logged for audit and dispute resolution</li>
-          </ul>
-          <div class="feature-row-cta">
-            <a href="about-contact.html" class="btn btn-dark">See Discounting in Action &rarr;</a>
-          </div>
-        </div>
+
+      <div class="section-header" style="margin-bottom: var(--space-16);">
+        <p class="eyebrow">Real-Time Discounting</p>
+        <h2 class="section-title">Protect Margins While Rewarding Members</h2>
       </div>
 
+      <div class="feature-row">
+        <div class="feature-visual discount-engine-visual">
+          <div class="discount-engine">
+
+            <!-- Transaction Input -->
+            <div class="discount-engine-block">
+              <div class="discount-engine-label">Incoming Transaction</div>
+              <div class="discount-engine-transaction">
+                <span class="discount-engine-amount">$47.50</span>
+                <span class="discount-engine-meta">3 items &middot; Store #1247</span>
+              </div>
+            </div>
+
+            <div class="discount-connector"><span class="discount-connector-dot active"></span></div>
+
+            <!-- Offers Evaluated -->
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <div class="discount-offers-label">Offers Evaluated</div>
+
+              <div class="discount-offer-row">
+                <div class="discount-offer-info">
+                  <span class="discount-offer-name">10% Tuesday Discount</span>
+                  <span class="discount-offer-source">Store promo &middot; All members</span>
+                </div>
+                <span class="discount-offer-value">&minus;$4.75</span>
+              </div>
+
+              <div class="discount-offer-row best">
+                <div class="discount-offer-info">
+                  <span class="discount-offer-name">BOGO Premium Coffee <span class="discount-offer-badge">Best</span></span>
+                  <span class="discount-offer-source">National promo &middot; Gold tier</span>
+                </div>
+                <span class="discount-offer-value">&minus;$5.50</span>
+              </div>
+
+              <div class="discount-offer-row">
+                <div class="discount-offer-info">
+                  <span class="discount-offer-name">$2 Off Snack Bundle</span>
+                  <span class="discount-offer-source">Partner-funded &middot; Frito-Lay</span>
+                </div>
+                <span class="discount-offer-value">&minus;$2.00</span>
+              </div>
+            </div>
+
+            <div class="discount-connector"><span class="discount-connector-dot active"></span></div>
+
+            <!-- Result -->
+            <div class="discount-result">
+              <div class="discount-result-row">
+                <span class="discount-result-label">Best offer applied</span>
+                <span class="discount-result-value highlight">&minus;$5.50</span>
+              </div>
+              <div class="discount-result-row">
+                <span class="discount-result-label">Final total</span>
+                <span class="discount-result-value">$42.00</span>
+              </div>
+              <div class="discount-result-row">
+                <span class="discount-result-label">Response time</span>
+                <span class="discount-result-value savings">23ms</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="feature-content">
+          <span class="feature-label">How It Works</span>
+          <h2 class="feature-title">Every Transaction. Evaluated Instantly.</h2>
+          <p class="feature-description">
+            RCX evaluates every discount <strong>in real time at checkout</strong>. When multiple promotions qualify, the engine selects the <strong>optimal combination</strong> based on your policies. Sub-second response times at enterprise volume. No batch processing. No cached logic.
+          </p>
+          <ul class="feature-list">
+            <li><strong>Real-time evaluation</strong> at point of sale for every transaction</li>
+            <li><strong>Sub-second response times</strong> at enterprise scale</li>
+            <li><strong>Instant balance updates</strong> across all channels</li>
+            <li>Every decision <strong>logged for audit</strong> and dispute resolution</li>
+            <li><strong>Configurable optimization</strong> &mdash; best for member, best for margin, or balanced</li>
+          </ul>
+          <a href="about-contact.html" class="btn btn-primary btn-lg">See Discounting in Action &rarr;</a>
+        </div>
+      </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 5: BEST-OFFER ARBITRATION (Feature Row Reverse)
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="feature-rows-section" style="padding-top: 0;">
+  <!-- ========== BEST-OFFER ARBITRATION (Feature Row Reverse) ========== -->
+  <section id="arbitration" class="section bg-white">
     <div class="container">
-      
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
+      <div class="feature-row reverse">
+        <div class="media">
+          <div style="width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.4); font-size: var(--font-size-sm);">
             [Best-Offer Selection Interface]
           </div>
         </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Offer Optimization</span>
-          <h2 class="feature-row-title">Stop Guessing Which Promotion Wins</h2>
-          <p class="feature-row-description">
+        <div>
+          <span class="feature-label">Offer Optimization</span>
+          <h2 class="feature-title">Stop Guessing Which Promotion Wins</h2>
+          <p class="feature-description">
             When multiple promotions apply, the engine selects the optimal combination. Configurable policies determine whether to maximize member value, protect margin, or balance both. Every decision is logged.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Automatic best-offer selection</li>
-            <li class="feature-row-list-item">Configurable optimization goals</li>
-            <li class="feature-row-list-item">Conflict resolution and priority rules</li>
-            <li class="feature-row-list-item">Full audit trail for reconciliation</li>
+          <ul class="feature-list">
+            <li>Automatic best-offer selection</li>
+            <li>Configurable optimization goals</li>
+            <li>Conflict resolution and priority rules</li>
+            <li>Full audit trail for reconciliation</li>
           </ul>
-          <div class="feature-row-cta">
-            <a href="about-contact.html" class="btn btn-dark">Explore Arbitration Logic &rarr;</a>
-          </div>
+          <a href="about-contact.html" class="btn btn-secondary">Explore Arbitration Logic &rarr;</a>
         </div>
       </div>
-
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 6: PROMOTIONAL CONTROLS (6-Card Grid)
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="section section-lg section-light bg-white">
+  <!-- ========== PROMOTIONAL CONTROLS (6-Card Grid) ========== -->
+  <section id="controls" class="section section-lg bg-light">
     <div class="container">
-      
-      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+      <div class="section-header">
         <h2 class="section-title">Promotional Spend You Can Defend</h2>
       </div>
 
-      <div class="lifecycle-grid">
-        
+      <div class="grid grid-3">
+
         <!-- Card 1: Partner Billing -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Partner Billing</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Settlement</span>
+          <h3 class="card-title">Partner Billing</h3>
+          <p class="card-description">
             Co-funded promotions tracked separately for accurate settlement. Clean reimbursement without manual reconciliation.
           </p>
         </div>
 
         <!-- Card 2: Eligibility Rules -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Eligibility Rules</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Targeting</span>
+          <h3 class="card-title">Eligibility Rules</h3>
+          <p class="card-description">
             Target promotions by member segment, location, time window, or product category. Configurable without code.
           </p>
         </div>
 
         <!-- Card 3: Stacking Control -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Stacking Control</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Governance</span>
+          <h3 class="card-title">Stacking Control</h3>
+          <p class="card-description">
             Control how promotions combine on a per-promotion basis. Rules are explicit and auditable.
           </p>
         </div>
 
         <!-- Card 4: Scheduled Activation -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Scheduled Activation</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Deployment</span>
+          <h3 class="card-title">Scheduled Activation</h3>
+          <p class="card-description">
             Stage promotions for future go-live. Publish without service restarts or deployment windows.
           </p>
         </div>
 
         <!-- Card 5: Progress Tracking -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Progress Tracking</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Visibility</span>
+          <h3 class="card-title">Progress Tracking</h3>
+          <p class="card-description">
             Multi-event promotions track progress in real time. Members see streaks and qualification status across all channels.
           </p>
         </div>
 
         <!-- Card 6: Execution Logging -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Execution Logging</h3>
-          </div>
-          <p class="card-body">
+          <span class="card-eyebrow">Compliance</span>
+          <h3 class="card-title">Execution Logging</h3>
+          <p class="card-description">
             Every transaction logs which rules triggered. Supports dispute resolution and finance reconciliation.
           </p>
         </div>
@@ -1551,35 +1300,28 @@
   </section>
 
 
-  <!-- ========================================
-       SECTION 7: BOTTOM CTA
-       Background: Off-white with white card
-       ======================================== -->
-  <section class="section section-lg bg-light">
+  <!-- ========== BOTTOM CTA ========== -->
+  <section class="section bg-white" style="padding-bottom: var(--space-24);">
     <div class="container">
-      <div class="bottom-cta-card">
-        <h2 class="bottom-cta-title">Stop Waiting on IT to Launch Promotions</h2>
-        <p class="bottom-cta-description">
-          Business users configure campaigns. IT maintains control. No custom development required.
+      <div class="cta-box">
+        <h2 class="cta-box-title">Launch Campaigns on Your Timeline, Not IT&rsquo;s</h2>
+        <p class="cta-box-description">
+          Give your marketing team the power to build, test, and deploy promotions while governance and guardrails stay intact.
         </p>
-        <div class="flex gap-4" style="justify-content: center;">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-        </div>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 8: FAQ SECTION (Two-Column Layout)
-       Background: LIGHT (Gray)
-       ======================================== -->
-  <section class="faq-section section-light bg-light">
+  <!-- ========== FAQ ========== -->
+  <section id="faq" class="faq-section bg-light">
     <div class="container">
       <div class="faq-layout">
-        
-        <!-- Left Column: Intro Text -->
+
+        <!-- Left Column: Intro -->
         <div class="faq-intro">
+          <p class="faq-eyebrow">FAQ</p>
           <h2 class="faq-title">Frequently Asked Questions</h2>
           <p class="faq-description">
             Common questions about promotions, discounting, and campaign management.
@@ -1589,8 +1331,7 @@
 
         <!-- Right Column: Accordion -->
         <div class="faq-accordion">
-          
-          <!-- FAQ 1 -->
+
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How many promotions can run simultaneously?</span>
@@ -1598,14 +1339,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  There is no hard limit. Enterprise deployments run hundreds of active promotions across different segments, locations, and product categories. The rules engine evaluates all applicable promotions in real time without performance degradation.
-                </p>
+                <p>There is no hard limit. Enterprise deployments run hundreds of active promotions across different segments, locations, and product categories. The rules engine evaluates all applicable promotions in real time without performance degradation.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 2 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">Can promotions stack with tier benefits?</span>
@@ -1613,14 +1351,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  Yes. Stacking behavior is configurable per promotion. The platform supports layered multipliers by tier, day of week, location, product category, or member segment. The engine calculates all applicable benefits at checkout.
-                </p>
+                <p>Yes. Stacking behavior is configurable per promotion. The platform supports layered multipliers by tier, day of week, location, product category, or member segment. The engine calculates all applicable benefits at checkout.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 3 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">What promotion types does RCX support?</span>
@@ -1628,14 +1363,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  BOGO and mix-and-match for quantity-based offers. Multipliers that layer earning by tier, day-part, and location. Multi-event promotions requiring sequences and streaks. Time-limited offers with scheduled activation. Partner-funded promotions with separate tracking.
-                </p>
+                <p>BOGO and mix-and-match for quantity-based offers. Multipliers that layer earning by tier, day-part, and location. Multi-event promotions requiring sequences and streaks. Time-limited offers with scheduled activation. Partner-funded promotions with separate tracking.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 4 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How does best-offer arbitration work?</span>
@@ -1643,14 +1375,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  When multiple promotions apply, the engine determines the optimal combination based on configurable policies: best for customer, best for business, priority-based ordering, or policy-driven overrides. Decisions are logged for audit.
-                </p>
+                <p>When multiple promotions apply, the engine determines the optimal combination based on configurable policies: best for customer, best for business, priority-based ordering, or policy-driven overrides. Decisions are logged for audit.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 5 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How fast does discounting work at the point of sale?</span>
@@ -1658,14 +1387,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  RCX evaluates discounts in real time during checkout. Sub-second response times at enterprise volume. Balance updates propagate instantly across all channels.
-                </p>
+                <p>RCX evaluates discounts in real time during checkout. Sub-second response times at enterprise volume. Balance updates propagate instantly across all channels.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 6 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">Can I run location-specific or time-limited promotions?</span>
@@ -1673,14 +1399,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  Yes. Target promotions by member segment, location, time window, or product category. Eligibility rules are configurable without code. Changes publish without service restarts.
-                </p>
+                <p>Yes. Target promotions by member segment, location, time window, or product category. Eligibility rules are configurable without code. Changes publish without service restarts.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 7 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">How do partner-funded promotions work?</span>
@@ -1688,14 +1411,11 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  RCX supports partner-funded promotions with separate tracking for accurate settlement and reimbursement. No manual reconciliation between systems.
-                </p>
+                <p>RCX supports partner-funded promotions with separate tracking for accurate settlement and reimbursement. No manual reconciliation between systems.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 8 -->
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">Can members see what they will earn before completing a purchase?</span>
@@ -1703,30 +1423,23 @@
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>
-                  Yes. Members see projected points and applicable discounts before completing a purchase. The preview combines all active promotions, tier bonuses, and member-specific offers.
-                </p>
+                <p>Yes. Members see projected points and applicable discounts before completing a purchase. The preview combines all active promotions, tier bonuses, and member-specific offers.</p>
               </div>
             </div>
           </div>
 
         </div>
-        
+
       </div>
-      
     </div>
   </section>
 
 
-  <!-- ========================================
-       FOOTER
-       Synced with index.html footer structure
-       ======================================== -->
+  <!-- ========== FOOTER (synced with index.html) ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
-        
-        <!-- Brand Column -->
+
         <div class="footer-brand">
           <div class="footer-logo">
             <img src="lm-full-white.svg" alt="Loyalty Methods">
@@ -1740,13 +1453,12 @@
             </div>
             <div class="footer-social">
               <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Platform Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">RCX Platform</h4>
           <ul class="footer-links">
@@ -1759,7 +1471,6 @@
           </ul>
         </div>
 
-        <!-- Technology Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Technology</h4>
           <ul class="footer-links">
@@ -1772,7 +1483,6 @@
           </ul>
         </div>
 
-        <!-- Company Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
@@ -1784,10 +1494,9 @@
           </ul>
         </div>
 
-        <!-- Resources & Legal Column -->
         <div class="footer-column">
           <h4 class="footer-column-title">Resources</h4>
-          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+          <ul class="footer-links" style="margin-bottom: var(--space-6);">
             <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
           </ul>
           <h4 class="footer-column-title">Legal</h4>
@@ -1801,55 +1510,37 @@
   </footer>
 
 
-  <!-- ========================================
-       SCRIPTS
-       ======================================== -->
+  <!-- ========== SCRIPTS ========== -->
   <script>
-    // Header scroll effect
+    // Header scroll
     const header = document.querySelector('.header');
-    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
     // Promo widget carousel
     const promoSlides = document.querySelectorAll('.promo-slide');
     const promoNavBtns = document.querySelectorAll('.promo-nav-btn');
 
-    promoNavBtns.forEach((btn) => {
+    promoNavBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const targetSlide = btn.dataset.target;
-        
-        // Remove active from all slides and buttons
         promoSlides.forEach(s => s.classList.remove('active'));
         promoNavBtns.forEach(b => b.classList.remove('active'));
-        
-        // Activate clicked slide and button
         document.querySelector(`.promo-slide[data-slide="${targetSlide}"]`).classList.add('active');
         btn.classList.add('active');
       });
     });
 
-    // Accordion functionality
-    const accordionItems = document.querySelectorAll('.accordion-item');
-    
-    accordionItems.forEach(item => {
+    // FAQ accordion
+    document.querySelectorAll('.accordion-item').forEach(item => {
       const trigger = item.querySelector('.accordion-trigger');
-      
       trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        
-        // Close all accordion items
-        accordionItems.forEach(otherItem => {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        document.querySelectorAll('.accordion-item').forEach(other => {
+          other.classList.remove('active');
+          other.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
         });
-        
-        // If clicked item wasn't active, open it
         if (!isActive) {
           item.classList.add('active');
           trigger.setAttribute('aria-expanded', 'true');
@@ -1857,24 +1548,31 @@
       });
     });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            const headerOffset = 100;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
+    // Anchor bar smooth scroll + scroll spy
+    const anchorLinks = document.querySelectorAll('.anchor-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 120;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        if (window.scrollY >= sectionTop) { current = section.getAttribute('id'); }
+      });
+      anchorLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) { link.classList.add('active'); }
       });
     });
   </script>
