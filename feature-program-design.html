@@ -5,802 +5,209 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Program Design & Rules | RCX Loyalty Platform</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="css-styles.css">
   
-  <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* =====================================================
-       PAGE-SPECIFIC STYLES: PROGRAM DESIGN
-       ===================================================== */
-    
-    /* Subpage Hero */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
+    /* ==========================================================================
+       PROGRAM DESIGN - CINEMATIC HERO (Resource Center Style)
+       Warm, loyalty-focused. Not techy.
+       ========================================================================== */
+
+    .hero-cinematic {
       position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
-    }
-    
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
-    
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
-    }
-    
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-    
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-    
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-    
-    .subpage-hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-    
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-    
-    .subpage-hero-title .highlight {
-      background: var(--grad-orange-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-    
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-    
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-    
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    /* -------------------------------------------------------------------------
-       HERO INTERFACE PREVIEW
-       Styled mock interface for this specific page
-       ------------------------------------------------------------------------- */
-    .hero-interface-mock {
-      background: var(--color-charcoal-800);
-      border-radius: var(--radius-2xl);
-      overflow: hidden;
-      border: 1px solid var(--color-charcoal-600);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
-    .interface-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-4) var(--space-6);
-      background: #3D3D3D;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .interface-header-left {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-    }
-
-    .interface-dots {
-      display: flex;
-      gap: var(--space-2);
-    }
-
-    .interface-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: var(--radius-full);
-    }
-
-    .interface-dot-red { background: #FF5F56; }
-    .interface-dot-yellow { background: #FFBD2E; }
-    .interface-dot-green { background: #27C93F; }
-
-    .interface-title {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .interface-body {
-      padding: var(--space-6);
-      min-height: 300px;
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: var(--space-6);
-    }
-
-    @media (max-width: 768px) {
-      .interface-body {
-        grid-template-columns: 1fr;
-        min-height: 250px;
-      }
-      
-      .interface-sidebar {
-        display: none;
-      }
-    }
-
-    .interface-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
-    .interface-nav-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      padding: var(--space-3) var(--space-4);
-      border-radius: var(--radius-lg);
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      transition: all var(--transition-fast);
-    }
-
-    .interface-nav-item.active {
-      background: rgba(243, 112, 33, 0.15);
-      color: var(--color-primary);
-    }
-
-    .interface-nav-item svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .interface-content {
-      background: var(--color-charcoal-900);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-    }
-
-    .interface-content-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: var(--space-6);
-    }
-
-    .interface-content-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-white);
-    }
-
-    .interface-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-1) var(--space-3);
-      background: rgba(39, 201, 63, 0.15);
-      color: #27C93F;
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-medium);
-      border-radius: var(--radius-full);
-    }
-
-    .interface-rule-cards {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .interface-rule-card {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      padding: var(--space-4);
-      background: var(--color-charcoal-800);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-charcoal-600);
-    }
-
-    .interface-rule-icon {
-      width: 40px;
-      height: 40px;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(243, 112, 33, 0.15);
-      border-radius: var(--radius-md);
-      color: var(--color-primary);
-    }
-
-    .interface-rule-icon svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .interface-rule-info {
-      flex: 1;
-    }
-
-    .interface-rule-name {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-white);
-      margin-bottom: var(--space-1);
-    }
-
-    .interface-rule-meta {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-    }
-
-    .interface-rule-value {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-    }
-
-    /* -------------------------------------------------------------------------
-       FEATURE ROWS SECTION
-       ------------------------------------------------------------------------- */
-    .feature-rows-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-white);
-    }
-    
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-      margin-bottom: var(--space-20);
-    }
-    
-    .feature-row:last-child {
-      margin-bottom: 0;
-    }
-    
-    .feature-row-reverse {
-      direction: rtl;
-    }
-    
-    .feature-row-reverse > * {
-      direction: ltr;
-    }
-    
-    @media (max-width: 1024px) {
-      .feature-row,
-      .feature-row-reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-      }
-    }
-    
-    .feature-row-content {
-      max-width: 520px;
-    }
-    
-    @media (max-width: 1024px) {
-      .feature-row-content {
-        max-width: 100%;
-      }
-    }
-    
-    .feature-row-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-3);
-    }
-    
-    .feature-row-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-    
-    .feature-row-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-    
-    .feature-row-list {
-      list-style: none;
-      margin-bottom: var(--space-6);
-    }
-    
-    .feature-row-list-item {
-      position: relative;
-      padding-left: var(--space-6);
-      margin-bottom: var(--space-3);
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-    }
-    
-    .feature-row-list-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      border-radius: 50%;
-    }
-    
-    .feature-row-media {
-      position: relative;
-    }
-    
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-    }
-
-    /* -------------------------------------------------------------------------
-       DARK BUTTON VARIANT
-       ------------------------------------------------------------------------- */
-    .btn-dark {
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      color: var(--color-white);
-      position: relative;
       overflow: hidden;
+      background: linear-gradient(165deg, #555555 0%, #484848 30%, #3d3d3d 60%, #353535 100%);
     }
-    
-    .btn-dark::before {
+
+    /* Warm gradient overlay */
+    .hero-cinematic::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+      z-index: 3;
       pointer-events: none;
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
-    }
-    
-    .btn-dark:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
     }
 
-    /* -------------------------------------------------------------------------
-       4-COLUMN GRID FOR FRAMEWORK CARDS
-       ------------------------------------------------------------------------- */
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-8);
-    }
-    
-    @media (max-width: 1024px) {
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
+    /* Subtle warm accent glow */
+    .hero-cinematic-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(243, 112, 33, 0.06) 0%, transparent 65%);
+      z-index: 2;
+      pointer-events: none;
     }
 
-    /* -------------------------------------------------------------------------
-       6-COLUMN GRID FOR TIER LOGIC
-       ------------------------------------------------------------------------- */
-    .grid-6 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 1024px) {
-      .grid-6 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .grid-6 {
-        grid-template-columns: 1fr;
-      }
+    /* Bottom fade to white */
+    .hero-cinematic .hero-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      z-index: 5;
+      background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.2) 35%, rgba(255,255,255,0.6) 65%, #FFFFFF 100%);
+      pointer-events: none;
     }
 
-    /* -------------------------------------------------------------------------
-       3-STAT BAR LAYOUT
-       ------------------------------------------------------------------------- */
-    .stats-bar-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
+    /* Centered content */
+    .hero-cinematic-content {
+      position: relative;
+      z-index: 10;
       text-align: center;
-    }
-    
-    @media (max-width: 768px) {
-      .stats-bar-3 {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-      }
+      max-width: 720px;
+      margin: 0 auto;
+      padding-top: 140px;
+      padding-bottom: 120px;
     }
 
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
-    .stat-number {
-      font-size: var(--font-size-4xl, 2.5rem);
-      font-weight: var(--font-weight-bold, 700);
+    .hero-cinematic-content .hero-eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 500;
       color: var(--color-primary);
-      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-5);
     }
 
-    .stat-title {
-      font-size: var(--font-size-sm, 0.875rem);
-      font-weight: var(--font-weight-bold, 700);
-      color: #FFFFFF;
-    }
-
-    .stat-subtitle {
-      font-size: var(--font-size-xs, 0.75rem);
-      color: var(--color-gray-400);
-      font-style: italic;
-    }
-
-    /* -------------------------------------------------------------------------
-       SECTION DESCRIPTION
-       ------------------------------------------------------------------------- */
-    .section-description {
-      font-size: var(--font-size-lg);
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 700px;
-      margin: var(--space-4) auto 0;
-    }
-
-    /* -------------------------------------------------------------------------
-       CTA BOX TITLE/DESCRIPTION
-       ------------------------------------------------------------------------- */
-    .cta-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      margin-bottom: var(--space-4);
-    }
-    
-    .cta-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* -------------------------------------------------------------------------
-       FAQ SECTION (Two-Column Layout)
-       ------------------------------------------------------------------------- */
-    .faq-section {
-      padding: var(--space-20) 0;
-    }
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-16);
-      align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-10);
-      }
-    }
-
-    .faq-intro {
-      position: sticky;
-      top: 120px;
-    }
-
-    @media (max-width: 1024px) {
-      .faq-intro {
-        position: static;
-        text-align: center;
-      }
-    }
-
-    .faq-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .faq-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
+    .hero-cinematic-content .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 300;
+      color: var(--color-white);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
       margin-bottom: var(--space-6);
     }
 
-    /* -------------------------------------------------------------------------
-       RESPONSIVE POLISH
-       ------------------------------------------------------------------------- */
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: auto;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-      
-      .subpage-hero-title {
-        font-size: 2rem;
-      }
-      
-      .feature-row-title {
-        font-size: var(--font-size-2xl);
-      }
+    .hero-cinematic-content .hero-title .highlight {
+      color: var(--color-primary);
+    }
+
+    .hero-cinematic-content .hero-description {
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .hero-cinematic { min-height: 65vh; }
+      .hero-cinematic-content { padding-top: 120px; padding-bottom: 80px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========================================
-       HEADER / NAVIGATION
-       Synced with index.html mega menu structure
-       ======================================== -->
+  <!-- HEADER -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="logo">
-          <img src="lm-full-white.svg" alt="Loyalty Methods">
-        </a>
-
+        <a href="index.html" class="logo"><img src="lm-full-white.svg" alt="Loyalty Methods"></a>
         <nav class="nav-desktop">
           <ul class="nav-list">
-            
+            <li class="nav-item"><a href="why-lm.html" class="nav-link">Why LM?</a></li>
             <li class="nav-item">
-              <a href="why-lm.html" class="nav-link">Why LM?</a>
-            </li>
-            
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                RCX Loyalty Platform
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </a>
+              <a href="#" class="nav-link">RCX Loyalty Platform <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
               <div class="mega-menu">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Core Platform</div>
-                      <a href="feature-program-design.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
-                      </a>
-                      <a href="feature-promotions.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
-                      </a>
-                      <a href="feature-analytics.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
-                      </a>
-                      <a href="feature-advanced-tools.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
-                      </a>
+                      <a href="feature-program-design.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div></a>
+                      <a href="feature-promotions.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div></a>
+                      <a href="feature-analytics.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div></a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div></a>
                     </div>
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
-                      <a href="feature-engagement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
-                      </a>
-                      <a href="feature-rewards.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
-                      </a>
-                      <a href="feature-partner-enablement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
-                      </a>
-                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
-                      </a>
+                      <a href="feature-engagement.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div></a>
+                      <a href="feature-rewards.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div></a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div></a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div></a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Featured</span>
-                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <h3 class="mega-menu-featured-title">Agentic AI for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
             </li>
-            
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Enterprise Technology
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </a>
-              <div class="mega-menu">
+              <a href="#" class="nav-link">Enterprise Technology <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
-                      <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
-                      </a>
-                      <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
-                      </a>
-                      <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
-                      </a>
+                      <a href="tech-api-architecture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div></a>
+                      <a href="tech-integration.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div></a>
+                      <a href="tech-security.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div></a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Trust Center</span>
-                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
-                    <p class="mega-menu-featured-description">View our real-time system status.</p>
-                    <div class="mega-menu-featured-image">
-                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                      </div>
-                    </div>
+                    <h3 class="mega-menu-featured-title">Security. Compliance.</h3>
                     <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
                 </div>
               </div>
             </li>
-            
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Proven Delivery
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </a>
+              <a href="#" class="nav-link">Proven Delivery <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
               <div class="mega-menu mega-menu-compact">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
                     <div class="mega-menu-column">
-                      <a href="proven-threadsync.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
-                      </a>
-                      <a href="proven-safeswitch.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
-                      </a>
-                      <a href="resource-center.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
-                      </a>
+                      <a href="proven-threadsync.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div></a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div></a>
+                      <a href="resource-center.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div></a>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            
-            <li class="nav-item">
-              <a href="resource-center.html" class="nav-link">Resource Center</a>
-            </li>
-            
+            <li class="nav-item"><a href="resource-center.html" class="nav-link">Resource Center</a></li>
           </ul>
-          
-          <div class="flex items-center gap-4">
+          <div class="flex items-center" style="gap: var(--space-6);">
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
-                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 580px; right: 0; left: auto;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.1fr;">
                     <div class="mega-menu-links">
                       <div class="mega-menu-column">
                         <div class="mega-menu-column-title">Company</div>
-                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
-                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
-                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
-                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
-                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
-                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
                       </div>
                     </div>
-                    <div class="mega-menu-featured" style="min-width: 280px;">
+                    <div class="mega-menu-featured">
                       <span class="mega-menu-featured-eyebrow">Featured</span>
                       <h3 class="mega-menu-featured-title">Partner Network</h3>
-                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
-                      <div class="mega-menu-featured-image">
-                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
-                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
-                      </div>
+                      <p class="mega-menu-featured-description">Integrations. Alliances. Ecosystem.</p>
                       <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
                     </div>
                   </div>
@@ -816,715 +223,342 @@
   </header>
 
 
-  <!-- ========================================
-       SECTION 1: HERO
-       Background: DARK (Charcoal + Glass Shine)
-       ======================================== -->
-  <section class="subpage-hero">
+  <!-- ========== HERO ========== -->
+  <section class="hero-cinematic">
+    <!-- Warm center glow -->
+    <div class="hero-cinematic-glow"></div>
+    <!-- Fade to white -->
+    <div class="hero-fade"></div>
+
     <div class="container">
-      <div class="subpage-hero-inner">
-        
-        <!-- Left: Content -->
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-            <span>Core Platform</span>
-          </div>
-
-          <h1 class="subpage-hero-title">
-            Program Design <span class="highlight">& Rules</span>
-          </h1>
-
-          <p class="subpage-hero-description">
-            Control how members earn, spend, and progress without rebuilding your program every quarter. Configure earn rules, burn rules, tier logic, and promotion mechanics in a structured rules engine your team can operate directly.
-          </p>
-
-          <div class="subpage-hero-cta">
-            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          </div>
-        </div>
-
-        <!-- Right: Hero Interface -->
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="hero-interface-mock">
-            <div class="interface-header">
-              <div class="interface-header-left">
-                <div class="interface-dots">
-                  <span class="interface-dot interface-dot-red"></span>
-                  <span class="interface-dot interface-dot-yellow"></span>
-                  <span class="interface-dot interface-dot-green"></span>
-                </div>
-                <span class="interface-title">RCX Rules Engine</span>
-              </div>
-            </div>
-            <div class="interface-body">
-              <div class="interface-sidebar">
-                <div class="interface-nav-item active">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 20h9"></path>
-                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                  </svg>
-                  Earn Rules
-                </div>
-                <div class="interface-nav-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-                  </svg>
-                  Burn Rules
-                </div>
-                <div class="interface-nav-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
-                  Tier Logic
-                </div>
-                <div class="interface-nav-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                  </svg>
-                  Promotions
-                </div>
-              </div>
-              <div class="interface-content">
-                <div class="interface-content-header">
-                  <span class="interface-content-title">Active Earn Rules</span>
-                  <span class="interface-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                      <circle cx="12" cy="12" r="8"></circle>
-                    </svg>
-                    Live
-                  </span>
-                </div>
-                <div class="interface-rule-cards">
-                  <div class="interface-rule-card">
-                    <div class="interface-rule-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 6v6l4 2"></path>
-                      </svg>
-                    </div>
-                    <div class="interface-rule-info">
-                      <div class="interface-rule-name">Base Earn Rate</div>
-                      <div class="interface-rule-meta">All purchases â€¢ All members</div>
-                    </div>
-                    <div class="interface-rule-value">1x</div>
-                  </div>
-                  <div class="interface-rule-card">
-                    <div class="interface-rule-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline>
-                      </svg>
-                    </div>
-                    <div class="interface-rule-info">
-                      <div class="interface-rule-name">Gold Tier Multiplier</div>
-                      <div class="interface-rule-meta">Gold members â€¢ All channels</div>
-                    </div>
-                    <div class="interface-rule-value">2x</div>
-                  </div>
-                  <div class="interface-rule-card">
-                    <div class="interface-rule-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                      </svg>
-                    </div>
-                    <div class="interface-rule-info">
-                      <div class="interface-rule-name">Weekend Bonus</div>
-                      <div class="interface-rule-meta">Sat-Sun â€¢ Select locations</div>
-                    </div>
-                    <div class="interface-rule-value">3x</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
+      <div class="hero-cinematic-content">
+        <p class="hero-eyebrow">Core Platform</p>
+        <h1 class="hero-title">Program Design <span class="highlight">& Rules</span></h1>
+        <p class="hero-description">Control how members earn, spend, and progress without rebuilding your program every quarter. Configure earn rules, burn rules, tier logic, and promotion mechanics in a structured rules engine your team can operate directly.</p>
       </div>
     </div>
   </section>
 
-
-  <!-- ========================================
-       SECTION 2: FOUR W's FRAMEWORK
-       Background: LIGHT
-       ======================================== -->
-  <section class="section section-lg section-light bg-light">
+  <!-- ========== ANCHOR BAR ========== -->
+  <nav class="section-anchor-bar">
     <div class="container">
-      
+      <div class="anchor-bar-inner">
+        <a href="#framework" class="anchor-link active">Rules Framework</a>
+        <a href="#earning" class="anchor-link">Earning Logic</a>
+        <a href="#redemption" class="anchor-link">Redemption Logic</a>
+        <a href="#tiers" class="anchor-link">Tier Configuration</a>
+        <a href="#scale" class="anchor-link">Enterprise Scale</a>
+        <a href="#faq" class="anchor-link">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ========== FRAMEWORK ========== -->
+  <section id="framework" class="section bg-white">
+    <div class="container">
       <div class="section-header">
+        <p class="eyebrow">Rules Framework</p>
         <h2 class="section-title">Every Rule Starts with Four Questions</h2>
-        <p class="section-description">
-          Who qualifies. Where it applies. When it's active. What triggers it.
-        </p>
+        <p class="body-text">Who qualifies. Where it applies. When it's active. What triggers it.</p>
       </div>
-
-      <div class="grid-4">
-        
-        <!-- Card 1: Who -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Who</h3>
-          </div>
-          <p class="card-body"><strong>Target the right members.</strong> Filter by attributes, tier, segment, preferences, or status.</p>
+      <div class="framework-grid">
+        <div class="framework-card">
+          <div class="framework-letter">W</div>
+          <h3 class="framework-title">Who</h3>
+          <p class="framework-body">Target the right members. Filter by attributes, tier, segment, preferences, or status.</p>
         </div>
-
-        <!-- Card 2: Where -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <h3 class="card-title">Where</h3>
-          </div>
-          <p class="card-body"><strong>Apply rules where they matter.</strong> Filter by location, brand, category, or outlet list.</p>
+        <div class="framework-card">
+          <div class="framework-letter">W</div>
+          <h3 class="framework-title">Where</h3>
+          <p class="framework-body">Apply rules where they matter. Filter by location, brand, category, or outlet list.</p>
         </div>
-
-        <!-- Card 3: When -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">When</h3>
-          </div>
-          <p class="card-body"><strong>Control timing precisely.</strong> Set effective dates, day of week, hour of day, or time zone.</p>
+        <div class="framework-card">
+          <div class="framework-letter">W</div>
+          <h3 class="framework-title">When</h3>
+          <p class="framework-body">Control timing precisely. Set effective dates, day of week, hour of day, or time zone.</p>
         </div>
-
-        <!-- Card 4: What -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">What</h3>
-          </div>
-          <p class="card-body"><strong>Define what triggers the rule.</strong> Product, service, activity type, or transaction attribute.</p>
+        <div class="framework-card">
+          <div class="framework-letter">W</div>
+          <h3 class="framework-title">What</h3>
+          <p class="framework-body">Define what triggers the rule. Product, service, activity type, or transaction attribute.</p>
         </div>
-
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 3: EARNING RULES (Zig-Zag)
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="feature-rows-section">
+  <!-- ========== STATS ========== -->
+  <section id="scale" class="section dark">
     <div class="container">
-      
-      <!-- ===== ROW 1: Earning Logic (Image Left, Text Right) ===== -->
-      <div class="feature-row">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.5;">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-            <span style="margin-top: 16px;">Earn Rate Configuration</span>
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-            Earning Logic
-          </span>
-          <h2 class="feature-row-title">Reward the Right Behavior in Real Time</h2>
-          <p class="feature-row-description">
-            Configure base earn rates, bonus multipliers, and conditional logic for any activity type. <strong>Balances update in real time</strong> across all channels. Every earn event creates a <strong>traceable accrual record</strong> with full lineage.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>Base rates</strong> by spend, visit, stay, or custom metric</li>
-            <li class="feature-row-list-item"><strong>Multipliers</strong> by tier, segment, location, or time window</li>
-            <li class="feature-row-list-item"><strong>Partner earn rules</strong> with separate attribution</li>
-            <li class="feature-row-list-item"><strong>Real-time balance updates</strong> across all channels</li>
-          </ul>
-          <div class="feature-row-cta">
-            <a href="about-contact.html" class="btn btn-dark">See It in Action &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 4: BURNING RULES (Zig-Zag Reverse)
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="feature-rows-section" style="padding-top: 0;">
-    <div class="container">
-      
-      <!-- ===== ROW 2: Redemption Logic (Text Left, Image Right) ===== -->
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.5;">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-            </svg>
-            <span style="margin-top: 16px;">Redemption Flow</span>
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-            </svg>
-            Redemption Logic
-          </span>
-          <h2 class="feature-row-title">Protect Value While Making Redemption Easy</h2>
-          <p class="feature-row-description">
-            Define redemption rules, burn order, and consumption logic. <strong>Track every redemption back to the original accrual.</strong> Finance teams get <strong>full traceability</strong>. Members get a <strong>clean experience</strong>.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>Burn rules</strong> by reward type, location, or channel</li>
-            <li class="feature-row-list-item"><strong>FIFO or custom burn order</strong> by tag, category, or recency</li>
-            <li class="feature-row-list-item"><strong>Escrow and deferred redemption</strong> patterns</li>
-            <li class="feature-row-list-item"><strong>Full lineage</strong> from redemption to original earn</li>
-          </ul>
-          <div class="feature-row-cta">
-            <a href="about-contact.html" class="btn btn-dark">Explore Redemption &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========================================
-       SECTION 5: STAT BAR
-       Background: DARK
-       ======================================== -->
-  <section class="section dark bg-dark">
-    <div class="container">
-      <p class="text-center body-sm mb-6" style="color: #9A9A9A;">Program complexity at enterprise scale:</p>
-      <div class="stats-bar-3">
+      <p class="text-center body-sm mb-8" style="color: rgba(255,255,255,0.5);">Measured outcomes across individual enterprise programs</p>
+      <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
         <div class="stat-item">
           <div class="stat-number">400+</div>
-          <div class="stat-title"><strong>Active Promotions</strong></div>
-          <div class="stat-subtitle">Refreshed every 6 weeks</div>
+          <div class="stat-title">Active Promotions</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">16</div>
-          <div class="stat-title"><strong>Program Variants</strong></div>
-          <div class="stat-subtitle">Single platform</div>
+          <div class="stat-title">Program Variants</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">6</div>
-          <div class="stat-title"><strong>Lines of Business</strong></div>
-          <div class="stat-subtitle">Unified tier logic</div>
+          <div class="stat-title">Lines of Business</div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 6: CALLOUT BLOCK
-       Background: LIGHT
-       ======================================== -->
-  <section class="section section-lg section-light bg-light">
+  <!-- ========== EARNING LOGIC ========== -->
+  <section id="earning" class="section bg-light" style="background: var(--color-gray-50);">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 class="cta-title">Promotions at true scale</h2>
-        <p class="cta-description">
-          Our c-store client runs 400+ unique promotions nationwide, with 50+ partners contributing co-funded offers. Each partner promotion carries its own funding allocation, billing parameters, and reimbursement logic. The rules engine tracks every earn and burn by source, partner, and location. Millions of dollars settle through the platform every cycle.
-        </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-          <a href="feature-partner-enablement.html" class="btn btn-primary btn-lg">
-            Explore Partner Enablement &rarr;
-          </a>
+      <div class="feature-row">
+        <div class="feature-visual">
+          <div class="earn-display">
+            <div class="earn-amount">+2,450</div>
+            <div class="earn-label">Points Earned</div>
+            <div class="earn-breakdown">
+              <div class="earn-row">
+                <span class="earn-row-label">Base Rate</span>
+                <span class="earn-row-value">+1,000</span>
+              </div>
+              <div class="earn-row">
+                <span class="earn-row-label">Gold Multiplier (2x)</span>
+                <span class="earn-row-value">+1,000</span>
+              </div>
+              <div class="earn-row">
+                <span class="earn-row-label">Weekend Bonus</span>
+                <span class="earn-row-value">+450</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-content">
+          <div class="feature-label">Earning Logic</div>
+          <h2 class="feature-title">Reward the Right Behavior in Real Time</h2>
+          <p class="feature-description">Configure base earn rates, bonus multipliers, and conditional logic for any activity type. Balances update in real time across all channels. Every earn event creates a traceable accrual record with full lineage.</p>
+          <ul class="feature-list">
+            <li>Base rates by spend, visit, stay, or custom metric</li>
+            <li>Multipliers by tier, segment, location, or time window</li>
+            <li>Partner earn rules with separate attribution</li>
+            <li>Real-time balance updates across all channels</li>
+          </ul>
+          <a href="about-contact.html" class="btn btn-primary">See It in Action &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 7: TIER LOGIC GRID
-       Background: LIGHT (White)
-       ======================================== -->
-  <section class="section section-lg section-light bg-white">
+  <!-- ========== REDEMPTION LOGIC ========== -->
+  <section id="redemption" class="section bg-white">
+    <div class="container">
+      <div class="feature-row reverse">
+        <div class="feature-visual">
+          <div class="redeem-display">
+            <div class="redeem-row">
+              <div class="redeem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+              <div class="redeem-info"><div class="redeem-name">$25 Gift Card</div><div class="redeem-cost">2,500 points</div></div>
+              <span class="redeem-btn">Redeem</span>
+            </div>
+            <div class="redeem-row">
+              <div class="redeem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div>
+              <div class="redeem-info"><div class="redeem-name">Priority Check-in</div><div class="redeem-cost">500 points</div></div>
+              <span class="redeem-btn">Redeem</span>
+            </div>
+            <div class="redeem-row">
+              <div class="redeem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+              <div class="redeem-info"><div class="redeem-name">Room Upgrade</div><div class="redeem-cost">3,000 points</div></div>
+              <span class="redeem-btn">Redeem</span>
+            </div>
+          </div>
+        </div>
+        <div class="feature-content">
+          <div class="feature-label">Redemption Logic</div>
+          <h2 class="feature-title">Protect Value While Making Redemption Easy</h2>
+          <p class="feature-description">Define redemption rules, burn order, and consumption logic. Track every redemption back to the original accrual. Finance teams get full traceability. Members get a clean experience.</p>
+          <ul class="feature-list">
+            <li>Burn rules by reward type, location, or channel</li>
+            <li>FIFO or custom burn order by tag, category, or recency</li>
+            <li>Escrow and deferred redemption patterns</li>
+            <li>Full lineage from redemption to original earn</li>
+          </ul>
+          <a href="about-contact.html" class="btn btn-primary">Explore Redemption &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== TIER SECTION ========== -->
+  <section id="tiers" class="section dark">
     <div class="container">
       <div class="section-header">
+        <p class="eyebrow">Tier Configuration</p>
         <h2 class="section-title">Tier Logic That Scales With Your Program</h2>
+        <p class="body-text">Status matching, accelerators, hidden tiers, qualification logic, grace periods, and benefits&mdash;all configurable without code.</p>
       </div>
-      <div class="grid-6">
-        
-        <!-- Card 1: Qualification Logic -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Qualification Logic</h3>
-          </div>
-          <p class="card-body"><strong>Qualify members</strong> on spend, visits, nights, or any custom metric you define.</p>
+      <div class="grid grid-3">
+        <div class="card dark">
+          <span class="card-eyebrow">Status</span>
+          <h3 class="card-title">Status Matching</h3>
+          <p class="card-body">Grant elite status to new members to match competitor status.</p>
         </div>
-        
-        <!-- Card 2: Status Matching -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="8.5" cy="7" r="4"></circle>
-                <polyline points="17 11 19 13 23 9"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Status Matching</h3>
-          </div>
-          <p class="card-body"><strong>Grant elite status</strong> to new members in the program to match the status they already hold with a competitor.</p>
+        <div class="card dark">
+          <span class="card-eyebrow">Accelerators</span>
+          <h3 class="card-title">Tier Accelerators</h3>
+          <p class="card-body">Short-term challenges that award bonus tier credit.</p>
         </div>
-        
-        <!-- Card 3: Grace Periods -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Grace Periods</h3>
-          </div>
-          <p class="card-body"><strong>Reduce churn</strong> with soft-landing demotion rules and requalification windows.</p>
+        <div class="card dark">
+          <span class="card-eyebrow">Exclusive</span>
+          <h3 class="card-title">Hidden Tiers</h3>
+          <p class="card-body">Invite-only or surprise-and-delight tiers not visible to members.</p>
         </div>
-        
-        <!-- Card 4: Tier Benefits -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Tier Benefits</h3>
-          </div>
-          <p class="card-body"><strong>Multipliers, perks, and exclusive access</strong> tied to status.</p>
+        <div class="card dark">
+          <span class="card-eyebrow">Qualification</span>
+          <h3 class="card-title">Qualification Logic</h3>
+          <p class="card-body">Qualify on spend, visits, nights, or any custom metric.</p>
         </div>
-        
-        <!-- Card 5: Hidden Tiers -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
-            </div>
-            <h3 class="card-title">Hidden Tiers</h3>
-          </div>
-          <p class="card-body"><strong>Invite-only or surprise-and-delight tiers</strong> tracked but not visible to members.</p>
+        <div class="card dark">
+          <span class="card-eyebrow">Retention</span>
+          <h3 class="card-title">Grace Periods</h3>
+          <p class="card-body">Soft-landing demotion rules and requalification windows.</p>
         </div>
-        
-        <!-- Card 6: Tier Accelerators -->
-        <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
-            </div>
-            <h3 class="card-title">Tier Accelerators</h3>
-          </div>
-          <p class="card-body"><strong>Accelerate progression</strong> with short-term challenges that award bonus tier credit.</p>
+        <div class="card dark">
+          <span class="card-eyebrow">Benefits</span>
+          <h3 class="card-title">Tier Benefits</h3>
+          <p class="card-body">Multipliers, perks, and exclusive access tied to status.</p>
         </div>
-        
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       SECTION 8: FINAL CTA
-       Background: LIGHT
-       ======================================== -->
-  <section class="section section-lg section-light bg-light">
+  <!-- ========== CASE STUDY ========== -->
+  <section class="section bg-light">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 class="cta-title">Advanced Tooling for Complex Programs</h2>
-        <p class="cta-description">
-          Launch new rules faster. Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.
-        </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-          <a href="feature-advanced-tools.html" class="btn btn-primary btn-lg">
-            Explore Advanced Tools &rarr;
-          </a>
+      <div class="feature-row">
+        <div class="feature-content">
+          <div class="feature-label">Case Study</div>
+          <h2 class="feature-title">Promotions at True Scale</h2>
+          <p class="feature-description">Our c-store client runs <strong>400+ unique promotions</strong> nationwide, with <strong>50+ partners</strong> contributing co-funded offers. Each partner promotion carries its own funding allocation, billing parameters, and reimbursement logic.</p>
+          <p class="feature-description">The rules engine tracks every earn and burn by source, partner, and location. <strong>Millions of dollars</strong> settle through the platform every cycle.</p>
+          <a href="feature-partner-enablement.html" class="btn btn-primary">Explore Partner Enablement &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="earn-display">
+            <div class="earn-amount">400+</div>
+            <div class="earn-label">Active Promotions</div>
+            <div class="earn-breakdown">
+              <div class="earn-row">
+                <span class="earn-row-label">Co-Funded Partners</span>
+                <span class="earn-row-value">50+</span>
+              </div>
+              <div class="earn-row">
+                <span class="earn-row-label">Settlement Cycles</span>
+                <span class="earn-row-value">Weekly</span>
+              </div>
+              <div class="earn-row">
+                <span class="earn-row-label">Rule Variants</span>
+                <span class="earn-row-value">16</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="section bg-white">
+    <div class="container">
+      <div class="cta-box" style="text-align: left;">
+        <h2 class="cta-box-title">Advanced Tooling for Complex Programs</h2>
+        <p class="cta-box-description" style="margin-left: 0;">Launch new rules faster. Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.</p>
+        <a href="feature-advanced-tools.html" class="btn btn-primary">Explore Advanced Tools &rarr;</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- ========================================
-       SECTION 9: FAQ (Two-Column Layout)
-       Background: LIGHT
-       ======================================== -->
-  <section class="faq-section section-light bg-light">
+
+  <!-- ========== FAQ ========== -->
+  <section id="faq" class="section bg-light">
     <div class="container">
       <div class="faq-layout">
-        
-        <!-- Left Column: Intro Text -->
         <div class="faq-intro">
           <h2 class="faq-title">Frequently Asked Questions</h2>
-          <p class="faq-description">
-            Common questions about program configuration, rule management, and tier logic.
-          </p>
+          <p class="faq-description">Common questions about program configuration, rule management, and tier logic.</p>
           <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
         </div>
-
-        <!-- Right Column: Accordion -->
         <div class="faq-accordion">
-          
-          <!-- FAQ 1 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can I migrate rules from my existing loyalty platform?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Yes. Our SafeSwitchâ„¢ migration methodology includes a comprehensive rules audit and conversion process. We analyze your existing earn, burn, and tier logic, then recreate it in RCX with full validation testing before cutover. Most clients find they can also simplify and consolidate rules during migration.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 2 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do I test rule changes before they go live?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Every rule configuration includes a sandbox environment where you can test against real member data without affecting production. Run simulations, preview point calculations, and validate tier progressions before publishing. For high-stakes changes, our staged rollout feature lets you deploy rules to a percentage of traffic first.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 3 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can different business units have different rules?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rulesâ€”all within a single platform instance with unified member profiles. </p>
-                <p style="margin-top: 1rem;">Access controls ensure each team only sees and edits their own rules, while shared components (like base tier benefits) can be inherited across programs. This is how we support clients with 16+ program variants on one platform.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 4 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What happens when rules conflict with each other?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>RCX's rule engine uses explicit priority ordering to resolve conflicts deterministically. You define which rules take precedence, and the system follows that order every time. No surprises, no race conditions. Flow Composer determines the correct order of operations for different engagement paths customers can take. The audit log shows exactly which rules fired for any transaction, making troubleshooting straightforward.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 5 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How granular can tier qualification criteria be?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>As granular as your business needs. Qualify members based on any combination of metrics: total spend, visit frequency, specific product purchases, partner transactions, engagement activities, or custom-defined behaviors. Time windows are fully configurableâ€”calendar year, rolling 12 months, membership anniversary, or custom periods.</p>
-              </div>
-            </div>
-          </div>
-
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span class="accordion-trigger-text">Can I migrate rules from my existing loyalty platform?</span><span class="accordion-icon"></span></button><div class="accordion-content"><div class="accordion-content-inner"><p>Yes. Our SafeSwitch&trade; migration methodology includes a comprehensive rules audit and conversion process. We analyze your existing earn, burn, and tier logic, then recreate it in RCX with full validation testing before cutover. Most clients find they can also simplify and consolidate rules during migration.</p></div></div></div>
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span class="accordion-trigger-text">How do I test rule changes before they go live?</span><span class="accordion-icon"></span></button><div class="accordion-content"><div class="accordion-content-inner"><p>Every rule configuration includes a sandbox environment where you can test against real member data without affecting production. Run simulations, preview point calculations, and validate tier progressions before publishing. For high-stakes changes, our staged rollout feature lets you deploy rules to a percentage of traffic first.</p></div></div></div>
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span class="accordion-trigger-text">Can different business units have different rules?</span><span class="accordion-icon"></span></button><div class="accordion-content"><div class="accordion-content-inner"><p>RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rules&mdash;all within a single platform instance with unified member profiles.</p><p style="margin-top: 1rem;">Access controls ensure each team only sees and edits their own rules, while shared components (like base tier benefits) can be inherited across programs. This is how we support clients with 16+ program variants on one platform.</p></div></div></div>
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span class="accordion-trigger-text">What happens when rules conflict with each other?</span><span class="accordion-icon"></span></button><div class="accordion-content"><div class="accordion-content-inner"><p>RCX's rule engine uses explicit priority ordering to resolve conflicts deterministically. You define which rules take precedence, and the system follows that order every time. No surprises, no race conditions. Flow Composer determines the correct order of operations for different engagement paths customers can take. The audit log shows exactly which rules fired for any transaction, making troubleshooting straightforward.</p></div></div></div>
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span class="accordion-trigger-text">How granular can tier qualification criteria be?</span><span class="accordion-icon"></span></button><div class="accordion-content"><div class="accordion-content-inner"><p>As granular as your business needs. Qualify members based on any combination of metrics: total spend, visit frequency, specific product purchases, partner transactions, engagement activities, or custom-defined behaviors. Time windows are fully configurable&mdash;calendar year, rolling 12 months, membership anniversary, or custom periods.</p></div></div></div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========================================
-       FOOTER
-       Synced with index.html footer structure
-       ======================================== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
-        
-        <!-- Brand Column -->
         <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="lm-full-white.svg" alt="Loyalty Methods">
-          </div>
-          <p class="footer-copyright-text">
-            &copy; 2026 Loyalty Methods.<br>All rights reserved.
-          </p>
+          <div class="footer-logo"><img src="lm-full-white.svg" alt="Loyalty Methods"></div>
+          <p class="footer-copyright-text">&copy; 2026 Loyalty Methods.<br>All rights reserved.</p>
           <div class="footer-badges-social">
-            <div class="footer-soc-badge">
-              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
-            </div>
-            <div class="footer-social">
-              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-            </div>
+            <div class="footer-soc-badge"><img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2"></div>
+            <div class="footer-social"><a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div>
           </div>
         </div>
-
-        <!-- Platform Column -->
-        <div class="footer-column">
-          <h4 class="footer-column-title">RCX Platform</h4>
-          <ul class="footer-links">
-            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
-            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
-            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
-            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
-            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
-            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
-          </ul>
-        </div>
-
-        <!-- Technology Column -->
-        <div class="footer-column">
-          <h4 class="footer-column-title">Technology</h4>
-          <ul class="footer-links">
-            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
-            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
-            <li><a href="tech-security.html" class="footer-link">Security</a></li>
-            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
-            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
-            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
-          </ul>
-        </div>
-
-        <!-- Company Column -->
-        <div class="footer-column">
-          <h4 class="footer-column-title">Company</h4>
-          <ul class="footer-links">
-            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
-            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
-            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
-            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
-            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <!-- Resources & Legal Column -->
-        <div class="footer-column">
-          <h4 class="footer-column-title">Resources</h4>
-          <ul class="footer-links" style="margin-bottom: var(--space-8);">
-            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
-          </ul>
-          <h4 class="footer-column-title">Legal</h4>
-          <ul class="footer-links">
-            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-          </ul>
-        </div>
-
+        <div class="footer-column"><h4 class="footer-column-title">RCX Platform</h4><ul class="footer-links"><li><a href="feature-program-design.html" class="footer-link">Program Design</a></li><li><a href="feature-promotions.html" class="footer-link">Promotions</a></li><li><a href="feature-analytics.html" class="footer-link">Analytics</a></li><li><a href="feature-engagement.html" class="footer-link">Engagement</a></li><li><a href="feature-rewards.html" class="footer-link">Rewards</a></li><li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li></ul></div>
+        <div class="footer-column"><h4 class="footer-column-title">Technology</h4><ul class="footer-links"><li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li><li><a href="tech-integration.html" class="footer-link">Integration</a></li><li><a href="tech-security.html" class="footer-link">Security</a></li><li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li><li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li><li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li></ul></div>
+        <div class="footer-column"><h4 class="footer-column-title">Company</h4><ul class="footer-links"><li><a href="about-story.html" class="footer-link">Our Story</a></li><li><a href="about-leadership.html" class="footer-link">Leadership</a></li><li><a href="about-careers.html" class="footer-link">Careers</a></li><li><a href="partner-network.html" class="footer-link">Partner Network</a></li><li><a href="about-contact.html" class="footer-link">Contact Us</a></li></ul></div>
+        <div class="footer-column"><h4 class="footer-column-title">Resources</h4><ul class="footer-links" style="margin-bottom: var(--space-8);"><li><a href="resource-center.html" class="footer-link">Resource Center</a></li></ul><h4 class="footer-column-title">Legal</h4><ul class="footer-links"><li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li></ul></div>
       </div>
     </div>
   </footer>
 
-
-  <!-- ========================================
-       SCRIPTS
-       ======================================== -->
   <script>
-    // Header scroll effect
     const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
+    document.querySelectorAll('.accordion-item').forEach(item => {
+      item.querySelector('.accordion-trigger').addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.accordion-item').forEach(i => { i.classList.remove('active'); i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false'); });
+        if (!isActive) { item.classList.add('active'); item.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'true'); }
+      });
     });
 
-    // Accordion functionality
-    const accordionItems = document.querySelectorAll('.accordion-item');
+    const anchorLinks = document.querySelectorAll('.anchor-link');
+    const sections = document.querySelectorAll('section[id]');
     
-    accordionItems.forEach(item => {
-      const trigger = item.querySelector('.accordion-trigger');
-      
-      trigger.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Close all accordion items
-        accordionItems.forEach(otherItem => {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
-        });
-        
-        // If clicked item wasn't active, open it
-        if (!isActive) {
-          item.classList.add('active');
-          trigger.setAttribute('aria-expanded', 'true');
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 120;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
       });
     });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            const headerOffset = 100;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        if (window.scrollY >= sectionTop) { current = section.getAttribute('id'); }
+      });
+      anchorLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) { link.classList.add('active'); }
       });
     });
   </script>
-
 </body>
 </html>

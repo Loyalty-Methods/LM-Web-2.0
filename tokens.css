@@ -231,6 +231,75 @@
   --blur-xl: 24px;
   --blur-2xl: 40px;
   --blur-3xl: 64px;
+
+  /* -------------------------------------------------------------------------
+     10. SUBPAGE COMPONENT TOKENS
+     ------------------------------------------------------------------------- */
+  
+  /* Anchor Bar */
+  --anchor-bar-bg: var(--color-gray-100);
+  --anchor-bar-border: var(--border-color-light);
+  --anchor-bar-top: 64px;
+  --anchor-bar-z: var(--z-dropdown);
+  --anchor-bar-padding-y: var(--space-5);
+  --anchor-bar-padding-x: var(--space-6);
+  --anchor-bar-font-size: var(--font-size-sm);
+  --anchor-bar-color: var(--color-gray-500);
+  --anchor-bar-active-color: var(--text-primary);
+  --anchor-bar-indicator-height: 2px;
+
+  /* Feature Rows */
+  --feature-gap: var(--space-16);
+  --feature-gap-mobile: var(--space-10);
+  --feature-content-max: 480px;
+  --feature-label-size: var(--font-size-xs);
+  --feature-label-color: var(--color-primary);
+  --feature-label-spacing: var(--letter-spacing-widest);
+  --feature-title-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  --feature-title-color: var(--text-primary);
+  --feature-desc-color: var(--text-secondary);
+  --feature-list-dot: var(--color-primary);
+  --feature-list-dot-size: 6px;
+  --feature-visual-bg: linear-gradient(145deg, var(--color-gray-50) 0%, var(--color-gray-200) 100%);
+  --feature-visual-radius: var(--radius-2xl);
+  --feature-visual-min-h: 380px;
+  --feature-visual-shadow: var(--shadow-xs);
+
+  /* Framework Cards */
+  --framework-letter-size: var(--font-size-5xl);
+  --framework-letter-color: var(--color-primary);
+  --framework-letter-opacity: 0.8;
+  --framework-title-size: var(--font-size-lg);
+  --framework-title-color: var(--text-primary);
+  --framework-body-color: var(--text-muted);
+
+  /* Earn / Redeem Widgets */
+  --earn-amount-size: var(--font-size-7xl);
+  --earn-amount-color: var(--color-primary);
+  --earn-row-bg: var(--color-white);
+  --earn-row-radius: var(--radius-md);
+  --earn-value-color: var(--color-primary);
+  --redeem-icon-size: 36px;
+  --redeem-icon-bg: var(--color-gray-100);
+  --redeem-icon-radius: var(--radius-sm);
+  --redeem-btn-bg: var(--color-gray-100);
+  --redeem-btn-radius: var(--radius-sm);
+
+  /* Callout Cards */
+  --callout-bg: var(--color-white);
+  --callout-radius: var(--radius-xl);
+  --callout-padding: var(--space-12);
+  --callout-border: var(--color-gray-100);
+  --callout-title-size: var(--font-size-2xl);
+  --callout-title-color: var(--text-primary);
+  --callout-body-color: var(--text-secondary);
+  --callout-body-max: 640px;
+
+  /* FAQ */
+  --faq-gap: var(--space-12);
+  --faq-title-size: var(--font-size-2xl);
+  --faq-title-color: var(--text-primary);
+  --faq-desc-color: var(--text-secondary);
 }
 
 /* THEME VARIABLES */
@@ -249,7 +318,7 @@
   --border-hover: var(--color-gray-300);
 }
 
-[data-theme="dark"], .section.dark, .bg-dark, .glass-dark {
+[data-theme="dark"], .section.dark, .card.dark, .bg-dark, .glass-dark {
   --bg-page: var(--color-charcoal-950);
   --bg-card: var(--color-charcoal-800);
   --bg-card-elevated: var(--color-charcoal-700);

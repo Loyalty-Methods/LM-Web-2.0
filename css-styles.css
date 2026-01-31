@@ -1086,6 +1086,9 @@ ul, ol { list-style: none; }
   line-height: var(--line-height-snug);
 }
 
+.card.dark .card-title { color: var(--color-white); }
+.card.dark .card-body { color: rgba(255, 255, 255, 0.6); }
+
 .card .card-body {
   font-size: var(--font-size-sm);
   color: var(--text-muted);
@@ -2430,7 +2433,329 @@ ul, ol { list-style: none; }
 }
 
 /* ==========================================================================
-   19. RESPONSIVE POLISH
+   20. SUBPAGE ANCHOR BAR
+   ========================================================================== */
+.section-anchor-bar {
+  background: var(--anchor-bar-bg);
+  border-bottom: 1px solid var(--anchor-bar-border);
+  position: sticky;
+  top: var(--anchor-bar-top);
+  z-index: var(--anchor-bar-z);
+}
+
+.anchor-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.anchor-bar-inner::-webkit-scrollbar { display: none; }
+
+.anchor-link {
+  position: relative;
+  padding: var(--anchor-bar-padding-y) var(--anchor-bar-padding-x);
+  font-size: var(--anchor-bar-font-size);
+  font-weight: var(--font-weight-normal);
+  color: var(--anchor-bar-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.anchor-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--anchor-bar-padding-x);
+  right: var(--anchor-bar-padding-x);
+  height: var(--anchor-bar-indicator-height);
+  background: transparent;
+}
+
+.anchor-link:hover { color: var(--anchor-bar-active-color); }
+.anchor-link.active { color: var(--anchor-bar-active-color); }
+.anchor-link.active::after { background: var(--anchor-bar-active-color); }
+
+/* ==========================================================================
+   21. FEATURE ROWS (SUBPAGE CONTENT SECTIONS)
+   ========================================================================== */
+.feature-section { padding: var(--space-20) 0; }
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--feature-gap);
+  align-items: center;
+}
+
+.feature-row.reverse { direction: rtl; }
+.feature-row.reverse > * { direction: ltr; }
+
+@media (max-width: 1024px) {
+  .feature-row, .feature-row.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: var(--feature-gap-mobile);
+  }
+}
+
+.feature-content { max-width: var(--feature-content-max); }
+@media (max-width: 1024px) { .feature-content { max-width: 100%; } }
+
+.feature-label {
+  font-size: var(--feature-label-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--feature-label-color);
+  text-transform: uppercase;
+  letter-spacing: var(--feature-label-spacing);
+  margin-bottom: var(--space-4);
+}
+
+.feature-title {
+  font-size: var(--feature-title-size);
+  font-weight: var(--font-weight-light);
+  color: var(--feature-title-color);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-5);
+}
+
+.feature-description {
+  font-size: var(--font-size-base);
+  color: var(--feature-desc-color);
+  line-height: var(--line-height-loose);
+  margin-bottom: var(--space-6);
+}
+
+.feature-list {
+  list-style: none;
+  margin-bottom: var(--space-8);
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--feature-desc-color);
+  line-height: var(--line-height-relaxed);
+}
+
+.feature-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: var(--feature-list-dot-size);
+  height: var(--feature-list-dot-size);
+  background: var(--feature-list-dot);
+  border-radius: var(--radius-full);
+}
+
+.feature-visual {
+  position: relative;
+  background: var(--feature-visual-bg);
+  border-radius: var(--feature-visual-radius);
+  padding: var(--space-10);
+  min-height: var(--feature-visual-min-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--feature-visual-shadow);
+}
+
+/* ==========================================================================
+   22. FRAMEWORK CARDS (4-COLUMN LETTER CARDS)
+   ========================================================================== */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) { .framework-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .framework-grid { grid-template-columns: 1fr; } }
+
+.framework-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  border: 1px solid var(--border-subtle);
+}
+
+.framework-letter {
+  font-size: var(--framework-letter-size);
+  font-weight: var(--font-weight-light);
+  color: var(--framework-letter-color);
+  line-height: var(--line-height-none);
+  margin-bottom: var(--space-3);
+  opacity: var(--framework-letter-opacity);
+}
+
+.framework-title {
+  font-size: var(--framework-title-size);
+  font-weight: var(--font-weight-normal);
+  color: var(--framework-title-color);
+  margin-bottom: var(--space-2);
+}
+
+.framework-body {
+  font-size: var(--font-size-sm);
+  color: var(--framework-body-color);
+  line-height: var(--line-height-loose);
+}
+
+/* ==========================================================================
+   23. EARN / REDEEM DISPLAY WIDGETS
+   ========================================================================== */
+.earn-display {
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.earn-amount {
+  font-size: var(--earn-amount-size);
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--earn-amount-color);
+  line-height: var(--line-height-none);
+  margin-bottom: var(--space-2);
+}
+
+.earn-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-8);
+}
+
+.earn-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.earn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--earn-row-bg);
+  border-radius: var(--earn-row-radius);
+  padding: var(--space-3) var(--space-4);
+}
+
+.earn-row-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.earn-row-value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--earn-value-color);
+}
+
+.redeem-display {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.redeem-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--earn-row-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+}
+
+.redeem-icon {
+  width: var(--redeem-icon-size);
+  height: var(--redeem-icon-size);
+  background: var(--redeem-icon-bg);
+  border-radius: var(--redeem-icon-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.redeem-icon svg { width: 18px; height: 18px; }
+
+.redeem-info { flex: 1; }
+.redeem-name { font-size: var(--font-size-sm); color: var(--text-primary); margin-bottom: 2px; }
+.redeem-cost { font-size: var(--font-size-xs); color: var(--text-muted); }
+
+.redeem-btn {
+  padding: var(--space-2) var(--space-3);
+  background: var(--redeem-btn-bg);
+  border-radius: var(--redeem-btn-radius);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   24. CALLOUT CARDS
+   ========================================================================== */
+.callout-card {
+  background: var(--callout-bg);
+  border-radius: var(--callout-radius);
+  padding: var(--callout-padding);
+  text-align: center;
+  border: 1px solid var(--callout-border);
+}
+
+.callout-title {
+  font-size: var(--callout-title-size);
+  font-weight: var(--font-weight-light);
+  color: var(--callout-title-color);
+  margin-bottom: var(--space-4);
+}
+
+.callout-body {
+  font-size: var(--font-size-base);
+  color: var(--callout-body-color);
+  line-height: var(--line-height-loose);
+  margin-bottom: var(--space-6);
+  max-width: var(--callout-body-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   25. FAQ LAYOUT
+   ========================================================================== */
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--faq-gap);
+  align-items: start;
+}
+
+@media (max-width: 1024px) { .faq-layout { grid-template-columns: 1fr; } }
+
+.faq-title {
+  font-size: var(--faq-title-size);
+  font-weight: var(--font-weight-light);
+  color: var(--faq-title-color);
+  margin-bottom: var(--space-3);
+}
+
+.faq-description {
+  font-size: var(--font-size-base);
+  color: var(--faq-desc-color);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-5);
+}
+
+/* ==========================================================================
+   26. RESPONSIVE POLISH
    ========================================================================== */
 @media (max-width: 768px) {
   .section { padding: var(--space-12) 0; }
