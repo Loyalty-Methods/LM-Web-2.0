@@ -807,10 +807,11 @@ ul, ol { list-style: none; }
   width: calc(100% + var(--space-8) * 2);
   margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4);
   aspect-ratio: 16/10;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
   background: var(--color-gray-100);
+  padding: var(--space-4);
 }
 
 .card-image-placeholder {
