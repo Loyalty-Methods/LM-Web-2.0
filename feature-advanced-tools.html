@@ -5,133 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advanced Tools | RCX Loyalty Platform</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
+  <!-- MODULAR CSS SYSTEM -->
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="css-styles.css">
   
-  <!-- Google Fonts - Inter -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       PAGE-SPECIFIC STYLES: Advanced Tools
+       PAGE-SPECIFIC: Advanced Tools (Minimal overrides)
        ========================================================================== */
 
-    /* -------------------------------------------------------------------------
-       SUBPAGE HERO
-       ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
-    }
-
-    /* Glass shine overlay */
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .subpage-hero-glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.15;
-      pointer-events: none;
-    }
-
-    .subpage-hero-glow-1 {
-      background: var(--color-navy);
-      top: -200px;
-      right: -100px;
-    }
-
-    .subpage-hero-inner {
+    /* Hero split grid */
+    .hero-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-12);
       align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .hero-split { grid-template-columns: 1fr; }
+      .hero-split .hero-content { text-align: center; max-width: 100%; }
+      .hero-split .hero-description { margin-left: auto; margin-right: auto; }
+      .hero-split .hero-cta { justify-content: center; }
+    }
+
+    /* Hero image placeholder */
+    .hero-media {
       position: relative;
-      z-index: 10;
+      z-index: 5;
     }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-
-    .subpage-hero-title .highlight {
-      color: var(--color-primary);
-    }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
+    .hero-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
       border-radius: var(--radius-xl);
@@ -141,221 +48,31 @@
       color: rgba(255, 255, 255, 0.4);
       font-size: var(--font-size-sm);
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: auto;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-    }
-
-    /* -------------------------------------------------------------------------
-       GOVERNANCE GRID - 4 Cards
-       ------------------------------------------------------------------------- */
-    .governance-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 1024px) {
-      .governance-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .governance-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .governance-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      transition: all var(--transition-base);
-      box-shadow: var(--shadow-card);
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-4);
-    }
-    
-    .governance-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-navy);
-      box-shadow: var(--shadow-card-hover);
-    }
-    
-    .governance-card-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      border-radius: var(--radius-lg);
-      transition: all var(--transition-base);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .governance-card-icon::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      pointer-events: none;
-    }
-
-    .governance-card-icon svg {
-      stroke: var(--color-primary);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .governance-card:hover .governance-card-icon {
-      transform: scale(1.05);
-    }
-    
-    .governance-card-content {
-      flex: 1;
-    }
-    
-    .governance-card-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-      line-height: 1.3;
-    }
-    
-    .governance-card-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: 1.6;
-      text-align: left;
-    }
-
-    /* -------------------------------------------------------------------------
-       PROBLEM SECTION - Card Widget Style
-       ------------------------------------------------------------------------- */
-    .problem-section {
-      padding: var(--space-16) 0;
-      background: #F5F5F5;
-    }
-
-    .problem-content {
+    /* Problem callout */
+    .problem-card {
       max-width: 900px;
       margin: 0 auto;
-      text-align: center;
       background: var(--color-white);
       border-radius: var(--radius-2xl);
       padding: var(--space-12) var(--space-16);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
       transform: translateY(-4px);
       border: 1px solid rgba(0, 0, 0, 0.04);
+      text-align: center;
     }
-
-    .problem-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-6);
-    }
-
-    .problem-body {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-400);
-      line-height: 1.7;
-    }
-
     @media (max-width: 768px) {
-      .problem-content {
-        padding: var(--space-8);
-      }
+      .problem-card { padding: var(--space-8); }
     }
 
-    /* -------------------------------------------------------------------------
-       FEATURE ROWS SECTION
-       ------------------------------------------------------------------------- */
-    .feature-rows-section {
-      padding: var(--space-20) 0;
-    }
+    /* Feature rows section spacing */
+    .feature-rows-section { padding: var(--space-20) 0; }
+    .feature-rows-section .feature-row { margin-bottom: var(--space-20); }
+    .feature-rows-section .feature-row:last-child { margin-bottom: 0; }
 
-    .feature-rows-section .feature-row {
-      margin-bottom: var(--space-20);
-    }
-
-    .feature-rows-section .feature-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-row-content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .feature-row-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .feature-row-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .feature-row-list {
-      margin-top: var(--space-4);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .feature-row-list-item {
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-      padding-left: var(--space-6);
-      position: relative;
-    }
-
-    .feature-row-list-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.5em;
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      border-radius: 50%;
-    }
-
-    .feature-row-media {
-      display: flex;
-      align-items: center;
-    }
-
+    /* Feature row image placeholder */
     .feature-row-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
@@ -368,35 +85,67 @@
       width: 100%;
     }
 
-    .feature-row-reverse .feature-row-content {
-      order: 2;
-    }
-
-    .feature-row-reverse .feature-row-media {
-      order: 1;
-    }
-
-    @media (max-width: 768px) {
-      .feature-row-reverse .feature-row-content,
-      .feature-row-reverse .feature-row-media {
-        order: unset;
-      }
-    }
-
-    /* -------------------------------------------------------------------------
-       ENTERPRISE TECHNOLOGY MEGA MENU - Tighter Layout
-       ------------------------------------------------------------------------- */
-    .mega-menu-tech {
-      width: 680px;
-    }
-
-    .mega-menu-tech .mega-menu-inner {
-      grid-template-columns: 1fr 1fr;
+    /* Governance grid */
+    .governance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--space-6);
     }
+    @media (max-width: 1024px) { .governance-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .governance-grid { grid-template-columns: 1fr; } }
 
-    .mega-menu-tech .mega-menu-links {
-      grid-template-columns: 1fr;
+    .governance-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+    .governance-card:hover {
+      border-color: var(--color-gray-300);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .governance-card-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .governance-card-icon::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      pointer-events: none;
+    }
+    .governance-card-icon svg {
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 1;
+    }
+    .governance-card-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+      line-height: 1.3;
+    }
+    .governance-card-description {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
+      line-height: 1.6;
+      text-align: left;
     }
   </style>
 </head>
@@ -409,12 +158,10 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <!-- Logo -->
         <a href="index.html" class="logo">
           <img src="lm-full-white.svg" alt="Loyalty Methods">
         </a>
 
-        <!-- Desktop Navigation with Mega Menu -->
         <nav class="nav-desktop">
           <ul class="nav-list">
             
@@ -606,54 +353,80 @@
 
   <!-- ========================================
        SECTION 1: HERO
-       Background: DARK (Charcoal + Navy Glow)
+       Background: DARK (Premium charcoal + orbs/grid/flow)
        ======================================== -->
-  <section class="subpage-hero">
-    <div class="subpage-hero-glow subpage-hero-glow-1"></div>
+  <section class="hero hero-premium">
+    <div class="hero-premium-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-grid"></div>
+      <svg class="hero-flow-lines" viewBox="0 0 1440 900" preserveAspectRatio="none">
+        <path class="flow-line flow-line-1" d="M-50 400 Q 300 350, 600 420 T 1200 380 T 1500 400" fill="none" stroke="rgba(243,112,33,0.08)" stroke-width="1"/>
+        <path class="flow-line flow-line-2" d="M-50 500 Q 400 450, 700 520 T 1300 480 T 1500 500" fill="none" stroke="rgba(91,138,184,0.06)" stroke-width="1"/>
+        <path class="flow-line flow-line-3" d="M-50 600 Q 350 560, 650 620 T 1250 580 T 1500 600" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      </svg>
+    </div>
 
     <div class="container">
-      <div class="subpage-hero-inner">
+      <div class="hero-split">
         
         <!-- Left: Content -->
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow" style="color: var(--color-primary);">
-            <span>Core Platform</span>
-          </div>
+        <div class="hero-content">
+          <div class="hero-eyebrow">Core Platform</div>
 
-          <h1 class="subpage-hero-title">
+          <h1 class="hero-title">
             Advanced <span class="highlight">Tools</span>
           </h1>
 
-          <p class="subpage-hero-description">
+          <p class="hero-description">
             Manage complex loyalty programs without losing control. Configure custom logic. Organize rules into predictable execution paths. Maintain governance as your program scales.
           </p>
 
-          <div class="subpage-hero-cta">
+          <div class="hero-cta">
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
 
         <!-- Right: Hero Image -->
-        <div class="subpage-hero-media">
-          <div class="subpage-hero-image-placeholder">
-            [Advanced Tools Interface - 600×450]
+        <div class="hero-media">
+          <div class="hero-image-placeholder">
+            [Advanced Tools Interface - 600&times;450]
           </div>
         </div>
         
       </div>
     </div>
+
+    <div class="hero-fade"></div>
   </section>
+
+
+  <!-- ========================================
+       BELOW-FOLD ANCHOR BAR
+       ======================================== -->
+  <nav class="section-anchor-bar">
+    <div class="container">
+      <div class="anchor-bar-inner">
+        <a href="#the-challenge" class="anchor-link">The Challenge</a>
+        <a href="#rule-organization" class="anchor-link">Rule Organization</a>
+        <a href="#custom-logic" class="anchor-link">Custom Logic</a>
+        <a href="#governance" class="anchor-link">Governance</a>
+        <a href="#faq" class="anchor-link">FAQ</a>
+      </div>
+    </div>
+  </nav>
 
 
   <!-- ========================================
        SECTION 2: PROBLEM AT SCALE (Hook)
        Background: LIGHT
        ======================================== -->
-  <section class="problem-section">
+  <section class="section bg-light" id="the-challenge">
     <div class="container">
-      <div class="problem-content">
-        <h2 class="problem-title">Programs Grow. Rules Multiply.</h2>
-        <p class="problem-body">
+      <div class="problem-card">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-medium); color: var(--color-primary); margin-bottom: var(--space-6);">Programs Grow. Rules Multiply.</h2>
+        <p style="font-size: var(--font-size-lg); color: var(--color-gray-400); line-height: 1.7;">
           What starts as a handful of promotions becomes hundreds of rules. Base earn. Partner earn. Tier multipliers. Promotional bonuses. Each rule interacts with the others. Without structure, you get unknown outcomes. Which rules fired? In what order? Why did the member get 150 points instead of 250? That's a <strong>liability problem</strong>. An <strong>audit problem</strong>. A <strong>finance problem</strong>.
         </p>
       </div>
@@ -665,26 +438,26 @@
        SECTION 3: FEATURE ROWS (Zig-Zag)
        Background: LIGHT (Gray)
        ======================================== -->
-  <section class="feature-rows-section section-light bg-light">
+  <section class="feature-rows-section bg-light">
     <div class="container">
       
       <!-- ===== ROW 1: Rule Organization (Text Left, Image Right) ===== -->
       <div class="feature-row" id="rule-organization">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Rule Organization</span>
-          <h2 class="feature-row-title">Predictable Execution. Auditable Outcomes.</h2>
-          <p class="feature-row-description">
-            Keep programs organized as they grow. Rules are grouped by business function—base earn separate from promotions, partner rules isolated per partner, tier logic in its own area. Different teams can own different sections. When a transaction comes through, execution follows a <strong>defined path</strong>. Every decision is logged. Finance can <strong>trace outcomes back to specific rules</strong>. Partner billing calculates accurately because the system knows which rules fired and in what order.
+        <div class="feature-content">
+          <div class="feature-label">Rule Organization</div>
+          <h2 class="feature-title">Predictable Execution. Auditable Outcomes.</h2>
+          <p class="feature-description">
+            Keep programs organized as they grow. Rules are grouped by business function&#8212;base earn separate from promotions, partner rules isolated per partner, tier logic in its own area. Different teams can own different sections. When a transaction comes through, execution follows a <strong>defined path</strong>. Every decision is logged. Finance can <strong>trace outcomes back to specific rules</strong>. Partner billing calculates accurately because the system knows which rules fired and in what order.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Organize rules into <strong>logical groupings</strong> by business function</li>
-            <li class="feature-row-list-item">Different teams manage different areas of the program</li>
-            <li class="feature-row-list-item">Gate rules control whether entire sections activate</li>
-            <li class="feature-row-list-item"><strong>Defined execution order</strong> eliminates unknown outputs</li>
-            <li class="feature-row-list-item">Logging supports <strong>audit and reconciliation</strong></li>
+          <ul class="feature-list">
+            <li>Organize rules into <strong>logical groupings</strong> by business function</li>
+            <li>Different teams manage different areas of the program</li>
+            <li>Gate rules control whether entire sections activate</li>
+            <li><strong>Defined execution order</strong> eliminates unknown outputs</li>
+            <li>Logging supports <strong>audit and reconciliation</strong></li>
           </ul>
         </div>
-        <div class="feature-row-media">
+        <div class="media">
           <div class="feature-row-image-placeholder">
             [Rule Organization UI - Folder Hierarchy and Execution Path]
           </div>
@@ -692,22 +465,22 @@
       </div>
 
       <!-- ===== ROW 2: Custom Logic (Image Left, Text Right) ===== -->
-      <div class="feature-row feature-row-reverse" id="custom-logic">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Custom Logic</span>
-          <h2 class="feature-row-title">Handle Edge Cases Without Custom Development</h2>
-          <p class="feature-row-description">
+      <div class="feature-row reverse" id="custom-logic">
+        <div class="feature-content">
+          <div class="feature-label">Custom Logic</div>
+          <h2 class="feature-title">Handle Edge Cases Without Custom Development</h2>
+          <p class="feature-description">
             When standard configuration reaches its limits, RCX provides programmable logic. Create <strong>custom qualifications</strong> that reference any attribute in the system: activity data, member profile, preferences, transaction history. Define calculated fields that can be <strong>reused across rules</strong>. Validate logic against test data before it goes live. Custom logic becomes <strong>immediately available</strong> across APIs, UIs, and the data warehouse.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Create custom logic for <strong>complex qualifications</strong></li>
-            <li class="feature-row-list-item">Reference any attribute: activity, member, preferences, history</li>
-            <li class="feature-row-list-item">Define <strong>reusable calculated fields</strong> across rules</li>
-            <li class="feature-row-list-item">Validate against test data <strong>before deployment</strong></li>
-            <li class="feature-row-list-item">Immediately available across <strong>APIs and UIs</strong></li>
+          <ul class="feature-list">
+            <li>Create custom logic for <strong>complex qualifications</strong></li>
+            <li>Reference any attribute: activity, member, preferences, history</li>
+            <li>Define <strong>reusable calculated fields</strong> across rules</li>
+            <li>Validate against test data <strong>before deployment</strong></li>
+            <li>Immediately available across <strong>APIs and UIs</strong></li>
           </ul>
         </div>
-        <div class="feature-row-media">
+        <div class="media">
           <div class="feature-row-image-placeholder">
             [Custom Logic UI - Configuration with Validation]
           </div>
@@ -722,12 +495,12 @@
        SECTION 4: GOVERNANCE AT SCALE - 4-CARD GRID
        Background: WHITE
        ======================================== -->
-  <section class="section section-lg section-light bg-white" id="governance">
+  <section class="section section-lg bg-white" id="governance">
     <div class="container">
       
       <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
         <h2 class="section-title" style="color: var(--color-primary);">Built for Teams. Built for Audit.</h2>
-        <p class="section-description" style="max-width: 700px; margin: var(--space-4) auto 0; color: var(--text-muted);">
+        <p style="max-width: 700px; margin: var(--space-4) auto 0; color: var(--text-muted);">
           The tools that keep complex programs manageable over time.
         </p>
       </div>
@@ -814,16 +587,14 @@
        FINAL CTA SECTION
        Background: WHITE
        ======================================== -->
-  <section class="section-light bg-white" style="padding: var(--space-20) 0;">
+  <section class="section bg-white">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to Scale Your Program?</h2>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+      <div class="cta-box">
+        <h2 class="cta-box-title">Ready to Scale Your Program?</h2>
+        <p class="cta-box-description">
           See how RCX Advanced Tools can bring structure to your most complex loyalty rules.
         </p>
-        <div class="flex gap-4" style="justify-content: center;">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Get Started</a>
-        </div>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Get Started</a>
       </div>
     </div>
   </section>
@@ -833,7 +604,7 @@
        FAQ SECTION (Two-Column Layout)
        Background: LIGHT (Gray)
        ======================================== -->
-  <section class="faq-section section-light bg-light">
+  <section class="faq-section bg-light" id="faq">
     <div class="container">
       <div class="faq-layout">
         
@@ -1049,37 +820,45 @@
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
-    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
     // Accordion functionality
     const accordionItems = document.querySelectorAll('.accordion-item');
-    
     accordionItems.forEach(item => {
       const trigger = item.querySelector('.accordion-trigger');
-      
       trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        
-        // Close all accordion items
         accordionItems.forEach(otherItem => {
           otherItem.classList.remove('active');
           otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
         });
-        
-        // If clicked item wasn't active, open it
         if (!isActive) {
           item.classList.add('active');
           trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
+
+    // Anchor bar scroll-spy
+    const anchorLinks = document.querySelectorAll('.anchor-link');
+    const anchorSections = [];
+    anchorLinks.forEach(link => {
+      const id = link.getAttribute('href').slice(1);
+      const sec = document.getElementById(id);
+      if (sec) anchorSections.push({ el: sec, link: link });
+    });
+    function updateActiveAnchor() {
+      let current = anchorSections[0];
+      anchorSections.forEach(s => {
+        if (s.el.getBoundingClientRect().top <= 140) current = s;
+      });
+      anchorLinks.forEach(l => l.classList.remove('active'));
+      if (current) current.link.classList.add('active');
+    }
+    window.addEventListener('scroll', updateActiveAnchor);
+    updateActiveAnchor();
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1092,7 +871,6 @@
             const headerOffset = 100;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
             window.scrollTo({
               top: offsetPosition,
               behavior: 'smooth'
