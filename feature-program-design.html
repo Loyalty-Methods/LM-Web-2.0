@@ -112,6 +112,17 @@
       .hero-cinematic { min-height: 65vh; }
       .hero-cinematic-content { padding-top: 120px; padding-bottom: 80px; }
     }
+
+    /* Stat description text */
+    .stat-description {
+      font-size: var(--font-size-sm);
+      color: var(--color-white);
+      line-height: 1.5;
+      max-width: 220px;
+      margin: var(--space-2) auto 0;
+      position: relative;
+      z-index: 3;
+    }
   </style>
 </head>
 <body>
@@ -295,15 +306,15 @@
       <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
         <div class="stat-item">
           <div class="stat-number">400+</div>
-          <div class="stat-title">Active Promotions</div>
+          <div class="stat-description">Native and partner promotions live simultaneously. Refreshed every marketing cycle.</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">16</div>
-          <div class="stat-title">Program Variants</div>
+          <div class="stat-description">Versions of one program. Operator isolated, member unified.</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">6</div>
-          <div class="stat-title">Lines of Business</div>
+          <div class="stat-description">Separate business lines with cross-earn, cross-burn, and shared redemption across the portfolio.</div>
         </div>
       </div>
     </div>
