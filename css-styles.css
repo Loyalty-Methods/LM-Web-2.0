@@ -42,7 +42,7 @@ ul, ol { list-style: none; }
 
 /* === 3. SHARED PATTERNS === */
 
-/* Eyebrow / Label base — shared by all uppercase orange labels */
+/* Eyebrow / Label base â€” shared by all uppercase orange labels */
 .eyebrow, .hero-eyebrow, .faq-eyebrow, .spotlight-eyebrow,
 .card-eyebrow, .card-category, .feature-label, .resource-item-badge,
 .mega-menu-featured-eyebrow, .mega-menu-column-title {
@@ -58,7 +58,7 @@ ul, ol { list-style: none; }
 }
 .mega-menu-column-title { color: var(--color-gray-400); }
 
-/* Dark surface gradient — shared by charcoal components */
+/* Dark surface gradient â€” shared by charcoal components */
 .stat-item, .icon-feature-icon, .mega-menu-link-icon, .sticky-tab.active {
   background: var(--grad-card-obsidian);
   border: 1px solid rgba(255,255,255,0.18);
@@ -66,7 +66,7 @@ ul, ol { list-style: none; }
   overflow: hidden;
 }
 
-/* Glass hairline — shared ::before for dark surfaces */
+/* Glass hairline â€” shared ::before for dark surfaces */
 .stat-item::before, .icon-feature-icon::before, .mega-menu-link-icon::before,
 .card-image-placeholder::before, .bento-card-dark::before {
   content: '';
@@ -79,7 +79,7 @@ ul, ol { list-style: none; }
   z-index: 2;
 }
 
-/* Glass overlay — shared ::after for dark surfaces */
+/* Glass overlay â€” shared ::after for dark surfaces */
 .stat-item::after, .icon-feature-icon::after, .mega-menu-link-icon::after,
 .card-image-placeholder::after {
   content: '';
@@ -91,7 +91,7 @@ ul, ol { list-style: none; }
   z-index: 1;
 }
 
-/* Icon SVG base — shared by icon containers */
+/* Icon SVG base â€” shared by icon containers */
 .icon-feature-icon svg, .mega-menu-link-icon svg {
   stroke: var(--color-primary);
   stroke-width: 1.5;
@@ -584,11 +584,10 @@ ul, ol { list-style: none; }
   width: calc(100% + var(--space-8) * 2);
   margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4);
   aspect-ratio: 16/10;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
   background: var(--color-gray-100);
-  padding: var(--space-4);
 }
 .card-image-placeholder {
   width: calc(100% + var(--space-8) * 2);
@@ -1431,10 +1430,10 @@ ul, ol { list-style: none; }
    Uncomment if needed. These were removed to reduce file size.
    ========================================================================== */
 
-/* --- Product Tour / Browser Window ---
+/* === 27. PRODUCT TOUR / BROWSER WINDOW === */
 .product-tour { padding: var(--space-24) 0; }
 .product-tour-header { text-align: center; margin-bottom: var(--space-12); }
-.product-tour-eyebrow { margin-bottom: var(--space-4); }
+.product-tour-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: var(--letter-spacing-widest); color: var(--color-primary); margin-bottom: var(--space-4); }
 .product-tour-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: var(--font-weight-light); color: var(--color-white); line-height: var(--line-height-tight); }
 .browser-window { max-width: 1000px; margin: 0 auto var(--space-8); }
 .browser-frame { background: var(--grad-obsidian-warm); border-radius: var(--radius-2xl); overflow: hidden; box-shadow: var(--shadow-dark-lg); border: var(--border-glass); position: relative; }
@@ -1460,7 +1459,6 @@ ul, ol { list-style: none; }
 .tour-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: none; }
 .tour-nav-item.active .tour-nav-dot { background: var(--color-primary); box-shadow: 0 0 12px rgba(243,112,33,0.5); }
 .tour-nav-label { font-size: var(--font-size-sm); color: rgba(255,255,255,0.8); font-weight: var(--font-weight-medium); letter-spacing: var(--letter-spacing-wide); }
-*/
 
 /* --- Earn / Redeem Widgets ---
 .earn-display { text-align: center; width: 100%; max-width: 300px; }
