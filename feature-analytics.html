@@ -37,8 +37,8 @@
       object-fit: cover;
       object-position: center 30%;
       margin: -5%;
-      opacity: 0.25;
-      filter: saturate(0.5) contrast(1.15);
+      opacity: 0.3;
+      filter: saturate(0.4) contrast(0.85) brightness(1.3);
     }
     .hero-bg-image::before {
       content: '';
@@ -63,19 +63,7 @@
       background: radial-gradient(ellipse 40% 35% at 50% 45%, rgba(243,112,33,0.03) 0%, transparent 70%);
     }
 
-    /* Center hero content */
-    .hero .hero-content {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .hero .hero-description {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero .hero-cta {
-      justify-content: center;
-    }
+
 
     .section-description {
       font-size: var(--font-size-lg);
@@ -94,6 +82,7 @@
       width: 100%;
       display: block;
       object-fit: cover;
+      filter: brightness(1.15) contrast(0.9) saturate(0.85);
       -webkit-mask-image:
         linear-gradient(180deg, transparent 0%, black 8%, black 88%, transparent 100%),
         linear-gradient(90deg, transparent 0%, black 6%, black 90%, transparent 100%);
@@ -302,7 +291,7 @@
   <section class="hero hero-premium">
     <div class="hero-premium-bg">
       <div class="hero-bg-image">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=900&fit=crop&q=80" alt="" loading="eager">
+        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1600&h=900&fit=crop&q=80" alt="" loading="eager">
       </div>
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
@@ -368,28 +357,24 @@
 
       <div class="grid grid-4">
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3 class="card-title">Natural Language Q&amp;A</h3>
           <p class="card-body">
             Business users ask questions in <strong>plain English</strong>. The system produces <strong>SQL against the underlying data model</strong> and returns results with charts.
           </p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div>
           <h3 class="card-title">Pre-Built Dashboards</h3>
           <p class="card-body">
             Dashboards for <strong>promotions, tiers, streaks, rewards</strong>, and <strong>operational health</strong>. All customizable. Copy them, modify them, or build your own.
           </p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg></div>
           <h3 class="card-title">Full Data Access</h3>
           <p class="card-body">
             <strong>SQL access</strong> to the underlying data warehouse. Every detail of what happens to members is <strong>captured and queryable</strong>.
           </p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 7h3a5 5 0 0 1 0 10h-3m-6 0H6A5 5 0 0 1 6 7h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
           <h3 class="card-title">Works With Your Stack</h3>
           <p class="card-body">
             Sync to your <strong>data lake</strong>. Connect <strong>Tableau, Looker, Power BI</strong>. RCX feeds data to your existing tools.
@@ -421,7 +406,7 @@
           <a href="about-contact.html" class="btn btn-secondary">See It in Action &rarr;</a>
         </div>
         <div class="media">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Laptop displaying analytics dashboard with chart visualizations">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" alt="Laptop displaying analytics charts and data visualizations">
         </div>
       </div>
 
@@ -442,7 +427,7 @@
           <a href="about-contact.html" class="btn btn-secondary">Explore Dashboard Library &rarr;</a>
         </div>
         <div class="media">
-          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop&q=80" alt="Multiple monitors displaying real-time data dashboards">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Dashboard interface with colorful data charts">
         </div>
       </div>
 
@@ -463,7 +448,7 @@
           <a href="tech-api-architecture.html" class="btn btn-secondary">View Data Architecture &rarr;</a>
         </div>
         <div class="media">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&q=80" alt="Modern data center with server infrastructure">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop&q=80" alt="Network cables and server connections with indicator lights">
         </div>
       </div>
 
@@ -479,32 +464,26 @@
       </div>
       <div class="grid grid-3">
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
           <h3 class="card-title">Enrollment &amp; Growth</h3>
           <p class="card-body"><strong>Membership growth</strong>, acquisition sources, <strong>activation rates</strong>.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
           <h3 class="card-title">Engagement</h3>
           <p class="card-body"><strong>Participation rates</strong>, activity frequency, <strong>channel preferences</strong>.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <h3 class="card-title">Promotion Performance</h3>
           <p class="card-body">Participation, <strong>redemption patterns</strong>, <strong>cost per action</strong>.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3 class="card-title">Reward Economics</h3>
           <p class="card-body">Every <strong>earn and burn</strong>. <strong>Full lineage</strong> from redemption to original accrual.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14 0-5.5 2-6.5 0 3.5 2 5.5 4 8 .68 1.14 1 2.27 1 3.5a5 5 0 0 1-10 0c0-1.5.5-3 1.5-4.5"/></svg></div>
           <h3 class="card-title">Challenges &amp; Streaks</h3>
           <p class="card-body"><strong>Badge attainment</strong>, challenge completion, <strong>streak success rates</strong>.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
           <h3 class="card-title">Operational Health</h3>
           <p class="card-body"><strong>Processing throughput</strong>, error rates, <strong>API response times</strong>.</p>
         </div>
