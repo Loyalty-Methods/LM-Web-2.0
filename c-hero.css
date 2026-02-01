@@ -1,0 +1,72 @@
+/* ======================================================================
+   HERO (V10.1) â€” Hero Premium & Hero Cinematic
+   ====================================================================== */
+
+/* === HERO (Premium / Homepage) === */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.hero-premium { background: linear-gradient(165deg, #555 0%, #484848 40%, #3d3d3d 100%); }
+.hero-premium-bg { position: absolute; inset: 0; z-index: 1; }
+.hero-orb { position: absolute; pointer-events: none; }
+.hero-orb-1 { width: 900px; height: 900px; top: -15%; right: -10%; background: conic-gradient(from 45deg at 50% 50%, transparent 0deg, rgba(243,112,33,0.1) 60deg, transparent 120deg, rgba(91,138,184,0.08) 180deg, transparent 240deg, rgba(255,255,255,0.05) 300deg, transparent 360deg); border-radius: 50%; }
+.hero-orb-1::before { content: ''; position: absolute; inset: 15%; border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; }
+.hero-orb-1::after { content: ''; position: absolute; inset: 30%; border: 1px solid rgba(243,112,33,0.12); border-radius: 50%; }
+.hero-orb-2 { width: 600px; height: 600px; bottom: -10%; right: 20%; background: radial-gradient(ellipse at center, rgba(91,138,184,0.12) 0%, rgba(91,138,184,0.04) 40%, transparent 70%); }
+.hero-orb-3 { width: 100%; height: 100%; top: 0; left: 0; background: linear-gradient(135deg, transparent 0%, transparent 45%, rgba(255,255,255,0.03) 45.5%, transparent 46%, transparent 100%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(135deg, black 0%, black 30%, transparent 70%); -webkit-mask-image: linear-gradient(135deg, black 0%, black 30%, transparent 70%); }
+.hero-flow-lines { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.4; }
+.flow-line { stroke-dasharray: 8 12; }
+.flow-line-1 { stroke-dasharray: 12 8; }
+.flow-line-3 { stroke-dasharray: 6 14; }
+.hero-premium::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 65%; background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 40%, transparent 100%); pointer-events: none; z-index: 2; }
+.hero-premium::after { content: ''; position: absolute; top: 0; left: 0; width: 500px; height: 500px; background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%); pointer-events: none; z-index: 2; }
+.hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 280px; z-index: 3; background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.6) 60%, #fff 100%); pointer-events: none; }
+.hero .container { position: relative; z-index: 10; padding-top: 160px; padding-bottom: 200px; }
+.hero-content { max-width: 620px; }
+.hero-content-wide { max-width: 1000px; }
+.hero-eyebrow { margin-bottom: var(--space-4); }
+.hero-title { font-size: clamp(2.75rem, 5vw, 4rem); font-weight: var(--font-weight-light); color: var(--color-white); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: var(--space-6); }
+.hero-title-wide { font-size: clamp(2.5rem, 4.5vw, 4rem); }
+.hero-title .highlight { color: var(--color-primary); display: inline; text-shadow: 0 0 60px rgba(243,112,33,0.4); }
+.hero-description { font-size: var(--font-size-lg); color: rgba(255,255,255,0.55); line-height: var(--line-height-relaxed); margin-bottom: var(--space-10); max-width: 580px; }
+.hero-cta { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.scroll-indicator { position: absolute; bottom: 290px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); opacity: 0.4; }
+.scroll-indicator span { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); font-weight: var(--font-weight-medium); }
+.scroll-indicator .mouse { width: 20px; height: 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; position: relative; }
+.scroll-indicator .mouse::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 2px; height: 6px; background: var(--color-primary); border-radius: 1px; }
+@media (max-width: 1024px) {
+  .hero-content, .hero-content-wide { text-align: center; max-width: 100%; }
+  .hero-description { margin-left: auto; margin-right: auto; }
+  .hero-cta { justify-content: center; }
+  .hero-title-wide { font-size: clamp(1.875rem, 5vw, 2.75rem); }
+  .scroll-indicator { bottom: 220px; }
+}
+@media (max-width: 768px) {
+  .hero { min-height: auto; padding: var(--space-16) 0; }
+  .hero .container { padding-top: 100px; padding-bottom: 120px; }
+}
+
+/* === CINEMATIC HERO (Reusable photo-based hero for all pages) ===
+   Usage: .hero-cinematic with optional --tall or --short modifiers.
+   Replaces all page-specific hero CSS. Just swap photo + text content.
+   ------------------------------------------------------------------- */
+.hero-cinematic { position: relative; min-height: 70vh; display: flex; align-items: flex-end; overflow: hidden; padding-top: 80px; }
+.hero-cinematic--tall { min-height: 80vh; }
+.hero-cinematic--short { min-height: 55vh; }
+.hero-cinematic-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-cinematic-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+/* Default overlay: charcoal tones fading to light gray (#F5F5F5) */
+.hero-cinematic-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(85,85,85,0.25) 0%, rgba(72,72,72,0.45) 40%, rgba(61,61,61,0.7) 70%, rgba(245,245,245,1) 100%); }
+/* Variant: fade to white */
+.hero-cinematic--fade-white .hero-cinematic-bg::after { background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.5) 50%, #fff 100%); }
+.hero-cinematic > .container { position: relative; z-index: 2; padding-top: 160px; padding-bottom: var(--space-16); }
+.hero-cinematic-content { max-width: 860px; }
+.hero-cinematic-eyebrow { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: var(--space-2); }
+.hero-cinematic-title { font-size: clamp(3rem, 6vw, 4.5rem); font-weight: var(--font-weight-light); color: var(--color-white); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: var(--space-5); }
+.hero-cinematic-subtitle { font-size: var(--font-size-xl); color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 540px; margin-bottom: var(--space-10); }
+.hero-cinematic-cta { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .hero-cinematic { min-height: 50vh; }
+  .hero-cinematic--tall { min-height: 60vh; }
+  .hero-cinematic--short { min-height: 40vh; }
+  .hero-cinematic > .container { padding-top: 120px; padding-bottom: var(--space-10); }
+}

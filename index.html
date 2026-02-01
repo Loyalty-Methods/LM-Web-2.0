@@ -6,12 +6,26 @@
   <title>Loyalty Methods | Enterprise Loyalty Platform</title>
   
   <!-- BESPOKE LUXURY CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Fix: much more breathing room in sticky tab panels */
+    .sticky-tab-content { padding-top: 6rem !important; }
+    .sticky-tab-panel .feature-label { display: block !important; margin-bottom: 0.75rem !important; }
+    .sticky-tab-panel .feature-title { margin-bottom: 1.5rem !important; }
+    /* Hero eyebrow: smaller + lighter for better hierarchy against the large title */
+    .hero-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-normal); letter-spacing: var(--letter-spacing-widest); }
+  </style>
 </head>
 <body>
 
@@ -313,8 +327,65 @@
               <p class="feature-description">ReactorCX processes every transaction in real time, so your team can trigger personalized offers, messages, and rewards before the customer leaves the store, the pump, or the property. Most enterprise platforms batch transactions. We process them synchronously. That's what enables true personalization.</p>
               <a href="why-lm.html" class="btn btn-primary mt-8">Learn More &rarr;</a>
             </div>
-            <div class="media">
-              <img src="index-realtimevents.png" alt="Real-time loyalty events" class="feature-image">
+            <div class="gauge-panel">
+              <!-- Shared SVG Defs -->
+              <svg width="0" height="0" style="position: absolute;">
+                <defs>
+                  <linearGradient id="gauge-grad-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF8F4D"/>
+                    <stop offset="50%" stop-color="#F37021"/>
+                    <stop offset="100%" stop-color="#E5651A"/>
+                  </linearGradient>
+                  <radialGradient id="gauge-radial-glow" cx="50%" cy="42%" r="48%">
+                    <stop offset="0%" stop-color="rgba(243,112,33,0.05)"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+
+              <!-- Ring Gauge -->
+              <div class="gauge-ring">
+                <svg viewBox="0 0 240 240" width="240" height="240">
+                  <!-- Outer tick marks -->
+                  <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
+                  <!-- Background track -->
+                  <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
+                  <!-- Progress arc: 45% fill — the journey begins -->
+                  <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
+                    stroke-dasharray="666.1" stroke-dashoffset="366.4"/>
+                  <!-- Inner ring -->
+                  <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
+                  <!-- Center glow -->
+                  <circle cx="120" cy="120" r="90" class="gauge-ring-glow"/>
+                </svg>
+                <div class="gauge-center">
+                  <span class="gauge-value">25M+</span>
+                </div>
+              </div>
+
+              <!-- Label -->
+              <div class="gauge-label-block">
+                <p class="gauge-label-primary">Daily Real-Time Requests</p>
+                <p class="gauge-label-secondary">Peak: 50–60M on high-volume days</p>
+              </div>
+
+              <!-- Thin Track -->
+              <div class="gauge-track">
+                <div class="gauge-track-bar"><div class="gauge-track-fill" style="width: 45%;"></div></div>
+                <svg class="gauge-track-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+
+              <!-- Metrics -->
+              <div class="gauge-metrics">
+                <div class="gauge-metric">
+                  <div class="gauge-metric-value">&lt;200ms</div>
+                  <div class="gauge-metric-label">Response Time</div>
+                </div>
+                <div class="gauge-metric">
+                  <div class="gauge-metric-value">99.9%</div>
+                  <div class="gauge-metric-label">Uptime SLA</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -327,8 +398,49 @@
               <p class="feature-description">Keep loyalty data accessible across your entire stack. ReactorCX connects to your POS, CRM, and CDP so loyalty decisions happen inside the systems your teams already use. No rip-and-replace. No black-box logic. Your architecture stays clean, and your data stays usable.</p>
               <a href="why-lm.html" class="btn btn-primary mt-8">Learn More &rarr;</a>
             </div>
-            <div class="media">
-              <img src="reactorcx-architecture.png" alt="ReactorCX Platform Architecture" class="feature-image">
+            <div class="gauge-panel">
+              <!-- Ring Gauge -->
+              <div class="gauge-ring">
+                <svg viewBox="0 0 240 240" width="240" height="240">
+                  <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
+                  <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
+                  <!-- Progress arc: 75% fill — approaching completion -->
+                  <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
+                    stroke-dasharray="666.1" stroke-dashoffset="166.5"/>
+                  <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
+                  <circle cx="120" cy="120" r="90" class="gauge-ring-glow"/>
+                </svg>
+                <div class="gauge-center">
+                  <span class="gauge-value">30K+</span>
+                </div>
+              </div>
+
+              <!-- Label -->
+              <div class="gauge-label-block">
+                <p class="gauge-label-primary">Locations Actively Integrated</p>
+                <p class="gauge-label-secondary">Across the ReactorCX platform</p>
+              </div>
+
+              <!-- Thin Track -->
+              <div class="gauge-track">
+                <div class="gauge-track-bar"><div class="gauge-track-fill" style="width: 75%;"></div></div>
+                <svg class="gauge-track-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+              </div>
+
+              <!-- Metrics -->
+              <div class="gauge-metrics">
+                <div class="gauge-metric">
+                  <div class="gauge-metric-value">POS · CRM · CDP</div>
+                  <div class="gauge-metric-label">Connected Systems</div>
+                </div>
+                <div class="gauge-metric">
+                  <div class="gauge-metric-value">Open</div>
+                  <div class="gauge-metric-label">API-First</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -341,8 +453,49 @@
               <p class="feature-description">Run one loyalty platform across every business line. Fuel, gaming, retail. The same engine powers the pump, the gaming floor, and the checkout counter. Launch promotions that other platforms cannot execute. Manage multi-brand tiers, partner co-funding, and real-time discounting without custom development.</p>
               <a href="why-lm.html" class="btn btn-primary mt-8">Learn More &rarr;</a>
             </div>
-            <div class="media">
-              <img src="reactorcx-complexity-hospitality.png" alt="Hospitality loyalty app" class="feature-image">
+            <div class="gauge-panel">
+              <!-- Ring Gauge -->
+              <div class="gauge-ring">
+                <svg viewBox="0 0 240 240" width="240" height="240">
+                  <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
+                  <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
+                  <!-- Progress arc: 100% full ring -->
+                  <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
+                    stroke-dasharray="666.1" stroke-dashoffset="0"/>
+                  <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
+                  <circle cx="120" cy="120" r="90" class="gauge-ring-glow"/>
+                </svg>
+                <div class="gauge-center">
+                  <span class="gauge-value">0</span>
+                  <span class="gauge-value-unit">Downtime</span>
+                </div>
+              </div>
+
+              <!-- Label -->
+              <div class="gauge-label-block">
+                <p class="gauge-label-primary">Every Migration. Every Cutover.</p>
+                <p class="gauge-label-secondary">600M+ members migrated successfully</p>
+              </div>
+
+              <!-- Thin Track -->
+              <div class="gauge-track">
+                <div class="gauge-track-bar"><div class="gauge-track-fill" style="width: 100%;"></div></div>
+                <svg class="gauge-track-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+
+              <!-- Metrics -->
+              <div class="gauge-metrics">
+                <div class="gauge-metric">
+                  <div class="gauge-metric-value">100%</div>
+                  <div class="gauge-metric-label">Success Rate</div>
+                </div>
+                <div class="gauge-metric">
+                  <div class="gauge-metric-value">Multi</div>
+                  <div class="gauge-metric-label">Vertical</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -425,8 +578,20 @@
   <section class="spotlight-section">
     <div class="container">
       <div class="spotlight-card">
-        <div class="spotlight-image" style="background: #f5f5f5;">
-          <img src="forrester-index-cover.png" alt="2025 Forrester Loyalty Landscape Report" style="width: 100%; height: 100%; object-fit: contain; object-position: center; position: absolute; inset: 0; padding: 2rem;">
+        <div class="spotlight-image" style="background: #f5f5f5; display: flex; align-items: center; justify-content: center; padding: 2.5rem;">
+          <div style="width: 280px; background: #fff; border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; position: relative;">
+            <div style="padding: 2rem 1.75rem 1.5rem;">
+              <div style="font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: #888; margin-bottom: 0.75rem;">Forrester Report</div>
+              <div style="font-size: 1.35rem; font-weight: 500; color: #1a1a1a; line-height: 1.25; margin-bottom: 0.5rem;">The Loyalty Platforms Landscape, Q3 2025</div>
+              <div style="font-size: 0.65rem; color: #999; margin-bottom: 1.25rem;">Forrester's Overview Of 28 Vendors</div>
+              <div style="font-size: 0.55rem; color: #aaa; line-height: 1.5;">July 8, 2025</div>
+            </div>
+            <div style="background: linear-gradient(135deg, #006B54 0%, #00875A 50%, #009966 100%); padding: 1.25rem 1.75rem;">
+              <div style="font-size: 0.7rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem;">Summary</div>
+              <div style="font-size: 0.5rem; color: rgba(255,255,255,0.75); line-height: 1.6;">You can use loyalty platforms to implement and manage loyalty programs and partnerships, collect and analyze customer data and insights, and support loyalty interactions across channels.</div>
+            </div>
+            <div style="position: absolute; top: 1.25rem; right: 1.25rem; background: #00614E; color: #fff; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.3rem 0.5rem; border-radius: 2px;">FORRESTER</div>
+          </div>
         </div>
         <div class="spotlight-content">
           <span class="spotlight-eyebrow">Analyst Recognition</span>
@@ -512,8 +677,8 @@
         </a>
         
         <a href="proven-safeswitch.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-            <img src="safeswitch-diagram.png" alt="SafeSwitch Cutover" style="width: 100%; height: auto; display: block;">
+          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; overflow: hidden;">
+            <img src="safeswitch-diagram.png" alt="SafeSwitch Cutover" style="width: 100%; height: 100%; display: block; object-fit: cover;">
           </div>
           <span class="card-category">Step 2</span>
           <h3 class="card-title">Cut-Over with Confidence</h3>
@@ -561,10 +726,7 @@
         
         <a href="case-study-7eleven.html" class="resource-item">
           <div class="resource-item-image" style="background: linear-gradient(165deg, #1f7a4d 0%, #166534 50%, #052e16 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
+            <span style="font-size: 2rem; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: -0.02em;">7-11</span>
           </div>
           <div class="resource-item-content">
             <span class="resource-item-badge">Case Study</span>
