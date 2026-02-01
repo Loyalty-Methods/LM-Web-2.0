@@ -16,15 +16,14 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* Fix: much more breathing room in sticky tab panels */
     .sticky-tab-content { padding-top: 6rem !important; }
     .sticky-tab-panel .feature-label { display: block !important; margin-bottom: 0.75rem !important; }
     .sticky-tab-panel .feature-title { margin-bottom: 1.5rem !important; }
-    /* Hero eyebrow: smaller + lighter for better hierarchy against the large title */
-    .hero-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-normal); letter-spacing: var(--letter-spacing-widest); }
+    /* Hero eyebrow: handled in c-hero.css */
   </style>
 </head>
 <body>
@@ -221,30 +220,9 @@
 
   <!-- ========== HERO ========== -->
   <section class="hero hero-premium">
-    <!-- Premium Abstract Background -->
     <div class="hero-premium-bg">
-      <!-- Gradient mesh orbs -->
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-      <div class="hero-orb hero-orb-3"></div>
-      <!-- Subtle grid pattern -->
-      <div class="hero-grid"></div>
-      <!-- Flowing lines -->
-      <svg class="hero-flow-lines" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="transparent"/>
-            <stop offset="30%" stop-color="rgba(243,112,33,0.4)"/>
-            <stop offset="70%" stop-color="rgba(243,112,33,0.4)"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </linearGradient>
-        </defs>
-        <path class="flow-line flow-line-1" d="M-100,400 Q400,350 600,450 T1000,400 T1400,500 T2020,350" stroke="url(#line-grad)" fill="none" stroke-width="2"/>
-        <path class="flow-line flow-line-2" d="M-100,500 Q300,450 550,550 T950,480 T1350,580 T2020,450" stroke="url(#line-grad)" fill="none" stroke-width="1.5"/>
-        <path class="flow-line flow-line-3" d="M-100,600 Q350,550 600,650 T1050,580 T1450,680 T2020,550" stroke="url(#line-grad)" fill="none" stroke-width="1"/>
-      </svg>
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=2400&q=80" alt="">
     </div>
-    <div class="hero-fade"></div>
     
     <div class="container">
       <div class="hero-content hero-content-wide">
@@ -261,36 +239,32 @@
       </div>
     </div>
     
-    <div class="scroll-indicator">
-      <div class="mouse"></div>
-      <span>Scroll</span>
-    </div>
   </section>
 
   <!-- ========== TRUST BAR ========== -->
-  <section class="section bg-white logo-cloud-section">
+  <section class="trust-bar-section">
     <div class="container">
-      <p class="text-center body-sm mb-6">Trusted by leading brands worldwide</p>
-      <div class="logo-cloud-wrapper">
-        <div class="logo-cloud-track">
-          <div class="logo-cloud">
-            <div class="logo-cloud-item"><img src="Group-2-1.svg" alt="7-Eleven" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="bp-logo-1.svg" alt="BP" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="speedway-logo-1.svg" alt="Speedway" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="Primary_YellowWhite-1.svg" alt="Western Union" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas" class="client-logo"></div>
-          </div>
-          <div class="logo-cloud">
-            <div class="logo-cloud-item"><img src="Group-2-1.svg" alt="7-Eleven" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="bp-logo-1.svg" alt="BP" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="speedway-logo-1.svg" alt="Speedway" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="Primary_YellowWhite-1.svg" alt="Western Union" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America" class="client-logo"></div>
-            <div class="logo-cloud-item"><img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas" class="client-logo"></div>
-          </div>
+      <p class="trust-bar-label">Trusted by leading brands worldwide</p>
+    </div>
+    <div class="trust-bar-track-wrapper">
+      <div class="trust-bar-track">
+        <div class="trust-bar-logos">
+          <img src="Group-2-1.svg" alt="7-Eleven">
+          <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
+          <img src="bp-logo-1.svg" alt="BP">
+          <img src="speedway-logo-1.svg" alt="Speedway">
+          <img src="Primary_YellowWhite-1.svg" alt="Western Union">
+          <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
+          <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
+        </div>
+        <div class="trust-bar-logos">
+          <img src="Group-2-1.svg" alt="7-Eleven">
+          <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
+          <img src="bp-logo-1.svg" alt="BP">
+          <img src="speedway-logo-1.svg" alt="Speedway">
+          <img src="Primary_YellowWhite-1.svg" alt="Western Union">
+          <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
+          <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
         </div>
       </div>
     </div>
@@ -302,15 +276,12 @@
       <div class="container">
         <div class="sticky-tabs-wrapper">
           <button class="sticky-tab active" data-tab="real-time">
-            <svg class="sticky-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             Real-Time Events
           </button>
           <button class="sticky-tab" data-tab="api-first">
-            <svg class="sticky-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
             API-First
           </button>
           <button class="sticky-tab" data-tab="polymorphic">
-            <svg class="sticky-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
             Built for Complexity
           </button>
         </div>
@@ -350,7 +321,7 @@
                   <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
                   <!-- Background track -->
                   <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 45% fill â€” the journey begins -->
+                  <!-- Progress arc: 45% fill — the journey begins -->
                   <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
                     stroke-dasharray="666.1" stroke-dashoffset="366.4"/>
                   <!-- Inner ring -->
@@ -366,7 +337,7 @@
               <!-- Label -->
               <div class="gauge-label-block">
                 <p class="gauge-label-primary">Daily Real-Time Requests</p>
-                <p class="gauge-label-secondary">Peak: 50â€“60M on high-volume days</p>
+                <p class="gauge-label-secondary">Peak: 50–60M on high-volume days</p>
               </div>
 
               <!-- Thin Track -->
@@ -404,7 +375,7 @@
                 <svg viewBox="0 0 240 240" width="240" height="240">
                   <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
                   <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 75% fill â€” approaching completion -->
+                  <!-- Progress arc: 75% fill — approaching completion -->
                   <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
                     stroke-dasharray="666.1" stroke-dashoffset="166.5"/>
                   <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
@@ -433,7 +404,7 @@
               <!-- Metrics -->
               <div class="gauge-metrics">
                 <div class="gauge-metric">
-                  <div class="gauge-metric-value">POS Â· CRM Â· CDP</div>
+                  <div class="gauge-metric-value">POS · CRM · CDP</div>
                   <div class="gauge-metric-label">Connected Systems</div>
                 </div>
                 <div class="gauge-metric">
@@ -529,47 +500,47 @@
     </div>
   </section>
 
-  <!-- ========== PLATFORM FEATURES ========== -->
+  <!-- ========== PLATFORM FEATURES — BENTO ========== -->
   <section class="section section-lg bg-light">
     <div class="container">
-      <div class="grid grid-3">
-        
-        <div class="card">
-          <span class="card-eyebrow">Promotions</span>
-          <h3 class="card-title">Advanced Promotions</h3>
-          <p class="card-description">Launch complex promotions in days, not quarters. BOGO, streaks, challenges, mix & match, partner co-funding. Configured by your team, live without custom code.</p>
+      <div class="bento-tile-grid">
+
+        <div class="tile col-4">
+          <span class="tile-kicker">Promotions</span>
+          <h3 class="tile-headline">Advanced Promotions</h3>
+          <p class="tile-body">Launch complex promotions in days, not quarters. <strong>BOGO, streaks, challenges, mix &amp; match, partner co-funding.</strong> Configured by your team, live without custom code.</p>
         </div>
-        
-        <div class="card">
-          <span class="card-eyebrow">Architecture</span>
-          <h3 class="card-title">Multi-Brand Programs</h3>
-          <p class="card-description">Operate multiple loyalty programs without multiple platforms. Separate brands, separate tier structures, separate rules. Unified management.</p>
+
+        <div class="tile col-4">
+          <span class="tile-kicker">Multi-Brand</span>
+          <h3 class="tile-headline">Multi-Brand Programs</h3>
+          <p class="tile-body">Operate <strong>multiple loyalty programs</strong> without multiple platforms. Separate brands, separate tier structures, separate rules. <strong>Unified management.</strong></p>
         </div>
-        
-        <div class="card">
-          <span class="card-eyebrow">Engagement</span>
-          <h3 class="card-title">Gamification</h3>
-          <p class="card-description">Increase visit frequency with streaks that reward repeat behavior. Members commit to actions over time and return to complete them.</p>
+
+        <div class="tile col-4">
+          <span class="tile-kicker">Gamification</span>
+          <h3 class="tile-headline">Gamification</h3>
+          <p class="tile-body">Increase visit frequency with <strong>streaks that reward repeat behavior.</strong> Members commit to actions over time and return to complete them.</p>
         </div>
-        
-        <div class="card">
-          <span class="card-eyebrow">Analytics</span>
-          <h3 class="card-title">Conversational Analytics</h3>
-          <p class="card-description">Ask questions in plain English. No SQL required. Get breakdowns built on the fly. Natural language queries against your full data model.</p>
+
+        <div class="tile col-4">
+          <span class="tile-kicker">Analytics</span>
+          <h3 class="tile-headline">Conversational Analytics</h3>
+          <p class="tile-body">Ask questions in plain English. No SQL required. Get breakdowns built on the fly. <strong>Natural language queries</strong> against your full data model.</p>
         </div>
-        
-        <div class="card">
-          <span class="card-eyebrow">Ecosystem</span>
-          <h3 class="card-title">Partner Management</h3>
-          <p class="card-description">Add partners without adding complexity. Funding, billing, and settlement stay separate per partner. Scale the ecosystem without scaling the headcount.</p>
+
+        <div class="tile col-4">
+          <span class="tile-kicker">Partners</span>
+          <h3 class="tile-headline">Partner Management</h3>
+          <p class="tile-body">Add partners without adding complexity. <strong>Funding, billing, and settlement</strong> stay separate per partner. Scale the ecosystem without scaling the headcount.</p>
         </div>
-        
-        <div class="card">
-          <span class="card-eyebrow">Real-Time</span>
-          <h3 class="card-title">Real-Time Discounting</h3>
-          <p class="card-description">RCX's discount and arbitration engine determines the optimal offer to apply in real-time at the POS. Protect margins while rewarding members.</p>
+
+        <div class="tile col-4">
+          <span class="tile-kicker">Discounting</span>
+          <h3 class="tile-headline">Real-Time Discounting</h3>
+          <p class="tile-body">RCX's discount and arbitration engine determines <strong>the optimal offer to apply in real-time at the POS.</strong> Protect margins while rewarding members.</p>
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -667,7 +638,7 @@
       <div class="grid grid-3">
         
         <a href="proven-threadsync.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-xs) var(--radius-xs) 0 0; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
             <img src="threadsync-diagram.png" alt="ThreadSync Implementation" style="width: 100%; height: auto; display: block;">
           </div>
           <span class="card-category">Step 1</span>
@@ -677,7 +648,7 @@
         </a>
         
         <a href="proven-safeswitch.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; overflow: hidden;">
+          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-xs) var(--radius-xs) 0 0; overflow: hidden;">
             <img src="safeswitch-diagram.png" alt="SafeSwitch Cutover" style="width: 100%; height: 100%; display: block; object-fit: cover;">
           </div>
           <span class="card-category">Step 2</span>
@@ -687,7 +658,7 @@
         </a>
         
         <a href="resource-center.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
+          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-xs) var(--radius-xs) 0 0; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
             <svg viewBox="0 0 360 200" width="100%" style="display: block; max-width: 360px;" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="step3-orange" x1="0%" y1="0%" x2="100%" y2="100%">

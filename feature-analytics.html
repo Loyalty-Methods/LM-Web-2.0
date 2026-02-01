@@ -5,231 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RCX Analytics | RCX Loyalty Platform</title>
 
-  <!-- MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM (V10.1) -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
 
   <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
        PAGE-SPECIFIC STYLES: RCX Analytics
-       Only styles NOT covered by the design system (tokens.css + css-styles.css)
+       Only styles NOT covered by the modular design system
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
        SUBPAGE HERO OVERRIDE
        ------------------------------------------------------------------------- */
-    .hero-subpage {
-      min-height: 75vh;
-    }
-
-    .hero-subpage .container {
-      padding-top: calc(var(--space-24) + 80px);
-      padding-bottom: var(--space-20);
-    }
-
-    .hero-subpage .hero-fade {
-      height: 200px;
-    }
+    .hero-subpage { min-height: 75vh; }
+    .hero-subpage .container { padding-top: calc(var(--space-24) + 80px); padding-bottom: var(--space-20); }
+    .hero-subpage .hero-fade { height: 200px; }
 
     @media (max-width: 1024px) {
-      .hero-subpage {
-        min-height: auto;
-      }
-      .hero-subpage .container {
-        padding-top: calc(var(--space-16) + 80px);
-        padding-bottom: var(--space-12);
-      }
+      .hero-subpage { min-height: auto; }
+      .hero-subpage .container { padding-top: calc(var(--space-16) + 80px); padding-bottom: var(--space-12); }
     }
 
     /* -------------------------------------------------------------------------
        HERO DATA CONVERSATION ELEMENT
-       Floating conversational data viz alongside hero text
        ------------------------------------------------------------------------- */
-    .hero-analytics-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-8);
-      align-items: center;
-      position: relative;
-    }
-
-    .hero-analytics-layout .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: left;
-      margin: 0;
-    }
-
-    .hero-analytics-layout .hero-cta {
-      justify-content: flex-start;
-    }
-
-    .hero-analytics-layout .hero-description {
-      margin-left: 0;
-      margin-right: 0;
-    }
+    .hero-analytics-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; position: relative; }
+    .hero-analytics-layout .hero-content { position: relative; z-index: 10; text-align: left; margin: 0; }
+    .hero-analytics-layout .hero-cta { justify-content: flex-start; }
+    .hero-analytics-layout .hero-description { margin-left: 0; margin-right: 0; }
 
     @media (max-width: 1024px) {
-      .hero-analytics-layout {
-        grid-template-columns: 1fr;
-      }
-      .hero-analytics-layout .hero-content {
-        text-align: center;
-      }
-      .hero-analytics-layout .hero-cta {
-        justify-content: center;
-      }
-      .hero-analytics-layout .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-data-viz {
-        display: none;
-      }
+      .hero-analytics-layout { grid-template-columns: 1fr; }
+      .hero-analytics-layout .hero-content { text-align: center; }
+      .hero-analytics-layout .hero-cta { justify-content: center; }
+      .hero-analytics-layout .hero-description { margin-left: auto; margin-right: auto; }
+      .hero-data-viz { display: none; }
     }
 
-    /* Dynamic data conversation visual */
-    .hero-data-viz {
-      position: relative;
-      z-index: 5;
-    }
-
-    .data-convo {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-      max-width: 440px;
-      margin-left: auto;
-    }
-
-    .data-convo-bubble {
-      padding: var(--space-4) var(--space-5);
-      border-radius: var(--radius-xl);
-      font-size: var(--font-size-sm);
-      line-height: 1.5;
-      position: relative;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .data-convo-question {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.85);
-      align-self: flex-end;
-      max-width: 85%;
-    }
-
-    .data-convo-answer {
-      background: rgba(243, 112, 33, 0.08);
-      border: 1px solid rgba(243, 112, 33, 0.2);
-      color: rgba(255, 255, 255, 0.9);
-      align-self: flex-start;
-      max-width: 90%;
-    }
-
-    .data-convo-answer-label {
-      font-size: var(--font-size-2xs);
-      font-weight: var(--font-weight-medium);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-primary);
-      margin-bottom: var(--space-1);
-    }
-
-    /* Mini chart inside answer */
-    .data-convo-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      height: 48px;
-      margin-top: var(--space-3);
-      padding-top: var(--space-2);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .data-convo-bar {
-      flex: 1;
-      border-radius: 3px 3px 0 0;
-      min-width: 14px;
-    }
-
-    .data-convo-bar-orange {
-      background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    }
-
-    .data-convo-bar-white {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    /* Mini stats row */
-    .data-convo-stats {
-      display: flex;
-      gap: var(--space-4);
-      margin-top: var(--space-3);
-      padding-top: var(--space-2);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .data-convo-stat {
-      flex: 1;
-    }
-
-    .data-convo-stat-value {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-primary);
-      line-height: 1;
-    }
-
-    .data-convo-stat-label {
-      font-size: var(--font-size-2xs);
-      color: rgba(255, 255, 255, 0.4);
-      margin-top: 2px;
-    }
-
-    /* SQL block */
-    .data-convo-sql {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: rgba(255, 255, 255, 0.35);
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: var(--radius-sm);
-      padding: var(--space-2) var(--space-3);
-      margin-top: var(--space-2);
-      line-height: 1.5;
-      overflow: hidden;
-    }
-
-    .data-convo-sql .keyword {
-      color: var(--color-primary);
-    }
+    .hero-data-viz { position: relative; z-index: 5; }
+    .data-convo { display: flex; flex-direction: column; gap: var(--space-4); max-width: 440px; margin-left: auto; }
+    .data-convo-bubble { padding: var(--space-4) var(--space-5); border-radius: var(--radius-xs); font-size: var(--font-size-sm); line-height: 1.5; position: relative; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .data-convo-question { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); align-self: flex-end; max-width: 85%; }
+    .data-convo-answer { background: rgba(243,112,33,0.08); border: 1px solid rgba(243,112,33,0.2); color: rgba(255,255,255,0.9); align-self: flex-start; max-width: 90%; }
+    .data-convo-answer-label { font-size: var(--font-size-2xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary); margin-bottom: var(--space-1); }
+    .data-convo-chart { display: flex; align-items: flex-end; gap: 4px; height: 48px; margin-top: var(--space-3); padding-top: var(--space-2); border-top: 1px solid rgba(255,255,255,0.06); }
+    .data-convo-bar { flex: 1; border-radius: 3px 3px 0 0; min-width: 14px; }
+    .data-convo-bar-orange { background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); }
+    .data-convo-bar-white { background: rgba(255,255,255,0.15); }
+    .data-convo-stats { display: flex; gap: var(--space-4); margin-top: var(--space-3); padding-top: var(--space-2); border-top: 1px solid rgba(255,255,255,0.06); }
+    .data-convo-stat { flex: 1; }
+    .data-convo-stat-value { font-size: var(--font-size-lg); font-weight: var(--font-weight-medium); color: var(--color-primary); line-height: 1; }
+    .data-convo-stat-label { font-size: var(--font-size-2xs); color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .data-convo-sql { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.35); background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); margin-top: var(--space-2); line-height: 1.5; overflow: hidden; }
+    .data-convo-sql .keyword { color: var(--color-primary); }
 
     /* -------------------------------------------------------------------------
-       FEATURE ROW IMAGE SHARPENING
-       Crisper borders on dashboard screenshots
+       FEATURE ROW VISUALS
        ------------------------------------------------------------------------- */
-    .feature-row-image {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.1);
-      border: 1px solid var(--color-gray-200);
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
+    .feature-visual-panel { background: #fafafa; border-radius: var(--radius-xs); border: 1px solid var(--color-gray-200); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06); }
+    .feature-visual-panel svg { display: block; width: 100%; height: auto; }
 
-    /* Section description */
-    .section-description {
-      font-size: var(--font-size-lg);
-      color: var(--text-muted);
-      line-height: var(--line-height-relaxed);
-    }
+    .section-description { font-size: var(--font-size-lg); color: var(--text-muted); line-height: var(--line-height-relaxed); }
   </style>
 </head>
 <body>
@@ -425,7 +272,7 @@
   </header>
 
 
-  <!-- ========== HERO (Premium Subpage - Left Text + Data Convo Right) ========== -->
+  <!-- ========== HERO ========== -->
   <section class="hero hero-premium hero-subpage">
     <div class="hero-premium-bg">
       <div class="hero-orb hero-orb-1"></div>
@@ -450,10 +297,8 @@
 
     <div class="container">
       <div class="hero-analytics-layout">
-
-        <!-- Left: Content -->
         <div class="hero-content">
-          <p class="hero-eyebrow">Core Platform</p>
+          <p class="hero-eyebrow">RCX Loyalty Platform</p>
           <h1 class="hero-title">
             RCX <span class="highlight">Analytics</span>
           </h1>
@@ -465,20 +310,14 @@
           </div>
         </div>
 
-        <!-- Right: Data Conversation Visual -->
         <div class="hero-data-viz">
           <div class="data-convo">
-
-            <!-- User question -->
             <div class="data-convo-bubble data-convo-question">
               Which promotions drove the most Gold-tier upgrades last quarter?
             </div>
-
-            <!-- System answer with chart -->
             <div class="data-convo-bubble data-convo-answer">
               <div class="data-convo-answer-label">RCX Analytics</div>
               <div>3 promotions drove 78% of Gold upgrades in Q4. Double Points Tuesday was the top performer with 2,847 upgrades.</div>
-
               <div class="data-convo-chart">
                 <div class="data-convo-bar data-convo-bar-orange" style="height: 100%;"></div>
                 <div class="data-convo-bar data-convo-bar-orange" style="height: 58%;"></div>
@@ -488,7 +327,6 @@
                 <div class="data-convo-bar data-convo-bar-white" style="height: 8%;"></div>
                 <div class="data-convo-bar data-convo-bar-white" style="height: 5%;"></div>
               </div>
-
               <div class="data-convo-stats">
                 <div class="data-convo-stat">
                   <div class="data-convo-stat-value">2,847</div>
@@ -504,8 +342,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- SQL generated -->
             <div class="data-convo-bubble data-convo-answer" style="padding: var(--space-3) var(--space-4);">
               <div class="data-convo-sql">
                 <span class="keyword">SELECT</span> promo_name, <span class="keyword">COUNT</span>(*) upgrades<br>
@@ -514,10 +350,8 @@
                 <span class="keyword">GROUP BY</span> promo_name <span class="keyword">ORDER BY</span> 2 <span class="keyword">DESC</span>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -538,7 +372,7 @@
   </nav>
 
 
-  <!-- ========== AT A GLANCE (4-Card Grid) ========== -->
+  <!-- ========== AT A GLANCE ========== -->
   <section id="at-a-glance" class="section section-lg bg-light">
     <div class="container">
       <div class="section-header">
@@ -549,45 +383,40 @@
       </div>
 
       <div class="grid grid-4">
-
         <div class="card">
-          <span class="card-eyebrow">Conversational</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3 class="card-title">Natural Language Q&amp;A</h3>
           <p class="card-body">
             Business users ask questions in <strong>plain English</strong>. The system produces <strong>SQL against the underlying data model</strong> and returns results with charts.
           </p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Ready to Use</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div>
           <h3 class="card-title">Pre-Built Dashboards</h3>
           <p class="card-body">
             Dashboards for <strong>promotions, tiers, streaks, rewards</strong>, and <strong>operational health</strong>. All customizable. Copy them, modify them, or build your own.
           </p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Open Architecture</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg></div>
           <h3 class="card-title">Full Data Access</h3>
           <p class="card-body">
             <strong>SQL access</strong> to the underlying data warehouse. Every detail of what happens to members is <strong>captured and queryable</strong>.
           </p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Integrations</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 7h3a5 5 0 0 1 0 10h-3m-6 0H6A5 5 0 0 1 6 7h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
           <h3 class="card-title">Works With Your Stack</h3>
           <p class="card-body">
             Sync to your <strong>data lake</strong>. Connect <strong>Tableau, Looker, Power BI</strong>. RCX feeds data to your existing tools.
           </p>
         </div>
-
       </div>
     </div>
   </section>
 
 
-  <!-- ========== FEATURE ROWS (Zig-Zag) ========== -->
+  <!-- ========== FEATURE ROWS ========== -->
   <section class="section section-lg bg-white">
     <div class="container">
 
@@ -607,15 +436,62 @@
           </ul>
           <a href="about-contact.html" class="btn btn-secondary">See It in Action &rarr;</a>
         </div>
-        <div>
-          <img src="rcx-analytics-nlq.png" alt="Natural Language Q&amp;A Interface" class="feature-row-image">
+        <div class="feature-visual-panel">
+          <svg viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="nlq-header" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#4a4a4a"/></linearGradient>
+              <linearGradient id="nlq-orange" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF8F4D"/><stop offset="100%" stop-color="#F37021"/></linearGradient>
+              <linearGradient id="nlq-bar1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FF8F4D"/><stop offset="100%" stop-color="#F37021"/></linearGradient>
+              <linearGradient id="nlq-bar2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFB380"/><stop offset="100%" stop-color="#FF8F4D"/></linearGradient>
+            </defs>
+            <rect width="560" height="400" fill="#fafafa"/>
+            <rect width="560" height="44" fill="url(#nlq-header)"/>
+            <circle cx="20" cy="22" r="5" fill="#FF5F56"/><circle cx="36" cy="22" r="5" fill="#FFBD2E"/><circle cx="52" cy="22" r="5" fill="#27C93F"/>
+            <text x="280" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">RCX Analytics &#8212; Natural Language Q&amp;A</text>
+            <rect x="28" y="64" width="504" height="44" rx="22" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="52" cy="86" r="10" fill="none" stroke="#d4d4d4" stroke-width="1.5"/><line x1="59" y1="93" x2="63" y2="97" stroke="#d4d4d4" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="72" y="90" font-family="Inter, sans-serif" font-size="11" fill="#a3a3a3">Show me redemption trends by tier for the last 6 months</text>
+            <rect x="468" y="74" width="52" height="24" rx="12" fill="url(#nlq-orange)"/>
+            <text x="494" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#fff">Ask</text>
+            <rect x="28" y="124" width="504" height="252" rx="12" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <text x="48" y="150" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#F37021" letter-spacing="0.08em">RESULTS</text>
+            <text x="48" y="170" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#333">Redemption Trends by Tier &#8212; Last 6 Months</text>
+            <g transform="translate(48, 190)">
+              <text x="-4" y="8" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">5K</text>
+              <text x="-4" y="38" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">3K</text>
+              <text x="-4" y="68" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">1K</text>
+              <text x="-4" y="88" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">0</text>
+              <line x1="8" y1="5" x2="464" y2="5" stroke="#f0f0f0" stroke-width="0.5"/>
+              <line x1="8" y1="35" x2="464" y2="35" stroke="#f0f0f0" stroke-width="0.5"/>
+              <line x1="8" y1="65" x2="464" y2="65" stroke="#f0f0f0" stroke-width="0.5"/>
+              <line x1="8" y1="85" x2="464" y2="85" stroke="#f0f0f0" stroke-width="0.5"/>
+              <rect x="20" y="42" width="18" height="43" rx="2" fill="url(#nlq-bar1)"/><rect x="40" y="54" width="18" height="31" rx="2" fill="url(#nlq-bar2)"/><rect x="60" y="62" width="18" height="23" rx="2" fill="#e5e5e5"/>
+              <text x="48" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Sep</text>
+              <rect x="98" y="36" width="18" height="49" rx="2" fill="url(#nlq-bar1)"/><rect x="118" y="48" width="18" height="37" rx="2" fill="url(#nlq-bar2)"/><rect x="138" y="58" width="18" height="27" rx="2" fill="#e5e5e5"/>
+              <text x="126" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Oct</text>
+              <rect x="176" y="30" width="18" height="55" rx="2" fill="url(#nlq-bar1)"/><rect x="196" y="44" width="18" height="41" rx="2" fill="url(#nlq-bar2)"/><rect x="216" y="52" width="18" height="33" rx="2" fill="#e5e5e5"/>
+              <text x="204" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Nov</text>
+              <rect x="254" y="18" width="18" height="67" rx="2" fill="url(#nlq-bar1)"/><rect x="274" y="34" width="18" height="51" rx="2" fill="url(#nlq-bar2)"/><rect x="294" y="46" width="18" height="39" rx="2" fill="#e5e5e5"/>
+              <text x="282" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Dec</text>
+              <rect x="332" y="22" width="18" height="63" rx="2" fill="url(#nlq-bar1)"/><rect x="352" y="38" width="18" height="47" rx="2" fill="url(#nlq-bar2)"/><rect x="372" y="50" width="18" height="35" rx="2" fill="#e5e5e5"/>
+              <text x="360" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Jan</text>
+              <rect x="410" y="12" width="18" height="73" rx="2" fill="url(#nlq-bar1)"/><rect x="430" y="30" width="18" height="55" rx="2" fill="url(#nlq-bar2)"/><rect x="450" y="44" width="18" height="41" rx="2" fill="#e5e5e5"/>
+              <text x="438" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Feb</text>
+            </g>
+            <rect x="48" y="356" width="8" height="8" rx="2" fill="url(#nlq-bar1)"/><text x="62" y="364" font-family="Inter, sans-serif" font-size="8" fill="#737373">Gold</text>
+            <rect x="108" y="356" width="8" height="8" rx="2" fill="url(#nlq-bar2)"/><text x="122" y="364" font-family="Inter, sans-serif" font-size="8" fill="#737373">Silver</text>
+            <rect x="168" y="356" width="8" height="8" rx="2" fill="#e5e5e5"/><text x="182" y="364" font-family="Inter, sans-serif" font-size="8" fill="#737373">Bronze</text>
+            <rect x="320" y="348" width="200" height="24" rx="12" fill="#FFF5EE" stroke="#FDDCBF" stroke-width="0.5"/>
+            <circle cx="336" cy="360" r="4" fill="#F37021"/>
+            <text x="346" y="364" font-family="Inter, sans-serif" font-size="8" fill="#D45A10">Gold redemptions up 34% MoM</text>
+          </svg>
         </div>
       </div>
 
-      <!-- ROW 2: Pre-Built Dashboards (Reversed) -->
+      <!-- ROW 2: Pre-Built Dashboards -->
       <div id="dashboards" class="feature-row reverse" style="margin-bottom: var(--space-20);">
         <div class="feature-content">
-          <span class="feature-label">Ready to Use</span>
+          <span class="feature-label">Dashboard Library</span>
           <h2 class="feature-title">Pre-Built Dashboards</h2>
           <p class="feature-description">
             Dashboards for <strong>promotions, tiers, streaks, rewards</strong>, and <strong>operational health</strong>. All pre-built. <strong>All customizable</strong>. Copy them, modify them, or build your own.
@@ -628,15 +504,76 @@
           </ul>
           <a href="about-contact.html" class="btn btn-secondary">Explore Dashboard Library &rarr;</a>
         </div>
-        <div>
-          <img src="rcx-analytics-dashboard.png" alt="Pre-built analytics dashboard" class="feature-row-image">
+        <div class="feature-visual-panel">
+          <svg viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="dash-header" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#4a4a4a"/></linearGradient>
+              <linearGradient id="dash-orange" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FF8F4D"/><stop offset="100%" stop-color="#F37021"/></linearGradient>
+              <linearGradient id="dash-line-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F37021"/><stop offset="100%" stop-color="#FF8F4D"/></linearGradient>
+            </defs>
+            <rect width="560" height="400" fill="#fafafa"/>
+            <rect width="560" height="44" fill="url(#dash-header)"/>
+            <circle cx="20" cy="22" r="5" fill="#FF5F56"/><circle cx="36" cy="22" r="5" fill="#FFBD2E"/><circle cx="52" cy="22" r="5" fill="#27C93F"/>
+            <text x="280" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">RCX Analytics &#8212; Program Dashboard</text>
+            <rect x="0" y="44" width="120" height="356" fill="#f0f0f0"/>
+            <rect x="12" y="60" width="96" height="28" rx="6" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="60" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#F37021">Overview</text>
+            <text x="60" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#737373">Members</text>
+            <text x="60" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#737373">Promotions</text>
+            <text x="60" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#737373">Tiers</text>
+            <text x="60" y="168" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#737373">Rewards</text>
+            <text x="60" y="188" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#737373">Streaks</text>
+            <text x="60" y="208" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#a3a3a3">Health</text>
+            <rect x="136" y="60" width="96" height="64" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="148" y="78" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">ACTIVE MEMBERS</text>
+            <text x="148" y="100" font-family="Inter, sans-serif" font-size="20" font-weight="300" fill="#333">4.2M</text>
+            <text x="148" y="114" font-family="Inter, sans-serif" font-size="7" fill="#27C93F">&#9650; 12.4%</text>
+            <rect x="244" y="60" width="96" height="64" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="256" y="78" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">MONTHLY TXNS</text>
+            <text x="256" y="100" font-family="Inter, sans-serif" font-size="20" font-weight="300" fill="#333">18.7M</text>
+            <text x="256" y="114" font-family="Inter, sans-serif" font-size="7" fill="#27C93F">&#9650; 8.2%</text>
+            <rect x="352" y="60" width="96" height="64" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="364" y="78" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">REDEMPTION</text>
+            <text x="364" y="100" font-family="Inter, sans-serif" font-size="20" font-weight="300" fill="#F37021">67%</text>
+            <text x="364" y="114" font-family="Inter, sans-serif" font-size="7" fill="#27C93F">&#9650; 5.1%</text>
+            <rect x="460" y="60" width="84" height="64" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="472" y="78" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">AVG LTV</text>
+            <text x="472" y="100" font-family="Inter, sans-serif" font-size="20" font-weight="300" fill="#333">$847</text>
+            <text x="472" y="114" font-family="Inter, sans-serif" font-size="7" fill="#27C93F">&#9650; 18.6%</text>
+            <rect x="136" y="140" width="268" height="170" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="152" y="160" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#333">Engagement Trend</text>
+            <text x="152" y="172" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Daily active members, 30-day view</text>
+            <polyline points="152,280 172,272 192,268 212,258 232,262 252,248 272,240 292,236 312,228 332,218 352,210 372,196 388,190" fill="none" stroke="url(#dash-line-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="152,280 172,272 192,268 212,258 232,262 252,248 272,240 292,236 312,228 332,218 352,210 372,196 388,190 388,296 152,296" fill="url(#dash-orange)" opacity="0.06"/>
+            <line x1="152" y1="296" x2="388" y2="296" stroke="#ebebeb" stroke-width="0.5"/>
+            <rect x="416" y="140" width="128" height="170" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="480" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#333">Tier Mix</text>
+            <circle cx="480" cy="232" r="38" fill="none" stroke="#e5e5e5" stroke-width="10"/>
+            <circle cx="480" cy="232" r="38" fill="none" stroke="url(#dash-orange)" stroke-width="10" stroke-dasharray="107.4 238.8" stroke-dashoffset="59.7" stroke-linecap="round"/>
+            <circle cx="480" cy="232" r="38" fill="none" stroke="#FFB380" stroke-width="10" stroke-dasharray="71.6 238.8" stroke-dashoffset="-47.7" stroke-linecap="round"/>
+            <circle cx="480" cy="232" r="38" fill="none" stroke="#D4D4D4" stroke-width="10" stroke-dasharray="59.7 238.8" stroke-dashoffset="-119.3" stroke-linecap="round"/>
+            <text x="480" y="228" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#333">4.2M</text>
+            <text x="480" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Members</text>
+            <circle cx="444" cy="290" r="3" fill="#F37021"/><text x="452" y="293" font-family="Inter, sans-serif" font-size="7" fill="#737373">Gold</text>
+            <circle cx="482" cy="290" r="3" fill="#FFB380"/><text x="490" y="293" font-family="Inter, sans-serif" font-size="7" fill="#737373">Silver</text>
+            <circle cx="519" cy="290" r="3" fill="#D4D4D4"/><text x="527" y="293" font-family="Inter, sans-serif" font-size="7" fill="#737373">Base</text>
+            <rect x="136" y="324" width="408" height="62" rx="8" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="152" y="342" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#333">Top Promotions This Month</text>
+            <text x="152" y="360" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">PROMOTION</text>
+            <text x="340" y="360" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">PARTICIPANTS</text>
+            <text x="448" y="360" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">CONV.</text>
+            <line x1="152" y1="366" x2="528" y2="366" stroke="#f5f5f5" stroke-width="0.5"/>
+            <text x="152" y="376" font-family="Inter, sans-serif" font-size="8" fill="#333">Double Points Tuesday</text>
+            <text x="340" y="376" font-family="Inter, sans-serif" font-size="8" fill="#333">142,847</text>
+            <text x="448" y="376" font-family="Inter, sans-serif" font-size="8" fill="#27C93F">34.2%</text>
+          </svg>
         </div>
       </div>
 
       <!-- ROW 3: Full Data Access -->
       <div id="data-access" class="feature-row">
         <div class="feature-content">
-          <span class="feature-label">Open Architecture</span>
+          <span class="feature-label">Data Portability</span>
           <h2 class="feature-title">Full Data Access</h2>
           <p class="feature-description">
             Most clients sync the <strong>full data model</strong> into their own data lake. The model is extensive: <strong>enrollment, transactions, promotions, rewards, partner activity</strong>. SQL access to the underlying data warehouse. <strong>Connect your own BI tools</strong>.
@@ -649,8 +586,80 @@
           </ul>
           <a href="tech-api-architecture.html" class="btn btn-secondary">View Data Architecture &rarr;</a>
         </div>
-        <div>
-          <img src="rcx-analytics-stories.png" alt="Story Builder for data-driven reports" class="feature-row-image">
+        <div class="feature-visual-panel">
+          <svg viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="flow-orange" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF8F4D"/><stop offset="100%" stop-color="#F37021"/></linearGradient>
+              <linearGradient id="flow-charcoal" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#6a6a6a"/><stop offset="100%" stop-color="#4a4a4a"/></linearGradient>
+            </defs>
+            <rect width="560" height="400" fill="#fafafa"/>
+            <!-- Center: RCX Data Engine -->
+            <rect x="196" y="140" width="168" height="120" rx="16" fill="url(#flow-charcoal)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="196" y="140" width="168" height="60" rx="16" fill="rgba(255,255,255,0.12)"/>
+            <text x="280" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#fff">RCX Data</text>
+            <text x="280" y="208" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="300" fill="#F37021">Warehouse</text>
+            <text x="280" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="rgba(255,255,255,0.4)">Full SQL Access</text>
+            <!-- Source nodes (left) -->
+            <rect x="20" y="68" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="40" cy="92" r="8" fill="#FFF5EE" stroke="#FDDCBF" stroke-width="0.5"/>
+            <text x="40" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#F37021">T</text>
+            <text x="58" y="88" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Transactions</text>
+            <text x="58" y="100" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">POS &#183; eCommerce</text>
+            <rect x="20" y="138" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="40" cy="162" r="8" fill="#FFF5EE" stroke="#FDDCBF" stroke-width="0.5"/>
+            <text x="40" y="166" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#F37021">M</text>
+            <text x="58" y="158" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Members</text>
+            <text x="58" y="170" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Profiles &#183; Tiers</text>
+            <rect x="20" y="208" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="40" cy="232" r="8" fill="#FFF5EE" stroke="#FDDCBF" stroke-width="0.5"/>
+            <text x="40" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#F37021">P</text>
+            <text x="58" y="228" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Promotions</text>
+            <text x="58" y="240" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Offers &#183; Campaigns</text>
+            <rect x="20" y="278" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="40" cy="302" r="8" fill="#FFF5EE" stroke="#FDDCBF" stroke-width="0.5"/>
+            <text x="40" y="306" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#F37021">R</text>
+            <text x="58" y="298" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Rewards</text>
+            <text x="58" y="310" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Earn &#183; Burn</text>
+            <!-- Left connections -->
+            <line x1="140" y1="92" x2="196" y2="175" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="140" y1="162" x2="196" y2="185" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="140" y1="232" x2="196" y2="210" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="140" y1="302" x2="196" y2="230" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="196" cy="175" r="3" fill="#F37021"/><circle cx="196" cy="185" r="3" fill="#F37021"/><circle cx="196" cy="210" r="3" fill="#F37021"/><circle cx="196" cy="230" r="3" fill="#F37021"/>
+            <!-- Destination nodes (right) -->
+            <rect x="420" y="68" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="440" cy="92" r="8" fill="#E8F4FD" stroke="#B3D9F2" stroke-width="0.5"/>
+            <text x="440" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#2C4A6E">S</text>
+            <text x="458" y="88" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Snowflake</text>
+            <text x="458" y="100" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Data Lake Sync</text>
+            <rect x="420" y="138" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="440" cy="162" r="8" fill="#E8F4FD" stroke="#B3D9F2" stroke-width="0.5"/>
+            <text x="440" y="166" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#2C4A6E">T</text>
+            <text x="458" y="158" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Tableau</text>
+            <text x="458" y="170" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">BI Dashboards</text>
+            <rect x="420" y="208" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="440" cy="232" r="8" fill="#E8F4FD" stroke="#B3D9F2" stroke-width="0.5"/>
+            <text x="440" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#2C4A6E">P</text>
+            <text x="458" y="228" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">Power BI</text>
+            <text x="458" y="240" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Reporting</text>
+            <rect x="420" y="278" width="120" height="48" rx="10" fill="#fff" stroke="#ebebeb" stroke-width="1"/>
+            <circle cx="440" cy="302" r="8" fill="#E8F4FD" stroke="#B3D9F2" stroke-width="0.5"/>
+            <text x="440" y="306" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#2C4A6E">{ }</text>
+            <text x="458" y="298" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#333">API / Stream</text>
+            <text x="458" y="310" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3">Real-time Events</text>
+            <!-- Right connections -->
+            <line x1="364" y1="175" x2="420" y2="92" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="364" y1="185" x2="420" y2="162" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="364" y1="210" x2="420" y2="232" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="364" y1="230" x2="420" y2="302" stroke="#ebebeb" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="364" cy="175" r="3" fill="#F37021"/><circle cx="364" cy="185" r="3" fill="#F37021"/><circle cx="364" cy="210" r="3" fill="#F37021"/><circle cx="364" cy="230" r="3" fill="#F37021"/>
+            <!-- Labels -->
+            <text x="80" y="34" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#a3a3a3" letter-spacing="0.12em">LOYALTY DATA</text>
+            <text x="280" y="34" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#a3a3a3" letter-spacing="0.12em">DATA SOURCES</text>
+            <text x="480" y="34" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="#a3a3a3" letter-spacing="0.12em">YOUR STACK</text>
+            <rect x="136" y="360" width="288" height="28" rx="14" fill="#fff" stroke="#ebebeb" stroke-width="0.5"/>
+            <text x="280" y="378" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#737373">SQL &#183; REST API &#183; Streaming Events &#183; Batch Export</text>
+          </svg>
         </div>
       </div>
 
@@ -658,63 +667,43 @@
   </section>
 
 
-  <!-- ========== REPORTING COVERAGE (6-Card Grid) ========== -->
+  <!-- ========== REPORTING COVERAGE ========== -->
   <section id="data-model" class="section section-lg bg-light">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Every Dimension of Your Loyalty Program, Tracked and Reportable</h2>
+        <h2 class="section-title">Every Dimension, Tracked and Reportable</h2>
       </div>
-
       <div class="grid grid-3">
-
         <div class="card">
-          <span class="card-eyebrow">Members</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
           <h3 class="card-title">Enrollment &amp; Growth</h3>
-          <p class="card-body">
-            <strong>Membership growth</strong>, acquisition sources, <strong>activation rates</strong>.
-          </p>
+          <p class="card-body"><strong>Membership growth</strong>, acquisition sources, <strong>activation rates</strong>.</p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Activity</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
           <h3 class="card-title">Engagement</h3>
-          <p class="card-body">
-            <strong>Participation rates</strong>, activity frequency, <strong>channel preferences</strong>.
-          </p>
+          <p class="card-body"><strong>Participation rates</strong>, activity frequency, <strong>channel preferences</strong>.</p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Campaigns</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <h3 class="card-title">Promotion Performance</h3>
-          <p class="card-body">
-            Participation, <strong>redemption patterns</strong>, <strong>cost per action</strong>.
-          </p>
+          <p class="card-body">Participation, <strong>redemption patterns</strong>, <strong>cost per action</strong>.</p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Financial</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3 class="card-title">Reward Economics</h3>
-          <p class="card-body">
-            Every <strong>earn and burn</strong>. <strong>Full lineage</strong> from redemption to original accrual.
-          </p>
+          <p class="card-body">Every <strong>earn and burn</strong>. <strong>Full lineage</strong> from redemption to original accrual.</p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Gamification</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14 0-5.5 2-6.5 0 3.5 2 5.5 4 8 .68 1.14 1 2.27 1 3.5a5 5 0 0 1-10 0c0-1.5.5-3 1.5-4.5"/></svg></div>
           <h3 class="card-title">Challenges &amp; Streaks</h3>
-          <p class="card-body">
-            <strong>Badge attainment</strong>, challenge completion, <strong>streak success rates</strong>.
-          </p>
+          <p class="card-body"><strong>Badge attainment</strong>, challenge completion, <strong>streak success rates</strong>.</p>
         </div>
-
         <div class="card">
-          <span class="card-eyebrow">Operations</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
           <h3 class="card-title">Operational Health</h3>
-          <p class="card-body">
-            <strong>Processing throughput</strong>, error rates, <strong>API response times</strong>.
-          </p>
+          <p class="card-body"><strong>Processing throughput</strong>, error rates, <strong>API response times</strong>.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -724,32 +713,25 @@
   <section id="cta" class="section bg-white" style="padding-bottom: var(--space-24);">
     <div class="container">
       <div class="cta-box">
-        <h2 class="cta-box-title">Finance-Grade Traceability</h2>
+        <h2 class="cta-box-title">See Your Data in Action</h2>
         <p class="cta-box-description">
-          Points can be tagged by source: Partner A, Partner B, location-specific. Track sub-balances within a unified member balance. Trace redemptions back to original accruals. Separate funding, billing, and settlement per partner.
+          Natural language queries. Pre-built dashboards. Full SQL access. Walk through a live demo with our team and see how RCX Analytics turns your loyalty data into decisions.
         </p>
-        <a href="about-contact.html" class="btn btn-primary btn-lg">Explore Financial Controls &rarr;</a>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Demo &rarr;</a>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== FOOTER (synced with index.html) ========== -->
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
-
         <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="lm-full-white.svg" alt="Loyalty Methods">
-          </div>
-          <p class="footer-copyright-text">
-            &copy; 2026 Loyalty Methods.<br>All rights reserved.
-          </p>
+          <div class="footer-logo"><img src="lm-full-white.svg" alt="Loyalty Methods"></div>
+          <p class="footer-copyright-text">&copy; 2026 Loyalty Methods.<br>All rights reserved.</p>
           <div class="footer-badges-social">
-            <div class="footer-soc-badge">
-              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
-            </div>
+            <div class="footer-soc-badge"><img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2"></div>
             <div class="footer-social">
               <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -757,7 +739,6 @@
             </div>
           </div>
         </div>
-
         <div class="footer-column">
           <h4 class="footer-column-title">RCX Platform</h4>
           <ul class="footer-links">
@@ -769,7 +750,6 @@
             <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
           </ul>
         </div>
-
         <div class="footer-column">
           <h4 class="footer-column-title">Technology</h4>
           <ul class="footer-links">
@@ -781,7 +761,6 @@
             <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
           </ul>
         </div>
-
         <div class="footer-column">
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
@@ -792,7 +771,6 @@
             <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
           </ul>
         </div>
-
         <div class="footer-column">
           <h4 class="footer-column-title">Resources</h4>
           <ul class="footer-links" style="margin-bottom: var(--space-6);">
@@ -803,7 +781,6 @@
             <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
           </ul>
         </div>
-
       </div>
     </div>
   </footer>
@@ -811,13 +788,11 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script>
-    // Header scroll
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Anchor bar smooth scroll + scroll spy
     const anchorLinks = document.querySelectorAll('.anchor-link');
     const sections = document.querySelectorAll('section[id]');
 

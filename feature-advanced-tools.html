@@ -6,13 +6,18 @@
   <title>Advanced Tools | RCX Loyalty Platform</title>
   
   <!-- MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
@@ -41,7 +46,7 @@
     .hero-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,7 +61,7 @@
       max-width: 900px;
       margin: 0 auto;
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: 2px;
       padding: var(--space-12) var(--space-16);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
       transform: translateY(-4px);
@@ -76,76 +81,13 @@
     .feature-row-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: rgba(255, 255, 255, 0.4);
       font-size: var(--font-size-sm);
       width: 100%;
-    }
-
-    /* Governance grid */
-    .governance-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-    @media (max-width: 1024px) { .governance-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 640px) { .governance-grid { grid-template-columns: 1fr; } }
-
-    .governance-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      box-shadow: var(--shadow-card);
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-4);
-    }
-    .governance-card:hover {
-      border-color: var(--color-gray-300);
-      box-shadow: var(--shadow-card-hover);
-    }
-    .governance-card-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      border-radius: var(--radius-lg);
-      position: relative;
-      overflow: hidden;
-    }
-    .governance-card-icon::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      pointer-events: none;
-    }
-    .governance-card-icon svg {
-      stroke: var(--color-primary);
-      position: relative;
-      z-index: 1;
-    }
-    .governance-card-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-      line-height: 1.3;
-    }
-    .governance-card-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      line-height: 1.6;
-      text-align: left;
     }
   </style>
 </head>
@@ -498,84 +440,50 @@
   <section class="section section-lg bg-white" id="governance">
     <div class="container">
       
-      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
-        <h2 class="section-title" style="color: var(--color-primary);">Built for Teams. Built for Audit.</h2>
-        <p style="max-width: 700px; margin: var(--space-4) auto 0; color: var(--text-muted);">
+      <div class="section-header">
+        <span class="eyebrow">Governance</span>
+        <h2 class="section-title">Built for Teams. Built for Audit.</h2>
+        <p class="body-text" style="max-width: 700px; margin: var(--space-4) auto 0;">
           The tools that keep complex programs manageable over time.
         </p>
       </div>
 
-      <div class="governance-grid">
+      <div class="grid grid-4">
         
         <!-- Card 1: Team Specialization -->
-        <div class="governance-card">
-          <div class="governance-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
-          <div class="governance-card-content">
-            <h3 class="governance-card-title">Different teams. Different areas.</h3>
-            <p class="governance-card-description">
-              Partner teams manage partner rules. Tier teams manage tier logic. Each team sees what they need. <strong>Changes stay isolated</strong>. Collisions stay rare.
-            </p>
-          </div>
+        <div class="card">
+          <span class="card-category">Team Specialization</span>
+          <h3 class="card-title">Different teams. Different areas.</h3>
+          <p class="card-body">
+            Partner teams manage partner rules. Tier teams manage tier logic. Each team sees what they need. <strong>Changes stay isolated</strong>. Collisions stay rare.
+          </p>
         </div>
 
         <!-- Card 2: Execution Logging -->
-        <div class="governance-card">
-          <div class="governance-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-          </div>
-          <div class="governance-card-content">
-            <h3 class="governance-card-title">Every decision. Fully traced.</h3>
-            <p class="governance-card-description">
-              Transaction logs show which rules triggered, which actions executed, and what data informed the decision. <strong>Disputes resolve faster</strong> because every decision is logged.
-            </p>
-          </div>
+        <div class="card">
+          <span class="card-category">Execution Logging</span>
+          <h3 class="card-title">Every decision. Fully traced.</h3>
+          <p class="card-body">
+            Transaction logs show which rules triggered, which actions executed, and what data informed the decision. <strong>Disputes resolve faster</strong> because every decision is logged.
+          </p>
         </div>
 
         <!-- Card 3: Partner Isolation -->
-        <div class="governance-card">
-          <div class="governance-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-            </svg>
-          </div>
-          <div class="governance-card-content">
-            <h3 class="governance-card-title">Each partner as a mini-program.</h3>
-            <p class="governance-card-description">
-              Separate funding, billing, and reimbursement logic per partner. Agreements stay isolated. Finance sees <strong>clean settlement with full traceability</strong>.
-            </p>
-          </div>
+        <div class="card">
+          <span class="card-category">Partner Isolation</span>
+          <h3 class="card-title">Each partner as a mini-program.</h3>
+          <p class="card-body">
+            Separate funding, billing, and reimbursement logic per partner. Agreements stay isolated. Finance sees <strong>clean settlement with full traceability</strong>.
+          </p>
         </div>
 
         <!-- Card 4: Long-Running Programs -->
-        <div class="governance-card">
-          <div class="governance-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-          </div>
-          <div class="governance-card-content">
-            <h3 class="governance-card-title">Structure that lasts.</h3>
-            <p class="governance-card-description">
-              Programs that run for years stay organized. New promotions drop into the right folder. Rules don't fall into the void. <strong>The system scales with the business</strong>.
-            </p>
-          </div>
+        <div class="card">
+          <span class="card-category">Long-Term Structure</span>
+          <h3 class="card-title">Structure that lasts.</h3>
+          <p class="card-body">
+            Programs that run for years stay organized. New promotions drop into the right folder. Rules don't fall into the void. <strong>The system scales with the business</strong>.
+          </p>
         </div>
 
       </div>
