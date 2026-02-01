@@ -24,6 +24,13 @@
        Everything else comes from the c-*.css modular system.
        ========================================================================== */
 
+    /* Heading reset — prevent browser-default bold from overriding
+       the design-system weights defined in c-*.css classes.            */
+    h1, h2, h3, h4, h5, h6 { font-weight: inherit; }
+
+    /* Page utilities (replaces inline styles) */
+    .stats-bar-3col { grid-template-columns: repeat(3, 1fr); }
+
     /* Hero: centered text variant */
     .hero-centered .hero-content-wide {
       text-align: center;
@@ -414,8 +421,8 @@
   <!-- ========== STATS ========== -->
   <section id="scale" class="section dark">
     <div class="container">
-      <p class="text-center body-sm mb-8" style="color: rgba(255,255,255,0.5);">Measured outcomes across individual enterprise programs</p>
-      <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
+      <p class="text-center body-sm mb-8">Measured outcomes across individual enterprise programs</p>
+      <div class="stats-bar stats-bar-3col">
         <div class="stat-item">
           <div class="stat-number">400+</div>
           <div class="stat-description">Native and partner promotions live simultaneously. Refreshed every marketing cycle.</div>
@@ -524,32 +531,26 @@
       </div>
       <div class="grid grid-3">
         <div class="card dark">
-          <span class="card-eyebrow">Status</span>
           <h3 class="card-title">Status Matching</h3>
           <p class="card-body">Grant elite status to new members to match competitor status.</p>
         </div>
         <div class="card dark">
-          <span class="card-eyebrow">Accelerators</span>
           <h3 class="card-title">Tier Accelerators</h3>
           <p class="card-body">Short-term challenges that award bonus tier credit.</p>
         </div>
         <div class="card dark">
-          <span class="card-eyebrow">Exclusive</span>
           <h3 class="card-title">Hidden Tiers</h3>
           <p class="card-body">Invite-only or surprise-and-delight tiers not visible to members.</p>
         </div>
         <div class="card dark">
-          <span class="card-eyebrow">Qualification</span>
           <h3 class="card-title">Qualification Logic</h3>
           <p class="card-body">Qualify on spend, visits, nights, or any custom metric.</p>
         </div>
         <div class="card dark">
-          <span class="card-eyebrow">Retention</span>
           <h3 class="card-title">Grace Periods</h3>
           <p class="card-body">Soft-landing demotion rules and requalification windows.</p>
         </div>
         <div class="card dark">
-          <span class="card-eyebrow">Benefits</span>
           <h3 class="card-title">Tier Benefits</h3>
           <p class="card-body">Multipliers, perks, and exclusive access tied to status.</p>
         </div>
@@ -595,9 +596,9 @@
 
   <section class="section bg-white">
     <div class="container">
-      <div class="cta-box" style="text-align: left;">
+      <div class="cta-box">
         <h2 class="cta-box-title">Advanced Tooling for Complex Programs</h2>
-        <p class="cta-box-description" style="margin-left: 0;">Launch new rules faster. Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.</p>
+        <p class="cta-box-description">Launch new rules faster. Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.</p>
         <a href="feature-advanced-tools.html" class="btn btn-primary">Explore Advanced Tools &rarr;</a>
       </div>
     </div>
@@ -644,7 +645,7 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rules&mdash;all within a single platform instance with unified member profiles.</p>
-                <p style="margin-top: 1rem;">Access controls ensure each team only sees and edits their own rules, while shared components (like base tier benefits) can be inherited across programs. This is how we support clients with 16+ program variants on one platform.</p>
+                <p class="mt-4">Access controls ensure each team only sees and edits their own rules, while shared components (like base tier benefits) can be inherited across programs. This is how we support clients with 16+ program variants on one platform.</p>
               </div>
             </div>
           </div>
@@ -677,7 +678,7 @@
 
 
   <!-- ========== FINAL CTA ========== -->
-  <section class="section bg-white" style="padding-bottom: var(--space-24);">
+  <section class="section bg-white section-lg">
     <div class="container">
       <div class="cta-box">
         <h2 class="cta-box-title">See How ReactorCX Fits Your Stack</h2>

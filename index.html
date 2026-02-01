@@ -350,7 +350,7 @@
                   <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
                   <!-- Background track -->
                   <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 45% fill — the journey begins -->
+                  <!-- Progress arc: 45% fill â€” the journey begins -->
                   <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
                     stroke-dasharray="666.1" stroke-dashoffset="366.4"/>
                   <!-- Inner ring -->
@@ -366,7 +366,7 @@
               <!-- Label -->
               <div class="gauge-label-block">
                 <p class="gauge-label-primary">Daily Real-Time Requests</p>
-                <p class="gauge-label-secondary">Peak: 50–60M on high-volume days</p>
+                <p class="gauge-label-secondary">Peak: 50â€“60M on high-volume days</p>
               </div>
 
               <!-- Thin Track -->
@@ -404,7 +404,7 @@
                 <svg viewBox="0 0 240 240" width="240" height="240">
                   <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
                   <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 75% fill — approaching completion -->
+                  <!-- Progress arc: 75% fill â€” approaching completion -->
                   <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
                     stroke-dasharray="666.1" stroke-dashoffset="166.5"/>
                   <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
@@ -433,7 +433,7 @@
               <!-- Metrics -->
               <div class="gauge-metrics">
                 <div class="gauge-metric">
-                  <div class="gauge-metric-value">POS · CRM · CDP</div>
+                  <div class="gauge-metric-value">POS Â· CRM Â· CDP</div>
                   <div class="gauge-metric-label">Connected Systems</div>
                 </div>
                 <div class="gauge-metric">
@@ -687,10 +687,75 @@
         </a>
         
         <a href="resource-center.html" class="card">
-          <div class="card-image-placeholder" style="background: linear-gradient(165deg, #2d6a4f 0%, #1b4332 50%, #081c15 100%);">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(52,211,153,0.6)" stroke-width="1.5">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
+            <svg viewBox="0 0 360 200" width="100%" style="display: block; max-width: 360px;" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="step3-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF8F4D"/>
+                  <stop offset="100%" stop-color="#F37021"/>
+                </linearGradient>
+                <linearGradient id="step3-charcoal" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#6a6a6a"/>
+                  <stop offset="100%" stop-color="#4a4a4a"/>
+                </linearGradient>
+                <linearGradient id="step3-track" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#d4d4d4"/>
+                  <stop offset="100%" stop-color="#e0e0e0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Uptime bar chart (background element) -->
+              <g opacity="0.12">
+                <rect x="30" y="80" width="14" height="90" rx="2" fill="#737373"/>
+                <rect x="52" y="60" width="14" height="110" rx="2" fill="#737373"/>
+                <rect x="74" y="70" width="14" height="100" rx="2" fill="#737373"/>
+                <rect x="96" y="50" width="14" height="120" rx="2" fill="#737373"/>
+                <rect x="118" y="40" width="14" height="130" rx="2" fill="#737373"/>
+              </g>
+
+              <!-- Center: success ring gauge -->
+              <circle cx="180" cy="100" r="62" fill="none" stroke="#e5e5e5" stroke-width="5"/>
+              <circle cx="180" cy="100" r="62" fill="none" stroke="url(#step3-orange)" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="389.6" stroke-dashoffset="0" transform="rotate(-90 180 100)"/>
+              <circle cx="180" cy="100" r="52" fill="none" stroke="#ebebeb" stroke-width="1"/>
+
+              <!-- Center text -->
+              <text x="180" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="300" fill="#F37021">100%</text>
+              <text x="180" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#737373" letter-spacing="0.12em" text-transform="uppercase">SUCCESS RATE</text>
+
+              <!-- Right side: migration stats -->
+              <g transform="translate(260, 52)">
+                <!-- Stat 1 -->
+                <rect x="0" y="0" width="72" height="40" rx="8" fill="white" stroke="#ebebeb" stroke-width="1"/>
+                <text x="36" y="17" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#333">600M+</text>
+                <text x="36" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">MEMBERS</text>
+
+                <!-- Stat 2 -->
+                <rect x="0" y="50" width="72" height="40" rx="8" fill="white" stroke="#ebebeb" stroke-width="1"/>
+                <text x="36" y="67" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#F37021">0</text>
+                <text x="36" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">DOWNTIME</text>
+              </g>
+
+              <!-- Bottom track line -->
+              <line x1="30" y1="175" x2="330" y2="175" stroke="#e5e5e5" stroke-width="2" stroke-linecap="round"/>
+              <!-- Checkpoints on track -->
+              <circle cx="80" cy="175" r="4" fill="url(#step3-orange)"/>
+              <circle cx="155" cy="175" r="4" fill="url(#step3-orange)"/>
+              <circle cx="230" cy="175" r="4" fill="url(#step3-orange)"/>
+              <circle cx="305" cy="175" r="4" fill="url(#step3-orange)"/>
+              <!-- Labels -->
+              <text x="80" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">MIGRATE</text>
+              <text x="155" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">VALIDATE</text>
+              <text x="230" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">CUTOVER</text>
+              <text x="305" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">LIVE</text>
+
+              <!-- Small checkmarks next to each checkpoint -->
+              <g fill="none" stroke="#F37021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="75,166 78,169 86,162"/>
+                <polyline points="150,166 153,169 161,162"/>
+                <polyline points="225,166 228,169 236,162"/>
+                <polyline points="300,166 303,169 311,162"/>
+              </g>
             </svg>
           </div>
           <span class="card-category">Step 3</span>

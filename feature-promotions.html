@@ -5,114 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promotions & Discounting | RCX Loyalty Platform</title>
 
-  <!-- MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM (V10.1) -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
 
   <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
        PAGE-SPECIFIC STYLES: Promotions & Discounting
-       Only styles NOT covered by the design system (tokens.css + css-styles.css)
+       Only styles NOT covered by the modular design system (V10.1)
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
-       FEATURE HERO â€” CINEMATIC, BESPOKE
-       Full-bleed photo, bottom-aligned content, fade to white.
-       Same pattern as resource center hero.
-       ------------------------------------------------------------------------- */
-    .hero-feature {
-      position: relative;
-      min-height: 80vh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      background: linear-gradient(165deg, #555555 0%, #484848 40%, #3d3d3d 100%);
-    }
-
-    .hero-feature-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-feature-bg img,
-    .hero-feature-bg svg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-    }
-
-    /* Gradient overlay â€” brand charcoal tones, not near-black */
-    .hero-feature-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(85, 85, 85, 0.25) 0%,
-        rgba(72, 72, 72, 0.45) 40%,
-        rgba(61, 61, 61, 0.7) 70%,
-        rgba(245, 245, 245, 1) 100%
-      );
-    }
-
-    .hero-feature .container {
-      position: relative;
-      z-index: 2;
-      padding-top: 160px;
-      padding-bottom: var(--space-16);
-    }
-
-    .hero-feature-content {
-      max-width: 860px;
-    }
-
-    .hero-feature-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-3);
-    }
-
-    .hero-feature-title {
-      font-size: clamp(3rem, 6vw, 4.5rem);
-      font-weight: 300;
-      color: var(--color-white);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: var(--space-5);
-    }
-
-    .hero-feature-subtitle {
-      font-size: var(--font-size-xl);
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-      max-width: 540px;
-      margin-bottom: var(--space-10);
-    }
-
-    .hero-feature-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 768px) {
-      .hero-feature { min-height: 60vh; }
-      .hero-feature .container { padding-top: 120px; padding-bottom: var(--space-10); }
-    }
-
-
-    /* -------------------------------------------------------------------------
        PROMO WIDGET SECTION (Carousel + Phone Mockups)
-       Unique to this page ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â not in design system
+       Unique to this page — not in design system
        ------------------------------------------------------------------------- */
     .promo-widget-section {
       background:
@@ -139,7 +54,6 @@
       text-transform: uppercase;
       letter-spacing: var(--letter-spacing-widest);
       color: var(--color-primary);
-      margin-bottom: var(--space-4);
     }
 
     .promo-widget-title {
@@ -182,7 +96,7 @@
       }
     }
 
-    /* Copy cards ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â glass effect */
+    /* Copy cards — glass effect */
     .promo-copy-card {
       padding: var(--space-6);
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
@@ -197,7 +111,6 @@
       text-transform: uppercase;
       letter-spacing: var(--letter-spacing-widest);
       color: var(--color-primary);
-      margin-bottom: var(--space-2);
     }
 
     .promo-copy-card-title {
@@ -366,18 +279,11 @@
     .promo-nav-btn.active {
       background: var(--color-primary);
       border-color: var(--color-primary);
-      box-shadow: var(--glow-orange);
-    }
-
-    /* Feature row image (non-placeholder) */
-    .feature-row-image {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-xl);
+      box-shadow: 0 0 20px rgba(243,112,33,0.35);
     }
 
     /* -------------------------------------------------------------------------
-       DISCOUNT ENGINE WIDGET ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â LIGHT BACKGROUND VERSION
+       DISCOUNT ENGINE WIDGET — LIGHT BACKGROUND VERSION
        Visual showing real-time discount evaluation flow
        ------------------------------------------------------------------------- */
     .discount-engine-visual {
@@ -508,7 +414,7 @@
       margin-left: var(--space-2);
     }
 
-    /* Result block ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â dark accent card at bottom */
+    /* Result block — dark accent card at bottom */
     .discount-result {
       background: linear-gradient(165deg, #555 0%, #444 50%, #3a3a3a 100%);
       border-radius: var(--radius-xl);
@@ -608,11 +514,157 @@
       background: var(--color-primary);
       box-shadow: 0 0 8px rgba(243, 112, 33, 0.4);
     }
+
+    /* -------------------------------------------------------------------------
+       ARBITRATION VISUAL — Bespoke enterprise decision flow
+       ------------------------------------------------------------------------- */
+    .arbitration-visual {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .arb-input-row {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .arb-offer-chip {
+      flex: 1;
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .arb-offer-chip.selected {
+      border-color: var(--color-primary);
+      background: linear-gradient(135deg, rgba(243,112,33,0.04) 0%, rgba(243,112,33,0.01) 100%);
+      box-shadow: 0 2px 12px rgba(243,112,33,0.1);
+    }
+
+    .arb-chip-label {
+      font-size: 0.5625rem;
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-gray-400);
+      margin-bottom: var(--space-1);
+    }
+
+    .arb-offer-chip.selected .arb-chip-label {
+      color: var(--color-primary);
+    }
+
+    .arb-chip-value {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-charcoal-900);
+      line-height: 1.2;
+    }
+
+    .arb-chip-source {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      margin-top: 2px;
+    }
+
+    .arb-engine-block {
+      background: linear-gradient(165deg, #555 0%, #444 50%, #3a3a3a 100%);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-6);
+      border: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .arb-engine-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    }
+
+    .arb-engine-block::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    .arb-engine-title {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .arb-engine-subtitle {
+      font-size: var(--font-size-xs);
+      color: rgba(255,255,255,0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .arb-result-block {
+      background: var(--color-white);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-6);
+      box-shadow: 0 4px 20px rgba(243,112,33,0.12);
+    }
+
+    .arb-result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .arb-result-row + .arb-result-row {
+      margin-top: var(--space-2);
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--color-gray-200);
+    }
+
+    .arb-result-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-500);
+    }
+
+    .arb-result-value {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-charcoal-900);
+    }
+
+    .arb-result-value.primary {
+      color: var(--color-primary);
+      font-size: var(--font-size-lg);
+    }
+
+    .arb-result-value.green {
+      color: #10B981;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER (synced with index.html) ========== -->
+  <!-- ========== HEADER (synced with index.html V10.1) ========== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -804,223 +856,21 @@
 
 
   <!-- ========== HERO ========== -->
-  <section class="hero-feature">
-    <div class="hero-feature-bg">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
-        <defs>
-          <radialGradient id="gb" cx="50%" cy="42%" r="55%"><stop offset="0%" stop-color="#2563eb" stop-opacity="0.4"/><stop offset="100%" stop-color="#2563eb" stop-opacity="0"/></radialGradient>
-          <radialGradient id="gg" cx="50%" cy="42%" r="55%"><stop offset="0%" stop-color="#16a34a" stop-opacity="0.35"/><stop offset="100%" stop-color="#16a34a" stop-opacity="0"/></radialGradient>
-          <radialGradient id="gp" cx="50%" cy="42%" r="55%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.3"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
-          <radialGradient id="gd" cx="50%" cy="42%" r="55%"><stop offset="0%" stop-color="#d4a020" stop-opacity="0.35"/><stop offset="100%" stop-color="#d4a020" stop-opacity="0"/></radialGradient>
-          <radialGradient id="cf" cx="50%" cy="50%"><stop offset="0%" stop-color="#fff" stop-opacity="0.18"/><stop offset="30%" stop-color="#fff" stop-opacity="0.06"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient>
-          <linearGradient id="ls" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="0%" stop-color="#fff" stop-opacity="0"/><stop offset="35%" stop-color="#fff" stop-opacity="0.04"/><stop offset="50%" stop-color="#fff" stop-opacity="0.12"/><stop offset="65%" stop-color="#fff" stop-opacity="0.04"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></linearGradient>
-          <linearGradient id="sb" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#0f1f33"/></linearGradient>
-          <linearGradient id="sg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fff"/><stop offset="35%" stop-color="#fff"/><stop offset="55%" stop-color="#166534"/><stop offset="100%" stop-color="#0a3d1f"/></linearGradient>
-          <linearGradient id="sl" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#e0e0e0"/></linearGradient>
-          <linearGradient id="sd" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#2a2520"/><stop offset="100%" stop-color="#1a1510"/></linearGradient>
-          <linearGradient id="rf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fff" stop-opacity="0.12"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></linearGradient>
-        </defs>
-
-        <!-- Base -->
-        <rect width="1920" height="900" fill="#090909"/>
-
-        <!-- Ambient glow -->
-        <ellipse cx="960" cy="380" rx="800" ry="400" fill="rgba(255,255,255,0.012)"/>
-
-        <!-- Phone glows -->
-        <ellipse cx="400" cy="400" rx="240" ry="340" fill="url(#gb)"/>
-        <ellipse cx="740" cy="380" rx="240" ry="340" fill="url(#gg)"/>
-        <ellipse cx="1180" cy="380" rx="240" ry="340" fill="url(#gp)"/>
-        <ellipse cx="1520" cy="400" rx="240" ry="340" fill="url(#gd)"/>
-
-        <!-- Circuit lines -->
-        <g stroke="rgba(255,255,255,0.045)" stroke-width="1" fill="none">
-          <path d="M0,360 H280 L310,330 H520 L550,360 H680 L710,390 H860"/>
-          <path d="M0,510 H180 L210,480 H380 L410,510 H560"/>
-          <path d="M620,290 H820 L850,320 H1060 L1090,290 H1300 L1330,320 H1500"/>
-          <path d="M1100,490 H1280 L1310,460 H1500 L1530,490 H1920"/>
-          <path d="M680,560 H940 L970,530 H1220 L1250,560 H1400"/>
-          <path d="M1380,340 H1580 L1610,370 H1920"/>
-          <path d="M300,240 H480 L510,270 H620"/>
-          <path d="M1340,240 H1480 L1510,270 H1680"/>
-          <line x1="520" y1="200" x2="520" y2="420"/>
-          <line x1="850" y1="220" x2="850" y2="460"/>
-          <line x1="1090" y1="200" x2="1090" y2="440"/>
-          <line x1="1380" y1="240" x2="1380" y2="500"/>
-          <line x1="310" y1="260" x2="310" y2="410"/>
-          <line x1="1610" y1="290" x2="1610" y2="460"/>
-        </g>
-
-        <!-- Circuit nodes -->
-        <g fill="rgba(255,255,255,0.06)">
-          <circle cx="310" cy="330" r="3"/><circle cx="550" cy="360" r="3"/><circle cx="710" cy="390" r="3"/>
-          <circle cx="850" cy="320" r="3"/><circle cx="1090" cy="290" r="3"/><circle cx="1330" cy="320" r="3"/>
-          <circle cx="1530" cy="490" r="3"/><circle cx="970" cy="530" r="3"/><circle cx="210" cy="480" r="3"/>
-          <circle cx="1610" cy="370" r="3"/><circle cx="510" cy="270" r="3"/><circle cx="1510" cy="270" r="3"/>
-        </g>
-        <g fill="rgba(243,112,33,0.12)">
-          <circle cx="520" cy="360" r="4"/><circle cx="1090" cy="370" r="4"/><circle cx="850" cy="390" r="4"/>
-        </g>
-
-        <!-- Phone 1: Blue (Gap-style) -->
-        <g transform="rotate(-10 400 390)" opacity="0.75">
-          <rect x="330" y="200" width="140" height="290" rx="18" fill="#0a0a0a" stroke="rgba(80,140,210,0.35)" stroke-width="2"/>
-          <rect x="338" y="214" width="124" height="262" rx="12" fill="url(#sb)"/>
-          <rect x="370" y="218" width="60" height="14" rx="7" fill="#0a0a0a"/>
-          <!-- Screen UI hints -->
-          <rect x="352" y="248" width="56" height="6" rx="2" fill="rgba(255,255,255,0.12)"/>
-          <rect x="352" y="262" width="80" height="28" rx="4" fill="rgba(255,255,255,0.06)"/>
-          <text x="360" y="281" font-size="12" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif" font-weight="300">400</text>
-          <rect x="352" y="300" width="96" height="48" rx="6" fill="rgba(255,255,255,0.04)"/>
-          <rect x="362" y="312" width="76" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
-          <rect x="362" y="322" width="56" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
-          <rect x="362" y="332" width="66" height="4" rx="1" fill="rgba(255,255,255,0.08)"/>
-          <rect x="352" y="360" width="96" height="36" rx="6" fill="rgba(255,255,255,0.04)"/>
-          <rect x="362" y="372" width="76" height="4" rx="1" fill="rgba(255,255,255,0.08)"/>
-          <rect x="362" y="382" width="56" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
-          <rect x="352" y="410" width="96" height="52" rx="6" fill="rgba(255,255,255,0.03)"/>
-          <!-- Bottom nav bar -->
-          <rect x="338" y="450" width="124" height="26" rx="0" fill="rgba(0,0,0,0.3)"/>
-          <circle cx="365" cy="463" r="4" fill="rgba(255,255,255,0.15)"/>
-          <circle cx="390" cy="463" r="4" fill="rgba(255,255,255,0.15)"/>
-          <circle cx="415" cy="463" r="4" fill="rgba(255,255,255,0.15)"/>
-          <circle cx="440" cy="463" r="4" fill="rgba(255,255,255,0.15)"/>
-        </g>
-
-        <!-- Phone 2: Green (7-Eleven-style) -->
-        <g transform="rotate(-4 740 370)" opacity="0.8">
-          <rect x="670" y="180" width="140" height="290" rx="18" fill="#0a0a0a" stroke="rgba(40,160,80,0.35)" stroke-width="2"/>
-          <rect x="678" y="194" width="124" height="262" rx="12" fill="#ffffff"/>
-          <rect x="710" y="198" width="60" height="14" rx="7" fill="#0a0a0a"/>
-          <!-- Green header -->
-          <rect x="678" y="194" width="124" height="90" rx="12" fill="#166534"/>
-          <rect x="678" y="272" width="124" height="12" rx="0" fill="#166534"/>
-          <!-- 7 logo hint -->
-          <rect x="710" y="215" width="60" height="28" rx="4" fill="rgba(255,255,255,0.15)"/>
-          <text x="725" y="236" font-size="14" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-weight="700">7</text>
-          <rect x="700" y="252" width="80" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-          <!-- Green CTA button -->
-          <rect x="700" y="266" width="80" height="16" rx="4" fill="#22c55e"/>
-          <!-- Content cards -->
-          <rect x="690" y="296" width="100" height="34" rx="6" fill="#f5f5f5" stroke="rgba(0,0,0,0.06)" stroke-width="0.5"/>
-          <rect x="698" y="304" width="60" height="4" rx="1" fill="rgba(0,0,0,0.12)"/>
-          <rect x="698" y="314" width="40" height="4" rx="1" fill="rgba(0,0,0,0.06)"/>
-          <rect x="690" y="338" width="100" height="34" rx="6" fill="#f5f5f5" stroke="rgba(0,0,0,0.06)" stroke-width="0.5"/>
-          <rect x="698" y="346" width="50" height="4" rx="1" fill="rgba(0,0,0,0.12)"/>
-          <rect x="698" y="356" width="70" height="4" rx="1" fill="rgba(0,0,0,0.06)"/>
-          <!-- Red button -->
-          <rect x="690" y="384" width="100" height="18" rx="4" fill="#dc2626"/>
-          <rect x="710" y="390" width="60" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
-          <!-- Bottom nav -->
-          <rect x="678" y="430" width="124" height="26" rx="0" fill="#ffffff"/>
-          <line x1="678" y1="430" x2="802" y2="430" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-          <circle cx="705" cy="443" r="4" fill="rgba(0,0,0,0.12)"/>
-          <circle cx="728" cy="443" r="4" fill="#166534"/>
-          <circle cx="751" cy="443" r="4" fill="rgba(0,0,0,0.12)"/>
-          <circle cx="774" cy="443" r="4" fill="rgba(0,0,0,0.12)"/>
-        </g>
-
-        <!-- Phone 3: Light (Fuel pump/payment-style) -->
-        <g transform="rotate(4 1180 370)" opacity="0.72">
-          <rect x="1110" y="180" width="140" height="290" rx="18" fill="#0a0a0a" stroke="rgba(140,80,200,0.3)" stroke-width="2"/>
-          <rect x="1118" y="194" width="124" height="262" rx="12" fill="#f8f8f8"/>
-          <rect x="1150" y="198" width="60" height="14" rx="7" fill="#0a0a0a"/>
-          <!-- Header text hint -->
-          <rect x="1148" y="228" width="74" height="7" rx="2" fill="rgba(0,0,0,0.12)"/>
-          <!-- Pump selector - 3 squares -->
-          <g>
-            <rect x="1136" y="250" width="32" height="36" rx="6" fill="#e8e8e8" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-            <text x="1146" y="274" font-size="11" fill="rgba(0,0,0,0.3)" font-family="Inter,sans-serif" text-anchor="middle">1</text>
-            <rect x="1174" y="250" width="32" height="36" rx="6" fill="#16a34a"/>
-            <text x="1190" y="274" font-size="11" fill="#fff" font-family="Inter,sans-serif" font-weight="500" text-anchor="middle">2</text>
-            <rect x="1212" y="250" width="32" height="36" rx="6" fill="#e8e8e8" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-            <text x="1228" y="274" font-size="11" fill="rgba(0,0,0,0.3)" font-family="Inter,sans-serif" text-anchor="middle">3</text>
-          </g>
-          <!-- Payment section -->
-          <rect x="1132" y="300" width="80" height="6" rx="2" fill="rgba(0,0,0,0.1)"/>
-          <rect x="1132" y="318" width="116" height="28" rx="6" fill="#fff" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-          <rect x="1142" y="326" width="20" height="12" rx="2" fill="#1e40af" opacity="0.6"/>
-          <rect x="1168" y="328" width="40" height="4" rx="1" fill="rgba(0,0,0,0.1)"/>
-          <rect x="1168" y="336" width="30" height="3" rx="1" fill="rgba(0,0,0,0.06)"/>
-          <rect x="1236" y="326" width="6" height="6" rx="3" fill="#22c55e" opacity="0.7"/>
-          <rect x="1132" y="354" width="116" height="28" rx="6" fill="#fff" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-          <rect x="1142" y="362" width="20" height="12" rx="2" fill="rgba(0,0,0,0.08)"/>
-          <rect x="1168" y="364" width="40" height="4" rx="1" fill="rgba(0,0,0,0.1)"/>
-          <rect x="1132" y="390" width="116" height="28" rx="6" fill="#fff" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-          <rect x="1142" y="398" width="20" height="12" rx="2" fill="#eb4034" opacity="0.5"/>
-          <rect x="1168" y="400" width="40" height="4" rx="1" fill="rgba(0,0,0,0.1)"/>
-          <!-- Bottom nav -->
-          <rect x="1118" y="430" width="124" height="26" rx="0" fill="#fff"/>
-          <line x1="1118" y1="430" x2="1242" y2="430" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
-          <circle cx="1145" cy="443" r="4" fill="rgba(0,0,0,0.12)"/>
-          <circle cx="1168" cy="443" r="4" fill="rgba(0,0,0,0.12)"/>
-          <circle cx="1191" cy="443" r="4" fill="#7c3aed" opacity="0.6"/>
-          <circle cx="1214" cy="443" r="4" fill="rgba(0,0,0,0.12)"/>
-        </g>
-
-        <!-- Phone 4: Dark/Gold (MGM-style) -->
-        <g transform="rotate(10 1520 390)" opacity="0.75">
-          <rect x="1450" y="200" width="140" height="290" rx="18" fill="#0a0a0a" stroke="rgba(200,150,50,0.35)" stroke-width="2"/>
-          <rect x="1458" y="214" width="124" height="262" rx="12" fill="url(#sd)"/>
-          <rect x="1490" y="218" width="60" height="14" rx="7" fill="#0a0a0a"/>
-          <!-- MGM dark header area -->
-          <rect x="1458" y="214" width="124" height="70" rx="12" fill="rgba(0,0,0,0.3)"/>
-          <rect x="1490" y="238" width="60" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
-          <rect x="1480" y="250" width="80" height="4" rx="1" fill="rgba(255,255,255,0.08)"/>
-          <rect x="1485" y="260" width="70" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
-          <rect x="1495" y="268" width="50" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
-          <!-- Content area -->
-          <rect x="1472" y="296" width="96" height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
-          <rect x="1472" y="312" width="96" height="28" rx="4" fill="rgba(255,255,255,0.04)"/>
-          <rect x="1480" y="320" width="60" height="4" rx="1" fill="rgba(255,255,255,0.08)"/>
-          <rect x="1480" y="328" width="40" height="4" rx="1" fill="rgba(255,255,255,0.05)"/>
-          <rect x="1472" y="350" width="96" height="28" rx="4" fill="rgba(255,255,255,0.03)"/>
-          <rect x="1480" y="358" width="70" height="4" rx="1" fill="rgba(255,255,255,0.07)"/>
-          <rect x="1480" y="366" width="50" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
-          <rect x="1472" y="388" width="96" height="26" rx="4" fill="rgba(255,255,255,0.03)"/>
-          <!-- Gold CTA button -->
-          <rect x="1472" y="422" width="96" height="18" rx="4" fill="#a17520" opacity="0.7"/>
-          <rect x="1492" y="428" width="56" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
-          <!-- Bottom nav -->
-          <rect x="1458" y="450" width="124" height="26" rx="0" fill="rgba(0,0,0,0.4)"/>
-          <circle cx="1485" cy="463" r="4" fill="rgba(255,255,255,0.12)"/>
-          <circle cx="1508" cy="463" r="4" fill="rgba(255,255,255,0.12)"/>
-          <circle cx="1531" cy="463" r="4" fill="rgba(255,255,255,0.12)"/>
-          <circle cx="1554" cy="463" r="4" fill="#a17520" opacity="0.5"/>
-        </g>
-
-        <!-- Reflections (very subtle mirrored shapes below phones) -->
-        <g opacity="0.06">
-          <rect x="330" y="520" width="140" height="120" rx="18" fill="#1e3a5f" transform="rotate(-10 400 580) scale(1,0.4)"/>
-          <rect x="670" y="500" width="140" height="120" rx="18" fill="#166534" transform="rotate(-4 740 560) scale(1,0.4)"/>
-          <rect x="1110" y="500" width="140" height="120" rx="18" fill="#a0a0a0" transform="rotate(4 1180 560) scale(1,0.4)"/>
-          <rect x="1450" y="520" width="140" height="120" rx="18" fill="#a17520" transform="rotate(10 1520 580) scale(1,0.4)"/>
-        </g>
-
-        <!-- Central horizontal light flare -->
-        <rect x="0" y="588" width="1920" height="4" fill="url(#ls)"/>
-        <rect x="200" y="589" width="1520" height="2" fill="url(#ls)" opacity="0.7"/>
-
-        <!-- Central bright flare -->
-        <ellipse cx="960" cy="590" rx="500" ry="140" fill="url(#cf)"/>
-        <ellipse cx="960" cy="590" rx="200" ry="40" fill="rgba(255,255,255,0.06)"/>
-
-        <!-- Subtle diagonal light streaks -->
-        <line x1="700" y1="0" x2="900" y2="900" stroke="rgba(255,255,255,0.012)" stroke-width="80"/>
-        <line x1="1000" y1="0" x2="1200" y2="900" stroke="rgba(255,255,255,0.008)" stroke-width="120"/>
-      </svg>
+  <section class="hero-cinematic hero-cinematic--tall">
+    <div class="hero-cinematic-bg">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80" alt="Enterprise promotions and campaign management platform">
     </div>
 
     <div class="container">
-      <div class="hero-feature-content">
-        <p class="hero-feature-eyebrow">Core Platform</p>
-        <h1 class="hero-feature-title">
+      <div class="hero-cinematic-content">
+        <p class="hero-cinematic-eyebrow">Core Platform</p>
+        <h1 class="hero-cinematic-title">
           Promotions &amp; Discounting
         </h1>
-        <p class="hero-feature-subtitle">
+        <p class="hero-cinematic-subtitle">
           Campaign control in the hands of business users. Architectural oversight for IT. Configure, launch, and optimize without custom development.
         </p>
-        <div class="hero-feature-cta">
+        <div class="hero-cinematic-cta">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
       </div>
@@ -1116,7 +966,7 @@
     <div class="container">
 
       <div class="promo-widget-header">
-        <p class="promo-widget-eyebrow">Promotion Types</p>
+        <p class="eyebrow promo-widget-eyebrow">Promotion Types</p>
         <h2 class="promo-widget-title">Complex Promotions Without Custom Development</h2>
       </div>
 
@@ -1128,7 +978,7 @@
 
             <!-- Left Copy Card -->
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Buy X Get Y</p>
+              <p class="eyebrow promo-copy-card-eyebrow">Buy X Get Y</p>
               <h3 class="promo-copy-card-title">BOGO</h3>
               <p class="promo-copy-card-description">Configure &ldquo;Buy 2, get 1 free&rdquo; or &ldquo;Buy from category A, get discount on category B&rdquo; through the rules engine. No dev queue.</p>
             </div>
@@ -1189,7 +1039,7 @@
 
             <!-- Right Copy Card -->
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Stacked Earning</p>
+              <p class="eyebrow promo-copy-card-eyebrow">Stacked Earning</p>
               <h3 class="promo-copy-card-title">Multipliers</h3>
               <p class="promo-copy-card-description">Layer multipliers by tier, day of week, location, or product category. A Gold member on Double-Point Tuesday sees all multipliers applied correctly in a single transaction.</p>
             </div>
@@ -1202,7 +1052,7 @@
           <div class="promo-slide-inner">
 
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Co-Funded Promotions</p>
+              <p class="eyebrow promo-copy-card-eyebrow">Co-Funded Promotions</p>
               <h3 class="promo-copy-card-title">Partner Offers</h3>
               <p class="promo-copy-card-description">Run partner-funded promotions with separate tracking for accurate settlement and reimbursement. No manual reconciliation.</p>
             </div>
@@ -1261,7 +1111,7 @@
             </div>
 
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Flexible Bundles</p>
+              <p class="eyebrow promo-copy-card-eyebrow">Flexible Bundles</p>
               <h3 class="promo-copy-card-title">Mix &amp; Match</h3>
               <p class="promo-copy-card-description">&ldquo;Pick any 3 for $5&rdquo; evaluated in real time at checkout. Members see qualified items. The engine calculates optimal combinations.</p>
             </div>
@@ -1274,7 +1124,7 @@
           <div class="promo-slide-inner">
 
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Spending Targets</p>
+              <p class="eyebrow promo-copy-card-eyebrow">Spending Targets</p>
               <h3 class="promo-copy-card-title">Threshold Spend</h3>
               <p class="promo-copy-card-description">Spend-to-unlock promotions with real-time progress visibility across all channels. Members know exactly how close they are.</p>
             </div>
@@ -1333,7 +1183,7 @@
             </div>
 
             <div class="promo-copy-card">
-              <p class="promo-copy-card-eyebrow">Scheduled Activation</p>
+              <p class="eyebrow promo-copy-card-eyebrow">Scheduled Activation</p>
               <h3 class="promo-copy-card-title">Time-Limited Offers</h3>
               <p class="promo-copy-card-description">Flash promotions with scheduled activation down to hour-of-day. No deployment window required.</p>
             </div>
@@ -1451,9 +1301,59 @@
   <section id="arbitration" class="section bg-white">
     <div class="container">
       <div class="feature-row reverse">
-        <div class="media">
-          <div style="width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.4); font-size: var(--font-size-sm);">
-            [Best-Offer Selection Interface]
+        <div class="media" style="background: var(--color-gray-50); border: 1px solid var(--color-gray-200);">
+          <div class="arbitration-visual">
+
+            <!-- Competing offers -->
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <div class="discount-offers-label">Competing Offers</div>
+              <div class="arb-input-row">
+                <div class="arb-offer-chip">
+                  <div class="arb-chip-label">Offer A</div>
+                  <div class="arb-chip-value">&minus;$4.75</div>
+                  <div class="arb-chip-source">10% Tuesday</div>
+                </div>
+                <div class="arb-offer-chip selected">
+                  <div class="arb-chip-label">Offer B</div>
+                  <div class="arb-chip-value">&minus;$5.50</div>
+                  <div class="arb-chip-source">BOGO Coffee</div>
+                </div>
+                <div class="arb-offer-chip">
+                  <div class="arb-chip-label">Offer C</div>
+                  <div class="arb-chip-value">&minus;$2.00</div>
+                  <div class="arb-chip-source">Partner-funded</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="discount-connector"><span class="discount-connector-dot active"></span></div>
+
+            <!-- Engine block -->
+            <div class="arb-engine-block">
+              <div class="arb-engine-title">Arbitration Engine</div>
+              <div class="arb-engine-subtitle">Policy: Best for Member</div>
+            </div>
+
+            <!-- Connector -->
+            <div class="discount-connector"><span class="discount-connector-dot active"></span></div>
+
+            <!-- Result -->
+            <div class="arb-result-block">
+              <div class="arb-result-row">
+                <span class="arb-result-label">Winner</span>
+                <span class="arb-result-value primary">BOGO Coffee &minus;$5.50</span>
+              </div>
+              <div class="arb-result-row">
+                <span class="arb-result-label">Decision</span>
+                <span class="arb-result-value">Maximizes member savings</span>
+              </div>
+              <div class="arb-result-row">
+                <span class="arb-result-label">Audit</span>
+                <span class="arb-result-value green">Logged &checkmark;</span>
+              </div>
+            </div>
+
           </div>
         </div>
         <div>
@@ -1678,7 +1578,7 @@
   </section>
 
 
-  <!-- ========== FOOTER (synced with index.html) ========== -->
+  <!-- ========== FOOTER (synced with index.html V10.1) ========== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
