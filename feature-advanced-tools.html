@@ -21,39 +21,60 @@
 
   <style>
     /* ==========================================================================
-       PAGE-SPECIFIC: Advanced Tools (Minimal overrides)
+       PAGE-SPECIFIC: Advanced Tools
        ========================================================================== */
 
-    /* Hero split grid */
-    .hero-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
+    /* Hero cinematic background */
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
     }
-    @media (max-width: 1024px) {
-      .hero-split { grid-template-columns: 1fr; }
-      .hero-split .hero-content { text-align: center; max-width: 100%; }
-      .hero-split .hero-description { margin-left: auto; margin-right: auto; }
-      .hero-split .hero-cta { justify-content: center; }
+    .hero-bg-image img {
+      width: 110%;
+      height: 110%;
+      object-fit: cover;
+      object-position: center 30%;
+      margin: -5%;
+      opacity: 0.25;
+      filter: saturate(0.5) contrast(1.15);
+    }
+    .hero-bg-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 40%, transparent 0%, rgba(42,42,42,0.8) 100%),
+        linear-gradient(180deg,
+          rgba(42,42,42,0.2) 0%,
+          transparent 25%,
+          transparent 55%,
+          rgba(42,42,42,0.9) 82%,
+          rgba(42,42,42,1) 100%
+        );
+    }
+    .hero-bg-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: radial-gradient(ellipse 40% 35% at 50% 45%, rgba(243,112,33,0.03) 0%, transparent 70%);
     }
 
-    /* Hero image placeholder */
-    .hero-media {
-      position: relative;
-      z-index: 5;
+    /* Center hero content */
+    .hero .hero-content {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
     }
-    .hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
+    .hero .hero-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero .hero-cta {
       justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
     /* Problem callout */
@@ -63,32 +84,60 @@
       background: var(--color-white);
       border-radius: 2px;
       padding: var(--space-12) var(--space-16);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-      transform: translateY(-4px);
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.04);
       text-align: center;
+    }
+    .problem-card-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+      margin-bottom: var(--space-6);
+    }
+    .problem-card-text {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-500);
+      line-height: 1.7;
+    }
+    .problem-card-text strong {
+      color: var(--color-charcoal-900);
+      font-weight: var(--font-weight-medium);
     }
     @media (max-width: 768px) {
       .problem-card { padding: var(--space-8); }
     }
 
-    /* Feature rows section spacing */
+    .section-subtitle {
+      max-width: 700px;
+      margin: var(--space-4) auto 0;
+    }
+
+    /* Feature rows */
     .feature-rows-section { padding: var(--space-20) 0; }
     .feature-rows-section .feature-row { margin-bottom: var(--space-20); }
     .feature-rows-section .feature-row:last-child { margin-bottom: 0; }
 
-    /* Feature row image placeholder */
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: 2px;
+    /* Blended device images: dissolve into page background */
+    .media {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      width: 100%;
     }
+    .media img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      -webkit-mask-image:
+        linear-gradient(180deg, transparent 0%, black 8%, black 88%, transparent 100%),
+        linear-gradient(90deg, transparent 0%, black 6%, black 90%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(180deg, transparent 0%, black 8%, black 88%, transparent 100%),
+        linear-gradient(90deg, transparent 0%, black 6%, black 90%, transparent 100%);
+      mask-composite: intersect;
+    }
+
   </style>
 </head>
 <body>
@@ -299,6 +348,9 @@
        ======================================== -->
   <section class="hero hero-premium">
     <div class="hero-premium-bg">
+      <div class="hero-bg-image">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1600&h=900&fit=crop&q=80" alt="" loading="eager">
+      </div>
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
       <div class="hero-orb hero-orb-3"></div>
@@ -311,7 +363,7 @@
     </div>
 
     <div class="container">
-      <div class="hero-split">
+      
         
         <!-- Left: Content -->
         <div class="hero-content">
@@ -330,14 +382,6 @@
           </div>
         </div>
 
-        <!-- Right: Hero Image -->
-        <div class="hero-media">
-          <div class="hero-image-placeholder">
-            [Advanced Tools Interface - 600&times;450]
-          </div>
-        </div>
-        
-      </div>
     </div>
 
     <div class="hero-fade"></div>
@@ -367,8 +411,8 @@
   <section class="section bg-light" id="the-challenge">
     <div class="container">
       <div class="problem-card">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-medium); color: var(--color-primary); margin-bottom: var(--space-6);">Programs Grow. Rules Multiply.</h2>
-        <p style="font-size: var(--font-size-lg); color: var(--color-gray-400); line-height: 1.7;">
+        <h2 class="problem-card-title">Programs Grow. Rules Multiply.</h2>
+        <p class="problem-card-text">
           What starts as a handful of promotions becomes hundreds of rules. Base earn. Partner earn. Tier multipliers. Promotional bonuses. Each rule interacts with the others. Without structure, you get unknown outcomes. Which rules fired? In what order? Why did the member get 150 points instead of 250? That's a <strong>liability problem</strong>. An <strong>audit problem</strong>. A <strong>finance problem</strong>.
         </p>
       </div>
@@ -400,9 +444,7 @@
           </ul>
         </div>
         <div class="media">
-          <div class="feature-row-image-placeholder">
-            [Rule Organization UI - Folder Hierarchy and Execution Path]
-          </div>
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Laptop showing analytics dashboard with organized data views">
         </div>
       </div>
 
@@ -423,9 +465,7 @@
           </ul>
         </div>
         <div class="media">
-          <div class="feature-row-image-placeholder">
-            [Custom Logic UI - Configuration with Validation]
-          </div>
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&q=80" alt="Developer laptop showing code configuration interface">
         </div>
       </div>
 
@@ -443,7 +483,7 @@
       <div class="section-header">
         <span class="eyebrow">Governance</span>
         <h2 class="section-title">Built for Teams. Built for Audit.</h2>
-        <p class="body-text" style="max-width: 700px; margin: var(--space-4) auto 0;">
+        <p class="section-subtitle">
           The tools that keep complex programs manageable over time.
         </p>
       </div>
@@ -452,7 +492,7 @@
         
         <!-- Card 1: Team Specialization -->
         <div class="card">
-          <span class="card-category">Team Specialization</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <h3 class="card-title">Different teams. Different areas.</h3>
           <p class="card-body">
             Partner teams manage partner rules. Tier teams manage tier logic. Each team sees what they need. <strong>Changes stay isolated</strong>. Collisions stay rare.
@@ -461,7 +501,7 @@
 
         <!-- Card 2: Execution Logging -->
         <div class="card">
-          <span class="card-category">Execution Logging</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
           <h3 class="card-title">Every decision. Fully traced.</h3>
           <p class="card-body">
             Transaction logs show which rules triggered, which actions executed, and what data informed the decision. <strong>Disputes resolve faster</strong> because every decision is logged.
@@ -470,7 +510,7 @@
 
         <!-- Card 3: Partner Isolation -->
         <div class="card">
-          <span class="card-category">Partner Isolation</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
           <h3 class="card-title">Each partner as a mini-program.</h3>
           <p class="card-body">
             Separate funding, billing, and reimbursement logic per partner. Agreements stay isolated. Finance sees <strong>clean settlement with full traceability</strong>.
@@ -479,7 +519,7 @@
 
         <!-- Card 4: Long-Running Programs -->
         <div class="card">
-          <span class="card-category">Long-Term Structure</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
           <h3 class="card-title">Structure that lasts.</h3>
           <p class="card-body">
             Programs that run for years stay organized. New promotions drop into the right folder. Rules don't fall into the void. <strong>The system scales with the business</strong>.
