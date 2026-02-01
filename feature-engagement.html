@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engagement & Gamification | RCX Loyalty Platform</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,72 +24,103 @@
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme)
+       SUBPAGE HERO (Cinematic Background — Charcoal + White Glass)
        ------------------------------------------------------------------------- */
     .subpage-hero {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
-      background: var(--grad-charcoal-premium);
+      background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 30%, #3a3a3a 60%, #2a2a2a 100%);
       position: relative;
       overflow: hidden;
-      padding: var(--space-24) 0;
+      padding: var(--space-24) 0 var(--space-20);
       padding-top: calc(var(--space-24) + 80px);
     }
 
+    /* Phone image — faded into right side, logos obscured */
+    .subpage-hero-bg {
+      position: absolute;
+      top: 0;
+      right: -5%;
+      bottom: 0;
+      width: 75%;
+      z-index: 1;
+    }
+
+    .subpage-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      mix-blend-mode: lighten;
+      opacity: 0.3;
+      filter: blur(1.5px) saturate(0.3);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 85%, transparent 100%);
+    }
+
+    /* White glass overlay — signature LM treatment */
     .subpage-hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      right: 0;
+      height: 55%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 30%, transparent 100%);
+      z-index: 2;
       pointer-events: none;
     }
 
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
+    /* Bottom charcoal fade */
+    .subpage-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(0deg, #2a2a2a 0%, rgba(42,42,42,0.6) 50%, transparent 100%);
+      z-index: 2;
+      pointer-events: none;
     }
 
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+    /* Edge shine at very top */
+    .subpage-hero-edge {
+      position: absolute;
+      top: 0;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.4) 75%, transparent 100%);
+      z-index: 3;
+    }
+
+    .subpage-hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
     }
 
     .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
+      max-width: 900px;
     }
 
     .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-xs);
       font-weight: var(--font-weight-semibold);
       color: var(--color-primary);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: var(--letter-spacing-widest);
       margin-bottom: var(--space-4);
     }
 
     .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: var(--font-weight-semibold);
       color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      line-height: var(--line-height-tight);
+      letter-spacing: var(--letter-spacing-tight);
       margin-bottom: var(--space-6);
     }
 
@@ -97,8 +133,8 @@
 
     .subpage-hero-description {
       font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      line-height: var(--line-height-relaxed);
       margin-bottom: var(--space-8);
     }
 
@@ -108,37 +144,52 @@
     }
 
     @media (max-width: 1024px) {
+      .subpage-hero-bg {
+        width: 100%;
+        right: 0;
+      }
+      .subpage-hero-bg img {
+        opacity: 0.15;
+        filter: blur(2px) saturate(0.2);
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
+      .subpage-hero-inner {
+        max-width: 100%;
+        text-align: center;
+      }
       .subpage-hero-cta {
         justify-content: center;
       }
     }
 
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
     @media (max-width: 768px) {
       .subpage-hero {
-        min-height: auto;
+        min-height: 70vh;
         padding: var(--space-16) 0;
         padding-top: calc(var(--space-16) + 80px);
       }
-      
       .subpage-hero-title {
         font-size: 2rem;
       }
+    }
+
+    /* -------------------------------------------------------------------------
+       SPOTLIGHT EYEBROW
+       ------------------------------------------------------------------------- */
+    .spotlight-eyebrow {
+      display: block;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-widest);
+      margin-bottom: var(--space-4);
+    }
+
+    .spotlight-section .spotlight-image {
+      min-height: 360px;
+      background: linear-gradient(165deg, #5a6575 0%, #4e5a68 50%, #445060 100%);
     }
 
     /* -------------------------------------------------------------------------
@@ -170,6 +221,17 @@
       background-color: var(--color-white);
     }
 
+    .feature-rows-section .media {
+      min-height: 380px;
+      background: linear-gradient(165deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+    }
+
+    .feature-rows-section .feature-image {
+      min-height: 340px;
+      object-fit: cover;
+      background: var(--color-gray-200);
+    }
+
     .feature-row-content {
       max-width: 520px;
     }
@@ -192,7 +254,7 @@
     .feature-row-title {
       font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
-      color: var(--text-main);
+      color: var(--text-primary);
       line-height: 1.2;
       margin-bottom: var(--space-4);
     }
@@ -208,18 +270,7 @@
       position: relative;
     }
 
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-    }
-
-    /* btn-dark for light backgrounds */
+        /* btn-dark for light backgrounds */
     .btn-dark {
       background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
       color: var(--color-white);
@@ -236,11 +287,10 @@
       height: 50%;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
       pointer-events: none;
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      border-radius: var(--radius-xs) var(--radius-xs) 0 0;
     }
 
     .btn-dark:hover {
-      transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     }
 
@@ -248,7 +298,7 @@
        STREAKS SHOWCASE SECTION (Dark Theme)
        ------------------------------------------------------------------------- */
     .streaks-showcase {
-      background: var(--grad-charcoal-premium);
+      background: var(--grad-obsidian);
       position: relative;
       padding: var(--space-20) 0;
       overflow: hidden;
@@ -317,7 +367,7 @@
       padding: var(--space-8);
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-xs);
       backdrop-filter: blur(10px);
     }
 
@@ -365,7 +415,7 @@
     .capability-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-xs);
       padding: var(--space-6);
       text-align: center;
       transition: all var(--transition-base);
@@ -374,7 +424,6 @@
     .capability-card:hover {
       background: rgba(255, 255, 255, 0.08);
       border-color: rgba(243, 112, 33, 0.3);
-      transform: translateY(-4px);
     }
 
     .capability-title {
@@ -435,9 +484,9 @@
        ------------------------------------------------------------------------- */
     .bottom-cta-card {
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: var(--radius-xs);
       padding: var(--space-12) var(--space-16);
-      box-shadow: var(--shadow-card);
+      box-shadow: var(--shadow-lg);
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -446,7 +495,7 @@
     .bottom-cta-title {
       font-size: var(--font-size-3xl);
       font-weight: var(--font-weight-bold);
-      color: var(--text-main);
+      color: var(--text-primary);
       margin-bottom: var(--space-4);
     }
 
@@ -669,9 +718,12 @@
 
   <!-- ========== SECTION 1: HERO ========== -->
   <section class="subpage-hero">
+    <div class="subpage-hero-edge"></div>
+    <div class="subpage-hero-bg">
+      <img src="phones-hero.png" alt="">
+    </div>
     <div class="container">
       <div class="subpage-hero-inner">
-        
         <div class="subpage-hero-content">
           <div class="subpage-hero-eyebrow">Capabilities</div>
           <h1 class="subpage-hero-title">
@@ -684,13 +736,6 @@
             <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
           </div>
         </div>
-
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">
-            [Engagement Dashboard Interface – 600×450]
-          </div>
-        </div>
-        
       </div>
     </div>
   </section>
@@ -707,62 +752,32 @@
       <div class="lifecycle-grid">
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            </div>
-            <h3 class="card-title">Surveys & Polls</h3>
-          </div>
+          <h3 class="card-title">Surveys & Polls</h3>
           <p class="card-body">Collect preferences, opinions, and feedback. Every response builds a <strong>richer member profile</strong> and informs personalization.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <h3 class="card-title">Profile Completion</h3>
-          </div>
+          <h3 class="card-title">Profile Completion</h3>
           <p class="card-body"><strong>Progressive profiling</strong> rewards members for adding information over time. Start simple, build depth without friction.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            </div>
-            <h3 class="card-title">App Activity</h3>
-          </div>
+          <h3 class="card-title">App Activity</h3>
           <p class="card-body">App opens, feature usage, content views, check-ins. Track and reward the behaviors that signal <strong>interest and intent</strong>.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            </div>
-            <h3 class="card-title">Reviews & Ratings</h3>
-          </div>
+          <h3 class="card-title">Reviews & Ratings</h3>
           <p class="card-body">Reward members for leaving reviews on purchases, stays, or experiences. Feed <strong>sentiment data</strong> into your analytics.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-            </div>
-            <h3 class="card-title">Content & Media Engagement</h3>
-          </div>
+          <h3 class="card-title">Content & Media Engagement</h3>
           <p class="card-body">Reward members for <strong>watching videos</strong>, completing quizzes, or updating communication preferences.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            </div>
-            <h3 class="card-title">Check-Ins</h3>
-          </div>
+          <h3 class="card-title">Check-Ins</h3>
           <p class="card-body">Digital or physical check-ins at locations, events, or properties. Combine with <strong>geo-location APIs</strong> for context-aware rewards.</p>
         </div>
 
@@ -777,7 +792,7 @@
       <p class="text-center body-sm mb-6" style="color: #9A9A9A;">Measured outcomes across individual enterprise programs:</p>
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-number">+57 pts</div>
+          <div class="stat-number">+57<span style="font-size: 0.5em;">pts</span></div>
           <div class="stat-title"><strong>Activation Rate</strong></div>
         </div>
         <div class="stat-item">
@@ -801,14 +816,15 @@
   <section class="spotlight-section">
     <div class="container">
       <div class="spotlight-card">
-        <div class="spotlight-inner" style="grid-template-columns: 1fr; text-align: center; max-width: 900px; margin: 0 auto;">
-          <div class="spotlight-content" style="padding: var(--space-12);">
-            <span class="spotlight-eyebrow">Zero-Party Data</span>
-            <h2 class="spotlight-title">The Most Valuable Data Comes Directly From Members</h2>
-            <p class="spotlight-description" style="max-width: 800px; margin: 0 auto;">
-              <strong>Zero-party data</strong> is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with <strong>explicit consent</strong> and clear meaning. The platform captures it through engagement mechanics and feeds it <strong>immediately into your rules engine</strong>.
-            </p>
-          </div>
+        <div class="spotlight-image">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Customer completing a loyalty survey on mobile device">
+        </div>
+        <div class="spotlight-content">
+          <span class="spotlight-eyebrow">Zero-Party Data</span>
+          <h2 class="spotlight-title">The Most Valuable Data Comes Directly From Members</h2>
+          <p class="spotlight-description">
+            <strong>Zero-party data</strong> is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with <strong>explicit consent</strong> and clear meaning. The platform captures it through engagement mechanics and feeds it <strong>immediately into your rules engine</strong>.
+          </p>
         </div>
       </div>
     </div>
@@ -820,8 +836,51 @@
     <div class="container">
       <div class="feature-row">
         <div class="media">
-          <div class="feature-row-image-placeholder">
-            [Activity Types Visualization]
+          <div class="survey-mockup" style="width: 100%; max-width: 340px; margin: 0 auto; background: var(--color-white); border-radius: 2px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid var(--color-gray-200);">
+            <!-- Mock status bar -->
+            <div style="background: var(--color-charcoal-900); padding: 6px 16px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500;">9:41</span>
+              <div style="display: flex; gap: 4px; align-items: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
+              </div>
+            </div>
+            <!-- App header -->
+            <div style="background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 100%); padding: 20px 24px 28px; text-align: center; position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%); pointer-events: none;"></div>
+              <div style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #F37021; margin-bottom: 8px; position: relative; z-index: 1;">Your Feedback</div>
+              <div style="font-size: 20px; font-weight: 500; color: white; line-height: 1.3; position: relative; z-index: 1;">How was your visit?</div>
+            </div>
+            <!-- Star rating -->
+            <div style="padding: 28px 24px 12px; text-align: center;">
+              <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 16px;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              </div>
+              <div style="font-size: 13px; color: var(--color-gray-400); margin-bottom: 20px;">Tap to rate your experience</div>
+              <!-- Mock form fields -->
+              <div style="text-align: left; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">What did you enjoy most?</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  <span style="padding: 5px 12px; background: rgba(243,112,33,0.08); border: 1px solid rgba(243,112,33,0.25); border-radius: 2px; font-size: 11px; color: #F37021; font-weight: 500;">Service</span>
+                  <span style="padding: 5px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 11px; color: var(--color-gray-500);">Speed</span>
+                  <span style="padding: 5px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 11px; color: var(--color-gray-500);">Selection</span>
+                  <span style="padding: 5px 12px; background: rgba(243,112,33,0.08); border: 1px solid rgba(243,112,33,0.25); border-radius: 2px; font-size: 11px; color: #F37021; font-weight: 500;">Rewards</span>
+                </div>
+              </div>
+              <div style="text-align: left; margin-bottom: 20px;">
+                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Comments</div>
+                <div style="padding: 10px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 12px; color: var(--color-gray-400); min-height: 48px;">Great experience today...</div>
+              </div>
+              <!-- Submit button -->
+              <div style="padding: 10px 0 8px;">
+                <div style="background: linear-gradient(165deg, #FF8534 0%, #F37021 40%, #E5651A 100%); color: white; padding: 11px; text-align: center; border-radius: 2px; font-size: 13px; font-weight: 500; letter-spacing: 0.02em;">Submit Feedback  →</div>
+              </div>
+              <div style="font-size: 10px; color: var(--color-gray-400); padding: 8px 0 4px;">Earn <strong style="color: #F37021;">50 points</strong> for completing this survey</div>
+            </div>
           </div>
         </div>
         <div class="feature-row-content">
@@ -842,12 +901,7 @@
   <!-- ========== SECTION 6: REFERRALS ZIG-ZAG ========== -->
   <section class="feature-rows-section" style="padding-top: 0;">
     <div class="container">
-      <div class="feature-row reverse">
-        <div class="media">
-          <div class="feature-row-image-placeholder">
-            [Referral Flow Visualization]
-          </div>
-        </div>
+      <div class="feature-row">
         <div class="feature-row-content">
           <span class="feature-row-eyebrow">Acquisition Engine</span>
           <h2 class="feature-row-title">Program-Powered Word of Mouth</h2>
@@ -876,6 +930,80 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="media">
+          <div class="referral-mockup" style="width: 100%; max-width: 340px; margin: 0 auto; background: var(--color-white); border-radius: 2px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid var(--color-gray-200);">
+            <!-- Mock status bar -->
+            <div style="background: var(--color-charcoal-900); padding: 6px 16px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500;">9:41</span>
+              <div style="display: flex; gap: 4px; align-items: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
+              </div>
+            </div>
+            <!-- App header -->
+            <div style="background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 100%); padding: 20px 24px 28px; text-align: center; position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%); pointer-events: none;"></div>
+              <div style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #F37021; margin-bottom: 8px; position: relative; z-index: 1;">Referral Program</div>
+              <div style="font-size: 20px; font-weight: 500; color: white; line-height: 1.3; position: relative; z-index: 1;">Refer a Friend</div>
+            </div>
+            <!-- Reward callout -->
+            <div style="padding: 24px 24px 0; text-align: center;">
+              <div style="background: rgba(243,112,33,0.06); border: 1px solid rgba(243,112,33,0.15); border-radius: 2px; padding: 16px 20px; margin-bottom: 20px;">
+                <div style="font-size: 32px; font-weight: 300; color: #F37021; line-height: 1; margin-bottom: 4px;">500 <span style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em;">PTS</span></div>
+                <div style="font-size: 12px; color: var(--color-gray-500);">For every friend who joins &amp; makes a purchase</div>
+              </div>
+              <!-- Share link section -->
+              <div style="text-align: left; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Your Referral Link</div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="flex: 1; padding: 9px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 11px; color: var(--color-gray-400); font-family: var(--font-mono); overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">refer.rcx.io/sarah-m</div>
+                  <div style="padding: 9px 14px; background: var(--color-charcoal-900); color: white; border-radius: 2px; font-size: 11px; font-weight: 500; flex-shrink: 0;">Copy</div>
+                </div>
+              </div>
+              <!-- Share buttons -->
+              <div style="text-align: left; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Share Via</div>
+                <div style="display: flex; gap: 8px;">
+                  <div style="flex: 1; padding: 10px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; text-align: center; font-size: 11px; color: var(--color-gray-500); font-weight: 500;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email
+                  </div>
+                  <div style="flex: 1; padding: 10px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; text-align: center; font-size: 11px; color: var(--color-gray-500); font-weight: 500;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 4px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    Text
+                  </div>
+                  <div style="flex: 1; padding: 10px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; text-align: center; font-size: 11px; color: var(--color-gray-500); font-weight: 500;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 4px;"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Share
+                  </div>
+                </div>
+              </div>
+              <!-- Referral progress -->
+              <div style="text-align: left; margin-bottom: 8px; padding-top: 12px; border-top: 1px solid var(--color-gray-200);">
+                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;">Your Referrals</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--color-gray-200), var(--color-gray-300)); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--color-gray-500);">JR</div>
+                    <div><div style="font-size: 12px; font-weight: 500; color: var(--color-charcoal-900);">Jamie R.</div><div style="font-size: 10px; color: var(--color-gray-400);">Joined • Purchased</div></div>
+                  </div>
+                  <div style="font-size: 12px; font-weight: 600; color: #F37021;">+500 pts</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--color-gray-200), var(--color-gray-300)); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--color-gray-500);">MK</div>
+                    <div><div style="font-size: 12px; font-weight: 500; color: var(--color-charcoal-900);">Morgan K.</div><div style="font-size: 10px; color: var(--color-gray-400);">Joined • Pending</div></div>
+                  </div>
+                  <div style="font-size: 10px; font-weight: 500; color: var(--color-gray-400); text-transform: uppercase; letter-spacing: 0.06em;">Pending</div>
+                </div>
+              </div>
+              <!-- Total earned -->
+              <div style="padding: 12px 0 16px; text-align: center;">
+                <div style="font-size: 10px; color: var(--color-gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Total Earned from Referrals</div>
+                <div style="font-size: 22px; font-weight: 500; color: #F37021;">1,500 <span style="font-size: 12px; font-weight: 500;">pts</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
