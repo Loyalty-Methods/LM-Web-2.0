@@ -1,5 +1,5 @@
 /* ======================================================================
-   BASE (V10.1) â€” Reset, Layout, Shared Patterns, Typography, Sections
+   BASE (V10.1) Ã¢â‚¬â€ Reset, Layout, Shared Patterns, Typography, Sections
    ====================================================================== */
 
 /* === RESET === */
@@ -45,28 +45,34 @@ ul, ol { list-style: none; }
 .mega-menu-featured-eyebrow { color: var(--color-primary); }
 .mega-menu-column-title { color: var(--color-gray-400); }
 
-/* Dark surface */
-.stat-item, .icon-feature-icon, .mega-menu-link-icon, .sticky-tab.active {
+/* Dark surface — nav & stat elements only */
+.stat-item, .mega-menu-link-icon, .sticky-tab.active {
   background: var(--grad-card-obsidian); border: 1px solid rgba(255,255,255,0.18);
   position: relative; overflow: hidden;
 }
 /* Glass hairline ::before */
-.stat-item::before, .icon-feature-icon::before, .mega-menu-link-icon::before,
-.card-image-placeholder::before, .bento-card-dark::before {
+.stat-item::before, .mega-menu-link-icon::before,
+.bento-card-dark::before {
   content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%); z-index: 2;
 }
 /* Glass overlay ::after */
-.stat-item::after, .icon-feature-icon::after, .mega-menu-link-icon::after,
-.card-image-placeholder::after {
+.stat-item::after, .mega-menu-link-icon::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%;
   background: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
-.icon-feature-icon svg, .mega-menu-link-icon svg { stroke: var(--color-primary); stroke-width: 1.5; position: relative; z-index: 1; }
+.mega-menu-link-icon svg { stroke: var(--color-primary); stroke-width: 1.5; position: relative; z-index: 1; }
 
 /* === TYPOGRAPHY === */
-.eyebrow { margin-bottom: var(--space-3); }
+/* Universal eyebrow spacing — single source of truth
+   Standalone contexts: 8px margin creates the gap.
+   Flex-gap contexts (cards): see c-components.css override. */
+.eyebrow, .hero-eyebrow, .hero-cinematic-eyebrow, .faq-eyebrow,
+.spotlight-eyebrow, .card-eyebrow, .card-category, .feature-label,
+.resource-item-badge, .mega-menu-featured-eyebrow, .product-tour-eyebrow {
+  margin-bottom: var(--space-2);
+}
 .eyebrow-light { color: var(--color-primary-light); }
 .section-title { font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl)); font-weight: var(--font-weight-light); letter-spacing: var(--letter-spacing-tight); line-height: var(--line-height-tight); color: var(--text-primary); }
 .body-text { font-size: var(--font-size-base); font-weight: var(--font-weight-normal); line-height: var(--line-height-relaxed); color: var(--text-secondary); }

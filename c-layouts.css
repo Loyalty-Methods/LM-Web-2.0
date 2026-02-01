@@ -1,5 +1,5 @@
 /* ======================================================================
-   LAYOUTS (V10.1) Ã¢â‚¬â€ Spotlight, Logo Cloud, Tabs, Features, FAQ, Bento,
+   LAYOUTS (V10.1) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Spotlight, Logo Cloud, Tabs, Features, FAQ, Bento,
                       Resources, CTA, Product Tour
    ====================================================================== */
 
@@ -12,7 +12,6 @@
 .spotlight-image { position: relative; min-height: 320px; background: var(--grad-navy-tint); overflow: hidden; }
 .spotlight-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
 .spotlight-content { padding: var(--space-12); display: flex; flex-direction: column; justify-content: center; }
-.spotlight-eyebrow { margin-bottom: var(--space-3); }
 .spotlight-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-light); color: var(--color-charcoal-900); line-height: var(--line-height-snug); margin-bottom: var(--space-5); }
 .spotlight-description { font-size: var(--font-size-base); color: var(--color-gray-500); line-height: var(--line-height-relaxed); margin-bottom: var(--space-8); }
 @media (max-width: 768px) { .spotlight-content { padding: var(--space-8); } }
@@ -54,7 +53,7 @@
 }
 .feature-content { max-width: 480px; }
 @media (max-width: 1024px) { .feature-content { max-width: 100%; } }
-.feature-label { font-size: var(--font-size-sm); color: var(--color-primary); letter-spacing: var(--letter-spacing-widest); margin-bottom: var(--space-3); }
+.feature-label { font-size: var(--font-size-sm); color: var(--color-primary); letter-spacing: var(--letter-spacing-widest); }
 .feature-title { font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl)); font-weight: var(--font-weight-light); color: var(--text-primary); line-height: var(--line-height-tight); letter-spacing: var(--letter-spacing-tight); margin-bottom: var(--space-5); }
 .feature-description { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-loose); margin-bottom: var(--space-6); }
 .feature-list { list-style: none; margin-bottom: var(--space-8); }
@@ -70,7 +69,6 @@
 @media (max-width: 1024px) { .faq-layout { grid-template-columns: 1fr; gap: var(--space-10); } }
 .faq-intro { position: sticky; top: 120px; }
 @media (max-width: 1024px) { .faq-intro { position: static; text-align: center; } }
-.faq-eyebrow { margin-bottom: var(--space-3); }
 .faq-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-light); color: var(--text-primary); line-height: var(--line-height-snug); margin-bottom: var(--space-4); }
 .faq-description { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-relaxed); margin-bottom: var(--space-5); }
 .faq-accordion { display: flex; flex-direction: column; gap: var(--space-3); }
@@ -103,6 +101,7 @@
 .bento-card-dark .card-category { color: var(--color-white); }
 .bento-card-dark .bento-card-image { position: relative; z-index: 3; border-radius: 0 0 var(--radius-2xl) var(--radius-2xl); }
 .bento-card-content { padding: var(--space-10) var(--space-8) var(--space-4); display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-2); position: relative; z-index: 3; }
+.bento-card-content .eyebrow { margin-bottom: 0; }
 .bento-card-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-medium); line-height: var(--line-height-snug); max-width: 400px; }
 .bento-card-description { font-size: var(--font-size-base); line-height: var(--line-height-relaxed); max-width: 380px; }
 .bento-card-content .btn { margin-top: var(--space-3); }
@@ -170,7 +169,7 @@
 /* === PRODUCT TOUR === */
 .product-tour { padding: var(--space-24) 0; }
 .product-tour-header { text-align: center; margin-bottom: var(--space-12); }
-.product-tour-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: var(--letter-spacing-widest); color: var(--color-primary); margin-bottom: var(--space-3); }
+.product-tour-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: var(--letter-spacing-widest); color: var(--color-primary); }
 .product-tour-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: var(--font-weight-light); color: var(--color-white); line-height: var(--line-height-tight); }
 .browser-window { max-width: 1000px; margin: 0 auto var(--space-8); }
 .browser-frame { background: var(--grad-obsidian-warm); border-radius: var(--radius-2xl); overflow: hidden; box-shadow: var(--shadow-dark-lg); border: var(--border-glass); position: relative; }

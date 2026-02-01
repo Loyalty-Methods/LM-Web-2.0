@@ -1,5 +1,5 @@
 /* ======================================================================
-   COMPONENTS (V10.1) Ã¢â‚¬â€ Buttons, Cards, Testimonials, Stats, Framework, Callout
+   COMPONENTS (V10.1) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Buttons, Cards, Testimonials, Stats, Framework, Callout
    ====================================================================== */
 
 /* === BUTTONS === */
@@ -28,8 +28,9 @@
 .card.dark::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%; background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 50%, transparent 100%); pointer-events: none; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; }
 .card.dark:hover { border-color: rgba(243,112,33,0.4); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(243,112,33,0.2); }
 .card-image { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; object-fit: cover; object-position: center; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; background: var(--color-gray-100); }
-.card-image-placeholder { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; background: var(--grad-card-obsidian); border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.card-category { margin-bottom: 0; }
+.card-image-placeholder { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; background: var(--color-gray-100); border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; position: relative; overflow: hidden; }
+/* Eyebrow-to-title inside cards: neutralise flex gap so net = var(--space-2) */
+.card .card-eyebrow, .card .card-category { margin-bottom: calc(-1 * var(--space-2)); }
 .card-title, .card .card-title { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-charcoal-900); line-height: var(--line-height-snug); }
 .card-description, .card-body, .card .card-body { font-size: var(--font-size-sm); color: var(--text-muted); line-height: var(--line-height-relaxed); }
 .card-body strong, .card .card-body strong { color: var(--text-primary); font-weight: var(--font-weight-medium); }
@@ -38,13 +39,6 @@
 .card-header { display: flex; flex-direction: column; gap: var(--space-2); }
 .card.dark .card-title { color: var(--color-white); }
 .card.dark .card-body { color: rgba(255,255,255,0.6); }
-
-/* Icon features */
-.icon-feature-header { display: flex; align-items: center; gap: var(--space-4); }
-.icon-feature-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-xl); flex-shrink: 0; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
-.icon-feature-icon::after { border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
-.icon-feature-icon svg { width: 24px; height: 24px; }
-.icon-feature-header .card-title { color: var(--color-charcoal-900); font-weight: var(--font-weight-medium); }
 
 /* === TESTIMONIALS === */
 .testimonial-card { background: var(--color-white); border-radius: var(--radius-xl); padding: var(--space-8); border: 1px solid var(--color-gray-200); display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 10px 20px rgba(0,0,0,0.06); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease; position: relative; overflow: hidden; }
@@ -97,8 +91,8 @@
 .callout-body { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-loose); margin-bottom: var(--space-6); max-width: 640px; margin-left: auto; margin-right: auto; }
 
 /* ======================================================================
-   GAUGE WIDGETS — Premium Enterprise Ring Gauges
-   Progressive fill narrative: 45% → 75% → 100%
+   GAUGE WIDGETS â€” Premium Enterprise Ring Gauges
+   Progressive fill narrative: 45% â†’ 75% â†’ 100%
    ====================================================================== */
 
 /* --- Container: transparent, floats on section bg --- */
