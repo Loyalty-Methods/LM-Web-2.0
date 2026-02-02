@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 Methods Powering Loyalty in Fuel &amp; Convenience Retail | Loyalty Methods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ======================================================================
+   DESIGN TOKENS (V10.1 - SLIM)
+   ====================================================================== */
+:root {
+  /* --- BRAND COLORS --- */
+  --color-primary: #F37021;
+  --color-primary-light: #FF8F4D;
+  --color-primary-dark: #D45A10;
+  --color-primary-glow: rgba(243,112,33,0.35);
+  --color-navy: #5B8AB8;
+  --color-navy-dark: #2C4A6E;
+  --color-navy-light: #7BA3C8;
+
+  /* Charcoal */
+  --color-charcoal-950: #2a2a2a;
+  --color-charcoal-900: #333;
+  --color-charcoal-800: #404040;
+  --color-charcoal-700: #4a4a4a;
+  --color-charcoal-600: #5a5a5a;
+  --color-charcoal-500: #6a6a6a;
+  --color-charcoal-400: #7a7a7a;
+  --color-charcoal-300: #8a8a8a;
+
+  /* Neutrals */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #EBEBEB;
+  --color-gray-300: #D4D4D4;
+  --color-gray-400: #A3A3A3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+
+  /* --- GRADIENTS --- */
+  --grad-obsidian: linear-gradient(180deg, #5a5a5a 0%, #4a4a4a 40%, #404040 70%, #383838 100%);
+  --grad-obsidian-warm: linear-gradient(165deg, #6a6a6a 0%, #5a5a5a 35%, #4a4a4a 65%, #404040 100%);
+  --grad-glass-primary: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.18) 15%, rgba(255,255,255,0.10) 35%, rgba(255,255,255,0.04) 50%, transparent 70%);
+  --grad-edge-shine: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 20%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.6) 80%, transparent 100%);
+  --grad-card-obsidian: linear-gradient(165deg, #6a6a6a 0%, #5a5a5a 40%, #4a4a4a 100%);
+  --grad-card-glass: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 30%, transparent 60%);
+  --grad-orange-accent: linear-gradient(135deg, #F37021 0%, #FF8F4D 100%);
+  --grad-navy-tint: linear-gradient(165deg, #5a6575 0%, #4e5a68 50%, #445060 100%);
+
+  /* --- TYPOGRAPHY --- */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font-size-2xs: 0.625rem;
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.25rem;
+  --font-size-6xl: 4rem;
+  --font-size-7xl: 5rem;
+  --font-weight-thin: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 600;
+  --font-weight-extrabold: 600;
+  --line-height-none: 1;
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+  --line-height-loose: 1.8;
+  --letter-spacing-tighter: -0.03em;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: -0.01em;
+  --letter-spacing-wide: 0.02em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.14em;
+
+  /* --- SPACING --- */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-14: 3.5rem; --space-16: 4rem; --space-20: 5rem;
+  --space-24: 6rem; --space-28: 7rem; --space-32: 8rem; --space-40: 10rem;
+
+  /* --- SHADOWS --- */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.08), 0 16px 32px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.04), 0 25px 50px rgba(0,0,0,0.08), 0 50px 100px rgba(0,0,0,0.12);
+  --shadow-xl: 0 20px 40px rgba(0,0,0,0.06), 0 40px 80px rgba(0,0,0,0.1), 0 80px 160px rgba(0,0,0,0.15);
+  --shadow-dark-sm: 0 2px 8px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-dark-lg: 0 16px 48px rgba(0,0,0,0.3), 0 32px 96px rgba(0,0,0,0.25);
+
+  /* --- BORDERS --- */
+  --radius-none: 0; --radius-xs: 4px; --radius-sm: 6px; --radius-md: 10px;
+  --radius-lg: 14px; --radius-xl: 18px; --radius-2xl: 24px;
+  --radius-3xl: 32px; --radius-4xl: 40px; --radius-full: 9999px;
+  --border-glass: 1px solid rgba(255,255,255,0.15);
+
+  /* Transitions (all instant - kept for page-style references) */
+  --transition-fast: 0ms;
+  --transition-base: 0ms;
+  --transition-slow: 0ms;
+}
+
+/* --- THEME --- */
+:root, [data-theme="light"] {
+  --bg-page: var(--color-gray-50);
+  --bg-card: var(--color-white);
+  --bg-card-elevated: var(--color-white);
+  --text-primary: var(--color-charcoal-900);
+  --text-secondary: var(--color-gray-600);
+  --text-muted: var(--color-gray-500);
+  --text-subtle: var(--color-gray-400);
+  --text-accent: var(--color-primary);
+  --border-subtle: var(--color-gray-200);
+  --border-hover: var(--color-gray-300);
+}
+[data-theme="dark"], .section.dark, .card.dark, .bg-dark {
+  --bg-page: var(--color-charcoal-950);
+  --bg-card: var(--color-charcoal-800);
+  --text-primary: var(--color-white);
+  --text-secondary: rgba(255,255,255,0.75);
+  --text-muted: rgba(255,255,255,0.55);
+  --text-subtle: rgba(255,255,255,0.35);
+  --text-accent: var(--color-primary);
+  --border-subtle: rgba(255,255,255,0.15);
+  --border-hover: rgba(255,255,255,0.22);
+}
+
+/* --- UTILITIES --- */
+.bg-white { background-color: var(--color-white); }
+.bg-light { background-color: var(--color-gray-100); }
+.bg-dark { background: var(--grad-obsidian); }
+.bg-obsidian-warm { background: var(--grad-obsidian-warm); }
+/* ======================================================================
+   INFOGRAPHIC (V2.0) — Elite Enterprise Vertical-Scroll Infographic
+   Dependencies: c-tokens.css (design tokens only)
+   Standalone layout — does NOT use c-base, c-components, c-layouts
+   ====================================================================== */
+
+/* === PAGE RESET === */
+.ig-page {
+  background: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-main);
+  color: var(--color-charcoal-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ig-page *, .ig-page *::before, .ig-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.ig-page img { max-width: 100%; display: block; }
+
+/* === CONTAINER === */
+.ig-wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+
+
+/* ======================================================================
+   HERO — Full viewport, cinematic photo backdrop
+   ====================================================================== */
+.ig-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 160px 0 120px;
+}
+/* Background photo */
+.ig-hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.ig-hero-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+/* Dark overlay */
+.ig-hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(165deg, rgba(70,70,70,0.82) 0%, rgba(55,55,55,0.86) 50%, rgba(45,45,45,0.90) 100%);
+}
+/* Glass sweep */
+.ig-hero::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 35%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+/* Top edge shine */
+.ig-hero::after {
+  content: ''; position: absolute;
+  top: 0; left: 3%; right: 3%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6) 50%, transparent);
+  z-index: 2;
+}
+.ig-hero > .ig-wrap { position: relative; z-index: 3; }
+
+/* Logo badge */
+.ig-hero-badge {
+  display: inline-flex;
+  align-items: center; gap: 10px;
+  padding: 8px 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 2px;
+  margin-bottom: 56px;
+}
+.ig-hero-badge-icon {
+  width: 22px; height: 22px;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+.ig-hero-badge-icon span {
+  font-size: 0.5rem; font-weight: 600;
+  color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
+}
+.ig-hero-badge-text {
+  font-size: 0.625rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.40);
+}
+
+/* Title */
+.ig-hero-title {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 200; color: #fff;
+  line-height: 1.06; letter-spacing: -0.035em;
+  margin-bottom: 44px;
+  max-width: 780px; margin-left: auto; margin-right: auto;
+}
+.ig-hero-title strong { font-weight: 200; color: var(--color-primary); }
+
+/* Divider line */
+.ig-hero-rule {
+  width: 56px; height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  margin: 0 auto 44px;
+  box-shadow: 0 0 16px rgba(243,112,33,0.25);
+}
+
+/* Intro copy */
+.ig-hero-intro {
+  font-size: 1.25rem; font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.55; margin-bottom: 16px;
+}
+.ig-hero-sub {
+  font-size: 1rem; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+/* Bottom fade to page bg */
+.ig-hero-fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 180px;
+  background: linear-gradient(to bottom, transparent 0%, #f5f5f5 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* ======================================================================
+   PUMP UP THE PROGRAM — Stats showcase
+   ====================================================================== */
+.ig-stats-section {
+  background: #fff;
+  padding: 72px 0 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.ig-stats-section > .ig-wrap { position: relative; z-index: 3; }
+
+.ig-stats-title {
+  font-size: 1.5rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--color-charcoal-900); margin-bottom: 48px;
+}
+.ig-stats-title::after {
+  content: ''; display: block;
+  width: 40px; height: 2px;
+  background: var(--color-primary);
+  margin: 18px auto 0;
+}
+
+/* Stats grid — 5 frosted glass cards on white */
+.ig-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.ig-stat-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border: 0.5px solid rgba(0,0,0,0.06);
+  border-top: none;
+  border-radius: 2px;
+  padding: 32px 20px 28px;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 0 0 0.5px rgba(0,0,0,0.07),
+    0 1px 1px rgba(0,0,0,0.06),
+    0 2px 4px rgba(0,0,0,0.05),
+    0 8px 16px rgba(0,0,0,0.04),
+    0 16px 32px rgba(0,0,0,0.03);
+}
+/* Charcoal gradient top edge */
+.ig-stat-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, rgba(90,90,90,0.6) 0%, rgba(100,100,100,0.55) 80%, rgba(200,200,200,0.7) 92%, rgba(255,255,255,0.9) 96%, transparent 100%);
+  z-index: 3;
+}
+.ig-stat-card::after { content: none; }
+.ig-stat-context {
+  font-size: 0.5625rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--color-gray-400);
+  margin-bottom: 12px;
+  position: relative; z-index: 2;
+}
+.ig-stat-number {
+  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+  font-weight: 200;
+  color: var(--color-primary);
+  line-height: 1; letter-spacing: -0.03em;
+  margin-bottom: 14px;
+  position: relative; z-index: 2;
+}
+.ig-stat-label {
+  font-size: 0.75rem; font-weight: 400;
+  color: var(--color-gray-500);
+  line-height: 1.55;
+  position: relative; z-index: 2;
+}
+
+
+/* ======================================================================
+   CHAPTER PHOTO BANDS — Cinematic section dividers with background imagery
+   ====================================================================== */
+.ig-photo-chapter {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  margin: 48px 0;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+/* Background image */
+.ig-photo-chapter-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.ig-photo-chapter-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* Heavy dark overlay */
+.ig-photo-chapter-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(50,50,50,0.88) 0%, rgba(40,40,40,0.92) 50%, rgba(50,50,50,0.88) 100%);
+}
+/* Glass sweep */
+.ig-photo-chapter::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+/* Orange top edge */
+.ig-photo-chapter::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 15%, var(--color-primary) 50%, transparent 85%);
+  z-index: 3;
+}
+.ig-photo-chapter > .ig-wrap { position: relative; z-index: 4; }
+
+.ig-photo-chapter-kicker {
+  font-size: 0.5625rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.20em;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+.ig-photo-chapter-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 200; color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.ig-photo-chapter-sub {
+  font-size: 1rem; font-weight: 300;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.65;
+  max-width: 520px; margin-left: auto; margin-right: auto;
+}
+
+
+/* ======================================================================
+   METHOD CARDS — Premium panels, alternating dark/light
+   ====================================================================== */
+
+/* --- Shared Method Card Base --- */
+.ig-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+.ig-card > .ig-wrap { position: relative; z-index: 4; }
+
+/* 3-column layout: Number | Content | Stats */
+.ig-card-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr 240px;
+  gap: 0;
+  align-items: start;
+  min-height: 360px;
+}
+
+/* Number column */
+.ig-card-num-col {
+  padding: 72px 0 72px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ig-card-number {
+  font-size: 6.5rem; font-weight: 200;
+  line-height: 0.85; letter-spacing: -0.05em;
+  margin-bottom: 16px;
+}
+.ig-card-num-rule {
+  width: 32px; height: 2px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, rgba(243,112,33,0.15) 100%);
+  box-shadow: 0 0 10px rgba(243,112,33,0.15);
+}
+
+/* Content column */
+.ig-card-content {
+  padding: 72px 56px;
+  border-left: 1px solid rgba(0,0,0,0.04);
+  border-right: 1px solid rgba(0,0,0,0.04);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ig-card-title {
+  font-size: 1.25rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+.ig-card-hook {
+  font-size: 1.5rem; font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  font-style: italic;
+  position: relative;
+  padding-left: 24px;
+}
+.ig-card-hook::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px; bottom: 4px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary), rgba(243,112,33,0.15));
+}
+.ig-card-body {
+  font-size: 0.9375rem; font-weight: 400;
+  line-height: 1.85;
+  max-width: 520px;
+}
+
+/* Stats column */
+.ig-card-stats {
+  padding: 72px 0 72px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+.ig-card-stat {
+  padding: 20px 0;
+  position: relative;
+}
+.ig-card-stat + .ig-card-stat {
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.ig-card-stat-value {
+  font-size: 2.25rem; font-weight: 200;
+  color: var(--color-primary);
+  line-height: 1; letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.ig-card-stat-label {
+  font-size: 0.75rem; font-weight: 400;
+  line-height: 1.55;
+}
+
+
+/* ======================================================================
+   LIGHT CARD VARIANT
+   ====================================================================== */
+.ig-card--light {
+  background: #fff;
+  box-shadow:
+    0 0 0 0.5px rgba(0,0,0,0.05),
+    0 1px 2px rgba(0,0,0,0.04),
+    0 4px 12px rgba(0,0,0,0.03);
+}
+/* Charcoal gradient top edge */
+.ig-card--light::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, rgba(90,90,90,0.55) 0%, rgba(100,100,100,0.5) 75%, rgba(200,200,200,0.65) 90%, rgba(255,255,255,0.9) 96%, transparent 100%);
+  z-index: 5;
+}
+.ig-card--light .ig-card-number { color: var(--color-primary); }
+.ig-card--light .ig-card-title { color: var(--color-charcoal-900); }
+.ig-card--light .ig-card-hook { color: var(--color-charcoal-700); }
+.ig-card--light .ig-card-body { color: var(--color-gray-500); }
+.ig-card--light .ig-card-body strong { color: var(--color-charcoal-900); font-weight: 500; }
+.ig-card--light .ig-card-stat-label { color: var(--color-gray-400); }
+.ig-card--light .ig-card-content {
+  border-left-color: rgba(0,0,0,0.05);
+  border-right-color: rgba(0,0,0,0.05);
+}
+.ig-card--light .ig-card-stat + .ig-card-stat { border-top-color: rgba(0,0,0,0.06); }
+
+
+/* ======================================================================
+   DARK CARD VARIANT
+   ====================================================================== */
+.ig-card--dark {
+  background: linear-gradient(165deg, #5a5a5a 0%, #4e4e4e 40%, #444 100%);
+}
+/* Orange shimmer top edge */
+.ig-card--dark::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, rgba(180,75,10,0.5) 0%, rgba(243,112,33,0.7) 40%, rgba(255,160,80,0.65) 85%, rgba(255,200,140,0.9) 95%, transparent 100%);
+  z-index: 5;
+}
+/* Glass overlay */
+.ig-card--dark::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 30%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+.ig-card--dark .ig-card-number { color: var(--color-primary); }
+.ig-card--dark .ig-card-title { color: rgba(255,255,255,0.90); }
+.ig-card--dark .ig-card-hook { color: rgba(255,255,255,0.70); }
+.ig-card--dark .ig-card-hook::before { background: linear-gradient(180deg, var(--color-primary), rgba(243,112,33,0.10)); }
+.ig-card--dark .ig-card-body { color: rgba(255,255,255,0.50); }
+.ig-card--dark .ig-card-body strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+.ig-card--dark .ig-card-stat-label { color: rgba(255,255,255,0.40); }
+.ig-card--dark .ig-card-content {
+  border-left-color: rgba(255,255,255,0.06);
+  border-right-color: rgba(255,255,255,0.06);
+}
+.ig-card--dark .ig-card-stat + .ig-card-stat { border-top-color: rgba(255,255,255,0.08); }
+
+
+/* ======================================================================
+   PHOTO CARD VARIANT — atmospheric background imagery
+   ====================================================================== */
+.ig-card--photo { position: relative; }
+.ig-card-photo-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.ig-card-photo-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.06;
+}
+/* Strengthen overlay for dark photo cards */
+.ig-card--dark.ig-card--photo::after {
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 25%, transparent 50%);
+}
+/* Lighten overlay for light photo cards */
+.ig-card--light.ig-card--photo .ig-card-photo-bg img {
+  opacity: 0.035;
+}
+
+
+/* ======================================================================
+   NO-STATS VARIANT — 2-column (number + content only)
+   ====================================================================== */
+.ig-card-grid--no-stats {
+  grid-template-columns: 160px 1fr;
+}
+.ig-card-grid--no-stats .ig-card-content {
+  border-right: none;
+}
+
+
+/* ======================================================================
+   INLINE STATS — stats embedded inside content column
+   ====================================================================== */
+.ig-inline-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.ig-card--dark .ig-inline-stats { border-top-color: rgba(255,255,255,0.08); }
+
+.ig-inline-stat { flex: 1; }
+.ig-inline-stat-value {
+  font-size: 1.75rem; font-weight: 200;
+  color: var(--color-primary);
+  line-height: 1; letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.ig-inline-stat-label {
+  font-size: 0.6875rem; font-weight: 400;
+  line-height: 1.5;
+}
+.ig-card--light .ig-inline-stat-label { color: var(--color-gray-400); }
+.ig-card--dark .ig-inline-stat-label { color: rgba(255,255,255,0.40); }
+
+
+/* ======================================================================
+   SECTION SPACING — breathing room between cards
+   ====================================================================== */
+.ig-spacer {
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+  margin: 0 40px;
+}
+.ig-spacer--thin { height: 3px; }
+.ig-spacer--wide { height: 10px; }
+
+
+/* ======================================================================
+   CTA SECTION
+   ====================================================================== */
+.ig-cta {
+  position: relative;
+  padding: 100px 0;
+  text-align: center;
+  overflow: hidden;
+  margin-top: 48px;
+}
+.ig-cta-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.ig-cta-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 60%;
+}
+.ig-cta-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(165deg, rgba(65,65,65,0.93) 0%, rgba(50,50,50,0.96) 50%, rgba(42,42,42,0.97) 100%);
+}
+.ig-cta::before {
+  content: ''; position: absolute;
+  top: 0; left: 3%; right: 3%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5) 50%, transparent);
+  z-index: 3;
+}
+.ig-cta::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+.ig-cta > .ig-wrap { position: relative; z-index: 4; }
+
+.ig-cta-hashtag {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 200; color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.ig-cta-hashtag em {
+  font-style: normal;
+  color: var(--color-primary);
+  font-weight: 300;
+}
+.ig-cta-tagline {
+  font-size: 1rem; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 40px;
+}
+.ig-cta-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  padding: 16px 44px;
+  background: linear-gradient(165deg, #FF8534 0%, #F37021 40%, #E5651A 100%);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 0.875rem; font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none; border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(243,112,33,0.3);
+}
+.ig-cta-btn::before {
+  content: ''; position: absolute;
+  top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6) 50%, transparent);
+}
+.ig-cta-btn::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+  border-radius: 2px 2px 0 0;
+  pointer-events: none;
+}
+.ig-cta-btn svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2;
+}
+
+
+/* ======================================================================
+   SOURCES FOOTER
+   ====================================================================== */
+.ig-sources {
+  background: #2a2a2a;
+  padding: 32px 0;
+  text-align: center;
+}
+.ig-sources-label {
+  font-size: 0.5625rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 12px;
+}
+.ig-sources-list {
+  font-size: 0.6875rem; font-weight: 400;
+  color: rgba(255,255,255,0.20);
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+.ig-sources-list span {
+  margin: 0 8px;
+  opacity: 0.35;
+}
+
+/* Old site footer styles removed — using standard .footer */
+
+
+/* ======================================================================
+   RESPONSIVE
+   ====================================================================== */
+@media (max-width: 1100px) {
+  .ig-card-grid {
+    grid-template-columns: 140px 1fr 200px;
+  }
+  .ig-card-content { padding: 60px 40px; }
+  .ig-card-stats { padding-left: 32px; }
+  .ig-card-number { font-size: 5.5rem; }
+}
+
+@media (max-width: 900px) {
+  .ig-wrap { padding: 0 28px; }
+
+  /* Stats grid */
+  .ig-stats-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Card → stack */
+  .ig-card-grid,
+  .ig-card-grid--no-stats {
+    grid-template-columns: 1fr;
+  }
+  .ig-card-num-col {
+    padding: 48px 40px 0;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .ig-card-number { font-size: 4.5rem; margin-bottom: 0; }
+  .ig-card-content {
+    padding: 24px 40px 48px;
+    border-left: none;
+    border-right: none;
+  }
+  .ig-card-stats {
+    padding: 0 40px 48px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .ig-card-stat {
+    padding: 0;
+    flex: 1 1 140px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(243,112,33,0.3);
+  }
+  .ig-card-stat + .ig-card-stat { border-top: none; }
+
+  .ig-photo-chapter { min-height: 260px; }
+}
+
+@media (max-width: 640px) {
+  .ig-wrap { padding: 0 20px; }
+
+  /* Hero */
+  .ig-hero { min-height: auto; padding: 120px 0 80px; }
+  .ig-hero-title { font-size: clamp(2rem, 7vw, 2.75rem); margin-bottom: 32px; }
+  .ig-hero-badge { margin-bottom: 36px; }
+  .ig-hero-fade { height: 100px; }
+
+  /* Stats */
+  .ig-stats-section { padding: 48px 0 56px; }
+  .ig-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .ig-stat-card { padding: 24px 16px 20px; }
+  .ig-stats-title { font-size: 1.125rem; margin-bottom: 32px; }
+
+  /* Photo chapters */
+  .ig-photo-chapter { min-height: 200px; }
+  .ig-photo-chapter-title { font-size: 1.5rem; }
+
+  /* Cards */
+  .ig-card-num-col { padding: 36px 20px 0; }
+  .ig-card-number { font-size: 3.5rem; }
+  .ig-card-content { padding: 20px 20px 36px; }
+  .ig-card-hook { font-size: 1.25rem; }
+  .ig-card-stats { padding: 0 20px 36px; }
+  .ig-card-stat { flex: 1 1 100%; }
+  .ig-inline-stats { flex-direction: column; gap: 20px; }
+
+  /* CTA */
+  .ig-cta { padding: 64px 0; }
+  .ig-cta-hashtag { font-size: 1.75rem; }
+}
+
+@media (max-width: 400px) {
+  .ig-stats-grid { grid-template-columns: 1fr; }
+  .ig-hero-title { font-size: 1.75rem; }
+}
+
+/* ======================================================================
+   SITE NAV & FOOTER — Shared site chrome
+   ====================================================================== */
+
+/* Container */
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: var(--space-3) var(--space-6); font-family: var(--font-main); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); letter-spacing: var(--letter-spacing-wide); border-radius: var(--radius-md); border: none; cursor: pointer; text-decoration: none; }
+.btn-primary { background: linear-gradient(135deg, #F37021 0%, #FF8F4D 100%); color: var(--color-white); box-shadow: 0 2px 8px rgba(243,112,33,0.3); }
+.btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--font-size-xs); }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.gap-4 { gap: var(--space-4); }
+
+/* === HEADER & NAV === */
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: var(--space-4) 0; background: transparent; }
+.header.scrolled { background: linear-gradient(135deg, #F37021 0%, #FF8F4D 100%); box-shadow: 0 4px 20px rgba(243,112,33,0.3); }
+.header.scrolled::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%; background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%); pointer-events: none; z-index: 0; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
+.logo { display: flex; align-items: center; }
+.logo img { height: 28px; width: auto; }
+.nav-desktop { display: flex; align-items: center; gap: var(--space-8); }
+.nav-list { display: flex; align-items: center; gap: var(--space-1); list-style: none; }
+.nav-item { position: relative; }
+.nav-link { display: flex; align-items: center; gap: var(--space-1); padding: var(--space-2) var(--space-3); font-size: var(--font-size-sm); color: rgba(255,255,255,0.85); border-radius: var(--radius-md); letter-spacing: var(--letter-spacing-wide); text-decoration: none; }
+.nav-link:hover { color: var(--color-white); background: rgba(255,255,255,0.08); }
+.header.scrolled .nav-link:hover { color: var(--color-white); background: rgba(255,255,255,0.1); }
+.nav-link-chevron { width: 14px; height: 14px; opacity: 0.6; }
+.nav-item:hover .nav-link-chevron { transform: rotate(180deg); }
+
+/* === MEGA MENU === */
+.mega-menu { position: absolute; top: 100%; left: 0; width: 920px; max-width: calc(100vw - 48px); padding-top: var(--space-4); opacity: 0; visibility: hidden; }
+.mega-menu-compact { width: 420px; }
+.mega-menu-tech { width: 680px; }
+.nav-item:last-child .mega-menu, .nav-list + div .mega-menu { left: auto; right: 0; }
+.nav-item:hover .mega-menu { opacity: 1; visibility: visible; }
+.mega-menu-inner { display: grid; grid-template-columns: 1.8fr 1fr; gap: var(--space-8); background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-2xl); padding: var(--space-6); box-shadow: var(--shadow-xl); }
+.mega-menu-compact .mega-menu-inner { grid-template-columns: 1fr; }
+.mega-menu-tech .mega-menu-inner { grid-template-columns: 1fr 1fr; }
+.mega-menu-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+.mega-menu-compact .mega-menu-links, .mega-menu-tech .mega-menu-links { grid-template-columns: 1fr; }
+.mega-menu-column-title { margin-bottom: var(--space-3); font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); color: var(--color-gray-400); }
+.mega-menu-link { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-lg); text-decoration: none; }
+.mega-menu-link:hover { background: rgba(243,112,33,0.04); }
+.mega-menu-link-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg); flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.mega-menu-link-icon::after { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.mega-menu-link-icon svg { width: 20px; height: 20px; }
+.mega-menu-link-title { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-charcoal-900); margin-bottom: 2px; }
+.mega-menu-link-description { font-size: var(--font-size-xs); color: var(--color-gray-400); line-height: 1.4; }
+.mega-menu-featured { background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+.mega-menu-featured-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); color: var(--color-primary); }
+.mega-menu-featured-title { font-size: var(--font-size-lg); font-weight: var(--font-weight-medium); color: var(--color-charcoal-900); }
+.mega-menu-featured-description { font-size: var(--font-size-sm); color: var(--color-gray-500); }
+.mega-menu-featured-image { aspect-ratio: 16/9; background: var(--color-gray-200); border-radius: var(--radius-lg); overflow: hidden; }
+.mobile-menu-toggle { display: none; background: none; border: none; color: var(--color-white); cursor: pointer; padding: var(--space-2); }
+@media (max-width: 1024px) { .nav-desktop { display: none; } .mobile-menu-toggle { display: flex; } }
+
+/* === FOOTER === */
+.footer { background: var(--grad-obsidian); padding: var(--space-16) 0 var(--space-8); position: relative; overflow: hidden; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--grad-edge-shine); z-index: 2; }
+.footer::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%; background: var(--grad-glass-primary); pointer-events: none; z-index: 1; }
+.footer-top { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: var(--space-8); position: relative; z-index: 3; }
+@media (max-width: 1024px) { .footer-top { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .footer-top { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+.footer-brand { display: flex; flex-direction: column; gap: var(--space-4); }
+.footer-logo img { height: 24px; width: auto; }
+.footer-copyright-text { font-size: var(--font-size-xs); color: var(--color-gray-500); line-height: 1.6; }
+.footer-badges-social { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-4); }
+.footer-soc-badge img { height: 40px; width: auto; opacity: 0.7; }
+.footer-social { display: flex; gap: var(--space-2); }
+.footer-social-link { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgba(255,255,255,0.06); border-radius: var(--radius-md); color: rgba(255,255,255,0.5); text-decoration: none; }
+.footer-social-link:hover { background: var(--color-primary); color: var(--color-white); }
+.footer-column { display: flex; flex-direction: column; }
+.footer-column-title { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); margin-bottom: var(--space-4); }
+.footer-links { display: flex; flex-direction: column; gap: var(--space-2); list-style: none; }
+.footer-link { font-size: var(--font-size-sm); color: var(--color-gray-500); text-decoration: none; }
+.footer-link:hover { color: var(--color-primary); }
+
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="lm-full-white.svg" alt="Loyalty Methods">
+        </a>
+
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            
+            <li class="nav-item">
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                RCX Loyalty Platform
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Core Platform</div>
+                      <a href="feature-program-design.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                      </a>
+                      <a href="feature-promotions.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                      </a>
+                      <a href="feature-analytics.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                      </a>
+                      <a href="feature-advanced-tools.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                      </a>
+                    </div>
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="feature-engagement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                      </a>
+                      <a href="feature-rewards.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                      </a>
+                      <a href="feature-partner-enablement.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                      </a>
+                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Featured</span>
+                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
+                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
+                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Enterprise Technology
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-tech">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Capabilities</div>
+                      <a href="tech-api-architecture.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                      </a>
+                      <a href="tech-integration.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                      </a>
+                      <a href="tech-security.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mega-menu-featured">
+                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
+                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
+                    <p class="mega-menu-featured-description">View our real-time system status.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      </div>
+                    </div>
+                    <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Proven Delivery
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <div class="mega-menu mega-menu-compact">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-links">
+                    <div class="mega-menu-column">
+                      <a href="proven-threadsync.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
+                      </a>
+                      <a href="proven-safeswitch.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
+                      </a>
+                      <a href="resource-center.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a href="resource-center.html" class="nav-link">Resource Center</a>
+            </li>
+            
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <ul class="nav-list" style="margin: 0; padding: 0;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                    <div class="mega-menu-links">
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-column-title">Company</div>
+                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
+                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
+                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
+                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
+                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
+                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
+                      </div>
+                    </div>
+                    <div class="mega-menu-featured" style="min-width: 280px;">
+                      <span class="mega-menu-featured-eyebrow">Featured</span>
+                      <h3 class="mega-menu-featured-title">Partner Network</h3>
+                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
+                      <div class="mega-menu-featured-image">
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                      </div>
+                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="ig-page">
+
+  <!-- ============================================================
+       HERO — Cinematic, full-viewport, gas station backdrop
+       ============================================================ -->
+  <header class="ig-hero">
+    <div class="ig-hero-bg">
+      <img src="https://media.istockphoto.com/id/2187791077/photo/gas-station-at-dusk-with-cars-refueling.jpg?s=612x612&w=0&k=20&c=1DDGDh9GFxQOONkDEJt-5cM6AWSHhMzg79DjHWwZ5EY=" alt="" loading="eager">
+    </div>
+    <div class="ig-wrap">
+      <div class="ig-hero-badge">
+        <div class="ig-hero-badge-icon"><span>LM</span></div>
+        <span class="ig-hero-badge-text">Loyalty Methods</span>
+      </div>
+      <h1 class="ig-hero-title">The <strong>10</strong> Methods to Powering <strong>Loyalty</strong> in Fuel &amp; Convenience Retail</h1>
+      <div class="ig-hero-rule"></div>
+      <p class="ig-hero-intro">Running a loyalty program in fuel and convenience isn't simple.</p>
+      <p class="ig-hero-sub">Between margin pressure, fragmented tech stacks, disjointed franchises, and fickle app usage, execution is everything.</p>
+    </div>
+    <div class="ig-hero-fade"></div>
+  </header>
+
+
+  <!-- ============================================================
+       PUMP UP THE PROGRAM — Stats showcase
+       ============================================================ -->
+  <section class="ig-stats-section">
+    <div class="ig-wrap">
+      <h2 class="ig-stats-title">Pump Up the Program</h2>
+      <div class="ig-stats-grid">
+        <div class="ig-stat-card">
+          <div class="ig-stat-context">Text Subscribers</div>
+          <div class="ig-stat-number">72%</div>
+          <div class="ig-stat-label">Are already in a loyalty program</div>
+        </div>
+        <div class="ig-stat-card">
+          <div class="ig-stat-context">C-Store Shoppers</div>
+          <div class="ig-stat-number">85%</div>
+          <div class="ig-stat-label">Say they'd join if rewards felt personalized</div>
+        </div>
+        <div class="ig-stat-card">
+          <div class="ig-stat-context">Loyalty Members</div>
+          <div class="ig-stat-number">44%</div>
+          <div class="ig-stat-label">Visit more frequently</div>
+        </div>
+        <div class="ig-stat-card">
+          <div class="ig-stat-number">23%</div>
+          <div class="ig-stat-label">Spend more driven by relevant, real-time messaging</div>
+        </div>
+        <div class="ig-stat-card">
+          <div class="ig-stat-context">Loyalty Members</div>
+          <div class="ig-stat-number">12%</div>
+          <div class="ig-stat-label">Spend more than non-members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CHAPTER: FUELING THE FOUNDATION — Photo band
+       ============================================================ -->
+  <section class="ig-photo-chapter">
+    <div class="ig-photo-chapter-bg">
+      <img src="https://media.istockphoto.com/id/518819282/photo/red-gasoline-pump-nozzle-top-back-side-view-on-gray-background.jpg?s=612x612&w=0&k=20&c=m_hw8xjMMkRlhEE6DUyAq1RV2esTd-aBDVR51OkA6Sc=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <p class="ig-photo-chapter-kicker">Methods 01–04</p>
+      <h2 class="ig-photo-chapter-title">Fueling the Foundation</h2>
+      <p class="ig-photo-chapter-sub">Core mechanics for driving repeat visits and transaction volume.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       METHOD 01 — MOBILE-FIRST LOYALTY (Light card)
+       ============================================================ -->
+  <article class="ig-card ig-card--light">
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">01</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Mobile-First Loyalty</h3>
+          <p class="ig-card-hook">If it doesn't live in their pocket, it won't drive behavior.</p>
+          <p class="ig-card-body">Fuel customers expect loyalty to work in real time, wherever they are. That means <strong>personalized offers</strong>, <strong>digital ID</strong>, and <strong>in-app redemption</strong> that just works, whether they're at the pump, in the store, or on the go.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">80%</div>
+            <div class="ig-card-stat-label">of consumers are willing to download a loyalty app</div>
+          </div>
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">61%</div>
+            <div class="ig-card-stat-label">engage with loyalty weekly</div>
+          </div>
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">30%</div>
+            <div class="ig-card-stat-label">higher monthly spend by top-tier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 02 — PERSONALIZED OFFERS (Dark card)
+       ============================================================ -->
+  <article class="ig-card ig-card--dark">
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">02</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Personalized Offers &amp; Incentives</h3>
+          <p class="ig-card-hook">Generic discounts don't drive frequency, personalized ones do.</p>
+          <p class="ig-card-body">Loyalty programs that tailor offers by <strong>behavior</strong>, <strong>daypart</strong>, or <strong>location</strong> consistently outperform one-size-fits-all campaigns. C-store customers expect relevance, especially across fuel, food, and beverage.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">48%</div>
+            <div class="ig-card-stat-label">more revenue generated on advanced personalized offers</div>
+          </div>
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">51%</div>
+            <div class="ig-card-stat-label">of consumers want curated rewards</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 03 — REDEEM AT THE PUMP (Light card + photo)
+       ============================================================ -->
+  <article class="ig-card ig-card--light ig-card--photo">
+    <div class="ig-card-photo-bg">
+      <img src="https://media.istockphoto.com/id/518819282/photo/red-gasoline-pump-nozzle-top-back-side-view-on-gray-background.jpg?s=612x612&w=0&k=20&c=m_hw8xjMMkRlhEE6DUyAq1RV2esTd-aBDVR51OkA6Sc=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">03</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Redeem at the Pump</h3>
+          <p class="ig-card-hook">If rewards aren't visible at the nozzle, they're invisible.</p>
+          <p class="ig-card-body">Fuel discounts remain one of the most powerful loyalty levers, but only when redemption is frictionless. <strong>Real-time earn-and-burn at the pump</strong> builds trust and reinforces value at the exact moment of spend.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">82%</div>
+            <div class="ig-card-stat-label">of fuel providers prioritized mobile and contactless payment to enhance the loyalty experience</div>
+          </div>
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">70%</div>
+            <div class="ig-card-stat-label">of fuel consumers now have loyalty info for top brands</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 04 — FLEXIBLE REWARDS (Dark card, no stats — inline)
+       ============================================================ -->
+  <article class="ig-card ig-card--light">
+    <div class="ig-wrap">
+      <div class="ig-card-grid ig-card-grid--no-stats">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">04</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Flexible Rewards Catalog</h3>
+          <p class="ig-card-hook">Let customers choose how they define value.</p>
+          <p class="ig-card-body">Fuel savings matter, but so do <strong>snacks</strong>, <strong>car washes</strong>, and <strong>gift cards</strong>. Offering multiple redemption types across tiers helps drive broader participation and deeper engagement, especially for non-price-sensitive customers.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- ============================================================
+       CHAPTER: FROM PUMP TO PURCHASE — Photo band
+       ============================================================ -->
+  <section class="ig-photo-chapter">
+    <div class="ig-photo-chapter-bg">
+      <img src="https://media.istockphoto.com/id/1130647518/photo/e-commerce-internet-online-shopping-mobile-phone-app-money.jpg?s=612x612&w=0&k=20&c=QMieMrdft97JRpArZOH271E2XI4BUxGEZrBoxw7-Ong=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <p class="ig-photo-chapter-kicker">Methods 05–07</p>
+      <h2 class="ig-photo-chapter-title">From Pump to Purchase</h2>
+      <p class="ig-photo-chapter-sub">Loyalty that fuels snacks, car washes, and every aisle in between.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       METHOD 05 — GAMIFIED EXPERIENCES (Light card)
+       ============================================================ -->
+  <article class="ig-card ig-card--light">
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">05</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Gamified Experiences</h3>
+          <p class="ig-card-hook">Spin-to-win &gt; Sign-up-and-forget</p>
+          <p class="ig-card-body">From digital games to earn streaks and surprise unlocks, gamification keeps loyalty programs <strong>top-of-mind</strong> especially for mobile-first and Gen-Z customers. It's not just engagement; it's <strong>habit-building</strong>.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">3–6X</div>
+            <div class="ig-card-stat-label">more app sessions are seen with gamified programs</div>
+          </div>
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">150%</div>
+            <div class="ig-card-stat-label">higher redemptions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 06 — REAL-TIME COMMUNICATIONS (Dark card)
+       ============================================================ -->
+  <article class="ig-card ig-card--dark">
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">06</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Real-Time Communications</h3>
+          <p class="ig-card-hook">Timing beats targeting when your customers are 5 minutes away.</p>
+          <p class="ig-card-body">Push notifications, SMS offers, and in-app prompts drive action in the moment. Great programs trigger based on <strong>location</strong>, <strong>daypart</strong>, and <strong>behavior</strong>, not just batch and blast.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">99%</div>
+            <div class="ig-card-stat-label">of consumers prefer email, but 18–34 yr olds want in-app stuff</div>
+          </div>
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">63%</div>
+            <div class="ig-card-stat-label">of mobile app loyalty app 1–2x per week</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 07 — PUMP-TO-STORE (Light card + photo)
+       ============================================================ -->
+  <article class="ig-card ig-card--light ig-card--photo">
+    <div class="ig-card-photo-bg">
+      <img src="https://media.istockphoto.com/id/1130647518/photo/e-commerce-internet-online-shopping-mobile-phone-app-money.jpg?s=612x612&w=0&k=20&c=QMieMrdft97JRpArZOH271E2XI4BUxGEZrBoxw7-Ong=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <div class="ig-card-grid ig-card-grid--no-stats">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">07</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Pump-to-Store Profitability</h3>
+          <p class="ig-card-hook">Fuel gets them there. Offers bring them inside.</p>
+          <p class="ig-card-body">Bundled promotions (like fuel + snack or BOGO coffee) drive <strong>in-store conversion</strong> and lift average ticket value. Loyalty isn't just a retention play; it's a <strong>margin lever</strong>.</p>
+          <div class="ig-inline-stats">
+            <div class="ig-inline-stat">
+              <div class="ig-inline-stat-value">20–30%</div>
+              <div class="ig-inline-stat-label">lift in average ticket size with bundled leverage cross &amp; up-sell functionality</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- ============================================================
+       CHAPTER: SCALE WITHOUT FAIL — Photo band
+       ============================================================ -->
+  <section class="ig-photo-chapter">
+    <div class="ig-photo-chapter-bg">
+      <img src="https://media.istockphoto.com/id/507650717/photo/3d-smartphone-map-pointer-with-gas-station-icon.jpg?s=612x612&w=0&k=20&c=aMnJKBqj0X5UgYnW_33Ijw68O-ySK_Vm8IVYyO1V4ZI=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <p class="ig-photo-chapter-kicker">Methods 08–10</p>
+      <h2 class="ig-photo-chapter-title">Scale Without Fail</h2>
+      <p class="ig-photo-chapter-sub">From multi-program franchise logic to partner networks — loyalty that just works.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       METHOD 08 — DATA-DRIVEN OPTIMIZATION (Light card)
+       ============================================================ -->
+  <article class="ig-card ig-card--light">
+    <div class="ig-wrap">
+      <div class="ig-card-grid ig-card-grid--no-stats">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">08</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Data-Driven Loyalty Optimization</h3>
+          <p class="ig-card-hook">Track more than transactions. Optimize everything.</p>
+          <p class="ig-card-body">The best programs aren't just responsive, they're <strong>intelligent</strong>. Loyalty data should drive segmentation, performance benchmarking, and <strong>next-best-action decisions</strong> across fuel and in-store journeys.</p>
+          <div class="ig-inline-stats">
+            <div class="ig-inline-stat">
+              <div class="ig-inline-stat-value">10–20%</div>
+              <div class="ig-inline-stat-label">annual ROI is delivered by loyalty programs</div>
+            </div>
+            <div class="ig-inline-stat">
+              <div class="ig-inline-stat-value">$1–$09</div>
+              <div class="ig-inline-stat-label">average redemption payoff</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 09 — FRANCHISE FLEXIBILITY (Dark card + photo)
+       ============================================================ -->
+  <article class="ig-card ig-card--dark ig-card--photo">
+    <div class="ig-card-photo-bg">
+      <img src="https://media.istockphoto.com/id/507650717/photo/3d-smartphone-map-pointer-with-gas-station-icon.jpg?s=612x612&w=0&k=20&c=aMnJKBqj0X5UgYnW_33Ijw68O-ySK_Vm8IVYyO1V4ZI=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">09</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Franchise &amp; Multi-Program Flexibility</h3>
+          <p class="ig-card-hook">Corporate logic, local control.</p>
+          <p class="ig-card-body">Whether you're balancing <strong>corporate-led campaigns</strong> with franchisee flexibility, or layering in B2B and employee rewards, your platform needs to handle complexity without fragmentation.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">25,000+</div>
+            <div class="ig-card-stat-label">fuel sites on one unified loyalty platform</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="ig-spacer"></div>
+
+  <!-- ============================================================
+       METHOD 10 — PARTNERSHIP-ENABLED LOYALTY (Light card)
+       ============================================================ -->
+  <article class="ig-card ig-card--light">
+    <div class="ig-wrap">
+      <div class="ig-card-grid">
+        <div class="ig-card-num-col">
+          <div class="ig-card-number">10</div>
+          <div class="ig-card-num-rule"></div>
+        </div>
+        <div class="ig-card-content">
+          <h3 class="ig-card-title">Partnership-Enabled Loyalty</h3>
+          <p class="ig-card-hook">Build loyalty beyond your four walls.</p>
+          <p class="ig-card-body">Coalition models: fuel + QSR, CPG partnerships, or adjacent retailers, unlock expanded earning and redemption networks. Great loyalty platforms <strong>enable it all</strong> without custom development.</p>
+        </div>
+        <div class="ig-card-stats">
+          <div class="ig-card-stat">
+            <div class="ig-card-stat-value">32%</div>
+            <div class="ig-card-stat-label">of consumers want to earn and redeem loyalty rewards across multiple brands</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- ============================================================
+       CTA — Cinematic close
+       ============================================================ -->
+  <section class="ig-cta">
+    <div class="ig-cta-bg">
+      <img src="https://media.istockphoto.com/id/2187791077/photo/gas-station-at-dusk-with-cars-refueling.jpg?s=612x612&w=0&k=20&c=1DDGDh9GFxQOONkDEJt-5cM6AWSHhMzg79DjHWwZ5EY=" alt="" loading="lazy">
+    </div>
+    <div class="ig-wrap">
+      <p class="ig-cta-hashtag">#<em>TRUST</em>the<em>METHOD</em></p>
+      <p class="ig-cta-tagline">Enterprise loyalty that scales from pump to partner network.</p>
+      <a href="/contact-us/" class="ig-cta-btn">
+        Schedule a Demo
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SOURCES
+       ============================================================ -->
+  <footer class="ig-sources">
+    <div class="ig-wrap">
+      <p class="ig-sources-label">Sources</p>
+      <p class="ig-sources-list">NACS <span>|</span> C-Store Dive <span>|</span> Mobivity <span>|</span> EY <span>|</span> Ipsos <span>|</span> McKinsey <span>|</span> ACI Worldwide <span>|</span> Voucherly <span>|</span> Global Convenience <span>|</span> CStorePrime <span>|</span> Mobivity</p>
+    </div>
+  </footer>
+
+  </div><!-- /.ig-page -->
+
+<!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="lm-full-white.svg" alt="Loyalty Methods">
+          </div>
+          <p class="footer-copyright-text">
+            &copy; 2026 Loyalty Methods.<br>All rights reserved.
+          </p>
+          <div class="footer-badges-social">
+            <div class="footer-soc-badge">
+              <img src="https://loyaltymethods.com/wp-content/uploads/2024/05/s0c-2.svg" alt="AICPA SOC 2">
+            </div>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">RCX Platform</h4>
+          <ul class="footer-links">
+            <li><a href="feature-program-design.html" class="footer-link">Program Design</a></li>
+            <li><a href="feature-promotions.html" class="footer-link">Promotions</a></li>
+            <li><a href="feature-analytics.html" class="footer-link">Analytics</a></li>
+            <li><a href="feature-engagement.html" class="footer-link">Engagement</a></li>
+            <li><a href="feature-rewards.html" class="footer-link">Rewards</a></li>
+            <li><a href="feature-ai-agents.html" class="footer-link">AI Agents</a></li>
+          </ul>
+        </div>
+
+        <!-- Technology Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Technology</h4>
+          <ul class="footer-links">
+            <li><a href="tech-api-architecture.html" class="footer-link">API Architecture</a></li>
+            <li><a href="tech-integration.html" class="footer-link">Integration</a></li>
+            <li><a href="tech-security.html" class="footer-link">Security</a></li>
+            <li><a href="proven-threadsync.html" class="footer-link">ThreadSync&trade;</a></li>
+            <li><a href="proven-safeswitch.html" class="footer-link">SafeSwitch&trade;</a></li>
+            <li><a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="footer-link">Trust Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about-story.html" class="footer-link">Our Story</a></li>
+            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
+            <li><a href="about-careers.html" class="footer-link">Careers</a></li>
+            <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
+            <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Legal Column -->
+        <div class="footer-column">
+          <h4 class="footer-column-title">Resources</h4>
+          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+            <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
+          </ul>
+          <h4 class="footer-column-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
