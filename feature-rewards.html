@@ -5,142 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rewards & Benefits | RCX Loyalty Platform</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- Modular CSS System -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
        PAGE-SPECIFIC STYLES: Rewards & Benefits
        ========================================================================== */
 
-    /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme)
-       ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
-    }
+    /* Page-specific: hero highlight */
+    .hero-cinematic-title .highlight { color: var(--color-primary); }
 
-    /* Glass shine overlay */
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-
-    .subpage-hero-title .highlight {
-      background: var(--grad-orange-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: auto;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-      
-      .subpage-hero-title {
-        font-size: 2rem;
-      }
+    /* Lighter overlay for dark source image — phone shows through */
+    .hero-cinematic-bg::after {
+      background: linear-gradient(180deg,
+        rgba(40,40,44,0.45) 0%,
+        rgba(38,38,42,0.50) 35%,
+        rgba(42,42,46,0.70) 60%,
+        rgba(245,245,245,1) 100%
+      );
     }
 
     /* -------------------------------------------------------------------------
@@ -239,17 +133,20 @@
 
     .feature-row-media {
       position: relative;
-    }
-
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
+    }
+
+    .feature-row-img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 50%, transparent 95%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 50%, transparent 95%);
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.08));
     }
 
     /* btn-dark for light backgrounds */
@@ -742,38 +639,24 @@
 
   <!-- ========================================
        SECTION 1: HERO
-       Background: DARK (Charcoal + Glass Shine)
+       Cinematic photo hero — fades to #F5F5F5
        ======================================== -->
-  <section class="subpage-hero">
+  <section class="hero-cinematic hero-cinematic--tall">
+    <div class="hero-cinematic-bg">
+      <img src="hero-rewards.png" alt="Rewards & Benefits Platform">
+    </div>
     <div class="container">
-      <div class="subpage-hero-inner">
-        
-        <!-- Left: Content -->
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">
-            <span>Capabilities</span>
-          </div>
-
-          <h1 class="subpage-hero-title">
-            Rewards & <span class="highlight">Benefits</span>
-          </h1>
-
-          <p class="subpage-hero-description">
-            Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences—reward customers how they want, when they want.
-          </p>
-
-          <div class="subpage-hero-cta">
-            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          </div>
+      <div class="hero-cinematic-content">
+        <span class="hero-cinematic-eyebrow">Capabilities</span>
+        <h1 class="hero-cinematic-title">
+          Rewards & <span class="highlight">Benefits</span>
+        </h1>
+        <p class="hero-cinematic-subtitle">
+          Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences—reward customers how they want, when they want.
+        </p>
+        <div class="hero-cinematic-cta">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
-
-        <!-- Right: Hero Image -->
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">
-            [Rewards Catalog Interface - 600×450]
-          </div>
-        </div>
-        
       </div>
     </div>
   </section>
@@ -797,14 +680,7 @@
         
         <!-- Card 1: Points & Currency -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Points & Currency</h3>
-          </div>
+          <h3 class="card-title">Points & Currency</h3>
           <p class="card-body">
             Multi-currency wallets with real-time conversion, vesting schedules, and automated expiration management.
           </p>
@@ -812,15 +688,7 @@
 
         <!-- Card 2: Tiered Benefits -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                <line x1="7" y1="7" x2="7.01" y2="7"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Tiered Benefits</h3>
-          </div>
+          <h3 class="card-title">Tiered Benefits</h3>
           <p class="card-body">
             Exclusive perks, priority access, and status rewards that scale with member engagement.
           </p>
@@ -828,15 +696,7 @@
 
         <!-- Card 3: Split & Linked Pay -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Split & Linked Pay</h3>
-          </div>
+          <h3 class="card-title">Split & Linked Pay</h3>
           <p class="card-body">
             Let members combine points with cash, credit cards, or gift cards for seamless checkout experiences.
           </p>
@@ -844,16 +704,7 @@
 
         <!-- Card 4: Experiences & Events -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Experiences & Events</h3>
-          </div>
+          <h3 class="card-title">Experiences & Events</h3>
           <p class="card-body">
             Offer VIP access, early releases, exclusive merchandise, and money-can't-buy moments.
           </p>
@@ -890,9 +741,7 @@
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Real-Time Transaction Dashboard]
-          </div>
+          <img src="img-instant-gratification.png" alt="Real-time loyalty push notification on mobile device" class="feature-row-img">
         </div>
       </div>
 
@@ -915,9 +764,7 @@
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Omnichannel Wallet Interface]
-          </div>
+          <img src="img-earn-anywhere.png" alt="Omnichannel loyalty app with rewards and partner offers" class="feature-row-img">
         </div>
       </div>
 
@@ -1047,9 +894,7 @@
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Reward Catalog Builder]
-          </div>
+          <img src="img-marketplace.png" alt="Gold, Diamond, and Platinum membership reward cards" class="feature-row-img">
         </div>
       </div>
 
@@ -1072,9 +917,7 @@
           </div>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">
-            [Tier Management Dashboard]
-          </div>
+          <img src="img-status-tiers.png" alt="VIP Loyalty Program elite status upgrade on mobile" class="feature-row-img">
         </div>
       </div>
 
@@ -1097,15 +940,7 @@
         
         <!-- Card 1: Discounts & Coupons -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                <line x1="7" y1="7" x2="7.01" y2="7"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Discounts & Coupons</h3>
-          </div>
+          <h3 class="card-title">Discounts & Coupons</h3>
           <p class="card-body">
             Percentage off, dollars off, BOGO, and category-specific discounts applied at checkout.
           </p>
@@ -1113,14 +948,7 @@
 
         <!-- Card 2: Free Products -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Free Products</h3>
-          </div>
+          <h3 class="card-title">Free Products</h3>
           <p class="card-body">
             Reward members with complimentary items from your product catalog or partner offerings.
           </p>
@@ -1128,15 +956,7 @@
 
         <!-- Card 3: Gift Cards -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                <line x1="1" y1="10" x2="23" y2="10"></line>
-              </svg>
-            </div>
-            <h3 class="card-title">Gift Cards</h3>
-          </div>
+          <h3 class="card-title">Gift Cards</h3>
           <p class="card-body">
             Digital and physical gift cards from your brand or an extensive network of third-party retailers.
           </p>
@@ -1144,14 +964,7 @@
 
         <!-- Card 4: Experiences -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Experiences</h3>
-          </div>
+          <h3 class="card-title">Experiences</h3>
           <p class="card-body">
             VIP access, backstage passes, early releases, and money-can't-buy moments for top members.
           </p>
@@ -1159,14 +972,7 @@
 
         <!-- Card 5: Charitable Donations -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Charitable Donations</h3>
-          </div>
+          <h3 class="card-title">Charitable Donations</h3>
           <p class="card-body">
             Let members donate points to causes they care about, strengthening emotional brand connection.
           </p>
@@ -1174,15 +980,7 @@
 
         <!-- Card 6: Sweepstakes -->
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="8" r="7"></circle>
-                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-              </svg>
-            </div>
-            <h3 class="card-title">Sweepstakes & Contests</h3>
-          </div>
+          <h3 class="card-title">Sweepstakes & Contests</h3>
           <p class="card-body">
             Entry-based rewards that create excitement and drive engagement with high-value prizes.
           </p>
