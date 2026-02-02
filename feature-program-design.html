@@ -31,19 +31,62 @@
     /* Page utilities (replaces inline styles) */
     .stats-bar-3col { grid-template-columns: repeat(3, 1fr); }
 
-    /* Hero: centered text variant */
-    .hero-centered .hero-content-wide {
-      text-align: center;
-      margin: 0 auto;
-      max-width: 720px;
+    /* Hero: deep charcoal gradient + heavy white glass */
+    .hero-premium-bg::after {
+      background:
+        linear-gradient(180deg,
+          rgba(30,30,30,0.95) 0%,
+          rgba(38,38,38,0.93) 25%,
+          rgba(44,44,44,0.91) 50%,
+          rgba(36,36,36,0.94) 75%,
+          rgba(30,30,30,0.96) 100%);
     }
-    .hero-centered .hero-description {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 560px;
+    .hero-premium::before {
+      height: 75%;
+      background:
+        linear-gradient(180deg,
+          rgba(255,255,255,0.38) 0%,
+          rgba(255,255,255,0.28) 12%,
+          rgba(255,255,255,0.18) 30%,
+          rgba(255,255,255,0.08) 50%,
+          transparent 100%);
     }
-    .hero-centered .hero-cta {
-      justify-content: center;
+
+    /* --- Cards inside dark sections — charcoal glass treatment ---
+       Locked pattern respected: no .card.dark class. Contextual only. */
+    .section.dark .card {
+      background: linear-gradient(165deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0.05) 40%,
+        rgba(255,255,255,0.02) 100%);
+      backdrop-filter: blur(40px) saturate(1.2);
+      -webkit-backdrop-filter: blur(40px) saturate(1.2);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-top: none;
+    }
+    .section.dark .card::before {
+      background: linear-gradient(90deg,
+        rgba(255,255,255,0.25) 0%,
+        rgba(255,255,255,0.18) 80%,
+        rgba(255,255,255,0.35) 92%,
+        rgba(255,255,255,0.5) 96%,
+        transparent 100%);
+    }
+    .section.dark .card:hover {
+      border-color: rgba(255,255,255,0.20);
+      box-shadow: 0 0 0 0.5px rgba(255,255,255,0.06),
+        0 2px 6px rgba(0,0,0,0.2),
+        0 8px 24px rgba(0,0,0,0.15);
+    }
+    .section.dark .card .card-title {
+      color: var(--color-white);
+    }
+    .section.dark .card .card-body,
+    .section.dark .card .card-description {
+      color: rgba(255,255,255,0.6);
+    }
+    .section.dark .card .card-rule-orange {
+      box-shadow: 0 0 8px rgba(243,112,33,0.3);
     }
 
     /* Stat description (extends stat-title) */
@@ -351,19 +394,15 @@
 
 
   <!-- ========== HERO ========== -->
-  <section class="hero hero-premium hero-centered">
+  <section class="hero hero-premium">
     <div class="hero-premium-bg">
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-      <div class="hero-orb hero-orb-3"></div>
-      <div class="hero-grid"></div>
+      <img src="hero-program-design.png" alt="RCX Admin Studio dashboard on desktop and laptop screens with mathematical formulas">
     </div>
-    <div class="hero-fade"></div>
     
     <div class="container">
-      <div class="hero-content hero-content-wide">
+      <div class="hero-content">
         <p class="hero-eyebrow">Core Platform</p>
-        <h1 class="hero-title hero-title-wide">Program Design <span class="highlight">& Rules</span></h1>
+        <h1 class="hero-title">Program Design <span class="highlight">& Rules</span></h1>
         <p class="hero-description">Control how members earn, spend, and progress without rebuilding your program every quarter. Configure earn rules, burn rules, tier logic, and promotion mechanics in a structured rules engine your team can operate directly.</p>
       </div>
     </div>
@@ -530,29 +569,35 @@
         <p class="body-text">Status matching, accelerators, hidden tiers, qualification logic, grace periods, and benefits&mdash;all configurable without code.</p>
       </div>
       <div class="grid grid-3">
-        <div class="card dark">
+        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Status Matching</h3>
-          <p class="card-body">Grant elite status to new members to match competitor status.</p>
+          <p class="card-description">Grant elite status to new members to match competitor status.</p>
         </div>
-        <div class="card dark">
+        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Tier Accelerators</h3>
-          <p class="card-body">Short-term challenges that award bonus tier credit.</p>
+          <p class="card-description">Short-term challenges that award bonus tier credit.</p>
         </div>
-        <div class="card dark">
+        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Hidden Tiers</h3>
-          <p class="card-body">Invite-only or surprise-and-delight tiers not visible to members.</p>
+          <p class="card-description">Invite-only or surprise-and-delight tiers not visible to members.</p>
         </div>
-        <div class="card dark">
+        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Qualification Logic</h3>
-          <p class="card-body">Qualify on spend, visits, nights, or any custom metric.</p>
+          <p class="card-description">Qualify on spend, visits, nights, or any custom metric.</p>
         </div>
-        <div class="card dark">
+        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Grace Periods</h3>
-          <p class="card-body">Soft-landing demotion rules and requalification windows.</p>
+          <p class="card-description">Soft-landing demotion rules and requalification windows.</p>
         </div>
-        <div class="card dark">
+        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Tier Benefits</h3>
-          <p class="card-body">Multipliers, perks, and exclusive access tied to status.</p>
+          <p class="card-description">Multipliers, perks, and exclusive access tied to status.</p>
         </div>
       </div>
     </div>
