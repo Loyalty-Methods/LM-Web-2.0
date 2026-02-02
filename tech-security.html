@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Security & Compliance | Loyalty Methods</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,257 +21,51 @@
   <style>
     /* ==========================================================================
        PAGE-SPECIFIC STYLES: Security & Compliance
+       Only components NOT covered by the shared CSS system.
        ========================================================================== */
 
-    /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme)
-       ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
-    }
-
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
+    /* --- Hero highlight (orange gradient text) --- */
+    .hero-cinematic-title .highlight {
       color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-
-    .subpage-hero-title .highlight {
-      background: var(--grad-orange-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: auto;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-      
-      .subpage-hero-title {
-        font-size: 2rem;
-      }
+      display: inline;
     }
 
     /* -------------------------------------------------------------------------
-       CERTIFICATION GRID
-       ------------------------------------------------------------------------- */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 1024px) {
-      .cert-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    
-    @media (max-width: 640px) {
-      .cert-grid { grid-template-columns: 1fr; }
-    }
-    
-    .cert-card {
-      background: var(--color-white);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      text-align: center;
-      border: 1px solid var(--color-gray-100);
-      box-shadow: var(--shadow-card);
-      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-    }
-    
-    .cert-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--color-navy-light);
-      box-shadow: var(--shadow-card-hover);
-    }
-    
-    .cert-card-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto var(--space-4);
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      border-radius: var(--radius-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cert-card-icon::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      pointer-events: none;
-    }
-    
-    .cert-card-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--color-primary);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .cert-card-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-semibold);
-      color: var(--text-main);
-      margin-bottom: var(--space-2);
-    }
-    
-    .cert-card-detail {
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-    }
-
-    /* -------------------------------------------------------------------------
-       SOC EXPANDABLE CARDS
+       SOC 2 EXPANDABLE CARDS — Unique accordion component
        ------------------------------------------------------------------------- */
     .soc-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-8);
     }
-    
     @media (max-width: 1024px) {
       .soc-grid { grid-template-columns: 1fr; }
     }
-    
+
     .soc-card {
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: 2px;
       border: 1px solid var(--color-gray-100);
-      box-shadow: var(--shadow-card);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 10px 20px rgba(0,0,0,0.06);
       overflow: hidden;
-      transition: border-color var(--transition-base);
     }
-    
-    .soc-card:hover {
-      border-color: var(--color-navy-light);
-    }
-    
-    .soc-card.active {
-      border-color: var(--color-primary);
-    }
-    
+    .soc-card:hover { border-color: var(--color-primary); }
+    .soc-card.active { border-color: var(--color-primary); }
+
     .soc-card-header {
       padding: var(--space-6);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background var(--transition-fast);
     }
-    
-    .soc-card-header:hover {
-      background: var(--color-gray-50);
-    }
-    
+    .soc-card-header:hover { background: var(--color-gray-50); }
+
     .soc-card-icon {
       width: 48px;
       height: 48px;
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      border-radius: var(--radius-lg);
+      background: var(--grad-card-obsidian);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -274,110 +73,97 @@
       margin-right: var(--space-4);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
     }
-    
     .soc-card-icon::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      pointer-events: none;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+      z-index: 2;
     }
-    
-    .soc-card-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--color-primary);
-      position: relative;
+    .soc-card-icon::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+      pointer-events: none;
       z-index: 1;
     }
-    
+    .soc-card-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 3;
+    }
+
     .soc-card-title {
       font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-semibold);
       color: var(--color-primary);
       margin-bottom: var(--space-1);
     }
-    
     .soc-card-subtitle {
       font-size: var(--font-size-sm);
-      color: var(--text-muted);
+      color: var(--color-gray-500);
     }
-    
+
     .soc-card-toggle {
-      width: 24px;
-      height: 24px;
+      width: 24px; height: 24px;
       flex-shrink: 0;
       position: relative;
     }
-    
     .soc-card-toggle::before,
     .soc-card-toggle::after {
       content: '';
       position: absolute;
       background: var(--color-primary);
-      transition: all var(--transition-base);
     }
-    
     .soc-card-toggle::before {
-      top: 50%;
-      left: 4px;
-      right: 4px;
+      top: 50%; left: 4px; right: 4px;
       height: 2px;
       transform: translateY(-50%);
     }
-    
     .soc-card-toggle::after {
-      left: 50%;
-      top: 4px;
-      bottom: 4px;
+      left: 50%; top: 4px; bottom: 4px;
       width: 2px;
       transform: translateX(-50%);
     }
-    
     .soc-card.active .soc-card-toggle::after {
       transform: translateX(-50%) rotate(90deg);
       opacity: 0;
     }
-    
+
     .soc-card-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height var(--transition-slow);
     }
-    
     .soc-card.active .soc-card-content {
       max-height: 500px;
     }
-    
+
     .soc-card-content-inner {
       padding: 0 var(--space-6) var(--space-6);
       border-top: 1px solid var(--color-gray-100);
     }
-    
     .soc-card-content-inner ul {
       padding-top: var(--space-4);
       list-style: none;
     }
-    
     .soc-card-content-inner li {
       display: flex;
       align-items: flex-start;
       gap: var(--space-3);
       font-size: var(--font-size-sm);
-      color: var(--text-muted);
+      color: var(--color-gray-500);
       line-height: var(--line-height-relaxed);
       margin-bottom: var(--space-2);
     }
-    
     .soc-card-content-inner li::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       background: var(--color-primary);
       border-radius: 50%;
       margin-top: 0.5em;
@@ -385,180 +171,77 @@
     }
 
     /* -------------------------------------------------------------------------
-       SECURITY CONTROLS GRID
+       SECURITY CONTROLS GRID — Cards on dark section
        ------------------------------------------------------------------------- */
     .controls-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
     }
-    
     @media (max-width: 1024px) {
       .controls-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    
     @media (max-width: 640px) {
       .controls-grid { grid-template-columns: 1fr; }
     }
-    
+
     .control-card {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
       padding: var(--space-6);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+      border: 1px solid rgba(255,255,255,0.12);
     }
-    
     .control-card:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(243, 112, 33, 0.5);
-      transform: translateY(-4px);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(243,112,33,0.5);
     }
-    
+
     .control-card-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      border-radius: var(--radius-lg);
+      width: 44px; height: 44px;
+      background: var(--grad-card-obsidian);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: var(--space-4);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
     }
-    
     .control-card-icon::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      pointer-events: none;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+      z-index: 2;
     }
-    
-    .control-card-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--color-primary);
-      position: relative;
+    .control-card-icon::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+      pointer-events: none;
       z-index: 1;
     }
-    
+    .control-card-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--color-primary);
+      position: relative;
+      z-index: 3;
+    }
+
     .control-card-title {
       font-size: var(--font-size-base);
       font-weight: var(--font-weight-semibold);
       color: var(--color-primary);
       margin-bottom: var(--space-2);
     }
-    
     .control-card-desc {
       font-size: var(--font-size-sm);
-      color: #9A9A9A;
+      color: rgba(255,255,255,0.6);
       line-height: var(--line-height-relaxed);
-    }
-
-    /* -------------------------------------------------------------------------
-       FEATURE ROWS
-       ------------------------------------------------------------------------- */
-    .feature-rows-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-white);
-    }
-
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .feature-row-content {
-      max-width: 520px;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row-content {
-        max-width: 100%;
-      }
-    }
-
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-3);
-    }
-
-    .feature-row-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .feature-row-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list {
-      list-style: none;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list li {
-      position: relative;
-      padding-left: var(--space-6);
-      margin-bottom: var(--space-3);
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-    }
-
-    .feature-row-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      border-radius: 50%;
-    }
-
-    .feature-row-media {
-      position: relative;
-    }
-
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-    }
-
-    @media (max-width: 768px) {
-      .feature-row-title {
-        font-size: var(--font-size-2xl);
-      }
     }
   </style>
 </head>
@@ -576,7 +259,7 @@
           <ul class="nav-list">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">Why LM?</a>
+              <a href="why-lm.html" class="nav-link">Why LM?</a>
             </li>
             
             <li class="nav-item">
@@ -619,21 +302,25 @@
                         <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
                       </a>
                       <a href="feature-partner-enablement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Coalition and partner program tools</div></div>
                       </a>
-                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                      <a href="feature-ai-agents.html" class="mega-menu-link">
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6a4 4 0 0 1 4-4z"></path><path d="M16 11v1a4 4 0 0 1-8 0v-1"></path><rect x="3" y="14" width="18" height="7" rx="2"></rect><line x1="7" y1="17.5" x2="7.01" y2="17.5"></line><line x1="12" y1="17.5" x2="12.01" y2="17.5"></line><line x1="17" y1="17.5" x2="17.01" y2="17.5"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">AI Agents</div><div class="mega-menu-link-description">Intelligent automation for loyalty</div></div>
                       </a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
                     <span class="mega-menu-featured-eyebrow">Featured</span>
-                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
-                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <h3 class="mega-menu-featured-title">ReactorCX Platform</h3>
+                    <p class="mega-menu-featured-description">The enterprise loyalty engine built for complex, multi-brand programs.</p>
+                    <div class="mega-menu-featured-image">
+                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      </div>
+                    </div>
+                    <a href="index.html#platform" class="btn btn-primary btn-sm">Explore Platform &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -646,22 +333,22 @@
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-tech">
                 <div class="mega-menu-inner">
                   <div class="mega-menu-links">
-                    <div class="mega-menu-column" style="grid-column: span 2;">
+                    <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
                         <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">API Architecture</div><div class="mega-menu-link-description">RESTful APIs and real-time processing</div></div>
                       </a>
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration</div><div class="mega-menu-link-description">Connect with your tech stack</div></div>
                       </a>
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC 2 certified, enterprise-grade</div></div>
                       </a>
                     </div>
                   </div>
@@ -720,7 +407,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
                 <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
+                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;">
                     <div class="mega-menu-links">
                       <div class="mega-menu-column">
                         <div class="mega-menu-column-title">Company</div>
@@ -755,78 +442,66 @@
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="subpage-hero">
+  <!-- ========== HERO — Cinematic (charcoal gradient, no image) ========== -->
+  <section class="hero-cinematic">
+    <div class="hero-cinematic-bg" style="background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 40%, #404040 100%);"></div>
     <div class="container">
-      <div class="subpage-hero-inner">
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">Enterprise Technology</div>
-          <h1 class="subpage-hero-title">Security & <span class="highlight">Compliance</span></h1>
-          <p class="subpage-hero-description">
-            SOC 2 Type II certified. Privacy by design. Enterprise-grade security controls built into every layer of the platform.
-          </p>
-          <div class="subpage-hero-cta">
-            <a href="https://trustcenter.loyaltymethods.com" target="_blank" class="btn btn-primary btn-lg">Visit Trust Center</a>
-            <a href="about-contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
-          </div>
-        </div>
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">[Security Shield Illustration]</div>
+      <div class="hero-cinematic-content">
+        <div class="hero-cinematic-eyebrow">Enterprise Technology</div>
+        <h1 class="hero-cinematic-title">Security & <span class="highlight">Compliance</span></h1>
+        <p class="hero-cinematic-subtitle">
+          SOC 2 Type II certified. Privacy by design. Enterprise-grade security controls built into every layer of the platform.
+        </p>
+        <div class="hero-cinematic-cta">
+          <a href="https://trustcenter.loyaltymethods.com" target="_blank" class="btn btn-primary btn-lg">Visit Trust Center</a>
+          <a href="about-contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CERTIFICATIONS GRID ========== -->
-  <section class="section section-lg section-light bg-white">
+  <!-- ========== CERTIFICATIONS GRID — Standard .card pattern ========== -->
+  <section class="section section-lg bg-light">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Compliance & Certifications</h2>
       </div>
-      <div class="cert-grid">
-        
-        <div class="cert-card">
-          <div class="cert-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <h3 class="cert-card-title">SOC 2 Type II</h3>
-          <p class="cert-card-detail">Annual audit. Current report available.</p>
+      <div class="grid grid-4">
+
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">SOC 2 Type II</h3>
+          <p class="card-description">Annual audit. Current report available.</p>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          </div>
-          <h3 class="cert-card-title">GDPR Ready</h3>
-          <p class="cert-card-detail">Privacy rights support built in.</p>
+
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">GDPR Ready</h3>
+          <p class="card-description">Privacy rights support built in.</p>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          </div>
-          <h3 class="cert-card-title">PCI Scope Reduction</h3>
-          <p class="cert-card-detail">Tokenization patterns available.</p>
+
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">PCI Scope Reduction</h3>
+          <p class="card-description">Tokenization patterns available.</p>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-          </div>
-          <h3 class="cert-card-title">Pen Testing</h3>
-          <p class="cert-card-detail">Annual third-party assessments.</p>
+
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Pen Testing</h3>
+          <p class="card-description">Annual third-party assessments.</p>
         </div>
-        
+
       </div>
     </div>
   </section>
 
   <!-- ========== SOC 2 TRUST PRINCIPLES ========== -->
-  <section class="section section-lg section-light bg-light">
+  <section class="section section-lg bg-white">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">SOC 2 Trust Principles</h2>
-        <p style="color: var(--text-muted); margin-top: var(--space-4); text-align: center;">Click each principle to see specific controls and practices.</p>
+        <p style="color: var(--color-gray-500); margin-top: var(--space-4); text-align: center;">Click each principle to see specific controls and practices.</p>
       </div>
       <div class="soc-grid">
         
@@ -912,23 +587,23 @@
     </div>
   </section>
 
-  <!-- ========== PRIVACY ARCHITECTURE ========== -->
-  <section class="feature-rows-section">
+  <!-- ========== PRIVACY ARCHITECTURE — Shared feature-row ========== -->
+  <section class="section bg-light">
     <div class="container">
       <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Privacy by Design</span>
-          <h2 class="feature-row-title">Two Deployment Options. You Choose.</h2>
-          <p class="feature-row-description">ReactorCX operates in two modes depending on your privacy requirements. Store PII directly in the platform with full encryption and access controls. Or operate without PII using tokenized identifiers, with member data stored in your existing systems. MGM runs zero-PII architecture. The platform adapts to your data governance posture.</p>
-          <ul class="feature-row-list">
+        <div class="feature-content">
+          <span class="feature-label">Privacy by Design</span>
+          <h2 class="feature-title">Two Deployment Options. You Choose.</h2>
+          <p class="feature-description">ReactorCX operates in two modes depending on your privacy requirements. Store PII directly in the platform with full encryption and access controls. Or operate without PII using tokenized identifiers, with member data stored in your existing systems. MGM runs zero-PII architecture. The platform adapts to your data governance posture.</p>
+          <ul class="feature-list">
             <li>Full PII storage with encryption and access controls</li>
             <li>Zero-PII option using tokenized identifiers</li>
             <li>Privacy rights support: access, deletion, rectification, portability</li>
             <li>PCI scope reduction through tokenization patterns</li>
           </ul>
         </div>
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Privacy Architecture Diagram]</div>
+        <div class="feature-visual">
+          <span style="color: var(--color-gray-400); font-size: var(--font-size-sm);">[Privacy Architecture Diagram]</span>
         </div>
       </div>
     </div>
@@ -995,11 +670,11 @@
   </section>
 
   <!-- ========== TRUST CENTER CTA ========== -->
-  <section class="section section-lg section-light bg-light">
+  <section class="section section-lg bg-white">
     <div class="container">
-      <div class="cta-box-light" style="text-align: center;">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Full Documentation in Our Trust Center</h2>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+      <div class="callout-card">
+        <h2 class="callout-title">Full Documentation in Our Trust Center</h2>
+        <p class="callout-body">
           Access SOC 2 reports, security policies, data processing agreements, and compliance documentation through our Trust Center portal.
         </p>
         <a href="https://trustcenter.loyaltymethods.com" target="_blank" class="btn btn-primary btn-lg">Access Trust Center</a>
@@ -1098,13 +773,11 @@
     socCards.forEach(card => {
       const header = card.querySelector('.soc-card-header');
       header.addEventListener('click', () => {
-        // Close other cards
         socCards.forEach(otherCard => {
           if (otherCard !== card) {
             otherCard.classList.remove('active');
           }
         });
-        // Toggle current card
         card.classList.toggle('active');
       });
     });

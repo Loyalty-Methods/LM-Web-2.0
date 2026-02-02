@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Integration Capabilities | Loyalty Methods</title>
+  <title>Platform Architecture | Loyalty Methods</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,139 +20,136 @@
   
   <style>
     /* ==========================================================================
-       PAGE-SPECIFIC STYLES: Integration Capabilities
+       PAGE-SPECIFIC STYLES: Platform Architecture
        ========================================================================== */
 
     /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme)
+       HERO OVERRIDES — Heavy charcoal + heavy white glass treatment
        ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
+
+    /* Deep charcoal base — rich dark-to-darker sweep */
+    .hero-cinematic {
+      background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 20%, #3d3d3d 45%, #333333 70%, #2c2c2c 100%);
     }
 
-    .subpage-hero::before {
+    /* Image — subtle presence beneath heavy gradients */
+    .hero-cinematic-bg img {
+      opacity: 0.35;
+      object-position: center center;
+    }
+
+    /* Heavy charcoal overlay — deep coverage, text side near-opaque */
+    .hero-cinematic .hero-cinematic-bg::after {
+      background:
+        linear-gradient(90deg, rgba(35,35,35,0.88) 0%, rgba(40,40,40,0.72) 35%, rgba(45,45,45,0.5) 65%, rgba(50,50,50,0.35) 100%),
+        linear-gradient(180deg, rgba(30,30,30,0.4) 0%, rgba(35,35,35,0.15) 30%, transparent 50%, rgba(30,30,30,0.25) 80%, rgba(30,30,30,0.5) 100%);
+    }
+
+    /* Heavy white glass sweep — tall, high opacity, signature brand layer */
+    .hero-cinematic::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      top: 0; left: 0; right: 0;
+      height: 65%;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.18) 15%, rgba(255,255,255,0.10) 35%, rgba(255,255,255,0.04) 55%, transparent 100%);
       pointer-events: none;
+      z-index: 2;
     }
 
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
+    /* Bottom fade — controlled dissolve into page */
+    .hero-cinematic::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 25%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(245,245,245,0.25) 40%, rgba(245,245,245,0.6) 65%, #f5f5f5 100%);
+      pointer-events: none;
+      z-index: 2;
     }
 
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-
-    .subpage-hero-title .highlight {
+    .hero-cinematic-title .highlight {
       background: var(--grad-orange-accent);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-description strong {
-      color: var(--color-white);
-      font-weight: var(--font-weight-semibold);
-    }
-
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: auto;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-      
-      .subpage-hero-title {
-        font-size: 2rem;
-      }
+    .hero-cinematic-subtitle strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: var(--font-weight-medium);
     }
 
     /* -------------------------------------------------------------------------
-       FEATURE ROWS
+       METRICS ROW
+       ------------------------------------------------------------------------- */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    
+    @media (max-width: 1024px) {
+      .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .metrics-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .metric-card {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(40px) saturate(1.4);
+      -webkit-backdrop-filter: blur(40px) saturate(1.4);
+      border: 0.5px solid rgba(255,255,255,0.8);
+      border-top: none;
+      border-radius: 2px;
+      padding: var(--space-8);
+      text-align: center;
+      box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(90,90,90,0.6) 0%, rgba(100,100,100,0.55) 80%, rgba(200,200,200,0.7) 92%, rgba(255,255,255,0.9) 96%, transparent 100%);
+      z-index: 3;
+    }
+    
+    .metric-card:hover {
+      border-color: rgba(255,255,255,0.9);
+      box-shadow: 0 0 0 0.5px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.05);
+    }
+    
+    .metric-value {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-light);
+      color: var(--color-charcoal-900);
+      line-height: var(--line-height-snug);
+      margin-bottom: var(--space-2);
+    }
+    
+    .metric-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-500);
+      line-height: var(--line-height-loose);
+    }
+    
+    .metric-sublabel {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-300);
+      font-style: italic;
+      margin-top: var(--space-2);
+    }
+
+    /* -------------------------------------------------------------------------
+       FEATURE ROWS SECTION
        ------------------------------------------------------------------------- */
     .feature-rows-section {
       padding: var(--space-20) 0;
@@ -192,19 +194,10 @@
       }
     }
 
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-3);
-    }
-
     .feature-row-title {
       font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
       line-height: 1.2;
       margin-bottom: var(--space-4);
     }
@@ -214,11 +207,6 @@
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: var(--space-6);
-    }
-
-    .feature-row-description strong {
-      color: var(--text-main);
-      font-weight: var(--font-weight-semibold);
     }
 
     .feature-row-list {
@@ -239,15 +227,10 @@
       position: absolute;
       left: 0;
       top: 8px;
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background: var(--color-primary);
-      border-radius: 50%;
-    }
-
-    .feature-row-list-item strong {
-      color: var(--text-main);
-      font-weight: var(--font-weight-semibold);
+      border-radius: 1px;
     }
 
     .feature-row-media {
@@ -257,7 +240,7 @@
     .feature-row-image-placeholder {
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -265,25 +248,70 @@
       font-size: var(--font-size-sm);
     }
 
-    /* Proof callout */
-    .proof-callout {
+    /* btn-dark for light backgrounds */
+    .btn-dark {
+      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+    }
+
+    .btn-dark:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    /* -------------------------------------------------------------------------
+       CALLOUT BLOCK
+       ------------------------------------------------------------------------- */
+    .callout-block {
       background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
+      border-radius: 2px;
+      padding: var(--space-12);
       border-left: 4px solid var(--color-primary);
-      border-radius: var(--radius-lg);
-      padding: var(--space-4) var(--space-5);
-      margin-top: var(--space-6);
     }
-
-    .proof-callout p {
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .proof-callout strong {
-      color: var(--text-main);
+    
+    .callout-title {
+      font-size: var(--font-size-2xl);
       font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    
+    .callout-body {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-6);
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* -------------------------------------------------------------------------
+       CROSS-LINKS GRID
+       ------------------------------------------------------------------------- */
+    .crosslinks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+    
+    @media (max-width: 768px) {
+      .crosslinks-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* -------------------------------------------------------------------------
@@ -291,9 +319,9 @@
        ------------------------------------------------------------------------- */
     .bottom-cta-card {
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: 2px;
       padding: var(--space-12) var(--space-16);
-      box-shadow: var(--shadow-card);
+      box-shadow: var(--shadow-md);
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -301,8 +329,8 @@
 
     .bottom-cta-title {
       font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
       margin-bottom: var(--space-4);
     }
 
@@ -327,11 +355,57 @@
         font-size: var(--font-size-2xl);
       }
     }
+
+    /* Stat subtitle */
+    .stat-subtitle {
+      font-size: var(--font-size-xs);
+      color: rgba(255,255,255,0.4);
+      margin-top: var(--space-1);
+    }
+
+    /* CTA Link */
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    /* Metric cards on white backgrounds */
+    .bg-white .metric-card {
+      border-color: rgba(0,0,0,0.08);
+      box-shadow:
+        0 0 0 0.5px rgba(0,0,0,0.07),
+        0 1px 1px rgba(0,0,0,0.06),
+        0 2px 4px rgba(0,0,0,0.05),
+        0 8px 16px rgba(0,0,0,0.04),
+        0 16px 32px rgba(0,0,0,0.03);
+    }
+    .bg-white .metric-card:hover {
+      border-color: rgba(0,0,0,0.12);
+      box-shadow:
+        0 0 0 0.5px rgba(0,0,0,0.09),
+        0 1px 2px rgba(0,0,0,0.07),
+        0 4px 8px rgba(0,0,0,0.06),
+        0 16px 32px rgba(0,0,0,0.05),
+        0 24px 48px rgba(0,0,0,0.04);
+    }
+
+    /* Metric card rule-orange */
+    .metric-card .card-rule-orange {
+      margin: 0 auto var(--space-4);
+    }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
+  <!-- ========================================
+       HEADER / NAVIGATION
+       Synced with index.html mega menu structure
+       ======================================== -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
@@ -400,7 +474,7 @@
                     <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
                     <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
                     <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="feature-ai-agents.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
                   </div>
                 </div>
               </div>
@@ -523,157 +597,149 @@
   </header>
 
 
-  <!-- ========== HERO ========== -->
-  <section class="subpage-hero">
+  <!-- ========================================
+       SECTION 1: HERO (Cinematic Photo Hero)
+       ======================================== -->
+  <section class="hero-cinematic hero-cinematic--tall">
+    <div class="hero-cinematic-bg">
+      <img src="reactorcx-platform-hero.png" alt="ReactorCX enterprise loyalty platform powering real-time consumer experiences">
+    </div>
     <div class="container">
-      <div class="subpage-hero-inner">
-        
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">Enterprise Technology</div>
-          <h1 class="subpage-hero-title">
-            Integration <span class="highlight">Capabilities</span>
-          </h1>
-          <p class="subpage-hero-description">
-            We integrate where other platforms break. Your <strong>existing systems stay in place</strong>. <strong>No rip-and-replace required</strong>. The more complex your tech stack, the better we fit.
-          </p>
-          <div class="subpage-hero-cta">
-            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          </div>
+      <div class="hero-cinematic-content">
+        <div class="hero-cinematic-eyebrow">Enterprise Technology</div>
+        <h1 class="hero-cinematic-title">
+          Platform <span class="highlight">Architecture</span>
+        </h1>
+        <p class="hero-cinematic-subtitle">
+          Members know the moment something happens. A <strong>new tier</strong>. A <strong>bonus earned</strong>. A <strong>streak achieved</strong>. The platform signals in real time so you can <strong>engage instantly</strong>. This requires <strong>synchronous processing for everything</strong>, and most platforms treat it as an aspiration. We treat it as the foundation.
+        </p>
+        <div class="hero-cinematic-cta">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
-
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">
-            [Integration Diagram — 600×450]
-          </div>
-        </div>
-        
       </div>
     </div>
   </section>
 
 
-  <!-- ========== INTEGRATION PHILOSOPHY ========== -->
-  <section class="feature-rows-section">
+  <!-- ========================================
+       STICKY ANCHOR BAR
+       ======================================== -->
+  <nav class="section-anchor-bar">
+    <div class="anchor-bar-inner">
+      <a href="#design-philosophy" class="anchor-link">Design Philosophy</a>
+      <a href="#integration-modes" class="anchor-link">Integration Modes</a>
+      <a href="#api-architecture" class="anchor-link">API Architecture</a>
+      <a href="#real-time-events" class="anchor-link">Real-Time Events</a>
+      <a href="#cloud-infrastructure" class="anchor-link">Cloud Infrastructure</a>
+      <a href="#scale-reliability" class="anchor-link">Scale &amp; Reliability</a>
+      <a href="#faq" class="anchor-link">FAQ</a>
+    </div>
+  </nav>
+
+
+  <!-- ========================================
+       SECTION 2: DESIGN PHILOSOPHY (Zig-Zag)
+       Background: WHITE
+       ======================================== -->
+  <section id="design-philosophy" class="feature-rows-section">
     <div class="container">
       <div class="feature-row">
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Integration Hub Visualization]</div>
+          <div class="feature-row-image-placeholder">[Real-time Architecture Visualization]</div>
         </div>
         <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Integration Philosophy</span>
-          <h2 class="feature-row-title">Built to Connect, Not to Replace</h2>
+          <span class="feature-label">Design Philosophy</span>
+          <h2 class="feature-row-title">Real-Time Is Not an Add-On. It Is the Foundation.</h2>
           <p class="feature-row-description">
-            ReactorCX acts as the <strong>loyalty brain</strong> in your ecosystem. It does not demand you rip out existing systems. It connects to them, <strong>senses customer behavior across channels</strong>, and coordinates loyalty decisions back into the tools you already use.
+            Most platforms treat <strong>real-time as a feature to enable later</strong>. We designed for it from day one. When the architecture handles <strong>synchronous processing for everything</strong>, personalization becomes possible. Event-driven engagement becomes possible. Partner integrations at scale become possible.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>RESTful APIs</strong> for all platform operations</li>
-            <li class="feature-row-list-item"><strong>Streaming ingestion</strong> via Kafka</li>
-            <li class="feature-row-list-item"><strong>Batch file processing</strong> through FeedXChange</li>
-            <li class="feature-row-list-item"><strong>Pre-built connectors</strong> for common touchpoints</li>
-          </ul>
-
+          <p class="feature-row-description">
+            When the architecture handles <strong>real-time from the start</strong>, everything else becomes easier. <strong>Personalization</strong>. <strong>Event-driven engagement</strong>. <strong>Partner integrations</strong>. <strong>Scale</strong>.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== STATS BAR ========== -->
+  <!-- ========================================
+       SECTION 3: STATS BAR
+       Background: DARK
+       ======================================== -->
   <section class="section dark bg-dark">
     <div class="container">
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-number">50+</div>
-          <div class="stat-title"><strong>Partners Integrated</strong></div>
-          <div class="stat-subtitle">Single retail client (bp)</div>
+          <div class="stat-number">25M+</div>
+          <div class="stat-title"><strong>Daily API Requests</strong></div>
+          <div class="stat-subtitle">Single enterprise deployment</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">3</div>
-          <div class="stat-title"><strong>Integration Modes</strong></div>
-          <div class="stat-subtitle">Real-time, Streaming, Batch</div>
+          <div class="stat-number">56K+</div>
+          <div class="stat-title"><strong>Peak Events per Minute</strong></div>
+          <div class="stat-subtitle">Single client</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number" data-target="30" data-suffix="K+">0</div>
-          <div class="stat-title"><strong>Locations Connected</strong></div>
+          <div class="stat-number">30K+</div>
+          <div class="stat-title"><strong>Locations Integrated</strong></div>
           <div class="stat-subtitle">Platform-wide</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number" data-target="56" data-suffix="K+">0</div>
-          <div class="stat-title"><strong>Peak Events per Minute</strong></div>
-          <div class="stat-subtitle">Single client</div>
+          <div class="stat-number">99.9%</div>
+          <div class="stat-title"><strong>Uptime SLA</strong></div>
+          <div class="stat-subtitle">Production uptime</div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== CONNECTOR CATEGORIES (6-Card Grid) ========== -->
-  <section class="section section-lg section-light bg-white">
+  <!-- ========================================
+       SECTION 4: INTEGRATION MODES (6-Card Grid)
+       Background: WHITE
+       ======================================== -->
+  <section id="integration-modes" class="section section-lg section-light bg-white">
     <div class="container">
       <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
-        <h2 class="section-title">Connectors for the Modern Stack</h2>
-        <p style="color: var(--text-muted); margin-top: var(--space-4);"><strong>Pre-built integrations</strong> that accelerate time-to-value. <strong>Custom connectors</strong> when you need them.</p>
+        <h2 class="section-title">Multiple Integration Modes. Simultaneously.</h2>
+        <p style="color: var(--text-muted); margin-top: var(--space-4);">Transactions arrive through different channels. Some through APIs. Some through streaming. Some through partner files. Every transaction, regardless of ingestion method, <strong>processes through the same real-time engine</strong>.</p>
       </div>
       <div class="grid grid-3">
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            </div>
-            <h3 class="card-title">Point of Sale</h3>
-          </div>
-          <p class="card-body">Oracle MICROS, NCR, Toshiba, Toast, Square, Shopify POS. <strong>Real-time transaction capture</strong> and <strong>discount application at checkout</strong>.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">REST APIs (Synchronous)</h3>
+          <p class="card-description"><strong>Real-time operations</strong> with full RESTful API suite. <strong>Immediate response</strong> for point-of-interaction use cases.</p>
         </div>
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3 class="card-title">CRM Systems</h3>
-          </div>
-          <p class="card-body">Salesforce, HubSpot, Microsoft Dynamics. <strong>Bi-directional sync</strong> of member profiles, activity, and loyalty status.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Event API (Publish)</h3>
+          <p class="card-description">Events published <strong>as they occur</strong>. Webhooks, Azure EventHub, AWS SNS. <strong>Pre-configured event types</strong> ready for any use case.</p>
         </div>
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            </div>
-            <h3 class="card-title">Customer Data Platforms</h3>
-          </div>
-          <p class="card-body">Segment, mParticle, Tealium, Adobe Experience Platform. <strong>Enrich loyalty data</strong> with behavioral signals from across the customer journey.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Streaming Ingestion</h3>
+          <p class="card-description"><strong>Near real-time processing</strong> via Kafka. <strong>High-volume activity</strong> without batch delays.</p>
         </div>
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </div>
-            <h3 class="card-title">Marketing Automation</h3>
-          </div>
-          <p class="card-body">Salesforce Marketing Cloud, Braze, Klaviyo, Iterable. <strong>Trigger journeys</strong> and <strong>inject dynamic loyalty content</strong> into campaigns.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">FeedXChange (Batch)</h3>
+          <p class="card-description">Partner files <strong>converted to real-time transactions</strong>. Each record evaluated through the <strong>same rules engine</strong>.</p>
         </div>
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </div>
-            <h3 class="card-title">eCommerce Platforms</h3>
-          </div>
-          <p class="card-body">Shopify, Magento, BigCommerce, Salesforce Commerce Cloud. <strong>Loyalty at checkout</strong>, account pages, and order confirmation.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Pre-Built Connectors</h3>
+          <p class="card-description">Accelerators for common touchpoints. POS, CRM, CDP, marketing automation. <strong>Reduce integration timelines</strong>.</p>
         </div>
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            </div>
-            <h3 class="card-title">Mobile Apps</h3>
-          </div>
-          <p class="card-body">iOS and Android SDKs. <strong>Push notifications</strong>, <strong>in-app messaging</strong>, and <strong>real-time balance updates</strong>. Native and React Native support.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Sandbox Environment</h3>
+          <p class="card-description"><strong>Full-fidelity testing environment</strong>. Validate integrations before production. <strong>Data isolation guaranteed</strong>.</p>
         </div>
         
       </div>
@@ -681,80 +747,202 @@
   </section>
 
 
-  <!-- ========== FEEDXCHANGE FEATURE ROW ========== -->
+  <!-- ========================================
+       SECTION 5: API-FIRST ARCHITECTURE (Zig-Zag)
+       ======================================== -->
+  <section id="api-architecture" class="feature-rows-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Architecture Diagram - RCX as Loyalty Brain]</div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-label">Integration Philosophy</span>
+          <h2 class="feature-row-title">Fits Into Your Stack. Replaces Nothing Else.</h2>
+          <p class="feature-row-description">
+            Enterprises arriving at loyalty already have a dozen systems in place. POS, CRM, CDP, data warehouse. We do not ask you to <strong>rip and replace</strong>. ReactorCX operates as the <strong>loyalty decision layer</strong>, integrating with what you already run. The more complex your stack, the better we fit.
+          </p>
+          <p class="feature-row-description">
+            Acting as the <strong>loyalty brain</strong>, RCX senses customer behavior across channels, interprets it, and <strong>coordinates loyalty decisions</strong> back into the systems you already use.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item"><strong>RESTful APIs</strong> for all platform operations</li>
+            <li class="feature-row-list-item"><strong>Synchronous responses</strong> for point-of-interaction use cases</li>
+            <li class="feature-row-list-item"><strong>Async patterns</strong> available when workflows require them</li>
+            <li class="feature-row-list-item">Full API documentation with <strong>sandbox environments</strong></li>
+            <li class="feature-row-list-item"><strong>Versioned APIs</strong> with backward compatibility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 6: EVENT-DRIVEN BACKBONE
+       Background: LIGHT (gray)
+       ======================================== -->
+  <section id="real-time-events" class="section section-lg section-light bg-light">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-content">
+          <span class="feature-label">Real-Time Events</span>
+          <h2 class="feature-row-title">Members Know the Moment Something Happens</h2>
+          <p class="feature-row-description">
+            Every action generates a <strong>real-time event</strong>. <strong>Streak achieved</strong>. <strong>Bonus earned</strong>. <strong>Tier unlocked</strong>. These events publish immediately through webhooks, Kafka, or Azure EventHub. Your app <strong>lights up the moment conditions are met</strong>.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item"><strong>Built-in event types</strong> ready for any workflow</li>
+            <li class="feature-row-list-item"><strong>Sub-second event publishing</strong></li>
+            <li class="feature-row-list-item">Streaming via <strong>Kafka, webhooks, Azure EventHub</strong></li>
+            <li class="feature-row-list-item"><strong>Push notifications, SMS, email</strong> triggered by events</li>
+            <li class="feature-row-list-item"><strong>App overlays</strong> triggered the moment conditions are met</li>
+          </ul>
+        </div>
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Event Flow Diagram]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 7: CLOUD INFRASTRUCTURE (4-Card Row)
+       Background: WHITE
+       ======================================== -->
+  <section id="cloud-infrastructure" class="section section-lg section-light bg-white">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+        <h2 class="section-title">Built on AWS. Entirely.</h2>
+        <p style="color: var(--text-muted); margin-top: var(--space-4);">We are an AWS shop. The platform runs on AWS across <strong>multiple availability zones</strong> with <strong>99.9% uptime SLA</strong>.</p>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="card-rule-orange"></div>
+          <div class="metric-value">Multi-AZ Deployment</div>
+          <div class="metric-label"><strong>Availability zones for redundancy</strong>. No single point of failure.</div>
+        </div>
+        <div class="metric-card">
+          <div class="card-rule-orange"></div>
+          <div class="metric-value">Multi-Region Capable</div>
+          <div class="metric-label"><strong>Geographic distribution</strong> for global programs. Data residency options.</div>
+        </div>
+        <div class="metric-card">
+          <div class="card-rule-orange"></div>
+          <div class="metric-value">Containerized Services</div>
+          <div class="metric-label"><strong>Kubernetes orchestration</strong>. Rolling deployments. Service-level rollback.</div>
+        </div>
+        <div class="metric-card">
+          <div class="card-rule-orange"></div>
+          <div class="metric-value">Managed Services</div>
+          <div class="metric-label">RDS, ElastiCache, SQS, SNS. <strong>AWS-managed components</strong> reduce operational burden.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 8: AUTO-SCALE (Zig-Zag)
+       ======================================== -->
+  <section id="scale-reliability" class="feature-rows-section">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-row-media">
+          <div class="feature-row-image-placeholder">[Auto-scale Visualization]</div>
+        </div>
+        <div class="feature-row-content">
+          <span class="feature-label">Elastic Infrastructure</span>
+          <h2 class="feature-row-title">Scales Up and Down With Your Volume</h2>
+          <p class="feature-row-description">
+            On <strong>peak promotional days</strong>, transaction volume spikes to multiples of normal load. The platform handles it <strong>without intervention</strong>. Auto-scale expands capacity during the spike, then scales back when volume normalizes. This is not an SLA target. It is <strong>operational history</strong>.
+          </p>
+          <ul class="feature-row-list">
+            <li class="feature-row-list-item"><strong>AWS-native auto-scaling</strong></li>
+            <li class="feature-row-list-item"><strong>Multi-AZ redundancy</strong></li>
+            <li class="feature-row-list-item">Containerized services with <strong>rolling upgrades</strong></li>
+            <li class="feature-row-list-item"><strong>Peak volume handling</strong> without degradation</li>
+            <li class="feature-row-list-item">Scale events <strong>logged and reportable</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 9: ZERO-DOWNTIME (Zig-Zag)
+       ======================================== -->
   <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="feature-row">
         <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Batch Processing</span>
-          <h2 class="feature-row-title">FeedXChange: Batch Files, Real-Time Processing</h2>
+          <span class="feature-label">Operational Continuity</span>
+          <h2 class="feature-row-title">Configuration Changes Without Restarts</h2>
           <p class="feature-row-description">
-            Not every partner sends data in real time. FeedXChange accepts batch files—CSV, XML, JSON, EDI—and processes each record through the <strong>same real-time rules engine</strong>. Every transaction evaluated. Every event triggered. <strong>Same outcomes regardless of how data arrives</strong>. Partners onboard in <strong>4-5 hours on average</strong>.
+            The platform publishes <strong>configuration changes without platform restarts</strong>. New promotions go live. Rules update. Tier thresholds adjust. All without taking the system offline. This is not just about deployment patterns. It is about <strong>operational continuity</strong> for programs that cannot afford interruption.
           </p>
           <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>Multiple file formats</strong> supported</li>
-            <li class="feature-row-list-item"><strong>Configurable field mapping</strong></li>
-            <li class="feature-row-list-item"><strong>Error handling and reconciliation</strong></li>
-            <li class="feature-row-list-item"><strong>Finance-grade audit trails</strong></li>
+            <li class="feature-row-list-item"><strong>Hot configuration publishing</strong></li>
+            <li class="feature-row-list-item"><strong>Rolling service upgrades</strong></li>
+            <li class="feature-row-list-item"><strong>Feature flags</strong> for controlled rollout</li>
+            <li class="feature-row-list-item">Rollback at <strong>service level</strong></li>
+            <li class="feature-row-list-item"><strong>Zero planned downtime windows</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[FeedXChange Flow Diagram]</div>
+          <div class="feature-row-image-placeholder">[Deployment Flow Diagram]</div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== EVENT STREAMING FEATURE ROW ========== -->
-  <section class="feature-rows-section" style="padding-top: 0;">
+  <!-- ========================================
+       SECTION 10: TRANSACTION PROCESSING CALLOUT
+       Background: WHITE
+       ======================================== -->
+  <section class="section section-lg section-light bg-white">
     <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Event Streaming Diagram]</div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Event Streaming</span>
-          <h2 class="feature-row-title">Publish Events the Moment They Happen</h2>
-          <p class="feature-row-description">
-            Every loyalty event publishes <strong>in real time</strong>. <strong>Tier upgrades</strong>, <strong>reward issuance</strong>, <strong>streak completions</strong>, <strong>promotional triggers</strong>. Subscribe to the events you care about and push them to your engagement systems instantly.
-          </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>Webhooks</strong> for simple integrations</li>
-            <li class="feature-row-list-item"><strong>Kafka</strong> for high-volume streaming</li>
-            <li class="feature-row-list-item"><strong>Azure EventHub and AWS SNS</strong> support</li>
-            <li class="feature-row-list-item"><strong>27+ built-in event types</strong></li>
-          </ul>
-        </div>
+      <div class="callout-block">
+        <h3 class="callout-title">Every Transaction. Same Path. Same Speed.</h3>
+        <p class="callout-body">
+          Whether a transaction arrives via API, streaming, or batch file, it processes through the <strong>same real-time engine</strong>. FeedXChange converts batch files into <strong>individual transactions</strong>. Each one evaluates against rules, triggers events, and updates balances in real time. <strong>Consistent behavior regardless of ingestion method</strong>.
+        </p>
+        <a href="feature-partner-enablement.html" class="cta-link">See Partner Enablement <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
       </div>
     </div>
   </section>
 
 
-  <!-- ========== CROSS-LINKS ========== -->
+  <!-- ========================================
+       SECTION 11: CROSS-LINKS
+       Background: LIGHT (gray)
+       ======================================== -->
   <section class="section section-lg section-light bg-light">
     <div class="container">
       <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
         <h2 class="section-title">Related Platform Resources</h2>
       </div>
-      <div class="grid grid-3">
-        
-        <a href="tech-api-architecture.html" class="card">
-          <span class="card-category">Technology</span>
-          <h3 class="card-title">Platform Architecture</h3>
-          <p class="card-description"><strong>Real-time, synchronous for everything</strong>. API-first, event-driven infrastructure.</p>
-          <span class="card-link">See Architecture <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-        </a>
+      <div class="crosslinks-grid">
         
         <a href="tech-security.html" class="card">
-          <span class="card-category">Technology</span>
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Security & Compliance</h3>
           <p class="card-description"><strong>SOC 2 Type II certified</strong>. Annual penetration testing. <strong>Privacy-by-design</strong> architecture.</p>
           <span class="card-link">See Security <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
+        <a href="feature-analytics.html" class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">RCX Analytics</h3>
+          <p class="card-description"><strong>Natural language Q&A</strong> against the full data model. Pre-built dashboards. <strong>Unfettered SQL access</strong>.</p>
+          <span class="card-link">See Analytics <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </a>
+        
         <a href="feature-partner-enablement.html" class="card">
-          <span class="card-category">Platform</span>
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Partner Enablement</h3>
           <p class="card-description"><strong>Native partner management</strong>. FeedXChange batch gateway. <strong>Finance-grade billing and settlement</strong>.</p>
           <span class="card-link">See Partner Enablement <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
@@ -765,15 +953,35 @@
   </section>
 
 
-  <!-- ========== FAQ SECTION ========== -->
-  <section class="faq-section section-light bg-white">
+  <!-- ========================================
+       SECTION 12: BOTTOM CTA
+       ======================================== -->
+  <section class="section section-lg bg-white">
+    <div class="container">
+      <div class="bottom-cta-card">
+        <h2 class="bottom-cta-title">See How It Works at Scale</h2>
+        <p class="bottom-cta-description">
+          Experience <strong>sub-second response times</strong>, <strong>event-driven engagement</strong>, and <strong>99.9% uptime</strong>. Schedule a technical deep dive with our team.
+        </p>
+        <div class="flex gap-4" style="justify-content: center;">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECTION 13: FAQ (Two-Column Layout)
+       ======================================== -->
+  <section id="faq" class="faq-section section-light bg-light">
     <div class="container">
       <div class="faq-layout">
         
         <div class="faq-intro">
           <h2 class="faq-title">Frequently Asked Questions</h2>
           <p class="faq-description">
-            Common questions about our integration capabilities, connectors, and data flow patterns.
+            Common questions about our platform architecture, real-time processing, and enterprise capabilities.
           </p>
           <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
@@ -782,72 +990,60 @@
           
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Do you integrate with Salesforce Marketing Cloud?</span>
+              <span class="accordion-trigger-text">What does "real-time, synchronous for everything" mean in practice?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Yes. We have a <strong>deep integration with SFMC</strong>. We can trigger Journey Builder journeys based on loyalty events, sync segments to Data Extensions, and inject <strong>dynamic reward content</strong> into emails.</p>
+                <p>Every interaction with the platform returns an <strong>immediate response</strong>. Point balance inquiries, promotion evaluations, redemption requests, personalization queries. <strong>No queueing</strong>. <strong>No eventual consistency</strong>. The member and the calling system know the outcome in the same moment the request is made.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How long does a typical POS integration take?</span>
+              <span class="accordion-trigger-text">How does the platform handle traffic spikes?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>It depends on the POS. For <strong>modern cloud POS systems</strong> (like Shopify or Toast), it can be done in days. For legacy on-premise systems (like Toshiba 4690), it typically takes <strong>4-8 weeks</strong> to deploy our agent software to the store controllers.</p>
+                <p><strong>AWS-native auto-scaling</strong> expands capacity automatically when load increases. On peak promotional days, the platform has handled <strong>multiples of normal transaction volume</strong> without degradation. When load decreases, capacity scales back down. <strong>No manual intervention required</strong>.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can we build our own custom connectors?</span>
+              <span class="accordion-trigger-text">Can batch files process through the real-time engine?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>Absolutely. Our API is <strong>fully documented</strong> (OpenAPI/Swagger). Your team can build custom middleware to connect any proprietary internal system to RCX.</p>
+                <p>Yes. FeedXChange takes incoming batch files and processes each record as an <strong>individual transaction</strong> through the same real-time rules engine as API calls. <strong>Same execution path</strong>. <strong>Same logging</strong>. <strong>Same outcomes</strong>. This ensures partner billing accuracy and consistent behavior regardless of how data arrives.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What file formats does FeedXChange support?</span>
+              <span class="accordion-trigger-text">What event types are available?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>FeedXChange supports <strong>CSV, XML, JSON, and EDI formats</strong>. Field mapping is configurable per partner, and we handle delimiter variations, encoding differences, and schema validation automatically.</p>
+                <p>The platform publishes <strong>pre-configured event types</strong> ready for any workflow. Examples include <strong>tier changes</strong>, <strong>reward issuance</strong>, <strong>streak completion</strong>, <strong>promotion triggers</strong>, and <strong>balance updates</strong>. Events stream via Kafka, webhooks, or Azure EventHub. You subscribe to the events relevant to your engagement strategy.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do you handle integration failures?</span>
+              <span class="accordion-trigger-text">How does the platform achieve zero downtime?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
-                <p>All integrations include <strong>retry logic</strong>, <strong>dead letter queues</strong>, and <strong>alerting</strong>. Failed transactions are logged with full context for troubleshooting. Our operations team monitors integration health <strong>24/7</strong>.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Does RCX replace my CDP?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p><strong>No.</strong> We integrate with it. We enrich it. We do not replace it. Enterprises coming to us are mature. They already have a dozen systems in place. Loyalty is typically your <strong>last stop, not your first</strong>. We slide in without disrupting your tech stack.</p>
+                <p><strong>Containerized services</strong> with rolling upgrades. Configuration changes publish <strong>without restarts</strong>. <strong>Multi-AZ redundancy</strong> eliminates single points of failure. Service-level rollback if issues arise. The architecture was designed for <strong>continuous operation from day one</strong>.</p>
               </div>
             </div>
           </div>
@@ -859,23 +1055,9 @@
   </section>
 
 
-  <!-- ========== BOTTOM CTA ========== -->
-  <section class="section section-lg bg-light">
-    <div class="container">
-      <div class="bottom-cta-card">
-        <h2 class="bottom-cta-title">See Our Connectors in Action</h2>
-        <p class="bottom-cta-description">
-          Schedule a technical demo to see how we handle data flow in complex environments. Bring your architecture diagram. We will show you how RCX fits.
-        </p>
-        <div class="flex gap-4" style="justify-content: center;">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Tech Demo</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== FOOTER ========== -->
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
@@ -950,7 +1132,9 @@
   </footer>
 
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
     // Header scroll effect
     const header = document.querySelector('.header');
@@ -986,56 +1170,46 @@
       });
     });
 
-    // Animated number counters
-    const animateCounters = () => {
-      const counters = document.querySelectorAll('.stat-number[data-target]');
-      
-      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
-      
-      const animateCounter = (el) => {
-        const target = parseFloat(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        const prefix = el.dataset.prefix || '';
-        const duration = 2000;
-        const startTime = performance.now();
-        const isDecimal = target % 1 !== 0;
-        
-        const update = (currentTime) => {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easedProgress = easeOutQuart(progress);
-          const current = target * easedProgress;
-          
-          if (isDecimal) {
-            el.textContent = prefix + current.toFixed(1) + suffix;
-          } else {
-            el.textContent = prefix + Math.floor(current) + suffix;
-          }
-          
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
-          }
-        };
-        
-        requestAnimationFrame(update);
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      counters.forEach(counter => observer.observe(counter));
-    };
-    
-    // Initialize counters
-    animateCounters();
+    // Anchor bar: smooth scroll + active state
+    const anchorLinks = document.querySelectorAll('.anchor-link');
+    const anchorBar = document.querySelector('.section-anchor-bar');
+    const anchorBarHeight = anchorBar ? anchorBar.offsetHeight : 0;
+    const headerHeight = header ? header.offsetHeight : 0;
+    const scrollOffset = headerHeight + anchorBarHeight + 16;
+
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const top = targetEl.getBoundingClientRect().top + window.scrollY - scrollOffset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Track active section on scroll
+    const anchorSections = Array.from(anchorLinks).map(link => {
+      const id = link.getAttribute('href').substring(1);
+      return { id, el: document.getElementById(id), link };
+    }).filter(s => s.el);
+
+    function updateActiveAnchor() {
+      const scrollY = window.scrollY + scrollOffset + 40;
+      let current = anchorSections[0];
+      for (const section of anchorSections) {
+        if (section.el.offsetTop <= scrollY) {
+          current = section;
+        }
+      }
+      anchorLinks.forEach(l => l.classList.remove('active'));
+      if (current) current.link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', updateActiveAnchor);
+    updateActiveAnchor();
+
   </script>
 
 </body>
