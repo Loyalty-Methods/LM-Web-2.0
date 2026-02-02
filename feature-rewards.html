@@ -27,7 +27,7 @@
     /* Page-specific: hero highlight */
     .hero-cinematic-title .highlight { color: var(--color-primary); }
 
-    /* Lighter overlay for dark source image — phone shows through */
+    /* Lighter overlay for dark source image - phone shows through */
     .hero-cinematic-bg::after {
       background: linear-gradient(180deg,
         rgba(40,40,44,0.45) 0%,
@@ -403,38 +403,8 @@
       line-height: 1.7;
     }
 
-    /* -------------------------------------------------------------------------
-       BOTTOM CTA CARD
-       ------------------------------------------------------------------------- */
-    .bottom-cta-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-12) var(--space-16);
-      box-shadow: var(--shadow-card);
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .bottom-cta-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      margin-bottom: var(--space-4);
-    }
-
-    .bottom-cta-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     @media (max-width: 640px) {
-      .bottom-cta-card {
+      .cta-box {
         padding: var(--space-8);
       }
     }
@@ -639,11 +609,11 @@
 
   <!-- ========================================
        SECTION 1: HERO
-       Cinematic photo hero — fades to #F5F5F5
+       Cinematic photo hero - fades to #F5F5F5
        ======================================== -->
   <section class="hero-cinematic hero-cinematic--tall">
     <div class="hero-cinematic-bg">
-      <img src="hero-rewards.png" alt="Rewards & Benefits Platform">
+      <img src="https://plus.unsplash.com/premium_photo-1728551323197-e177d394d118?w=1920&auto=format&fit=crop&q=80&ixlib=rb-4.1.0" alt="Rewards & Benefits Platform">
     </div>
     <div class="container">
       <div class="hero-cinematic-content">
@@ -652,7 +622,7 @@
           Rewards & <span class="highlight">Benefits</span>
         </h1>
         <p class="hero-cinematic-subtitle">
-          Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences—reward customers how they want, when they want.
+          Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences - reward customers how they want, when they want.
         </p>
         <div class="hero-cinematic-cta">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
@@ -728,7 +698,7 @@
           <span class="feature-row-eyebrow">Real-Time Redemption</span>
           <h2 class="feature-row-title">Instant Gratification</h2>
           <p class="feature-row-description">
-            Customers expect rewards in the moment. RCX processes earn and burn transactions in real-time, so members can redeem points immediately—at checkout, at the pump, or in the app.
+            Customers expect rewards in the moment. RCX processes earn and burn transactions in real-time, so members can redeem points immediately - at checkout, at the pump, or in the app.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Variable burn rates for dynamic pricing strategies</li>
@@ -881,7 +851,7 @@
           <span class="feature-row-eyebrow">Dynamic Catalog</span>
           <h2 class="feature-row-title">Build Your Reward Marketplace</h2>
           <p class="feature-row-description">
-            From merchandise and discounts to charitable donations and experiential rewards—RCX gives you the flexibility to design a reward catalog that resonates with your audience.
+            From merchandise and discounts to charitable donations and experiential rewards - RCX gives you the flexibility to design a reward catalog that resonates with your audience.
           </p>
           <ul class="feature-row-list">
             <li class="feature-row-list-item">Curated reward collections by segment or tier</li>
@@ -997,14 +967,12 @@
        ======================================== -->
   <section class="section section-lg bg-light">
     <div class="container">
-      <div class="bottom-cta-card">
-        <h2 class="bottom-cta-title">Ready to Reward Your Best Customers?</h2>
-        <p class="bottom-cta-description">
+      <div class="cta-box">
+        <h2 class="cta-box-title">Ready to Reward Your Best Customers?</h2>
+        <p class="cta-box-description">
           See how RCX delivers flexible, real-time rewards that drive engagement and loyalty across every touchpoint.
         </p>
-        <div class="flex gap-4" style="justify-content: center;">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-        </div>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
       </div>
     </div>
   </section>
