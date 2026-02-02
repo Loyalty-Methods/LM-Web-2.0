@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loyalty Program Rewards & Benefits | RCX Platform | Loyalty Methods</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,145 +22,165 @@
     /* ==========================================================================
        BLOG ARTICLE SPECIFIC STYLES
        ========================================================================== */
-    
-    /* Blog Hero Section */
+
+    /* Blog Hero — full-bleed image, dark overlay, text visible */
     .blog-hero {
-      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
-      background: var(--grad-charcoal-premium);
       position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
       overflow: hidden;
+      padding-top: 80px;
     }
-    
+
+    /* Full-bleed background image */
+    .blog-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .blog-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* Charcoal overlay — dark through text zone, quick fade to page bg at very bottom */
+    .blog-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+        rgba(50,50,50,0.72) 0%,
+        rgba(50,50,50,0.68) 50%,
+        rgba(50,50,50,0.65) 75%,
+        rgba(60,60,60,0.55) 85%,
+        rgba(245,245,245,1) 100%
+      );
+    }
+
+    /* White glass sweep — brand signature */
     .blog-hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      right: 0;
+      height: 55%;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.18) 0%,
+        rgba(255,255,255,0.08) 30%,
+        rgba(255,255,255,0.03) 55%,
+        transparent 100%
+      );
       pointer-events: none;
+      z-index: 2;
     }
-    
-    .blog-hero .container {
+
+    /* Top hairline */
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+      z-index: 4;
+    }
+
+    .blog-hero > .container {
       position: relative;
-      z-index: 1;
-    }
-    
-    /* Split Hero Layout */
-    .blog-hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-10);
-      align-items: center;
+      z-index: 3;
+      padding-top: var(--space-24);
+      padding-bottom: var(--space-16);
     }
 
-    @media (min-width: 992px) {
-      .blog-hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-16);
-      }
+    .blog-hero-content {
+      max-width: 700px;
     }
 
-    /* Hero Meta */
+    .blog-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-light);
+      color: var(--color-white);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-5);
+    }
+
+    .blog-hero-description {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-light);
+      color: rgba(255,255,255,0.70);
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    /* Blog hero meta bar */
     .blog-hero-meta {
       display: flex;
       align-items: center;
       gap: var(--space-4);
       margin-bottom: var(--space-6);
       font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: rgba(255, 255, 255, 0.9);
+      font-weight: var(--font-weight-medium);
+      color: rgba(255, 255, 255, 0.7);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: var(--letter-spacing-widest);
     }
 
     .blog-hero-tag {
       background: rgba(243, 112, 33, 0.2);
       padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-xs);
       color: var(--color-primary);
       border: 1px solid rgba(243, 112, 33, 0.3);
     }
-    
-    .blog-hero-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-    
-    .blog-hero-title .highlight {
-      color: var(--color-primary);
-    }
-    
-    .blog-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-    }
 
-    /* Hero Graphic Container */
-    .blog-hero-graphic {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .blog-hero-graphic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .blog-hero-graphic-placeholder {
-      color: rgba(255, 255, 255, 0.4);
-      font-weight: var(--font-weight-semibold);
-      letter-spacing: 0.05em;
-      font-size: var(--font-size-sm);
+    @media (max-width: 768px) {
+      .blog-hero { min-height: 50vh; }
+      .blog-hero > .container { padding-top: 120px; padding-bottom: var(--space-10); }
     }
 
     /* ==========================================================================
-       BLOG CONTENT LAYOUT
+       BLOG CONTENT LAYOUT — 3-column: TOC | Content | Related
        ========================================================================== */
     
     .blog-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-12);
+      gap: var(--space-10);
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 1100px) {
       .blog-grid {
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 200px 1fr 240px;
         align-items: start;
       }
     }
 
-    /* Sticky Table of Contents */
-    .blog-sidebar {
+    /* Sticky sidebars — both left and right */
+    .blog-sidebar-left,
+    .blog-sidebar-right {
       display: none;
     }
 
-    @media (min-width: 992px) {
-      .blog-sidebar {
-        display: block;
+    @media (min-width: 1100px) {
+      .blog-sidebar-left,
+      .blog-sidebar-right {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
         position: sticky;
         top: 120px;
       }
     }
 
-    .toc-title {
+    /* Sidebar Section */
+    .sidebar-section-title {
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
@@ -164,21 +189,62 @@
       margin-bottom: var(--space-4);
     }
 
-    .toc-list {
+    .sidebar-link-list {
       display: flex;
       flex-direction: column;
       gap: var(--space-3);
-      border-left: 1px solid var(--color-gray-100);
+    }
+
+    .sidebar-link {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-xs);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .sidebar-link:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .sidebar-link-title {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+      line-height: 1.3;
+    }
+
+    .sidebar-link-desc {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      line-height: 1.4;
+    }
+
+    /* TOC Links */
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 1px solid var(--color-gray-200);
     }
 
     .toc-link {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      padding-left: var(--space-4);
+      display: block;
+      padding: var(--space-2) var(--space-4);
+      background: none;
+      border: none;
+      border-radius: 0;
       border-left: 2px solid transparent;
       margin-left: -1px;
-      transition: all var(--transition-fast);
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
       line-height: 1.4;
+      text-decoration: none;
     }
 
     .toc-link:hover,
@@ -192,7 +258,7 @@
        ========================================================================== */
     
     .blog-content {
-      max-width: 750px;
+      max-width: 800px;
     }
 
     .blog-content h2 {
@@ -274,7 +340,7 @@
     .feature-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-6);
+      gap: var(--space-4);
       margin: var(--space-8) 0;
     }
 
@@ -284,31 +350,23 @@
       }
     }
 
-    .feature-mini-card {
-      background: #F9F9F9;
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
+    /* Compact cards inside blog content */
+    .feature-cards-grid .card,
+    .reward-types-grid .card {
+      padding: var(--space-6) var(--space-6) var(--space-5);
     }
 
-    .feature-mini-card h4 {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-2);
-    }
-
-    .feature-mini-card p {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      margin-bottom: 0;
-      line-height: 1.6;
+    .feature-cards-grid .card-title,
+    .reward-types-grid .card-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-medium);
     }
 
     /* Reward Types Grid */
     .reward-types-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
+      gap: var(--space-4);
       margin: var(--space-8) 0;
     }
 
@@ -324,67 +382,6 @@
       }
     }
 
-    .reward-type-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      transition: all var(--transition-fast);
-    }
-
-    .reward-type-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: var(--shadow-card);
-    }
-
-    .reward-type-card h4 {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-    }
-
-    .reward-type-card p {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      margin-bottom: 0;
-      line-height: 1.5;
-    }
-
-    /* ==========================================================================
-       RELATED ARTICLES
-       ========================================================================== */
-    
-    .related-section {
-      padding: var(--space-20) 0;
-      background: #F5F5F5;
-    }
-    
-    .related-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-8);
-      text-align: center;
-    }
-    
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-    }
-    
-    @media (max-width: 1024px) {
-      .related-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .related-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -580,32 +577,23 @@
     </div>
   </header>
 
-  <!-- ========== BLOG HERO ========== -->
+  <!-- ========== HERO ========== -->
   <section class="blog-hero">
+    <div class="blog-hero-bg">
+      <img src="blog-rewards-hero.png" alt="Loyalty rewards and benefits">
+    </div>
     <div class="container">
-      
-      <div class="blog-hero-grid">
-        
-        <div class="blog-hero-content">
-          <div class="blog-hero-meta">
-            <span class="blog-hero-tag">Capabilities</span>
-            <span>•</span>
-            <span>Jan 29, 2026</span>
-          </div>
-          <h1 class="blog-hero-title">
-            <span class="highlight">Rewards & Benefits</span>
-          </h1>
-          <p class="blog-hero-description">
-            Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences, reward customers how they want, when they want.
-          </p>
+      <div class="blog-hero-content">
+        <div class="blog-hero-meta">
+          <span class="blog-hero-tag">Capabilities</span>
+          <span style="color: rgba(255,255,255,0.4);">•</span>
+          <span>Jan 29, 2026</span>
         </div>
-
-        <div class="blog-hero-graphic">
-          <span class="blog-hero-graphic-placeholder">REWARDS & BENEFITS [16:9]</span>
-        </div>
-
+        <h1 class="blog-hero-title">Rewards & Benefits</h1>
+        <p class="blog-hero-description">
+          Deliver flexible redemption options that keep members engaged. From points and perks to exclusive experiences, reward customers how they want, when they want.
+        </p>
       </div>
-
     </div>
   </section>
 
@@ -615,16 +603,19 @@
       
       <div class="blog-grid">
 
-        <aside class="blog-sidebar">
-          <div class="toc-title">In This Article</div>
-          <nav class="toc-list">
-            <a href="#flexible-redemption" class="toc-link">Flexible Redemption Options</a>
-            <a href="#real-time-redemption" class="toc-link">Real-Time Redemption</a>
-            <a href="#omnichannel-wallet" class="toc-link">Omnichannel Wallet</a>
-            <a href="#dynamic-catalog" class="toc-link">Dynamic Catalog</a>
-            <a href="#tier-management" class="toc-link">Tier Management</a>
-            <a href="#reward-types" class="toc-link">Every Reward Type</a>
-          </nav>
+        <!-- LEFT SIDEBAR: Table of Contents -->
+        <aside class="blog-sidebar-left">
+          <div>
+            <div class="sidebar-section-title">In This Article</div>
+            <nav class="toc-nav">
+              <a href="#flexible-redemption" class="toc-link">Flexible Redemption</a>
+              <a href="#real-time-redemption" class="toc-link">Real-Time Redemption</a>
+              <a href="#omnichannel-wallet" class="toc-link">Omnichannel Wallet</a>
+              <a href="#dynamic-catalog" class="toc-link">Dynamic Catalog</a>
+              <a href="#tier-management" class="toc-link">Tier Management</a>
+              <a href="#reward-types" class="toc-link">Every Reward Type</a>
+            </nav>
+          </div>
         </aside>
 
         <article class="blog-content">
@@ -635,21 +626,25 @@
           </p>
 
           <div class="feature-cards-grid">
-            <div class="feature-mini-card">
-              <h4>Points & Currency</h4>
-              <p><strong>Multi-currency wallets</strong> with real-time conversion, vesting schedules, and automated expiration management. Members see exactly what they have and what they can do with it.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Points & Currency</h4>
+              <p class="card-description"><strong>Multi-currency wallets</strong> with real-time conversion, vesting schedules, and automated expiration management. Members see exactly what they have and what they can do with it.</p>
             </div>
-            <div class="feature-mini-card">
-              <h4>Tiered Benefits</h4>
-              <p>Exclusive perks, priority access, and <strong>status rewards</strong> that scale with member engagement. Higher tiers unlock differentiated value that drives continued participation.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Tiered Benefits</h4>
+              <p class="card-description">Exclusive perks, priority access, and <strong>status rewards</strong> that scale with member engagement. Higher tiers unlock differentiated value that drives continued participation.</p>
             </div>
-            <div class="feature-mini-card">
-              <h4>Split & Linked Pay</h4>
-              <p>Let members combine points with cash, credit cards, or gift cards for <strong>frictionless checkout</strong> experiences. Removing payment friction increases redemption rates.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Split & Linked Pay</h4>
+              <p class="card-description">Let members combine points with cash, credit cards, or gift cards for <strong>frictionless checkout</strong> experiences. Removing payment friction increases redemption rates.</p>
             </div>
-            <div class="feature-mini-card">
-              <h4>Experiences & Events</h4>
-              <p>Offer VIP access, early releases, exclusive merchandise, and <strong>money-can't-buy moments</strong>. Experiential rewards create emotional connection without eroding margin.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Experiences & Events</h4>
+              <p class="card-description">Offer VIP access, early releases, exclusive merchandise, and <strong>money-can't-buy moments</strong>. Experiential rewards create emotional connection without eroding margin.</p>
             </div>
           </div>
 
@@ -724,55 +719,75 @@
           <h2 id="reward-types">Every Reward Type, One Platform</h2>
 
           <div class="reward-types-grid">
-            <div class="reward-type-card">
-              <h4>Discounts & Coupons</h4>
-              <p>Percentage off, dollars off, BOGO, and category-specific discounts applied at checkout. Rules engine handles stacking logic and exclusions.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Discounts & Coupons</h4>
+              <p class="card-description">Percentage off, dollars off, BOGO, and category-specific discounts applied at checkout. Rules engine handles stacking logic and exclusions.</p>
             </div>
-            <div class="reward-type-card">
-              <h4>Free Products</h4>
-              <p>Reward members with complimentary items from your product catalog or partner offerings. Inventory integration ensures availability before issuance.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Free Products</h4>
+              <p class="card-description">Reward members with complimentary items from your product catalog or partner offerings. Inventory integration ensures availability before issuance.</p>
             </div>
-            <div class="reward-type-card">
-              <h4>Gift Cards</h4>
-              <p>Digital and physical gift cards from your brand or an extensive network of third-party retailers. Members choose what matters to them.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Gift Cards</h4>
+              <p class="card-description">Digital and physical gift cards from your brand or an extensive network of third-party retailers. Members choose what matters to them.</p>
             </div>
-            <div class="reward-type-card">
-              <h4>Experiences</h4>
-              <p>VIP access, backstage passes, early releases, and money-can't-buy moments for top members. Experiential rewards differentiate your program.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Experiences</h4>
+              <p class="card-description">VIP access, backstage passes, early releases, and money-can't-buy moments for top members. Experiential rewards differentiate your program.</p>
             </div>
-            <div class="reward-type-card">
-              <h4>Charitable Donations</h4>
-              <p>Let members donate points to causes they care about. Donation options strengthen emotional brand connection without direct cost to margin.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Charitable Donations</h4>
+              <p class="card-description">Let members donate points to causes they care about. Donation options strengthen emotional brand connection without direct cost to margin.</p>
             </div>
-            <div class="reward-type-card">
-              <h4>Sweepstakes & Contests</h4>
-              <p>Entry-based rewards that create excitement and drive engagement with high-value prizes. Sweepstakes extend perceived value beyond your reward budget.</p>
+            <div class="card">
+              <div class="card-rule-orange"></div>
+              <h4 class="card-title">Sweepstakes & Contests</h4>
+              <p class="card-description">Entry-based rewards that create excitement and drive engagement with high-value prizes. Sweepstakes extend perceived value beyond your reward budget.</p>
             </div>
           </div>
           
-          <!-- Related Reading -->
-          <div class="related-reading" style="margin-top: var(--space-12); padding: var(--space-8); background: #F9F9F9; border-radius: var(--radius-xl);">
-            <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-charcoal-900); margin-bottom: var(--space-4);">Related Reading</h3>
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-              <li><a href="feature-program-design.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Program Design & Rules</a> — Flexible loyalty program architecture</li>
-              <li><a href="feature-promotions.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Promotions & Discounting</a> — Dynamic offers and targeted campaigns</li>
-              <li><a href="feature-engagement.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Engagement & Gamification</a> — Interactive experiences that delight</li>
-              <li><a href="tech-integration.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Integration Capabilities</a> — Connectors for the modern stack</li>
-            </ul>
-          </div>
-
         </article>
+
+        <!-- RIGHT SIDEBAR: Related Resources -->
+        <aside class="blog-sidebar-right">
+          <div>
+            <div class="sidebar-section-title">Related Resources</div>
+            <div class="sidebar-link-list">
+              <a href="feature-program-design.html" class="sidebar-link">
+                <span class="sidebar-link-title">Program Design & Rules</span>
+                <span class="sidebar-link-desc">Flexible loyalty program architecture</span>
+              </a>
+              <a href="feature-promotions.html" class="sidebar-link">
+                <span class="sidebar-link-title">Promotions & Discounting</span>
+                <span class="sidebar-link-desc">Dynamic offers and targeted campaigns</span>
+              </a>
+              <a href="feature-engagement.html" class="sidebar-link">
+                <span class="sidebar-link-title">Engagement & Gamification</span>
+                <span class="sidebar-link-desc">Interactive experiences that delight</span>
+              </a>
+              <a href="tech-integration.html" class="sidebar-link">
+                <span class="sidebar-link-title">Integration Capabilities</span>
+                <span class="sidebar-link-desc">Connectors for the modern stack</span>
+              </a>
+            </div>
+          </div>
+        </aside>
 
       </div>
     </div>
   </section>
 
   <!-- ========== CTA ========== -->
-  <section class="section-light bg-light" style="padding: var(--space-16) 0;">
+  <section class="section bg-light" style="padding: var(--space-16) 0;">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to Reward Your Best Customers?</h2>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+      <div class="cta-box">
+        <h2 class="cta-box-title">Ready to Reward Your Best Customers?</h2>
+        <p class="cta-box-description">
           See how RCX delivers flexible, real-time rewards that drive engagement and loyalty across every touchpoint.
         </p>
         <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
