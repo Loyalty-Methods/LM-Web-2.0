@@ -170,7 +170,7 @@
 .hero-cinematic--fade-white .hero-cinematic-bg::after { background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.5) 50%, #fff 100%); }
 .hero-cinematic > .container { position: relative; z-index: 2; padding-top: 160px; padding-bottom: var(--space-16); }
 .hero-cinematic-content { max-width: 860px; }
-.hero-cinematic-eyebrow { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; }
+.hero-cinematic-eyebrow { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: var(--space-6); }
 .hero-cinematic-title { font-size: clamp(3rem, 6vw, 4.5rem); font-weight: var(--font-weight-light); color: var(--color-white); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: var(--space-5); }
 .hero-cinematic-subtitle { font-size: var(--font-size-xl); color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 540px; margin-bottom: var(--space-10); }
 .hero-cinematic-cta { display: flex; gap: var(--space-4); flex-wrap: wrap; }

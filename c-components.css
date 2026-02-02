@@ -1,5 +1,5 @@
 /* ======================================================================
-   COMPONENTS (V10.1) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Buttons, Cards, Testimonials, Stats, Framework, Callout
+   COMPONENTS (V10.1) â€” Buttons, Cards, Testimonials, Stats, Framework, Callout
    ====================================================================== */
 
 /* === BUTTONS === */
@@ -19,30 +19,57 @@
 .btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--font-size-xs); }
 .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--font-size-base); }
 
-/* === CARDS === */
-.card { background: rgba(255,255,255,0.72); backdrop-filter: blur(40px) saturate(1.4); -webkit-backdrop-filter: blur(40px) saturate(1.4); border: 0.5px solid rgba(255,255,255,0.8); border-top: none; border-radius: 2px; padding: var(--space-10) var(--space-8) var(--space-8); box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); position: relative; overflow: hidden; }
+/* ======================================================================
+   CARDS â€” HARD RULE: FROSTED GLASS + CHARCOAL EDGE
+   -----------------------------------------------------------------------
+   ALL cards on light backgrounds MUST use this treatment. No exceptions.
+   Pattern: .card â†’ .card-rule-orange â†’ .card-title â†’ .card-description
+   No icons in cards. No eyebrows on cards. No .card.dark variant.
+   ====================================================================== */
+.card { background: rgba(255,255,255,0.72); backdrop-filter: blur(40px) saturate(1.4); -webkit-backdrop-filter: blur(40px) saturate(1.4); border: 0.5px solid rgba(255,255,255,0.8); border-top: none; border-radius: 2px; padding: var(--space-10) var(--space-8) var(--space-8); box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); position: relative; overflow: hidden; text-decoration: none; color: inherit; }
+/* Charcoal gradient top edge */
 .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(90,90,90,0.6) 0%, rgba(100,100,100,0.55) 80%, rgba(200,200,200,0.7) 92%, rgba(255,255,255,0.9) 96%, transparent 100%); z-index: 3; }
 .card::after { content: none; }
 .card:hover { border-color: rgba(255,255,255,0.9); box-shadow: 0 0 0 0.5px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.05); }
-.card.dark { background: linear-gradient(175deg, rgba(95,95,95,0.92) 0%, rgba(65,65,65,0.95) 50%, rgba(55,55,55,0.97) 100%); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-top: none; border-radius: 2px; padding: var(--space-10) var(--space-8) var(--space-8); box-shadow: 0 0 0 0.5px rgba(255,255,255,0.03), 0 1px 1px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.08), 0 16px 32px rgba(0,0,0,0.06), 0 32px 64px rgba(0,0,0,0.10); }
-.card.dark::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(180,75,10,0.6) 0%, rgba(200,85,15,0.55) 80%, rgba(245,160,80,0.7) 92%, rgba(255,200,140,0.9) 96%, transparent 100%); z-index: 3; }
-.card.dark::after { content: ''; position: absolute; top: 2px; left: 0; right: 0; height: 50%; background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 35%, transparent 100%); pointer-events: none; border-radius: 0; z-index: 1; }
-.card.dark:hover { border-color: rgba(255,255,255,0.14); box-shadow: 0 0 0 0.5px rgba(255,255,255,0.05), 0 1px 1px rgba(0,0,0,0.18), 0 2px 4px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.12), 0 24px 48px rgba(0,0,0,0.10), 0 48px 80px rgba(0,0,0,0.12); }
+/* Orange rule accent */
+.card-rule-orange { width: 28px; height: 2px; background: linear-gradient(90deg, #F37021 0%, #FF8F4D 60%, rgba(243,112,33,0.3) 100%); box-shadow: 0 0 6px rgba(243,112,33,0.2); position: relative; z-index: 2; }
+/* Card image (optional â€” for cards with hero images) */
 .card-image { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; object-fit: cover; object-position: center; border-radius: 2px 2px 0 0; background: var(--color-gray-100); }
 .card-image-placeholder { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; background: var(--color-gray-100); border-radius: 2px 2px 0 0; position: relative; overflow: hidden; }
+/* Title */
 .card-title, .card .card-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-light); color: var(--color-charcoal-900); line-height: var(--line-height-snug); letter-spacing: -0.02em; position: relative; z-index: 2; }
+/* Body text â€” card-description is the canonical class per locked pattern */
 .card-description, .card-body, .card .card-body { font-size: var(--font-size-sm); color: var(--color-gray-500); line-height: var(--line-height-loose); position: relative; z-index: 2; }
-.card-body strong, .card .card-body strong { color: var(--color-charcoal-900); font-weight: var(--font-weight-medium); }
+.card-description strong, .card-body strong, .card .card-body strong { color: var(--color-charcoal-900); font-weight: var(--font-weight-medium); }
+/* Link */
 .card-link { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); margin-top: auto; position: relative; z-index: 2; }
-.card-rule-orange { width: 28px; height: 2px; background: linear-gradient(90deg, #F37021 0%, #FF8F4D 60%, rgba(243,112,33,0.3) 100%); box-shadow: 0 0 6px rgba(243,112,33,0.2); position: relative; z-index: 2; }
+/* === CARDS ON WHITE BACKGROUNDS â€” SHARP GLASS EDGES ===
+   On bg-light (#F5F5F5), the frosted glass naturally contrasts.
+   On bg-white, cards are invisible without sharper definition.
+   These overrides add dark edges + stacked shadows for the glass-pane effect. */
+.bg-white .card {
+  border-color: rgba(0,0,0,0.08);
+  box-shadow:
+    0 0 0 0.5px rgba(0,0,0,0.07),
+    0 1px 1px rgba(0,0,0,0.06),
+    0 2px 4px rgba(0,0,0,0.05),
+    0 8px 16px rgba(0,0,0,0.04),
+    0 16px 32px rgba(0,0,0,0.03);
+}
+.bg-white .card:hover {
+  border-color: rgba(0,0,0,0.12);
+  box-shadow:
+    0 0 0 0.5px rgba(0,0,0,0.09),
+    0 1px 2px rgba(0,0,0,0.07),
+    0 4px 8px rgba(0,0,0,0.06),
+    0 16px 32px rgba(0,0,0,0.05),
+    0 24px 48px rgba(0,0,0,0.04);
+}
+
+/* Category override â€” suppress charcoal edge when card-category present */
 .card:has(.card-category)::before { display: none; }
 .card:has(.card-category) { border-top: 1px solid rgba(255,255,255,0.7); }
 .card-header { display: flex; flex-direction: column; gap: var(--space-2); }
-.card-icon { width: 24px; height: 24px; color: var(--color-primary); flex-shrink: 0; }
-.card-icon svg { width: 24px; height: 24px; }
-.card.dark .card-icon { color: var(--color-primary); }
-.card.dark .card-title { color: var(--color-white); }
-.card.dark .card-body { color: rgba(255,255,255,0.6); }
 
 /* === TESTIMONIALS === */
 .testimonial-card { background: var(--color-white); border-radius: var(--radius-xs); padding: var(--space-8); border: 1px solid var(--color-gray-200); display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 10px 20px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
@@ -95,8 +122,8 @@
 .callout-body { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-loose); margin-bottom: var(--space-6); max-width: 640px; margin-left: auto; margin-right: auto; }
 
 /* ======================================================================
-   GAUGE WIDGETS ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Premium Enterprise Ring Gauges
-   Progressive fill narrative: 45% ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 75% ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 100%
+   GAUGE WIDGETS â€” Premium Enterprise Ring Gauges
+   Progressive fill narrative: 45% â†’ 75% â†’ 100%
    ====================================================================== */
 
 /* --- Container: transparent, floats on section bg --- */
@@ -155,7 +182,7 @@
   .gauge-metric + .gauge-metric::before { display: none; }
 }
 /* ======================================================================
-   BENTO TILES (V2) Ã¢â‚¬â€ Content tiles for bento grid layouts
+   BENTO TILES (V2) â€” Content tiles for bento grid layouts
    Tile variants: default (white), accent (charcoal glass), tint (warm)
    ====================================================================== */
 
@@ -196,7 +223,7 @@
 .tile.tall     { min-height: 420px; justify-content: flex-end; }
 .tile.hero     { min-height: 380px; justify-content: flex-end; }
 
-/* === TILE Ã¢â‚¬â€ ACCENT (charcoal + glass + edge shimmer) === */
+/* === TILE â€” ACCENT (charcoal + glass + edge shimmer) === */
 .tile.accent {
   background: var(--grad-card-obsidian);
   border-color: rgba(255,255,255,0.10);
@@ -204,7 +231,7 @@
     0 2px 4px rgba(0,0,0,0.08),
     0 16px 40px rgba(0,0,0,0.12);
 }
-/* Top-edge shimmer Ã¢â‚¬â€ caught light */
+/* Top-edge shimmer â€” caught light */
 .tile.accent::before {
   content: '';
   position: absolute;
@@ -254,7 +281,7 @@
 .tile.accent .tile-metric-label { color: rgba(255,255,255,0.40); }
 .tile.accent .tile-rule { background: rgba(255,255,255,0.12); }
 
-/* === TILE Ã¢â‚¬â€ TINT (warm white) === */
+/* === TILE â€” TINT (warm white) === */
 .tile.tint {
   background: linear-gradient(165deg, #FEFCFA 0%, #FFF9F5 100%);
   border-color: rgba(243,112,33,0.06);
@@ -262,14 +289,14 @@
 
 /* === TILE TYPOGRAPHY === */
 
-/* Kicker Ã¢â‚¬â€ uppercase label */
+/* Kicker â€” uppercase label */
 .tile-kicker {
   font-size: var(--font-size-2xs);
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-widest);
   color: var(--color-primary);
-  margin-bottom: 14px;
+  margin-bottom: var(--space-6);
 }
 
 /* Headline */
@@ -286,7 +313,7 @@
   letter-spacing: -0.035em;
 }
 
-/* Body Ã¢â‚¬â€ editorial weight, generous air */
+/* Body â€” editorial weight, generous air */
 .tile-body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
@@ -300,7 +327,7 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Metric Ã¢â‚¬â€ large display number */
+/* Metric â€” large display number */
 .tile-metric {
   font-size: 5.5rem;
   font-weight: var(--font-weight-thin);
@@ -320,7 +347,7 @@
   margin-bottom: var(--space-5);
 }
 
-/* Rule Ã¢â‚¬â€ thin separator */
+/* Rule â€” thin separator */
 .tile-rule {
   width: 32px;
   height: 1px;
@@ -328,7 +355,7 @@
   margin: 16px 0;
 }
 
-/* Link Ã¢â‚¬â€ orange arrow link */
+/* Link â€” orange arrow link */
 .tile-link {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -342,7 +369,7 @@
 }
 .tile-link::after { content: '\2192'; font-size: 0.875rem; }
 
-/* === SPARKLINE Ã¢â‚¬â€ data rows used sparingly inside tiles === */
+/* === SPARKLINE â€” data rows used sparingly inside tiles === */
 .sparkline-group { margin-bottom: var(--space-6); }
 .sparkline-row {
   display: flex;

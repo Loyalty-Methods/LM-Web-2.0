@@ -1,5 +1,5 @@
 /* ======================================================================
-   LAYOUTS (V10.1) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Spotlight, Logo Cloud, Tabs, Features, FAQ, Bento,
+   LAYOUTS (V10.1) ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â Spotlight, Logo Cloud, Tabs, Features, FAQ, Bento,
                       Resources, CTA, Product Tour
    ====================================================================== */
 
@@ -53,7 +53,7 @@
 }
 .feature-content { max-width: 480px; }
 @media (max-width: 1024px) { .feature-content { max-width: 100%; } }
-.feature-label { font-size: var(--font-size-sm); color: var(--color-primary); letter-spacing: var(--letter-spacing-widest); }
+.feature-label { display: block; font-size: var(--font-size-sm); color: var(--color-primary); letter-spacing: var(--letter-spacing-widest); margin-bottom: var(--space-6); }
 .feature-title { font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl)); font-weight: var(--font-weight-light); color: var(--text-primary); line-height: var(--line-height-tight); letter-spacing: var(--letter-spacing-tight); margin-bottom: var(--space-5); }
 .feature-description { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-loose); margin-bottom: var(--space-6); }
 .feature-list { list-style: none; margin-bottom: var(--space-8); }
@@ -166,7 +166,7 @@
 /* === PRODUCT TOUR === */
 .product-tour { padding: var(--space-24) 0; }
 .product-tour-header { text-align: center; margin-bottom: var(--space-12); }
-.product-tour-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: var(--letter-spacing-widest); color: var(--color-primary); }
+.product-tour-eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: var(--letter-spacing-widest); color: var(--color-primary); margin-bottom: var(--space-6); }
 .product-tour-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: var(--font-weight-light); color: var(--color-white); line-height: var(--line-height-tight); }
 .browser-window { max-width: 1000px; margin: 0 auto var(--space-8); }
 .browser-frame { background: var(--grad-obsidian-warm); border-radius: var(--radius-xs); overflow: hidden; box-shadow: var(--shadow-dark-lg); border: var(--border-glass); position: relative; }
@@ -194,7 +194,7 @@
 .tour-nav-label { font-size: var(--font-size-sm); color: rgba(255,255,255,0.8); font-weight: var(--font-weight-medium); letter-spacing: var(--letter-spacing-wide); }
 @media (max-width: 768px) { .tour-nav { flex-wrap: wrap; gap: var(--space-4); } }
 /* ======================================================================
-   BENTO TILE GRID (V2) — 12-Column Asymmetric Layout
+   BENTO TILE GRID (V2) Ã¢â‚¬â€ 12-Column Asymmetric Layout
    Used on feature pages and homepage for bento-style content tiles.
    ====================================================================== */
 
