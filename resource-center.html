@@ -6,8 +6,13 @@
   <title>Resource Center | Loyalty Methods</title>
   
   <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,16 +70,16 @@
 
     .rc-hero-eyebrow {
       font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-medium);
       color: var(--color-primary);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: var(--letter-spacing-widest);
       margin-bottom: var(--space-3);
     }
 
     .rc-hero-title {
       font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: var(--font-weight-extrabold);
+      font-weight: var(--font-weight-light);
       color: var(--color-white);
       line-height: 1;
       letter-spacing: -0.03em;
@@ -110,15 +115,26 @@
       display: grid;
       grid-template-columns: 1fr 1.3fr;
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: var(--radius-xs);
       overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-gray-200);
+      position: relative;
+    }
+
+    .rc-spotlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%);
+      z-index: 10;
     }
 
     .rc-spotlight:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.12);
+      box-shadow: var(--shadow-xl);
     }
 
     @media (max-width: 1024px) {
@@ -130,16 +146,12 @@
     .rc-spotlight-image {
       position: relative;
       min-height: 320px;
-      background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+      background: #f5f5f5;
       overflow: hidden;
-    }
-
-    .rc-spotlight-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
     }
 
     .rc-spotlight-badge {
@@ -148,13 +160,14 @@
       left: var(--space-5);
       padding: var(--space-2) var(--space-4);
       background: var(--color-white);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-xs);
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       color: var(--color-primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 5;
     }
 
     .rc-spotlight-content {
@@ -174,7 +187,7 @@
 
     .rc-spotlight-title {
       font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-light);
       color: var(--color-charcoal-900);
       line-height: 1.2;
       margin-bottom: var(--space-4);
@@ -228,7 +241,7 @@
       padding: var(--space-3) var(--space-5);
       background: var(--color-white);
       border: 1px solid var(--color-gray-100);
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-xs);
       font-size: var(--font-size-sm);
       font-weight: var(--font-weight-medium);
       color: var(--color-gray-400);
@@ -259,7 +272,7 @@
       height: 50%;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
       pointer-events: none;
-      border-radius: var(--radius-full) var(--radius-full) 0 0;
+      border-radius: var(--radius-xs) var(--radius-xs) 0 0;
     }
 
     .rc-filter-tab-icon {
@@ -304,7 +317,7 @@
        ------------------------------------------------------------------------- */
     .rc-card {
       background: var(--color-white);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-xs);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -314,9 +327,8 @@
     }
 
     .rc-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(91, 138, 184, 0.15);
-      border-color: var(--color-navy-light);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      border-color: var(--color-gray-200);
     }
 
     .rc-card-image {
@@ -343,7 +355,7 @@
       left: var(--space-4);
       padding: var(--space-1) var(--space-3);
       background: var(--color-white);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-xs);
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
@@ -392,7 +404,7 @@
 
     .rc-card-title {
       font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
       color: var(--color-charcoal-900);
       line-height: 1.4;
       margin-bottom: var(--space-3);
@@ -718,19 +730,31 @@
   <!-- ========== FEATURED SPOTLIGHT ========== -->
   <section class="rc-featured">
     <div class="container">
-      <a href="case-study-mgm.html" class="rc-spotlight">
+      <a href="forrester-report-2025.html" class="rc-spotlight">
         <div class="rc-spotlight-image">
-          <span class="rc-spotlight-badge">Featured Case Study</span>
-          <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=1200&q=80" alt="MGM Resorts Las Vegas">
+          <span class="rc-spotlight-badge">Featured Report</span>
+          <div style="width: 280px; background: #fff; border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; position: relative;">
+            <div style="padding: 2rem 1.75rem 1.5rem;">
+              <div style="font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: #888; margin-bottom: 0.75rem;">Forrester Report</div>
+              <div style="font-size: 1.35rem; font-weight: 500; color: #1a1a1a; line-height: 1.25; margin-bottom: 0.5rem;">The Loyalty Platforms Landscape, Q3 2025</div>
+              <div style="font-size: 0.65rem; color: #999; margin-bottom: 1.25rem;">Forrester's Overview Of 28 Vendors</div>
+              <div style="font-size: 0.55rem; color: #aaa; line-height: 1.5;">July 8, 2025</div>
+            </div>
+            <div style="background: linear-gradient(135deg, #006B54 0%, #00875A 50%, #009966 100%); padding: 1.25rem 1.75rem;">
+              <div style="font-size: 0.7rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem;">Summary</div>
+              <div style="font-size: 0.5rem; color: rgba(255,255,255,0.75); line-height: 1.6;">You can use loyalty platforms to implement and manage loyalty programs and partnerships, collect and analyze customer data and insights, and support loyalty interactions across channels.</div>
+            </div>
+            <div style="position: absolute; top: 1.25rem; right: 1.25rem; background: #00614E; color: #fff; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.3rem 0.5rem; border-radius: 2px;">FORRESTER</div>
+          </div>
         </div>
         <div class="rc-spotlight-content">
-          <p class="rc-spotlight-meta">Hospitality & Gaming • Enterprise Loyalty</p>
-          <h2 class="rc-spotlight-title">MGM Resorts: Revolutionizing the Guest Experience Across 30+ Properties</h2>
+          <p class="rc-spotlight-meta">Analyst Recognition &#8226; Q3 2025</p>
+          <h2 class="rc-spotlight-title">Loyalty Methods Named in Forrester's 2025 Loyalty Technology Landscape</h2>
           <p class="rc-spotlight-excerpt">
-            MGM Resorts transformed its loyalty program with ReactorCX, delivering seamless cross-property recognition in real-time. See how event-driven architecture unified loyalty across gaming, dining, entertainment, and hospitality touchpoints.
+            Forrester profiled 28 notable loyalty platform providers in their Q3 2025 report, including Loyalty Methods. See how independent analysts view the loyalty technology market and where ReactorCX fits.
           </p>
           <div class="rc-spotlight-cta">
-            <span class="btn btn-primary">Read the Case Study</span>
+            <span class="btn btn-primary">Access the Full Report</span>
           </div>
         </div>
       </a>
