@@ -5,141 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partner Enablement | Loyalty Methods</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
-  
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
        PAGE-SPECIFIC STYLES: Partner Enablement
        ========================================================================== */
 
-    /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Dark Charcoal Theme)
-       ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: var(--grad-charcoal-premium);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0;
-      padding-top: calc(var(--space-24) + 80px);
-    }
+    /* Page-specific: hero highlight */
+    .hero-cinematic-title .highlight { color: var(--color-primary); }
 
-    /* Glass shine overlay */
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .subpage-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    .subpage-hero-content {
-      max-width: 600px;
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    .subpage-hero-eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-4);
-    }
-
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-
-    .subpage-hero-title .highlight {
-      background: var(--grad-orange-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-cta {
-      display: flex;
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 1024px) {
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    .subpage-hero-media {
-      position: relative;
-    }
-
-    .subpage-hero-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: auto;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-      
-      .subpage-hero-title {
-        font-size: 2rem;
-      }
+    /* Hero overlay - charcoal fade to section bg */
+    .hero-cinematic-bg::after {
+      background: linear-gradient(180deg,
+        rgba(40,40,44,0.45) 0%,
+        rgba(38,38,42,0.50) 35%,
+        rgba(42,42,46,0.70) 60%,
+        rgba(245,245,245,1) 100%
+      );
     }
 
     /* -------------------------------------------------------------------------
@@ -155,15 +49,26 @@
       margin: 0 auto;
       text-align: center;
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: 2px;
       padding: var(--space-12) var(--space-16);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-md);
       border: 1px solid rgba(0, 0, 0, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-content::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(90,90,90,0.6) 0%, rgba(100,100,100,0.55) 80%, rgba(200,200,200,0.7) 92%, rgba(255,255,255,0.9) 96%, transparent 100%);
+      z-index: 3;
     }
 
     .problem-title {
       font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-light);
       color: var(--color-primary);
       margin-bottom: var(--space-6);
     }
@@ -172,6 +77,11 @@
       font-size: var(--font-size-lg);
       color: var(--color-gray-400);
       line-height: var(--line-height-relaxed);
+    }
+
+    .problem-body strong {
+      color: var(--color-charcoal-900);
+      font-weight: var(--font-weight-medium);
     }
 
     /* -------------------------------------------------------------------------
@@ -197,130 +107,22 @@
       background-color: var(--color-white);
     }
 
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-      margin-bottom: var(--space-20);
-    }
-
-    .feature-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-row-reverse {
-      direction: rtl;
-    }
-
-    .feature-row-reverse > * {
-      direction: ltr;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row,
-      .feature-row-reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-      }
-    }
-
-    .feature-row-content {
-      max-width: 520px;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row-content {
-        max-width: 100%;
-      }
-    }
-
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-3);
-    }
-
-    .feature-row-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .feature-row-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list {
-      list-style: none;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-list-item {
-      position: relative;
-      padding-left: var(--space-6);
-      margin-bottom: var(--space-3);
-      font-size: var(--font-size-sm);
-      color: var(--text-muted);
-    }
-
-    .feature-row-list-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      border-radius: 50%;
-    }
-
     .feature-row-media {
       position: relative;
-    }
-
-    .feature-row-image-placeholder {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #4A4A4A 0%, #3D3D3D 100%);
-      border-radius: var(--radius-xl);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: var(--font-size-sm);
     }
 
-    /* btn-dark for light backgrounds */
-    .btn-dark {
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      color: var(--color-white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
-    }
-
-    .btn-dark:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    .feature-row-img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 50%, transparent 95%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 50%, transparent 95%);
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.08));
     }
 
     /* -------------------------------------------------------------------------
@@ -329,7 +131,7 @@
     .callout-block {
       background: linear-gradient(135deg, rgba(243, 112, 33, 0.08) 0%, rgba(91, 138, 184, 0.06) 100%);
       border: 1px solid rgba(243, 112, 33, 0.2);
-      border-radius: var(--radius-2xl);
+      border-radius: 2px;
       padding: var(--space-10);
       text-align: center;
       max-width: 900px;
@@ -338,7 +140,7 @@
 
     .callout-block-title {
       font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
       color: var(--color-charcoal-900);
       margin-bottom: var(--space-4);
     }
@@ -349,34 +151,55 @@
       line-height: var(--line-height-relaxed);
     }
 
+    .callout-block-text strong {
+      color: var(--color-charcoal-900);
+      font-weight: var(--font-weight-medium);
+    }
+
     /* -------------------------------------------------------------------------
        BOTTOM CTA CARD
        ------------------------------------------------------------------------- */
     .bottom-cta-card {
       background: var(--color-white);
-      border-radius: var(--radius-2xl);
+      border-radius: 2px;
       padding: var(--space-12) var(--space-16);
-      box-shadow: var(--shadow-card);
+      box-shadow: var(--shadow-md);
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(90,90,90,0.6) 0%, rgba(100,100,100,0.55) 80%, rgba(200,200,200,0.7) 92%, rgba(255,255,255,0.9) 96%, transparent 100%);
+      z-index: 3;
     }
 
     .bottom-cta-title {
       font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-main);
+      font-weight: var(--font-weight-light);
+      color: var(--color-charcoal-900);
       margin-bottom: var(--space-4);
     }
 
     .bottom-cta-description {
       font-size: var(--font-size-base);
-      color: var(--text-muted);
+      color: var(--color-gray-500);
       line-height: 1.7;
       margin-bottom: var(--space-6);
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    .bottom-cta-description strong {
+      color: var(--color-charcoal-900);
+      font-weight: var(--font-weight-medium);
     }
 
     @media (max-width: 640px) {
@@ -386,8 +209,8 @@
     }
 
     @media (max-width: 768px) {
-      .feature-row-title {
-        font-size: var(--font-size-2xl);
+      .problem-content {
+        padding: var(--space-8);
       }
     }
   </style>
@@ -587,29 +410,25 @@
 
 
   <!-- ========================================
-       SECTION 1: HERO (Dark Charcoal Theme)
+       SECTION 1: HERO
+       Cinematic photo hero - fades to #F5F5F5
        ======================================== -->
-  <section class="subpage-hero">
+  <section class="hero-cinematic hero-cinematic--tall">
+    <div class="hero-cinematic-bg">
+      <img src="hero-partner-enablement.png" alt="Partner Enablement Platform">
+    </div>
     <div class="container">
-      <div class="subpage-hero-inner">
-        
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">Capabilities</div>
-          <h1 class="subpage-hero-title">
-            Partner <span class="highlight">Enablement</span>
-          </h1>
-          <p class="subpage-hero-description">
-            <strong>Scale partner programs without scaling partner operations.</strong> Onboard new partners faster, settle accurately, and maintain control across coalition, earn, and burn relationships. <strong>One platform for the entire partner lifecycle.</strong>
-          </p>
-          <div class="subpage-hero-cta">
-            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          </div>
+      <div class="hero-cinematic-content">
+        <span class="hero-cinematic-eyebrow">Capabilities</span>
+        <h1 class="hero-cinematic-title">
+          Partner <span class="highlight">Enablement</span>
+        </h1>
+        <p class="hero-cinematic-subtitle">
+          <strong>Scale partner programs without scaling partner operations.</strong> Onboard new partners faster, settle accurately, and maintain control across coalition, earn, and burn relationships. <strong>One platform for the entire partner lifecycle.</strong>
+        </p>
+        <div class="hero-cinematic-cta">
+          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
         </div>
-        
-        <div class="subpage-hero-media hidden-mobile">
-          <div class="subpage-hero-image-placeholder">[Partner Ecosystem Diagram]</div>
-        </div>
-        
       </div>
     </div>
   </section>
@@ -642,42 +461,34 @@
       <div class="partner-grid">
         
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </div>
-            <h3 class="card-title">Coalition Partners</h3>
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
           </div>
+          <h3 class="card-title">Coalition Partners</h3>
           <p class="card-body">Multiple brands. <strong>One currency.</strong> Members earn and redeem across the coalition while each partner maintains <strong>separate rules and funding</strong>.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-            </div>
-            <h3 class="card-title">Earn Partners</h3>
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
           </div>
+          <h3 class="card-title">Earn Partners</h3>
           <p class="card-body">Members earn your currency through partner activity. Attribution tracks to source for <strong>accurate settlement</strong>.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
-            </div>
-            <h3 class="card-title">Burn Partners</h3>
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
           </div>
+          <h3 class="card-title">Burn Partners</h3>
           <p class="card-body">Members redeem at partner locations. <strong>Reimbursement calculated automatically</strong> per agreement terms.</p>
         </div>
 
         <div class="card">
-          <div class="icon-feature-header">
-            <div class="icon-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-            </div>
-            <h3 class="card-title">Co-Funded Promotions</h3>
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
           </div>
+          <h3 class="card-title">Co-Funded Promotions</h3>
           <p class="card-body">Partners co-fund promotions. <strong>Allocation and settlement tracked per party.</strong> Members see one offer.</p>
         </div>
 
@@ -718,20 +529,20 @@
   <section class="feature-rows-section">
     <div class="container">
       <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Partner Governance</span>
-          <h2 class="feature-row-title">Each Partner Is a Micro-Program</h2>
-          <p class="feature-row-description">
+        <div class="feature-content">
+          <span class="feature-label">Partner Governance</span>
+          <h2 class="feature-title">Each Partner Is a Micro-Program</h2>
+          <p class="feature-description">
             Every partner operates as its own micro-program within RCX. Segregated rules, access control, and agreements per partner. Partner activity is evaluated, governed, and measured using the same enterprise execution model as your own first-party transactions.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>Separate rules per partner</strong> without separate systems</li>
-            <li class="feature-row-list-item">Partner activity isolated for <strong>compliance and billing accuracy</strong></li>
-            <li class="feature-row-list-item">Reimbursement calculated per agreement, <strong>even when rates change mid-period</strong></li>
+          <ul class="feature-list">
+            <li><strong>Separate rules per partner</strong> without separate systems</li>
+            <li>Partner activity isolated for <strong>compliance and billing accuracy</strong></li>
+            <li>Reimbursement calculated per agreement, <strong>even when rates change mid-period</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Partner Rules Folder Structure]</div>
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80" alt="Partner governance rules and folder structure" class="feature-row-img">
         </div>
       </div>
     </div>
@@ -743,21 +554,21 @@
        ======================================== -->
   <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
-      <div class="feature-row feature-row-reverse">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Batch Gateway</span>
-          <h2 class="feature-row-title">Onboard Partners in Hours, Not Weeks</h2>
-          <p class="feature-row-description">
+      <div class="feature-row reverse">
+        <div class="feature-content">
+          <span class="feature-label">Batch Gateway</span>
+          <h2 class="feature-title">Onboard Partners in Hours, Not Weeks</h2>
+          <p class="feature-description">
             Every partner sends data differently. FeedXChange handles format translation, validation, and response generation through <strong>reusable templates</strong>. Your team configures once. <strong>New partners onboard in hours.</strong>
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item"><strong>Reusable templates</strong> for faster partner onboarding</li>
-            <li class="feature-row-list-item"><strong>Automated monitoring and alerting</strong> on every job</li>
-            <li class="feature-row-list-item">Full history with downloadable files for <strong>audit</strong></li>
+          <ul class="feature-list">
+            <li><strong>Reusable templates</strong> for faster partner onboarding</li>
+            <li><strong>Automated monitoring and alerting</strong> on every job</li>
+            <li>Full history with downloadable files for <strong>audit</strong></li>
           </ul>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[FeedXChange UI]</div>
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80" alt="FeedXChange data integration dashboard" class="feature-row-img">
         </div>
       </div>
     </div>
@@ -785,20 +596,20 @@
   <section class="feature-rows-section" style="background-color: #F5F5F5;">
     <div class="container">
       <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Sub-Balance Tracking</span>
-          <h2 class="feature-row-title">Track Partner Value Separately. Settle Accurately.</h2>
-          <p class="feature-row-description">
+        <div class="feature-content">
+          <span class="feature-label">Sub-Balance Tracking</span>
+          <h2 class="feature-title">Track Partner Value Separately. Settle Accurately.</h2>
+          <p class="feature-description">
             Members see one balance. Finance sees attribution by partner. When members redeem, the platform <strong>debits the correct funding source automatically</strong>.
           </p>
-          <ul class="feature-row-list">
-            <li class="feature-row-list-item">Members see a <strong>unified balance</strong>; finance sees partner attribution</li>
-            <li class="feature-row-list-item">Redemptions debit the <strong>correct funding source</strong> per business rules</li>
-            <li class="feature-row-list-item"><strong>Full audit trail</strong> from earn to redeem</li>
+          <ul class="feature-list">
+            <li>Members see a <strong>unified balance</strong>; finance sees partner attribution</li>
+            <li>Redemptions debit the <strong>correct funding source</strong> per business rules</li>
+            <li><strong>Full audit trail</strong> from earn to redeem</li>
           </ul>
         </div>
         <div class="feature-row-media">
-          <div class="feature-row-image-placeholder">[Sub-Balance Attribution View]</div>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Sub-balance attribution and financial tracking view" class="feature-row-img">
         </div>
       </div>
     </div>
