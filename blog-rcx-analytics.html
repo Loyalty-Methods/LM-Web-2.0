@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop Querying Your Data. Start Talking to Your Loyalty Platform | Loyalty Methods</title>
   
-  <!-- NEW MODULAR CSS SYSTEM -->
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="css-styles.css">
+  <!-- MODULAR CSS SYSTEM -->
+  <link rel="stylesheet" href="c-tokens.css">
+  <link rel="stylesheet" href="c-base.css">
+  <link rel="stylesheet" href="c-nav.css">
+  <link rel="stylesheet" href="c-hero.css">
+  <link rel="stylesheet" href="c-components.css">
+  <link rel="stylesheet" href="c-layouts.css">
+  <link rel="stylesheet" href="c-footer.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,145 +22,189 @@
     /* ==========================================================================
        BLOG ARTICLE SPECIFIC STYLES
        ========================================================================== */
-    
-    /* Blog Hero Section */
+
+    /* Blog Hero - full-bleed image, dark overlay, centered text */
     .blog-hero {
-      padding: calc(var(--space-24) + 80px) 0 var(--space-16);
-      background: var(--grad-charcoal-premium);
       position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
       overflow: hidden;
+      padding-top: 80px;
     }
-    
+
+    /* Full-bleed background image */
+    .blog-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: rgb(50,50,50);
+    }
+
+    .blog-hero-bg img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 60%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* Charcoal overlay - seamless blend from solid left into image on right */
+    .blog-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        /* Left-to-right: blend charcoal into image */
+        linear-gradient(90deg,
+          rgba(50,50,50,1) 0%,
+          rgba(50,50,50,1) 30%,
+          rgba(50,50,50,0.95) 38%,
+          rgba(50,50,50,0.70) 50%,
+          rgba(50,50,50,0.35) 65%,
+          rgba(50,50,50,0.20) 80%,
+          rgba(50,50,50,0.15) 100%
+        );
+    }
+
+    /* Bottom blend - long smooth dissolve to light, matching homepage */
+    .blog-hero-bottom-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(220,220,220,0.25) 30%,
+        rgba(235,235,235,0.55) 50%,
+        rgba(242,242,242,0.8) 70%,
+        #f0f0f0 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* White glass sweep - brand signature */
     .blog-hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.18) 0%,
+        rgba(255,255,255,0.08) 30%,
+        rgba(255,255,255,0.03) 55%,
+        transparent 100%
+      );
       pointer-events: none;
+      z-index: 2;
     }
-    
-    .blog-hero .container {
+
+    /* Top hairline */
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 5%; right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+      z-index: 4;
+    }
+
+    .blog-hero > .container {
       position: relative;
-      z-index: 1;
-    }
-    
-    /* Split Hero Layout */
-    .blog-hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-10);
-      align-items: center;
+      z-index: 3;
+      padding-top: var(--space-24);
+      padding-bottom: var(--space-16);
     }
 
-    @media (min-width: 992px) {
-      .blog-hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-16);
-      }
+    .blog-hero-content {
+      max-width: 880px;
     }
 
-    /* Hero Meta */
+    .blog-hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--font-weight-light);
+      color: var(--color-white);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-5);
+    }
+
+    .blog-hero-title .highlight {
+      color: var(--color-primary);
+    }
+
+    .blog-hero-description {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-light);
+      color: rgba(255,255,255,0.70);
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    /* Blog hero meta bar */
     .blog-hero-meta {
       display: flex;
       align-items: center;
       gap: var(--space-4);
       margin-bottom: var(--space-6);
       font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-semibold);
-      color: rgba(255, 255, 255, 0.9);
+      font-weight: var(--font-weight-medium);
+      color: rgba(255, 255, 255, 0.7);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: var(--letter-spacing-widest);
     }
 
     .blog-hero-tag {
       background: rgba(243, 112, 33, 0.2);
       padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-xs);
       color: var(--color-primary);
       border: 1px solid rgba(243, 112, 33, 0.3);
     }
-    
-    .blog-hero-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-white);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-    }
-    
-    .blog-hero-title .highlight {
-      color: var(--color-primary);
-    }
-    
-    .blog-hero-description {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      line-height: 1.7;
-    }
 
-    /* Hero Graphic Container */
-    .blog-hero-graphic {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .blog-hero-graphic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .blog-hero-graphic-placeholder {
-      color: rgba(255, 255, 255, 0.4);
-      font-weight: var(--font-weight-semibold);
-      letter-spacing: 0.05em;
-      font-size: var(--font-size-sm);
+    @media (max-width: 768px) {
+      .blog-hero { min-height: 50vh; }
+      .blog-hero > .container { padding-top: 120px; padding-bottom: var(--space-10); }
     }
 
     /* ==========================================================================
-       BLOG CONTENT LAYOUT
+       BLOG CONTENT LAYOUT - 3-column: TOC | Content | Related
        ========================================================================== */
-    
+
     .blog-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-12);
+      gap: var(--space-10);
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 1100px) {
       .blog-grid {
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 200px 1fr 240px;
         align-items: start;
       }
     }
 
-    /* Sticky Table of Contents */
-    .blog-sidebar {
+    /* Sticky sidebars - left and right */
+    .blog-sidebar-left,
+    .blog-sidebar-right {
       display: none;
     }
 
-    @media (min-width: 992px) {
-      .blog-sidebar {
-        display: block;
+    @media (min-width: 1100px) {
+      .blog-sidebar-left,
+      .blog-sidebar-right {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
         position: sticky;
         top: 120px;
       }
     }
 
-    .toc-title {
+    /* Sidebar section titles */
+    .sidebar-section-title {
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-bold);
       text-transform: uppercase;
@@ -164,21 +213,63 @@
       margin-bottom: var(--space-4);
     }
 
-    .toc-list {
+    /* Sidebar card links */
+    .sidebar-link-list {
       display: flex;
       flex-direction: column;
       gap: var(--space-3);
-      border-left: 1px solid var(--color-gray-100);
+    }
+
+    .sidebar-link {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-xs);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .sidebar-link:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .sidebar-link-title {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+      line-height: 1.3;
+    }
+
+    .sidebar-link-desc {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-400);
+      line-height: 1.4;
+    }
+
+    /* TOC links */
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 1px solid var(--color-gray-200);
     }
 
     .toc-link {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-400);
-      padding-left: var(--space-4);
+      display: block;
+      padding: var(--space-2) var(--space-4);
+      background: none;
+      border: none;
+      border-radius: 0;
       border-left: 2px solid transparent;
       margin-left: -1px;
-      transition: all var(--transition-fast);
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-400);
       line-height: 1.4;
+      text-decoration: none;
     }
 
     .toc-link:hover,
@@ -190,9 +281,9 @@
     /* ==========================================================================
        BLOG CONTENT TYPOGRAPHY
        ========================================================================== */
-    
+
     .blog-content {
-      max-width: 750px;
+      max-width: 800px;
     }
 
     .blog-content h2 {
@@ -204,8 +295,8 @@
       line-height: 1.3;
     }
 
-    .blog-content h2:first-of-type { 
-      margin-top: 0; 
+    .blog-content h2:first-of-type {
+      margin-top: 0;
     }
 
     .blog-content h3 {
@@ -255,52 +346,16 @@
       color: #4b5563;
       font-size: var(--font-size-xl);
     }
-    
+
     /* Blog Content Links */
     .blog-content a {
       color: var(--color-primary);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color var(--transition-fast);
-    }
-    
-    .blog-content a:hover {
-      border-bottom-color: var(--color-primary);
     }
 
-    /* ==========================================================================
-       RELATED ARTICLES
-       ========================================================================== */
-    
-    .related-section {
-      padding: var(--space-20) 0;
-      background: #F5F5F5;
-    }
-    
-    .related-title {
-      font-size: var(--font-size-2xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-8);
-      text-align: center;
-    }
-    
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-    }
-    
-    @media (max-width: 1024px) {
-      .related-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .related-grid {
-        grid-template-columns: 1fr;
-      }
+    .blog-content a:hover {
+      border-bottom-color: var(--color-primary);
     }
   </style>
 </head>
@@ -499,42 +554,37 @@
 
   <!-- ========== BLOG HERO ========== -->
   <section class="blog-hero">
+    <div class="blog-hero-bg">
+      <img src="https://media.istockphoto.com/id/2233188265/photo/marketing-strategy-target-audience-and-advertising-analysis-concept-showing-a-person-using.jpg?s=612x612&w=0&k=20&c=v3DOiO7NqC8THpwBh8ztGlN8efeM35IIFz_wcHvliis=" alt="Data analytics dashboard">
+    </div>
+    <div class="blog-hero-bottom-fade"></div>
     <div class="container">
-      
-      <div class="blog-hero-grid">
-        
-        <div class="blog-hero-content">
-          <div class="blog-hero-meta">
-            <span class="blog-hero-tag">Analytics</span>
-            <span>•</span>
-            <span>Jan 25, 2026</span>
-          </div>
-          <h1 class="blog-hero-title">
-            Stop Querying Your Data. <span class="highlight">Start Talking</span> to Your Loyalty Platform.
-          </h1>
-          <p class="blog-hero-description">
-            A loyalty analytics platform built for enterprise teams who need answers, not dashboards.
-          </p>
+      <div class="blog-hero-content">
+        <div class="blog-hero-meta">
+          <span class="blog-hero-tag">Analytics</span>
+          <span>&bull;</span>
+          <span>Jan 25, 2026</span>
         </div>
-
-        <div class="blog-hero-graphic">
-          <span class="blog-hero-graphic-placeholder">CONVERSATIONAL ANALYTICS [16:9]</span>
-        </div>
-
+        <h1 class="blog-hero-title">
+          Stop Querying Your Data. <span class="highlight">Start Talking</span> to Your Loyalty Platform.
+        </h1>
+        <p class="blog-hero-description">
+          A loyalty analytics platform built for enterprise teams who need answers, not dashboards.
+        </p>
       </div>
-
     </div>
   </section>
 
   <!-- ========== BLOG CONTENT ========== -->
-  <section class="section section-light bg-white" style="padding-top: var(--space-16); padding-bottom: var(--space-24);">
+  <section class="section bg-white" style="padding-top: var(--space-16); padding-bottom: var(--space-24);">
     <div class="container">
-      
+
       <div class="blog-grid">
 
-        <aside class="blog-sidebar">
-          <div class="toc-title">In This Article</div>
-          <nav class="toc-list">
+        <!-- LEFT SIDEBAR: Table of Contents -->
+        <aside class="blog-sidebar-left">
+          <div class="sidebar-section-title">In This Article</div>
+          <nav class="toc-nav">
             <a href="#dashboard-trap" class="toc-link">The Dashboard Trap</a>
             <a href="#pre-built-dashboards" class="toc-link">Pre-Built Dashboards Solve the Wrong Problem</a>
             <a href="#conversational-analytics" class="toc-link">What Conversational Analytics Means</a>
@@ -544,6 +594,7 @@
           </nav>
         </aside>
 
+        <!-- CENTER: Article Content -->
         <article class="blog-content">
           
           <p>
@@ -672,29 +723,41 @@
             <strong>Stop querying your data. Start talking to it.</strong> Your choice. Your data.
           </p>
           
-          <!-- Related Reading -->
-          <div class="related-reading" style="margin-top: var(--space-12); padding: var(--space-8); background: #F9F9F9; border-radius: var(--radius-xl);">
-            <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-charcoal-900); margin-bottom: var(--space-4);">Related Reading</h3>
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-              <li><a href="feature-analytics.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">RCX Analytics Overview</a> — Explore the full analytics platform capabilities</li>
-              <li><a href="tech-api-architecture.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Platform Architecture</a> — How ReactorCX integrates with your existing stack</li>
-              <li><a href="tech-security.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Security & Compliance</a> — Role-based access and data governance</li>
-              <li><a href="feature-promotions.html" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">Promotions & Discounting</a> — Real-time campaign management</li>
-            </ul>
-          </div>
-
         </article>
+
+        <!-- RIGHT SIDEBAR: Related Resources -->
+        <aside class="blog-sidebar-right">
+          <div class="sidebar-section-title">Related Reading</div>
+          <div class="sidebar-link-list">
+            <a href="feature-analytics.html" class="sidebar-link">
+              <span class="sidebar-link-title">RCX Analytics Overview</span>
+              <span class="sidebar-link-desc">Explore the full analytics platform capabilities</span>
+            </a>
+            <a href="tech-api-architecture.html" class="sidebar-link">
+              <span class="sidebar-link-title">Platform Architecture</span>
+              <span class="sidebar-link-desc">How ReactorCX integrates with your existing stack</span>
+            </a>
+            <a href="tech-security.html" class="sidebar-link">
+              <span class="sidebar-link-title">Security & Compliance</span>
+              <span class="sidebar-link-desc">Role-based access and data governance</span>
+            </a>
+            <a href="feature-promotions.html" class="sidebar-link">
+              <span class="sidebar-link-title">Promotions & Discounting</span>
+              <span class="sidebar-link-desc">Real-time campaign management</span>
+            </a>
+          </div>
+        </aside>
 
       </div>
     </div>
   </section>
 
   <!-- ========== CTA ========== -->
-  <section class="section-light bg-light" style="padding: var(--space-16) 0;">
+  <section class="section bg-light" style="padding: var(--space-16) 0;">
     <div class="container">
-      <div class="cta-box-light">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--text-main); margin-bottom: var(--space-4);">Ready to transform how your team accesses loyalty data?</h2>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg);">
+      <div class="cta-box">
+        <h2 class="cta-box-title">Ready to transform how your team accesses loyalty data?</h2>
+        <p class="cta-box-description">
           See how RCX Analytics delivers answers in minutes, not days.
         </p>
         <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule a Demo</a>
@@ -703,7 +766,7 @@
   </section>
 
   <!-- ========== FAQ ========== -->
-  <section class="faq-section section-light bg-white">
+  <section class="faq-section bg-white">
     <div class="container">
       
       <div class="faq-layout">
@@ -925,7 +988,7 @@
     });
 
     // Active TOC link on scroll
-    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocLinks = document.querySelectorAll('.toc-nav .toc-link');
     const sections = document.querySelectorAll('.blog-content h2[id]');
     
     window.addEventListener('scroll', () => {
