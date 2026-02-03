@@ -19,11 +19,134 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Fix: much more breathing room in sticky tab panels */
-    .sticky-tab-content { padding-top: 6rem !important; }
-    .sticky-tab-panel .feature-label { display: block !important; margin-bottom: 0.75rem !important; }
-    .sticky-tab-panel .feature-title { margin-bottom: 1.5rem !important; }
-    /* Hero eyebrow: handled in c-hero.css */
+    /* ======================================================================
+       STATEMENT SWITCHER — Elegant Typography Section
+       ====================================================================== */
+    .statement-section {
+      background: var(--color-gray-100);
+      padding: var(--space-24) 0;
+    }
+    
+    /* Panels */
+    .statement-panel {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 800px;
+    }
+    .statement-panel.active { display: flex; }
+    
+    /* Label */
+    .statement-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-6);
+    }
+    
+    /* Headline — large elegant typography, left-aligned */
+    .statement-headline {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 200;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--color-charcoal-900);
+      margin-bottom: var(--space-8);
+    }
+    
+    /* Body text */
+    .statement-body {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-light);
+      color: var(--color-gray-500);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+    
+    /* Navigation */
+    .statement-nav {
+      display: flex;
+      gap: var(--space-10);
+      margin-top: var(--space-16);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--color-gray-200);
+    }
+    
+    .statement-nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-2) var(--space-3);
+      opacity: 0.4;
+    }
+    .statement-nav-item:hover { opacity: 0.7; }
+    .statement-nav-item.active { opacity: 1; }
+    
+    .statement-nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-gray-400);
+    }
+    .statement-nav-item.active .statement-nav-dot {
+      background: var(--color-primary);
+      box-shadow: 0 0 12px rgba(243,112,33,0.4);
+    }
+    
+    .statement-nav-label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-charcoal-900);
+      letter-spacing: var(--letter-spacing-wide);
+    }
+    
+    @media (max-width: 768px) {
+      .statement-section { padding: var(--space-16) 0; }
+      .statement-nav { flex-wrap: wrap; gap: var(--space-4); }
+      .statement-headline { font-size: clamp(2rem, 8vw, 3rem); }
+    }
+    
+    /* ======================================================================
+       STATS — Elegant Thin Numbers
+       ====================================================================== */
+    .stats-elegant {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+      padding: var(--space-20) 0;
+    }
+    @media (max-width: 1024px) { .stats-elegant { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .stats-elegant { grid-template-columns: 1fr; } }
+    
+    .stat-elegant {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .stat-elegant-number {
+      font-size: clamp(4rem, 10vw, 6rem);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--color-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .stat-elegant-label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5);
+    }
   </style>
 </head>
 <body>
@@ -288,208 +411,50 @@
     </div>
   </section>
 
-  <!-- ========== STICKY TABS ========== -->
-  <section class="sticky-tabs-section bg-light">
-    <div class="sticky-tabs-container">
-      <div class="container">
-        <div class="sticky-tabs-wrapper">
-          <button class="sticky-tab active" data-tab="real-time">
-            Real-Time Events
-          </button>
-          <button class="sticky-tab" data-tab="api-first">
-            API-First
-          </button>
-          <button class="sticky-tab" data-tab="polymorphic">
-            Built for Complexity
-          </button>
-        </div>
+  <!-- ========== STATEMENT SWITCHER ========== -->
+  <section class="statement-section">
+    <div class="container">
+      
+      <!-- Panel 1: Real-Time -->
+      <div class="statement-panel active" data-panel="real-time">
+        <span class="statement-label">Real-Time Events</span>
+        <h2 class="statement-headline">Engage members the moment they act.</h2>
+        <p class="statement-body">ReactorCX processes every transaction in real time, so your team can trigger personalized offers, messages, and rewards before the customer leaves the store, the pump, or the property. Most enterprise platforms batch transactions. We process them synchronously. That's what enables true personalization.</p>
+        <a href="why-lm.html" class="btn btn-primary" style="margin-top: var(--space-8);">Learn More &rarr;</a>
       </div>
-    </div>
-    <div class="sticky-tab-content">
-      <div class="container">
-        
-        <div class="sticky-tab-panel active" id="real-time">
-          <div class="feature-row">
-            <div class="content">
-              <span class="feature-label">Real-Time Events</span>
-              <h3 class="feature-title">Engage members the moment they act.</h3>
-              <p class="feature-description">ReactorCX processes every transaction in real time, so your team can trigger personalized offers, messages, and rewards before the customer leaves the store, the pump, or the property. Most enterprise platforms batch transactions. We process them synchronously. That's what enables true personalization.</p>
-              <a href="why-lm.html" class="btn btn-primary mt-8">Learn More &rarr;</a>
-            </div>
-            <div class="gauge-panel">
-              <!-- Shared SVG Defs -->
-              <svg width="0" height="0" style="position: absolute;">
-                <defs>
-                  <linearGradient id="gauge-grad-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FF8F4D"/>
-                    <stop offset="50%" stop-color="#F37021"/>
-                    <stop offset="100%" stop-color="#E5651A"/>
-                  </linearGradient>
-                  <radialGradient id="gauge-radial-glow" cx="50%" cy="42%" r="48%">
-                    <stop offset="0%" stop-color="rgba(243,112,33,0.05)"/>
-                    <stop offset="100%" stop-color="transparent"/>
-                  </radialGradient>
-                </defs>
-              </svg>
-
-              <!-- Ring Gauge -->
-              <div class="gauge-ring">
-                <svg viewBox="0 0 240 240" width="240" height="240">
-                  <!-- Outer tick marks -->
-                  <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
-                  <!-- Background track -->
-                  <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 45% fill — the journey begins -->
-                  <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
-                    stroke-dasharray="666.1" stroke-dashoffset="366.4"/>
-                  <!-- Inner ring -->
-                  <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
-                  <!-- Center glow -->
-                  <circle cx="120" cy="120" r="90" class="gauge-ring-glow"/>
-                </svg>
-                <div class="gauge-center">
-                  <span class="gauge-value">25M+</span>
-                </div>
-              </div>
-
-              <!-- Label -->
-              <div class="gauge-label-block">
-                <p class="gauge-label-primary">Daily Real-Time Requests</p>
-                <p class="gauge-label-secondary">Peak: 50–60M on high-volume days</p>
-              </div>
-
-              <!-- Thin Track -->
-              <div class="gauge-track">
-                <div class="gauge-track-bar"><div class="gauge-track-fill" style="width: 45%;"></div></div>
-                <svg class="gauge-track-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </div>
-
-              <!-- Metrics -->
-              <div class="gauge-metrics">
-                <div class="gauge-metric">
-                  <div class="gauge-metric-value">&lt;200ms</div>
-                  <div class="gauge-metric-label">Response Time</div>
-                </div>
-                <div class="gauge-metric">
-                  <div class="gauge-metric-value">99.9%</div>
-                  <div class="gauge-metric-label">Uptime SLA</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sticky-tab-panel" id="api-first">
-          <div class="feature-row reverse">
-            <div class="content">
-              <span class="feature-label">API-First</span>
-              <h3 class="feature-title">Open architecture that integrates, not traps.</h3>
-              <p class="feature-description">Keep loyalty data accessible across your entire stack. ReactorCX connects to your POS, CRM, and CDP so loyalty decisions happen inside the systems your teams already use. No rip-and-replace. No black-box logic. Your architecture stays clean, and your data stays usable.</p>
-              <a href="why-lm.html" class="btn btn-primary mt-8">Learn More &rarr;</a>
-            </div>
-            <div class="gauge-panel">
-              <!-- Ring Gauge -->
-              <div class="gauge-ring">
-                <svg viewBox="0 0 240 240" width="240" height="240">
-                  <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
-                  <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 75% fill — approaching completion -->
-                  <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
-                    stroke-dasharray="666.1" stroke-dashoffset="166.5"/>
-                  <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
-                  <circle cx="120" cy="120" r="90" class="gauge-ring-glow"/>
-                </svg>
-                <div class="gauge-center">
-                  <span class="gauge-value">30K+</span>
-                </div>
-              </div>
-
-              <!-- Label -->
-              <div class="gauge-label-block">
-                <p class="gauge-label-primary">Locations Actively Integrated</p>
-                <p class="gauge-label-secondary">Across the ReactorCX platform</p>
-              </div>
-
-              <!-- Thin Track -->
-              <div class="gauge-track">
-                <div class="gauge-track-bar"><div class="gauge-track-fill" style="width: 75%;"></div></div>
-                <svg class="gauge-track-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
-              </div>
-
-              <!-- Metrics -->
-              <div class="gauge-metrics">
-                <div class="gauge-metric">
-                  <div class="gauge-metric-value">POS · CRM · CDP</div>
-                  <div class="gauge-metric-label">Connected Systems</div>
-                </div>
-                <div class="gauge-metric">
-                  <div class="gauge-metric-value">Open</div>
-                  <div class="gauge-metric-label">API-First</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sticky-tab-panel" id="polymorphic">
-          <div class="feature-row">
-            <div class="content">
-              <span class="feature-label">Built for Complexity</span>
-              <h3 class="feature-title">One engine. Every vertical.</h3>
-              <p class="feature-description">Run one loyalty platform across every business line. Fuel, gaming, retail. The same engine powers the pump, the gaming floor, and the checkout counter. Launch promotions that other platforms cannot execute. Manage multi-brand tiers, partner co-funding, and real-time discounting without custom development.</p>
-              <a href="why-lm.html" class="btn btn-primary mt-8">Learn More &rarr;</a>
-            </div>
-            <div class="gauge-panel">
-              <!-- Ring Gauge -->
-              <div class="gauge-ring">
-                <svg viewBox="0 0 240 240" width="240" height="240">
-                  <circle cx="120" cy="120" r="116" class="gauge-tick" stroke-dasharray="2 18.3" transform="rotate(-90 120 120)"/>
-                  <circle cx="120" cy="120" r="106" class="gauge-ring-track"/>
-                  <!-- Progress arc: 100% full ring -->
-                  <circle cx="120" cy="120" r="106" class="gauge-ring-progress orange"
-                    stroke-dasharray="666.1" stroke-dashoffset="0"/>
-                  <circle cx="120" cy="120" r="94" class="gauge-ring-inner"/>
-                  <circle cx="120" cy="120" r="90" class="gauge-ring-glow"/>
-                </svg>
-                <div class="gauge-center">
-                  <span class="gauge-value">0</span>
-                  <span class="gauge-value-unit">Downtime</span>
-                </div>
-              </div>
-
-              <!-- Label -->
-              <div class="gauge-label-block">
-                <p class="gauge-label-primary">Every Migration. Every Cutover.</p>
-                <p class="gauge-label-secondary">600M+ members migrated successfully</p>
-              </div>
-
-              <!-- Thin Track -->
-              <div class="gauge-track">
-                <div class="gauge-track-bar"><div class="gauge-track-fill" style="width: 100%;"></div></div>
-                <svg class="gauge-track-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-              </div>
-
-              <!-- Metrics -->
-              <div class="gauge-metrics">
-                <div class="gauge-metric">
-                  <div class="gauge-metric-value">100%</div>
-                  <div class="gauge-metric-label">Success Rate</div>
-                </div>
-                <div class="gauge-metric">
-                  <div class="gauge-metric-value">Multi</div>
-                  <div class="gauge-metric-label">Vertical</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
+      
+      <!-- Panel 2: API-First -->
+      <div class="statement-panel" data-panel="api-first">
+        <span class="statement-label">API-First</span>
+        <h2 class="statement-headline">Open architecture that integrates, not traps.</h2>
+        <p class="statement-body">Keep loyalty data accessible across your entire stack. ReactorCX connects to your POS, CRM, and CDP so loyalty decisions happen inside the systems your teams already use. No rip-and-replace. No black-box logic. Your architecture stays clean, and your data stays usable.</p>
+        <a href="why-lm.html" class="btn btn-primary" style="margin-top: var(--space-8);">Learn More &rarr;</a>
       </div>
+      
+      <!-- Panel 3: Complexity -->
+      <div class="statement-panel" data-panel="complexity">
+        <span class="statement-label">Built for Complexity</span>
+        <h2 class="statement-headline">One engine. Every vertical.</h2>
+        <p class="statement-body">Run one loyalty platform across every business line. Fuel, gaming, retail. The same engine powers the pump, the gaming floor, and the checkout counter. Launch promotions that other platforms cannot execute. Manage multi-brand tiers, partner co-funding, and real-time discounting without custom development.</p>
+        <a href="why-lm.html" class="btn btn-primary" style="margin-top: var(--space-8);">Learn More &rarr;</a>
+      </div>
+      
+      <!-- Navigation Dots -->
+      <div class="statement-nav">
+        <button class="statement-nav-item active" data-target="real-time">
+          <span class="statement-nav-dot"></span>
+          <span class="statement-nav-label">Real-Time</span>
+        </button>
+        <button class="statement-nav-item" data-target="api-first">
+          <span class="statement-nav-dot"></span>
+          <span class="statement-nav-label">API-First</span>
+        </button>
+        <button class="statement-nav-item" data-target="complexity">
+          <span class="statement-nav-dot"></span>
+          <span class="statement-nav-label">Complexity</span>
+        </button>
+      </div>
+      
     </div>
   </section>
 
@@ -497,22 +462,22 @@
   <section class="section dark">
     <div class="container">
       <p class="text-center body-sm mb-8" style="color: rgba(255,255,255,0.5);">Measured outcomes across individual enterprise programs</p>
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-number">+34%</div>
-          <div class="stat-title">Retention Rate</div>
+      <div class="stats-elegant">
+        <div class="stat-elegant">
+          <div class="stat-elegant-number">+34%</div>
+          <div class="stat-elegant-label">Retention Rate</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">2&times;</div>
-          <div class="stat-title">Redemption Rate</div>
+        <div class="stat-elegant">
+          <div class="stat-elegant-number">2×</div>
+          <div class="stat-elegant-label">Redemption Rate</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">+45%</div>
-          <div class="stat-title">Membership Growth</div>
+        <div class="stat-elegant">
+          <div class="stat-elegant-number">+45%</div>
+          <div class="stat-elegant-label">Membership Growth</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">3&times;</div>
-          <div class="stat-title">Activation Rate</div>
+        <div class="stat-elegant">
+          <div class="stat-elegant-number">3×</div>
+          <div class="stat-elegant-label">Activation Rate</div>
         </div>
       </div>
     </div>
@@ -906,15 +871,31 @@
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Sticky tabs
-    document.querySelectorAll('.sticky-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.sticky-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelectorAll('.sticky-tab-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById(tab.dataset.tab).classList.add('active');
+    // Statement switcher
+    const statementNavItems = document.querySelectorAll('.statement-nav-item');
+    const statementPanels = document.querySelectorAll('.statement-panel');
+    
+    statementNavItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const target = item.dataset.target;
+        statementNavItems.forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+        statementPanels.forEach(p => p.classList.remove('active'));
+        document.querySelector(`.statement-panel[data-panel="${target}"]`).classList.add('active');
       });
     });
+    
+    // Auto-rotate statement panels every 6 seconds
+    let statementIndex = 0;
+    const statementTargets = ['real-time', 'api-first', 'complexity'];
+    setInterval(() => {
+      statementIndex = (statementIndex + 1) % statementTargets.length;
+      const target = statementTargets[statementIndex];
+      statementNavItems.forEach(n => n.classList.remove('active'));
+      document.querySelector(`.statement-nav-item[data-target="${target}"]`).classList.add('active');
+      statementPanels.forEach(p => p.classList.remove('active'));
+      document.querySelector(`.statement-panel[data-panel="${target}"]`).classList.add('active');
+    }, 6000);
 
     // Product tour
     const tourNavItems = document.querySelectorAll('.tour-nav-item');
