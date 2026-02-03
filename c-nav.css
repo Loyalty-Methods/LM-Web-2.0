@@ -1,5 +1,5 @@
 /* ======================================================================
-   NAV (V10.1) — Header, Navigation, Mega Menu, Anchor Bar
+   NAV (V10.1) â€” Header, Navigation, Mega Menu, Anchor Bar
    ====================================================================== */
 
 /* === HEADER & NAV === */
@@ -22,11 +22,13 @@
 .mega-menu { position: absolute; top: 100%; left: 0; width: 920px; max-width: calc(100vw - 48px); padding-top: var(--space-4); opacity: 0; visibility: hidden; }
 .mega-menu-compact { width: 420px; }
 .mega-menu-tech { width: 680px; }
+.mega-menu-platform { width: 580px; }
 .nav-item:last-child .mega-menu, .nav-list + div .mega-menu { left: auto; right: 0; }
 .nav-item:hover .mega-menu { opacity: 1; visibility: visible; }
 .mega-menu-inner { display: grid; grid-template-columns: 1.8fr 1fr; gap: var(--space-8); background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-2xl); padding: var(--space-6); box-shadow: var(--shadow-xl); }
 .mega-menu-compact .mega-menu-inner { grid-template-columns: 1fr; }
 .mega-menu-tech .mega-menu-inner { grid-template-columns: 1fr 1fr; }
+.mega-menu-platform .mega-menu-inner { grid-template-columns: 1fr 1fr; }
 .mega-menu-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
 .mega-menu-compact .mega-menu-links, .mega-menu-tech .mega-menu-links { grid-template-columns: 1fr; }
 .mega-menu-column-title { margin-bottom: var(--space-3); }
