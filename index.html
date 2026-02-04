@@ -149,7 +149,7 @@
           </div>
         </nav>
         
-        <button class="mobile-menu-toggle">
+        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -159,6 +159,232 @@
       </div>
     </div>
   </header>
+
+  <!-- ========== MOBILE NAVIGATION ========== -->
+  <div id="mobileBackdrop" hidden></div>
+  
+  <nav id="mobileNav" aria-label="Mobile navigation" hidden>
+    <div class="mobile-nav-header">
+      <a href="index.html" class="logo">
+        <img src="lm-full-white.svg" alt="Loyalty Methods">
+      </a>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        
+        <!-- RCX Loyalty Platform -->
+        <li class="mobile-nav-item" data-has-submenu>
+          <button class="mobile-nav-link" aria-expanded="false">
+            <span>RCX Loyalty Platform</span>
+            <svg class="mobile-nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="mobile-nav-submenu">
+            <span class="mobile-nav-submenu-title">Core Platform</span>
+            <a href="feature-program-design.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Program Design & Rules</span>
+                <span class="mobile-nav-submenu-desc">Flexible loyalty program architecture</span>
+              </div>
+            </a>
+            <a href="feature-promotions.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Promotions & Discounting</span>
+                <span class="mobile-nav-submenu-desc">Dynamic offers and targeted campaigns</span>
+              </div>
+            </a>
+            <a href="feature-analytics.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">RCX Analytics</span>
+                <span class="mobile-nav-submenu-desc">Deep insights that drive decisions</span>
+              </div>
+            </a>
+            <a href="feature-advanced-tools.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Advanced Tools</span>
+                <span class="mobile-nav-submenu-desc">Enterprise-grade loyalty capabilities</span>
+              </div>
+            </a>
+            
+            <span class="mobile-nav-submenu-title">Capabilities</span>
+            <a href="feature-engagement.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Engagement & Gamification</span>
+                <span class="mobile-nav-submenu-desc">Interactive experiences that delight</span>
+              </div>
+            </a>
+            <a href="feature-rewards.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Rewards & Benefits</span>
+                <span class="mobile-nav-submenu-desc">Flexible redemption options</span>
+              </div>
+            </a>
+            <a href="feature-partner-enablement.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Partner Enablement</span>
+                <span class="mobile-nav-submenu-desc">Expand your loyalty ecosystem</span>
+              </div>
+            </a>
+            <a href="feature-hyper-personalization.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Hyper-Personalization</span>
+                <span class="mobile-nav-submenu-desc">1:1 experiences at scale</span>
+              </div>
+            </a>
+          </div>
+        </li>
+        
+        <!-- Enterprise Technology -->
+        <li class="mobile-nav-item" data-has-submenu>
+          <button class="mobile-nav-link" aria-expanded="false">
+            <span>Enterprise Technology</span>
+            <svg class="mobile-nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="mobile-nav-submenu">
+            <span class="mobile-nav-submenu-title">Capabilities</span>
+            <a href="tech-api-architecture.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Platform Architecture</span>
+                <span class="mobile-nav-submenu-desc">Cloud-native, API-first, real-time</span>
+              </div>
+            </a>
+            <a href="tech-integration.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Integration Capabilities</span>
+                <span class="mobile-nav-submenu-desc">Connectors for the modern stack</span>
+              </div>
+            </a>
+            <a href="tech-security.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Security & Compliance</span>
+                <span class="mobile-nav-submenu-desc">SOC2, GDPR, data governance</span>
+              </div>
+            </a>
+            <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Trust Center</span>
+                <span class="mobile-nav-submenu-desc">Security & compliance status</span>
+              </div>
+            </a>
+          </div>
+        </li>
+        
+        <!-- Simple Links -->
+        <li class="mobile-nav-item">
+          <a href="proven-delivery.html" class="mobile-nav-link">
+            <span>Proven Delivery</span>
+          </a>
+        </li>
+        
+        <li class="mobile-nav-item">
+          <a href="resource-center.html" class="mobile-nav-link">
+            <span>Resource Center</span>
+          </a>
+        </li>
+        
+        <div class="mobile-nav-divider"></div>
+        
+        <!-- About LM -->
+        <li class="mobile-nav-item" data-has-submenu>
+          <button class="mobile-nav-link" aria-expanded="false">
+            <span>About LM</span>
+            <svg class="mobile-nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="mobile-nav-submenu">
+            <a href="about-story.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Our Story</span>
+                <span class="mobile-nav-submenu-desc">How we got here</span>
+              </div>
+            </a>
+            <a href="about-culture.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Culture</span>
+                <span class="mobile-nav-submenu-desc">What drives our team</span>
+              </div>
+            </a>
+            <a href="about-careers.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Careers</span>
+                <span class="mobile-nav-submenu-desc">Join the team</span>
+              </div>
+            </a>
+            <a href="about-contact.html" class="mobile-nav-submenu-link">
+              <div class="mobile-nav-submenu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="mobile-nav-submenu-content">
+                <span class="mobile-nav-submenu-label">Contact Us</span>
+                <span class="mobile-nav-submenu-desc">Get in touch</span>
+              </div>
+            </a>
+          </div>
+        </li>
+        
+      </ul>
+      
+      <div class="mobile-nav-cta">
+        <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- ========== HERO: MINIMAL PREMIUM ==========
        DESIGN PRINCIPLES:
@@ -1256,6 +1482,115 @@
         }
       });
     });
+
+    // ========== MOBILE NAVIGATION ==========
+    (function() {
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileBackdrop = document.getElementById('mobileBackdrop');
+      const mobileClose = document.querySelector('.mobile-nav-close');
+      const mobileNavItems = document.querySelectorAll('.mobile-nav-item[data-has-submenu]');
+      
+      if (!mobileToggle || !mobileNav || !mobileBackdrop) return;
+
+      // Open mobile menu
+      function openMobileNav() {
+        mobileNav.hidden = false;
+        mobileBackdrop.hidden = false;
+        
+        // Force reflow for animation
+        mobileNav.offsetHeight;
+        mobileBackdrop.offsetHeight;
+        
+        mobileNav.classList.add('is-open');
+        mobileBackdrop.classList.add('is-visible');
+        document.body.classList.add('mobile-nav-open');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        
+        // Focus the close button
+        setTimeout(() => {
+          mobileClose.focus();
+        }, 100);
+      }
+
+      // Close mobile menu
+      function closeMobileNav() {
+        mobileNav.classList.remove('is-open');
+        mobileBackdrop.classList.remove('is-visible');
+        document.body.classList.remove('mobile-nav-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        
+        // Wait for animation then hide
+        setTimeout(() => {
+          mobileNav.hidden = true;
+          mobileBackdrop.hidden = true;
+        }, 300);
+        
+        // Return focus to toggle
+        mobileToggle.focus();
+      }
+
+      // Toggle submenu
+      function toggleSubmenu(item) {
+        const isExpanded = item.classList.contains('is-expanded');
+        const button = item.querySelector('.mobile-nav-link');
+        
+        // Close all other submenus
+        mobileNavItems.forEach(navItem => {
+          navItem.classList.remove('is-expanded');
+          const btn = navItem.querySelector('.mobile-nav-link');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+        
+        // Toggle current submenu
+        if (!isExpanded) {
+          item.classList.add('is-expanded');
+          if (button) button.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      // Event listeners
+      mobileToggle.addEventListener('click', openMobileNav);
+      mobileClose.addEventListener('click', closeMobileNav);
+      mobileBackdrop.addEventListener('click', closeMobileNav);
+
+      // Submenu toggles
+      mobileNavItems.forEach(item => {
+        const button = item.querySelector('button.mobile-nav-link');
+        if (button) {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleSubmenu(item);
+          });
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+          closeMobileNav();
+        }
+      });
+
+      // Close menu when clicking a link
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          closeMobileNav();
+        });
+      });
+
+      // Handle resize - close mobile nav if viewport becomes desktop size
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (window.innerWidth > 1024 && mobileNav.classList.contains('is-open')) {
+            closeMobileNav();
+          }
+        }, 100);
+      });
+    })();
   </script>
 </body>
 </html>
