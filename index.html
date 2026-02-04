@@ -162,11 +162,11 @@
 
   <!-- ========== HERO: MINIMAL PREMIUM ==========
        DESIGN PRINCIPLES:
-       - Apple/Stripe-level restraint — 70% fewer elements
+       - Apple/Stripe-level restraint â€” 70% fewer elements
        - ONE contained glass panel on right (no scattered cards)
        - No diagonal lines across hero
        - Orange accents minimal (dots, short strokes only)
-       - Structured interior: nodes → connectors → outcomes
+       - Structured interior: nodes â†’ connectors â†’ outcomes
        ========== -->
   <style>
     /* === MINIMAL HERO TOKENS === */
@@ -194,16 +194,32 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--hero-bg-0) 0%, var(--hero-bg-1) 50%, var(--hero-bg-2) 100%);
     }
 
-    /* Subtle vignette — focuses attention */
-    .hero-minimal::before {
-      content: "";
+    /* Background image container */
+    .hero-minimal-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 30% 50%, transparent 0%, rgba(0,0,0,0.3) 100%);
-      pointer-events: none;
+      z-index: 0;
+      background: #0a0a12;
+    }
+    .hero-minimal-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      background: #0a0a12;
+    }
+    /* Gradient overlay - subtle for text readability, fades to trust bar */
+    .hero-minimal-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, 
+        rgba(10,10,18,0.2) 0%, 
+        rgba(10,10,18,0.1) 50%,
+        rgba(240,240,240,0.8) 88%,
+        #f0f0f0 100%);
     }
 
     /* === HERO LAYOUT: Two columns === */
@@ -233,10 +249,10 @@
     }
     .hero-minimal-title {
       margin: 0 0 var(--space-6, 1.5rem) 0;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: var(--font-weight-semibold, 600);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: var(--font-weight-light, 300);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
       color: var(--hero-text-primary);
     }
     .hero-minimal-description {
@@ -446,83 +462,24 @@
   </style>
 
   <section class="hero-minimal" aria-label="Enterprise loyalty platform hero">
+    <!-- Background Image -->
+    <div class="hero-minimal-bg">
+      <img src="ChatGPT_Image_Feb_4__2026__09_57_50_AM.png" alt="">
+    </div>
     <div class="container">
       
       <!-- Left: Content -->
       <div class="hero-minimal-content">
         <span class="hero-minimal-eyebrow">Enterprise Loyalty Platform</span>
-        <h1 class="hero-minimal-title">It's all about relationships.</h1>
+        <h1 class="hero-minimal-title">Loyalty starts with ReactorCX</h1>
         <p class="hero-minimal-description">
-          Member, partner, program, and channel relationships—orchestrated in real time by a single engine.
+          Engineered to fit into the most complex ecosystems to connect every customer touchpoint and drive meaningful customer relationships.
         </p>
         <div class="hero-minimal-cta">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Contact Us</a>
         </div>
       </div>
 
-      <!-- Right: Glass Panel -->
-      <div class="hero-panel-wrapper">
-        <div class="hero-glass-panel" aria-hidden="true">
-          
-          <!-- Row 1: Nodes -->
-          <div class="hero-nodes">
-            <div class="hero-node-item">
-              <div class="hero-node-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/></svg>
-              </div>
-              <span class="hero-node-label">Member</span>
-              <span class="hero-node-meta">Identity + history</span>
-            </div>
-            <div class="hero-node-item">
-              <div class="hero-node-icon">
-                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              </div>
-              <span class="hero-node-label">Partner</span>
-              <span class="hero-node-meta">Funding + earn/burn</span>
-            </div>
-            <div class="hero-node-item">
-              <div class="hero-node-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              </div>
-              <span class="hero-node-label">Program</span>
-              <span class="hero-node-meta">Rules + tiers</span>
-            </div>
-            <div class="hero-node-item">
-              <div class="hero-node-icon">
-                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-              </div>
-              <span class="hero-node-label">Channels</span>
-              <span class="hero-node-meta">POS · App · Web</span>
-            </div>
-          </div>
-
-          <!-- Row 2: Connector -->
-          <div class="hero-connector">
-            <div class="hero-connector-line"></div>
-            <span class="hero-connector-dot"></span>
-            <span class="hero-connector-label">Real-time orchestration</span>
-            <span class="hero-connector-dot"></span>
-            <div class="hero-connector-line"></div>
-          </div>
-
-          <!-- Row 3: Outcomes -->
-          <div class="hero-outcomes">
-            <div class="hero-outcome">
-              <span class="hero-outcome-dot"></span>
-              <span class="hero-outcome-text">VIP Recognized</span>
-            </div>
-            <div class="hero-outcome">
-              <span class="hero-outcome-dot"></span>
-              <span class="hero-outcome-text">Partner Reward Applied</span>
-            </div>
-            <div class="hero-outcome">
-              <span class="hero-outcome-dot"></span>
-              <span class="hero-outcome-text">Tier Progress Updated</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
     </div>
   </section>
@@ -591,11 +548,11 @@
               <div class="value-stat-label">Membership Growth</div>
             </div>
             <div class="value-stat-card">
-              <div class="value-stat-number">2×</div>
+              <div class="value-stat-number">2Ã—</div>
               <div class="value-stat-label">Redemption Rate</div>
             </div>
             <div class="value-stat-card">
-              <div class="value-stat-number">3×</div>
+              <div class="value-stat-number">3Ã—</div>
               <div class="value-stat-label">Activation Rate</div>
             </div>
             <div class="value-stat-card">
@@ -607,7 +564,7 @@
           <!-- Relationships Quadrant -->
           <div class="value-quadrant" data-quadrant="relationships" role="tabpanel" id="quadrant-relationships" aria-labelledby="tab-relationships">
             <div class="value-stat-card">
-              <div class="value-stat-number">8×</div>
+              <div class="value-stat-number">8Ã—</div>
               <div class="value-stat-label">Lifetime Value</div>
             </div>
             <div class="value-stat-card">
@@ -619,7 +576,7 @@
               <div class="value-stat-label">Engagement</div>
             </div>
             <div class="value-stat-card">
-              <div class="value-stat-number">12×</div>
+              <div class="value-stat-number">12Ã—</div>
               <div class="value-stat-label">Visit Frequency</div>
             </div>
           </div>
@@ -651,9 +608,9 @@
   </section>
 
   <!-- ========== REAL PROMOTIONS AT SCALE ========== -->
-  <!-- TEXT SIZE OVERRIDES — Improved readability per UX review -->
+  <!-- TEXT SIZE OVERRIDES â€” Improved readability per UX review -->
   <style>
-    /* Promo row header text — bumped for better scanability */
+    /* Promo row header text â€” bumped for better scanability */
     .promo-row-title {
       font-size: var(--font-size-lg, 1.1875rem) !important; /* was ~15px, now 19px */
     }
@@ -661,12 +618,12 @@
       font-size: var(--font-size-base, 1rem) !important; /* was ~13px, now 16px */
       line-height: 1.5 !important;
     }
-    /* Promo chips — slightly larger for legibility */
+    /* Promo chips â€” slightly larger for legibility */
     .promo-chip {
       font-size: var(--font-size-xs, 0.75rem) !important; /* was ~10px, now 12px */
       padding: 5px 12px !important;
     }
-    /* Expanded detail specs — clearer hierarchy */
+    /* Expanded detail specs â€” clearer hierarchy */
     .promo-spec-label {
       font-size: var(--font-size-sm, 0.875rem) !important; /* was ~11px, now 14px */
     }
@@ -704,7 +661,7 @@
           <div class="promo-row" role="listitem">
             <button class="promo-row-header" aria-expanded="false" aria-controls="promo-1-detail">
               <div class="promo-row-content">
-                <h3 class="promo-row-title">Fuel → In-Store Partner Booster</h3>
+                <h3 class="promo-row-title">Fuel â†’ In-Store Partner Booster</h3>
                 <p class="promo-row-desc">Link fuel purchase to inside basket with partner SKU triggers</p>
                 <div class="promo-row-chips">
                   <span class="promo-chip">Cross-LOB</span>
@@ -717,7 +674,7 @@
             <div class="promo-row-detail" id="promo-1-detail" hidden>
               <div class="promo-spec-grid">
                 <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">8+ gallons + 2 partner SKUs within 30 minutes</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">3× points on inside basket + instant $1 partner discount</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">3Ã— points on inside basket + instant $1 partner discount</span></div>
                 <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">2/day; excludes select site types</span></div>
                 <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner/merchant split with capped liability</span></div>
               </div>
@@ -749,7 +706,7 @@
           <div class="promo-row" role="listitem">
             <button class="promo-row-header" aria-expanded="false" aria-controls="promo-3-detail">
               <div class="promo-row-content">
-                <h3 class="promo-row-title">Partner Earn → In-Brand Burn</h3>
+                <h3 class="promo-row-title">Partner Earn â†’ In-Brand Burn</h3>
                 <p class="promo-row-desc">Convert partner transaction value into brand credit at checkout</p>
                 <div class="promo-row-chips">
                   <span class="promo-chip">Partner</span>
@@ -980,21 +937,21 @@
         <a href="proven-threadsync.html" class="card">
           <div class="card-rule-orange"></div>
           <h3 class="card-title">Parallel Tracks</h3>
-          <p class="card-description">ThreadSync™ divides your project into focused streams so teams can work independently without burning everyone's time. Each workstream has clear ownership and defined handoffs.</p>
+          <p class="card-description">ThreadSyncâ„¢ divides your project into focused streams so teams can work independently without burning everyone's time. Each workstream has clear ownership and defined handoffs.</p>
           <span class="card-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
         <a href="proven-safeswitch.html" class="card">
           <div class="card-rule-orange"></div>
           <h3 class="card-title">Cut-Over with Confidence</h3>
-          <p class="card-description">Switch platforms without risking your program. SafeSwitch™ runs legacy and new systems in parallel, validates every data point before cutover. Zero surprises.</p>
+          <p class="card-description">Switch platforms without risking your program. SafeSwitchâ„¢ runs legacy and new systems in parallel, validates every data point before cutover. Zero surprises.</p>
           <span class="card-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
         <a href="proven-delivery.html" class="card">
           <div class="card-rule-orange"></div>
           <h3 class="card-title">Zero Downtime. Every Migration.</h3>
-          <p class="card-description"><strong>600M+ members</strong> migrated. <strong>100% success rate.</strong> Not one outage after cutover. SafeSwitch™ has never taken a program offline.</p>
+          <p class="card-description"><strong>600M+ members</strong> migrated. <strong>100% success rate.</strong> Not one outage after cutover. SafeSwitchâ„¢ has never taken a program offline.</p>
           <span class="card-link">See Success Stories <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
