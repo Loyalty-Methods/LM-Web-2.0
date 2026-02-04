@@ -59,7 +59,7 @@
 /* Hero content — vertically centered, trust bar at bottom */
 .hero .container {
   position: relative; z-index: 10;
-  padding-top: 180px;
+  padding-top: calc(var(--space-40) + var(--space-10));
   padding-bottom: var(--space-12);
   flex: 1;
   display: flex;
@@ -106,24 +106,36 @@
 
 /* === TRUST BAR SECTION — rotating marquee === */
 .trust-bar-section {
-  background: #f0f0f0;
-  padding: var(--space-10) 0 var(--space-12);
+  background: linear-gradient(180deg, #f0f0f0 0%, var(--color-gray-50) 100%);
+  padding: var(--space-8) 0 var(--space-10);
   text-align: center;
+  position: relative;
+}
+.trust-bar-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.04) 30%, rgba(0,0,0,0.06) 50%, rgba(0,0,0,0.04) 70%, transparent 100%);
 }
 .trust-bar-label {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
   color: var(--color-gray-400);
-  margin-bottom: var(--space-8);
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--space-4);
 }
 .trust-bar-track-wrapper {
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 .trust-bar-track {
   display: flex;
-  animation: trust-scroll 35s linear infinite;
+  animation: trust-scroll 45s linear infinite;
 }
 @keyframes trust-scroll {
   0% { transform: translateX(0); }
@@ -131,16 +143,16 @@
 }
 .trust-bar-logos {
   display: flex; align-items: center;
-  gap: var(--space-16); flex-shrink: 0;
-  padding: 0 var(--space-8);
+  gap: var(--space-12); flex-shrink: 0;
+  padding: 0 var(--space-6);
 }
 .trust-bar-logos img {
-  height: 34px; width: auto; max-width: 150px;
+  height: 24px; width: auto; max-width: 140px;
   object-fit: contain;
-  opacity: 0.5;
-  filter: grayscale(100%);
+  opacity: 0.35;
+  filter: grayscale(100%) brightness(0.6);
 }
-.trust-bar-logos img:hover { opacity: 0.8; filter: grayscale(0%); }
+.trust-bar-logos img:hover { opacity: 0.7; filter: grayscale(0%); }
 
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
@@ -161,7 +173,7 @@
    Usage: .hero-cinematic with optional --tall or --short modifiers.
    Replaces all page-specific hero CSS. Just swap photo + text content.
    ------------------------------------------------------------------- */
-.hero-cinematic { position: relative; min-height: 70vh; display: flex; align-items: flex-end; overflow: hidden; padding-top: 80px; }
+.hero-cinematic { position: relative; min-height: 70vh; display: flex; align-items: flex-end; overflow: hidden; padding-top: var(--space-20); }
 .hero-cinematic--tall { min-height: 80vh; }
 .hero-cinematic--short { min-height: 55vh; }
 .hero-cinematic-bg { position: absolute; inset: 0; z-index: 0; }

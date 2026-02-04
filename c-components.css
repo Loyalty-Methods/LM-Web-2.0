@@ -1,5 +1,5 @@
 /* ======================================================================
-   COMPONENTS (V10.1) â€” Buttons, Cards, Testimonials, Stats, Framework, Callout
+   COMPONENTS (V10.1) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Buttons, Cards, Testimonials, Stats, Framework, Callout
    ====================================================================== */
 
 /* === BUTTONS === */
@@ -20,53 +20,120 @@
 .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--font-size-base); }
 
 /* ======================================================================
-   CARDS â€” HARD RULE: FROSTED GLASS + CHARCOAL EDGE
+   CARDS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HARD RULE: FROSTED GLASS + CHARCOAL EDGE
    -----------------------------------------------------------------------
    ALL cards on light backgrounds MUST use this treatment. No exceptions.
-   Pattern: .card â†’ .card-rule-orange â†’ .card-title â†’ .card-description
+   Pattern: .card ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ .card-rule-orange ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ .card-title ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ .card-description
    No icons in cards. No eyebrows on cards. No .card.dark variant.
    ====================================================================== */
-.card { background: rgba(255,255,255,0.72); backdrop-filter: blur(40px) saturate(1.4); -webkit-backdrop-filter: blur(40px) saturate(1.4); border: 0.5px solid rgba(255,255,255,0.8); border-top: none; border-radius: 2px; padding: var(--space-10) var(--space-8) var(--space-8); box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); position: relative; overflow: hidden; text-decoration: none; color: inherit; }
+.card { background: rgba(255,255,255,0.72); backdrop-filter: blur(40px) saturate(1.4); -webkit-backdrop-filter: blur(40px) saturate(1.4); border: 0.5px solid rgba(255,255,255,0.8); border-top: none; border-radius: var(--radius-sm); padding: var(--space-10) var(--space-8) var(--space-8); box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); position: relative; overflow: hidden; text-decoration: none; color: inherit; }
 /* Charcoal gradient top edge */
 .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(90,90,90,0.6) 0%, rgba(100,100,100,0.55) 80%, rgba(200,200,200,0.7) 92%, rgba(255,255,255,0.9) 96%, transparent 100%); z-index: 3; }
 .card::after { content: none; }
-.card:hover { border-color: rgba(255,255,255,0.9); box-shadow: 0 0 0 0.5px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.05); }
+.card:hover { border-color: rgba(255,255,255,0.9); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 32px rgba(0,0,0,0.05); }
 /* Orange rule accent */
 .card-rule-orange { width: 28px; height: 2px; background: linear-gradient(90deg, #F37021 0%, #FF8F4D 60%, rgba(243,112,33,0.3) 100%); box-shadow: 0 0 6px rgba(243,112,33,0.2); position: relative; z-index: 2; }
-/* Card image (optional â€” for cards with hero images) */
+
+/* Card icon Ã¢â‚¬â€ 44x44 with obsidian glass treatment */
+.card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--grad-card-obsidian);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: var(--space-2);
+}
+.card-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  z-index: 2;
+}
+.card-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+  fill: none;
+  position: relative;
+  z-index: 3;
+}
+
+/* Card image (optional ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â for cards with hero images) */
 .card-image { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; object-fit: cover; object-position: center; border-radius: 2px 2px 0 0; background: var(--color-gray-100); }
 .card-image-placeholder { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; background: var(--color-gray-100); border-radius: 2px 2px 0 0; position: relative; overflow: hidden; }
 /* Title */
 .card-title, .card .card-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-light); color: var(--color-charcoal-900); line-height: var(--line-height-snug); letter-spacing: -0.02em; position: relative; z-index: 2; }
-/* Body text â€” card-description is the canonical class per locked pattern */
+/* Body text ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â card-description is the canonical class per locked pattern */
 .card-description, .card-body, .card .card-body { font-size: var(--font-size-sm); color: var(--color-gray-500); line-height: var(--line-height-loose); position: relative; z-index: 2; }
 .card-description strong, .card-body strong, .card .card-body strong { color: var(--color-charcoal-900); font-weight: var(--font-weight-medium); }
 /* Link */
 .card-link { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); margin-top: auto; position: relative; z-index: 2; }
-/* === CARDS ON WHITE BACKGROUNDS â€” SHARP GLASS EDGES ===
-   On bg-light (#F5F5F5), the frosted glass naturally contrasts.
-   On bg-white, cards are invisible without sharper definition.
-   These overrides add dark edges + stacked shadows for the glass-pane effect. */
+/* === CARDS ON WHITE BACKGROUNDS â€” LOCKED SHADOW FAMILY ===
+   Uses same shadow as KPI tiles for visual consistency. */
 .bg-white .card {
   border-color: rgba(0,0,0,0.08);
   box-shadow:
-    0 0 0 0.5px rgba(0,0,0,0.07),
-    0 1px 1px rgba(0,0,0,0.06),
-    0 2px 4px rgba(0,0,0,0.05),
-    0 8px 16px rgba(0,0,0,0.04),
-    0 16px 32px rgba(0,0,0,0.03);
+    0 2px 8px rgba(0,0,0,0.04),
+    0 8px 24px rgba(0,0,0,0.03);
 }
 .bg-white .card:hover {
   border-color: rgba(0,0,0,0.12);
   box-shadow:
-    0 0 0 0.5px rgba(0,0,0,0.09),
-    0 1px 2px rgba(0,0,0,0.07),
-    0 4px 8px rgba(0,0,0,0.06),
-    0 16px 32px rgba(0,0,0,0.05),
-    0 24px 48px rgba(0,0,0,0.04);
+    0 4px 12px rgba(0,0,0,0.06),
+    0 16px 32px rgba(0,0,0,0.05);
 }
 
-/* Category override â€” suppress charcoal edge when card-category present */
+/* === CARDS ON DARK BACKGROUNDS — Contextual glass treatment ===
+   Locked pattern: no .card.dark class. Context-driven only. */
+.section.dark .card,
+.bg-dark .card {
+  background: linear-gradient(165deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.02) 100%);
+  backdrop-filter: blur(40px) saturate(1.2);
+  -webkit-backdrop-filter: blur(40px) saturate(1.2);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-top: none;
+}
+.section.dark .card::before,
+.bg-dark .card::before {
+  background: linear-gradient(90deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.18) 80%, rgba(255,255,255,0.35) 92%, rgba(255,255,255,0.5) 96%, transparent 100%);
+}
+.section.dark .card:hover,
+.bg-dark .card:hover {
+  border-color: rgba(255,255,255,0.20);
+  box-shadow: 0 0 0 0.5px rgba(255,255,255,0.06), 0 2px 6px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.15);
+}
+.section.dark .card .card-title,
+.bg-dark .card .card-title { color: var(--color-white); }
+.section.dark .card .card-body,
+.section.dark .card .card-description,
+.bg-dark .card .card-body,
+.bg-dark .card .card-description { color: rgba(255,255,255,0.6); }
+.section.dark .card .card-rule-orange,
+.bg-dark .card .card-rule-orange { box-shadow: 0 0 8px rgba(243,112,33,0.3); }
+
+/* Category override ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â suppress charcoal edge when card-category present */
 .card:has(.card-category)::before { display: none; }
 .card:has(.card-category) { border-top: 1px solid rgba(255,255,255,0.7); }
 .card-header { display: flex; flex-direction: column; gap: var(--space-2); }
@@ -100,12 +167,34 @@
 
 /* === STATS BAR === */
 .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); text-align: center; }
-@media (max-width: 1024px) { .stats-bar { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .stats-bar { grid-template-columns: 1fr; } }
+.stats-bar.cols-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1024px) { .stats-bar, .stats-bar.cols-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .stats-bar, .stats-bar.cols-3 { grid-template-columns: 1fr; } }
 .stat-item { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-4); border-radius: var(--radius-xs); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
 .stat-item::after { border-radius: var(--radius-xs) var(--radius-xs) 0 0; }
 .stat-number { font-size: var(--font-size-5xl); font-weight: var(--font-weight-light); color: var(--color-primary); line-height: 1; letter-spacing: var(--letter-spacing-tight); position: relative; z-index: 3; }
 .stat-title { font-size: var(--font-size-sm); color: var(--color-white); position: relative; z-index: 3; }
+.stat-desc { font-size: var(--font-size-sm); color: rgba(255,255,255,0.72); line-height: var(--line-height-normal); max-width: 240px; margin: var(--space-2) auto 0; position: relative; z-index: 3; }
+
+/* === CALC BREAKDOWN — Reusable widget for earn/burn calculations === */
+.calc-widget { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-md); max-width: 360px; margin: 0 auto; text-align: center; }
+.calc-widget-value { font-size: var(--font-size-5xl); font-weight: var(--font-weight-light); color: var(--color-primary); line-height: 1; letter-spacing: var(--letter-spacing-tight); }
+.calc-widget-label { font-size: var(--font-size-sm); color: var(--color-gray-500); margin-top: var(--space-1); margin-bottom: var(--space-6); }
+.calc-breakdown { display: flex; flex-direction: column; gap: var(--space-3); border-top: 1px solid var(--color-gray-200); padding-top: var(--space-5); text-align: left; }
+.calc-row { display: flex; justify-content: space-between; align-items: center; }
+.calc-row-label { font-size: var(--font-size-sm); color: var(--color-gray-500); }
+.calc-row-value { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-charcoal-900); }
+
+/* === OPTION ROW — Horizontal selection card for redemption/reward lists === */
+.option-list { display: flex; flex-direction: column; gap: var(--space-3); max-width: 380px; margin: 0 auto; }
+.option-row { display: flex; align-items: center; gap: var(--space-4); background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); }
+.option-row:hover { border-color: var(--color-gray-300); }
+.option-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-gray-50); border-radius: var(--radius-sm); flex-shrink: 0; }
+.option-icon svg { width: 20px; height: 20px; stroke: var(--color-gray-500); fill: none; stroke-width: 1.5; }
+.option-content { flex: 1; }
+.option-title { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-charcoal-900); }
+.option-meta { font-size: var(--font-size-xs); color: var(--color-gray-400); }
+.option-action { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); color: var(--color-primary); padding: var(--space-2) var(--space-3); border: 1px solid var(--color-primary); border-radius: var(--radius-full); white-space: nowrap; }
 
 /* === FRAMEWORK CARDS === */
 .framework-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
@@ -122,8 +211,8 @@
 .callout-body { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-loose); margin-bottom: var(--space-6); max-width: 640px; margin-left: auto; margin-right: auto; }
 
 /* ======================================================================
-   GAUGE WIDGETS â€” Premium Enterprise Ring Gauges
-   Progressive fill narrative: 45% â†’ 75% â†’ 100%
+   GAUGE WIDGETS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Premium Enterprise Ring Gauges
+   Progressive fill narrative: 45% ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ 75% ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ 100%
    ====================================================================== */
 
 /* --- Container: transparent, floats on section bg --- */
@@ -182,7 +271,7 @@
   .gauge-metric + .gauge-metric::before { display: none; }
 }
 /* ======================================================================
-   BENTO TILES (V2) â€” Content tiles for bento grid layouts
+   BENTO TILES (V2) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Content tiles for bento grid layouts
    Tile variants: default (white), accent (charcoal glass), tint (warm)
    ====================================================================== */
 
@@ -223,7 +312,7 @@
 .tile.tall     { min-height: 420px; justify-content: flex-end; }
 .tile.hero     { min-height: 380px; justify-content: flex-end; }
 
-/* === TILE â€” ACCENT (charcoal + glass + edge shimmer) === */
+/* === TILE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ACCENT (charcoal + glass + edge shimmer) === */
 .tile.accent {
   background: var(--grad-card-obsidian);
   border-color: rgba(255,255,255,0.10);
@@ -231,7 +320,7 @@
     0 2px 4px rgba(0,0,0,0.08),
     0 16px 40px rgba(0,0,0,0.12);
 }
-/* Top-edge shimmer â€” caught light */
+/* Top-edge shimmer ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â caught light */
 .tile.accent::before {
   content: '';
   position: absolute;
@@ -281,7 +370,7 @@
 .tile.accent .tile-metric-label { color: rgba(255,255,255,0.40); }
 .tile.accent .tile-rule { background: rgba(255,255,255,0.12); }
 
-/* === TILE â€” TINT (warm white) === */
+/* === TILE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â TINT (warm white) === */
 .tile.tint {
   background: linear-gradient(165deg, #FEFCFA 0%, #FFF9F5 100%);
   border-color: rgba(243,112,33,0.06);
@@ -289,7 +378,7 @@
 
 /* === TILE TYPOGRAPHY === */
 
-/* Kicker â€” uppercase label */
+/* Kicker ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â uppercase label */
 .tile-kicker {
   font-size: var(--font-size-2xs);
   font-weight: var(--font-weight-semibold);
@@ -306,14 +395,14 @@
   letter-spacing: -0.03em;
   line-height: var(--line-height-tight);
   color: var(--color-charcoal-900);
-  margin-bottom: 14px;
+  margin-bottom: var(--space-3);
 }
 .tile.hero .tile-headline {
   font-size: 2.25rem;
   letter-spacing: -0.035em;
 }
 
-/* Body â€” editorial weight, generous air */
+/* Body ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â editorial weight, generous air */
 .tile-body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
@@ -327,14 +416,14 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Metric â€” large display number */
+/* Metric ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â large display number */
 .tile-metric {
   font-size: 5.5rem;
   font-weight: var(--font-weight-thin);
   letter-spacing: -0.04em;
   line-height: 0.9;
   color: var(--color-primary);
-  margin-bottom: 12px;
+  margin-bottom: var(--space-3);
 }
 .tile-metric .unit {
   font-size: 2rem;
@@ -347,15 +436,15 @@
   margin-bottom: var(--space-5);
 }
 
-/* Rule â€” thin separator */
+/* Rule ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â thin separator */
 .tile-rule {
   width: 32px;
   height: 1px;
   background: var(--color-gray-200);
-  margin: 16px 0;
+  margin: var(--space-4) 0;
 }
 
-/* Link â€” orange arrow link */
+/* Link ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â orange arrow link */
 .tile-link {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -364,18 +453,18 @@
   margin-top: var(--space-6);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
   letter-spacing: 0.005em;
 }
 .tile-link::after { content: '\2192'; font-size: 0.875rem; }
 
-/* === SPARKLINE â€” data rows used sparingly inside tiles === */
+/* === SPARKLINE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â data rows used sparingly inside tiles === */
 .sparkline-group { margin-bottom: var(--space-6); }
 .sparkline-row {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 8px;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
 }
 .sparkline-label {
   font-size: var(--font-size-xs);

@@ -17,137 +17,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    /* ======================================================================
-       STATEMENT SWITCHER — Elegant Typography Section
-       ====================================================================== */
-    .statement-section {
-      background: var(--color-gray-100);
-      padding: var(--space-24) 0;
-    }
-    
-    /* Panels */
-    .statement-panel {
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      max-width: 800px;
-    }
-    .statement-panel.active { display: flex; }
-    
-    /* Label */
-    .statement-label {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-medium);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--color-primary);
-      margin-bottom: var(--space-6);
-    }
-    
-    /* Headline — large elegant typography, left-aligned */
-    .statement-headline {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 200;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      color: var(--color-charcoal-900);
-      margin-bottom: var(--space-8);
-    }
-    
-    /* Body text */
-    .statement-body {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-light);
-      color: var(--color-gray-500);
-      line-height: 1.8;
-      max-width: 640px;
-    }
-    
-    /* Navigation */
-    .statement-nav {
-      display: flex;
-      gap: var(--space-10);
-      margin-top: var(--space-16);
-      padding-top: var(--space-8);
-      border-top: 1px solid var(--color-gray-200);
-    }
-    
-    .statement-nav-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: var(--space-2) var(--space-3);
-      opacity: 0.4;
-    }
-    .statement-nav-item:hover { opacity: 0.7; }
-    .statement-nav-item.active { opacity: 1; }
-    
-    .statement-nav-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--color-gray-400);
-    }
-    .statement-nav-item.active .statement-nav-dot {
-      background: var(--color-primary);
-      box-shadow: 0 0 12px rgba(243,112,33,0.4);
-    }
-    
-    .statement-nav-label {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-charcoal-900);
-      letter-spacing: var(--letter-spacing-wide);
-    }
-    
-    @media (max-width: 768px) {
-      .statement-section { padding: var(--space-16) 0; }
-      .statement-nav { flex-wrap: wrap; gap: var(--space-4); }
-      .statement-headline { font-size: clamp(2rem, 8vw, 3rem); }
-    }
-    
-    /* ======================================================================
-       STATS — Elegant Thin Numbers
-       ====================================================================== */
-    .stats-elegant {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-8);
-      text-align: center;
-      padding: var(--space-20) 0;
-    }
-    @media (max-width: 1024px) { .stats-elegant { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .stats-elegant { grid-template-columns: 1fr; } }
-    
-    .stat-elegant {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-3);
-    }
-    
-    .stat-elegant-number {
-      font-size: clamp(4rem, 10vw, 6rem);
-      font-weight: 200;
-      letter-spacing: -0.04em;
-      line-height: 0.9;
-      color: var(--color-primary);
-      font-variant-numeric: tabular-nums;
-    }
-    
-    .stat-elegant-label {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.5);
-    }
-  </style>
 </head>
 <body>
 
@@ -161,10 +30,6 @@
 
         <nav class="nav-desktop">
           <ul class="nav-list">
-            <li class="nav-item">
-              <a href="why-lm.html" class="nav-link">Why LM?</a>
-            </li>
-            
             <li class="nav-item">
               <a href="#" class="nav-link">
                 RCX Loyalty Platform
@@ -243,11 +108,10 @@
                     </div>
                   </div>
                   <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
-                    <h3 class="mega-menu-featured-title">Security. Compliance.</h3>
-                    <p class="mega-menu-featured-description">Real-time system status</p>
-                    <div class="mega-menu-featured-image" style="background: rgba(91, 138, 184, 0.1); display: flex; align-items: center; justify-content: center;">
-                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5B8AB8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <div class="mega-menu-link-title">Trust Center</div>
+                    <div class="mega-menu-link-description">Security. Compliance. Real-time status.</div>
+                    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; align-items: center; justify-content: center;">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5B8AB8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#F37021" stroke-width="2"></path></svg>
                     </div>
                     <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
@@ -268,26 +132,14 @@
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
                 <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 580px; right: 0; left: auto;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.1fr;"> 
-                    <div class="mega-menu-links">
-                      <div class="mega-menu-column">
-                        <div class="mega-menu-column-title">Company</div>
-                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
-                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
-                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
-                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
-                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
-                      </div>
-                    </div>
-                    <div class="mega-menu-featured">
-                      <span class="mega-menu-featured-eyebrow">Featured</span>
-                      <h3 class="mega-menu-featured-title">Partner Network</h3>
-                      <p class="mega-menu-featured-description">Integrations. Alliances. Ecosystem.</p>
-                      <div class="mega-menu-featured-image" style="background: rgba(243, 112, 33, 0.08); display: flex; align-items: center; justify-content: center;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F37021" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                      </div>
-                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                <div class="mega-menu mega-menu-compact">
+                  <div class="mega-menu-inner">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Company</div>
+                      <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div><div class="mega-menu-link-description">How we got here</div></div></a>
+                      <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div><div class="mega-menu-link-description">What drives our team</div></div></a>
+                      <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div><div class="mega-menu-link-description">Join the team</div></div></a>
+                      <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div><div class="mega-menu-link-description">Get in touch</div></div></a>
                     </div>
                   </div>
                 </div>
@@ -308,189 +160,727 @@
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero hero-premium">
-    <div class="hero-premium-bg">
-      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=2400&q=80" alt="">
-    </div>
-    
+  <!-- ========== HERO: MINIMAL PREMIUM ==========
+       DESIGN PRINCIPLES:
+       - Apple/Stripe-level restraint — 70% fewer elements
+       - ONE contained glass panel on right (no scattered cards)
+       - No diagonal lines across hero
+       - Orange accents minimal (dots, short strokes only)
+       - Structured interior: nodes → connectors → outcomes
+       ========== -->
+  <style>
+    /* === MINIMAL HERO TOKENS === */
+    .hero-minimal {
+      --hero-bg-0: #0B0F14;
+      --hero-bg-1: #0E1621;
+      --hero-bg-2: #121A24;
+      --hero-orange: var(--color-primary, #F37021);
+      --hero-glass-bg: rgba(255,255,255,0.04);
+      --hero-glass-border: rgba(255,255,255,0.08);
+      --hero-glass-shine: rgba(255,255,255,0.06);
+      --hero-text-primary: rgba(255,255,255,0.92);
+      --hero-text-secondary: rgba(255,255,255,0.65);
+      --hero-text-muted: rgba(255,255,255,0.45);
+      --hero-toast-bg: rgba(255,255,255,0.95);
+      --hero-toast-text: rgba(15,20,26,0.88);
+      --hero-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 16px 32px rgba(0,0,0,0.2);
+    }
+
+    /* === HERO CONTAINER === */
+    .hero-minimal {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--hero-bg-0) 0%, var(--hero-bg-1) 50%, var(--hero-bg-2) 100%);
+    }
+
+    /* Subtle vignette — focuses attention */
+    .hero-minimal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 30% 50%, transparent 0%, rgba(0,0,0,0.3) 100%);
+      pointer-events: none;
+    }
+
+    /* === HERO LAYOUT: Two columns === */
+    .hero-minimal .container {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16, 4rem);
+      align-items: center;
+      padding-top: var(--space-20, 5rem);
+      padding-bottom: var(--space-20, 5rem);
+    }
+
+    /* === LEFT: Content === */
+    .hero-minimal-content {
+      max-width: 520px;
+    }
+    .hero-minimal-eyebrow {
+      display: block;
+      font-size: var(--font-size-xs, 0.75rem);
+      font-weight: var(--font-weight-medium, 500);
+      color: var(--hero-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: var(--space-6, 1.5rem);
+    }
+    .hero-minimal-title {
+      margin: 0 0 var(--space-6, 1.5rem) 0;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: var(--font-weight-semibold, 600);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--hero-text-primary);
+    }
+    .hero-minimal-description {
+      margin: 0 0 var(--space-10, 2.5rem) 0;
+      font-size: var(--font-size-lg, 1.125rem);
+      font-weight: var(--font-weight-normal, 400);
+      line-height: 1.6;
+      color: var(--hero-text-secondary);
+      max-width: 42ch;
+    }
+    .hero-minimal-cta {
+      display: flex;
+      gap: var(--space-4, 1rem);
+    }
+
+    /* === RIGHT: Glass Panel === */
+    .hero-panel-wrapper {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .hero-glass-panel {
+      width: 100%;
+      max-width: 580px;
+      padding: var(--space-8, 2rem);
+      background: var(--hero-glass-bg);
+      border: 1px solid var(--hero-glass-border);
+      border-radius: 20px;
+      box-shadow: var(--hero-shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Top shine effect */
+    .hero-glass-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--hero-glass-shine) 20%, rgba(255,255,255,0.12) 50%, var(--hero-glass-shine) 80%, transparent 100%);
+    }
+
+    /* === PANEL ROW 1: Nodes === */
+    .hero-nodes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4, 1rem);
+      margin-bottom: var(--space-6, 1.5rem);
+    }
+    .hero-node-item {
+      text-align: center;
+      padding: var(--space-4, 1rem) var(--space-2, 0.5rem);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+    .hero-node-icon {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto var(--space-3, 0.75rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+    }
+    .hero-node-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: rgba(255,255,255,0.7);
+      stroke-width: 1.5;
+      fill: none;
+    }
+    .hero-node-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--hero-text-primary);
+      letter-spacing: 0.01em;
+      margin-bottom: 4px;
+    }
+    .hero-node-meta {
+      font-size: 11px;
+      color: var(--hero-text-muted);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+
+    /* === PANEL ROW 2: Connector === */
+    .hero-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4, 1rem) 0;
+      margin-bottom: var(--space-6, 1.5rem);
+    }
+    .hero-connector-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(243,112,33,0.3) 15%,
+        rgba(243,112,33,0.5) 50%,
+        rgba(243,112,33,0.3) 85%,
+        transparent 100%
+      );
+      position: relative;
+    }
+    .hero-connector-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--hero-orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(243,112,33,0.4);
+    }
+    .hero-connector-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--hero-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0 var(--space-4, 1rem);
+      white-space: nowrap;
+    }
+
+    /* === PANEL ROW 3: Outcome Toasts === */
+    .hero-outcomes {
+      display: flex;
+      gap: var(--space-3, 0.75rem);
+      flex-wrap: wrap;
+    }
+    .hero-outcome {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--hero-toast-bg);
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .hero-outcome-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--hero-orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .hero-outcome-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--hero-toast-text);
+      letter-spacing: 0.01em;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .hero-minimal .container {
+        grid-template-columns: 1fr;
+        gap: var(--space-12, 3rem);
+        text-align: center;
+      }
+      .hero-minimal-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      .hero-minimal-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-minimal-cta {
+        justify-content: center;
+      }
+      .hero-panel-wrapper {
+        justify-content: center;
+      }
+      .hero-glass-panel {
+        max-width: 520px;
+      }
+      .hero-nodes {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-minimal {
+        min-height: auto;
+        padding: var(--space-20, 5rem) 0 var(--space-12, 3rem);
+      }
+      .hero-minimal .container {
+        padding-top: var(--space-16, 4rem);
+      }
+      .hero-glass-panel {
+        padding: var(--space-6, 1.5rem);
+      }
+      .hero-nodes {
+        gap: var(--space-3, 0.75rem);
+      }
+      .hero-node-item {
+        padding: var(--space-3, 0.75rem) var(--space-2, 0.5rem);
+      }
+      .hero-outcomes {
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <section class="hero-minimal" aria-label="Enterprise loyalty platform hero">
     <div class="container">
-      <div class="hero-content hero-content-wide">
-        <p class="hero-eyebrow">Enterprise Loyalty Platform</p>
-        <h1 class="hero-title hero-title-wide">
-          The real-time loyalty engine for <span class="highlight">enterprise programs.</span>
-        </h1>
-        <p class="hero-description">
-          Engineered to run inside complex systems, connect every customer touchpoint, and accelerate measurable business growth.
+      
+      <!-- Left: Content -->
+      <div class="hero-minimal-content">
+        <span class="hero-minimal-eyebrow">Enterprise Loyalty Platform</span>
+        <h1 class="hero-minimal-title">It's all about relationships.</h1>
+        <p class="hero-minimal-description">
+          Member, partner, program, and channel relationships—orchestrated in real time by a single engine.
         </p>
-        <div class="hero-cta">
+        <div class="hero-minimal-cta">
           <a href="about-contact.html" class="btn btn-primary btn-lg">Contact Us</a>
         </div>
       </div>
+
+      <!-- Right: Glass Panel -->
+      <div class="hero-panel-wrapper">
+        <div class="hero-glass-panel" aria-hidden="true">
+          
+          <!-- Row 1: Nodes -->
+          <div class="hero-nodes">
+            <div class="hero-node-item">
+              <div class="hero-node-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/></svg>
+              </div>
+              <span class="hero-node-label">Member</span>
+              <span class="hero-node-meta">Identity + history</span>
+            </div>
+            <div class="hero-node-item">
+              <div class="hero-node-icon">
+                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              </div>
+              <span class="hero-node-label">Partner</span>
+              <span class="hero-node-meta">Funding + earn/burn</span>
+            </div>
+            <div class="hero-node-item">
+              <div class="hero-node-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <span class="hero-node-label">Program</span>
+              <span class="hero-node-meta">Rules + tiers</span>
+            </div>
+            <div class="hero-node-item">
+              <div class="hero-node-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              </div>
+              <span class="hero-node-label">Channels</span>
+              <span class="hero-node-meta">POS · App · Web</span>
+            </div>
+          </div>
+
+          <!-- Row 2: Connector -->
+          <div class="hero-connector">
+            <div class="hero-connector-line"></div>
+            <span class="hero-connector-dot"></span>
+            <span class="hero-connector-label">Real-time orchestration</span>
+            <span class="hero-connector-dot"></span>
+            <div class="hero-connector-line"></div>
+          </div>
+
+          <!-- Row 3: Outcomes -->
+          <div class="hero-outcomes">
+            <div class="hero-outcome">
+              <span class="hero-outcome-dot"></span>
+              <span class="hero-outcome-text">VIP Recognized</span>
+            </div>
+            <div class="hero-outcome">
+              <span class="hero-outcome-dot"></span>
+              <span class="hero-outcome-text">Partner Reward Applied</span>
+            </div>
+            <div class="hero-outcome">
+              <span class="hero-outcome-dot"></span>
+              <span class="hero-outcome-text">Tier Progress Updated</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-    
   </section>
 
   <!-- ========== TRUST BAR ========== -->
   <section class="trust-bar-section">
     <div class="container">
       <p class="trust-bar-label">Trusted by leading brands worldwide</p>
-    </div>
-    <div class="trust-bar-track-wrapper">
-      <div class="trust-bar-track">
-        <div class="trust-bar-logos">
-          <img src="Group-2-1.svg" alt="7-Eleven">
-          <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
-          <img src="bp-logo-1.svg" alt="BP">
-          <img src="speedway-logo-1.svg" alt="Speedway">
-          <img src="Primary_YellowWhite-1.svg" alt="Western Union">
-          <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
-          <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
-        </div>
-        <div class="trust-bar-logos">
-          <img src="Group-2-1.svg" alt="7-Eleven">
-          <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
-          <img src="bp-logo-1.svg" alt="BP">
-          <img src="speedway-logo-1.svg" alt="Speedway">
-          <img src="Primary_YellowWhite-1.svg" alt="Western Union">
-          <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
-          <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
-        </div>
-        <div class="trust-bar-logos">
-          <img src="Group-2-1.svg" alt="7-Eleven">
-          <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
-          <img src="bp-logo-1.svg" alt="BP">
-          <img src="speedway-logo-1.svg" alt="Speedway">
-          <img src="Primary_YellowWhite-1.svg" alt="Western Union">
-          <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
-          <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
-        </div>
-        <div class="trust-bar-logos">
-          <img src="Group-2-1.svg" alt="7-Eleven">
-          <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
-          <img src="bp-logo-1.svg" alt="BP">
-          <img src="speedway-logo-1.svg" alt="Speedway">
-          <img src="Primary_YellowWhite-1.svg" alt="Western Union">
-          <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
-          <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
+      <div class="trust-bar-track-wrapper">
+        <div class="trust-bar-track">
+          <div class="trust-bar-logos">
+            <img src="Group-2-1.svg" alt="7-Eleven">
+            <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
+            <img src="bp-logo-1.svg" alt="BP">
+            <img src="speedway-logo-1.svg" alt="Speedway">
+            <img src="Primary_YellowWhite-1.svg" alt="Western Union">
+            <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
+            <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
+          </div>
+          <div class="trust-bar-logos">
+            <img src="Group-2-1.svg" alt="7-Eleven">
+            <img src="logo-color-mgmresorts-collapsed-1.svg" alt="MGM Resorts">
+            <img src="bp-logo-1.svg" alt="BP">
+            <img src="speedway-logo-1.svg" alt="Speedway">
+            <img src="Primary_YellowWhite-1.svg" alt="Western Union">
+            <img src="ta-logo@logotyp.us-1.svg" alt="TravelCenters of America">
+            <img src="Logo_Fontainebleau_LasVegas-1.svg" alt="Fontainebleau Las Vegas">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== STATEMENT SWITCHER ========== -->
-  <section class="statement-section">
+  <!-- ========== VALUE SWITCHER ========== -->
+  <section class="value-switcher-section">
     <div class="container">
-      
-      <!-- Panel 1: Real-Time -->
-      <div class="statement-panel active" data-panel="real-time">
-        <span class="statement-label">Real-Time Events</span>
-        <h2 class="statement-headline">Engage members the moment they act.</h2>
-        <p class="statement-body">ReactorCX processes every transaction in real time, so your team can trigger personalized offers, messages, and rewards before the customer leaves the store, the pump, or the property. Most enterprise platforms batch transactions. We process them synchronously. That's what enables true personalization.</p>
-        <a href="why-lm.html" class="btn btn-primary" style="margin-top: var(--space-8);">Learn More &rarr;</a>
+      <div class="value-switcher-grid">
+        
+        <!-- Left: Content -->
+        <div class="value-switcher-content">
+          <h2 class="value-switcher-headline" id="value-headline">Programs that deliver.</h2>
+          
+          <!-- Nav moved above body for top-to-bottom flow -->
+          <div class="value-switcher-nav" role="tablist" aria-label="Value proposition tabs">
+            <button class="value-switcher-nav-item active" data-tab="results" role="tab" aria-selected="true" aria-controls="quadrant-results" id="tab-results">
+              <span class="value-switcher-nav-label">Results</span>
+            </button>
+            <button class="value-switcher-nav-item" data-tab="relationships" role="tab" aria-selected="false" aria-controls="quadrant-relationships" id="tab-relationships">
+              <span class="value-switcher-nav-label">Relationships</span>
+            </button>
+            <button class="value-switcher-nav-item" data-tab="platform" role="tab" aria-selected="false" aria-controls="quadrant-platform" id="tab-platform">
+              <span class="value-switcher-nav-label">ReactorCX</span>
+            </button>
+          </div>
+          
+          <p class="value-switcher-body" id="value-body">Higher retention. Faster campaigns. Revenue lift you can trace back to the program. Results from enterprise programs running at scale across gaming, retail, and fuel. Real business impact, measured in production.</p>
+        </div>
+        
+        <!-- Right: Visual -->
+        <div class="value-switcher-visual">
+          
+          <!-- Results Quadrant -->
+          <div class="value-quadrant active" data-quadrant="results" role="tabpanel" id="quadrant-results" aria-labelledby="tab-results">
+            <div class="value-stat-card">
+              <div class="value-stat-number">+45%</div>
+              <div class="value-stat-label">Membership Growth</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">2×</div>
+              <div class="value-stat-label">Redemption Rate</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">3×</div>
+              <div class="value-stat-label">Activation Rate</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">+34%</div>
+              <div class="value-stat-label">Retention Rate</div>
+            </div>
+          </div>
+          
+          <!-- Relationships Quadrant -->
+          <div class="value-quadrant" data-quadrant="relationships" role="tabpanel" id="quadrant-relationships" aria-labelledby="tab-relationships">
+            <div class="value-stat-card">
+              <div class="value-stat-number">8×</div>
+              <div class="value-stat-label">Lifetime Value</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">76%</div>
+              <div class="value-stat-label">Repeat Rate</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">87%</div>
+              <div class="value-stat-label">Engagement</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">12×</div>
+              <div class="value-stat-label">Visit Frequency</div>
+            </div>
+          </div>
+          
+          <!-- Platform Quadrant -->
+          <div class="value-quadrant" data-quadrant="platform" role="tabpanel" id="quadrant-platform" aria-labelledby="tab-platform">
+            <div class="value-stat-card">
+              <div class="value-stat-number">30K+</div>
+              <div class="value-stat-label">Stores</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">600M+</div>
+              <div class="value-stat-label">Members Migrated</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">&lt;200ms</div>
+              <div class="value-stat-label">Response Time</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">0</div>
+              <div class="value-stat-label">Downtime</div>
+            </div>
+          </div>
+          
+        </div>
+        
       </div>
-      
-      <!-- Panel 2: API-First -->
-      <div class="statement-panel" data-panel="api-first">
-        <span class="statement-label">API-First</span>
-        <h2 class="statement-headline">Open architecture that integrates, not traps.</h2>
-        <p class="statement-body">Keep loyalty data accessible across your entire stack. ReactorCX connects to your POS, CRM, and CDP so loyalty decisions happen inside the systems your teams already use. No rip-and-replace. No black-box logic. Your architecture stays clean, and your data stays usable.</p>
-        <a href="why-lm.html" class="btn btn-primary" style="margin-top: var(--space-8);">Learn More &rarr;</a>
-      </div>
-      
-      <!-- Panel 3: Complexity -->
-      <div class="statement-panel" data-panel="complexity">
-        <span class="statement-label">Built for Complexity</span>
-        <h2 class="statement-headline">One engine. Every vertical.</h2>
-        <p class="statement-body">Run one loyalty platform across every business line. Fuel, gaming, retail. The same engine powers the pump, the gaming floor, and the checkout counter. Launch promotions that other platforms cannot execute. Manage multi-brand tiers, partner co-funding, and real-time discounting without custom development.</p>
-        <a href="why-lm.html" class="btn btn-primary" style="margin-top: var(--space-8);">Learn More &rarr;</a>
-      </div>
-      
-      <!-- Navigation Dots -->
-      <div class="statement-nav">
-        <button class="statement-nav-item active" data-target="real-time">
-          <span class="statement-nav-dot"></span>
-          <span class="statement-nav-label">Real-Time</span>
-        </button>
-        <button class="statement-nav-item" data-target="api-first">
-          <span class="statement-nav-dot"></span>
-          <span class="statement-nav-label">API-First</span>
-        </button>
-        <button class="statement-nav-item" data-target="complexity">
-          <span class="statement-nav-dot"></span>
-          <span class="statement-nav-label">Complexity</span>
-        </button>
-      </div>
-      
     </div>
   </section>
 
-  <!-- ========== STATS ========== -->
-  <section class="section dark">
-    <div class="container">
-      <p class="text-center body-sm mb-8" style="color: rgba(255,255,255,0.5);">Measured outcomes across individual enterprise programs</p>
-      <div class="stats-elegant">
-        <div class="stat-elegant">
-          <div class="stat-elegant-number">+34%</div>
-          <div class="stat-elegant-label">Retention Rate</div>
-        </div>
-        <div class="stat-elegant">
-          <div class="stat-elegant-number">2×</div>
-          <div class="stat-elegant-label">Redemption Rate</div>
-        </div>
-        <div class="stat-elegant">
-          <div class="stat-elegant-number">+45%</div>
-          <div class="stat-elegant-label">Membership Growth</div>
-        </div>
-        <div class="stat-elegant">
-          <div class="stat-elegant-number">3×</div>
-          <div class="stat-elegant-label">Activation Rate</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ========== REAL PROMOTIONS AT SCALE ========== -->
+  <!-- TEXT SIZE OVERRIDES — Improved readability per UX review -->
+  <style>
+    /* Promo row header text — bumped for better scanability */
+    .promo-row-title {
+      font-size: var(--font-size-lg, 1.1875rem) !important; /* was ~15px, now 19px */
+    }
+    .promo-row-desc {
+      font-size: var(--font-size-base, 1rem) !important; /* was ~13px, now 16px */
+      line-height: 1.5 !important;
+    }
+    /* Promo chips — slightly larger for legibility */
+    .promo-chip {
+      font-size: var(--font-size-xs, 0.75rem) !important; /* was ~10px, now 12px */
+      padding: 5px 12px !important;
+    }
+    /* Expanded detail specs — clearer hierarchy */
+    .promo-spec-label {
+      font-size: var(--font-size-sm, 0.875rem) !important; /* was ~11px, now 14px */
+    }
+    .promo-spec-value {
+      font-size: var(--font-size-base, 1rem) !important; /* was ~13px, now 16px */
+      line-height: 1.5 !important;
+    }
+    /* Gallery intro text */
+    .promo-gallery-headline {
+      font-size: var(--font-size-3xl, 1.875rem) !important;
+    }
+    .promo-gallery-subhead {
+      font-size: var(--font-size-md, 1.0625rem) !important;
+      line-height: 1.6 !important;
+    }
+    .promo-gallery-hint {
+      font-size: var(--font-size-sm, 0.875rem) !important;
+    }
+  </style>
 
-  <!-- ========== PLATFORM FEATURES — BENTO ========== -->
   <section class="section section-lg bg-light">
     <div class="container">
-      <div class="bento-tile-grid">
-
-        <div class="tile col-4">
-          <span class="tile-kicker">Core Platform</span>
-          <h3 class="tile-headline">Advanced Promotions</h3>
-          <p class="tile-body">Launch complex promotions in days, not quarters. <strong>BOGO, streaks, challenges, mix &amp; match, partner co-funding.</strong> Configured by your team, live without custom code.</p>
+      <div class="promo-gallery-grid">
+        
+        <!-- Left: Copy -->
+        <div class="promo-gallery-intro">
+          <h2 class="promo-gallery-headline">Real Promotions at Scale</h2>
+          <p class="promo-gallery-subhead">Enterprise promotion logic running in production today. Cross-LOB rules, partner funding, real-time arbitration.</p>
+          <p class="promo-gallery-hint">Select a promotion to view the rule spec.</p>
         </div>
-
-        <div class="tile col-4">
-          <span class="tile-kicker">Core Platform</span>
-          <h3 class="tile-headline">Multi-Brand Programs</h3>
-          <p class="tile-body">Operate <strong>multiple loyalty programs</strong> without multiple platforms. Separate brands, separate tier structures, separate rules. <strong>Unified management.</strong></p>
+        
+        <!-- Right: Promo Rows -->
+        <div class="promo-gallery-list" role="list">
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-1-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Fuel → In-Store Partner Booster</h3>
+                <p class="promo-row-desc">Link fuel purchase to inside basket with partner SKU triggers</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Cross-LOB</span>
+                  <span class="promo-chip">Partner-Funded</span>
+                  <span class="promo-chip">Real-Time POS</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-1-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">8+ gallons + 2 partner SKUs within 30 minutes</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">3× points on inside basket + instant $1 partner discount</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">2/day; excludes select site types</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner/merchant split with capped liability</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-2-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Points Burn at the Pump (Margin Guard)</h3>
+                <p class="promo-row-desc">Real-time point redemption with margin-based eligibility</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Burn</span>
+                  <span class="promo-chip">Margin Control</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-2-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Eligible grade + member balance threshold met</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Burn points for $ off, applied at checkout in real time</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Daily discount cap; no stacking with fleet pricing</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Merchant-funded with margin-based eligibility</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-3-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Partner Earn → In-Brand Burn</h3>
+                <p class="promo-row-desc">Convert partner transaction value into brand credit at checkout</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Partner</span>
+                  <span class="promo-chip">Cross-Brand</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-3-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Partner transaction posts + identity match confirmed</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Convert partner value into brand credit at checkout</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Full-price only; redemption frequency cap</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner reimburses per redemption tier</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-4-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Stay + Play + Dine Tier Accelerator</h3>
+                <p class="promo-row-desc">Multi-outlet spend triggers tier credit acceleration</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Gaming</span>
+                  <span class="promo-chip">Tier</span>
+                  <span class="promo-chip">Multi-Outlet</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-4-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">2-night stay + play threshold + F&B spend threshold</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Dining multiplier + tier credit acceleration</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Once per stay; comps excluded from earn base</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Property-funded</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-5-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Resort Credit Wallet (Burn)</h3>
+                <p class="promo-row-desc">Burn points into a $ wallet usable across property outlets</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Gaming</span>
+                  <span class="promo-chip">Burn</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-5-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Active stay + points balance threshold</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Burn points into a $ wallet usable across outlets</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Expires at checkout; 1/stay</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Property + outlet opt-in reimbursements</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-6-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Omnichannel Mix-to-Bonus (Retail)</h3>
+                <p class="promo-row-desc">Cross-category spend with store + web activity requirement</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Retail</span>
+                  <span class="promo-chip">Omnichannel</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-6-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Spend threshold + 2 categories + store+web activity</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Bonus points, with BOPIS booster</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Returns clawback; 1/week</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Merchant-funded</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-7-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Household Streak + Velocity Caps</h3>
+                <p class="promo-row-desc">Household-level qualification with velocity fraud gates</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Household</span>
+                  <span class="promo-chip">Caps</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-7-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Household enabled + cross-category threshold achieved</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Credit + multipliers on tagged categories</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Household monthly cap; restricted items excluded</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Optional partner-funded booster</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="promo-row" role="listitem">
+            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-8-detail">
+              <div class="promo-row-content">
+                <h3 class="promo-row-title">Real-Time Checkout Arbitration</h3>
+                <p class="promo-row-desc">Best-value offer selection when multiple promos qualify</p>
+                <div class="promo-row-chips">
+                  <span class="promo-chip">Arbitration</span>
+                  <span class="promo-chip">Real-Time</span>
+                </div>
+              </div>
+              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="promo-row-detail" id="promo-8-detail" hidden>
+              <div class="promo-spec-grid">
+                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Multiple eligible offers triggered in same basket</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Best-value offer applied + decision logged for audit</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Mutual exclusivity sets + fraud gates</span></div>
+                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Priority rules across mixed funding sources</span></div>
+              </div>
+            </div>
+          </div>
+          
         </div>
-
-        <div class="tile col-4">
-          <span class="tile-kicker">Capabilities</span>
-          <h3 class="tile-headline">Gamification</h3>
-          <p class="tile-body">Increase visit frequency with <strong>streaks that reward repeat behavior.</strong> Members commit to actions over time and return to complete them.</p>
-        </div>
-
-        <div class="tile col-4">
-          <span class="tile-kicker">Core Platform</span>
-          <h3 class="tile-headline">Conversational Analytics</h3>
-          <p class="tile-body">Ask questions in plain English. No SQL required. Get breakdowns built on the fly. <strong>Natural language queries</strong> against your full data model.</p>
-        </div>
-
-        <div class="tile col-4">
-          <span class="tile-kicker">Capabilities</span>
-          <h3 class="tile-headline">Partner Management</h3>
-          <p class="tile-body">Add partners without adding complexity. <strong>Funding, billing, and settlement</strong> stay separate per partner. Scale the ecosystem without scaling the headcount.</p>
-        </div>
-
-        <div class="tile col-4">
-          <span class="tile-kicker">Core Platform</span>
-          <h3 class="tile-headline">Real-Time Discounting</h3>
-          <p class="tile-body">RCX's discount and arbitration engine determines <strong>the optimal offer to apply in real-time at the POS.</strong> Protect margins while rewarding members.</p>
-        </div>
-
+        
       </div>
     </div>
   </section>
@@ -588,100 +978,23 @@
       <div class="grid grid-3">
         
         <a href="proven-threadsync.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-xs) var(--radius-xs) 0 0; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-            <img src="threadsync-diagram.png" alt="ThreadSync Implementation" style="width: 100%; height: auto; display: block;">
-          </div>
           <div class="card-rule-orange"></div>
           <h3 class="card-title">Parallel Tracks</h3>
-          <p class="card-description">ThreadSync&trade; divides your project into focused streams so teams can work independently without burning everyone's time.</p>
+          <p class="card-description">ThreadSync™ divides your project into focused streams so teams can work independently without burning everyone's time. Each workstream has clear ownership and defined handoffs.</p>
           <span class="card-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
         <a href="proven-safeswitch.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-xs) var(--radius-xs) 0 0; overflow: hidden;">
-            <img src="safeswitch-diagram.png" alt="SafeSwitch Cutover" style="width: 100%; height: 100%; display: block; object-fit: cover;">
-          </div>
           <div class="card-rule-orange"></div>
           <h3 class="card-title">Cut-Over with Confidence</h3>
-          <p class="card-description">Switch platforms without risking your program. SafeSwitch&trade; runs legacy and new systems in parallel, validates every data point.</p>
+          <p class="card-description">Switch platforms without risking your program. SafeSwitch™ runs legacy and new systems in parallel, validates every data point before cutover. Zero surprises.</p>
           <span class="card-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
-        <a href="resource-center.html" class="card">
-          <div style="width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); background: #f5f5f5; border-radius: var(--radius-xs) var(--radius-xs) 0 0; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
-            <svg viewBox="0 0 360 200" width="100%" style="display: block; max-width: 360px;" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="step3-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#FF8F4D"/>
-                  <stop offset="100%" stop-color="#F37021"/>
-                </linearGradient>
-                <linearGradient id="step3-charcoal" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#6a6a6a"/>
-                  <stop offset="100%" stop-color="#4a4a4a"/>
-                </linearGradient>
-                <linearGradient id="step3-track" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#d4d4d4"/>
-                  <stop offset="100%" stop-color="#e0e0e0"/>
-                </linearGradient>
-              </defs>
-
-              <!-- Uptime bar chart (background element) -->
-              <g opacity="0.12">
-                <rect x="30" y="80" width="14" height="90" rx="2" fill="#737373"/>
-                <rect x="52" y="60" width="14" height="110" rx="2" fill="#737373"/>
-                <rect x="74" y="70" width="14" height="100" rx="2" fill="#737373"/>
-                <rect x="96" y="50" width="14" height="120" rx="2" fill="#737373"/>
-                <rect x="118" y="40" width="14" height="130" rx="2" fill="#737373"/>
-              </g>
-
-              <!-- Center: success ring gauge -->
-              <circle cx="180" cy="100" r="62" fill="none" stroke="#e5e5e5" stroke-width="5"/>
-              <circle cx="180" cy="100" r="62" fill="none" stroke="url(#step3-orange)" stroke-width="5" stroke-linecap="round"
-                stroke-dasharray="389.6" stroke-dashoffset="0" transform="rotate(-90 180 100)"/>
-              <circle cx="180" cy="100" r="52" fill="none" stroke="#ebebeb" stroke-width="1"/>
-
-              <!-- Center text -->
-              <text x="180" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="300" fill="#F37021">100%</text>
-              <text x="180" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#737373" letter-spacing="0.12em" text-transform="uppercase">SUCCESS RATE</text>
-
-              <!-- Right side: migration stats -->
-              <g transform="translate(260, 52)">
-                <!-- Stat 1 -->
-                <rect x="0" y="0" width="72" height="40" rx="8" fill="white" stroke="#ebebeb" stroke-width="1"/>
-                <text x="36" y="17" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#333">600M+</text>
-                <text x="36" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">MEMBERS</text>
-
-                <!-- Stat 2 -->
-                <rect x="0" y="50" width="72" height="40" rx="8" fill="white" stroke="#ebebeb" stroke-width="1"/>
-                <text x="36" y="67" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#F37021">0</text>
-                <text x="36" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#a3a3a3" letter-spacing="0.06em">DOWNTIME</text>
-              </g>
-
-              <!-- Bottom track line -->
-              <line x1="30" y1="175" x2="330" y2="175" stroke="#e5e5e5" stroke-width="2" stroke-linecap="round"/>
-              <!-- Checkpoints on track -->
-              <circle cx="80" cy="175" r="4" fill="url(#step3-orange)"/>
-              <circle cx="155" cy="175" r="4" fill="url(#step3-orange)"/>
-              <circle cx="230" cy="175" r="4" fill="url(#step3-orange)"/>
-              <circle cx="305" cy="175" r="4" fill="url(#step3-orange)"/>
-              <!-- Labels -->
-              <text x="80" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">MIGRATE</text>
-              <text x="155" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">VALIDATE</text>
-              <text x="230" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">CUTOVER</text>
-              <text x="305" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.5" fill="#a3a3a3">LIVE</text>
-
-              <!-- Small checkmarks next to each checkpoint -->
-              <g fill="none" stroke="#F37021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="75,166 78,169 86,162"/>
-                <polyline points="150,166 153,169 161,162"/>
-                <polyline points="225,166 228,169 236,162"/>
-                <polyline points="300,166 303,169 311,162"/>
-              </g>
-            </svg>
-          </div>
+        <a href="proven-delivery.html" class="card">
           <div class="card-rule-orange"></div>
           <h3 class="card-title">Zero Downtime. Every Migration.</h3>
-          <p class="card-description">600M+ members migrated. 100% success rate. Not one outage after cutover. SafeSwitch&trade; has never taken a program offline.</p>
+          <p class="card-description"><strong>600M+ members</strong> migrated. <strong>100% success rate.</strong> Not one outage after cutover. SafeSwitch™ has never taken a program offline.</p>
           <span class="card-link">See Success Stories <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </a>
         
@@ -690,55 +1003,55 @@
   </section>
 
   <!-- ========== RESOURCES ========== -->
-  <section class="section bg-light">
+  <section class="section bg-white">
     <div class="container">
-      <div class="resource-list">
+      <div class="section-header">
+        <h2 class="section-title">Resources</h2>
+      </div>
+      <div class="spec-row-list">
         
-        <a href="blog-rcx-analytics.html" class="resource-item">
-          <div class="resource-item-image" style="background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 50%, #3a3a3a 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(243,112,33,0.5)" stroke-width="1.5">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-            </svg>
+        <a href="blog-rcx-analytics.html" class="spec-row">
+          <span class="spec-row-label">Blog</span>
+          <div class="spec-row-content">
+            <h3 class="spec-row-title">Stop Querying Your Data. Start Talking to Your Loyalty Platform.</h3>
+            <p class="spec-row-desc">RCX Analytics lets business users ask questions in plain English.</p>
+            <div class="spec-row-chips">
+              <span class="spec-row-chip">Analytics</span>
+              <span class="spec-row-chip">4 min read</span>
+            </div>
           </div>
-          <div class="resource-item-content">
-            <span class="resource-item-badge">Blog</span>
-            <h3 class="resource-item-title">Stop Querying Your Data. Start Talking to Your Loyalty Platform.</h3>
-            <p class="resource-item-excerpt">Enterprise loyalty teams wait too long for answers. RCX Analytics lets business users ask questions in plain English.</p>
-            <span class="resource-item-link">Read the Post <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-          </div>
+          <svg class="spec-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         
-        <a href="case-study-7eleven.html" class="resource-item">
-          <div class="resource-item-image" style="background: linear-gradient(165deg, #1f7a4d 0%, #166534 50%, #052e16 100%); display: flex; align-items: center; justify-content: center;">
-            <span style="font-size: 2rem; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: -0.02em;">7-11</span>
+        <a href="case-study-7eleven.html" class="spec-row">
+          <span class="spec-row-label">Case Study</span>
+          <div class="spec-row-content">
+            <h3 class="spec-row-title">7-Eleven Revolutionizes Convenience Store Loyalty</h3>
+            <p class="spec-row-desc">Feature-rich, customer-centric loyalty at 13,000+ North American locations.</p>
+            <div class="spec-row-chips">
+              <span class="spec-row-chip">Retail</span>
+              <span class="spec-row-chip">5 min read</span>
+            </div>
           </div>
-          <div class="resource-item-content">
-            <span class="resource-item-badge">Case Study</span>
-            <h3 class="resource-item-title">7-Eleven Revolutionizes Convenience Store Loyalty with ReactorCX</h3>
-            <p class="resource-item-excerpt">7-Eleven chose Loyalty Methods' ReactorCX (RCX) platform to create a feature-rich, customer-centric loyalty experience.</p>
-            <span class="resource-item-link">Read the Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-          </div>
+          <svg class="spec-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         
-        <a href="blog-soc2-security.html" class="resource-item">
-          <div class="resource-item-image" style="background: linear-gradient(165deg, #2C4A6E 0%, #1e3a5f 50%, #0f172a 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(91,138,184,0.6)" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
+        <a href="blog-soc2-security.html" class="spec-row">
+          <span class="spec-row-label">Blog</span>
+          <div class="spec-row-content">
+            <h3 class="spec-row-title">Enterprise Security & SOC 2 Compliance</h3>
+            <p class="spec-row-desc">How ReactorCX maintains the highest security standards.</p>
+            <div class="spec-row-chips">
+              <span class="spec-row-chip">Security</span>
+              <span class="spec-row-chip">SOC 2</span>
+            </div>
           </div>
-          <div class="resource-item-content">
-            <span class="resource-item-badge">Blog</span>
-            <h3 class="resource-item-title">Enterprise Security & SOC 2 Compliance</h3>
-            <p class="resource-item-excerpt">Learn how ReactorCX maintains the highest security standards with SOC 2 Type II certification and enterprise-grade compliance.</p>
-            <span class="resource-item-link">Read the Post <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-          </div>
+          <svg class="spec-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         
       </div>
       <div class="text-center mt-8">
-        <a href="resource-center.html" class="btn btn-primary">View All Resources</a>
+        <a href="resource-center.html" class="link-primary">View All Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
       </div>
     </div>
   </section>
@@ -751,7 +1064,7 @@
         <p class="cta-box-description">
           Whether you're launching a new program or replacing a legacy platform, see how ReactorCX delivers faster campaigns, cleaner data, and lower operational complexity.
         </p>
-        <a href="about-contact.html" class="btn btn-primary btn-lg">Get Started</a>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Request a Demo</a>
       </div>
     </div>
   </section>
@@ -808,7 +1121,6 @@
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
             <li><a href="about-story.html" class="footer-link">Our Story</a></li>
-            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
             <li><a href="about-careers.html" class="footer-link">Careers</a></li>
             <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
             <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
@@ -838,31 +1150,94 @@
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Statement switcher
-    const statementNavItems = document.querySelectorAll('.statement-nav-item');
-    const statementPanels = document.querySelectorAll('.statement-panel');
+    // Value switcher
+    const valueNavItems = document.querySelectorAll('.value-switcher-nav-item');
+    const valueQuadrants = document.querySelectorAll('.value-quadrant');
+    const valueHeadline = document.getElementById('value-headline');
+    const valueBody = document.getElementById('value-body');
     
-    statementNavItems.forEach(item => {
+    const valueContent = {
+      results: {
+        headline: 'Programs that deliver.',
+        body: 'Higher retention. Faster campaigns. Revenue lift you can trace back to the program. Results from enterprise programs running at scale across gaming, retail, and fuel. Real business impact, measured in production.'
+      },
+      relationships: {
+        headline: 'Loyalty that lasts.',
+        body: 'Members don\'t just enroll. They return, engage, and grow in value over time. Advanced promotional mechanics allowing for hyper personalization, built on a polymorphic activity engine that learns and responds across every touchpoint.'
+      },
+      platform: {
+        headline: 'Always on. Any scale.',
+        body: 'At the pump. At the slots. At checkout. ReactorCX processes millions of loyalty transactions every day, in real time, at any volume. Zero interruptions. That\'s what enterprise loyalty actually requires.'
+      }
+    };
+    
+    function switchTab(tab) {
+      // Update nav
+      valueNavItems.forEach(n => {
+        n.classList.remove('active');
+        n.setAttribute('aria-selected', 'false');
+      });
+      const activeNav = document.querySelector(`.value-switcher-nav-item[data-tab="${tab}"]`);
+      if (activeNav) {
+        activeNav.classList.add('active');
+        activeNav.setAttribute('aria-selected', 'true');
+      }
+      
+      // Update content
+      if (valueHeadline && valueBody && valueContent[tab]) {
+        valueHeadline.textContent = valueContent[tab].headline;
+        valueBody.textContent = valueContent[tab].body;
+      }
+      
+      // Update quadrants
+      valueQuadrants.forEach(q => q.classList.remove('active'));
+      const targetQuadrant = document.querySelector(`.value-quadrant[data-quadrant="${tab}"]`);
+      if (targetQuadrant) targetQuadrant.classList.add('active');
+    }
+    
+    // Click handlers
+    valueNavItems.forEach(item => {
       item.addEventListener('click', () => {
-        const target = item.dataset.target;
-        statementNavItems.forEach(n => n.classList.remove('active'));
-        item.classList.add('active');
-        statementPanels.forEach(p => p.classList.remove('active'));
-        document.querySelector(`.statement-panel[data-panel="${target}"]`).classList.add('active');
+        switchTab(item.dataset.tab);
       });
     });
     
-    // Auto-rotate statement panels every 6 seconds
-    let statementIndex = 0;
-    const statementTargets = ['real-time', 'api-first', 'complexity'];
-    setInterval(() => {
-      statementIndex = (statementIndex + 1) % statementTargets.length;
-      const target = statementTargets[statementIndex];
-      statementNavItems.forEach(n => n.classList.remove('active'));
-      document.querySelector(`.statement-nav-item[data-target="${target}"]`).classList.add('active');
-      statementPanels.forEach(p => p.classList.remove('active'));
-      document.querySelector(`.statement-panel[data-panel="${target}"]`).classList.add('active');
-    }, 6000);
+    // Keyboard navigation (arrow keys, home, end)
+    const tabList = document.querySelector('.value-switcher-nav');
+    const tabs = ['results', 'relationships', 'platform'];
+    
+    tabList.addEventListener('keydown', (e) => {
+      const currentTab = document.activeElement.dataset.tab;
+      const currentIndex = tabs.indexOf(currentTab);
+      let newIndex;
+      
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+          e.preventDefault();
+          newIndex = (currentIndex + 1) % tabs.length;
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          e.preventDefault();
+          newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+          break;
+        case 'Home':
+          e.preventDefault();
+          newIndex = 0;
+          break;
+        case 'End':
+          e.preventDefault();
+          newIndex = tabs.length - 1;
+          break;
+        default:
+          return;
+      }
+      
+      const newTab = tabs[newIndex];
+      switchTab(newTab);
+      document.querySelector(`.value-switcher-nav-item[data-tab="${newTab}"]`).focus();
+    });
 
     // Product tour
     const tourNavItems = document.querySelectorAll('.tour-nav-item');
@@ -882,6 +1257,46 @@
         browserScreens.forEach(s => s.classList.remove('active'));
         document.querySelector(`.browser-screen[data-screen="${target}"]`).classList.add('active');
         if (urlText && urls[target]) urlText.textContent = urls[target];
+      });
+    });
+    
+    // Promo Gallery Accordion
+    const promoRows = document.querySelectorAll('.promo-row');
+    
+    promoRows.forEach(row => {
+      const header = row.querySelector('.promo-row-header');
+      const detail = row.querySelector('.promo-row-detail');
+      
+      header.addEventListener('click', () => {
+        const isExpanded = row.classList.contains('expanded');
+        
+        // Close all other rows
+        promoRows.forEach(otherRow => {
+          if (otherRow !== row && otherRow.classList.contains('expanded')) {
+            otherRow.classList.remove('expanded');
+            otherRow.querySelector('.promo-row-header').setAttribute('aria-expanded', 'false');
+            otherRow.querySelector('.promo-row-detail').setAttribute('hidden', '');
+          }
+        });
+        
+        // Toggle this row
+        if (isExpanded) {
+          row.classList.remove('expanded');
+          header.setAttribute('aria-expanded', 'false');
+          detail.setAttribute('hidden', '');
+        } else {
+          row.classList.add('expanded');
+          header.setAttribute('aria-expanded', 'true');
+          detail.removeAttribute('hidden');
+        }
+      });
+      
+      // Keyboard support
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
       });
     });
   </script>

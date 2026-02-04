@@ -1,5 +1,5 @@
 /* ======================================================================
-   DESIGN TOKENS (V10.1 - SLIM)
+   DESIGN TOKENS (V10.2 - UX REFRESH)
    ====================================================================== */
 :root {
   /* --- BRAND COLORS --- */
@@ -45,12 +45,12 @@
   /* --- TYPOGRAPHY --- */
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-  --font-size-2xs: 0.625rem;
-  --font-size-xs: 0.6875rem;
-  --font-size-sm: 0.8125rem;
-  --font-size-base: 0.9375rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
+  --font-size-2xs: 0.6875rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.0625rem;
+  --font-size-lg: 1.1875rem;
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;
@@ -71,9 +71,9 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.65;
   --line-height-loose: 1.8;
-  --letter-spacing-tighter: -0.03em;
-  --letter-spacing-tight: -0.02em;
-  --letter-spacing-normal: -0.01em;
+  --letter-spacing-tighter: -0.015em;
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
   --letter-spacing-wide: 0.02em;
   --letter-spacing-wider: 0.05em;
   --letter-spacing-widest: 0.14em;
@@ -99,6 +99,18 @@
   --radius-3xl: 32px; --radius-4xl: 40px; --radius-full: 9999px;
   --border-glass: 1px solid rgba(255,255,255,0.15);
 
+  /* --- FOCUS RING (Accessibility) --- */
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-offset: 2px;
+  --focus-ring-width: 2px;
+  --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color);
+
+  /* --- FOOTER TEXT (WCAG AA on obsidian bg) --- */
+  --footer-text-link: rgba(255,255,255,0.78);
+  --footer-text-link-hover: rgba(255,255,255,0.95);
+  --footer-text-muted: rgba(255,255,255,0.55);
+  --footer-text-heading: rgba(255,255,255,0.88);
+
   /* Transitions (all instant - kept for page-style references) */
   --transition-fast: 0ms;
   --transition-base: 0ms;
@@ -122,8 +134,8 @@
   --bg-page: var(--color-charcoal-950);
   --bg-card: var(--color-charcoal-800);
   --text-primary: var(--color-white);
-  --text-secondary: rgba(255,255,255,0.75);
-  --text-muted: rgba(255,255,255,0.55);
+  --text-secondary: rgba(255,255,255,0.85);
+  --text-muted: rgba(255,255,255,0.6);
   --text-subtle: rgba(255,255,255,0.35);
   --text-accent: var(--color-primary);
   --border-subtle: rgba(255,255,255,0.15);
@@ -135,3 +147,77 @@
 .bg-light { background-color: var(--color-gray-100); }
 .bg-dark { background: var(--grad-obsidian); }
 .bg-obsidian-warm { background: var(--grad-obsidian-warm); }
+
+/* ======================================================================
+   GLOBAL INTERACTIVE STATES (V10.2)
+   Applied site-wide for consistent accessibility
+   ====================================================================== */
+
+/* --- BUTTON FOCUS STATES --- */
+.btn:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+}
+
+.btn-primary:focus-visible {
+  outline-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 4px var(--color-primary-glow);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-dark);
+}
+
+/* --- CTA BOX COMPONENT --- */
+.cta-box {
+  background: var(--grad-obsidian);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12) var(--space-10);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top edge shine */
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--grad-edge-shine);
+}
+
+.cta-box-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  margin: 0 0 var(--space-4) 0;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.cta-box-description {
+  font-size: var(--font-size-md);
+  color: rgba(255,255,255,0.82); /* WCAG AA compliant on obsidian ~6.5:1 */
+  line-height: var(--line-height-relaxed);
+  max-width: 52ch;
+  margin: 0 auto var(--space-8) auto;
+}
+
+/* CTA Box responsive */
+@media (max-width: 768px) {
+  .cta-box {
+    padding: var(--space-10) var(--space-6);
+  }
+  .cta-box-title {
+    font-size: var(--font-size-2xl);
+  }
+  .cta-box-description {
+    font-size: var(--font-size-base);
+  }
+}
