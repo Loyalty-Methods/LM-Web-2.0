@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Program Design & Rules | RCX Loyalty Platform</title>
   
-  <!-- BESPOKE LUXURY CSS SYSTEM -->
   <link rel="stylesheet" href="c-tokens.css">
   <link rel="stylesheet" href="c-base.css">
   <link rel="stylesheet" href="c-nav.css">
@@ -16,189 +15,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-    /* ==========================================================================
-       PAGE-SPECIFIC: Centered hero variant & custom visual widgets
-       Everything else comes from the c-*.css modular system.
-       ========================================================================== */
-
-    /* Heading reset — prevent browser-default bold from overriding
-       the design-system weights defined in c-*.css classes.            */
-    h1, h2, h3, h4, h5, h6 { font-weight: inherit; }
-
-    /* Page utilities (replaces inline styles) */
-    .stats-bar-3col { grid-template-columns: repeat(3, 1fr); }
-
-    /* Hero: deep charcoal gradient + heavy white glass */
-    .hero-premium-bg::after {
-      background:
-        linear-gradient(180deg,
-          rgba(30,30,30,0.82) 0%,
-          rgba(38,38,38,0.78) 25%,
-          rgba(44,44,44,0.72) 50%,
-          rgba(36,36,36,0.78) 75%,
-          rgba(30,30,30,0.85) 100%);
-    }
-    .hero-premium::before {
-      height: 65%;
-      background:
-        linear-gradient(180deg,
-          rgba(255,255,255,0.22) 0%,
-          rgba(255,255,255,0.15) 12%,
-          rgba(255,255,255,0.08) 30%,
-          rgba(255,255,255,0.03) 50%,
-          transparent 100%);
-    }
-
-    /* --- Cards inside dark sections — charcoal glass treatment ---
-       Locked pattern respected: no .card.dark class. Contextual only. */
-    .section.dark .card {
-      background: linear-gradient(165deg,
-        rgba(255,255,255,0.10) 0%,
-        rgba(255,255,255,0.05) 40%,
-        rgba(255,255,255,0.02) 100%);
-      backdrop-filter: blur(40px) saturate(1.2);
-      -webkit-backdrop-filter: blur(40px) saturate(1.2);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-top: none;
-    }
-    .section.dark .card::before {
-      background: linear-gradient(90deg,
-        rgba(255,255,255,0.25) 0%,
-        rgba(255,255,255,0.18) 80%,
-        rgba(255,255,255,0.35) 92%,
-        rgba(255,255,255,0.5) 96%,
-        transparent 100%);
-    }
-    .section.dark .card:hover {
-      border-color: rgba(255,255,255,0.20);
-      box-shadow: 0 0 0 0.5px rgba(255,255,255,0.06),
-        0 2px 6px rgba(0,0,0,0.2),
-        0 8px 24px rgba(0,0,0,0.15);
-    }
-    .section.dark .card .card-title {
-      color: var(--color-white);
-    }
-    .section.dark .card .card-body,
-    .section.dark .card .card-description {
-      color: rgba(255,255,255,0.6);
-    }
-    .section.dark .card .card-rule-orange {
-      box-shadow: 0 0 8px rgba(243,112,33,0.3);
-    }
-
-    /* Stat description (extends stat-title) */
-    .stat-description {
-      font-size: var(--font-size-sm);
-      color: var(--color-white);
-      line-height: 1.5;
-      max-width: 220px;
-      margin: var(--space-2) auto 0;
-      position: relative;
-      z-index: 3;
-    }
-
-    /* Earn display widget */
-    .earn-display {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-8);
-      box-shadow: var(--shadow-md);
-      max-width: 360px;
-      margin: 0 auto;
-    }
-    .earn-amount {
-      font-size: var(--font-size-5xl);
-      font-weight: var(--font-weight-light);
-      color: var(--color-primary);
-      line-height: 1;
-      letter-spacing: var(--letter-spacing-tight);
-    }
-    .earn-label {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-500);
-      margin-top: var(--space-1);
-      margin-bottom: var(--space-6);
-    }
-    .earn-breakdown {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-      border-top: 1px solid var(--color-gray-200);
-      padding-top: var(--space-5);
-    }
-    .earn-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .earn-row-label {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-500);
-    }
-    .earn-row-value {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-charcoal-900);
-    }
-
-    /* Redeem display widget */
-    .redeem-display {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-      max-width: 380px;
-      margin: 0 auto;
-    }
-    .redeem-row {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      background: var(--color-white);
-      border-radius: var(--radius-xl);
-      padding: var(--space-4) var(--space-5);
-      box-shadow: var(--shadow-xs);
-      border: 1px solid var(--color-gray-200);
-    }
-    .redeem-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-gray-50);
-      border-radius: var(--radius-md);
-      flex-shrink: 0;
-    }
-    .redeem-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--color-gray-500);
-    }
-    .redeem-info {
-      flex: 1;
-    }
-    .redeem-name {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-charcoal-900);
-    }
-    .redeem-cost {
-      font-size: var(--font-size-xs);
-      color: var(--color-gray-400);
-    }
-    .redeem-btn {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-primary);
-      padding: var(--space-2) var(--space-3);
-      border: 1px solid var(--color-primary);
-      border-radius: var(--radius-full);
-      white-space: nowrap;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -213,63 +30,51 @@
         <nav class="nav-desktop">
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="why-lm.html" class="nav-link">Why LM?</a>
-            </li>
-            
-            <li class="nav-item">
               <a href="#" class="nav-link">
                 RCX Loyalty Platform
                 <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-platform">
                 <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Core Platform</div>
-                      <a href="feature-program-design.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
-                      </a>
-                      <a href="feature-promotions.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
-                      </a>
-                      <a href="feature-analytics.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
-                      </a>
-                      <a href="feature-advanced-tools.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
-                      </a>
-                    </div>
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Capabilities</div>
-                      <a href="feature-engagement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
-                      </a>
-                      <a href="feature-rewards.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
-                      </a>
-                      <a href="feature-partner-enablement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
-                      </a>
-                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
-                      </a>
-                    </div>
+                  <div class="mega-menu-column">
+                    <div class="mega-menu-column-title">Core Platform</div>
+                    <a href="feature-program-design.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                    </a>
+                    <a href="feature-promotions.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                    </a>
+                    <a href="feature-analytics.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                    </a>
+                    <a href="feature-advanced-tools.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                    </a>
                   </div>
-                  <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Featured</span>
-                    <h3 class="mega-menu-featured-title">Agentic AI for Loyalty</h3>
-                    <p class="mega-menu-featured-description">Not an assistant. A team.</p>
-                    <div class="mega-menu-featured-image"></div>
+                  <div class="mega-menu-column">
+                    <div class="mega-menu-column-title">Capabilities</div>
+                    <a href="feature-engagement.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                    </a>
+                    <a href="feature-rewards.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                    </a>
+                    <a href="feature-partner-enablement.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                    </a>
+                    <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -302,11 +107,10 @@
                     </div>
                   </div>
                   <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
-                    <h3 class="mega-menu-featured-title">Security. Compliance.</h3>
-                    <p class="mega-menu-featured-description">Real-time system status</p>
-                    <div class="mega-menu-featured-image" style="background: rgba(91, 138, 184, 0.1); display: flex; align-items: center; justify-content: center;">
-                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5B8AB8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <div class="mega-menu-link-title">Trust Center</div>
+                    <div class="mega-menu-link-description">Security. Compliance. Real-time status.</div>
+                    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; align-items: center; justify-content: center;">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5B8AB8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#F37021" stroke-width="2"></path></svg>
                     </div>
                     <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
@@ -315,32 +119,7 @@
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Proven Delivery
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </a>
-              <div class="mega-menu mega-menu-compact">
-                <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <a href="proven-threadsync.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
-                      </a>
-                      <a href="proven-safeswitch.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
-                      </a>
-                      <a href="resource-center.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <a href="proven-delivery.html" class="nav-link">Proven Delivery</a>
             </li>
             
             <li class="nav-item">
@@ -352,26 +131,14 @@
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
                 <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 580px; right: 0; left: auto;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.1fr;"> 
-                    <div class="mega-menu-links">
-                      <div class="mega-menu-column">
-                        <div class="mega-menu-column-title">Company</div>
-                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
-                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
-                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
-                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
-                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
-                      </div>
-                    </div>
-                    <div class="mega-menu-featured">
-                      <span class="mega-menu-featured-eyebrow">Featured</span>
-                      <h3 class="mega-menu-featured-title">Partner Network</h3>
-                      <p class="mega-menu-featured-description">Integrations. Alliances. Ecosystem.</p>
-                      <div class="mega-menu-featured-image" style="background: rgba(243, 112, 33, 0.08); display: flex; align-items: center; justify-content: center;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F37021" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                      </div>
-                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                <div class="mega-menu mega-menu-compact">
+                  <div class="mega-menu-inner">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Company</div>
+                      <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div><div class="mega-menu-link-description">How we got here</div></div></a>
+                      <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div><div class="mega-menu-link-description">What drives our team</div></div></a>
+                      <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div><div class="mega-menu-link-description">Join the team</div></div></a>
+                      <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div><div class="mega-menu-link-description">Get in touch</div></div></a>
                     </div>
                   </div>
                 </div>
@@ -392,349 +159,242 @@
     </div>
   </header>
 
-
-  <!-- ========== HERO ========== -->
-  <section class="hero hero-premium">
-    <div class="hero-premium-bg">
-      <img src="hero-program-design.png" alt="RCX Admin Studio dashboard on desktop and laptop screens with mathematical formulas">
+  <!-- ========== HERO: Simple & Clean ========== -->
+  <section class="hero-cinematic hero-cinematic--short">
+    <div class="hero-cinematic-bg">
+      <div style="width:100%; height:100%; background: linear-gradient(165deg, #555 0%, #484848 40%, #3d3d3d 100%);"></div>
     </div>
-    
     <div class="container">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Core Platform</p>
-        <h1 class="hero-title">Program Design <span class="highlight">& Rules</span></h1>
-        <p class="hero-description">Control how members earn, spend, and progress without rebuilding your program every quarter. Configure earn rules, burn rules, tier logic, and promotion mechanics in a structured rules engine your team can operate directly.</p>
+      <div class="hero-cinematic-content" style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <span class="hero-cinematic-eyebrow">RCX Platform</span>
+        <h1 class="hero-cinematic-title">Program Design & Rules</h1>
+        <p class="hero-cinematic-subtitle" style="margin-left: auto; margin-right: auto;">
+          Build sophisticated loyalty programs with flexible earn structures, dynamic tiers, and real-time rule execution.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ========== ANCHOR BAR ========== -->
-  <nav class="section-anchor-bar">
+  <!-- ========== INTRO SECTION ========== -->
+  <section class="section bg-white">
     <div class="container">
-      <div class="anchor-bar-inner">
-        <a href="#framework" class="anchor-link active">Rules Framework</a>
-        <a href="#earning" class="anchor-link">Earning Logic</a>
-        <a href="#redemption" class="anchor-link">Redemption Logic</a>
-        <a href="#tiers" class="anchor-link">Tier Configuration</a>
-        <a href="#scale" class="anchor-link">Enterprise Scale</a>
-        <a href="#faq" class="anchor-link">FAQ</a>
-      </div>
-    </div>
-  </nav>
-
-
-  <!-- ========== FRAMEWORK ========== -->
-  <section id="framework" class="section bg-white">
-    <div class="container">
-      <div class="section-header">
-        <p class="eyebrow">Rules Framework</p>
-        <h2 class="section-title">Every Rule Starts with Four Questions</h2>
-        <p class="body-text">Who qualifies. Where it applies. When it's active. What triggers it.</p>
-      </div>
-      <div class="framework-grid">
-        <div class="framework-card">
-          <div class="framework-letter">W</div>
-          <h3 class="framework-title">Who</h3>
-          <p class="framework-body">Target the right members. Filter by attributes, tier, segment, preferences, or status.</p>
-        </div>
-        <div class="framework-card">
-          <div class="framework-letter">W</div>
-          <h3 class="framework-title">Where</h3>
-          <p class="framework-body">Apply rules where they matter. Filter by location, brand, category, or outlet list.</p>
-        </div>
-        <div class="framework-card">
-          <div class="framework-letter">W</div>
-          <h3 class="framework-title">When</h3>
-          <p class="framework-body">Control timing precisely. Set effective dates, day of week, hour of day, or time zone.</p>
-        </div>
-        <div class="framework-card">
-          <div class="framework-letter">W</div>
-          <h3 class="framework-title">What</h3>
-          <p class="framework-body">Define what triggers the rule. Product, service, activity type, or transaction attribute.</p>
-        </div>
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <h2 class="section-title" style="margin-bottom: var(--space-6);">Loyalty Architecture That Scales</h2>
+        <p class="body-text" style="font-size: var(--font-size-lg);">
+          ReactorCX gives you complete control over program mechanics. Define earning rules, tier progressions, redemption options, and partner relationships—all in one unified platform.
+        </p>
       </div>
     </div>
   </section>
 
-
-  <!-- ========== STATS ========== -->
-  <section id="scale" class="section dark">
-    <div class="container">
-      <p class="text-center body-sm mb-8">Measured outcomes across individual enterprise programs</p>
-      <div class="stats-bar stats-bar-3col">
-        <div class="stat-item">
-          <div class="stat-number">400+</div>
-          <div class="stat-description">Native and partner promotions live simultaneously. Refreshed every marketing cycle.</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">16</div>
-          <div class="stat-description">Versions of one program. Operator isolated, member unified.</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">6</div>
-          <div class="stat-description">Separate business lines with cross-earn, cross-burn, and shared redemption across the portfolio.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== EARNING LOGIC ========== -->
-  <section id="earning" class="section bg-light" style="background: var(--color-gray-50);">
-    <div class="container">
-      <div class="feature-row">
-        <div class="feature-visual">
-          <div class="earn-display">
-            <div class="earn-amount">+2,450</div>
-            <div class="earn-label">Points Earned</div>
-            <div class="earn-breakdown">
-              <div class="earn-row">
-                <span class="earn-row-label">Base Rate</span>
-                <span class="earn-row-value">+1,000</span>
-              </div>
-              <div class="earn-row">
-                <span class="earn-row-label">Gold Multiplier (2x)</span>
-                <span class="earn-row-value">+1,000</span>
-              </div>
-              <div class="earn-row">
-                <span class="earn-row-label">Weekend Bonus</span>
-                <span class="earn-row-value">+450</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="feature-content">
-          <div class="feature-label">Earning Logic</div>
-          <h2 class="feature-title">Reward the Right Behavior in Real Time</h2>
-          <p class="feature-description">Configure base earn rates, bonus multipliers, and conditional logic for any activity type. Balances update in real time across all channels. Every earn event creates a traceable accrual record with full lineage.</p>
-          <ul class="feature-list">
-            <li>Base rates by spend, visit, stay, or custom metric</li>
-            <li>Multipliers by tier, segment, location, or time window</li>
-            <li>Partner earn rules with separate attribution</li>
-            <li>Real-time balance updates across all channels</li>
-          </ul>
-          <a href="about-contact.html" class="btn btn-primary">See It in Action &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== REDEMPTION LOGIC ========== -->
-  <section id="redemption" class="section bg-white">
-    <div class="container">
-      <div class="feature-row reverse">
-        <div class="feature-visual">
-          <div class="redeem-display">
-            <div class="redeem-row">
-              <div class="redeem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
-              <div class="redeem-info"><div class="redeem-name">$25 Gift Card</div><div class="redeem-cost">2,500 points</div></div>
-              <span class="redeem-btn">Redeem</span>
-            </div>
-            <div class="redeem-row">
-              <div class="redeem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div>
-              <div class="redeem-info"><div class="redeem-name">Priority Check-in</div><div class="redeem-cost">500 points</div></div>
-              <span class="redeem-btn">Redeem</span>
-            </div>
-            <div class="redeem-row">
-              <div class="redeem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
-              <div class="redeem-info"><div class="redeem-name">Room Upgrade</div><div class="redeem-cost">3,000 points</div></div>
-              <span class="redeem-btn">Redeem</span>
-            </div>
-          </div>
-        </div>
-        <div class="feature-content">
-          <div class="feature-label">Redemption Logic</div>
-          <h2 class="feature-title">Protect Value While Making Redemption Easy</h2>
-          <p class="feature-description">Define redemption rules, burn order, and consumption logic. Track every redemption back to the original accrual. Finance teams get full traceability. Members get a clean experience.</p>
-          <ul class="feature-list">
-            <li>Burn rules by reward type, location, or channel</li>
-            <li>FIFO or custom burn order by tag, category, or recency</li>
-            <li>Escrow and deferred redemption patterns</li>
-            <li>Full lineage from redemption to original earn</li>
-          </ul>
-          <a href="about-contact.html" class="btn btn-primary">Explore Redemption &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== TIER SECTION ========== -->
-  <section id="tiers" class="section dark">
-    <div class="container">
-      <div class="section-header">
-        <p class="eyebrow">Tier Configuration</p>
-        <h2 class="section-title">Tier Logic That Scales With Your Program</h2>
-        <p class="body-text">Status matching, accelerators, hidden tiers, qualification logic, grace periods, and benefits&mdash;all configurable without code.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="card-rule-orange"></div>
-          <h3 class="card-title">Status Matching</h3>
-          <p class="card-description">Grant elite status to new members to match competitor status.</p>
-        </div>
-        <div class="card">
-          <div class="card-rule-orange"></div>
-          <h3 class="card-title">Tier Accelerators</h3>
-          <p class="card-description">Short-term challenges that award bonus tier credit.</p>
-        </div>
-        <div class="card">
-          <div class="card-rule-orange"></div>
-          <h3 class="card-title">Hidden Tiers</h3>
-          <p class="card-description">Invite-only or surprise-and-delight tiers not visible to members.</p>
-        </div>
-        <div class="card">
-          <div class="card-rule-orange"></div>
-          <h3 class="card-title">Qualification Logic</h3>
-          <p class="card-description">Qualify on spend, visits, nights, or any custom metric.</p>
-        </div>
-        <div class="card">
-          <div class="card-rule-orange"></div>
-          <h3 class="card-title">Grace Periods</h3>
-          <p class="card-description">Soft-landing demotion rules and requalification windows.</p>
-        </div>
-        <div class="card">
-          <div class="card-rule-orange"></div>
-          <h3 class="card-title">Tier Benefits</h3>
-          <p class="card-description">Multipliers, perks, and exclusive access tied to status.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== CASE STUDY ========== -->
+  <!-- ========== CAPABILITIES ========== -->
   <section class="section bg-light">
     <div class="container">
-      <div class="feature-row">
-        <div class="feature-content">
-          <div class="feature-label">Case Study</div>
-          <h2 class="feature-title">Promotions at True Scale</h2>
-          <p class="feature-description">Our c-store client runs <strong>400+ unique promotions</strong> nationwide, with <strong>50+ partners</strong> contributing co-funded offers. Each partner promotion carries its own funding allocation, billing parameters, and reimbursement logic.</p>
-          <p class="feature-description">The rules engine tracks every earn and burn by source, partner, and location. <strong>Millions of dollars</strong> settle through the platform every cycle.</p>
-          <a href="feature-partner-enablement.html" class="btn btn-primary">Explore Partner Enablement &rarr;</a>
+      <div class="section-header">
+        <h2 class="section-title">Core Capabilities</h2>
+      </div>
+      <div class="grid grid-3">
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Flexible Earning</h3>
+          <p class="card-description">Configure points, miles, or credits with multipliers by category, channel, tier, or partner. Real-time calculation at every transaction.</p>
         </div>
-        <div class="feature-visual">
-          <div class="earn-display">
-            <div class="earn-amount">400+</div>
-            <div class="earn-label">Active Promotions</div>
-            <div class="earn-breakdown">
-              <div class="earn-row">
-                <span class="earn-row-label">Co-Funded Partners</span>
-                <span class="earn-row-value">50+</span>
-              </div>
-              <div class="earn-row">
-                <span class="earn-row-label">Settlement Cycles</span>
-                <span class="earn-row-value">Weekly</span>
-              </div>
-              <div class="earn-row">
-                <span class="earn-row-label">Rule Variants</span>
-                <span class="earn-row-value">16</span>
-              </div>
-            </div>
-          </div>
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Dynamic Tiers</h3>
+          <p class="card-description">Create unlimited tier structures with qualification rules, benefit packages, and automatic status evaluation. Soft-landing and grace periods included.</p>
         </div>
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Redemption Rules</h3>
+          <p class="card-description">Set redemption rates, minimum thresholds, category restrictions, and blackout periods. Support for partial pay and points-plus-cash.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Partner Programs</h3>
+          <p class="card-description">Integrate coalition partners with separate earn/burn rules, funding splits, and real-time settlement. Full partner portal included.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Rule Arbitration</h3>
+          <p class="card-description">When multiple promotions qualify, the engine automatically selects the best value for the member while respecting mutual exclusivity rules.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Velocity Controls</h3>
+          <p class="card-description">Prevent abuse with configurable limits at member, household, and program levels. Real-time fraud detection built in.</p>
+        </div>
+        
       </div>
     </div>
   </section>
 
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">How It Works</h2>
+      </div>
+      
+      <div class="feature-row" style="margin-bottom: var(--space-16);">
+        <div class="feature-content">
+          <span class="feature-label">Step 1</span>
+          <h3 class="feature-title">Define Your Program Structure</h3>
+          <p class="feature-description">
+            Start with currencies, tiers, and earning rules. The visual rule builder lets business users configure logic without code. Set base rates, multipliers, and qualification criteria.
+          </p>
+        </div>
+        <div class="feature-visual">
+          <div style="text-align: center; color: var(--color-gray-400);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <p style="margin-top: var(--space-4); font-size: var(--font-size-sm);">Program Structure</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="feature-row reverse" style="margin-bottom: var(--space-16);">
+        <div class="feature-content">
+          <span class="feature-label">Step 2</span>
+          <h3 class="feature-title">Configure Business Rules</h3>
+          <p class="feature-description">
+            Layer in promotions, caps, and partner logic. Rules execute in real-time at the point of transaction. Test in sandbox before pushing to production.
+          </p>
+        </div>
+        <div class="feature-visual">
+          <div style="text-align: center; color: var(--color-gray-400);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            <p style="margin-top: var(--space-4); font-size: var(--font-size-sm);">Rules Engine</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="feature-row">
+        <div class="feature-content">
+          <span class="feature-label">Step 3</span>
+          <h3 class="feature-title">Launch & Iterate</h3>
+          <p class="feature-description">
+            Deploy changes instantly across all channels. Monitor performance in real-time. Adjust rules on the fly without development cycles or downtime.
+          </p>
+        </div>
+        <div class="feature-visual">
+          <div style="text-align: center; color: var(--color-gray-400);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <p style="margin-top: var(--space-4); font-size: var(--font-size-sm);">Analytics</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq-section bg-light">
+    <div class="container">
+      <div class="faq-layout">
+        
+        <div class="faq-intro">
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Common Questions</h2>
+          <p class="faq-description">Everything you need to know about program design and rules configuration in ReactorCX.</p>
+        </div>
+        
+        <div class="faq-accordion">
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How flexible is the earning structure?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Extremely flexible. You can configure base earn rates, category multipliers, tier bonuses, partner accelerators, and promotional overlays—all independently. Rules can be stacked, sequenced, or made mutually exclusive. Changes deploy instantly without code.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can we run multiple tier structures simultaneously?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. ReactorCX supports parallel tier tracks—for example, a spend-based tier and an engagement-based tier running at the same time. Members can qualify for benefits from both, with configurable overlap rules.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How do you handle partner earn/burn rules?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Each partner can have independent earn rates, burn rates, and funding arrangements. The platform handles real-time settlement calculations, tracks liability by partner, and provides a dedicated partner portal for self-service management.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">What happens when multiple promotions apply to the same transaction?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>The rules engine automatically arbitrates based on your configured priority. You can set mutual exclusivity groups, best-value-for-member logic, or specific stacking rules. Every decision is logged for audit and analysis.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can business users make changes without IT involvement?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Yes. The visual rule builder is designed for marketing and loyalty teams. Create promotions, adjust earning rates, and configure tier benefits through the UI. Role-based permissions control who can publish to production vs. sandbox.</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
   <section class="section bg-white">
     <div class="container">
       <div class="cta-box">
-        <h2 class="cta-box-title">Advanced Tooling for Complex Programs</h2>
-        <p class="cta-box-description">Launch new rules faster. Expression Builder lets you create custom logic using any attribute in the system. FlowComposer organizes rule execution into predictable, auditable paths. Both are built for teams managing complex programs at scale.</p>
-        <a href="feature-advanced-tools.html" class="btn btn-primary">Explore Advanced Tools &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== FAQ ========== -->
-  <section id="faq" class="section bg-light">
-    <div class="container">
-      <div class="faq-layout">
-        <div class="faq-intro">
-          <h2 class="faq-title">Frequently Asked Questions</h2>
-          <p class="faq-description">Common questions about program configuration, rule management, and tier logic.</p>
-          <a href="about-contact.html" class="btn btn-primary">Contact Support</a>
-        </div>
-        <div class="faq-accordion">
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can I migrate rules from my existing loyalty platform?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Yes. Our SafeSwitch&trade; migration methodology includes a comprehensive rules audit and conversion process. We analyze your existing earn, burn, and tier logic, then recreate it in RCX with full validation testing before cutover. Most clients find they can also simplify and consolidate rules during migration.</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How do I test rule changes before they go live?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>Every rule configuration includes a sandbox environment where you can test against real member data without affecting production. Run simulations, preview point calculations, and validate tier progressions before publishing. For high-stakes changes, our staged rollout feature lets you deploy rules to a percentage of traffic first.</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can different business units have different rules?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>RCX supports multi-tenant program structures where each business unit, brand, or region can have its own earn rates, tier thresholds, and promotion rules&mdash;all within a single platform instance with unified member profiles.</p>
-                <p class="mt-4">Access controls ensure each team only sees and edits their own rules, while shared components (like base tier benefits) can be inherited across programs. This is how we support clients with 16+ program variants on one platform.</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">What happens when rules conflict with each other?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>RCX's rule engine uses explicit priority ordering to resolve conflicts deterministically. You define which rules take precedence, and the system follows that order every time. No surprises, no race conditions. Flow Composer determines the correct order of operations for different engagement paths customers can take. The audit log shows exactly which rules fired for any transaction, making troubleshooting straightforward.</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">How granular can tier qualification criteria be?</span>
-              <span class="accordion-icon"></span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>As granular as your business needs. Qualify members based on any combination of metrics: total spend, visit frequency, specific product purchases, partner transactions, engagement activities, or custom-defined behaviors. Time windows are fully configurable&mdash;calendar year, rolling 12 months, membership anniversary, or custom periods.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== FINAL CTA ========== -->
-  <section class="section bg-white section-lg">
-    <div class="container">
-      <div class="cta-box">
-        <h2 class="cta-box-title">See How ReactorCX Fits Your Stack</h2>
+        <h2 class="cta-box-title">Ready to Design Your Program?</h2>
         <p class="cta-box-description">
-          Whether you're launching a new program or replacing a legacy platform, see how ReactorCX delivers faster campaigns, cleaner data, and lower operational complexity.
+          See how ReactorCX can power your loyalty strategy with flexible program design and real-time rule execution.
         </p>
-        <a href="about-contact.html" class="btn btn-primary btn-lg">Get Started</a>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Request a Demo</a>
       </div>
     </div>
   </section>
-
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
@@ -788,7 +448,6 @@
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
             <li><a href="about-story.html" class="footer-link">Our Story</a></li>
-            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
             <li><a href="about-careers.html" class="footer-link">Careers</a></li>
             <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
             <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
@@ -818,49 +477,21 @@
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Accordion
-    document.querySelectorAll('.accordion-item').forEach(item => {
-      item.querySelector('.accordion-trigger').addEventListener('click', () => {
+    // FAQ Accordion
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        document.querySelectorAll('.accordion-item').forEach(i => {
+        // Close all items
+        accordionItems.forEach(i => {
           i.classList.remove('active');
           i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
         });
+        // Open clicked item if it wasn't active
         if (!isActive) {
           item.classList.add('active');
-          item.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-
-    // Anchor bar navigation
-    const anchorLinks = document.querySelectorAll('.anchor-link');
-    const sections = document.querySelectorAll('section[id]');
-    
-    anchorLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          const offsetTop = targetSection.offsetTop - 120;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        }
-      });
-    });
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 140;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-      anchorLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
