@@ -1,5 +1,5 @@
 /* ======================================================================
-   NAV (V10.3) â€” Header, Navigation, Mega Menu, Anchor Bar, Mobile Nav
+   NAV (V10.3) Ã¢â‚¬â€ Header, Navigation, Mega Menu, Anchor Bar, Mobile Nav
    
    UX PRINCIPLES:
    - Fitts's Law: Appropriately sized targets reduce selection time
@@ -60,7 +60,7 @@
   gap: var(--space-1); 
 }
 
-/* Nav actions wrapper â€” About LM dropdown + Contact CTA */
+/* Nav actions wrapper Ã¢â‚¬â€ About LM dropdown + Contact CTA */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -121,10 +121,10 @@
    MEGA MENU SYSTEM
    
    WIDTH TOKENS (based on content requirements):
-   - compact:  420px  â†’ Simple lists (4-6 items, single column)
-   - tech:     680px  â†’ Medium complexity (1 column + featured panel)
-   - platform: 680px  â†’ Two balanced columns, longer titles
-   - default:  920px  â†’ Full mega menu with multiple sections
+   - compact:  420px  Ã¢â€ â€™ Simple lists (4-6 items, single column)
+   - tech:     680px  Ã¢â€ â€™ Medium complexity (1 column + featured panel)
+   - platform: 680px  Ã¢â€ â€™ Two balanced columns, longer titles
+   - default:  920px  Ã¢â€ â€™ Full mega menu with multiple sections
    
    UX RATIONALE:
    Widths are calculated to ensure all menu item titles remain single-line
@@ -399,10 +399,15 @@
   justify-content: center;
   border-radius: var(--radius-md);
   transition: background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu-toggle:hover {
   background: rgba(255,255,255,0.1);
+}
+
+.mobile-menu-toggle:active {
+  background: rgba(255,255,255,0.15);
 }
 
 .mobile-menu-toggle:focus-visible {
@@ -469,6 +474,12 @@
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Global tap highlight removal for mobile nav */
+#mobileNav button,
+#mobileNav a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #mobileNav[hidden] {
   display: block; /* Override hidden to allow animation */
   transform: translateX(100%);
@@ -510,11 +521,16 @@
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-close:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--color-white);
+}
+
+.mobile-nav-close:active {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .mobile-nav-close:focus-visible {
@@ -554,6 +570,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   min-height: 52px;
   padding: var(--space-3) var(--space-5);
   font-size: var(--font-size-base);
@@ -561,6 +578,14 @@
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   transition: background-color 0.15s ease, color 0.15s ease;
+  /* Button reset for when used on <button> elements */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  /* Remove mobile tap highlight */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-link:hover {
@@ -622,10 +647,15 @@
   padding: var(--space-2) var(--space-6);
   text-decoration: none;
   transition: background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-submenu-link:hover {
   background: rgba(255, 255, 255, 0.04);
+}
+
+.mobile-nav-submenu-link:active {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .mobile-nav-submenu-link:focus-visible {
@@ -692,6 +722,7 @@
   width: 100%;
   justify-content: center;
   min-height: 48px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -713,10 +744,15 @@
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-footer-link:hover {
   color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-nav-footer-link:active {
+  color: var(--color-primary);
 }
 
 .mobile-nav-footer-link:focus-visible {

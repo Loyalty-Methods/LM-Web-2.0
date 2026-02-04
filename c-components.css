@@ -1,9 +1,9 @@
 /* ======================================================================
-   COMPONENTS (V10.1) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Buttons, Cards, Testimonials, Stats, Framework, Callout
+   COMPONENTS (V10.1) ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Buttons, Cards, Testimonials, Stats, Framework, Callout
    ====================================================================== */
 
 /* === BUTTONS === */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); border-radius: var(--radius-xs); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); letter-spacing: var(--letter-spacing-wide); cursor: pointer; border: none; position: relative; overflow: hidden; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); border-radius: var(--radius-xs); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); letter-spacing: var(--letter-spacing-wide); cursor: pointer; border: none; position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
 .btn-primary { background: linear-gradient(165deg, #FF8534 0%, #F37021 40%, #E5651A 100%); color: var(--color-white); box-shadow: 0 4px 20px rgba(243,112,33,0.3), inset 0 1px 0 rgba(255,255,255,0.25); }
 .btn-primary::before { content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.6) 70%, transparent 100%); }
 .btn-primary::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%; background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%); border-radius: var(--radius-xs) var(--radius-xs) 0 0; pointer-events: none; }
@@ -20,10 +20,10 @@
 .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--font-size-base); }
 
 /* ======================================================================
-   CARDS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HARD RULE: FROSTED GLASS + CHARCOAL EDGE
+   CARDS ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â HARD RULE: FROSTED GLASS + CHARCOAL EDGE
    -----------------------------------------------------------------------
    ALL cards on light backgrounds MUST use this treatment. No exceptions.
-   Pattern: .card ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ .card-rule-orange ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ .card-title ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ .card-description
+   Pattern: .card ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ .card-rule-orange ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ .card-title ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ .card-description
    No icons in cards. No eyebrows on cards. No .card.dark variant.
    ====================================================================== */
 .card { background: rgba(255,255,255,0.72); backdrop-filter: blur(40px) saturate(1.4); -webkit-backdrop-filter: blur(40px) saturate(1.4); border: 0.5px solid rgba(255,255,255,0.8); border-top: none; border-radius: var(--radius-sm); padding: var(--space-10) var(--space-8) var(--space-8); box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); position: relative; overflow: hidden; text-decoration: none; color: inherit; }
@@ -34,7 +34,7 @@
 /* Orange rule accent */
 .card-rule-orange { width: 28px; height: 2px; background: linear-gradient(90deg, #F37021 0%, #FF8F4D 60%, rgba(243,112,33,0.3) 100%); box-shadow: 0 0 6px rgba(243,112,33,0.2); position: relative; z-index: 2; }
 
-/* Card icon Ã¢â‚¬â€ 44x44 with obsidian glass treatment */
+/* Card icon ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 44x44 with obsidian glass treatment */
 .card-icon {
   width: 44px;
   height: 44px;
@@ -80,17 +80,17 @@
   z-index: 3;
 }
 
-/* Card image (optional ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â for cards with hero images) */
+/* Card image (optional ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â for cards with hero images) */
 .card-image { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; object-fit: cover; object-position: center; border-radius: 2px 2px 0 0; background: var(--color-gray-100); }
 .card-image-placeholder { width: calc(100% + var(--space-8) * 2); margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) var(--space-4); aspect-ratio: 16/10; background: var(--color-gray-100); border-radius: 2px 2px 0 0; position: relative; overflow: hidden; }
 /* Title */
 .card-title, .card .card-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-light); color: var(--color-charcoal-900); line-height: var(--line-height-snug); letter-spacing: -0.02em; position: relative; z-index: 2; }
-/* Body text ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â card-description is the canonical class per locked pattern */
+/* Body text ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â card-description is the canonical class per locked pattern */
 .card-description, .card-body, .card .card-body { font-size: var(--font-size-sm); color: var(--color-gray-500); line-height: var(--line-height-loose); position: relative; z-index: 2; }
 .card-description strong, .card-body strong, .card .card-body strong { color: var(--color-charcoal-900); font-weight: var(--font-weight-medium); }
 /* Link */
 .card-link { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); margin-top: auto; position: relative; z-index: 2; }
-/* === CARDS ON WHITE BACKGROUNDS â€” LOCKED SHADOW FAMILY ===
+/* === CARDS ON WHITE BACKGROUNDS Ã¢â‚¬â€ LOCKED SHADOW FAMILY ===
    Uses same shadow as KPI tiles for visual consistency. */
 .bg-white .card {
   border-color: rgba(0,0,0,0.08);
@@ -105,7 +105,7 @@
     0 16px 32px rgba(0,0,0,0.05);
 }
 
-/* === CARDS ON DARK BACKGROUNDS — Contextual glass treatment ===
+/* === CARDS ON DARK BACKGROUNDS â€” Contextual glass treatment ===
    Locked pattern: no .card.dark class. Context-driven only. */
 .section.dark .card,
 .bg-dark .card {
@@ -133,7 +133,7 @@
 .section.dark .card .card-rule-orange,
 .bg-dark .card .card-rule-orange { box-shadow: 0 0 8px rgba(243,112,33,0.3); }
 
-/* Category override ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â suppress charcoal edge when card-category present */
+/* Category override ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â suppress charcoal edge when card-category present */
 .card:has(.card-category)::before { display: none; }
 .card:has(.card-category) { border-top: 1px solid rgba(255,255,255,0.7); }
 .card-header { display: flex; flex-direction: column; gap: var(--space-2); }
@@ -176,7 +176,7 @@
 .stat-title { font-size: var(--font-size-sm); color: var(--color-white); position: relative; z-index: 3; }
 .stat-desc { font-size: var(--font-size-sm); color: rgba(255,255,255,0.72); line-height: var(--line-height-normal); max-width: 240px; margin: var(--space-2) auto 0; position: relative; z-index: 3; }
 
-/* === CALC BREAKDOWN — Reusable widget for earn/burn calculations === */
+/* === CALC BREAKDOWN â€” Reusable widget for earn/burn calculations === */
 .calc-widget { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-md); max-width: 360px; margin: 0 auto; text-align: center; }
 .calc-widget-value { font-size: var(--font-size-5xl); font-weight: var(--font-weight-light); color: var(--color-primary); line-height: 1; letter-spacing: var(--letter-spacing-tight); }
 .calc-widget-label { font-size: var(--font-size-sm); color: var(--color-gray-500); margin-top: var(--space-1); margin-bottom: var(--space-6); }
@@ -185,7 +185,7 @@
 .calc-row-label { font-size: var(--font-size-sm); color: var(--color-gray-500); }
 .calc-row-value { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-charcoal-900); }
 
-/* === OPTION ROW — Horizontal selection card for redemption/reward lists === */
+/* === OPTION ROW â€” Horizontal selection card for redemption/reward lists === */
 .option-list { display: flex; flex-direction: column; gap: var(--space-3); max-width: 380px; margin: 0 auto; }
 .option-row { display: flex; align-items: center; gap: var(--space-4); background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); }
 .option-row:hover { border-color: var(--color-gray-300); }
@@ -211,8 +211,8 @@
 .callout-body { font-size: var(--font-size-base); color: var(--text-secondary); line-height: var(--line-height-loose); margin-bottom: var(--space-6); max-width: 640px; margin-left: auto; margin-right: auto; }
 
 /* ======================================================================
-   GAUGE WIDGETS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Premium Enterprise Ring Gauges
-   Progressive fill narrative: 45% ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ 75% ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ 100%
+   GAUGE WIDGETS ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Premium Enterprise Ring Gauges
+   Progressive fill narrative: 45% ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 75% ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 100%
    ====================================================================== */
 
 /* --- Container: transparent, floats on section bg --- */
@@ -271,7 +271,7 @@
   .gauge-metric + .gauge-metric::before { display: none; }
 }
 /* ======================================================================
-   BENTO TILES (V2) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Content tiles for bento grid layouts
+   BENTO TILES (V2) ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Content tiles for bento grid layouts
    Tile variants: default (white), accent (charcoal glass), tint (warm)
    ====================================================================== */
 
@@ -312,7 +312,7 @@
 .tile.tall     { min-height: 420px; justify-content: flex-end; }
 .tile.hero     { min-height: 380px; justify-content: flex-end; }
 
-/* === TILE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ACCENT (charcoal + glass + edge shimmer) === */
+/* === TILE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ACCENT (charcoal + glass + edge shimmer) === */
 .tile.accent {
   background: var(--grad-card-obsidian);
   border-color: rgba(255,255,255,0.10);
@@ -320,7 +320,7 @@
     0 2px 4px rgba(0,0,0,0.08),
     0 16px 40px rgba(0,0,0,0.12);
 }
-/* Top-edge shimmer ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â caught light */
+/* Top-edge shimmer ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â caught light */
 .tile.accent::before {
   content: '';
   position: absolute;
@@ -370,7 +370,7 @@
 .tile.accent .tile-metric-label { color: rgba(255,255,255,0.40); }
 .tile.accent .tile-rule { background: rgba(255,255,255,0.12); }
 
-/* === TILE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â TINT (warm white) === */
+/* === TILE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â TINT (warm white) === */
 .tile.tint {
   background: linear-gradient(165deg, #FEFCFA 0%, #FFF9F5 100%);
   border-color: rgba(243,112,33,0.06);
@@ -378,7 +378,7 @@
 
 /* === TILE TYPOGRAPHY === */
 
-/* Kicker ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â uppercase label */
+/* Kicker ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â uppercase label */
 .tile-kicker {
   font-size: var(--font-size-2xs);
   font-weight: var(--font-weight-semibold);
@@ -402,7 +402,7 @@
   letter-spacing: -0.035em;
 }
 
-/* Body ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â editorial weight, generous air */
+/* Body ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â editorial weight, generous air */
 .tile-body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
@@ -416,7 +416,7 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Metric ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â large display number */
+/* Metric ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â large display number */
 .tile-metric {
   font-size: 5.5rem;
   font-weight: var(--font-weight-thin);
@@ -436,7 +436,7 @@
   margin-bottom: var(--space-5);
 }
 
-/* Rule ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â thin separator */
+/* Rule ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â thin separator */
 .tile-rule {
   width: 32px;
   height: 1px;
@@ -444,7 +444,7 @@
   margin: var(--space-4) 0;
 }
 
-/* Link ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â orange arrow link */
+/* Link ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â orange arrow link */
 .tile-link {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -458,7 +458,7 @@
 }
 .tile-link::after { content: '\2192'; font-size: 0.875rem; }
 
-/* === SPARKLINE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â data rows used sparingly inside tiles === */
+/* === SPARKLINE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â data rows used sparingly inside tiles === */
 .sparkline-group { margin-bottom: var(--space-6); }
 .sparkline-row {
   display: flex;
