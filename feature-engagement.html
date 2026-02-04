@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engagement & Gamification | RCX Loyalty Platform</title>
   
-  <!-- MODULAR CSS SYSTEM -->
   <link rel="stylesheet" href="c-tokens.css">
   <link rel="stylesheet" href="c-base.css">
   <link rel="stylesheet" href="c-nav.css">
@@ -16,508 +15,139 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ==========================================================================
-       PAGE-SPECIFIC STYLES: Engagement & Gamification
-       ========================================================================== */
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
-    /* -------------------------------------------------------------------------
-       SUBPAGE HERO (Cinematic Background — Charcoal + White Glass)
-       ------------------------------------------------------------------------- */
-    .subpage-hero {
-      min-height: 85vh;
+  <style>
+    /* UI Device Frame */
+    .ui-device-frame {
+      background: #e8e8e8;
+      border-radius: 24px;
+      padding: 12px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .ui-device-frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* Streaks Section - Progression Visualization */
+    .streaks-intro-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    .streaks-intro-content {
+      max-width: 480px;
+    }
+    .streaks-intro-content .section-title {
+      margin-bottom: var(--space-5);
+    }
+    .streaks-intro-content .body-text {
+      color: var(--color-gray-500);
+      line-height: var(--line-height-relaxed);
+    }
+
+    .streaks-visual-panel {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-sm);
+      padding: var(--space-8);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+    }
+
+    .streaks-progress-viz {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .streaks-progress-track {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: var(--space-4) 0;
+    }
+
+    .streaks-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+    .streaks-step-marker {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-gray-200);
+      border: 2px solid var(--color-gray-300);
       display: flex;
       align-items: center;
-      background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 30%, #3a3a3a 60%, #2a2a2a 100%);
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-24) 0 var(--space-20);
-      padding-top: calc(var(--space-24) + 80px);
+      justify-content: center;
+      transition: all 0.2s ease;
     }
-
-    /* Phone image — faded into right side, logos obscured */
-    .subpage-hero-bg {
-      position: absolute;
-      top: 0;
-      right: -5%;
-      bottom: 0;
-      width: 75%;
-      z-index: 1;
+    .streaks-step.completed .streaks-step-marker {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
     }
-
-    .subpage-hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      mix-blend-mode: lighten;
-      opacity: 0.3;
-      filter: blur(1.5px) saturate(0.3);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 85%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 85%, transparent 100%);
+    .streaks-step.bonus .streaks-step-marker {
+      background: linear-gradient(135deg, #F37021 0%, #FF8F4D 100%);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 12px rgba(243,112,33,0.3);
     }
-
-    /* White glass overlay — signature LM treatment */
-    .subpage-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 55%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 30%, transparent 100%);
-      z-index: 2;
-      pointer-events: none;
+    .streaks-step.bonus .streaks-step-marker svg {
+      stroke: var(--color-white);
     }
-
-    /* Bottom charcoal fade */
-    .subpage-hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: linear-gradient(0deg, #2a2a2a 0%, rgba(42,42,42,0.6) 50%, transparent 100%);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* Edge shine at very top */
-    .subpage-hero-edge {
-      position: absolute;
-      top: 0;
-      left: 5%;
-      right: 5%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.4) 75%, transparent 100%);
-      z-index: 3;
-    }
-
-    .subpage-hero-inner {
-      position: relative;
-      z-index: 10;
-      max-width: 900px;
-    }
-
-    .subpage-hero-content {
-      max-width: 900px;
-    }
-
-    .subpage-hero-eyebrow {
+    .streaks-step-label {
       font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-gray-400);
       text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
-      margin-bottom: var(--space-4);
+      letter-spacing: 0.05em;
+    }
+    .streaks-step.completed .streaks-step-label,
+    .streaks-step.bonus .streaks-step-label {
+      color: var(--color-charcoal-900);
     }
 
-    .subpage-hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.75rem);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-white);
-      line-height: var(--line-height-tight);
-      letter-spacing: var(--letter-spacing-tight);
-      margin-bottom: var(--space-6);
+    .streaks-step-connector {
+      flex: 1;
+      height: 2px;
+      background: var(--color-gray-200);
+      margin-top: 15px;
+      min-width: 20px;
+    }
+    .streaks-step-connector.filled {
+      background: var(--color-primary);
     }
 
-    .subpage-hero-title .highlight {
-      background: var(--grad-orange-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subpage-hero-description {
-      font-size: var(--font-size-lg);
-      color: rgba(255,255,255,0.6);
-      line-height: var(--line-height-relaxed);
-      margin-bottom: var(--space-8);
-    }
-
-    .subpage-hero-cta {
+    .streaks-viz-labels {
       display: flex;
-      gap: var(--space-4);
+      justify-content: space-between;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-gray-100);
+    }
+    .streaks-viz-labels span {
+      font-size: 0.6875rem;
+      font-weight: var(--font-weight-medium);
+      color: var(--color-gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     @media (max-width: 1024px) {
-      .subpage-hero-bg {
-        width: 100%;
-        right: 0;
+      .streaks-intro-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
       }
-      .subpage-hero-bg img {
-        opacity: 0.15;
-        filter: blur(2px) saturate(0.2);
-        mask-image: none;
-        -webkit-mask-image: none;
-      }
-      .subpage-hero-inner {
+      .streaks-intro-content {
         max-width: 100%;
         text-align: center;
-      }
-      .subpage-hero-cta {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .subpage-hero {
-        min-height: 70vh;
-        padding: var(--space-16) 0;
-        padding-top: calc(var(--space-16) + 80px);
-      }
-      .subpage-hero-title {
-        font-size: 2rem;
-      }
-    }
-
-    /* -------------------------------------------------------------------------
-       SPOTLIGHT EYEBROW
-       ------------------------------------------------------------------------- */
-    .spotlight-eyebrow {
-      display: block;
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-widest);
-      margin-bottom: var(--space-4);
-    }
-
-    .spotlight-section .spotlight-image {
-      min-height: 360px;
-      background: linear-gradient(165deg, #5a6575 0%, #4e5a68 50%, #445060 100%);
-    }
-
-    /* -------------------------------------------------------------------------
-       LIFECYCLE GRID (6 cards)
-       ------------------------------------------------------------------------- */
-    .lifecycle-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-
-    @media (max-width: 1024px) {
-      .lifecycle-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .lifecycle-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* -------------------------------------------------------------------------
-       FEATURE ROWS SECTION
-       ------------------------------------------------------------------------- */
-    .feature-rows-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-white);
-    }
-
-    .feature-rows-section .media {
-      min-height: 380px;
-      background: linear-gradient(165deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
-    }
-
-    .feature-rows-section .feature-image {
-      min-height: 340px;
-      object-fit: cover;
-      background: var(--color-gray-200);
-    }
-
-    .feature-row-content {
-      max-width: 520px;
-    }
-
-    @media (max-width: 1024px) {
-      .feature-row-content {
-        max-width: 100%;
-      }
-    }
-
-    .feature-row-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-3);
-    }
-
-    .feature-row-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
-    }
-
-    .feature-row-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-    }
-
-    .feature-row-media {
-      position: relative;
-    }
-
-        /* btn-dark for light backgrounds */
-    .btn-dark {
-      background: linear-gradient(145deg, #5A5A5A 0%, #4A4A4A 50%, #3D3D3D 100%);
-      color: var(--color-white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-      border-radius: var(--radius-xs) var(--radius-xs) 0 0;
-    }
-
-    .btn-dark:hover {
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    }
-
-    /* -------------------------------------------------------------------------
-       STREAKS SHOWCASE SECTION (Dark Theme)
-       ------------------------------------------------------------------------- */
-    .streaks-showcase {
-      background: var(--grad-obsidian);
-      position: relative;
-      padding: var(--space-20) 0;
-      overflow: hidden;
-    }
-
-    .streaks-showcase::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .streaks-showcase .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .streaks-header {
-      text-align: center;
-      margin-bottom: var(--space-12);
-    }
-
-    .streaks-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--color-primary);
-      margin-bottom: var(--space-4);
-    }
-
-    .streaks-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-4);
-    }
-
-    .streaks-subtitle {
-      font-size: var(--font-size-lg);
-      color: #9A9A9A;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Streaks Two-Column Layout */
-    .streaks-two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-8);
-      margin-bottom: var(--space-12);
-    }
-
-    @media (max-width: 768px) {
-      .streaks-two-col {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Glass Copy Cards */
-    .streaks-copy-card {
-      padding: var(--space-8);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-xs);
-      backdrop-filter: blur(10px);
-    }
-
-    .streaks-copy-eyebrow {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-    }
-
-    .streaks-copy-title {
-      font-size: var(--font-size-xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-white);
-      margin-bottom: var(--space-3);
-    }
-
-    .streaks-copy-description {
-      font-size: var(--font-size-sm);
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.7;
-    }
-
-    /* Capabilities Grid */
-    .streaks-capabilities {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-
-    @media (max-width: 1024px) {
-      .streaks-capabilities {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .streaks-capabilities {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .capability-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-xs);
-      padding: var(--space-6);
-      text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .capability-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(243, 112, 33, 0.3);
-    }
-
-    .capability-title {
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-primary);
-      margin-bottom: var(--space-2);
-    }
-
-    .capability-description {
-      font-size: var(--font-size-sm);
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1.6;
-    }
-
-    /* -------------------------------------------------------------------------
-       APPROACH TABLE
-       ------------------------------------------------------------------------- */
-    .approach-table {
-      width: 100%;
-      margin: var(--space-6) 0;
-      border-collapse: collapse;
-      font-size: var(--font-size-sm);
-    }
-
-    .approach-table th,
-    .approach-table td {
-      padding: var(--space-4);
-      text-align: left;
-      border-bottom: 1px solid var(--color-gray-100);
-    }
-
-    .approach-table th {
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-charcoal-900);
-      background: #F5F5F5;
-      font-size: var(--font-size-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .approach-table td {
-      color: var(--color-gray-400);
-      line-height: 1.6;
-    }
-
-    .approach-table td strong {
-      color: var(--color-charcoal-900);
-      font-weight: var(--font-weight-semibold);
-    }
-
-    .approach-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* -------------------------------------------------------------------------
-       BOTTOM CTA CARD
-       ------------------------------------------------------------------------- */
-    .bottom-cta-card {
-      background: var(--color-white);
-      border-radius: var(--radius-xs);
-      padding: var(--space-12) var(--space-16);
-      box-shadow: var(--shadow-lg);
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .bottom-cta-title {
-      font-size: var(--font-size-3xl);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-      margin-bottom: var(--space-4);
-    }
-
-    .bottom-cta-description {
-      font-size: var(--font-size-base);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-6);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 640px) {
-      .bottom-cta-card {
-        padding: var(--space-8);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .feature-row-title {
-        font-size: var(--font-size-2xl);
       }
     }
   </style>
@@ -534,66 +164,52 @@
 
         <nav class="nav-desktop">
           <ul class="nav-list">
-            
-            <li class="nav-item">
-              <a href="why-lm.html" class="nav-link">Why LM?</a>
-            </li>
-            
             <li class="nav-item">
               <a href="#" class="nav-link">
                 RCX Loyalty Platform
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
-              <div class="mega-menu">
+              <div class="mega-menu mega-menu-platform">
                 <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Core Platform</div>
-                      <a href="feature-program-design.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
-                      </a>
-                      <a href="feature-promotions.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
-                      </a>
-                      <a href="feature-analytics.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
-                      </a>
-                      <a href="feature-advanced-tools.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
-                      </a>
-                    </div>
-                    <div class="mega-menu-column">
-                      <div class="mega-menu-column-title">Capabilities</div>
-                      <a href="feature-engagement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
-                      </a>
-                      <a href="feature-rewards.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
-                      </a>
-                      <a href="feature-partner-enablement.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
-                      </a>
-                      <a href="feature-hyper-personalization.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
-                      </a>
-                    </div>
+                  <div class="mega-menu-column">
+                    <div class="mega-menu-column-title">Core Platform</div>
+                    <a href="feature-program-design.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Program Design & Rules</div><div class="mega-menu-link-description">Flexible loyalty program architecture</div></div>
+                    </a>
+                    <a href="feature-promotions.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Promotions & Discounting</div><div class="mega-menu-link-description">Dynamic offers and targeted campaigns</div></div>
+                    </a>
+                    <a href="feature-analytics.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">RCX Analytics</div><div class="mega-menu-link-description">Deep insights that drive decisions</div></div>
+                    </a>
+                    <a href="feature-advanced-tools.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Advanced Tools</div><div class="mega-menu-link-description">Enterprise-grade loyalty capabilities</div></div>
+                    </a>
                   </div>
-                  <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Featured</span>
-                    <h3 class="mega-menu-featured-title">Agentic AI, Purpose-Built for Loyalty</h3>
-                    <p class="mega-menu-featured-description">Not an Assistant. <em>A Team.</em></p>
-                    <div class="mega-menu-featured-image">[AI Platform Preview]</div>
-                    <a href="about-contact.html" class="btn btn-primary btn-sm">Learn More &rarr;</a>
+                  <div class="mega-menu-column">
+                    <div class="mega-menu-column-title">Capabilities</div>
+                    <a href="feature-engagement.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Engagement & Gamification</div><div class="mega-menu-link-description">Interactive experiences that delight</div></div>
+                    </a>
+                    <a href="feature-rewards.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Rewards & Benefits</div><div class="mega-menu-link-description">Flexible redemption options</div></div>
+                    </a>
+                    <a href="feature-partner-enablement.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Partner Enablement</div><div class="mega-menu-link-description">Expand your loyalty ecosystem</div></div>
+                    </a>
+                    <a href="feature-hyper-personalization.html" class="mega-menu-link">
+                      <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                      <div class="mega-menu-link-content"><div class="mega-menu-link-title">Hyper-Personalization</div><div class="mega-menu-link-description">1:1 experiences at scale</div></div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -602,7 +218,7 @@
             <li class="nav-item">
               <a href="#" class="nav-link">
                 Enterprise Technology
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </a>
@@ -612,27 +228,24 @@
                     <div class="mega-menu-column">
                       <div class="mega-menu-column-title">Capabilities</div>
                       <a href="tech-api-architecture.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, and real-time.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Platform Architecture</div><div class="mega-menu-link-description">Cloud-native, API-first, real-time</div></div>
                       </a>
                       <a href="tech-integration.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Integration Capabilities</div><div class="mega-menu-link-description">Connectors for the modern stack</div></div>
                       </a>
                       <a href="tech-security.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, and data governance.</div></div>
+                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Security & Compliance</div><div class="mega-menu-link-description">SOC2, GDPR, data governance</div></div>
                       </a>
                     </div>
                   </div>
                   <div class="mega-menu-featured">
-                    <span class="mega-menu-featured-eyebrow">Trust Center</span>
-                    <h3 class="mega-menu-featured-title">Security. Compliance. Transparency.</h3>
-                    <p class="mega-menu-featured-description">View our real-time system status.</p>
-                    <div class="mega-menu-featured-image">
-                      <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(91, 138, 184, 0.1); color: #5B8AB8;">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                      </div>
+                    <div class="mega-menu-link-title">Trust Center</div>
+                    <div class="mega-menu-link-description">Security. Compliance. Real-time status.</div>
+                    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; align-items: center; justify-content: center;">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5B8AB8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#F37021" stroke-width="2"></path></svg>
                     </div>
                     <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="btn btn-primary btn-sm">Visit Trust Center &rarr;</a>
                   </div>
@@ -641,67 +254,26 @@
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Proven Delivery
-                <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </a>
-              <div class="mega-menu mega-menu-compact">
-                <div class="mega-menu-inner">
-                  <div class="mega-menu-links">
-                    <div class="mega-menu-column">
-                      <a href="proven-threadsync.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">ThreadSync&trade; Implementation</div><div class="mega-menu-link-description">Our agile delivery framework</div></div>
-                      </a>
-                      <a href="proven-safeswitch.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">SafeSwitch&trade; Cutover</div><div class="mega-menu-link-description">Zero-risk migration methodology</div></div>
-                      </a>
-                      <a href="resource-center.html" class="mega-menu-link">
-                        <div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-                        <div class="mega-menu-link-content"><div class="mega-menu-link-title">Success Stories</div><div class="mega-menu-link-description">Client case studies and results</div></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <a href="proven-delivery.html" class="nav-link">Proven Delivery</a>
             </li>
             
             <li class="nav-item">
               <a href="resource-center.html" class="nav-link">Resource Center</a>
             </li>
-            
           </ul>
           
-          <div class="flex items-center gap-4">
+          <div class="flex items-center" style="gap: var(--space-6);">
             <ul class="nav-list" style="margin: 0; padding: 0;">
               <li class="nav-item">
-                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-                <div class="mega-menu" style="width: 620px; right: 0; left: auto; transform: none;">
-                  <div class="mega-menu-inner" style="grid-template-columns: 1fr 1.2fr;"> 
-                    <div class="mega-menu-links">
-                      <div class="mega-menu-column">
-                        <div class="mega-menu-column-title">Company</div>
-                        <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div></div></a>
-                        <a href="about-leadership.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Leadership</div></div></a>
-                        <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div></div></a>
-                        <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div></div></a>
-                        <a href="about-find-us.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Find Us</div></div></a>
-                        <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div></div></a>
-                      </div>
-                    </div>
-                    <div class="mega-menu-featured" style="min-width: 280px;">
-                      <span class="mega-menu-featured-eyebrow">Featured</span>
-                      <h3 class="mega-menu-featured-title">Partner Network</h3>
-                      <p class="mega-menu-featured-description"><em>Integrations. Alliances. Ecosystem.</em></p>
-                      <div class="mega-menu-featured-image">
-                        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(243, 112, 33, 0.1); color: #F37021;">
-                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
-                      </div>
-                      <a href="partner-network.html" class="btn btn-primary btn-sm">Explore &rarr;</a>
+                <a href="#" class="nav-link">About LM <svg class="nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="mega-menu mega-menu-compact">
+                  <div class="mega-menu-inner">
+                    <div class="mega-menu-column">
+                      <div class="mega-menu-column-title">Company</div>
+                      <a href="about-story.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Our Story</div><div class="mega-menu-link-description">How we got here</div></div></a>
+                      <a href="about-culture.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Culture</div><div class="mega-menu-link-description">What drives our team</div></div></a>
+                      <a href="about-careers.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Careers</div><div class="mega-menu-link-description">Join the team</div></div></a>
+                      <a href="about-contact.html" class="mega-menu-link"><div class="mega-menu-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mega-menu-link-content"><div class="mega-menu-link-title">Contact Us</div><div class="mega-menu-link-description">Get in touch</div></div></a>
                     </div>
                   </div>
                 </div>
@@ -710,384 +282,435 @@
             <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
           </div>
         </nav>
-        <button class="mobile-menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+        
+        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
 
+  <!-- ========== MOBILE NAVIGATION ========== -->
+  <div id="mobileBackdrop" hidden></div>
+  
+  <nav id="mobileNav" aria-label="Mobile navigation" hidden>
+    <div class="mobile-nav-header">
+      <a href="index.html" class="logo"><img src="lm-full-white.svg" alt="Loyalty Methods"></a>
+      <button class="mobile-nav-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item" data-has-submenu>
+          <button class="mobile-nav-link" aria-expanded="false"><span>RCX Loyalty Platform</span><svg class="mobile-nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div class="mobile-nav-submenu">
+            <span class="mobile-nav-submenu-title">Core Platform</span>
+            <a href="feature-program-design.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Program Design & Rules</span></div></a>
+            <a href="feature-promotions.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Promotions & Discounting</span></div></a>
+            <a href="feature-analytics.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">RCX Analytics</span></div></a>
+            <a href="feature-advanced-tools.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Advanced Tools</span></div></a>
+            <span class="mobile-nav-submenu-title">Capabilities</span>
+            <a href="feature-engagement.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Engagement & Gamification</span></div></a>
+            <a href="feature-rewards.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Rewards & Benefits</span></div></a>
+            <a href="feature-partner-enablement.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Partner Enablement</span></div></a>
+            <a href="feature-hyper-personalization.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Hyper-Personalization</span></div></a>
+          </div>
+        </li>
+        <li class="mobile-nav-item" data-has-submenu>
+          <button class="mobile-nav-link" aria-expanded="false"><span>Enterprise Technology</span><svg class="mobile-nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div class="mobile-nav-submenu">
+            <span class="mobile-nav-submenu-title">Capabilities</span>
+            <a href="tech-api-architecture.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Platform Architecture</span></div></a>
+            <a href="tech-integration.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Integration Capabilities</span></div></a>
+            <a href="tech-security.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Security & Compliance</span></div></a>
+            <a href="https://trustcenter.loyaltymethods.com/" target="_blank" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Trust Center</span></div></a>
+          </div>
+        </li>
+        <li class="mobile-nav-item"><a href="proven-delivery.html" class="mobile-nav-link"><span>Proven Delivery</span></a></li>
+        <li class="mobile-nav-item"><a href="resource-center.html" class="mobile-nav-link"><span>Resource Center</span></a></li>
+        <div class="mobile-nav-divider"></div>
+        <li class="mobile-nav-item" data-has-submenu>
+          <button class="mobile-nav-link" aria-expanded="false"><span>About LM</span><svg class="mobile-nav-link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div class="mobile-nav-submenu">
+            <a href="about-story.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Our Story</span></div></a>
+            <a href="about-culture.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Culture</span></div></a>
+            <a href="about-careers.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Careers</span></div></a>
+            <a href="about-contact.html" class="mobile-nav-submenu-link"><div class="mobile-nav-submenu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="mobile-nav-submenu-content"><span class="mobile-nav-submenu-label">Contact Us</span></div></a>
+          </div>
+        </li>
+      </ul>
+      <div class="mobile-nav-cta"><a href="about-contact.html" class="btn btn-primary">Contact Us</a></div>
+    </div>
+  </nav>
 
-  <!-- ========== SECTION 1: HERO ========== -->
-  <section class="subpage-hero">
-    <div class="subpage-hero-edge"></div>
-    <div class="subpage-hero-bg">
-      <img src="phones-hero.png" alt="">
+  <!-- ========== HERO ========== -->
+  <section class="hero-cinematic hero-cinematic--short">
+    <div class="hero-cinematic-bg">
+      <div style="width:100%; height:100%; background: linear-gradient(165deg, #555 0%, #484848 40%, #3d3d3d 100%);"></div>
     </div>
     <div class="container">
-      <div class="subpage-hero-inner">
-        <div class="subpage-hero-content">
-          <div class="subpage-hero-eyebrow">Capabilities</div>
-          <h1 class="subpage-hero-title">
-            Engagement & <span class="highlight">Gamification</span>
-          </h1>
-          <p class="subpage-hero-description">
-            Reward any member behavior, <strong>not just transactions</strong>. Surveys, quizzes, profile completions, check-ins, content views. The platform evaluates every activity against your rules and responds <strong>in real time</strong>.
-          </p>
-          <div class="subpage-hero-cta">
-            <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
-          </div>
-        </div>
+      <div class="hero-cinematic-content" style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <span class="hero-cinematic-eyebrow">RCX Platform</span>
+        <h1 class="hero-cinematic-title">Engagement & Gamification</h1>
+        <p class="hero-cinematic-subtitle" style="margin-left: auto; margin-right: auto;">
+          Turn every interaction into an opportunity for connection. Reward activities, build habits, and create experiences members actually want to complete.
+        </p>
       </div>
     </div>
   </section>
 
-
-  <!-- ========== SECTION 2: REWARD ANY ACTIVITY (6 Cards) ========== -->
-  <section class="section section-lg section-light bg-white">
+  <!-- ========== INTRO SECTION ========== -->
+  <section class="section bg-white">
     <div class="container">
-      
-      <div class="section-header" style="text-align: center; margin-bottom: var(--space-12);">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <h2 class="section-title" style="margin-bottom: var(--space-6);">Engagement Beyond Transactions</h2>
+        <p class="body-text" style="font-size: var(--font-size-lg);">
+          True loyalty isn't built on purchases alone. RCX captures every meaningful interaction—surveys, app activity, profile completions, reviews, referrals—and transforms them into rewarded experiences that deepen member relationships.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BEYOND TRANSACTIONS ========== -->
+  <section class="value-switcher-section">
+    <div class="container">
+      <div class="value-switcher-grid">
+        
+        <!-- Left: Content -->
+        <div class="value-switcher-content">
+          <h2 class="value-switcher-headline">Beyond Transactions</h2>
+          <p class="value-switcher-body">Engagement isn't just about purchases. It's about every touchpoint that builds a relationship. RCX captures surveys, app activity, profile completions, reviews, referrals, and any custom activity you define—then rewards members in real time.</p>
+        </div>
+        
+        <!-- Right: Stats Grid -->
+        <div class="value-switcher-visual">
+          <div class="value-quadrant active" style="position: relative; opacity: 1; transform: none; pointer-events: auto;">
+            <div class="value-stat-card">
+              <div class="value-stat-number">+57<span style="font-size: 0.5em; font-weight: 400;">pts</span></div>
+              <div class="value-stat-label">Activation Rate</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">2×</div>
+              <div class="value-stat-label">Redemption Rate</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">+80%</div>
+              <div class="value-stat-label">Repeat Purchase</div>
+            </div>
+            <div class="value-stat-card">
+              <div class="value-stat-number">12×</div>
+              <div class="value-stat-label">Transaction Frequency</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REWARD ANY ACTIVITY ========== -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
         <h2 class="section-title">Reward Any Activity</h2>
       </div>
-
-      <div class="lifecycle-grid">
+      <div class="grid grid-3">
         
         <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Surveys & Polls</h3>
-          <p class="card-body">Collect preferences, opinions, and feedback. Every response builds a <strong>richer member profile</strong> and informs personalization.</p>
+          <p class="card-description">Collect preferences, opinions, and feedback. Every response builds a <strong>richer member profile</strong> and informs personalization.</p>
         </div>
 
         <div class="card">
-          <h3 class="card-title">Profile Completion</h3>
-          <p class="card-body"><strong>Progressive profiling</strong> rewards members for adding information over time. Start simple, build depth without friction.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">App & Web Activity</h3>
+          <p class="card-description">Reward browsing, content views, feature usage, and session depth. Track <strong>engagement patterns</strong> that signal intent.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Profile Completeness</h3>
+          <p class="card-description">Incentivize members to fill out their profile. More data means <strong>better personalization</strong> and higher-value offers.</p>
         </div>
 
         <div class="card">
-          <h3 class="card-title">App Activity</h3>
-          <p class="card-body">App opens, feature usage, content views, check-ins. Track and reward the behaviors that signal <strong>interest and intent</strong>.</p>
-        </div>
-
-        <div class="card">
+          <div class="card-rule-orange"></div>
           <h3 class="card-title">Reviews & Ratings</h3>
-          <p class="card-body">Reward members for leaving reviews on purchases, stays, or experiences. Feed <strong>sentiment data</strong> into your analytics.</p>
+          <p class="card-description">Reward members for sharing their experiences. <strong>User-generated content</strong> drives discovery and trust.</p>
         </div>
 
         <div class="card">
-          <h3 class="card-title">Content & Media Engagement</h3>
-          <p class="card-body">Reward members for <strong>watching videos</strong>, completing quizzes, or updating communication preferences.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Social Sharing</h3>
+          <p class="card-description">Track shares, follows, and mentions. Turn members into <strong>brand advocates</strong> with earned media incentives.</p>
         </div>
-
+        
         <div class="card">
-          <h3 class="card-title">Check-Ins</h3>
-          <p class="card-body">Digital or physical check-ins at locations, events, or properties. Combine with <strong>geo-location APIs</strong> for context-aware rewards.</p>
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title">Custom Activities</h3>
+          <p class="card-description">Define any activity you can track. Event attendance, check-ins, partner interactions, sustainability actions. <strong>Your data, your rules.</strong></p>
         </div>
-
+        
       </div>
     </div>
   </section>
 
-
-  <!-- ========== SECTION 3: STATS BAR ========== -->
-  <section class="section dark bg-dark">
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="section bg-white">
     <div class="container">
-      <p class="text-center body-sm mb-6" style="color: #9A9A9A;">Measured outcomes across individual enterprise programs:</p>
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-number">+57<span style="font-size: 0.5em;">pts</span></div>
-          <div class="stat-title"><strong>Activation Rate</strong></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">2×</div>
-          <div class="stat-title"><strong>Redemption Rate</strong></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">+80%</div>
-          <div class="stat-title"><strong>Repeat Purchase</strong></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">12×</div>
-          <div class="stat-title"><strong>Transaction Frequency</strong></div>
-        </div>
+      <div class="section-header">
+        <span class="eyebrow">Activity Engine</span>
+        <h2 class="section-title">How It Works</h2>
       </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 4: ZERO-PARTY DATA CALLOUT ========== -->
-  <section class="spotlight-section">
-    <div class="container">
-      <div class="spotlight-card">
-        <div class="spotlight-image">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Customer completing a loyalty survey on mobile device">
-        </div>
-        <div class="spotlight-content">
-          <span class="spotlight-eyebrow">Zero-Party Data</span>
-          <h2 class="spotlight-title">The Most Valuable Data Comes Directly From Members</h2>
-          <p class="spotlight-description">
-            <strong>Zero-party data</strong> is information members share intentionally: preferences, interests, feedback, intentions. Unlike inferred data or third-party sources, it comes with <strong>explicit consent</strong> and clear meaning. The platform captures it through engagement mechanics and feeds it <strong>immediately into your rules engine</strong>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 5: ACTIVITIES ZIG-ZAG ========== -->
-  <section class="feature-rows-section">
-    <div class="container">
-      <div class="feature-row">
-        <div class="media">
-          <div class="survey-mockup" style="width: 100%; max-width: 340px; margin: 0 auto; background: var(--color-white); border-radius: 2px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid var(--color-gray-200);">
-            <!-- Mock status bar -->
-            <div style="background: var(--color-charcoal-900); padding: 6px 16px; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500;">9:41</span>
-              <div style="display: flex; gap: 4px; align-items: center;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
-              </div>
-            </div>
-            <!-- App header -->
-            <div style="background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 100%); padding: 20px 24px 28px; text-align: center; position: relative;">
-              <div style="position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%); pointer-events: none;"></div>
-              <div style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #F37021; margin-bottom: 8px; position: relative; z-index: 1;">Your Feedback</div>
-              <div style="font-size: 20px; font-weight: 500; color: white; line-height: 1.3; position: relative; z-index: 1;">How was your visit?</div>
-            </div>
-            <!-- Star rating -->
-            <div style="padding: 28px 24px 12px; text-align: center;">
-              <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 16px;">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F37021" stroke="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              </div>
-              <div style="font-size: 13px; color: var(--color-gray-400); margin-bottom: 20px;">Tap to rate your experience</div>
-              <!-- Mock form fields -->
-              <div style="text-align: left; margin-bottom: 16px;">
-                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">What did you enjoy most?</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                  <span style="padding: 5px 12px; background: rgba(243,112,33,0.08); border: 1px solid rgba(243,112,33,0.25); border-radius: 2px; font-size: 11px; color: #F37021; font-weight: 500;">Service</span>
-                  <span style="padding: 5px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 11px; color: var(--color-gray-500);">Speed</span>
-                  <span style="padding: 5px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 11px; color: var(--color-gray-500);">Selection</span>
-                  <span style="padding: 5px 12px; background: rgba(243,112,33,0.08); border: 1px solid rgba(243,112,33,0.25); border-radius: 2px; font-size: 11px; color: #F37021; font-weight: 500;">Rewards</span>
-                </div>
-              </div>
-              <div style="text-align: left; margin-bottom: 20px;">
-                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Comments</div>
-                <div style="padding: 10px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 12px; color: var(--color-gray-400); min-height: 48px;">Great experience today...</div>
-              </div>
-              <!-- Submit button -->
-              <div style="padding: 10px 0 8px;">
-                <div style="background: linear-gradient(165deg, #FF8534 0%, #F37021 40%, #E5651A 100%); color: white; padding: 11px; text-align: center; border-radius: 2px; font-size: 13px; font-weight: 500; letter-spacing: 0.02em;">Submit Feedback  →</div>
-              </div>
-              <div style="font-size: 10px; color: var(--color-gray-400); padding: 8px 0 4px;">Earn <strong style="color: #F37021;">50 points</strong> for completing this survey</div>
-            </div>
-          </div>
-        </div>
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Beyond Transactions</span>
-          <h2 class="feature-row-title">Activities, Not Just Transactions</h2>
-          <p class="feature-row-description">
-            We use "activities" instead of "transactions" because it can be <strong>any type of engagement</strong> you want to reward. Visits. App logins. Survey answers. Profile completions. Review submissions. The platform treats every signal the same way: <strong>ingest it, evaluate it against your rules, and respond in real time</strong>.
-          </p>
-          <div class="feature-row-cta">
-            <a href="about-contact.html" class="btn btn-dark">See Activity Tracking &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 6: REFERRALS ZIG-ZAG ========== -->
-  <section class="feature-rows-section" style="padding-top: 0;">
-    <div class="container">
-      <div class="feature-row">
-        <div class="feature-row-content">
-          <span class="feature-row-eyebrow">Acquisition Engine</span>
-          <h2 class="feature-row-title">Program-Powered Word of Mouth</h2>
-          <p class="feature-row-description">
-            Referrals are a <strong>built-in acquisition engine</strong> with measurable ROI. When members hear about your program from someone they trust, they are more likely to act. The platform supports three referral approaches, each optimized for different objectives.
-          </p>
-          <table class="approach-table">
-            <thead>
-              <tr>
-                <th>Approach</th>
-                <th>How It Works</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Instant</strong></td>
-                <td>Referrer earns immediately when referee enrolls.</td>
-              </tr>
-              <tr>
-                <td><strong>Progressive</strong></td>
-                <td>Rewards unlock as the referee hits activity milestones.</td>
-              </tr>
-              <tr>
-                <td><strong>Dual-Sided</strong></td>
-                <td>Both referrer and referee earn at each stage.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="media">
-          <div class="referral-mockup" style="width: 100%; max-width: 340px; margin: 0 auto; background: var(--color-white); border-radius: 2px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid var(--color-gray-200);">
-            <!-- Mock status bar -->
-            <div style="background: var(--color-charcoal-900); padding: 6px 16px; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500;">9:41</span>
-              <div style="display: flex; gap: 4px; align-items: center;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
-              </div>
-            </div>
-            <!-- App header -->
-            <div style="background: linear-gradient(165deg, #5a5a5a 0%, #4a4a4a 100%); padding: 20px 24px 28px; text-align: center; position: relative;">
-              <div style="position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%); pointer-events: none;"></div>
-              <div style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #F37021; margin-bottom: 8px; position: relative; z-index: 1;">Referral Program</div>
-              <div style="font-size: 20px; font-weight: 500; color: white; line-height: 1.3; position: relative; z-index: 1;">Refer a Friend</div>
-            </div>
-            <!-- Reward callout -->
-            <div style="padding: 24px 24px 0; text-align: center;">
-              <div style="background: rgba(243,112,33,0.06); border: 1px solid rgba(243,112,33,0.15); border-radius: 2px; padding: 16px 20px; margin-bottom: 20px;">
-                <div style="font-size: 32px; font-weight: 300; color: #F37021; line-height: 1; margin-bottom: 4px;">500 <span style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em;">PTS</span></div>
-                <div style="font-size: 12px; color: var(--color-gray-500);">For every friend who joins &amp; makes a purchase</div>
-              </div>
-              <!-- Share link section -->
-              <div style="text-align: left; margin-bottom: 16px;">
-                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Your Referral Link</div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <div style="flex: 1; padding: 9px 12px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; font-size: 11px; color: var(--color-gray-400); font-family: var(--font-mono); overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">refer.rcx.io/sarah-m</div>
-                  <div style="padding: 9px 14px; background: var(--color-charcoal-900); color: white; border-radius: 2px; font-size: 11px; font-weight: 500; flex-shrink: 0;">Copy</div>
-                </div>
-              </div>
-              <!-- Share buttons -->
-              <div style="text-align: left; margin-bottom: 16px;">
-                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Share Via</div>
-                <div style="display: flex; gap: 8px;">
-                  <div style="flex: 1; padding: 10px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; text-align: center; font-size: 11px; color: var(--color-gray-500); font-weight: 500;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Email
-                  </div>
-                  <div style="flex: 1; padding: 10px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; text-align: center; font-size: 11px; color: var(--color-gray-500); font-weight: 500;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 4px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                    Text
-                  </div>
-                  <div style="flex: 1; padding: 10px; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 2px; text-align: center; font-size: 11px; color: var(--color-gray-500); font-weight: 500;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 4px;"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                    Share
-                  </div>
-                </div>
-              </div>
-              <!-- Referral progress -->
-              <div style="text-align: left; margin-bottom: 8px; padding-top: 12px; border-top: 1px solid var(--color-gray-200);">
-                <div style="font-size: 11px; font-weight: 600; color: var(--color-charcoal-900); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;">Your Referrals</div>
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
-                  <div style="display: flex; align-items: center; gap: 8px;">
-                    <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--color-gray-200), var(--color-gray-300)); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--color-gray-500);">JR</div>
-                    <div><div style="font-size: 12px; font-weight: 500; color: var(--color-charcoal-900);">Jamie R.</div><div style="font-size: 10px; color: var(--color-gray-400);">Joined • Purchased</div></div>
-                  </div>
-                  <div style="font-size: 12px; font-weight: 600; color: #F37021;">+500 pts</div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
-                  <div style="display: flex; align-items: center; gap: 8px;">
-                    <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--color-gray-200), var(--color-gray-300)); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--color-gray-500);">MK</div>
-                    <div><div style="font-size: 12px; font-weight: 500; color: var(--color-charcoal-900);">Morgan K.</div><div style="font-size: 10px; color: var(--color-gray-400);">Joined • Pending</div></div>
-                  </div>
-                  <div style="font-size: 10px; font-weight: 500; color: var(--color-gray-400); text-transform: uppercase; letter-spacing: 0.06em;">Pending</div>
-                </div>
-              </div>
-              <!-- Total earned -->
-              <div style="padding: 12px 0 16px; text-align: center;">
-                <div style="font-size: 10px; color: var(--color-gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Total Earned from Referrals</div>
-                <div style="font-size: 22px; font-weight: 500; color: #F37021;">1,500 <span style="font-size: 12px; font-weight: 500;">pts</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== SECTION 7: STREAKS SHOWCASE ========== -->
-  <section class="streaks-showcase">
-    <div class="container">
       
-      <div class="streaks-header">
-        <p class="streaks-eyebrow">Engagement Engine</p>
-        <h2 class="streaks-title">Streaks: The Frequency Engine</h2>
-        <p class="streaks-subtitle">Turn isolated transactions into connected journeys. Members commit to actions over time and get rewarded for completion.</p>
+      <!-- Step 1: Capture Any Input -->
+      <div class="feature-row" style="margin-bottom: var(--space-16);">
+        <div class="feature-content">
+          <span class="feature-label">Step 1</span>
+          <h3 class="feature-title">Polymorphic Activity Model</h3>
+          <p class="feature-description">
+            Every member action flows through the same engine, whether it's a $500 purchase, a survey response, or an app login. The <strong>polymorphic activity model</strong> treats all inputs as first-class engagement events.
+          </p>
+          <ul class="feature-list">
+            <li>Unified activity stream across channels</li>
+            <li>Custom activity types with configurable schemas</li>
+            <li>Real-time ingestion via API or event stream</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div class="ui-device-frame">
+            <!-- CSS Activity Feed Mockup -->
+            <div style="background: #fff; border-radius: 16px; padding: 16px; min-height: 280px;">
+              <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Activity Feed</div>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px;">
+                  <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #F37021 0%, #FF8F4D 100%); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                  </div>
+                  <div style="flex: 1;">
+                    <div style="font-size: 13px; font-weight: 500; color: #222;">Purchase Complete</div>
+                    <div style="font-size: 11px; color: #888;">$47.50 in-store</div>
+                  </div>
+                  <div style="font-size: 13px; font-weight: 600; color: #F37021;">+95</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px;">
+                  <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #5B8AB8 0%, #7BA3C8 100%); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                  </div>
+                  <div style="flex: 1;">
+                    <div style="font-size: 13px; font-weight: 500; color: #222;">Survey Completed</div>
+                    <div style="font-size: 11px; color: #888;">Q4 Feedback</div>
+                  </div>
+                  <div style="font-size: 13px; font-weight: 600; color: #F37021;">+25</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px;">
+                  <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #4a4a4a 0%, #666 100%); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  </div>
+                  <div style="flex: 1;">
+                    <div style="font-size: 13px; font-weight: 500; color: #222;">Profile Updated</div>
+                    <div style="font-size: 11px; color: #888;">Added preferences</div>
+                  </div>
+                  <div style="font-size: 13px; font-weight: 600; color: #F37021;">+15</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="streaks-two-col">
-        
-        <!-- Left Copy Card -->
-        <div class="streaks-copy-card">
-          <p class="streaks-copy-eyebrow">Progressive Spend</p>
-          <h3 class="streaks-copy-title">Escalating Rewards</h3>
-          <p class="streaks-copy-description">Rewards increase as members hit <strong>higher thresholds</strong>. Get 100 points for first $100 spent. Get 200 points for next $200. Get 300 for next $300.</p>
+      
+      <!-- Step 2: Evaluate in Real Time -->
+      <div class="feature-row reverse" style="margin-bottom: var(--space-16);">
+        <div class="feature-content">
+          <span class="feature-label">Step 2</span>
+          <h3 class="feature-title">Instant Rule Processing</h3>
+          <p class="feature-description">
+            Every activity hits the rules engine the moment it arrives. No batch processing. No overnight jobs. Members see rewards <strong>immediately</strong> after completing an action.
+          </p>
+          <ul class="feature-list">
+            <li>Sub-second rule evaluation</li>
+            <li>Complex conditions and multipliers</li>
+            <li>Streak and milestone tracking</li>
+          </ul>
         </div>
-        
-        <!-- Right Copy Card -->
-        <div class="streaks-copy-card">
-          <p class="streaks-copy-eyebrow">Multi-Goal Checklist</p>
-          <h3 class="streaks-copy-title">Complete the Set</h3>
-          <p class="streaks-copy-description">Members complete <strong>multiple independent goals</strong> within a time window. Shop all four brands. Buy across three categories. Visit a physical store. Complete your profile.</p>
+        <div class="feature-visual">
+          <!-- Admin/Rules Engine Diagram -->
+          <div style="text-align: center; padding: var(--space-6);">
+            <div style="background: linear-gradient(165deg, #555 0%, #444 100%); border-radius: var(--radius-sm); padding: var(--space-5); max-width: 300px; margin: 0 auto; text-align: left;">
+              <div style="font-size: var(--font-size-2xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-3);">Rule Evaluation</div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <div style="display: flex; justify-content: space-between; padding: var(--space-2); background: rgba(255,255,255,0.05); border-radius: var(--radius-xs);">
+                  <span style="font-size: var(--font-size-xs); color: rgba(255,255,255,0.7);">Survey Complete</span>
+                  <span style="font-size: var(--font-size-xs); color: #4ade80;">✓ Pass</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: var(--space-2); background: rgba(255,255,255,0.05); border-radius: var(--radius-xs);">
+                  <span style="font-size: var(--font-size-xs); color: rgba(255,255,255,0.7);">Tier Multiplier (Gold)</span>
+                  <span style="font-size: var(--font-size-xs); color: #F37021;">2×</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: var(--space-2); background: rgba(243,112,33,0.15); border-radius: var(--radius-xs); border: 1px solid rgba(243,112,33,0.3);">
+                  <span style="font-size: var(--font-size-xs); color: rgba(255,255,255,0.9); font-weight: 500;">Points Awarded</span>
+                  <span style="font-size: var(--font-size-xs); color: #F37021; font-weight: 600;">+50</span>
+                </div>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-4); font-size: var(--font-size-xs); color: var(--color-gray-400);">Rules engine evaluation</p>
+          </div>
         </div>
-        
       </div>
-
-      <div class="streaks-capabilities">
-        <div class="capability-card">
-          <h4 class="capability-title">Time-Bound</h4>
-          <p class="capability-description">Configurable windows from hours to months.</p>
+      
+      <!-- Step 3: Respond & Reinforce -->
+      <div class="feature-row">
+        <div class="feature-content">
+          <span class="feature-label">Step 3</span>
+          <h3 class="feature-title">Referrals: Built-In Acquisition</h3>
+          <p class="feature-description">
+            Referrals are a <strong>built-in acquisition engine</strong> with measurable ROI. When members hear about your program from someone they trust, they're more likely to act.
+          </p>
+          <ul class="feature-list">
+            <li><strong>Instant:</strong> Referrer earns when referee enrolls</li>
+            <li><strong>Progressive:</strong> Rewards unlock at activity milestones</li>
+            <li><strong>Dual-Sided:</strong> Both parties earn at each stage</li>
+          </ul>
         </div>
-        <div class="capability-card">
-          <h4 class="capability-title">Progress Tracking</h4>
-          <p class="capability-description">Members see where they are in the journey.</p>
-        </div>
-        <div class="capability-card">
-          <h4 class="capability-title">Completion Bonuses</h4>
-          <p class="capability-description">Additional rewards for finishing the full streak.</p>
-        </div>
-        <div class="capability-card">
-          <h4 class="capability-title">Real-Time Feedback</h4>
-          <p class="capability-description">Members know the moment something happens.</p>
+        <div class="feature-visual">
+          <div class="ui-device-frame">
+            <!-- CSS Referral UI Mockup -->
+            <div style="background: #fff; border-radius: 16px; padding: 20px; min-height: 280px;">
+              <div style="text-align: center; margin-bottom: 16px;">
+                <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Refer a Friend</div>
+                <div style="font-size: 15px; font-weight: 500; color: #222;">Earn Together</div>
+              </div>
+              <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                <div style="flex: 1; background: linear-gradient(135deg, rgba(243,112,33,0.1) 0%, rgba(243,112,33,0.05) 100%); border: 1px solid rgba(243,112,33,0.2); border-radius: 10px; padding: 14px; text-align: center;">
+                  <div style="font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">You Get</div>
+                  <div style="font-size: 22px; font-weight: 600; color: #F37021;">500</div>
+                  <div style="font-size: 11px; color: #666;">points</div>
+                </div>
+                <div style="flex: 1; background: linear-gradient(135deg, rgba(91,138,184,0.1) 0%, rgba(91,138,184,0.05) 100%); border: 1px solid rgba(91,138,184,0.2); border-radius: 10px; padding: 14px; text-align: center;">
+                  <div style="font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">They Get</div>
+                  <div style="font-size: 22px; font-weight: 600; color: #5B8AB8;">250</div>
+                  <div style="font-size: 11px; color: #666;">points</div>
+                </div>
+              </div>
+              <div style="background: #f5f5f5; border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <div style="flex: 1; font-size: 12px; color: #666; font-family: monospace;">FRIEND2024</div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </div>
+              <button style="width: 100%; background: linear-gradient(135deg, #F37021 0%, #FF8F4D 100%); color: #fff; border: none; border-radius: 8px; padding: 12px; font-size: 14px; font-weight: 500;">Share Invite Link</button>
+            </div>
+          </div>
         </div>
       </div>
-
+      
     </div>
   </section>
 
-
-  <!-- ========== SECTION 8: BOTTOM CTA ========== -->
+  <!-- ========== STREAKS: THE FREQUENCY ENGINE ========== -->
   <section class="section section-lg bg-light">
     <div class="container">
-      <div class="bottom-cta-card">
-        <h2 class="bottom-cta-title">Ready to Drive Deeper Engagement?</h2>
-        <p class="bottom-cta-description">
-          See how RCX turns every interaction into an opportunity for connection and growth.
-        </p>
-        <div class="flex gap-4" style="justify-content: center;">
-          <a href="about-contact.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+      
+      <!-- ROW 1: Concept + Visualization -->
+      <div class="streaks-intro-row">
+        
+        <!-- Left: Content -->
+        <div class="streaks-intro-content">
+          <span class="eyebrow">Engagement Engine</span>
+          <h2 class="section-title">Streaks: The Frequency Engine</h2>
+          <p class="body-text">Turn isolated transactions into connected journeys. Build frequency and habit through time-bound progress tracking and completion incentives that keep members engaged over time.</p>
         </div>
+        
+        <!-- Right: Progression Visualization -->
+        <div class="streaks-visual-panel">
+          <div class="streaks-progress-viz">
+            
+            <!-- Progress Steps -->
+            <div class="streaks-progress-track">
+              <div class="streaks-step completed">
+                <div class="streaks-step-marker"></div>
+                <span class="streaks-step-label">Day 1</span>
+              </div>
+              <div class="streaks-step-connector filled"></div>
+              <div class="streaks-step completed">
+                <div class="streaks-step-marker"></div>
+                <span class="streaks-step-label">Day 2</span>
+              </div>
+              <div class="streaks-step-connector filled"></div>
+              <div class="streaks-step completed">
+                <div class="streaks-step-marker"></div>
+                <span class="streaks-step-label">Day 3</span>
+              </div>
+              <div class="streaks-step-connector"></div>
+              <div class="streaks-step">
+                <div class="streaks-step-marker"></div>
+                <span class="streaks-step-label">Day 4</span>
+              </div>
+              <div class="streaks-step-connector"></div>
+              <div class="streaks-step bonus">
+                <div class="streaks-step-marker">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
+                </div>
+                <span class="streaks-step-label">Bonus</span>
+              </div>
+            </div>
+            
+            <!-- Labels -->
+            <div class="streaks-viz-labels">
+              <span>Start</span>
+              <span>Streak Complete → 2× Bonus</span>
+            </div>
+            
+          </div>
+        </div>
+        
       </div>
+      
+      <!-- ROW 2: Streak Mechanics Cards -->
+      <div class="grid grid-4" style="margin-top: var(--space-12);">
+        
+        <div class="card" style="padding: var(--space-6);">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title" style="font-size: var(--font-size-lg);">Consecutive Streaks</h3>
+          <p class="card-description">Visit 5 days in a row, purchase 3 weeks straight.</p>
+        </div>
+        
+        <div class="card" style="padding: var(--space-6);">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title" style="font-size: var(--font-size-lg);">Cumulative Streaks</h3>
+          <p class="card-description">Make 10 purchases this month, any pace.</p>
+        </div>
+        
+        <div class="card" style="padding: var(--space-6);">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title" style="font-size: var(--font-size-lg);">Completion Bonuses</h3>
+          <p class="card-description">Additional rewards for finishing the streak.</p>
+        </div>
+        
+        <div class="card" style="padding: var(--space-6);">
+          <div class="card-rule-orange"></div>
+          <h3 class="card-title" style="font-size: var(--font-size-lg);">Real-Time Feedback</h3>
+          <p class="card-description">Members know the moment something happens.</p>
+        </div>
+        
+      </div>
+      
     </div>
   </section>
 
-
-  <!-- ========== SECTION 9: FAQ (3 Questions) ========== -->
-  <section class="faq-section section-light bg-light">
+  <!-- ========== FAQ ========== -->
+  <section class="faq-section bg-light">
     <div class="container">
       <div class="faq-layout">
         
         <div class="faq-intro">
-          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <span class="faq-eyebrow">FAQ</span>
+          <h2 class="faq-title">Common Questions</h2>
           <p class="faq-description">
-            Common questions about engagement, gamification, and member activity tracking.
+            Everything you need to know about engagement, gamification, and member activity tracking.
           </p>
-          <a href="about-contact.html" class="btn btn-primary">Contact Us</a>
         </div>
 
         <div class="faq-accordion">
@@ -1100,12 +723,12 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Surveys, polls, quizzes, profile completions, app activity, content views, check-ins, reviews, referrals, and <strong>custom activity types you define</strong>.
+                  RCX can track any activity you can send via API or event stream. This includes purchases, app logins, page views, survey completions, profile updates, referrals, social shares, check-ins, event attendance, and custom activities you define. Every activity flows through the same rules engine for consistent evaluation and reward.
                 </p>
               </div>
             </div>
           </div>
-
+          
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
               <span class="accordion-trigger-text">What are streaks?</span>
@@ -1114,32 +737,72 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  <strong>Multi-step challenges</strong> that reward members for completing actions over time. Configurable time windows. Progress tracking. Completion bonuses.
+                  Streaks are time-bound engagement mechanics that reward members for completing a series of actions within a defined window. They can be consecutive (visit 5 days in a row) or cumulative (make 3 purchases this month). Streaks can escalate rewards as members progress, creating momentum and habit formation.
                 </p>
               </div>
             </div>
           </div>
-
+          
           <div class="accordion-item">
             <button class="accordion-trigger" aria-expanded="false">
-              <span class="accordion-trigger-text">Can members see their progress?</span>
+              <span class="accordion-trigger-text">How do referral programs work?</span>
               <span class="accordion-icon"></span>
             </button>
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <p>
-                  Yes. Progress is visible <strong>in real time</strong> through app overlays, push notifications, or any channel you integrate.
+                  Referral programs in RCX can be configured as instant (reward on signup), progressive (reward unlocks as referee hits milestones), or dual-sided (both parties earn). You define the reward structure, eligibility rules, and any limits. The platform tracks referral attribution automatically and handles fraud detection.
                 </p>
               </div>
             </div>
           </div>
-
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">Can we reward non-purchase activities?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Absolutely. RCX treats all activities as first-class engagement events. Survey completions, profile updates, app logins, content consumption, social shares, reviews, and any custom activity can earn points, unlock benefits, or contribute to tier status. The rules engine evaluates non-purchase activities with the same speed and flexibility as transactions.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-text">How fast are activities processed?</span>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Activities are processed in real time with sub-second latency. When a member completes an action, the rules engine evaluates it immediately and any resulting rewards, status updates, or notifications are applied before the member leaves the interaction. No batch processing, no delays.
+                </p>
+              </div>
+            </div>
+          </div>
+          
         </div>
         
       </div>
     </div>
   </section>
 
+  <!-- ========== CTA ========== -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="cta-box">
+        <h2 class="cta-box-title">Ready to Drive Deeper Engagement?</h2>
+        <p class="cta-box-description">
+          See how RCX turns every interaction into an opportunity for connection and growth.
+        </p>
+        <a href="about-contact.html" class="btn btn-primary btn-lg">Request a Demo</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
@@ -1159,7 +822,7 @@
             </div>
             <div class="footer-social">
               <a href="https://www.linkedin.com/company/loyalty-methods" target="_blank" class="footer-social-link" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
             </div>
           </div>
@@ -1193,7 +856,6 @@
           <h4 class="footer-column-title">Company</h4>
           <ul class="footer-links">
             <li><a href="about-story.html" class="footer-link">Our Story</a></li>
-            <li><a href="about-leadership.html" class="footer-link">Leadership</a></li>
             <li><a href="about-careers.html" class="footer-link">Careers</a></li>
             <li><a href="partner-network.html" class="footer-link">Partner Network</a></li>
             <li><a href="about-contact.html" class="footer-link">Contact Us</a></li>
@@ -1202,7 +864,7 @@
 
         <div class="footer-column">
           <h4 class="footer-column-title">Resources</h4>
-          <ul class="footer-links" style="margin-bottom: var(--space-8);">
+          <ul class="footer-links" style="margin-bottom: var(--space-6);">
             <li><a href="resource-center.html" class="footer-link">Resource Center</a></li>
           </ul>
           <h4 class="footer-column-title">Legal</h4>
@@ -1215,43 +877,114 @@
     </div>
   </footer>
 
-
   <!-- ========== SCRIPTS ========== -->
   <script>
-    // Header scroll effect
+    // Header scroll
     const header = document.querySelector('.header');
-    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Accordion functionality
+    // FAQ Accordion
     const accordionItems = document.querySelectorAll('.accordion-item');
-    
     accordionItems.forEach(item => {
       const trigger = item.querySelector('.accordion-trigger');
-      
       trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        
-        // Close all accordion items
-        accordionItems.forEach(otherItem => {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        accordionItems.forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
         });
-        
-        // If clicked item wasn't active, open it
         if (!isActive) {
           item.classList.add('active');
           trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
-  </script>
 
+    // Mobile Navigation
+    (function() {
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileBackdrop = document.getElementById('mobileBackdrop');
+      const mobileClose = document.querySelector('.mobile-nav-close');
+      const mobileNavItems = document.querySelectorAll('.mobile-nav-item[data-has-submenu]');
+      
+      if (!mobileToggle || !mobileNav || !mobileBackdrop) return;
+
+      function openMobileNav() {
+        mobileNav.hidden = false;
+        mobileBackdrop.hidden = false;
+        mobileNav.offsetHeight;
+        mobileBackdrop.offsetHeight;
+        mobileNav.classList.add('is-open');
+        mobileBackdrop.classList.add('is-visible');
+        document.body.classList.add('mobile-nav-open');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        setTimeout(() => { mobileClose.focus(); }, 100);
+      }
+
+      function closeMobileNav() {
+        mobileNav.classList.remove('is-open');
+        mobileBackdrop.classList.remove('is-visible');
+        document.body.classList.remove('mobile-nav-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        setTimeout(() => {
+          mobileNav.hidden = true;
+          mobileBackdrop.hidden = true;
+        }, 300);
+        mobileToggle.focus();
+      }
+
+      function toggleSubmenu(item) {
+        const isExpanded = item.classList.contains('is-expanded');
+        const button = item.querySelector('.mobile-nav-link');
+        mobileNavItems.forEach(navItem => {
+          navItem.classList.remove('is-expanded');
+          const btn = navItem.querySelector('.mobile-nav-link');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+        if (!isExpanded) {
+          item.classList.add('is-expanded');
+          if (button) button.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      mobileToggle.addEventListener('click', openMobileNav);
+      mobileClose.addEventListener('click', closeMobileNav);
+      mobileBackdrop.addEventListener('click', closeMobileNav);
+
+      mobileNavItems.forEach(item => {
+        const button = item.querySelector('button.mobile-nav-link');
+        if (button) {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleSubmenu(item);
+          });
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+          closeMobileNav();
+        }
+      });
+
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => { closeMobileNav(); });
+      });
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (window.innerWidth > 1024 && mobileNav.classList.contains('is-open')) {
+            closeMobileNav();
+          }
+        }, 100);
+      });
+    })();
+  </script>
 </body>
 </html>
