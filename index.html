@@ -868,6 +868,29 @@
     .promo-gallery-hint {
       font-size: var(--font-size-sm, 0.875rem) !important;
     }
+    
+    /* Industry group structure — overrides default list gap */
+    .promo-gallery-grid .promo-gallery-list {
+      gap: 0;
+    }
+    .promo-industry-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .promo-industry-group + .promo-industry-group {
+      margin-top: var(--space-8);
+    }
+    /* Industry headers — matches .promo-spec-label pattern */
+    .promo-industry-header {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #777;
+      padding-left: var(--space-6);
+      margin: 0;
+    }
   </style>
 
   <section class="section section-lg bg-light">
@@ -881,183 +904,203 @@
           <p class="promo-gallery-hint">Select a promotion to view the rule spec.</p>
         </div>
         
-        <!-- Right: Promo Rows -->
+        <!-- Right: Promo Rows - Organized by Industry -->
         <div class="promo-gallery-list" role="list">
           
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-1-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Fuel â†’ In-Store Partner Booster</h3>
-                <p class="promo-row-desc">Link fuel purchase to inside basket with partner SKU triggers</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Cross-LOB</span>
-                  <span class="promo-chip">Partner-Funded</span>
-                  <span class="promo-chip">Real-Time POS</span>
+          <!-- ===== FUEL & CONVENIENCE ===== -->
+          <div class="promo-industry-group">
+            <h4 class="promo-industry-header">Fuel & Convenience</h4>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-1-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Fuel → In-Store Partner Booster</h3>
+                  <p class="promo-row-desc">Link fuel purchase to inside basket with partner SKU triggers</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Cross-LOB</span>
+                    <span class="promo-chip">Partner-Funded</span>
+                    <span class="promo-chip">Real-Time POS</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-1-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">8+ gallons + 2 partner SKUs within 30 minutes</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">3× points on inside basket + instant $1 partner discount</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">2/day; excludes select site types</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner/merchant split with capped liability</span></div>
                 </div>
               </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-1-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">8+ gallons + 2 partner SKUs within 30 minutes</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">3&times; points on inside basket + instant $1 partner discount</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">2/day; excludes select site types</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner/merchant split with capped liability</span></div>
+            </div>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-2-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Points Burn at the Pump (Margin Guard)</h3>
+                  <p class="promo-row-desc">Real-time point redemption with margin-based eligibility</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Burn</span>
+                    <span class="promo-chip">Margin Control</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-2-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Eligible grade + member balance threshold met</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Burn points for $ off, applied at checkout in real time</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Daily discount cap; no stacking with fleet pricing</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Merchant-funded with margin-based eligibility</span></div>
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-2-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Points Burn at the Pump (Margin Guard)</h3>
-                <p class="promo-row-desc">Real-time point redemption with margin-based eligibility</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Burn</span>
-                  <span class="promo-chip">Margin Control</span>
+          <!-- ===== GAMING & HOSPITALITY ===== -->
+          <div class="promo-industry-group">
+            <h4 class="promo-industry-header">Gaming & Hospitality</h4>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-4-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Stay + Play + Dine Tier Accelerator</h3>
+                  <p class="promo-row-desc">Multi-outlet spend triggers tier credit acceleration</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Gaming</span>
+                    <span class="promo-chip">Tier</span>
+                    <span class="promo-chip">Multi-Outlet</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-4-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">2-night stay + play threshold + F&B spend threshold</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Dining multiplier + tier credit acceleration</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Once per stay; comps excluded from earn base</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Property-funded</span></div>
                 </div>
               </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-2-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Eligible grade + member balance threshold met</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Burn points for $ off, applied at checkout in real time</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Daily discount cap; no stacking with fleet pricing</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Merchant-funded with margin-based eligibility</span></div>
+            </div>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-5-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Resort Credit Wallet (Burn)</h3>
+                  <p class="promo-row-desc">Burn points into a $ wallet usable across property outlets</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Gaming</span>
+                    <span class="promo-chip">Burn</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-5-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Active stay + points balance threshold</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Burn points into a $ wallet usable across outlets</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Expires at checkout; 1/stay</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Property + outlet opt-in reimbursements</span></div>
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-3-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Partner Earn â†’ In-Brand Burn</h3>
-                <p class="promo-row-desc">Convert partner transaction value into brand credit at checkout</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Partner</span>
-                  <span class="promo-chip">Cross-Brand</span>
+          <!-- ===== RETAIL ===== -->
+          <div class="promo-industry-group">
+            <h4 class="promo-industry-header">Retail</h4>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-6-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Omnichannel Mix-to-Bonus (Retail)</h3>
+                  <p class="promo-row-desc">Cross-category spend with store + web activity requirement</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Retail</span>
+                    <span class="promo-chip">Omnichannel</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-6-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Spend threshold + 2 categories + store+web activity</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Bonus points, with BOPIS booster</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Returns clawback; 1/week</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Merchant-funded</span></div>
                 </div>
               </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-3-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Partner transaction posts + identity match confirmed</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Convert partner value into brand credit at checkout</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Full-price only; redemption frequency cap</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner reimburses per redemption tier</span></div>
+            </div>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-7-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Household Streak + Velocity Caps</h3>
+                  <p class="promo-row-desc">Household-level qualification with velocity fraud gates</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Household</span>
+                    <span class="promo-chip">Caps</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-7-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Household enabled + cross-category threshold achieved</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Credit + multipliers on tagged categories</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Household monthly cap; restricted items excluded</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Optional partner-funded booster</span></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-8-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Real-Time Checkout Arbitration</h3>
+                  <p class="promo-row-desc">Best-value offer selection when multiple promos qualify</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Arbitration</span>
+                    <span class="promo-chip">Real-Time</span>
+                  </div>
+                </div>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-8-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Multiple eligible offers triggered in same basket</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Best-value offer applied + decision logged for audit</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Mutual exclusivity sets + fraud gates</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Priority rules across mixed funding sources</span></div>
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-4-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Stay + Play + Dine Tier Accelerator</h3>
-                <p class="promo-row-desc">Multi-outlet spend triggers tier credit acceleration</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Gaming</span>
-                  <span class="promo-chip">Tier</span>
-                  <span class="promo-chip">Multi-Outlet</span>
+          <!-- ===== COALITION & PARTNER PROGRAMS ===== -->
+          <div class="promo-industry-group">
+            <h4 class="promo-industry-header">Coalition & Partner Programs</h4>
+            
+            <div class="promo-row" role="listitem">
+              <button class="promo-row-header" aria-expanded="false" aria-controls="promo-3-detail">
+                <div class="promo-row-content">
+                  <h3 class="promo-row-title">Partner Earn → In-Brand Burn</h3>
+                  <p class="promo-row-desc">Convert partner transaction value into brand credit at checkout</p>
+                  <div class="promo-row-chips">
+                    <span class="promo-chip">Partner</span>
+                    <span class="promo-chip">Cross-Brand</span>
+                  </div>
                 </div>
-              </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-4-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">2-night stay + play threshold + F&B spend threshold</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Dining multiplier + tier credit acceleration</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Once per stay; comps excluded from earn base</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Property-funded</span></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-5-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Resort Credit Wallet (Burn)</h3>
-                <p class="promo-row-desc">Burn points into a $ wallet usable across property outlets</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Gaming</span>
-                  <span class="promo-chip">Burn</span>
+                <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="promo-row-detail" id="promo-3-detail" hidden>
+                <div class="promo-spec-grid">
+                  <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Partner transaction posts + identity match confirmed</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Convert partner value into brand credit at checkout</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Full-price only; redemption frequency cap</span></div>
+                  <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Partner reimburses per redemption tier</span></div>
                 </div>
-              </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-5-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Active stay + points balance threshold</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Burn points into a $ wallet usable across outlets</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Expires at checkout; 1/stay</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Property + outlet opt-in reimbursements</span></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-6-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Omnichannel Mix-to-Bonus (Retail)</h3>
-                <p class="promo-row-desc">Cross-category spend with store + web activity requirement</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Retail</span>
-                  <span class="promo-chip">Omnichannel</span>
-                </div>
-              </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-6-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Spend threshold + 2 categories + store+web activity</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Bonus points, with BOPIS booster</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Returns clawback; 1/week</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Merchant-funded</span></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-7-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Household Streak + Velocity Caps</h3>
-                <p class="promo-row-desc">Household-level qualification with velocity fraud gates</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Household</span>
-                  <span class="promo-chip">Caps</span>
-                </div>
-              </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-7-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Household enabled + cross-category threshold achieved</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Credit + multipliers on tagged categories</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Household monthly cap; restricted items excluded</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Optional partner-funded booster</span></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="promo-row" role="listitem">
-            <button class="promo-row-header" aria-expanded="false" aria-controls="promo-8-detail">
-              <div class="promo-row-content">
-                <h3 class="promo-row-title">Real-Time Checkout Arbitration</h3>
-                <p class="promo-row-desc">Best-value offer selection when multiple promos qualify</p>
-                <div class="promo-row-chips">
-                  <span class="promo-chip">Arbitration</span>
-                  <span class="promo-chip">Real-Time</span>
-                </div>
-              </div>
-              <svg class="promo-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="promo-row-detail" id="promo-8-detail" hidden>
-              <div class="promo-spec-grid">
-                <div class="promo-spec"><span class="promo-spec-label">Qualifies when</span><span class="promo-spec-value">Multiple eligible offers triggered in same basket</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Reward</span><span class="promo-spec-value">Best-value offer applied + decision logged for audit</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Limits</span><span class="promo-spec-value">Mutual exclusivity sets + fraud gates</span></div>
-                <div class="promo-spec"><span class="promo-spec-label">Funding</span><span class="promo-spec-value">Priority rules across mixed funding sources</span></div>
               </div>
             </div>
           </div>
