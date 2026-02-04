@@ -1,5 +1,5 @@
 /* ======================================================================
-   NAV (V10.3) — Header, Navigation, Mega Menu, Anchor Bar, Mobile Nav
+   NAV (V10.3) â€” Header, Navigation, Mega Menu, Anchor Bar, Mobile Nav
    
    UX PRINCIPLES:
    - Fitts's Law: Appropriately sized targets reduce selection time
@@ -60,7 +60,7 @@
   gap: var(--space-1); 
 }
 
-/* Nav actions wrapper — About LM dropdown + Contact CTA */
+/* Nav actions wrapper â€” About LM dropdown + Contact CTA */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -121,10 +121,10 @@
    MEGA MENU SYSTEM
    
    WIDTH TOKENS (based on content requirements):
-   - compact:  420px  → Simple lists (4-6 items, single column)
-   - tech:     680px  → Medium complexity (1 column + featured panel)
-   - platform: 680px  → Two balanced columns, longer titles
-   - default:  920px  → Full mega menu with multiple sections
+   - compact:  420px  â†’ Simple lists (4-6 items, single column)
+   - tech:     680px  â†’ Medium complexity (1 column + featured panel)
+   - platform: 680px  â†’ Two balanced columns, longer titles
+   - default:  920px  â†’ Full mega menu with multiple sections
    
    UX RATIONALE:
    Widths are calculated to ensure all menu item titles remain single-line
